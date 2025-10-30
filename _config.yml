@@ -1,3 +1,7 @@
 remote_theme: pages-themes/minimal
 plugins:
-  - jekyll-remote-theme  # 如果您已有 plugins 列表，只需添加此行
+  - jekyll-remote-theme
+
+title: My Blog
+description: A blog about my life as a graduate student in computer science.
+author: Your Name
