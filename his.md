@@ -34,3 +34,9 @@
 
 - **参考链接:**
   - [博客搭建详细教程](https://github.com/qiubaiying/qiubaiying.github.io/wiki/博客搭建详细教程)
+
+2025年10月30日
+
+- **更新README.md:**
+  - `README.md`: 添加了网站截图作为展示。
+  - `img`: 添加了网站截图 `screenshot.png`。

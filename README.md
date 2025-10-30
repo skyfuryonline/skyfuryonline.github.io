@@ -1,5 +1,7 @@
 # LH的博客
 
+![screenshot](img/screenshot.png)
+
 这是一个基于 Jekyll 和 GitHub Pages 搭建的个人博客，用于记录博主在NLP领域的学习、研究以及生活点滴。
 
 ## 网站结构
