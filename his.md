@@ -25,3 +25,6 @@
   - **新增内容:**
     - `_posts/2025-10-30-helloworld.md`: 新增了一篇测试文章。
     - `his.md`: 创建了本文件。
+
+- **参考链接:**
+  - [博客搭建详细教程](https://github.com/qiubaiying/qiubaiying.github.io/wiki/博客搭建详细教程)
