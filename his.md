@@ -16,8 +16,10 @@
     - `_config.yml`: 更新了博客的标题为 “LH的博客”。
     - `README.md`: 更新了 `README.md` 中的博客标题。
   - **背景图片:**
-    - `_config.yml`: 更新了主页的背景图片。
-    - `img`: 添加了新的背景图片 `home-bg.png`，并删除了旧的背景图片。
+    - **主页:** `_config.yml` 中更新了主页的背景图片。
+    - **About页面:** `about.html` 中更新了About页面的背景图片。
+    - **Tags页面:** `tags.html` 中更新了Tags页面的背景图片。
+    - `img`: 添加了新的背景图片，并删除了旧的背景图片。
   - **个人信息:**
     - `_config.yml`: 更新了网站描述、关键词、URL、GitHub仓库地址、作者信息等。
     - `about.html`: 更新了您的个人简介和社交链接。
@@ -29,26 +31,8 @@
     - `_config.yml`: 移除了 `friends` 列表。
   - **新增内容:**
     - `_posts/2025-10-30-helloworld.md`: 新增了一篇测试文章。
-    - `README.md`: 创建了项目根目录下的 `README.md` 文件，用于介绍项目结构和本地运行方法。
+    - `README.md`: 创建了项目根目录下的 `README.md` 文件，用于介绍项目结构和本地运行方法，并添加了网站截图。
     - `his.md`: 创建了本文件。
 
 - **参考链接:**
   - [博客搭建详细教程](https://github.com/qiubaiying/qiubaiying.github.io/wiki/博客搭建详细教程)
-
-2025年10月30日
-
-- **更新README.md:**
-  - `README.md`: 添加了网站截图作为展示。
-  - `img`: 添加了网站截图 `screenshot.png`。
-
-2025年10月30日
-
-- **更新About页面背景图片:**
-  - `about.html`: 更新了About页面的背景图片。
-  - `img`: 添加了新的背景图片 `about-bg.png`，并删除了旧的背景图片 `post-bg-rwd.jpg`。
-
-2025年10月30日
-
-- **更新Tags页面背景图片:**
-  - `tags.html`: 更新了Tags页面的背景图片。
-  - `img`: 添加了新的背景图片 `tag-bg.png`，并删除了旧的背景图片 `tag-bg.jpg`。
