@@ -28,3 +28,8 @@
 
 - **参考链接:**
   - [博客搭建详细教程](https://github.com/qiubaiying/qiubaiying.github.io/wiki/博客搭建详细教程)
+
+2025年10月30日
+
+- **清理多余社交链接:**
+  - `_config.yml`: 删除了简书、知乎、Facebook等社交平台的用户名配置。
