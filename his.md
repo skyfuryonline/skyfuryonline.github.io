@@ -40,3 +40,9 @@
 - **更新README.md:**
   - `README.md`: 添加了网站截图作为展示。
   - `img`: 添加了网站截图 `screenshot.png`。
+
+2025年10月30日
+
+- **更新About页面背景图片:**
+  - `about.html`: 更新了About页面的背景图片。
+  - `img`: 添加了新的背景图片 `about-bg.png`，并删除了旧的背景图片 `post-bg-rwd.jpg`。
