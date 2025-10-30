@@ -39,14 +39,14 @@ a:hover {
 }
 
 .main-content {
-    width: 70%;
+    width: 65%;
     float: left;
-    padding-right: 20px;
 }
 
 .sidebar {
     width: 30%;
     float: right;
+    margin-left: 5%;
 }
 
 /* Header */
