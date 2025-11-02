@@ -4,15 +4,31 @@ description: "Thinking will not overcome fear but action will."
 ---
 
 <style>
+.groups-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px; /* Counteract card margin */
+}
+
 .group-card {
+    width: 100%;
     border: 1px solid #ddd;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin: 0 15px 30px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     cursor: pointer;
     overflow: hidden;
 }
+
+/* On medium screens and up, go to two columns */
+@media (min-width: 768px) {
+    .group-card {
+        width: calc(50% - 30px); /* 50% width minus horizontal margins */
+    }
+}
+
 .group-card:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transform: translateY(-5px);
@@ -72,27 +88,32 @@ description: "Thinking will not overcome fear but action will."
 }
 </style>
 
-{% for group in site.data.homepage_groups %}
-<div class="group-card" id="group-{{ forloop.index }}">
-    <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
-        <div class="group-header-overlay"></div>
-        <div class="group-header-content">
-            <h2>{{ group.group_name }}</h2>
-            <p class="group-description">{{ group.group_description }}</p>
+<div class="groups-container">
+    {% for group in site.data.homepage_groups %}
+    <div class="group-card" id="group-{{ forloop.index }}">
+        <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
+            <div class="group-header-overlay"></div>
+            <div class="group-header-content">
+                <h2>{{ group.group_name }}</h2>
+                <p class="group-description">{{ group.group_description }}</p>
+            </div>
+        </div>
+        <div class="post-card-container">
+            {% for post_file in group.posts %}
+                {% assign post = site.posts | where: "name", post_file | first %}
+                {% if post %}
+                    <div class="post-card">
+                        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
-    <div class="post-card-container">
-        {% for post_file in group.posts %}
-            {% assign post = site.posts | where: "name", post_file | first %}
-            {% if post %}
-                <div class="post-card">
-                    <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+    {% endfor %}
 </div>
-{% endfor %}
+
+<!-- Load jQuery before our script -->
+<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 
 <script>
 $(document).ready(function(){
