@@ -3,6 +3,36 @@ layout: page
 description: "Thinking will not overcome fear but action will."
 ---
 
+<!-- ===== DEBUGGING BLOCK START ===== -->
+<div style="background-color: #f0f0f0; border: 2px solid red; padding: 15px; margin-bottom: 30px; font-family: monospace;">
+    <h3 style="margin-top: 0;">DIAGNOSTIC INFORMATION</h3>
+    <p><b>Total posts found by Jekyll:</b> {{ site.posts | size }}</p>
+    
+    <p><b>List of all `post.name` values seen by Jekyll:</b></p>
+    <ul>
+        {% for p in site.posts %}
+            <li>{{ p.name }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <p><b>Processing `homepage_groups.yml`:</b></p>
+    {% for group in site.data.homepage_groups %}
+        <div style="border-left: 3px solid blue; padding-left: 10px; margin-bottom: 10px;">
+            <p><b>Group:</b> "{{ group.group_name }}"</p>
+            <p>Filenames to find in this group:</p>
+            <ul>
+                {% for post_filename in group.posts %}
+                    <li>"{{ post_filename }}"</li>
+                {% else %}
+                    <li>(No posts listed)</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+<!-- ===== DEBUGGING BLOCK END ===== -->
+
+
 <style>
 .groups-container {
     display: flex;
@@ -127,12 +157,10 @@ description: "Thinking will not overcome fear but action will."
 
 <script>
 $(document).ready(function(){
-    $('.group-header-wrapper').on('click', function(){
-        // Find the container of small cards within the SAME group-card parent
-        var postContainer = $(this).siblings('.post-card-container');
-        
-        // Toggle (slide up/down) the container
-        postContainer.slideToggle();
+    $('.group-header-wrapper').on('click', function(e){
+        e.stopPropagation();
+        // Use closest() to be absolutely sure we're targeting the correct card's container
+        $(this).closest('.group-card').find('.post-card-container').slideToggle();
     });
 });
 </script>
