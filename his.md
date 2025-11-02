@@ -92,11 +92,13 @@
 打开 `index.html`，找到 `Liquid` 的 `if/elsif` 判断链，在 `{% endfor %}` 前添加一个新的 `elsif` 分支：
 
 ```liquid
+{% raw %}
         {% elsif group.group_name == "杂记" %}
             {% assign group_id = "life" %}
         {% elsif group.group_name == "PyTorch学习" %}
             {% assign group_id = "pytorch" %}
         {% endif %}
+{% endraw %}
 
         <a href="{{ site.baseurl }}/groups/{{ group_id }}" ...>
 ```
