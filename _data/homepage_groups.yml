@@ -1,6 +1,6 @@
-- group_name: "大语言模型学习"
+- group_name: "分布式训练笔记"
   group_image: "/img/cover-llms.png"
-  group_description: "关于LLMs的基础知识、前沿技术和实践笔记。"
+  group_description: "LLMs在多卡服务器上的训练"
   posts:
     []
 
