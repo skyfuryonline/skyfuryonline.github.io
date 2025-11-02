@@ -4,8 +4,8 @@
   posts:
     []
 
-- group_name: "生活杂记"
+- group_name: "杂记"
   group_image: "/img/cover-zaji.png"
-  group_description: "记录生活中的点滴感悟和有趣瞬间。"
+  group_description: "记录学习、生活中的点点滴滴"
   posts:
     - "2025-10-30-helloworld.md"
