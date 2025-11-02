@@ -8,34 +8,39 @@ description: "Thinking will not overcome fear but action will."
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start; /* Add this line to prevent stretching */
+    align-items: flex-start; /* Prevent stretching */
     margin: 0 -15px; /* Counteract card margin */
 }
 
-.group-card {
+.group-card-wrapper {
+    display: block; /* Make the whole card a link */
+    text-decoration: none;
+    color: inherit;
     width: 100%;
+    margin: 0 15px 30px;
+}
+
+.group-card {
     border: 1px solid #ddd;
     border-radius: 10px;
-    margin: 0 15px 30px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     overflow: hidden;
+    height: 100%; /* Make cards in a row equal height if needed, works with align-items: stretch */
 }
 
 /* On medium screens and up, go to two columns */
 @media (min-width: 768px) {
-    .group-card {
+    .group-card-wrapper {
         width: calc(50% - 30px); /* 50% width minus horizontal margins */
     }
 }
 
-.group-card:hover {
+.group-card-wrapper:hover .group-card {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transform: translateY(-5px);
 }
-.group-card .group-header-wrapper{
-    cursor: pointer;
-}
+
 .group-header {
     position: relative;
     height: 250px;
@@ -56,7 +61,7 @@ description: "Thinking will not overcome fear but action will."
     background: rgba(0, 0, 0, 0.5);
     transition: background 0.3s ease;
 }
-.group-card:hover .group-header-overlay{
+.group-card-wrapper:hover .group-header-overlay{
     background: rgba(0, 0, 0, 0.3);
 }
 .group-header-content {
@@ -72,67 +77,30 @@ description: "Thinking will not overcome fear but action will."
 .group-card .group-description {
     font-size: 16px;
     font-weight: 300;
-}
-.post-card-container {
-    padding: 20px;
-    background: #f9f9f9;
-    display: none; /* Initially hidden */
-}
-.post-card {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.post-card a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-}
-.post-card a:hover {
-    color: #0085A1;
+    padding: 0 20px 20px;
 }
 
 </style>
 
 <div class="groups-container">
     {% for group in site.data.homepage_groups %}
-    <div class="group-card">
-        <div class="group-header-wrapper" data-target="#posts-container-{{ forloop.index }}">
-            <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
-                <div class="group-header-overlay"></div>
-                <div class="group-header-content">
-                    <h2>{{ group.group_name }}</h2>
-                    <p class="group-description">{{ group.group_description }}</p>
+        {% assign group_id = "" %}
+        {% if group.group_name == "大语言模型学习" %}
+            {% assign group_id = "llm" %}
+        {% elsif group.group_name == "生活杂记" %}
+            {% assign group_id = "life" %}
+        {% endif %}
+
+        <a href="{{ site.baseurl }}/groups/{{ group_id }}" class="group-card-wrapper">
+            <div class="group-card">
+                <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
+                    <div class="group-header-overlay"></div>
+                    <div class="group-header-content">
+                        <h2>{{ group.group_name }}</h2>
+                    </div>
                 </div>
+                <p class="group-description">{{ group.group_description }}</p>
             </div>
-        </div>
-        <div class="post-card-container" id="posts-container-{{ forloop.index }}">
-            {% for post_filename in group.posts %}
-                {% for post in site.posts %}
-                    {% assign post_name_from_path = post.path | split: '/' | last %}
-                    {% if post_name_from_path == post_filename %}
-                        <div class="post-card">
-                            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
-        </div>
-    </div>
+        </a>
     {% endfor %}
 </div>
-
-<!-- Load jQuery before our script -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
-
-<script>
-$(document).ready(function(){
-    $('.group-header-wrapper').on('click', function(e){
-        e.stopPropagation();
-        var targetContainerId = $(this).data('target');
-        $(targetContainerId).slideToggle();
-    });
-});
-</script>
