@@ -98,9 +98,9 @@
         {% elsif group.group_name == "PyTorch学习" %}
             {% assign group_id = "pytorch" %}
         {% endif %}
-{% endraw %}
 
         <a href="{{ site.baseurl }}/groups/{{ group_id }}" ...>
+{% endraw %}
 ```
 
 **第五步：上传文章**
