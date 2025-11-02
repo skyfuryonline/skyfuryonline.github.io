@@ -1,0 +1,11 @@
+- group_name: "大语言模型学习"
+  group_image: "/img/cover-llms.png"
+  group_description: "关于LLMs的基础知识、前沿技术和实践笔记。"
+  posts:
+    - "2025-10-30-helloworld.md"
+
+- group_name: "生活杂记"
+  group_image: "/img/cover-zaji.png"
+  group_description: "记录生活中的点滴感悟和有趣瞬间。"
+  posts:
+    []

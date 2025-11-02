@@ -3,40 +3,105 @@ layout: page
 description: "Thinking will not overcome fear but action will."
 ---
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:200 }}
+<style>
+.group-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+.group-card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+}
+.group-header {
+    position: relative;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.group-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.group-header-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+.group-card h2 {
+    font-size: 28px;
+    margin-top: 0;
+    font-weight: 600;
+}
+.group-card .group-description {
+    font-size: 16px;
+    font-weight: 300;
+}
+.post-card-container {
+    padding: 20px;
+    background: #f9f9f9;
+    display: none; /* Initially hidden */
+}
+.post-card {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.post-card a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+.post-card a:hover {
+    color: #0085A1;
+}
+</style>
+
+{% for group in site.data.homepage_groups %}
+<div class="group-card" id="group-{{ forloop.index }}">
+    <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
+        <div class="group-header-overlay"></div>
+        <div class="group-header-content">
+            <h2>{{ group.group_name }}</h2>
+            <p class="group-description">{{ group.group_description }}</p>
         </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
+    </div>
+    <div class="post-card-container">
+        {% for post_file in group.posts %}
+            {% assign post = site.posts | where: "name", post_file | first %}
+            {% if post %}
+                <div class="post-card">
+                    <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
-<hr>
 {% endfor %}
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+<script>
+$(document).ready(function(){
+    $('.group-card').on('click', function(){
+        // Find the container of small cards within the clicked big card
+        var postContainer = $(this).find('.post-card-container');
+        
+        // Toggle (slide up/down) the container
+        postContainer.slideToggle();
+    });
+});
+</script>
