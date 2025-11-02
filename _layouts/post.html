@@ -2,50 +2,27 @@
 layout: default
 ---
 
-<!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
-
 {% comment %}
 Find the group background image for the current post.
 {% endcomment %}
 {% assign post_name_from_path = page.path | split: '/' | last %}
-{% assign group_header_img = nil %}
+{% assign final_header_img = site.header-img %}  <!-- Start with default site header -->
+
 {% for group in site.data.homepage_groups %}
     {% for post_filename in group.posts %}
         {% if post_name_from_path == post_filename %}
-            {% assign group_header_img = group.group_image %}
+            {% assign final_header_img = group.group_image %}
         {% endif %}
     {% endfor %}
 {% endfor %}
 
-<!-- ===== DEBUGGING BLOCK START ===== -->
-<div style="background-color: #f0f0f0; border: 2px solid red; padding: 15px; margin: 20px; font-family: monospace; color: black;">
-    <h3 style="margin-top: 0;">POST LAYOUT DIAGNOSTICS</h3>
-    <p><b>page.path:</b> {{ page.path }}</p>
-    <p><b>Extracted Filename (post_name_from_path):</b> {{ post_name_from_path }}</p>
-    <p><b>Found Group Image (group_header_img):</b> {{ group_header_img | default: "N/A" }}</p>
-</div>
-<!-- ===== DEBUGGING BLOCK END ===== -->
+{% if page.header-img %}
+    {% assign final_header_img = page.header-img %}
+{% endif %}
+
 
 <!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        position: relative;
-        background-image: url('{{ site.baseurl }}/{% if group_header_img %}{{ group_header_img }}{% elsif page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
-    }
-
-    {% if page.header-mask %}
-    header.intro-header .header-mask{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background: rgba(0,0,0, {{ page.header-mask }});
-    }
-    {% endif %}
-</style>
-<header class="intro-header" >
-    <div class="header-mask"></div>
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}{{ final_header_img }}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
