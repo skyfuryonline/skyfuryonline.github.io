@@ -4,6 +4,14 @@ layout: default
 ---
 
 <style>
+.intro-header-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
 .post-card {
     background: white;
     padding: 25px;
@@ -45,6 +53,7 @@ layout: default
 
 <!-- Page Header -->
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}{{ current_group.group_image }}')">
+    <div class="intro-header-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">

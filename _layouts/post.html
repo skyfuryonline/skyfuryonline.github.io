@@ -6,11 +6,24 @@ layout: default
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
+{% comment %}
+Find the group background image for the current post.
+{% endcomment %}
+{% assign post_name_from_path = page.path | split: '/' | last %}
+{% assign group_header_img = nil %}
+{% for group in site.data.homepage_groups %}
+    {% for post_filename in group.posts %}
+        {% if post_name_from_path == post_filename %}
+            {% assign group_header_img = group.group_image %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+        background-image: url('{{ site.baseurl }}/{% if group_header_img %}{{ group_header_img }}{% elsif page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
 
     {% if page.header-mask %}
