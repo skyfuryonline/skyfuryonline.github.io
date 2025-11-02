@@ -1,0 +1,73 @@
+---
+# This is the layout for a single group page (e.g., /groups/llm)
+layout: default
+---
+
+<style>
+.post-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+.post-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+}
+.post-card a {
+    text-decoration: none;
+    color: #333;
+}
+.post-card h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #0085A1;
+}
+.post-card .post-meta {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.post-card .post-excerpt {
+    color: #555;
+    font-size: 16px;
+}
+</style>
+
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}{{ page.header-img }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>{{ page.title }}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {% for post_filename in page.posts %}
+                {% for post in site.posts %}
+                    {% assign post_name_from_path = post.path | split: '/' | last %}
+                    {% if post_name_from_path == post_filename %}
+                        <div class="post-card">
+                            <a href="{{ post.url | prepend: site.baseurl }}">
+                                <h2>{{ post.title }}</h2>
+                                <p class="post-meta">Posted on {{ post.date | date: "%B %-d, %Y" }}</p>
+                                <p class="post-excerpt">{{ post.content | strip_html | truncate:150 }}</p>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
