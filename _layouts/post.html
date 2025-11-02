@@ -19,6 +19,15 @@ Find the group background image for the current post.
     {% endfor %}
 {% endfor %}
 
+<!-- ===== DEBUGGING BLOCK START ===== -->
+<div style="background-color: #f0f0f0; border: 2px solid red; padding: 15px; margin: 20px; font-family: monospace; color: black;">
+    <h3 style="margin-top: 0;">POST LAYOUT DIAGNOSTICS</h3>
+    <p><b>page.path:</b> {{ page.path }}</p>
+    <p><b>Extracted Filename (post_name_from_path):</b> {{ post_name_from_path }}</p>
+    <p><b>Found Group Image (group_header_img):</b> {{ group_header_img | default: "N/A" }}</p>
+</div>
+<!-- ===== DEBUGGING BLOCK END ===== -->
+
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
