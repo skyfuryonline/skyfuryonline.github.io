@@ -18,7 +18,6 @@ description: "Thinking will not overcome fear but action will."
     margin: 0 15px 30px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    cursor: pointer;
     overflow: hidden;
 }
 
@@ -32,6 +31,9 @@ description: "Thinking will not overcome fear but action will."
 .group-card:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transform: translateY(-5px);
+}
+.group-card .group-header-wrapper{
+    cursor: pointer;
 }
 .group-header {
     position: relative;
@@ -51,6 +53,10 @@ description: "Thinking will not overcome fear but action will."
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+}
+.group-card:hover .group-header-overlay{
+    background: rgba(0, 0, 0, 0.3);
 }
 .group-header-content {
     position: relative;
@@ -86,26 +92,30 @@ description: "Thinking will not overcome fear but action will."
 .post-card a:hover {
     color: #0085A1;
 }
+
 </style>
 
 <div class="groups-container">
     {% for group in site.data.homepage_groups %}
     <div class="group-card" id="group-{{ forloop.index }}">
-        <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
-            <div class="group-header-overlay"></div>
-            <div class="group-header-content">
-                <h2>{{ group.group_name }}</h2>
-                <p class="group-description">{{ group.group_description }}</p>
+        <div class="group-header-wrapper">
+            <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
+                <div class="group-header-overlay"></div>
+                <div class="group-header-content">
+                    <h2>{{ group.group_name }}</h2>
+                    <p class="group-description">{{ group.group_description }}</p>
+                </div>
             </div>
         </div>
         <div class="post-card-container">
-            {% for post_file in group.posts %}
-                {% assign post = site.posts | where: "name", post_file | first %}
-                {% if post %}
-                    <div class="post-card">
-                        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                    </div>
-                {% endif %}
+            {% for post_filename in group.posts %}
+                {% for post in site.posts %}
+                    {% if post.name == post_filename %}
+                        <div class="post-card">
+                            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
         </div>
     </div>
@@ -117,9 +127,9 @@ description: "Thinking will not overcome fear but action will."
 
 <script>
 $(document).ready(function(){
-    $('.group-card').on('click', function(){
-        // Find the container of small cards within the clicked big card
-        var postContainer = $(this).find('.post-card-container');
+    $('.group-header-wrapper').on('click', function(){
+        // Find the container of small cards within the SAME group-card parent
+        var postContainer = $(this).siblings('.post-card-container');
         
         // Toggle (slide up/down) the container
         postContainer.slideToggle();
