@@ -49,19 +49,19 @@ header-img: "img/home-bg.png"
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
-            {% comment %} Robustly find and sort all daily data files {% endcomment %}
-            {% assign daily_files = "" | split: "" %}
+            {% comment %} Robustly find and sort all daily data file *names* {% endcomment %}
+            {% assign daily_file_names = "" | split: "" %}
             {% for file in site.data %}
                 {% if file[0] contains "daily_" %}
-                    {% assign daily_files = daily_files | push: file %}
+                    {% assign daily_file_names = daily_file_names | push: file[0] %}
                 {% endif %}
             {% endfor %}
-            {% assign daily_files = daily_files | sort: 0 | reverse %}
+            {% assign daily_file_names = daily_file_names | sort | reverse %}
 
-            {% if daily_files.size > 0 %}
-                {% for daily_file in daily_files %}
-                    {% assign file_date_str = daily_file[0] | remove: "daily_" %}
-                    {% assign articles = daily_file[1] %}
+            {% if daily_file_names.size > 0 %}
+                {% for file_name in daily_file_names %}
+                    {% assign file_date_str = file_name | remove: "daily_" %}
+                    {% assign articles = site.data[file_name] %}
 
                     <div class="row">
                         <div class="col-xs-12">
