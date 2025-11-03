@@ -6,58 +6,74 @@ header-img: "img/home-bg.png"
 ---
 
 <style>
-/* --- Copied directly from index.html for consistency --- */
-.groups-container {
+.daily-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Align items to the start */
-    margin: 0 -15px; /* Counteract card margin */
+    margin: 0 -15px; /* Counteract column padding */
 }
 
-.group-card-wrapper {
-    display: block;
-    text-decoration: none;
-    color: inherit;
+.square-card-wrapper {
+    padding: 0 15px;
+    margin-bottom: 30px;
     width: 100%;
-    margin: 0 15px 30px;
-    display: flex; /* Use flex to make card fill the wrapper */
-}
-
-.group-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    width: 100%; /* Card takes full width of wrapper */
-    background-color: #fff;
 }
 
 @media (min-width: 768px) {
-    .group-card-wrapper {
-        width: calc(50% - 30px); /* 50% width minus horizontal margins */
+    .square-card-wrapper {
+        width: 50%;
     }
 }
 
-.group-card-wrapper:hover .group-card {
+.square-card {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* This creates the square aspect ratio */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.square-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.square-card-link:hover .square-card {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transform: translateY(-5px);
 }
 
-/* --- Custom styles for daily page cards --- */
-.daily-card-body {
+.square-card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center;   /* Center content horizontally */
+    text-align: center;
 }
-.daily-card-title {
-    font-size: 1.5em;
+
+.square-card-title {
+    font-size: 1.3em;
     font-weight: 600;
     color: #333;
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin: 0;
 }
-.daily-card-meta {
+
+.square-card-meta {
     font-size: 0.9em;
     color: #888;
+    margin-top: 10px;
 }
+
 .date-header {
     width: 100%;
     text-align: center;
@@ -67,47 +83,45 @@ header-img: "img/home-bg.png"
 }
 </style>
 
-{% comment %} Main container that matches the theme's content width {% endcomment %}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-10 col-lg-offset-1 col-md-12">
+{% comment %} 
+The layout 'page.html' already provides the main container and row.
+We only need to provide the content that goes inside the `col-lg-8` div.
+{% endcomment %}
 
-            {% assign daily_file_names = "" | split: "" %}
-            {% for file in site.data %}
-                {% if file[0] contains "daily_" %}
-                    {% assign daily_file_names = daily_file_names | push: file[0] %}
-                {% endif %}
-            {% endfor %}
-            {% assign daily_file_names = daily_file_names | sort | reverse %}
+{% assign daily_file_names = "" | split: "" %}
+{% for file in site.data %}
+    {% if file[0] contains "daily_" %}
+        {% assign daily_file_names = daily_file_names | push: file[0] %}
+    {% endif %}
+{% endfor %}
+{% assign daily_file_names = daily_file_names | sort | reverse %}
 
-            {% if daily_file_names.size > 0 %}
-                {% for file_name in daily_file_names %}
-                    {% assign file_date_str = file_name | remove: "daily_" %}
-                    {% assign articles = site.data[file_name] %}
+{% if daily_file_names.size > 0 %}
+    {% for file_name in daily_file_names %}
+        {% assign file_date_str = file_name | remove: "daily_" %}
+        {% assign articles = site.data[file_name] %}
 
-                    <h2 class="date-header">{{ file_date_str }}</h2>
-                    
-                    <div class="groups-container">
-                        {% if articles.size > 0 %}
-                            {% for article in articles %}
-                                <a href="{{ article.link }}" target="_blank" class="group-card-wrapper">
-                                    <div class="group-card">
-                                        <div class="daily-card-body">
-                                            <h3 class="daily-card-title">{{ article.title }}</h3>
-                                            <p class="daily-card-meta">Source: cnblogs</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            {% endfor %}
-                        {% else %}
-                            <p class="text-center" style="width: 100%;">No articles found for this day.</p>
-                        {% endif %}
+        <h2 class="date-header">{{ file_date_str }}</h2>
+        
+        <div class="daily-container">
+            {% if articles.size > 0 %}
+                {% for article in articles %}
+                    <div class="square-card-wrapper">
+                        <a href="{{ article.link }}" target="_blank" class="square-card-link">
+                            <div class="square-card">
+                                <div class="square-card-content">
+                                    <h3 class="square-card-title">{{ article.title }}</h3>
+                                    <p class="square-card-meta">Source: cnblogs</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 {% endfor %}
             {% else %}
-                <p class="text-center" style="margin-top: 50px;">No daily information available yet.</p>
+                <p class="text-center" style="width: 100%;">No articles found for this day.</p>
             {% endif %}
-
         </div>
-    </div>
-</div>
+    {% endfor %}
+{% else %}
+    <p class="text-center" style="margin-top: 50px;">No daily information available yet.</p>
+{% endif %}
