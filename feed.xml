@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LH的博客</title>
+    <description>一个NLP研究生的博客，记录代码、学习和生活点滴。</description>
+    <link>https://skyfuryonline.github.io/</link>
+    <atom:link href="https://skyfuryonline.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 03 Nov 2025 06:26:28 +0000</pubDate>
+    <lastBuildDate>Mon, 03 Nov 2025 06:26:28 +0000</lastBuildDate>
+    <generator>Jekyll v3.9.5</generator>
+    
+      <item>
+        <title>如何发布新博客及管理图片</title>
+        <description>&lt;p&gt;本指南将引导您完成在本博客上发布一篇新文章的完整流程。当前博客的首页布局是基于“主题卡片”的，所以发布一篇新文章的核心是：&lt;strong&gt;将文章添加到指定的主题中&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;场景假设&quot;&gt;场景假设&lt;/h3&gt;
+
+&lt;p&gt;我们要将一篇写好的、名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;“Tensor基础”&lt;/code&gt; 的笔记，添加到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;“分布式训练笔记”&lt;/code&gt; 这个主题下。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;第一步准备文章和图片&quot;&gt;第一步：准备文章和图片&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;准备文章文件&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;确保您的文章是 Markdown 格式 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.md&lt;/code&gt;)。&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;文件名必须严格遵守 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-your-post-title.md&lt;/code&gt; 的格式&lt;/strong&gt;。例如，我们的文章文件名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2025-11-03-tensor-basics.md&lt;/code&gt;。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;准备文章内图片 (可选)&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;如果您的文章内部需要引用图片，建议在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;img/&lt;/code&gt; 目录下为这篇文章创建一个专属的子文件夹，例如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;img/tensor-basics/&lt;/code&gt;。&lt;/li&gt;
+      &lt;li&gt;将所有文章内图片（例如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;image1.png&lt;/code&gt;）放入这个文件夹。&lt;/li&gt;
+      &lt;li&gt;在文章中引用它们时，请使用以斜杠开头的绝对路径，例如：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;![图片描述](/img/tensor-basics/image1.png)&lt;/code&gt;。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;第二步将文章添加到主题中&quot;&gt;第二步：将文章添加到主题中&lt;/h3&gt;
+
+&lt;p&gt;这是最关键的一步。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;打开数据文件&lt;/strong&gt;: 打开项目根目录下的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_data/homepage_groups.yml&lt;/code&gt; 文件。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;找到目标主题&lt;/strong&gt;: 在文件中找到您希望添加文章的目标主题，即 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;“分布式训练笔记”&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;添加文章文件名&lt;/strong&gt;: 在该主题的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts:&lt;/code&gt; 列表下，添加您的文章文件名，像这样：&lt;/p&gt;
+
+    &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;group_name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;分布式训练笔记&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;group_image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/img/cover-llms.png&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;group_description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;LLMs在多卡服务器上的训练&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2025-11-03-tensor-basics.md&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;--- 在这里添加新文章的文件名&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;第三步上传文章文件&quot;&gt;第三步：上传文章文件&lt;/h3&gt;
+
+&lt;p&gt;将您准备好的文章文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2025-11-03-tensor-basics.md&lt;/code&gt; 放入项目根目录的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; 文件夹下。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;第四步提交所有更改&quot;&gt;第四步：提交所有更改&lt;/h3&gt;
+
+&lt;p&gt;完成以上所有步骤后，将所有新建和修改的文件（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_data/homepage_groups.yml&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; 里的新文章）提交到您的 GitHub 仓库即可。几分钟后，您的新文章就会出现在对应的“主题页面”下了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt; 现在的流程非常简单，您只需要关心两件事：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;把文章文件放到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; 目录。&lt;/li&gt;
+  &lt;li&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_data/homepage_groups.yml&lt;/code&gt; 文件中，把文章文件名“挂靠”到您想要的主题下面。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Thu, 30 Oct 2025 08:00:00 +0000</pubDate>
+        <link>https://skyfuryonline.github.io/2025/10/30/helloworld/</link>
+        <guid isPermaLink="true">https://skyfuryonline.github.io/2025/10/30/helloworld/</guid>
+        
+        <category>博客维护</category>
+        
+        <category>教程</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
