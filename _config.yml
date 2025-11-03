@@ -14,7 +14,7 @@ sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "NLP研究生，热爱技术，分享生活。"
 sidebar-avatar: /img/avatar.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
-
+future: true
 
 # SNS settings
 RSS: false
