@@ -5,9 +5,130 @@
     <description>一个NLP研究生的博客，记录代码、学习和生活点滴。</description>
     <link>https://skyfuryonline.github.io/</link>
     <atom:link href="https://skyfuryonline.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 03 Nov 2025 06:26:28 +0000</pubDate>
-    <lastBuildDate>Mon, 03 Nov 2025 06:26:28 +0000</lastBuildDate>
+    <pubDate>Mon, 03 Nov 2025 06:36:14 +0000</pubDate>
+    <lastBuildDate>Mon, 03 Nov 2025 06:36:14 +0000</lastBuildDate>
     <generator>Jekyll v3.9.5</generator>
+    
+      <item>
+        <title>博客部署迁移：从Branch到Actions</title>
+        <description>&lt;p&gt;为了给博客集成更强大的自动化功能（例如定时爬虫），我决定将博客的部署方式从传统的“从分支部署 (Deploy from a branch)”切换到更现代、更灵活的“GitHub Actions”。&lt;/p&gt;
+
+&lt;p&gt;整个过程比预想的要曲折，但也因此积累了宝贵的排错经验。本文旨在复盘整个迁移过程，记录遇到的每一个问题和最终的解决方案。&lt;/p&gt;
+
+&lt;h3 id=&quot;第一阶段创建基础工作流&quot;&gt;第一阶段：创建基础工作流&lt;/h3&gt;
+
+&lt;p&gt;最初的目标很简单：创建一个 GitHub Actions 工作流，让它能自动构建和部署 Jekyll 网站。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;创建工作流文件&lt;/strong&gt;: 在项目根目录下创建 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.github/workflows/deploy.yml&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;编写基础流程&lt;/strong&gt;: 工作流的核心步骤包括：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;actions/checkout@v3&lt;/code&gt;: 检出代码。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby/setup-ruby@v1&lt;/code&gt;: 设置 Ruby 环境。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll build&lt;/code&gt;: 构建网站。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;peaceiris/actions-gh-pages@v3&lt;/code&gt;: 将构建产物（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_site&lt;/code&gt; 目录）部署到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; 分支。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;然而，第一次运行就失败了。&lt;/p&gt;
+
+&lt;h3 id=&quot;问题一could-not-locate-gemfile&quot;&gt;问题一：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Could not locate Gemfile&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;错误日志&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Run bundle exec jekyll build
+Could not locate Gemfile or .bundle/ directory
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;原因分析&lt;/strong&gt;:
+这是一个典型的环境差异问题。我的本地环境已经全局安装了 Jekyll，但 GitHub Actions 的运行环境是一个“无菌”的虚拟机，它不知道需要安装任何工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解决方案&lt;/strong&gt;:
+在项目根目录下创建一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; 文件。这个文件像一个“购物清单”，告诉 Actions 的 Ruby 环境需要安装哪些依赖。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Gemfile&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://rubygems.org&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; 3.9.0&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-paginate&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tzinfo-data&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;问题二invalid-date-in-jekylls-own-template&quot;&gt;问题二：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Invalid date&lt;/code&gt; in Jekyll’s own template&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;错误日志&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Invalid date ... in ... welcome-to-jekyll.markdown.erb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;原因分析&lt;/strong&gt;:
+这是 Jekyll 3.9.x 版本的一个已知 bug。在干净的环境中安装时，它会尝试处理自己内部的一个模板文件，但该文件自身的日期格式却不符合 Jekyll 自己的校验规则。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解决方案&lt;/strong&gt;:
+在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 中，将 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundler&lt;/code&gt; 安装 gems 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vendor/&lt;/code&gt; 目录排除掉，不让 Jekyll 去扫描它。同时，根据新版 Jekyll 的建议，将 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gems:&lt;/code&gt; 配置项重命名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plugins:&lt;/code&gt;。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# _config.yml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;exclude&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;less&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;node_modules&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gruntfile.js&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;package.json&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;README.md&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;vendor/&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;jekyll-paginate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;问题三cannot-load-such-file----kramdown-parser-gfm&quot;&gt;问题三：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cannot load such file -- kramdown-parser-gfm&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;错误日志&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Dependency Error: Yikes! It looks like you don&apos;t have kramdown-parser-gfm or one of its dependencies installed.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;原因分析&lt;/strong&gt;:
+我的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 中配置了使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GFM&lt;/code&gt; (GitHub Flavored Markdown)，这需要一个名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kramdown-parser-gfm&lt;/code&gt; 的额外插件。而我的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; “购物清单”上漏掉了它。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解决方案&lt;/strong&gt;:
+在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; 中补上这个缺失的依赖。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Gemfile&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ... (other gems)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;kramdown-parser-gfm&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;问题四permission-to--denied-error-403&quot;&gt;问题四：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Permission to ... denied&lt;/code&gt; (Error 403)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;错误日志&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;remote: Permission to skyfuryonline/skyfuryonline.github.io.git denied to github-actions[bot].
+fatal: unable to access &apos;...&apos;: The requested URL returned error: 403
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;原因分析&lt;/strong&gt;:
+这是最后一个，也是最关键的一个问题。GitHub Actions 默认生成的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GITHUB_TOKEN&lt;/code&gt; 只有&lt;strong&gt;读取&lt;/strong&gt;仓库的权限。而部署操作（推送到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; 分支）需要&lt;strong&gt;写入&lt;/strong&gt;权限。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解决方案&lt;/strong&gt;:
+在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;deploy.yml&lt;/code&gt; 工作流文件中，为部署任务明确授予写入权限。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# .github/workflows/deploy.yml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build_and_deploy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;permissions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;contents&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;write&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;--- 授予写入权限&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;最终步骤切换部署源&quot;&gt;最终步骤：切换部署源&lt;/h3&gt;
+
+&lt;p&gt;在所有构建问题都解决后，最后一步是在 GitHub 仓库的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Settings &amp;gt; Pages&lt;/code&gt; 中，将部署源从 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Deploy from a branch&lt;/code&gt; 修改为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GitHub Actions&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;至此，整个迁移过程宣告完成。虽然过程一波三折，但每一个错误都加深了我对 CI/CD 环境和 Jekyll 构建机制的理解。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 03 Nov 2025 02:00:00 +0000</pubDate>
+        <link>https://skyfuryonline.github.io/2025/11/03/migrate-to-github-actions/</link>
+        <guid isPermaLink="true">https://skyfuryonline.github.io/2025/11/03/migrate-to-github-actions/</guid>
+        
+        <category>CI/CD</category>
+        
+        <category>Jekyll</category>
+        
+        <category>GitHub Actions</category>
+        
+        
+      </item>
     
       <item>
         <title>如何发布新博客及管理图片</title>
