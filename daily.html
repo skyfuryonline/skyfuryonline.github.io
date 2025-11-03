@@ -49,8 +49,14 @@ header-img: "img/home-bg.png"
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
-            {% comment %} Find all daily data files and sort them by date descending {% endcomment %}
-            {% assign daily_files = site.data | where_exp: "item", "item[0] contains 'daily_'" | sort | reverse %}
+            {% comment %} Robustly find and sort all daily data files {% endcomment %}
+            {% assign daily_files = "" | split: "" %}
+            {% for file in site.data %}
+                {% if file[0] contains "daily_" %}
+                    {% assign daily_files = daily_files | push: file %}
+                {% endif %}
+            {% endfor %}
+            {% assign daily_files = daily_files | sort: 0 | reverse %}
 
             {% if daily_files.size > 0 %}
                 {% for daily_file in daily_files %}
