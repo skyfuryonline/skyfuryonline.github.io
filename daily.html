@@ -6,59 +6,88 @@ header-img: "img/home-bg.png"
 ---
 
 <style>
-.post-card {
+/* Reusing homepage group-card styles for consistency */
+.group-card {
     border: 1px solid #ddd;
     border-radius: 8px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure cards in the same row have same height */
+}
+.group-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    text-decoration: none;
+}
+.group-card-body {
     padding: 20px;
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s ease-in-out;
-    display: block;
-    color: inherit; /* Make card text color same as body */
+    flex-grow: 1; /* Allow body to grow */
 }
-.post-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-decoration: none; /* No underline on hover */
-}
-.post-card h2 {
+.group-card-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
     margin-top: 0;
-    font-size: 1.5em;
 }
-.post-meta {
+.group-card-meta {
     font-size: 0.9em;
     color: #888;
+    margin-top: 10px;
+}
+.date-header {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #555;
 }
 </style>
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-            {% comment %} Find the latest daily data file {% endcomment %}
-            {% assign latest_date = "1970-01-01" %}
-            {% for file in site.data %}
-                {% if file[0] contains "daily_" %}
-                    {% assign file_date_str = file[0] | remove: "daily_" %}
-                    {% if file_date_str > latest_date %}
-                        {% assign latest_date = file_date_str %}
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
+        <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
-            {% comment %} Display content from the latest file {% endcomment %}
-            {% if latest_date != "1970-01-01" %}
-                {% assign latest_data_key = "daily_" | append: latest_date %}
-                {% assign articles = site.data[latest_data_key] %}
+            {% comment %} Find all daily data files and sort them by date descending {% endcomment %}
+            {% assign daily_files = site.data | where_exp: "item", "item[0] contains 'daily_'" | sort | reverse %}
 
-                <p class="post-meta">Showing articles from: {{ latest_date }}</p>
+            {% if daily_files.size > 0 %}
+                {% for daily_file in daily_files %}
+                    {% assign file_date_str = daily_file[0] | remove: "daily_" %}
+                    {% assign articles = daily_file[1] %}
 
-                {% for article in articles %}
-                    <a href="{{ article.link }}" target="_blank" class="post-card">
-                        <h2>{{ article.title }}</h2>
-                        <p class="post-meta">Source: cnblogs</p>
-                    </a>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="date-header">{{ file_date_str }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        {% if articles.size > 0 %}
+                            {% for article in articles %}
+                                <div class="col-md-6">
+                                    <a href="{{ article.link }}" target="_blank">
+                                        <div class="group-card">
+                                            <div class="group-card-body">
+                                                <h3 class="group-card-title">{{ article.title }}</h3>
+                                                <p class="group-card-meta">Source: cnblogs</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-xs-12">
+                                <p class="text-center">No articles found for this day.</p>
+                            </div>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             {% else %}
-                <p>No daily information available yet. Please run the crawler.</p>
+                <div class="col-xs-12">
+                    <p class="text-center" style="margin-top: 50px;">No daily information available yet. Please trigger the crawler via GitHub Actions.</p>
+                </div>
             {% endif %}
 
         </div>
