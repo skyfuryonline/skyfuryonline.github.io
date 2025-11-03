@@ -45,8 +45,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Python dependencies dependencies 📦
+      - name: Install Python dependencies 📦
         run: pip install -r requirements.txt
+
+      - name: Install Playwright Browsers 🎭
+        run: playwright install
 
       - name: Run crawler 🕷️
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
