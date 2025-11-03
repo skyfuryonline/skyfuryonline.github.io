@@ -1,8 +1,8 @@
 {
     "sites": [
         {
-            "url": "https://news.ycombinator.com/",
-            "parser": "HackerNewsCrawler"
+            "url": "https://www.cnblogs.com/pick/",
+            "parser": "CnblogsCrawler"
         }
     ]
 }

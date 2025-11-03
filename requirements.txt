@@ -4,3 +4,4 @@ crawl4ai==0.7.6
 requests==2.31.0
 beautifulsoup4==4.12.2
 lxml==4.9.3 # Often used with BeautifulSoup for better performance
+jsonlines==3.1.0 # For handling JSON lines format
