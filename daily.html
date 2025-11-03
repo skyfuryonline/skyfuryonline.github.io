@@ -6,50 +6,72 @@ header-img: "img/home-bg.png"
 ---
 
 <style>
-/* Reusing homepage group-card styles for consistency */
+/* --- Copied directly from index.html for consistency --- */
+.groups-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the start */
+    margin: 0 -15px; /* Counteract card margin */
+}
+
+.group-card-wrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    margin: 0 15px 30px;
+    display: flex; /* Use flex to make card fill the wrapper */
+}
+
 .group-card {
     border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensure cards in the same row have same height */
+    width: 100%; /* Card takes full width of wrapper */
+    background-color: #fff;
 }
-.group-card:hover {
+
+@media (min-width: 768px) {
+    .group-card-wrapper {
+        width: calc(50% - 30px); /* 50% width minus horizontal margins */
+    }
+}
+
+.group-card-wrapper:hover .group-card {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    text-decoration: none;
 }
-.group-card-body {
-    padding: 20px;
-    flex-grow: 1; /* Allow body to grow */
+
+/* --- Custom styles for daily page cards --- */
+.daily-card-body {
+    padding: 25px;
 }
-.group-card-title {
-    font-size: 1.4em;
-    font-weight: bold;
+.daily-card-title {
+    font-size: 1.5em;
+    font-weight: 600;
     color: #333;
     margin-top: 0;
+    margin-bottom: 10px;
 }
-.group-card-meta {
+.daily-card-meta {
     font-size: 0.9em;
     color: #888;
-    margin-top: 10px;
 }
 .date-header {
+    width: 100%;
     text-align: center;
-    margin-top: 40px;
     margin-bottom: 20px;
     color: #555;
+    font-size: 2em;
 }
 </style>
 
+{% comment %} Main container that matches the theme's content width {% endcomment %}
 <div class="container">
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
-            {% comment %} Robustly find and sort all daily data file *names* {% endcomment %}
             {% assign daily_file_names = "" | split: "" %}
             {% for file in site.data %}
                 {% if file[0] contains "daily_" %}
@@ -63,37 +85,27 @@ header-img: "img/home-bg.png"
                     {% assign file_date_str = file_name | remove: "daily_" %}
                     {% assign articles = site.data[file_name] %}
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="date-header">{{ file_date_str }}</h2>
-                        </div>
-                    </div>
-
-                    <div class="row">
+                    <h2 class="date-header">{{ file_date_str }}</h2>
+                    
+                    <div class="groups-container">
                         {% if articles.size > 0 %}
                             {% for article in articles %}
-                                <div class="col-md-6">
-                                    <a href="{{ article.link }}" target="_blank">
-                                        <div class="group-card">
-                                            <div class="group-card-body">
-                                                <h3 class="group-card-title">{{ article.title }}</h3>
-                                                <p class="group-card-meta">Source: cnblogs</p>
-                                            </div>
+                                <a href="{{ article.link }}" target="_blank" class="group-card-wrapper">
+                                    <div class="group-card">
+                                        <div class="daily-card-body">
+                                            <h3 class="daily-card-title">{{ article.title }}</h3>
+                                            <p class="daily-card-meta">Source: cnblogs</p>
                                         </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             {% endfor %}
                         {% else %}
-                            <div class="col-xs-12">
-                                <p class="text-center">No articles found for this day.</p>
-                            </div>
+                            <p class="text-center" style="width: 100%;">No articles found for this day.</p>
                         {% endif %}
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="col-xs-12">
-                    <p class="text-center" style="margin-top: 50px;">No daily information available yet. Please trigger the crawler via GitHub Actions.</p>
-                </div>
+                <p class="text-center" style="margin-top: 50px;">No daily information available yet.</p>
             {% endif %}
 
         </div>
