@@ -5,6 +5,7 @@ gem "jekyll", "~> 3.9.0"
 
 # List of plugins from your _config.yml
 gem "jekyll-paginate"
+gem "kramdown-parser-gfm"
 
 # Other common gems for GitHub Pages themes
 gem "tzinfo-data"
