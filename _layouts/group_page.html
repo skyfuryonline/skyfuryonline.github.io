@@ -3,6 +3,39 @@
 layout: default
 ---
 
+<style>
+.post-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+.post-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+}
+.post-card a {
+    text-decoration: none;
+    color: #333;
+}
+.post-card h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #0085A1;
+}
+.post-card .post-meta {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.post-card .post-excerpt {
+    color: #555;
+    font-size: 16px;
+}
+</style>
+
 {% assign current_group = nil %}
 {% for group in site.data.homepage_groups %}
     {% if group.group_name == page.title %}
@@ -28,31 +61,6 @@ layout: default
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-            <!-- ===== DEBUGGING BLOCK START ===== -->
-            <div style="background-color: #f0f0f0; border: 2px solid red; padding: 15px; margin-bottom: 30px; font-family: monospace; color: black;">
-                <h3 style="margin-top: 0;">GROUP PAGE DIAGNOSTICS</h3>
-                <p><b>Group Title:</b> {{ page.title }}</p>
-                <p><b>Found Group in Data:</b> {% if current_group %} YES {% else %} NO {% endif %}</p>
-                
-                <hr>
-                <p><b>Filenames to find (from _data file):</b></p>
-                <ul>
-                    {% for fname in current_group.posts %}
-                        <li>"{{ fname }}"</li>
-                    {% endfor %}
-                </ul>
-                
-                <hr>
-                <p><b>All available posts in `site.posts` (Name | Path):</b></p>
-                <ul>
-                    {% for p in site.posts %}
-                        <li>{{ p.name }} | {{ p.path }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <!-- ===== DEBUGGING BLOCK END ===== -->
-
             {% if current_group %}
                 {% for post_filename in current_group.posts %}
                     {% for post in site.posts %}

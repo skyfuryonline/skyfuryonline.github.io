@@ -16,105 +16,74 @@ tags:
 
 ### 第一阶段：创建基础工作流
 
-最初的目标很简单：创建一个 GitHub Actions 工作流，让它能自动构建和部署 Jekyll 网站。
-
-1.  **创建工作流文件**: 在项目根目录下创建 `.github/workflows/deploy.yml`。
-2.  **编写基础流程**: 工作流的核心步骤包括：
-    *   `actions/checkout@v3`: 检出代码。
-    *   `ruby/setup-ruby@v1`: 设置 Ruby 环境。
-    *   `bundle exec jekyll build`: 构建网站。
-    *   `peaceiris/actions-gh-pages@v3`: 将构建产物（`_site` 目录）部署到 `gh-pages` 分支。
-
-然而，第一次运行就失败了。
+最初的目标很简单：创建一个 GitHub Actions 工作流，让它能自动构建和部署 Jekyll 网站。然而，这个看似简单的目标，却引发了一连串的“构建失败”。
 
 ### 问题一：`Could not locate Gemfile`
 
-**错误日志**:
-```
-Run bundle exec jekyll build
-Could not locate Gemfile or .bundle/ directory
-```
+**原因**：GitHub Actions 的运行环境是一个“无菌”的虚拟机，它不像我的本地电脑，不知道需要安装 Jekyll。`Gemfile` 文件就像一个“购物清单”，必须提供给它，它才知道需要安装什么。
 
-**原因分析**:
-这是一个典型的环境差异问题。我的本地环境已经全局安装了 Jekyll，但 GitHub Actions 的运行环境是一个“无菌”的虚拟机，它不知道需要安装任何工具。
-
-**解决方案**:
-在项目根目录下创建一个 `Gemfile` 文件。这个文件像一个“购物清单”，告诉 Actions 的 Ruby 环境需要安装哪些依赖。
-
-```ruby
-# Gemfile
-source "https://rubygems.org"
-
-gem "jekyll", "~> 3.9.0"
-gem "jekyll-paginate"
-gem "tzinfo-data"
-```
+**解决方案**：在项目根目录创建 `Gemfile`，并列出所有必需的依赖，如 `jekyll`, `jekyll-paginate` 等。
 
 ### 问题二：`Invalid date` in Jekyll's own template
 
-**错误日志**:
-```
-Invalid date ... in ... welcome-to-jekyll.markdown.erb
-```
+**原因**：这是 Jekyll 3.9.x 版本的一个已知 bug。在干净的环境中安装时，它会尝试处理自己内部的一个模板文件，但该文件自身的日期格式却不符合 Jekyll 自己的校验规则。
 
-**原因分析**:
-这是 Jekyll 3.9.x 版本的一个已知 bug。在干净的环境中安装时，它会尝试处理自己内部的一个模板文件，但该文件自身的日期格式却不符合 Jekyll 自己的校验规则。
-
-**解决方案**:
-在 `_config.yml` 中，将 `bundler` 安装 gems 的 `vendor/` 目录排除掉，不让 Jekyll 去扫描它。同时，根据新版 Jekyll 的建议，将 `gems:` 配置项重命名为 `plugins:`。
-
-```yaml
-# _config.yml
-exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md", "vendor/"]
-plugins: [jekyll-paginate]
-```
+**解决方案**：在 `_config.yml` 中，将 `bundler` 安装 gems 的 `vendor/` 目录排除掉，不让 Jekyll 去扫描它。
 
 ### 问题三：`cannot load such file -- kramdown-parser-gfm`
 
-**错误日志**:
-```
-Dependency Error: Yikes! It looks like you don't have kramdown-parser-gfm or one of its dependencies installed.
-```
+**原因**：我的 `_config.yml` 中配置了使用 `GFM` (GitHub Flavored Markdown)，这需要一个名为 `kramdown-parser-gfm` 的额外插件。而我的 `Gemfile` “购物清单”上又漏掉了它。
 
-**原因分析**:
-我的 `_config.yml` 中配置了使用 `GFM` (GitHub Flavored Markdown)，这需要一个名为 `kramdown-parser-gfm` 的额外插件。而我的 `Gemfile` “购物清单”上漏掉了它。
-
-**解决方案**:
-在 `Gemfile` 中补上这个缺失的依赖。
-
-```ruby
-# Gemfile
-# ... (other gems)
-gem "kramdown-parser-gfm"
-```
+**解决方案**：在 `Gemfile` 中补上 `gem "kramdown-parser-gfm"` 这个缺失的依赖。
 
 ### 问题四：`Permission to ... denied` (Error 403)
 
-**错误日志**:
-```
-remote: Permission to skyfuryonline/skyfuryonline.github.io.git denied to github-actions[bot].
-fatal: unable to access '...': The requested URL returned error: 403
-```
+**原因**：GitHub Actions 默认生成的 `GITHUB_TOKEN` 只有**读取**仓库的权限。而我最初使用的 `peaceiris/actions-gh-pages` 这个 Action 需要**写入**权限，因为它要将构建好的网站推送到 `gh-pages` 分支。
 
-**原因分析**:
-这是最后一个，也是最关键的一个问题。GitHub Actions 默认生成的 `GITHUB_TOKEN` 只有**读取**仓库的权限。而部署操作（推送到 `gh-pages` 分支）需要**写入**权限。
+**解决方案**：在 `deploy.yml` 工作流文件中，为部署任务明确授予 `contents: write` 的权限。
 
-**解决方案**:
-在 `deploy.yml` 工作流文件中，为部署任务明确授予写入权限。
+---
+
+### 第二阶段：最棘手的问题——构建成功，但网站不更新
+
+在解决了所有“构建失败”的红叉后，我遇到了一个更诡异的问题：**Actions 列表里显示构建和部署都成功了（绿色对勾），但我的线上博客页面却没有任何变化。**
+
+**原因分析**：
+经过检查，我发现 `Deployments` 列表中并没有新的部署记录。这说明，虽然我的工作流“成功跑完”了，但它和 GitHub Pages 服务之间没有建立起真正的连接。我使用的 `peaceiris/actions-gh-pages` 只是将文件推送到了 `gh-pages` 分支，但我的 GitHub Pages 服务并没有被配置为从这个分支读取内容。
+
+**最终解决方案：改用官方推荐的部署方式**
+
+我决定彻底放弃 `peaceiris/actions-gh-pages`，转而使用 GitHub 官方推荐的、更现代的部署 Action 组合：
+
+1.  **`actions/upload-pages-artifact`**: 这个 Action 负责将构建好的 `_site` 目录打包成一个标准的“部署构件 (Artifact)”。
+2.  **`actions/deploy-pages`**: 这个 Action 负责通知 GitHub Pages 服务：“请直接拉取我刚刚上传的那个构件，并用它来部署网站。”
+
+同时，还需要在工作流的顶层 `permissions` 中，为 `pages` 和 `id-token` 授予 `write` 权限，以允许工作流能向部署服务证明自己的身份。
 
 ```yaml
-# .github/workflows/deploy.yml
+# deploy.yml
+permissions:
+  contents: read
+  pages: write      # 允许写入部署页面
+  id-token: write   # 允许进行身份验证
+
 jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # <--- 授予写入权限
-    steps:
-      # ...
+  build:
+    # ... 构建步骤
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3 # v3是必须的
+      with:
+        path: './_site'
+
+  deploy:
+    needs: build
+    # ... 部署步骤
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4 # v4是必须的
 ```
 
-### 最终步骤：切换部署源
+在切换到这个方案后，我又遇到了几个因为 Action 版本过时而导致的报错，将它们全部升级到最新版（`v3` 和 `v4`）后，部署终于成功了！
 
-在所有构建问题都解决后，最后一步是在 GitHub 仓库的 `Settings > Pages` 中，将部署源从 `Deploy from a branch` 修改为 `GitHub Actions`。
+### 总结
 
-至此，整个迁移过程宣告完成。虽然过程一波三折，但每一个错误都加深了我对 CI/CD 环境和 Jekyll 构建机制的理解。
+这次迁移过程虽然坎坷，但收获巨大。它让我深刻理解了 GitHub Actions 的权限模型、环境依赖和部署机制。如果你也想从传统的分支部署切换到 Actions，希望这篇“踩坑笔记”能对你有所帮助。
