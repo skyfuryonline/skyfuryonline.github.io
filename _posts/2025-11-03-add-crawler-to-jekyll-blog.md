@@ -5,7 +5,7 @@ subtitle: "从Python脚本到GitHub Actions，实现动态抓取、缓存与前�
 date: 2025-11-03 18:00:00
 author: "LH"
 tags: [GitHub, Jekyll, Python, Crawler, CI/CD]
-group: llm
+group: life
 ---
 
 ## 前言：让静态博客“活”起来
