@@ -40,6 +40,18 @@ jobs:
           ruby-version: '3.0'
           bundler-cache: true # Automatically runs bundle install
 
+      - name: Setup Python 🐍
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies dependencies 📦
+        run: pip install -r requirements.txt
+
+      - name: Run crawler 🕷️
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: python crawlers/main.py
+
       - name: Build the site 🏗️
         run: bundle exec jekyll build
         env:

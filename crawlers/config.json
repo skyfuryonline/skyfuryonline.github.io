@@ -1,0 +1,8 @@
+{
+    "sites": [
+        {
+            "url": "https://news.ycombinator.com/",
+            "parser": "HackerNewsCrawler"
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+# requirements.txt
+
+crawl4ai
+requests
+beautifulsoup4
