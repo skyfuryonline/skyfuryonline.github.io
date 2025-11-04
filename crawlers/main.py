@@ -11,22 +11,22 @@ from pathlib import Path
 
 # Add project root to sys.path to allow absolute imports
 ROOT_DIR = Path(__file__).resolve().parents[1]
+import sys
+sys.path.append(str(ROOT_DIR))
+
+from llm.summarizer import get_summary
 
 def camel_to_snake(name):
-    """Convert CamelCase string to snake_case."""
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
 async def main():
-    """Main entry point for the crawler orchestration."""
     print("Starting crawler orchestration...")
     
-    # 1. Setup Paths and Load History
     today = datetime.now().strftime("%Y-%m-%d")
     config_path = ROOT_DIR / "crawlers" / "config.json"
     cache_dir = ROOT_DIR / "cache"
     data_dir = ROOT_DIR / "_data"
-    
     todays_cache_dir = cache_dir / today
     todays_data_file = data_dir / f"daily_{today}.json"
 
@@ -36,46 +36,60 @@ async def main():
     existing_urls = load_existing_urls(data_dir, days_to_keep=15)
     print(f"Found {len(existing_urls)} existing URLs from the last 15 days.")
 
-    # 2. Load Config
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
+    
+    llm_profiles = config.get("llm_profiles", {})
 
-    # 3. Run Crawlers
-    all_metadata = []
+    all_articles_metadata = []
     for site in config["sites"]:
         try:
             print(f"--- Running crawler for: {site['parser']} ---")
             class_name = site['parser']
-            # Convert CamelCase class name to snake_case module name
-            module_name_snake = camel_to_snake(class_name)
-            module_name = f"crawlers.specific_crawlers.{module_name_snake}"
+            module_name = f"crawlers.specific_crawlers.{camel_to_snake(class_name)}"
             
             module = importlib.import_module(module_name)
             CrawlerClass = getattr(module, class_name)
             
-            # Inject dependencies: cache directory and existing URLs
             crawler_instance = CrawlerClass(site["url"], todays_cache_dir, existing_urls)
-            metadata = await crawler_instance.crawl()
-            all_metadata.extend(metadata)
-            print(f"--- Finished crawler for: {site['parser']} ---")
+            articles_metadata = await crawler_instance.crawl()
+
+            # --- LLM Integration --- #
+            llm_profile_name = site.get("llm_profile")
+            if llm_profile_name and llm_profile_name in llm_profiles:
+                profile = llm_profiles[llm_profile_name]
+                print(f"Summarizing new articles using LLM profile: '{llm_profile_name}'")
+                for article in articles_metadata:
+                    try:
+                        with open(os.path.join(article['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
+                            content = content_file.read()
+                        
+                        summary = get_summary(content, profile['model'], profile['prompt'])
+                        article['summary'] = summary
+                        print(f"  - Summarized: {article['title']}")
+                    except Exception as e:
+                        article['summary'] = f"Failed to generate summary: {e}"
+            
+            all_articles_metadata.extend(articles_metadata)
+
         except Exception as e:
             print(f"Error running crawler for {site['parser']}: {e}")
 
-    # 4. Save Today's Metadata for Jekyll
-    if all_metadata:
+    if all_articles_metadata:
         with open(todays_data_file, 'w', encoding='utf-8') as f:
-            json.dump(all_metadata, f, ensure_ascii=False, indent=4)
+            json.dump(all_articles_metadata, f, ensure_ascii=False, indent=4)
         print(f"Successfully saved today's metadata to {todays_data_file}")
     else:
         print("No new articles found to save.")
 
-    # 5. Cleanup Old Data
     cleanup_old_data(cache_dir, data_dir, days_to_keep=15)
 
+# ... (load_existing_urls and cleanup_old_data functions remain the same) ...
+
 def load_existing_urls(data_dir, days_to_keep):
-    """Load all URLs from recent daily_*.json files."""
     existing_urls = set()
     cutoff_date = datetime.now() - timedelta(days=days_to_keep)
+    if not os.path.exists(data_dir): return existing_urls
     for item in os.listdir(data_dir):
         if item.startswith("daily_") and item.endswith(".json"):
             try:
@@ -92,11 +106,8 @@ def load_existing_urls(data_dir, days_to_keep):
     return existing_urls
 
 def cleanup_old_data(cache_dir, data_dir, days_to_keep):
-    """Remove cache and data files older than `days_to_keep`."""
     print("Starting cleanup of old data...")
     cutoff_date = datetime.now() - timedelta(days=days_to_keep)
-
-    # Cleanup cache directories
     if os.path.exists(cache_dir):
         for item in os.listdir(cache_dir):
             item_path = os.path.join(cache_dir, item)
@@ -108,8 +119,6 @@ def cleanup_old_data(cache_dir, data_dir, days_to_keep):
                         shutil.rmtree(item_path)
                 except ValueError:
                     continue
-
-    # Cleanup data files
     if os.path.exists(data_dir):
         for item in os.listdir(data_dir):
             if item.startswith("daily_") and item.endswith(".json"):
@@ -125,6 +134,4 @@ def cleanup_old_data(cache_dir, data_dir, days_to_keep):
     print("Cleanup finished.")
 
 if __name__ == "__main__":
-    import sys
-    sys.path.append(str(ROOT_DIR))
     asyncio.run(main())

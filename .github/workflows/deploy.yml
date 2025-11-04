@@ -53,6 +53,9 @@ jobs:
 
       - name: Run crawler 🕷️
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_API_BASE_URL: ${{ secrets.LLM_API_BASE_URL }} # Optional
         run: python crawlers/main.py
 
       - name: Build the site 🏗️
