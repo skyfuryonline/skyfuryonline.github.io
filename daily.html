@@ -85,7 +85,12 @@ http_headers:
     text-align: center;
     margin-bottom: 20px;
     color: #555;
-    font-size: 2em;
+.gallery-item img {
+    width: 100%;
+    height: 100%; /* Make height fill the container */
+    max-height: 200px; /* Set a max height */
+    object-fit: cover; /* Ensure image covers the area without distortion */
+    display: block;
 }
 </style>
 
