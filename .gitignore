@@ -37,3 +37,7 @@ _site
 blog.md
 .gemini/
 gha-creds-*.json
+
+# Ignore crawler data on the master branch
+cache/
+_data/

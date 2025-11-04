@@ -1,28 +1,18 @@
-# .github/workflows/deploy.yml
-
-name: Build and Deploy Jekyll Site
+name: Deploy Jekyll Site
 
 on:
-  # Trigger the workflow on pushes to the master branch
   push:
     branches:
       - master
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-  # Schedule for daily builds at 8:00 AM UTC
   schedule:
-    - cron: '0 0 * * *' # 每天北京时间早上8点运行 (UTC 0:00)
+    - cron: '0 0 * * *' # Runs at 00:00 UTC every day
+  workflow_dispatch: # Allows manual triggering
 
-# Set permissions for GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write # Grant write permissions for the entire workflow
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -30,60 +20,83 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-
-      - name: Setup Ruby and Jekyll 💎
-        uses: ruby/setup-ruby@v1
+      - name: Checkout master branch (code) 🛎️
+        uses: actions/checkout@v4
         with:
-          ruby-version: '3.0'
-          bundler-cache: true # Automatically runs bundle install
+          path: main # Checkout code to a 'main' directory
 
+      - name: Checkout data branch (data) 📦
+        uses: actions/checkout@v4
+        with:
+          ref: data # The branch to checkout
+          path: data # Checkout data to a 'data' directory
+
+      - name: Move data into main directory
+        run: |
+          # Move the existing _data and cache directories into the main checkout
+          # Use `cp -a` to preserve directory structure and handle non-existent source
+          cp -a data/_data/. main/_data/ || echo "No _data to copy"
+          cp -a data/cache/. main/cache/ || echo "No cache to copy"
+        
       - name: Setup Python 🐍
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install Python dependencies 📦
+      - name: Install Python dependencies
+        working-directory: ./main
         run: pip install -r requirements.txt
 
       - name: Install Playwright Browsers 🎭
+        working-directory: ./main
         run: playwright install
 
       - name: Run crawler 🕷️
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: ./main
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
-          LLM_API_BASE_URL: ${{ secrets.LLM_API_BASE_URL }} # Optional
+          LLM_API_BASE_URL: ${{ secrets.LLM_API_BASE_URL }}
         run: python crawlers/main.py
 
-      - name: Commit and push data 💾
+      - name: Commit and push data to data branch 💾
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
+          cd main
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add _data/ cache/
-          # Check if there are any changes to commit
           if ! git diff --staged --quiet; then
             git commit -m "chore: Update daily data and cache"
-            git push
+            # We need to switch to the data branch to push
+            git fetch origin data
+            git checkout -b data-branch origin/data
+            git add _data/ cache/
+            git commit -m "chore: Update daily data and cache"
+            git push origin HEAD:data
           else
             echo "No changes to commit."
           fi
+          cd ..
+
+      - name: Setup Ruby and install gems 💎
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          working-directory: ./main
+
+      - name: Setup Pages 📃
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Build the site 🏗️
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: production
+        working-directory: ./main
+        run: bundle exec jekyll build --destination ../_site
 
       - name: Upload artifact 📦
         uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload the _site directory
-          path: './_site'
 
   deploy:
     needs: build

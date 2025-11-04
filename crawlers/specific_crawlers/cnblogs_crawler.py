@@ -84,11 +84,13 @@ class CnblogsCrawler(BaseCrawler):
             # Save content and images locally
             await self.save_content(article_dir, content, images)
 
-            # Append metadata
+            # 准备元数据
+            # NOTE: We must store a relative path for the web URL, not the absolute filesystem path.
+            relative_cache_path = os.path.join("cache", os.path.basename(self.output_dir), safe_title)
             metadata_items.append({
                 "title": title,
                 "link": link,
-                "cache_path": os.path.join(self.output_dir, safe_title) # Use relative path
+                "cache_path": relative_cache_path.replace('\\', '/') # Ensure forward slashes for web paths
             })
 
         # Return the collected metadata

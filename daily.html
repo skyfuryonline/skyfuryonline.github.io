@@ -189,8 +189,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     galleryItem.className = 'gallery-item';
                     
                     var img = document.createElement('img');
-                    // Construct the correct, absolute path for the image
-                    img.src = '{{ site.baseurl }}/' + cachePath + '/' + imageFile;
+                    // Construct the correct, URL-encoded path for the image
+                    var pathParts = (cachePath + '/' + imageFile).split('/').map(function(part) {
+                        return encodeURIComponent(part);
+                    });
+                    img.src = '{{ site.baseurl }}/' + pathParts.join('/');
                     
                     galleryItem.appendChild(img);
                     modalGallery.appendChild(galleryItem);
