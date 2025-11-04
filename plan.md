@@ -1,61 +1,55 @@
-# 爬虫与博客集成计划
+# 博客自动化与智能化最终方案 (v3)
 
 **核心目标：**
-打造一个全自动的信息聚合与发布系统。该系统通过 GitHub Actions 定时运行一个爬虫，抓取指定网站的信息，调用 LLM API 对信息进行总结，最后将结果自动更新并发布到博客的 "Daily" 页面。
+打造一个全自动、智能化、纯静态的信息聚合与发布系统。该系统能定时抓取信息，利用 LLM 生成总结，并将结果以优雅、快速、无需后端服务的方式展示给用户，同时保证数据的持久化和一致性。
 
 ---
 
-### 第一阶段：环境准备与基础爬虫
+### **第一部分：数据持久化**
 
-这是构建整个系统的基础。
+**问题：** GitHub Actions 的运行环境是临时的，每次运行都是一个全新的环境，导致上一次爬取的数据（用于查重）和缓存会丢失。
 
-1.  **创建新分支**: 创建一个 `feature/crawler-integration` 分支，用于开发此功能。
-2.  **修改 GitHub Actions 工作流 (`deploy.yml`)**:
-    *   **加入 Python 环境**: 在 `build` 任务中，增加 `actions/setup-python@v4` 步骤，为运行爬虫准备好 Python 环境。
-    *   **安装 Python 依赖**: 增加一步，通过 `pip install -r requirements.txt` 来安装爬虫所需的库（如 `requests`, `beautifulsoup4` 等）。
-    *   **创建 `requirements.txt`**: 在项目根目录创建 `requirements.txt` 文件，并写入爬虫需要的 Python 库。
-3.  **创建爬虫基础框架**:
-    *   在项目根目录下创建一个 `scripts` 文件夹。
-    *   在 `scripts` 文件夹中，创建一个 `crawler.py` 文件。
-    *   **定义数据结构**: 在 `scripts` 文件夹中，创建一个 `config.json` 文件。这个文件将按照您的设想，定义要爬取的 `url` 列表和对应的 `parsing_rules` (解析规则，例如 CSS 选择器)。
-    *   **编写基础爬虫逻辑**: 在 `crawler.py` 中，编写基础代码，使其能够：
-        *   读取 `config.json`。
-        *   遍历 URL 列表，下载网页内容。
-        *   根据解析规则，提取所需信息。
-        *   将提取到的原始信息，以一种结构化的格式（例如 JSON），保存到 `_data/daily_info.json` 文件中。
+**解决方案：将数据提交回 Git 仓库**
 
-4.  **修改 GitHub Actions 工作流以运行爬虫**:
-    *   在 `jekyll build` 之前，增加一步 `run: python scripts/crawler.py` 来执行爬虫脚本。
-    *   **实现“每日一次”逻辑**: 为了满足您“推送时不总运行爬虫”的需求，我们将利用 GitHub Actions 的 `if` 条件判断。
-        *   只有当工作流是由于 `schedule` (定时) 或 `workflow_dispatch` (手动) 触发时，才运行爬虫步骤。
-        *   当工作流是由于 `push` 触发时，跳过爬虫步骤。
+此方案能提供 100% 的数据可靠性，完美满足查重和清理逻辑对数据一致性的强需求。
 
-**此阶段完成后，您的 Actions 将具备能力：每天自动抓取原始数据并存入 `_data` 文件夹。**
+**实现细节：**
+1.  **时机**: 在 `.github/workflows/deploy.yml` 工作流中，`Run crawler` 步骤之后，`Build the site` 步骤之前。
+2.  **操作**: 新增一个名为 `Commit and Push Data` 的步骤，该步骤将执行以下脚本：
+    *   配置 Git 用户名和邮箱（例如 `GitHub Actions Bot`）。
+    *   执行 `git add _data/ cache/`，将新生成的数据和缓存添加到暂存区。
+    *   使用 `git diff --staged --quiet` 检查是否有文件变动。
+    *   **仅当有变动时**，才执行 `git commit -m "chore: Update daily data for $(date +'%Y-%m-%d')"` 和 `git push`。
+3.  **防止无限循环**: 自动 `push` 会再次触发工作流，但因为该次触发的 `event_name` 是 `push`，爬虫步骤的 `if` 条件不满足，爬虫会被跳过，从而避免死循环。
 
 ---
 
-### 第二阶段：集成 LLM API 与数据展示
+### **第二部分：LLM 总结与动态页面**
 
-1.  **集成 LLM API**:
-    *   **添加 API 密钥**: 您需要将您的 LLM API 密钥，以 **Secret** 的形式添加到您 GitHub 仓库的 `Settings > Secrets and variables > Actions` 中。例如，命名为 `LLM_API_KEY`。
-    *   **修改爬虫脚本 (`crawler.py`)**:
-        *   在脚本中，增加调用 LLM API 的函数。
-        *   在获取到原始信息后，将信息发送给 LLM API，并附上您的“总结”提示 (Prompt)。
-        *   接收 LLM 返回的总结内容。
-        *   将**原始信息**和**总结内容**一并写入 `_data/daily_info.json`。
-    *   **修改 GitHub Actions 工作流**: 在运行爬虫脚本的步骤中，通过 `env` 将您设置的 `LLM_API_KEY` 安全地传递给 Python 脚本。
+**问题：** 如何在纯静态的 GitHub Pages 环境下，实现“点击文章卡片后，先看 LLM 总结，再决定是否跳转”的动态交互，同时保证 API 密钥的安全和良好的用户体验？
 
-2.  **在 "Daily" 页面展示数据**:
-    *   **修改 `daily.html`**:
-        *   使用 `Liquid` 循环，读取 `_data/daily_info.json` 文件中的数据。
-        *   设计一个合适的 HTML 结构（例如，卡片式布局），将每个网站的“总结”和“原始信息要点”清晰地展示出来。
+**解决方案：预生成总结 + 前端模态框 (Modal) 展示**
 
-**此阶段完成后，您的 "Daily" 页面将能够展示由 LLM 自动总结的、每日更新的信息。**
+此方案将 LLM 的计算前置到构建阶段，完美契合静态网站的工作模式，无需引入额外的后端服务。
 
----
+**实现细节：**
+1.  **修改爬虫 (`crawlers/main.py`)**: 
+    *   在 `main.py` 获取到文章的原始内容后，**立即**调用 LLM API 进行总结。
+    *   **API 密钥管理**: 将 LLM API 密钥作为 **GitHub Secret** (例如 `LLM_API_KEY`) 添加到仓库设置中。
+    *   在 `deploy.yml` 中，通过 `env` 关键字将该 Secret 安全地作为环境变量传递给 `main.py` 脚本。
+    *   将 LLM 返回的总结，连同标题、链接等信息，一起写入 `_data/daily_YYYY-MM-DD.json`。最终的 JSON 结构将包含 `summary` 字段。
 
-### 第三阶段：优化与完善 (可选)
+2.  **修改前端 (`daily.html`)**: 
+    *   **HTML 结构**: 在页面底部，预先放置一个隐藏的 Bootstrap 模态框 (Modal) 结构。这个模态框将包含标题、内容（用于放总结）和操作按钮（如“阅读原文”和“关闭”）。
+    *   **JavaScript 交互**: 
+        *   为所有的文章卡片 (`<a>` 标签) 绑定一个 `click` 事件监听器。
+        *   在事件处理器中，首先**阻止** `<a>` 标签的默认跳转行为 (`event.preventDefault()`)。
+        *   从被点击的卡片上，通过 `data-*` 属性，读取已经存在于页面中的**文章标题、原文链接和 LLM 总结**。
+        *   将这些信息动态地填充到隐藏的模态框的对应位置。
+        *   使用 Bootstrap 的 JavaScript API，手动触发模态框的显示。
 
-1.  **错误处理与日志记录**: 增强 `crawler.py`，为网络请求失败、解析错误、API 调用失败等情况添加异常处理和日志记录。
-2.  **增量更新**: 优化爬虫逻辑，使其能够判断哪些信息是新的，避免重复抓取和处理。
-3.  **前端交互**: 为 "Daily" 页面增加筛选、排序或搜索功能。
+**新方案优势：**
+*   **纯静态，零后端**: 完美契合 GitHub Pages。
+*   **极致性能**: 用户点击时，总结瞬时加载，无任何网络延迟。
+*   **绝对安全**: API 密钥只存在于 Actions 的后端环境中，绝不暴露于前端。
+*   **生命周期一致**: 总结与数据一同生成、一同清理。
