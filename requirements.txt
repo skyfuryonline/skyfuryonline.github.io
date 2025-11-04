@@ -4,5 +4,5 @@ crawl4ai==0.7.6
 requests==2.32.5
 beautifulsoup4==4.12.2
 lxml==5.4.0 # Version required by crawl4ai
-openai==1.10.0
+openai
 jsonlines==3.1.0 # For handling JSON lines format
