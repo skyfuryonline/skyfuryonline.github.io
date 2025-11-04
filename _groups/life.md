@@ -1,4 +1,4 @@
 ---
 layout: group_page
-title: "杂记"
+title: "博客搭建指南"
 ---
