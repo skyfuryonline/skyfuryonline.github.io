@@ -65,7 +65,8 @@ jobs:
         run: |
           # First, copy the generated content from the main workspace to the data checkout
           # The `.` at the end of the source paths is important
-          cp -rf main/_data/. data/_data/
+          # cp -rf main/_data/. data/_data/
+          rsync -av --exclude='homepage_groups.yml' main/_data/ data/_data/
           cp -rf main/cache/. data/cache/
 
           # Now, go into the data checkout directory and commit
