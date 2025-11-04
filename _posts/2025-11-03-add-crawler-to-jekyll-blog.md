@@ -302,164 +302,8 @@ async def main():
     cleanup_old_data(cache_dir, data_dir, days_to_keep=15)
 
 # ... (主函数入口代码) ...
-## 第四阶段：调试与总结
-
-在我们将所有代码合并到 `master` 分支后，我们遇到了一个有趣的现象：**代码推送后，"Daily" 页面上并没有立刻出现内容，并且在 GitHub Actions 的日志中，“Run crawler” 步骤的图标是一个灰色的斜杠 (/)，而不是绿色的勾 (✓)。**
-
-![](/img/crawler-log-skipped.png) *(这里可以放一张GitHub Actions日志截图)*
-
-### “跳过”的斜杠 (/) 是怎么回事？
-
-这其实是**完全符合我们预期**的正常现象！
-
-在 GitHub Actions 的日志中，不同图标的含义是：
-*   **绿色的勾 (✓)**: 步骤**成功运行**。
-*   **红色的叉 (✗)**: 步骤**运行失败**。
-*   **灰色的斜杠 (/)**: 步骤被**跳过 (Skipped)**。
-
-我们之前在 `deploy.yml` 中为爬虫步骤设置了 `if` 条件，导致它只在定时或手动触发时运行。由于我们是通过 `git push` 触发的工作流，`github.event_name` 的值是 `push`，不满足条件，所以 Actions **正确地跳过了**这个步骤。自然，页面上也就不会有新数据了。
-
-### 如何看到最终效果？
-
-为了真正运行爬虫并看到效果，我们需要手动触发一次工作流：
-1.  打开 GitHub 仓库页面，点击 **"Actions"** 标签。
-2.  在左侧选择我们的工作流（例如 "Jekyll site CI"）。
-3.  点击 **"Run workflow"** 下拉按钮，再次确认运行。
-
-手动触发后，我们就能在日志中看到 “Run crawler” 步骤被成功执行（绿色的勾 ✓），稍等片刻，访问我们的博客，"Daily" 页面上就会出现从博客园抓取到的最新文章列表了！
-
-### 总结
-
-通过这次实践，我们成功地将一个动态的、自动化的爬虫系统，无缝集成到了一个静态的 Jekyll 博客中。我们学习了如何：
-
-*   使用 Python 构建一个模块化、可扩展的爬虫框架。
-*   利用 GitHub Actions 的 `schedule` 和 `if` 条件，实现精确的自动化任务控制。
-*   解决在 CI/CD 环境中由 `Playwright` 等复杂工具链带来的依赖问题。
-*   通过 Jekyll 的 `_data` 目录和 `Liquid` 模板语言，将动态数据渲染到静态页面上。
-
-现在，我们的博客拥有了一个能自我更新的“信息聚合器”，真正地“活”了起来。希望这篇详细的教程能对你有所帮助！
-
----
-
-### **附录：又一个调试案例——定时任务为什么没在“早上8点”运行？**
-
-在我们将所有功能都部署好之后，第二天早上，我们发现 "Daily" 页面并没有更新。我们检查了 Actions 的运行记录，发现并没有在早上8点由 `schedule` 触发的记录。
-
-**问题根源：时区！**
-
-这是 CI/CD 中一个极其常见的陷阱。我们在 `deploy.yml` 中写的 `cron: '0 8 * * *'`，直观地理解是“每天早上8点”。但问题是，这是哪个时区的早上8点？
-
-**GitHub Actions 的所有 `schedule` 事件，都严格基于 UTC (协调世界时) 时间。**
-
-*   我们期望的是 **北京时间 (CST)** 的早上 8 点。
-*   北京时间比 UTC 时间快 8 个小时 (UTC+8)。
-*   因此，当北京时间是早上 8:00 时，UTC 时间其实是 0:00。
-
-所以，我们设置的 `0 8 * * *` (UTC 8:00)，实际上会在北京时间下午 16:00 (下午4点) 才会运行。
-
-**解决方案：**
-
-将 `cron` 表达式调整为正确的 UTC 时间即可。
-
-```yaml
-  schedule:
-    - cron: '0 0 * * *' # 对应 UTC 0:00，即北京时间 8:00
 ```
-
-这个小小的案例提醒我们，在处理任何与“时间”相关的自动化任务时，永远要第一时间确认其基准时区，这能为我们省下大量的调试时间。
-
----
-
-### **附录C：终极Boss——为什么“缓存破坏”也失效了？**
-
-就在我们以为解决了所有问题时，一个更深层次的缓存问题浮出水面：即使用了 `?v=时间戳` 的缓存破坏手段，用户（尤其是移动端）有时依然需要强制刷新才能看到最新的页面布局。
-
-**问题根源：Service Worker 的“离线优先”策略**
-
-经过排查，我们发现罪魁祸首是项目根目录下的 `sw.js` (Service Worker) 文件。这个文件旨在提供 PWA (Progressive Web App) 的离线访问能力。它通过拦截浏览器的所有网络请求，并优先从自己的缓存中提供响应，来实现“秒开”和“离线可用”。
-
-这种“缓存优先”的策略，虽然提升了加载速度，但也导致了一个严重的问题：它连页面的 HTML 文件本身也缓存了。这意味着，即使我们部署了新的 HTML，其中包含了指向新 CSS 文件的链接，Service Worker 依然会直接返回旧的、缓存过的 HTML，浏览器甚至都没有机会去解析那个新的 HTML。
-
-**解决方案：将 Service Worker 改造为“网络优先 (Network First)”**
-
-为了从根本上解决问题，我们必须改变 Service Worker 的缓存策略，让它把“内容最新”放在第一位，而不是“离线可用”。
-
-我们重写了 `sw.js`，实现了“网络优先”的逻辑：
-
-1.  **拦截页面请求**: 当用户访问一个页面时，Service Worker 会拦截这个请求。
-2.  **优先访问网络**: 它会**首先**尝试通过网络去获取最新的 HTML 页面。
-3.  **成功则更新缓存**: 如果网络请求成功，它会将最新的 HTML 返回给用户，并用它更新自己的缓存。
-4.  **失败则使用缓存**: 只有当网络请求失败时（例如用户设备离线），它才会去缓存里寻找旧版本的页面作为后备。
-5.  **其他资源**: 对于 CSS、JS 等静态资源，我们不再让 Service Worker 拦截，完全交由我们之前实现的 `?v=时间戳` 缓存破坏机制来管理。
-
-```javascript
-// sw.js (核心逻辑简化)
-
-// On fetch, implement the Network First strategy
-self.addEventListener('fetch', (event) => {
-  // We only want to intercept navigation requests
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      fetch(event.request) // 1. Always try the network first
-        .then((response) => {
-          // 2. If successful, update the cache
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-          return response;
-        })
-        .catch(() => {
-          // 3. If network fails, use the cache as a fallback
-          return caches.match(event.request).then((response) => {
-            return response || caches.match(OFFLINE_URL);
-          });
-        })
-    );
-  }
-});
-```
-
-通过这次改造，我们实现了一个两全其美的方案：既保证了用户永远能看到最新的页面内容，又在完全离线时提供了一个基本的后备页面，最终完美地解决了所有缓存问题。
-
----
-
-### **附录B：最终优化——为什么修改了UI，刷新后却看不到？**
-
-在我们完成了所有功能，并对 "Daily" 页面的 UI 进行了精细的调整后，我们遇到了最后一个，也是最经典的一个前端问题：
-
-**“我明明已经把最新的代码部署上去了，为什么刷新页面后，看到的还是旧的样式？”**
-
-即使用户强制刷新（`Ctrl+Shift+R`），有时也无法立刻看到最新的布局。这对于用户体验来说是不可接受的。
-
-**问题根源：浏览器缓存 (Browser Caching)**
-
-为了提高网站的加载速度，浏览器会把已经下载过的静态资源（比如 CSS 样式表和 JS 脚本）保存在本地。当用户再次访问时，浏览器会直接使用这些本地的旧文件，而不是去服务器请求最新的版本。这就是为什么我们部署了新的 CSS，但浏览器依然在使用旧的样式。
-
-**解决方案：缓存破坏 (Cache Busting)**
-
-我们需要一种方法来“欺骗”浏览器，让它认为这是一个全新的文件，从而主动去下载。最简单、最有效的实现方式是：**为静态资源的 URL 添加一个每次构建都会改变的查询字符串。**
-
-我们在 `_includes/head.html` 中找到了引用主样式表的地方，并做了如下修改：
-
-**修改前:**
-```html
-<link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}">
-```
-
-**修改后:**
-```html
-<link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
-```
-
-**这是如何工作的？**
-*   `site.time` 是 Jekyll 在**构建网站时**的当前时间。
-*   `date: '%s'` 过滤器将这个时间格式化为 **Unix 时间戳**（一个独一无二的、不断增长的秒数）。
-*   最终生成的 URL 会像这样：`/css/hux-blog.min.css?v=1762041600`。
-
-每次我们的网站通过 GitHub Actions 重新构建时，都会生成一个新的时间戳。浏览器看到这个新的 URL，就会认为这是一个它从未见过的新文件，从而放弃旧的缓存，下载最新的版本。
-
-我们对所有主要的 CSS 和 JS 文件都应用了同样的操作。这样一来，就彻底解决了因浏览器缓存导致的用户无法看到最新更新的问题，完成了我们从后端数据到前端体验的最后一公里。
+(注：为简洁起见，`main.py` 中部分重复或辅助函数的代码已用 `...` 省略，读者可参考仓库中的完整源码。)*
 
 ## 第三阶段：自动化与展示
 
@@ -522,7 +366,7 @@ jobs:
 最后一步，我们需要修改 `daily.html` 页面，让它能读取 `_data/` 目录下的数据并渲染出来。我们使用 Jekyll 的 `Liquid` 模板语言来实现。
 
 ```html
---- 
+---
 layout: page
 title: "Daily"
 ---
@@ -551,7 +395,8 @@ title: "Daily"
                 {% assign latest_data_key = "daily_" | append: latest_date %}
                 {% assign articles = site.data[latest_data_key] %}
 
-                <p class="post-meta">Showing articles from: {{ latest_date }}</p>
+                <p class="post-meta text-center">Showing articles from: {{ latest_date }}</p>
+                <hr>
 
                 {% for article in articles %}
                     <a href="{{ article.link }}" target="_blank" class="post-card">
@@ -560,7 +405,7 @@ title: "Daily"
                     </a>
                 {% endfor %}
             {% else %}
-                <p>No daily information available yet. Please run the crawler.</p>
+                <p class="text-center">No daily information available yet. Please run the crawler.</p>
             {% endif %}
 
         </div>
@@ -568,3 +413,59 @@ title: "Daily"
 </div>
 ```
 这段代码的逻辑很清晰：首先遍历 `site.data` 找到最新的日期，然后加载对应的数据文件，最后通过一个 `for` 循环将每篇文章渲染成一个可点击的卡片。
+
+## 第四阶段：调试、总结与最终优化
+
+在项目上线后，我们遇到并解决了一系列真实世界中的问题。这些调试案例是本教程最有价值的部分之一。
+
+### **附录A：“跳过”的斜杠 (/) 与手动触发**
+
+**问题：** `git push` 后，"Daily" 页面没有更新，Actions 日志中 “Run crawler” 步骤显示为一个灰色的斜杠 (/)。
+
+**原因：** 这是我们 `if` 条件判断正确生效的结果。`push` 事件不满足 `if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'`，因此爬虫被跳过。
+
+**解决方案：** 通过 Actions 页面的 "Run workflow" 按钮手动触发一次，即可成功运行爬虫。
+
+### **附录B：定时任务的时区陷阱**
+
+**问题：** 设置了 `cron: '0 8 * * *'`，但第二天早上8点（北京时间）任务没有运行。
+
+**原因：** GitHub Actions 的 `schedule` 严格基于 **UTC 时间**。北京时间 (UTC+8) 的早上8点，对应的是 UTC 时间的 0点。
+
+**解决方案：** 将 `cron` 表达式修改为 `cron: '0 0 * * *'`。
+
+### **附录C：缓存的终极Boss——Service Worker**
+
+**问题：** 即使部署了新的 UI 样式，刷新浏览器后看到的依然是旧的布局。
+
+**原因：** 项目中的 `sw.js` (Service Worker) 采用了“缓存优先”策略，它拦截了页面请求并直接返回了旧的、缓存过的 HTML 文件，导致浏览器根本没机会加载新的 CSS。
+
+**解决方案：** 将 `sw.js` 的缓存策略修改为 **“网络优先 (Network First)”**。即优先访问网络获取最新内容，只有在网络失败时才使用缓存。这从根本上保证了用户总能看到最新的页面。
+
+```javascript
+// sw.js (核心逻辑简化)
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request) // 1. 优先访问网络
+        .then((response) => {
+          // 2. 成功则更新缓存
+          caches.open(CACHE_NAME).then((cache) => { ... });
+          return response;
+        })
+        .catch(() => {
+          // 3. 失败则使用缓存
+          return caches.match(event.request);
+        })
+    );
+  }
+});
+```
+
+### 总结
+
+通过这次完整的实践，我们成功地将一个动态的、自动化的爬虫系统，无缝集成到了一个静态的 Jekyll 博客中。我们不仅实现了功能，更重要的是，我们经历并解决了一系列在真实 CI/CD 环境中常见的依赖问题、时区问题和缓存问题。
+
+现在，我们的博客拥有了一个能自我更新的“信息聚合器”，真正地“活”了起来。希望这篇详尽的教程能对你有所帮助！
+
+```
