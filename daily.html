@@ -85,11 +85,16 @@ http_headers:
     text-align: center;
     margin-bottom: 20px;
     color: #555;
+.gallery-item {
+    flex: 1 1 100%; /* On small screens, one image per row */
+    height: 200px; /* Give the container a fixed height */
+    border-radius: 5px;
+    overflow: hidden;
+}
 .gallery-item img {
     width: 100%;
-    height: 100%; /* Make height fill the container */
-    max-height: 200px; /* Set a max height */
-    object-fit: cover; /* Ensure image covers the area without distortion */
+    height: 100%; /* Make image fill the container's height and width */
+    object-fit: cover; /* Cover the container, crop if necessary, no distortion */
     display: block;
 }
 </style>
