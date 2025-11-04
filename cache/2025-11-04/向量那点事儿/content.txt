@@ -1,0 +1,405 @@
+  * [ ![博客园logo](https://assets.cnblogs.com/logo.svg) ](https://www.cnblogs.com/ "开发者的网上家园")
+  * [会员](https://cnblogs.vip/)
+  * [众包](https://www.cnblogs.com/cmt/p/18500368)
+  * [新闻](https://news.cnblogs.com/)
+  * [博问](https://q.cnblogs.com/)
+  * [闪存](https://ing.cnblogs.com/)
+  * [赞助商](https://www.cnblogs.com/cmt/p/19081960)
+  * [HarmonyOS](https://harmonyos.cnblogs.com/)
+  * [Chat2DB](https://chat2db-ai.com/)
+
+
+  * ![搜索](https://assets.cnblogs.com/icons/search.svg) ![搜索](https://assets.cnblogs.com/icons/enter.svg)
+    * ![搜索](https://assets.cnblogs.com/icons/search.svg)
+所有博客
+    * ![搜索](https://assets.cnblogs.com/icons/search.svg)
+当前博客
+  * [ ![写随笔](https://assets.cnblogs.com/icons/newpost.svg) ](https://i.cnblogs.com/EditPosts.aspx?opt=1 "写随笔") [ ![我的博客](https://assets.cnblogs.com/icons/myblog.svg) ](https://passport.cnblogs.com/GetBlogApplyStatus.aspx "我的博客") [ ![短消息](https://assets.cnblogs.com/icons/message.svg) ](https://msg.cnblogs.com/ "短消息") [ ![简洁模式](https://assets.cnblogs.com/icons/lite-mode-on.svg) ](javascript:void\(0\) "简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示")
+[ ![用户头像](https://assets.cnblogs.com/icons/avatar-default.svg) ](https://home.cnblogs.com/)
+[我的博客](https://passport.cnblogs.com/GetBlogApplyStatus.aspx) [我的园子](https://home.cnblogs.com/) [账号设置](https://account.cnblogs.com/settings/account) [会员中心](https://vip.cnblogs.com/my) [ 简洁模式 ... ](javascript:void\(0\) "简洁模式会使用简洁款皮肤显示所有博客") [退出登录](javascript:void\(0\))
+[注册](https://account.cnblogs.com/signup) [登录](javascript:void\(0\);)
+
+
+[美码师](https://www.cnblogs.com/littleatp)
+写得一手好代码，还要下得了厨房，当技术发现美，生活也可以是诗和远方
+  * [ 博客园](https://www.cnblogs.com/)
+  * [ 首页](https://www.cnblogs.com/littleatp/)
+  * [ 新随笔](https://i.cnblogs.com/EditPosts.aspx?opt=1)
+  * [ 联系](https://msg.cnblogs.com/send/%E7%BE%8E%E7%A0%81%E5%B8%88)
+  * [ 订阅](javascript:void\(0\))
+  * [ 管理](https://i.cnblogs.com/)
+
+
+随笔 - 129  文章 - 0  评论 - 247  阅读 -  102万
+#  [ 向量那点事儿 ](https://www.cnblogs.com/littleatp/p/19110709 "发布于 2025-09-25 10:35")
+目录
+  * [一、向量](https://www.cnblogs.com/littleatp/p/19110709#%E4%B8%80%E5%90%91%E9%87%8F)
+    * [坐标表示](https://www.cnblogs.com/littleatp/p/19110709#%E5%9D%90%E6%A0%87%E8%A1%A8%E7%A4%BA)
+  * [二、加减法](https://www.cnblogs.com/littleatp/p/19110709#%E4%BA%8C%E5%8A%A0%E5%87%8F%E6%B3%95)
+    * [向量加法](https://www.cnblogs.com/littleatp/p/19110709#%E5%90%91%E9%87%8F%E5%8A%A0%E6%B3%95)
+      * [应用示例](https://www.cnblogs.com/littleatp/p/19110709#%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B)
+    * [向量减法](https://www.cnblogs.com/littleatp/p/19110709#%E5%90%91%E9%87%8F%E5%87%8F%E6%B3%95)
+      * [应用示例](https://www.cnblogs.com/littleatp/p/19110709#%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B-1)
+  * [三、向量内积](https://www.cnblogs.com/littleatp/p/19110709#%E4%B8%89%E5%90%91%E9%87%8F%E5%86%85%E7%A7%AF)
+    *       * [应用示例](https://www.cnblogs.com/littleatp/p/19110709#%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B-2)
+  * [四、向量外积](https://www.cnblogs.com/littleatp/p/19110709#%E5%9B%9B%E5%90%91%E9%87%8F%E5%A4%96%E7%A7%AF)
+    *       * [应用示例](https://www.cnblogs.com/littleatp/p/19110709#%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B-3)
+  * [五、小试牛刀](https://www.cnblogs.com/littleatp/p/19110709#%E4%BA%94%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80)
+    *       * [代码示例](https://www.cnblogs.com/littleatp/p/19110709#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B)
+  * [六、小结](https://www.cnblogs.com/littleatp/p/19110709#%E5%85%AD%E5%B0%8F%E7%BB%93)
+
+
+### 一、向量
+这次我们继续聊一下向量。
+**向量** 可以理解为一个**有方向的量** 。
+它既有**大小** （长度），又有**方向** （指向哪里）。
+生活中很多东西都可以用向量描述，比如：
+  * 🚗 速度（你开车 60 km/h 向东）
+  * 🌬️ 风（风速 5 m/s 向北）
+  * 📦 力（用 10 牛顿的力推箱子向右）
+
+![image-20250910182531731](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925101929961-604011422.png)
+#### 坐标表示
+在数学里，我们通常用坐标来表示向量；而在几何空间中，常常用箭头来表示向量，箭头的长度表示大小（模），方向表示向量的方向。
+  * 在二维空间中，一个向量表示如下：
+
+
+\\[\vec{v} = (x, y) \\]
+其中 x 表示水平方向分量，y 表示竖直方向分量。  
+向量的模长为：\\(|\vec{v}| = \sqrt{x^2 + y^2}\\)
+![image-20250910183206403](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102008519-1041448016.png)
+  * 在三维空间中，一个向量表示如下：
+
+
+\\[\vec{v} = (x, y, z) \\]
+其中 x, y, z 分别是沿三个坐标轴的分量。  
+向量的模长为：\\(|\vec{v}| = \sqrt{x^2 + y^2 + z^2}\\)
+![](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102051000-579755143.png)
+  * 在N维空间中，一个向量表示如下：
+
+
+\\[\vec{v} = (x_1, x_2.. x_n) \\]
+其中 x1...xn 分别是各个维度的分量。  
+向量的模长为：\\(|\vec{v}| = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2} \\\\\\)
+### 二、加减法
+#### 向量加法
+设定：
+\\[\vec{a} = (x_1, y_1), \quad \vec{b} = (x_2, y_2) \\]
+那么有：
+\\[\vec{a} + \vec{b} = (x_1 + x_2, \; y_1 + y_2) \\]
+加法的几何意义，可以使用三角形法则或平行四边形法则来说明：
+![image-20250910095714904](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102140695-144651475.png)
+简单的可以理解为，\\(\vec{a}+\vec{b}\\) 就是从坐标原点沿着\\(\vec{a}\\)行进后，再沿着\\(\vec{b}\\)行进。
+##### 应用示例
+![image-20250910102403901](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102213814-383196884.png)
+假定有两股方向的力，如下：
+\\(\vec{F_1} = (3, 4), \quad \vec{F_2} = (1, 2)\\)
+那么这两股力的合力为：
+\\(\vec{F} = \vec{F_1} + \vec{F_2} = (3+1, 4+2) = (4, 6)\\)
+#### 向量减法
+设定：
+\\[\vec{a} = (x_1, y_1), \quad \vec{b} = (x_2, y_2) \\]
+那么有：
+\\[\vec{a} - \vec{b} = (x_1 - x_2, \; y_1 - y_2) \\]
+加法的几何意义，可以使用三角形法则或平行四边形法则来说明：
+![image-20250910102038003](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102307238-792440316.png)
+简单的可以理解为，\\(\vec{a}-\vec{b}\\) 就是从b的终点开始，朝着\\(\vec{a}\\)的终点行进的向量。
+##### 应用示例
+在船的航行过程中，可以利用向量的减法来获得船和水流的相对速度。
+![image-20250910111156495](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102338337-906244789.png)
+假定船的速度向量为：
+\\(\vec{v}_{船} = (8, 0) \quad (\text{向东 8 m/s})\\)
+水流速度向量为：
+\\(\vec{v}_{水} = (3, 1) \quad (\text{向东 3 m/s，向北 1 m/s})\\)
+那么船相对水流的速度向量为：
+\\(\vec{v}_{相对} = (8-3, 0-1) = (5, -1)\\)
+表示向东 5 m/s、向南 1 m/s。
+### 三、向量内积
+向量的内积又称为点积（Dot Product），内积是两个向量对应**分量相乘后求和的一个标量值** 。
+设定：
+\\[\vec{a} = (x_1, y_1), \quad \vec{b} = (x_2, y_2) \\]
+那么有：
+\\[\vec{a} \cdot \vec{b} = x_1x_2 + y_1y_2 \\]
+从几何意义上讲，向量的内积还可以表示如下：
+\\[\vec{a} \cdot \vec{b} = |\vec{a}| |\vec{b}| \cos\theta \\]
+具体的证明可以参考下图，将坐标系进行旋转后，可完成推理：
+![](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102453088-107902074.png)
+其中 ⁡θ 表示两个向量的夹角，根据余弦定理可以得出：
+  * 假定模长不变，夹角越小，内积则越大
+  * 当夹角为90度时（两个向量垂直），此时内积为0
+  * 内积的本质等同于向量的投影和模长的乘积
+  * 坐标旋转时，内积保持不变
+
+
+##### 应用示例
+我们在电商平台上浏览产品详情时，经常会看到"相似产品"这样的页签，其中会给我们推荐相关的产品。
+这种商品推荐的场景便可以基于**"余弦相似度"** 来实现，余弦相似度的核心是**仅考虑向量的方向一致，忽略模长的影响** 。具体实现如下：
+  1. 将商品信息特征化表述，包括：
+     * 类目
+     * 品牌
+     * 价格区间
+     * 颜色 / 尺寸 / 材质
+     * 商品标题/描述
+     * 图片特征
+  2. 特征向量归一化
+上述的商品特征可以基于Embedding、CNN等算法来提取为特征值。
+这些特征值拼接后形成一个统一的商品向量，如下：
+\\[\vec{g} = [x_{类目}, x_{品牌},x_{价格},x_{尺寸},x_{颜色},x_{图谱特征}..] \\]
+由于不同维度的特征值其模长无法统一，我们需要将其进行归一化（L2归一）：
+对于其中的 \\(x_k\\)，其归一后的值为：
+\\[X_k = \frac{x_k}{\sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}} \\]
+L2归一化使用欧几里得范数来计算，最终得到特征向量为：
+\\[\vec{G} = [X_{类目}, X_{品牌},X_{价格},X_{尺寸},X_{颜色},X_{图谱特征}..] \\]
+> 归一化后，∥G∥=1，余弦相似度就简化成两个单位向量的点积，只比较方向（特征分布模式），消除了特征值大小的影响。
+  3. 计算商品特征向量的相似度，获得最相似的N个商品
+通过计算向量的点积来比较相似度：$ simulaty = \vec{G} \cdot \vec{G2}$
+
+
+> 向量点积在机器学习中常用于评估特征的方向相似性
+### 四、向量外积
+向量的外积又称为叉积（Cross Product），两个**向量的外积是一个同时垂直于两者的向量** 。
+设定：
+\\[\vec{a} = (x_1, y_1), \quad \vec{b} = (x_2, y_2) \\]
+那么有：
+\\[\vec{a} × \vec{b} = \vec{c} \\]
+  * 向量 \\(\vec{c}\\)的模长：$\vec{c} = ∣\vec{a}∣∣\vec{b}∣sin⁡θ $，在几何意义上等同与两个向量为边的平行四边形的面积。
+  * 向量 \\(\vec{c}\\)的方向：垂直于两个向量构成的平面。
+
+
+如下图所示：
+![image-20250910113835076](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102614058-715180077.png)
+向量 \\(\vec{c}\\)的方向除了垂直之外，还需要遵循**右手螺旋定则** ，也就是对于 \\(\vec{a} × \vec{b} = \vec{c}\\) 来说，右手四指方向从 a 转向 b，大拇指所指方向就是 c 的方向。所以， \\(\vec{a} × \vec{b}\\) 和 \\(\vec{b} × \vec{a}\\) 的结果是相反的，即向量外积不满足交换律。
+![](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102743902-1166170910.jpg)
+从几何图形上看，向量的外积可以垂直于两个向量组成的平面，当向量平行（共线）时，向量的外积为0。
+> 需要注意的是，向量的外积仅适用于三维图形，在四维及更高维空间中，垂直于两个向量的方向不唯一，而是一个高维子空间，因此无法用一个单一向量来表示。
+##### 应用示例
+物理学上，我们通过力矩（Torque）来描述一种"让物体转起来的能力"。
+![](https://img2024.cnblogs.com/blog/242916/202509/242916-20250925102834093-370196.png)
+比如：
+你用扳手拧螺丝，用力的大小、角度和离螺丝中心的距离都会影响拧动的效果。
+同样的力，扳手越长（离中心越远），越容易拧动——因为力矩更大。
+**力矩的公式** 如下：
+\\[\vec{𝜏}=\vec{𝑟}×\vec{𝐹} \\]
+  * r 是从旋转中心到施力点的位置向量
+  * 𝐹：施加的作用力
+
+
+力矩是向量 r 和向量 F的外积向量：
+  * 力矩的方向：由右手定则决定，表示旋转轴的方向
+  * 力矩的大小：等于 \\(|\vec{r}| \cdot |\vec{F}| \cdot \sin\theta\\)，也就是力度、垂直距离、和角度三者叠加的结果。
+
+
+### 五、小试牛刀
+下面使用 numpy 来实现本文提到的向量加减法、向量内积和外积计算。
+##### 代码示例
+```
+import numpy as np
+
+# 定义两个三维向量
+a = np.array([3, 4, 0])
+b = np.array([4, 0, 3])
+
+# 1️⃣ 向量加法
+add = a + b
+print("加法 a + b =", add)
+
+# 2️⃣ 向量减法
+sub = a - b
+print("减法 a - b =", sub)
+
+# 3️⃣ 向量内积（点积）
+dot = np.dot(a, b)
+print("内积 a · b =", dot)
+
+# 4️⃣ 特征归一化（L2归一）
+a_norm = a / np.linalg.norm(a)
+b_norm = b / np.linalg.norm(b)
+print("归一化后的 a =", a_norm)
+print("归一化后的 b =", b_norm)
+
+# 5️⃣ 归一后的余弦相似度
+cos_sim = np.dot(a_norm, b_norm)
+print("归一后的余弦相似度 =", cos_sim)
+
+# 6️⃣ 向量外积（叉积）
+cross = np.cross(a, b)
+print("外积 a × b =", cross)
+
+
+```
+
+执行上述程序，输出结果如下：
+```
+加法 a + b = [7 4 3]
+减法 a - b = [-1  4 -3]
+内积 a · b = 12
+归一化后的 a = [0.6 0.8 0. ]
+归一化后的 b = [0.8 0.  0.6]
+归一后的余弦相似度 = 0.48
+外积 a × b = [ 12  -9 -16]
+
+```
+
+### 六、小结
+向量的概念早在中学数学、物理学中就已经能接触到了，理解向量和空间几何的结合非常重要。从最简单的加减法就能体会到基本相对量的价值；向量内积更是各种推荐算法、特征相似度计算的基础范式，向量外积在机械工程学中大行其道等等，这些无一证明了向量在现实的数学应用中的重要地位。
+![](https://images.cnblogs.com/cnblogs_com/littleatp/1241412/o_qrcode_for_gh_b2cf486409a0_258.jpg)
+作者： [美码师(zale)](http://www.cnblogs.com/littleatp/)
+出处： <http://www.cnblogs.com/littleatp/>, 如果喜欢我的文章，请**关注我的公众号**
+本文版权归作者和博客园共有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出 [原文链接](https://www.cnblogs.com/littleatp/p/19110709) 如有问题， 可留言咨询. 
+posted @ 2025-09-25 10:35 [美码师](https://www.cnblogs.com/littleatp) 阅读(2154) 评论(6) [收藏](javascript:void\(0\)) [举报](javascript:void\(0\))
+[刷新页面](https://www.cnblogs.com/littleatp/p/19110709)[返回顶部](https://www.cnblogs.com/littleatp/p/19110709#top)
+登录后才能查看或发表评论，立即 [登录](javascript:void\(0\);) 或者 [逛逛](https://www.cnblogs.com/) 博客园首页 
+[【推荐】诚邀您体验阿里巴巴推出的新一代 Agentic 编程平台 Qoder](https://www.cnblogs.com/cmt/p/19165152)  
+[【推荐】博客园&小马算力达成战略合作，为开发者注入“算力引擎”](https://www.cnblogs.com/cmt/p/19154039)  
+[【推荐】2025 HarmonyOS 创新赛正式启动，百万大奖等你来挑战！](https://www.cnblogs.com/cmt/p/19058738)  
+[【推荐】天翼云智惠上云月，爆款云主机2核2G只要18.8元/3个月起](https://click.ctyun.cn/?track=source_bokeyuan-medium_cps-content_se1509618)  
+[【推荐】鸿蒙应用开发者认证：学鸿蒙、考认证，跻身“抢手开发者”](https://developer.huawei.com/consumer/cn/training/classDetail/d6bfe940eba3442f8ddf79e91eea0a71?type=1?ha_source=hmosclass-bokeyuan&ha_sourceId=89000444)  
+
+[ ![](https://img2024.cnblogs.com/blog/35695/202510/35695-20251013111242110-2029482428.jpg) ](https://qoder.com/)
+### 公告
+![](https://images.cnblogs.com/cnblogs_com/littleatp/1241412/o_qrcode_for_gh_b2cf486409a0_258.jpg)
+**美码师** ，老码农一枚， 喜欢聊聊代码，唠唠职场故事，爱技术也爱生活  
+欢迎关注我的公众号 
+[ ![](https://images.cnblogs.com/cnblogs_com/littleatp/1241412/o_210613150152%E4%B9%A6%E5%B0%81%E9%9D%A2.png) ](https://item.jd.com/13214932.html)
+昵称： [ 美码师 ](https://home.cnblogs.com/u/littleatp/)   
+园龄： [ 14年10个月 ](https://home.cnblogs.com/u/littleatp/ "入园时间：2010-12-15")   
+粉丝： [ 171 ](https://home.cnblogs.com/u/littleatp/followers/)   
+关注： [ 10 ](https://home.cnblogs.com/u/littleatp/followees/)
+[+加关注](javascript:void\(0\))
+|  [<](javascript:void\(0\);) | 2025年11月 |  [>](javascript:void\(0\);)  
+---|---|---  
+日 | 一 | 二 | 三 | 四 | 五 | 六  
+26 | 27 | 28 | 29 | 30 | 31 |  1   
+2  |  3  |  4  |  5  |  6  |  7  |  8   
+9  |  10  |  11  |  12  |  13  |  14  |  15   
+16  |  17  |  18  |  19  |  20  |  21  |  22   
+23  |  24  |  25  |  26  |  27  |  28  |  29   
+30  |  1  |  2  |  3  |  4  |  5  |  6   
+### 搜索
+###  常用链接 
+  * [我的随笔](https://www.cnblogs.com/littleatp/p/ "我的博客的随笔列表")
+  * [我的评论](https://www.cnblogs.com/littleatp/MyComments.html "我的发表过的评论列表")
+  * [我的参与](https://www.cnblogs.com/littleatp/OtherPosts.html "我评论过的随笔列表")
+  * [最新评论](https://www.cnblogs.com/littleatp/comments "我的博客的评论列表")
+  * [我的标签](https://www.cnblogs.com/littleatp/tag/ "我的博客的标签列表")
+
+
+###  合集 
+  * [工作杂谈(10)](https://www.cnblogs.com/littleatp/collections/4970)
+  * [SpringBoot(28)](https://www.cnblogs.com/littleatp/collections/31122)
+  * [数据库技术(24)](https://www.cnblogs.com/littleatp/collections/31123)
+  * [数学基础(5)](https://www.cnblogs.com/littleatp/collections/31654)
+
+
+###  [随笔分类](https://www.cnblogs.com/littleatp/post-categories)
+  * [架构技术(10)](https://www.cnblogs.com/littleatp/category/669826.html)
+  * [编程相关(50)](https://www.cnblogs.com/littleatp/category/668815.html)
+  * [DB中间件(32)](https://www.cnblogs.com/littleatp/category/1209630.html)
+  * [安全技术(9)](https://www.cnblogs.com/littleatp/category/883134.html)
+  * [环境工具(17)](https://www.cnblogs.com/littleatp/category/669791.html)
+  * [计算机基础(2)](https://www.cnblogs.com/littleatp/category/969980.html)
+  * [行业洞察(1)](https://www.cnblogs.com/littleatp/category/898606.html)
+  * [心得杂谈(12)](https://www.cnblogs.com/littleatp/category/669793.html)
+
+
+###  随笔档案 
+  * [2025年9月(5)](https://www.cnblogs.com/littleatp/p/archive/2025/09)
+  * [2025年8月(1)](https://www.cnblogs.com/littleatp/p/archive/2025/08)
+  * [2025年4月(1)](https://www.cnblogs.com/littleatp/p/archive/2025/04)
+  * [2023年8月(2)](https://www.cnblogs.com/littleatp/p/archive/2023/08)
+  * [2020年12月(1)](https://www.cnblogs.com/littleatp/p/archive/2020/12)
+  * [2019年12月(2)](https://www.cnblogs.com/littleatp/p/archive/2019/12)
+  * [2019年11月(3)](https://www.cnblogs.com/littleatp/p/archive/2019/11)
+  * [2019年10月(3)](https://www.cnblogs.com/littleatp/p/archive/2019/10)
+  * [2019年9月(2)](https://www.cnblogs.com/littleatp/p/archive/2019/09)
+  * [2019年8月(2)](https://www.cnblogs.com/littleatp/p/archive/2019/08)
+  * [2019年7月(4)](https://www.cnblogs.com/littleatp/p/archive/2019/07)
+  * [2019年5月(2)](https://www.cnblogs.com/littleatp/p/archive/2019/05)
+  * [2019年4月(4)](https://www.cnblogs.com/littleatp/p/archive/2019/04)
+  * [2019年3月(7)](https://www.cnblogs.com/littleatp/p/archive/2019/03)
+  * [2019年2月(2)](https://www.cnblogs.com/littleatp/p/archive/2019/02)
+  * [2018年12月(2)](https://www.cnblogs.com/littleatp/p/archive/2018/12)
+  * [2018年11月(6)](https://www.cnblogs.com/littleatp/p/archive/2018/11)
+  * [2018年9月(3)](https://www.cnblogs.com/littleatp/p/archive/2018/09)
+  * [2018年8月(4)](https://www.cnblogs.com/littleatp/p/archive/2018/08)
+  * [2018年7月(8)](https://www.cnblogs.com/littleatp/p/archive/2018/07)
+  * [2018年6月(2)](https://www.cnblogs.com/littleatp/p/archive/2018/06)
+  * [2018年5月(4)](https://www.cnblogs.com/littleatp/p/archive/2018/05)
+  * [2018年3月(3)](https://www.cnblogs.com/littleatp/p/archive/2018/03)
+  * [2018年2月(5)](https://www.cnblogs.com/littleatp/p/archive/2018/02)
+  * [2017年10月(1)](https://www.cnblogs.com/littleatp/p/archive/2017/10)
+  * [2017年8月(1)](https://www.cnblogs.com/littleatp/p/archive/2017/08)
+  * [2017年6月(1)](https://www.cnblogs.com/littleatp/p/archive/2017/06)
+  * [2017年3月(2)](https://www.cnblogs.com/littleatp/p/archive/2017/03)
+  * [2017年2月(1)](https://www.cnblogs.com/littleatp/p/archive/2017/02)
+  * [2017年1月(4)](https://www.cnblogs.com/littleatp/p/archive/2017/01)
+  * [2016年12月(5)](https://www.cnblogs.com/littleatp/p/archive/2016/12)
+  * [2016年11月(1)](https://www.cnblogs.com/littleatp/p/archive/2016/11)
+  * [2016年10月(4)](https://www.cnblogs.com/littleatp/p/archive/2016/10)
+  * [2016年9月(4)](https://www.cnblogs.com/littleatp/p/archive/2016/09)
+  * [2016年8月(1)](https://www.cnblogs.com/littleatp/p/archive/2016/08)
+  * [2016年4月(1)](https://www.cnblogs.com/littleatp/p/archive/2016/04)
+  * [2015年12月(1)](https://www.cnblogs.com/littleatp/p/archive/2015/12)
+  * [2015年9月(3)](https://www.cnblogs.com/littleatp/p/archive/2015/09)
+  * [2015年8月(1)](https://www.cnblogs.com/littleatp/p/archive/2015/08)
+  * [2015年7月(4)](https://www.cnblogs.com/littleatp/p/archive/2015/07)
+  * [2015年6月(1)](https://www.cnblogs.com/littleatp/p/archive/2015/06)
+  * [2015年4月(3)](https://www.cnblogs.com/littleatp/p/archive/2015/04)
+  * [2015年3月(3)](https://www.cnblogs.com/littleatp/p/archive/2015/03)
+  * [2011年11月(2)](https://www.cnblogs.com/littleatp/p/archive/2011/11)
+  * [2011年10月(2)](https://www.cnblogs.com/littleatp/p/archive/2011/10)
+  * [2011年9月(5)](https://www.cnblogs.com/littleatp/p/archive/2011/09)
+  * [更多](javascript:void\(0\))
+
+
+###  links 
+  * [ascii艺术字](http://patorjk.com/software/taag/#p=display&h=1&v=1&f=Doom&t=IOCM)
+  * [ascii 图表](http://asciiflow.com/)
+
+
+###  [ 阅读排行榜 ](https://www.cnblogs.com/littleatp/most-viewed)
+  * [ 1. 使用 openssl 生成证书(95331) ](https://www.cnblogs.com/littleatp/p/5878763.html)
+  * [ 2. mysql 索引过长1071-max key length is 767 byte(81570) ](https://www.cnblogs.com/littleatp/p/4612896.html)
+  * [ 3. Java条形码生成技术-Barcode4j(62929) ](https://www.cnblogs.com/littleatp/p/4815921.html)
+  * [ 4. 使用keytool 生成证书(46834) ](https://www.cnblogs.com/littleatp/p/5922362.html)
+  * [ 5. mongodb分布式集群搭建手记(45533) ](https://www.cnblogs.com/littleatp/p/8563273.html)
+
+
+###  [评论排行榜](https://www.cnblogs.com/littleatp/most-commented)
+  * [ 1. 情人节，送女友一桶代码可否？(36) ](https://www.cnblogs.com/littleatp/p/10372599.html)
+  * [ 2. 软能力那点事，你知多少(18) ](https://www.cnblogs.com/littleatp/p/9653019.html)
+  * [ 3. 为什么我不喜欢数据库三范式(15) ](https://www.cnblogs.com/littleatp/p/11331649.html)
+  * [ 4. 老兵的十年职场之路(一)(9) ](https://www.cnblogs.com/littleatp/p/10587932.html)
+  * [ 5. MongoDB一次节点宕机引发的思考(源码剖析)(8) ](https://www.cnblogs.com/littleatp/p/11782883.html)
+
+
+###  [推荐排行榜](https://www.cnblogs.com/littleatp/most-liked)
+  * [ 1. 向量那点事儿(25) ](https://www.cnblogs.com/littleatp/p/19110709)
+  * [ 2. 软能力那点事，你知多少(17) ](https://www.cnblogs.com/littleatp/p/9653019.html)
+  * [ 3. 【保姆级教程】windows 安装 docker 全流程(16) ](https://www.cnblogs.com/littleatp/p/18810739)
+  * [ 4. 情人节，送女友一桶代码可否？(16) ](https://www.cnblogs.com/littleatp/p/10372599.html)
+  * [ 5. MongoDB一次节点宕机引发的思考(源码剖析)(10) ](https://www.cnblogs.com/littleatp/p/11782883.html)
+
+
+### [最新评论](https://www.cnblogs.com/littleatp/comments)
+  * [1. Re:向量那点事儿](https://www.cnblogs.com/littleatp/p/19110709)
+  * @多啦啦啦阿梦 😄...
+  * --美码师
+  * [2. Re:向量那点事儿](https://www.cnblogs.com/littleatp/p/19110709)
+  * 干货！
+  * --多啦啦啦阿梦
+  * [3. Re:矩阵的计算和应用](https://www.cnblogs.com/littleatp/p/19075340)
+  * @bobo2012 的确，乘法可能导致形状改变，结果是A行B列的记法，可以从A单行*B单列拓展联想...
+  * --美码师
+  * [4. Re:向量那点事儿](https://www.cnblogs.com/littleatp/p/19110709)
+  * @仙楼未上 😄...
+  * --美码师
+  * [5. Re:矩阵的计算和应用](https://www.cnblogs.com/littleatp/p/19075340)
+  * 从乘法开始理解不了了……
+  * --bobo2012
+
+
+[博客园](https://www.cnblogs.com/) © 2004-2025   
+[![](https://assets.cnblogs.com/images/ghs.png)浙公网安备 33010602011771号](http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602011771) [浙ICP备2021040463号-3](https://beian.miit.gov.cn)
+点击右上角即可分享
+![微信分享提示](https://img2023.cnblogs.com/blog/35695/202309/35695-20230906145857937-1471873834.gif)

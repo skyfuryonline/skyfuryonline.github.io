@@ -1,0 +1,194 @@
+  * [ ![博客园logo](https://assets.cnblogs.com/logo.svg) ](https://www.cnblogs.com/ "开发者的网上家园")
+  * [会员](https://cnblogs.vip/)
+  * [众包](https://www.cnblogs.com/cmt/p/18500368)
+  * [新闻](https://news.cnblogs.com/)
+  * [博问](https://q.cnblogs.com/)
+  * [闪存](https://ing.cnblogs.com/)
+  * [赞助商](https://www.cnblogs.com/cmt/p/19081960)
+  * [HarmonyOS](https://harmonyos.cnblogs.com/)
+  * [Chat2DB](https://chat2db-ai.com/)
+
+
+  * ![搜索](https://assets.cnblogs.com/icons/search.svg) ![搜索](https://assets.cnblogs.com/icons/enter.svg)
+    * ![搜索](https://assets.cnblogs.com/icons/search.svg)
+所有博客
+    * ![搜索](https://assets.cnblogs.com/icons/search.svg)
+当前博客
+  * [ ![写随笔](https://assets.cnblogs.com/icons/newpost.svg) ](https://i.cnblogs.com/EditPosts.aspx?opt=1 "写随笔") [ ![我的博客](https://assets.cnblogs.com/icons/myblog.svg) ](https://passport.cnblogs.com/GetBlogApplyStatus.aspx "我的博客") [ ![短消息](https://assets.cnblogs.com/icons/message.svg) ](https://msg.cnblogs.com/ "短消息") [ ![简洁模式](https://assets.cnblogs.com/icons/lite-mode-on.svg) ](javascript:void\(0\) "简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示")
+[ ![用户头像](https://assets.cnblogs.com/icons/avatar-default.svg) ](https://home.cnblogs.com/)
+[我的博客](https://passport.cnblogs.com/GetBlogApplyStatus.aspx) [我的园子](https://home.cnblogs.com/) [账号设置](https://account.cnblogs.com/settings/account) [会员中心](https://vip.cnblogs.com/my) [ 简洁模式 ... ](javascript:void\(0\) "简洁模式会使用简洁款皮肤显示所有博客") [退出登录](javascript:void\(0\))
+[注册](https://account.cnblogs.com/signup) [登录](javascript:void\(0\);)
+
+
+[![返回主页](https://www.cnblogs.com/skins/custom/images/logo.gif)](https://www.cnblogs.com/skysailstar/)
+#  [天航星](https://www.cnblogs.com/skysailstar)
+## 天河有尽后为涯 星海无边前作岸
+  * [ 博客园](https://www.cnblogs.com/)
+  * [ 首页](https://www.cnblogs.com/skysailstar/)
+  * [ 新随笔](https://i.cnblogs.com/EditPosts.aspx?opt=1)
+  * [ 联系](https://msg.cnblogs.com/send/%E5%A4%A9%E8%88%AA%E6%98%9F)
+  * [ 订阅](javascript:void\(0\))
+  * [ 管理](https://i.cnblogs.com/)
+
+
+随笔 - 234  文章 - 0  评论 - 129  阅读 -  10万
+#  [ 从一个普通程序员的角度，聊聊当前环境下，是否适合做编程 ](https://www.cnblogs.com/skysailstar/p/19156943 "发布于 2025-10-22 08:59")
+先做一个简单的自我介绍： 我是一名三本毕业生，通信工程专业，毕业后报培训班学习编程，然后 2016 年至今一直在重庆从事 Java 开发，期间也短暂参与过前端开发，自学过 C 语言和 Go 语言，任职过 5 家公司，涉足过医疗、税务、农业、房地产、人工智能等行业。 这段履历算不上光鲜，却是大多数普通程序员经历的写照，还是有一定代表性的。这里就从一个普通程序员的角度，聊聊当前环境下，是否适合做编程。 
+先做一个简单的自我介绍：
+> 我是一名三本毕业生，通信工程专业，毕业后报培训班学习编程，然后 2016 年至今一直在重庆从事 Java 开发，期间也短暂参与过前端开发，自学过 C 语言和 Go 语言，任职过 5 家公司，涉足过医疗、税务、农业、房地产、人工智能等行业。
+这段履历算不上光鲜，却是大多数普通程序员经历的写照，还是有一定代表性的。这里就从一个普通程序员的角度，聊聊当前环境下，是否适合做编程。
+**这里要说明一下，【是否适合】只针对普通人而言，如果按照【三百六十行，行行出状元】的标准，没有哪个行业是不适合的，但我们大多数都是普通人，出不了那么多【状元】。**
+  
+
+聊当前的环境前，作为对比，先聊下以前的环境。
+我是 2016 年毕业的，这之前都在学校，对大环境没有一个清晰的认识，所以这里这样划分：
+  * 以前的环境：2016 年 - 2019 年
+  * 当前的环境：2020 年 - 2025 年
+
+
+至于为什么以 2020 年为界，相信每个人都知道那一年发生了什么。
+  
+
+在我毕业的 2016 年，互联网和移动互联网都在蓬勃发展，需要大量的程序员，培训机构也是遍地开花。
+![image](https://img2024.cnblogs.com/blog/2413255/202511/2413255-20251102142106747-1584731972.png)
+以我当时报的培训班为例，学费高达一万八，四个月都是远程教学（也就是看视频），一个班还有六十多人，其中各行各业各年龄段都有，也不乏 985、211 毕业的，甚至还有两个硕士，其中一个还是 985 硕士。但最后只有不到一半的人做了编程，到现在还在做编程的不到十人。
+之所以会这样，一方面是程序员的工资确实高于大多数行业，比较诱人，自然会有大量人员涌入；一方面是培训机构的过度营销，它们总是以几个基础很差的往期学员通过非常刻苦的努力获得高薪工作的事迹作为案例，宣扬不管基础多差只要够努力就能高薪就业，而不能高薪就业就是自己不够努力。这样的宣传接近传销，结果也就可想而知了：一波一波人舍弃了校招应聘上的工作，舍弃了应届生找工作的黄金时期，甚至舍弃了从事多年的工作，只为学编程高薪就业，最终却连工作都找不到，空耗了大笔钱财和几个月时光，不但一无所获，还加重了自我怀疑和自我否定。
+造成这一结果，究其原因，还是**编程的门槛没有想象的那么低** 。
+大多数人可能认为编程最需要的是英语能力。毕竟代码是用英语编写的，而英语本身的门槛并不高，通过积累单词量就可以量变引起质变，所以认为编程的门槛也不高。其实不是这样的，不管什么编程语言，要用到的英语单词也就一百来个，大多数还是很常用的单词，再加上编程工具都有代码提示功能，写一两个字母就可以得到完整的单词，基本不存在门槛。而所谓的阅读英文资料，属于很后期才需要的能力了，而且还不是必须的能力，因为现在的翻译工具实在太多了。
+其实**编程最需要的是逻辑思维能力** 。这个能力很抽象，不过基本可以通过数学能力量化，而数学从来都是一门很难的学科。当然了，编程岗位也不像算法岗位那样对数学要求特别高，只是需要有这种思维能力，但这种思维能力也是很多人不具备的，并且很难通过短期的训练获取。
+还有一个很重要的原因，就是培训机构不像大学那样经历高考的严格筛选，它们完全以盈利为目的，只要给钱就能学。以我报的那个培训机构为例，基本不设门槛，不管什么学历、什么专业、什么年龄，都招进来学习。看四个月的视频，学的东西都很表面，感觉听懂了，实际上手这也不会那也不会，企业自然不待见，就业就很难。
+所幸当时还有一个情况，就是大学的计算机专业还不够火热，科班出身的程序员有限，很多企业迫于岗位需求实在太大，也会招一些培训班出身的程序员。我就是赶上了这个时候，再加上喜欢计算机大学自学过一些，有一定基础，培训期间也很努力的学习，才勉强入行了。
+2016 年 - 2019 年的这几年，培训机构持续增加，大学的计算机专业也愈加火热，大量人员涌入编程行业，编程行业很快由人才匮乏变成了人才过剩，门槛自然相应升高。最明显的变化，就是很多企业不爱招 0 经验的程序员了，就算招也只招科班出身的应届毕业生，培训班出身的更加不受待见。还有一个变化，就是面试难度的上升，逐渐形成了【面试造火箭，工作拧螺丝】的现象，而且愈演愈烈，到后面大家都将面试的内容称为【八股文】，难度可想而知。
+  
+
+到了 2020 年，那场席卷全球的大灾难爆发了，给了整个世界一记沉重的打击。
+![image](https://img2024.cnblogs.com/blog/2413255/202511/2413255-20251102142634332-1491617062.png)
+不过编程行业没有马上受到打击，因为编程的场景大多在线上，哪怕居家也可以办公，不会太影响工作。但随着线下经济持续下滑，终究还是影响到了给线下提供服务的线上。
+2020 年 - 2025 年的这几年，大大小小的软件公司都在不断的停招、裁员、倒闭，可以说一片哀嚎......
+这里举两个我身边的例子：
+  * 一个是我上家公司的同事。他在 2023 年从上家公司离职的时候 8 年工作经验，本来以为以他的工作年限找下一家轻轻松松，就选择裸辞玩了一个月，结果整整一年都没有找到工作，甚至连外包的工作都面不上，最后无奈之下降薪两千才找到了一家小公司，可到了公司半年又再次降薪，苦不堪言。
+  * 一个是我的堂弟。他在 2024 年从四川大学软件工程专业毕业，由于大四的时候考研，就没有参加校招，毕业后在成都找了整整四个月的工作，这期间一个 offer 都没有拿到，最后才进了华为的外包。他大学期间没有挂科，总体成绩不错，我看过他写的代码，能力也是在线的，从他能通过华为的 5 轮面试也可以证明。但就是以他 985 科班出身的应届生身份在成都这个软件产业发达城市都这么难找工作，行情之差可见一斑。
+
+  
+
+到了现在的 2025 年，经济继续下行，【人工智能】却火起来了。
+![v2-6ac68be760b44a4e51b45fc3ef11d7de_r](https://img2024.cnblogs.com/blog/2413255/202511/2413255-20251102162352317-174505859.jpg)
+春晚的宇树机器人跳舞惊艳全场，让大家对现在机器人的能力有了新的认识；与此同时，国产的 AI 大模型 DeepSeek 也在全球大放异彩，而且免费使用，使得 AI 大模型很快变成了人人可用的智能助手；前段时间的 Manus 也是各种刷屏，其邀请码甚至在二手交易平台一度被炒至 10 万元；AI 编程的新闻也是甚嚣尘上，仿佛人工智能时代已经到来，程序员很快就要被 AI 淘汰。
+但正如 Linux 之父 Linus Torvalds 在维也纳举行的 2024 年开源峰会上所说：**现在的人工智能 90% 都是市场营销，只有 10% 是现实。**
+人工智能这几年确实发展迅猛，也表现出了很强大的能力，但这大多数都是表象，还远远没有达到替代现实工作的地步。而且就算以后能达到这个地步，在短期内也只能替代机械重复的工作，任何需要创意和主观意志的工作都是难以替代的。以编程工作为例：初级程序员编写的增删改查代码，相对固定且重复性较高，确实可能被 AI 编程替代；但中级程序员编写的业务代码、高级程序员编写的高效代码、架构师编写的架构代码都是非常灵活且具有强烈主观意志的，AI 编程很难做到。因为理解能力、创新能力、思考能力一直都是人工智能的硬伤，至少以目前的科技来看无法突破，所以大可不必担心做了编程短时间就被 AI 取代。
+  
+
+还有一个程序员绕不开的话题就是【年龄】。
+![image](https://img2024.cnblogs.com/blog/2413255/202511/2413255-20251102143723726-1815894751.png)
+从我入行的时候，就一直听说程序员 35 岁是个坎：说是到了 35 岁，要么精研技术成为架构师、要么往产品或者管理转型、要么就只有转行，总之不适合继续从事编程工作。
+但从业这 9 年来看到的并不是这样。35 岁以上还在从事编程的同事并不在少数，而且由于经验丰富，他们的能力普遍较强，只是由于年龄和家庭限制，不能像年轻一些的同事那样长期加班。但这不应该是问题所在，加班要么是工作安排不合理，要么是能力不足不能按时完成工作，要么是为了内卷没事干也在那里装样子。但这些都不是以是否接受长期加班来筛选人才的理由。
+我觉得 35 岁门槛更多是一些无良企业用来压榨员工的借口，既希望 35 岁以下的员工拿着低薪疯狂加班为企业创收，又不希望 35 岁以上的员工拿着高薪不加班不为企业带来快速收益。但从一个企业的长远发展来看，是更需要经验丰富、成熟稳重的老员工的，所幸已经有越来越多的国内软件企业意识到了这一点，35 岁的门槛已经比较松动了。
+至于后面有没有更大年龄的门槛，我相信是有的，编程毕竟是脑力密集型劳动，随着年龄的增长，脑力自然会退步，总会有一个年龄门槛在等着程序员。但并不用为此焦虑，几乎每个行业都有年龄门槛，在这个门槛到来前努力绽放自己，实现自己的价值，自然也能有不错的收入，真到了门槛来临之时，不管选择哪条路，都能从容和淡然的应对。
+  
+
+综上所述，现在回归主题：当前环境下，是否适合做编程？
+![image](https://img2024.cnblogs.com/blog/2413255/202510/2413255-20251022085327217-1383655919.png)
+我的答案是：**如果是科班出身，热爱编程，35 岁以下，是可以选择做编程的。**
+这里拆解分析一下：
+  * 首先，科班出身还是很重要的。  
+几乎所有的编程岗位招聘要求都会有这么一条：【计算机相关专业】。虽然每个公司对这一条的定义不同，要求程度也不同，但也可以看出，科班出身的确实更受欢迎。  
+还有一个原因，就是企业会觉得非科班出身的基本都是报培训班学习的，而培训班的品质是一年不如一年，自然就越来越不待见非科班出身的了。  
+不过非科班出身的也并非没有出路，如果真的很想做编程，**可以自学** 。网上有大量免费的整套课程资料，并不比培训班教的东西少和差，而且自学的过程正好可以检验自己是否适合做编程。如果自学期间一直无法静下心来学习，说明性格不适合做编程；如果完全学不懂，说明知识储备或者逻辑能力不适合做编程，可以以很低的成本放弃。  
+但要是报了培训班，会让人有一种花了这么多钱，怎么都要学完试试，不然很浪费的心理负担，放弃的成本较高，对心态的影响也较大。  
+还有一点，企业对自学的应聘者也要更待见一些，因为这本身就体现了应聘者自学的能力、沉稳的性格、坚强的毅力，都是编程工作很可贵的品质。
+  * 然后，需要热爱编程。  
+这个看起来不是什么硬性条件，但很重要，甚至可以说是最重要的！如果不热爱编程，只是看中编程工作的高薪，那就算勉强入行了，也很难在编程枯燥的工作内容中长期坚持下来。  
+何况编程的技术日新月异，需要不断的学习，没有热爱作为驱动力，是很难主动去学习的，那时间久了技术落后也必将被淘汰。**想在编程这行有所建树，需要对编程有一种宗教般的狂热** 。
+  * 最后，建议 35 岁以下入行。  
+这里大家可能会觉得有些奇怪，前面才说了 35 岁不是门槛，现在又建议 35 岁以下入行，不是自相矛盾吗？  
+其实不是的，前面说的 35 岁不是门槛是针对从业者，就是不会到了 35 岁就被淘汰。但年龄门槛肯定是存在的，对于入行者，如果 35 岁以后才入行，到了年龄门槛可能就几年的工作经验，到时候编程经验不足没有足够的能力往架构师发展、业务经验不足没有足够的能力往产品经理发展、项目经验不足没有足够的能力往项目经理发展，年龄大了又很难转到其他行业，会举步维艰，是非常被动的，所以这里加了这个条件。
+
+
+至于为什么当前环境下我依然觉得满足上述条件可以选择做编程，因为**哪怕在当前环境下，编程依然是收入高于大多数行业、门槛低于大多数行业的存在** 。对于大多数像我这样的普通人，想拿高薪，想实现阶层跃迁，做编程可能是最简单、最纯粹、最直接的途径了。
+  
+
+以上就是我作为一个普通程序员对编程行业的一些思考。至于如果决定做编程选择前端还是后端，选择前端应该选择哪个框架，选择后端又应该选择哪门编程语言，以及入行后应该怎么发展，又是一个个很大的话题了，我会在后续的文章中详细介绍......
+天河有尽后为涯 星海无边前作岸 
+posted @ 2025-10-22 08:59 [天航星](https://www.cnblogs.com/skysailstar) 阅读(7928) 评论(109) [收藏](javascript:void\(0\)) [举报](javascript:void\(0\))
+[刷新页面](https://www.cnblogs.com/skysailstar/p/19156943)[返回顶部](https://www.cnblogs.com/skysailstar/p/19156943#top)
+登录后才能查看或发表评论，立即 [登录](javascript:void\(0\);) 或者 [逛逛](https://www.cnblogs.com/) 博客园首页 
+[【推荐】诚邀您体验阿里巴巴推出的新一代 Agentic 编程平台 Qoder](https://www.cnblogs.com/cmt/p/19165152)  
+[【推荐】博客园&小马算力达成战略合作，为开发者注入“算力引擎”](https://www.cnblogs.com/cmt/p/19154039)  
+[【推荐】2025 HarmonyOS 创新赛正式启动，百万大奖等你来挑战！](https://www.cnblogs.com/cmt/p/19058738)  
+[【推荐】天翼云智惠上云月，爆款云主机2核2G只要18.8元/3个月起](https://click.ctyun.cn/?track=source_bokeyuan-medium_cps-content_se1509618)  
+[【推荐】鸿蒙应用开发者认证：学鸿蒙、考认证，跻身“抢手开发者”](https://developer.huawei.com/consumer/cn/training/classDetail/d6bfe940eba3442f8ddf79e91eea0a71?type=1?ha_source=hmosclass-bokeyuan&ha_sourceId=89000444)  
+
+[ ![](https://img2024.cnblogs.com/blog/35695/202510/35695-20251013111242110-2029482428.jpg) ](https://qoder.com/)
+### 公告
+昵称： [ 天航星 ](https://home.cnblogs.com/u/skysailstar/)   
+园龄： [ 4年5个月 ](https://home.cnblogs.com/u/skysailstar/ "入园时间：2021-05-29")   
+粉丝： [ 11 ](https://home.cnblogs.com/u/skysailstar/followers/)   
+关注： [ 8 ](https://home.cnblogs.com/u/skysailstar/followees/)
+[+加关注](javascript:void\(0\))
+### 积分与排名
+  * 积分 - 81565 
+  * 排名 - 20516 
+
+
+###  [随笔分类](https://www.cnblogs.com/skysailstar/post-categories) (235) 
+  * [C语言(18)](https://www.cnblogs.com/skysailstar/category/2385217.html)
+  * [Docker(22)](https://www.cnblogs.com/skysailstar/category/1985413.html)
+  * [FreeMarker(1)](https://www.cnblogs.com/skysailstar/category/2205103.html)
+  * [Git(15)](https://www.cnblogs.com/skysailstar/category/1981953.html)
+  * [Http(1)](https://www.cnblogs.com/skysailstar/category/1987858.html)
+  * [IDEA(13)](https://www.cnblogs.com/skysailstar/category/2006363.html)
+  * [Java(15)](https://www.cnblogs.com/skysailstar/category/1981927.html)
+  * [Jenkins(1)](https://www.cnblogs.com/skysailstar/category/2480049.html)
+  * [JS(1)](https://www.cnblogs.com/skysailstar/category/2108311.html)
+  * [Linux(15)](https://www.cnblogs.com/skysailstar/category/2051516.html)
+  * [Maven(1)](https://www.cnblogs.com/skysailstar/category/1981963.html)
+  * [MyBatis(6)](https://www.cnblogs.com/skysailstar/category/1981979.html)
+  * [MyBatis-Plus(4)](https://www.cnblogs.com/skysailstar/category/1985403.html)
+  * [MySQL(7)](https://www.cnblogs.com/skysailstar/category/1981926.html)
+  * [Nginx(1)](https://www.cnblogs.com/skysailstar/category/2048539.html)
+  * [Python(3)](https://www.cnblogs.com/skysailstar/category/2479459.html)
+  * [RabbitMQ(12)](https://www.cnblogs.com/skysailstar/category/2289414.html)
+  * [Redis(19)](https://www.cnblogs.com/skysailstar/category/2126426.html)
+  * [Spring(3)](https://www.cnblogs.com/skysailstar/category/1990727.html)
+  * [SpringBoot(4)](https://www.cnblogs.com/skysailstar/category/2006293.html)
+  * [SpringCloud(6)](https://www.cnblogs.com/skysailstar/category/2284869.html)
+  * [Spring源码(21)](https://www.cnblogs.com/skysailstar/category/2115213.html)
+  * [VSCode(6)](https://www.cnblogs.com/skysailstar/category/2412938.html)
+  * [Vue(3)](https://www.cnblogs.com/skysailstar/category/2017120.html)
+  * [Windows(5)](https://www.cnblogs.com/skysailstar/category/2132715.html)
+  * [博客园(1)](https://www.cnblogs.com/skysailstar/category/2070159.html)
+  * [程序世界(3)](https://www.cnblogs.com/skysailstar/category/2478305.html)
+  * [人工智能(2)](https://www.cnblogs.com/skysailstar/category/2479271.html)
+  * [设计模式(24)](https://www.cnblogs.com/skysailstar/category/2183716.html)
+  * [生活杂谈(2)](https://www.cnblogs.com/skysailstar/category/2479043.html)
+  * [更多](javascript:void\(0\))
+
+
+###  [ 阅读排行榜 ](https://www.cnblogs.com/skysailstar/most-viewed)
+  * [ 1. IDEA社区版，真香！(11476) ](https://www.cnblogs.com/skysailstar/p/17736274.html)
+  * [ 2. 从一个普通程序员的角度，聊聊当前环境下，是否适合做编程(8085) ](https://www.cnblogs.com/skysailstar/p/19156943)
+  * [ 3. IDEA 加大运行内存(6607) ](https://www.cnblogs.com/skysailstar/p/18152126)
+  * [ 4. Http 前端向后端传递List参数(6049) ](https://www.cnblogs.com/skysailstar/p/14886368.html)
+  * [ 5. VSCode 控制台中文乱码（永久性解决）(4065) ](https://www.cnblogs.com/skysailstar/p/18330106)
+
+
+###  [评论排行榜](https://www.cnblogs.com/skysailstar/most-commented)
+  * [ 1. 从一个普通程序员的角度，聊聊当前环境下，是否适合做编程(109) ](https://www.cnblogs.com/skysailstar/p/19156943)
+  * [ 2. 地中海、双肩包、格子衫？从业9年程序员聊聊真实的程序员是什么样子(16) ](https://www.cnblogs.com/skysailstar/p/19159574)
+  * [ 3. 【Python 基础】第 1 期：人生苦短，我用 Python(2) ](https://www.cnblogs.com/skysailstar/p/19168237)
+  * [ 4. C语言 17 宏定义(1) ](https://www.cnblogs.com/skysailstar/p/18440128)
+  * [ 5. IDEA社区版，真香！(1) ](https://www.cnblogs.com/skysailstar/p/17736274.html)
+
+
+###  [推荐排行榜](https://www.cnblogs.com/skysailstar/most-liked)
+  * [ 1. 从一个普通程序员的角度，聊聊当前环境下，是否适合做编程(59) ](https://www.cnblogs.com/skysailstar/p/19156943)
+  * [ 2. 【打造自己的 DeepSeek】第 2 期：怎么安装自己的 DeepSeek？(3) ](https://www.cnblogs.com/skysailstar/p/19166093)
+  * [ 3. VSCode 控制台中文乱码（永久性解决）(2) ](https://www.cnblogs.com/skysailstar/p/18330106)
+  * [ 4. 设计模式 14 模板模式(2) ](https://www.cnblogs.com/skysailstar/p/16585419.html)
+  * [ 5. 【打造自己的 DeepSeek】第 1 期：为什么要打造自己的 DeepSeek？(1) ](https://www.cnblogs.com/skysailstar/p/19164311)
+
+
+[博客园](https://www.cnblogs.com/) © 2004-2025   
+[![](https://assets.cnblogs.com/images/ghs.png)浙公网安备 33010602011771号](http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602011771) [浙ICP备2021040463号-3](https://beian.miit.gov.cn)
+点击右上角即可分享
+![微信分享提示](https://img2023.cnblogs.com/blog/35695/202309/35695-20230906145857937-1471873834.gif)
