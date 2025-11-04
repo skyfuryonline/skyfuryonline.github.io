@@ -61,12 +61,21 @@ async def main():
                 print(f"Summarizing new articles using LLM profile: '{llm_profile_name}'")
                 for article in articles_metadata:
                     try:
-                        with open(os.path.join(article['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
-                            content = content_file.read()
-                        
-                        summary = get_summary(content, profile['model'], profile['prompt'])
-                        article['summary'] = summary
-                        print(f"  - Summarized: {article['title']}")
+                    # 1. 读取缓存的原文
+                    with open(os.path.join(article['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
+                        content = content_file.read()
+                    
+                    # 2. 获取缓存的图片列表
+                    image_files = sorted([
+                        f for f in os.listdir(article['cache_path']) 
+                        if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))
+                    ])
+                    article['image_files'] = image_files
+
+                    # 3. 调用 summarizer 获取摘要
+                    summary = get_summary(content, profile['model'], profile['prompt'])
+                    article['summary'] = summary # 4. 将摘要添加到元数据中
+                    print(f"  - Summarized: {article['title']}")
                     except Exception as e:
                         article['summary'] = f"Failed to generate summary: {e}"
             

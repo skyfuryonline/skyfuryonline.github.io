@@ -6,74 +6,59 @@ header-img: "img/home-bg.png"
 ---
 
 <style>
-.daily-container {
+/* --- Card Styles (Copied from index.html) --- */
+.groups-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px; /* Counteract column padding */
+    justify-content: flex-start;
+    margin: 0 -15px;
 }
-
-.square-card-wrapper {
-    padding: 0 15px;
-    margin-bottom: 30px;
-    width: 100%;
-}
-
-@media (min-width: 768px) {
-    .square-card-wrapper {
-        width: 50%;
-    }
-}
-
-.square-card {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 50%; /* Halved the height to make it a rectangle */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    background-color: #f8f9fa; /* Added a very light gray background */
-}
-
-.square-card-link {
+.group-card-wrapper {
     display: block;
     text-decoration: none;
     color: inherit;
+    width: 100%;
+    margin: 0 15px 30px;
+    display: flex;
 }
-
-.square-card-link:hover .square-card {
+.group-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+@media (min-width: 768px) {
+    .group-card-wrapper {
+        width: calc(50% - 30px);
+    }
+}
+.group-card-wrapper:hover .group-card {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transform: translateY(-5px);
 }
-
-.square-card-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.daily-card-body {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center;   /* Center content horizontally */
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    flex-grow: 1;
 }
-
-.square-card-title {
+.daily-card-title {
     font-size: 1.3em;
     font-weight: 600;
     color: #333;
     margin: 0;
 }
-
-.square-card-meta {
+.daily-card-meta {
     font-size: 0.9em;
     color: #888;
     margin-top: 10px;
 }
-
 .date-header {
     width: 100%;
     text-align: center;
@@ -81,47 +66,146 @@ header-img: "img/home-bg.png"
     color: #555;
     font-size: 2em;
 }
+
+/* --- Modal Image Gallery Styles --- */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Spacing between images */
+    margin-top: 20px;
+}
+.gallery-item {
+    flex: 1 1 100%; /* On small screens, one image per row */
+    border-radius: 5px;
+    overflow: hidden;
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+@media (min-width: 576px) { /* On medium screens, two images per row */
+    .gallery-item {
+        flex-basis: calc(50% - 5px);
+    }
+}
+@media (min-width: 992px) { /* On large screens, three images per row */
+    .gallery-item {
+        flex-basis: calc(33.333% - 7px);
+    }
+}
 </style>
 
-{% comment %} 
-The layout 'page.html' already provides the main container and row.
-We only need to provide the content that goes inside the `col-lg-8` div.
-{% endcomment %}
+{% comment %} Main Content Area {% endcomment %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
-{% assign daily_file_names = "" | split: "" %}
-{% for file in site.data %}
-    {% if file[0] contains "daily_" %}
-        {% assign daily_file_names = daily_file_names | push: file[0] %}
-    {% endif %}
-{% endfor %}
-{% assign daily_file_names = daily_file_names | sort | reverse %}
+            {% assign daily_file_names = "" | split: "" %}
+            {% for file in site.data %}
+                {% if file[0] contains "daily_" %}
+                    {% assign daily_file_names = daily_file_names | push: file[0] %}
+                {% endif %}
+            {% endfor %}
+            {% assign daily_file_names = daily_file_names | sort | reverse %}
 
-{% if daily_file_names.size > 0 %}
-    {% for file_name in daily_file_names %}
-        {% assign file_date_str = file_name | remove: "daily_" %}
-        {% assign articles = site.data[file_name] %}
+            {% if daily_file_names.size > 0 %}
+                {% for file_name in daily_file_names %}
+                    {% assign file_date_str = file_name | remove: "daily_" %}
+                    {% assign articles = site.data[file_name] %}
 
-        <h2 class="date-header">{{ file_date_str }}</h2>
-        
-        <div class="daily-container">
-            {% if articles.size > 0 %}
-                {% for article in articles %}
-                    <div class="square-card-wrapper">
-                        <a href="{{ article.link }}" target="_blank" class="square-card-link">
-                            <div class="square-card">
-                                <div class="square-card-content">
-                                    <h3 class="square-card-title">{{ article.title }}</h3>
-                                    <p class="square-card-meta">Source: cnblogs</p>
+                    <h2 class="date-header">{{ file_date_str }}</h2>
+                    
+                    <div class="groups-container">
+                        {% if articles.size > 0 %}
+                            {% for article in articles %}
+                                <div class="group-card-wrapper">
+                                    <div class="group-card daily-article-card"
+                                         data-title="{{ article.title | escape }}"
+                                         data-summary="{{ article.summary | escape }}"
+                                         data-link="{{ article.link }}"
+                                         data-cache-path="{{ article.cache_path }}"
+                                         data-images='{{ article.image_files | join: "," }}'>
+                                        <div class="daily-card-body">
+                                            <h3 class="daily-card-title">{{ article.title }}</h3>
+                                            <p class="daily-card-meta">Source: cnblogs</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-center" style="width: 100%;">No articles found for this day.</p>
+                        {% endif %}
                     </div>
                 {% endfor %}
             {% else %}
-                <p class="text-center" style="width: 100%;">No articles found for this day.</p>
+                <p class="text-center" style="margin-top: 50px;">No daily information available yet.</p>
             {% endif %}
+
         </div>
-    {% endfor %}
-{% else %}
-    <p class="text-center" style="margin-top: 50px;">No daily information available yet.</p>
-{% endif %}
+    </div>
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="summaryModal" tabindex="-1" role="dialog" aria-labelledby="summaryModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="summaryModalLabel">Article Summary</h4>
+      </div>
+      <div class="modal-body">
+        <p id="modalSummaryContent"></p>
+        <hr>
+        <div id="modalImageGallery" class="image-gallery"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a id="modalReadMoreBtn" href="#" target="_blank" class="btn btn-primary">Read Original</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var cards = document.querySelectorAll('.daily-article-card');
+    var modal = $('#summaryModal');
+    var modalTitle = document.getElementById('summaryModalLabel');
+    var modalSummary = document.getElementById('modalSummaryContent');
+    var modalGallery = document.getElementById('modalImageGallery');
+    var modalReadMoreBtn = document.getElementById('modalReadMoreBtn');
+
+    cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            var title = this.getAttribute('data-title');
+            var summary = this.getAttribute('data-summary');
+            var link = this.getAttribute('data-link');
+            var cachePath = this.getAttribute('data-cache-path');
+            var images = this.getAttribute('data-images').split(',').filter(Boolean);
+
+            modalTitle.textContent = title;
+            modalSummary.textContent = summary;
+            modalReadMoreBtn.href = link;
+
+            // Populate image gallery
+            modalGallery.innerHTML = ''; // Clear previous images
+            if (images.length > 0) {
+                images.forEach(function(imageFile) {
+                    var galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    
+                    var img = document.createElement('img');
+                    // Construct the correct, absolute path for the image
+                    img.src = '{{ site.baseurl }}/' + cachePath + '/' + imageFile;
+                    
+                    galleryItem.appendChild(img);
+                    modalGallery.appendChild(galleryItem);
+                });
+            }
+
+            modal.modal('show');
+        });
+    });
+});
+</script>
