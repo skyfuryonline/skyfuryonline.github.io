@@ -4,9 +4,9 @@
   posts:
     []
 
-- group_name: "杂记"
+- group_name: "博客搭建指南"
   group_image: "/img/cover-zaji.png"
-  group_description: "记录学习、生活中的点点滴滴"
+  group_description: "记录个人博客搭建的过程"
   posts:
     - "2025-10-30-helloworld.md"
     - "2025-11-03-migrate-to-github-actions.md"

@@ -5,7 +5,6 @@ subtitle: "实现图文模态框，并解决依赖冲突、权限、数据持久
 date: 2025-11-04 10:00:00
 author: "LH"
 tags: [LLM, UI, Jekyll, CI/CD, Debugging]
-group: life
 ---
 
 ## 前言：从“是什么”到“讲什么”，再到“看什么”
