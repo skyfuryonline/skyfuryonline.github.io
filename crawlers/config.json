@@ -8,11 +8,11 @@
   ],
   "llm_profiles": {
     "default_summary": {
-      "model": "gpt-3.5-turbo",
+      "model": "qwen3-max-2025-09-23",
       "prompt": "你是一个优秀的内容摘要助手。请将以下文章内容总结为一段150字以内的中文摘要，提取核心观点和主要信息，只输出摘要本身，不要添加任何额外的话。"
     },
     "academic_summary": {
-      "model": "gpt-4",
+      "model": "qwen3-max-2025-09-23",
       "prompt": "请将以下论文的核心贡献、使用的方法和最终的实验结果，总结为三点，每点不超过50字。"
     }
   }
