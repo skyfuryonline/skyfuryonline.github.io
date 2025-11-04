@@ -66,7 +66,8 @@ jobs:
           cd main
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add _data/ cache/
+          git add -f _data/ cache/
+          # Check if there are any changes to commit
           if ! git diff --staged --quiet; then
             git commit -m "chore: Update daily data and cache"
             # We need to switch to the data branch to push
