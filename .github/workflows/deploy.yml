@@ -63,23 +63,25 @@ jobs:
       - name: Commit and push data to data branch 💾
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          cd main
+          # First, copy the generated content from the main workspace to the data checkout
+          # The `.` at the end of the source paths is important
+          cp -rf main/_data/. data/_data/
+          cp -rf main/cache/. data/cache/
+
+          # Now, go into the data checkout directory and commit
+          cd data
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f _data/ cache/
-          # Check if there are any changes to commit
+          
+          # Add all changes, including deletions, without erroring on ignored files
+          git add -A
+
           if ! git diff --staged --quiet; then
             git commit -m "chore: Update daily data and cache"
-            # We need to switch to the data branch to push
-            git fetch origin data
-            git checkout -b data-branch origin/data
-            git add _data/ cache/
-            git commit -m "chore: Update daily data and cache"
-            git push origin HEAD:data
+            git push
           else
             echo "No changes to commit."
           fi
-          cd ..
 
       - name: Setup Ruby and install gems 💎
         uses: ruby/setup-ruby@v1
