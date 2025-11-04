@@ -18,7 +18,7 @@ def sanitize_filename(filename):
 class CnblogsCrawler(BaseCrawler):
     """Crawler for Cnblogs."""
 
-    def __init__(self, url: str, output_dir: str, existing_urls: set, top_k: int = 5):
+    def __init__(self, url: str, output_dir: str, existing_urls: set, top_k: int):
         super().__init__(url, output_dir)
         self.top_k = top_k
         self.existing_urls = existing_urls

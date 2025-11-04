@@ -58,6 +58,20 @@ jobs:
           LLM_API_BASE_URL: ${{ secrets.LLM_API_BASE_URL }} # Optional
         run: python crawlers/main.py
 
+      - name: Commit and push data 💾
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add _data/ cache/
+          # Check if there are any changes to commit
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: Update daily data and cache"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
       - name: Build the site 🏗️
         run: bundle exec jekyll build
         env:

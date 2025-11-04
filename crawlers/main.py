@@ -51,7 +51,9 @@ async def main():
             module = importlib.import_module(module_name)
             CrawlerClass = getattr(module, class_name)
             
-            crawler_instance = CrawlerClass(site["url"], todays_cache_dir, existing_urls)
+            # Inject dependencies
+            top_k = site.get('top_k', 5)
+            crawler_instance = CrawlerClass(site["url"], todays_cache_dir, existing_urls, top_k=top_k)
             articles_metadata = await crawler_instance.crawl()
 
             # --- LLM Integration --- #

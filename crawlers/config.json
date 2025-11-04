@@ -3,6 +3,7 @@
     {
       "url": "https://www.cnblogs.com/pick/",
       "parser": "CnblogsCrawler",
+      "top_k": 5,
       "llm_profile": "default_summary"
     }
   ],
