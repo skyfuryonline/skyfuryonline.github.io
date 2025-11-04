@@ -40,4 +40,4 @@ gha-creds-*.json
 
 # Ignore crawler data on the master branch
 cache/
-_data/
+_data/daily_*.json
