@@ -33,8 +33,15 @@ async def main():
     os.makedirs(todays_cache_dir, exist_ok=True)
     os.makedirs(data_dir, exist_ok=True)
 
-    existing_urls = load_existing_urls(data_dir, days_to_keep=15)
-    print(f"Found {len(existing_urls)} existing URLs from the last 15 days.")
+    with open(config_path, 'r', encoding='utf-8') as f:
+        config = json.load(f)
+    
+    # Get global settings from config
+    global_settings = config.get("global_settings", {})
+    days_to_keep = global_settings.get("days_to_keep", 15)
+
+    existing_urls = load_existing_urls(data_dir, days_to_keep=days_to_keep)
+    print(f"Found {len(existing_urls)} existing URLs from the last {days_to_keep} days.")
 
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
@@ -93,7 +100,7 @@ async def main():
     else:
         print("No new articles found to save.")
 
-    cleanup_old_data(cache_dir, data_dir, days_to_keep=15)
+    cleanup_old_data(cache_dir, data_dir, days_to_keep=days_to_keep)
 
 # ... (load_existing_urls and cleanup_old_data functions remain the same) ...
 

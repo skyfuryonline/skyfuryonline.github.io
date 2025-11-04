@@ -1,4 +1,7 @@
 {
+  "global_settings": {
+    "days_to_keep": 15
+  },
   "sites": [
     {
       "url": "https://www.cnblogs.com/pick/",
