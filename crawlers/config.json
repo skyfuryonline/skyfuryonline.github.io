@@ -6,7 +6,7 @@
     {
       "url": "https://www.cnblogs.com/pick/",
       "parser": "CnblogsCrawler",
-      "top_k": 5,
+      "top_k": 2,
       "llm_profile": "default_summary"
     }
   ],
