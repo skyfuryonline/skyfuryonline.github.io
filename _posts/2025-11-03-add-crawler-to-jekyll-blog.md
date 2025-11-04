@@ -370,6 +370,60 @@ async def main():
 
 ---
 
+### **附录C：终极Boss——为什么“缓存破坏”也失效了？**
+
+就在我们以为解决了所有问题时，一个更深层次的缓存问题浮出水面：即使用了 `?v=时间戳` 的缓存破坏手段，用户（尤其是移动端）有时依然需要强制刷新才能看到最新的页面布局。
+
+**问题根源：Service Worker 的“离线优先”策略**
+
+经过排查，我们发现罪魁祸首是项目根目录下的 `sw.js` (Service Worker) 文件。这个文件旨在提供 PWA (Progressive Web App) 的离线访问能力。它通过拦截浏览器的所有网络请求，并优先从自己的缓存中提供响应，来实现“秒开”和“离线可用”。
+
+这种“缓存优先”的策略，虽然提升了加载速度，但也导致了一个严重的问题：它连页面的 HTML 文件本身也缓存了。这意味着，即使我们部署了新的 HTML，其中包含了指向新 CSS 文件的链接，Service Worker 依然会直接返回旧的、缓存过的 HTML，浏览器甚至都没有机会去解析那个新的 HTML。
+
+**解决方案：将 Service Worker 改造为“网络优先 (Network First)”**
+
+为了从根本上解决问题，我们必须改变 Service Worker 的缓存策略，让它把“内容最新”放在第一位，而不是“离线可用”。
+
+我们重写了 `sw.js`，实现了“网络优先”的逻辑：
+
+1.  **拦截页面请求**: 当用户访问一个页面时，Service Worker 会拦截这个请求。
+2.  **优先访问网络**: 它会**首先**尝试通过网络去获取最新的 HTML 页面。
+3.  **成功则更新缓存**: 如果网络请求成功，它会将最新的 HTML 返回给用户，并用它更新自己的缓存。
+4.  **失败则使用缓存**: 只有当网络请求失败时（例如用户设备离线），它才会去缓存里寻找旧版本的页面作为后备。
+5.  **其他资源**: 对于 CSS、JS 等静态资源，我们不再让 Service Worker 拦截，完全交由我们之前实现的 `?v=时间戳` 缓存破坏机制来管理。
+
+```javascript
+// sw.js (核心逻辑简化)
+
+// On fetch, implement the Network First strategy
+self.addEventListener('fetch', (event) => {
+  // We only want to intercept navigation requests
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request) // 1. Always try the network first
+        .then((response) => {
+          // 2. If successful, update the cache
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+          return response;
+        })
+        .catch(() => {
+          // 3. If network fails, use the cache as a fallback
+          return caches.match(event.request).then((response) => {
+            return response || caches.match(OFFLINE_URL);
+          });
+        })
+    );
+  }
+});
+```
+
+通过这次改造，我们实现了一个两全其美的方案：既保证了用户永远能看到最新的页面内容，又在完全离线时提供了一个基本的后备页面，最终完美地解决了所有缓存问题。
+
+---
+
 ### **附录B：最终优化——为什么修改了UI，刷新后却看不到？**
 
 在我们完成了所有功能，并对 "Daily" 页面的 UI 进行了精细的调整后，我们遇到了最后一个，也是最经典的一个前端问题：
