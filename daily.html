@@ -85,17 +85,45 @@ http_headers:
     text-align: center;
     margin-bottom: 20px;
     color: #555;
-.gallery-item {
-    flex: 1 1 100%; /* On small screens, one image per row */
+/* --- Modal Body Scrolling (Fallback) --- */
+.modal-body {
+    max-height: 80vh; /* Max height is 80% of viewport height */
+    overflow-y: auto; /* Add vertical scrollbar ONLY if content overflows */
+}
+
+/* --- Modal Image Gallery Styles (Primary Fix) --- */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Spacing between images */
+    margin-top: 20px;
+}
+
+#summaryModal .gallery-item { /* Use ID for higher specificity */
+    flex: 1 1 100%;
     height: 200px; /* Give the container a fixed height */
     border-radius: 5px;
-    overflow: hidden;
+    overflow: hidden; /* This is crucial for cropping the image */
+    background-color: #eee; /* Add a placeholder color */
 }
-.gallery-item img {
+
+#summaryModal .gallery-item img {
     width: 100%;
-    height: 100%; /* Make image fill the container's height and width */
-    object-fit: cover; /* Cover the container, crop if necessary, no distortion */
+    height: 100%; /* Make image fill the container */
+    object-fit: cover; /* Cover the area, crop if needed, no distortion */
     display: block;
+}
+
+@media (min-width: 576px) {
+    #summaryModal .gallery-item {
+        flex-basis: calc(50% - 5px);
+    }
+}
+
+@media (min-width: 992px) {
+    #summaryModal .gallery-item {
+        flex-basis: calc(33.333% - 7px);
+    }
 }
 </style>
 
