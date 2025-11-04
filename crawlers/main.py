@@ -40,8 +40,9 @@ async def main():
     global_settings = config.get("global_settings", {})
     days_to_keep = global_settings.get("days_to_keep", 15)
 
-    existing_urls = load_existing_urls(data_dir, days_to_keep=days_to_keep)
+    existing_urls, summarized_urls = load_existing_urls(data_dir, days_to_keep=days_to_keep)
     print(f"Found {len(existing_urls)} existing URLs from the last {days_to_keep} days.")
+    print(f"Found {len(summarized_urls)} already summarized URLs.")
 
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
@@ -69,24 +70,28 @@ async def main():
                 profile = llm_profiles[llm_profile_name]
                 print(f"Summarizing new articles using LLM profile: '{llm_profile_name}'")
                 for article in articles_metadata:
-                    try:
-                        # 1. 读取缓存的原文
-                        with open(os.path.join(article['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
-                            content = content_file.read()
-                        
-                        # 2. 获取缓存的图片列表
-                        image_files = sorted([
-                            f for f in os.listdir(article['cache_path']) 
-                            if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))
-                        ])
-                        article['image_files'] = image_files
+                    # Only summarize if the article has not been summarized before
+                    if article['link'] not in summarized_urls:
+                        try:
+                            # 1. 读取缓存的原文
+                            with open(os.path.join(article['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
+                                content = content_file.read()
+                            
+                            # 2. 获取缓存的图片列表
+                            image_files = sorted([
+                                f for f in os.listdir(article['cache_path']) 
+                                if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))
+                            ])
+                            article['image_files'] = image_files
 
-                        # 3. 调用 summarizer 获取摘要
-                        summary = get_summary(content, profile['model'], profile['prompt'])
-                        article['summary'] = summary # 4. 将摘要添加到元数据中
-                        print(f"  - Summarized: {article['title']}")
-                    except Exception as e:
-                        article['summary'] = f"Failed to generate summary: {e}"
+                            # 3. 调用 summarizer 获取摘要
+                            summary = get_summary(content, profile['model'], profile['prompt'])
+                            article['summary'] = summary # 4. 将摘要添加到元数据中
+                            print(f"  - Summarized: {article['title']}")
+                        except Exception as e:
+                            article['summary'] = f"Failed to generate summary: {e}"
+                    else:
+                        print(f"  - Skipping already summarized: {article['title']}")
             
             all_articles_metadata.extend(articles_metadata)
 
@@ -106,8 +111,9 @@ async def main():
 
 def load_existing_urls(data_dir, days_to_keep):
     existing_urls = set()
+    summarized_urls = set()
     cutoff_date = datetime.now() - timedelta(days=days_to_keep)
-    if not os.path.exists(data_dir): return existing_urls
+    if not os.path.exists(data_dir): return existing_urls, summarized_urls
     for item in os.listdir(data_dir):
         if item.startswith("daily_") and item.endswith(".json"):
             try:
@@ -119,9 +125,12 @@ def load_existing_urls(data_dir, days_to_keep):
                         data = json.load(f)
                         for article in data:
                             existing_urls.add(article['link'])
+                            # Check if summary exists and is not empty
+                            if article.get('summary') and article['summary'].strip():
+                                summarized_urls.add(article['link'])
             except (ValueError, json.JSONDecodeError):
                 continue
-    return existing_urls
+    return existing_urls, summarized_urls
 
 def cleanup_old_data(cache_dir, data_dir, days_to_keep):
     print("Starting cleanup of old data...")
