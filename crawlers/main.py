@@ -61,34 +61,38 @@ async def main():
             crawler_instance = CrawlerClass(site["url"], todays_cache_dir, existing_urls, top_k=top_k)
             articles_metadata = await crawler_instance.crawl()
 
-            # --- LLM Integration --- #
+            # --- LLM Integration (Concurrent) --- #
             llm_profile_name = site.get("llm_profile")
             if llm_profile_name and llm_profile_name in llm_profiles:
                 profile = llm_profiles[llm_profile_name]
                 print(f"Summarizing new articles using LLM profile: '{llm_profile_name}'")
+
+                tasks = []
+                articles_to_summarize = []
+
                 for article in articles_metadata:
-                    # Only summarize if the article has not been summarized before
                     if article['link'] not in summarized_urls:
                         try:
-                            # 1. 读取缓存的原文
                             with open(os.path.join(article['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
                                 content = content_file.read()
                             
-                            # 2. 获取缓存的图片列表
-                            image_files = sorted([
-                                f for f in os.listdir(article['cache_path']) 
-                                if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))
-                            ])
-                            article['image_files'] = image_files
-
-                            # 3. 调用 summarizer 获取摘要
-                            summary = get_summary(content, profile['model'], profile['prompt'])
-                            article['summary'] = summary # 4. 将摘要添加到元数据中
-                            print(f"  - Summarized: {article['title']}")
+                            # Create a task for each summary and add it to the list
+                            task = get_summary(content, profile['model'], profile['prompt'])
+                            tasks.append(task)
+                            articles_to_summarize.append(article)
                         except Exception as e:
-                            article['summary'] = f"Failed to generate summary: {e}"
-                    else:
-                        print(f"  - Skipping already summarized: {article['title']}")
+                            article['summary'] = f"Failed to read content for summary: {e}"
+
+                # Run all summary tasks concurrently
+                if tasks:
+                    print(f"Running {len(tasks)} summarization tasks concurrently...")
+                    summaries = await asyncio.gather(*tasks)
+                    print("Summarization tasks finished.")
+
+                    # Assign the results back to the articles
+                    for i, summary_result in enumerate(summaries):
+                        articles_to_summarize[i]['summary'] = summary_result
+                        print(f"  - Summarized: {articles_to_summarize[i]['title']}")
             
             all_articles_metadata.extend(articles_metadata)
 
