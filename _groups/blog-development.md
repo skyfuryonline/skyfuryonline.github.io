@@ -1,4 +1,5 @@
 ---
 layout: group_page
-title: "杂记"
+title: "博客开发指南"
+permalink: /groups/blog-development
 ---
