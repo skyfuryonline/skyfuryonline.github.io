@@ -82,9 +82,6 @@ class GoogleDevBlogCrawler(BaseCrawler):
                 return content_body.get_text(strip=True, separator='\n')
             else:
                 print(f"  -> WARNING: Could not find content body with class 'article-formatted-body' for {url}")
-                print("--- DEBUG: HTML SOURCE START ---")
-                print(self.driver.page_source)
-                print("--- DEBUG: HTML SOURCE END ---")
                 return None
         except Exception as e:
             print(f"  -> An error occurred fetching content for {url}: {e}")
