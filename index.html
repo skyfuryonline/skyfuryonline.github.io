@@ -84,14 +84,7 @@ description: "Thinking will not overcome fear but action will."
 
 <div class="groups-container">
     {% for group in site.data.homepage_groups %}
-        {% assign group_id = "" %}
-        {% if group.group_name == "分布式训练笔记" %}
-            {% assign group_id = "llm" %}
-        {% elsif group.group_name == "杂记" %}
-            {% assign group_id = "life" %}
-        {% endif %}
-
-        <a href="{{ site.baseurl }}/groups/{{ group_id }}" class="group-card-wrapper">
+    <a href="{{ group_data.url | prepend: site.baseurl }}" class="group-card-wrapper">
             <div class="group-card">
                 <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
                     <div class="group-header-overlay"></div>
