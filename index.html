@@ -84,7 +84,7 @@ description: "Thinking will not overcome fear but action will."
 
 <div class="groups-container">
     {% for group in site.data.homepage_groups %}
-    <a href="{{ group_data.url | prepend: site.baseurl }}" class="group-card-wrapper">
+    <a href="{{ group.url | prepend: site.baseurl }}" class="group-card-wrapper">
             <div class="group-card">
                 <div class="group-header" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')">
                     <div class="group-header-overlay"></div>
