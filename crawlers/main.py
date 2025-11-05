@@ -8,6 +8,7 @@ import shutil
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
+import hashlib
 
 # Add project root to sys.path to allow absolute imports
 ROOT_DIR = Path(__file__).resolve().parents[1]
