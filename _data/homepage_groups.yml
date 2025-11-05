@@ -5,6 +5,7 @@
     []
 
 - group_name: "博客开发指南"
+  file: "blog-development.md"
   group_image: "/img/cover-zaji.png"
   group_description: "记录个人博客搭建的过程"
   posts:
