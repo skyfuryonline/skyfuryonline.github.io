@@ -6,7 +6,6 @@ date: 2025-11-04 18:00:00
 author: "LH"
 tags: [Python, asyncio, Performance, LLM, API]
 group: blog-development
-header-img: "img/home-bg.png"
 ---
 
 ## 前言：当系统“能用”之后，我们追求“好用”
