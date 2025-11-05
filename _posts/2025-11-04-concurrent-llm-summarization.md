@@ -5,7 +5,8 @@ subtitle: "通过asyncio.gather，将LLM API调用效率提升N倍的实战记�
 date: 2025-11-04 18:00:00
 author: "LH"
 tags: [Python, asyncio, Performance, LLM, API]
-group: life
+group: blog-development
+header-img: "img/home-bg.png"
 ---
 
 ## 前言：当系统“能用”之后，我们追求“好用”
