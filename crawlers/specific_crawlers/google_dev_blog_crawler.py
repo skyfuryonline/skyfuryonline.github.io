@@ -13,65 +13,35 @@ from urllib.parse import urljoin
 from datetime import datetime
 import time
 
-class GoogleDevBlogCrawler:
+from crawlers.base_crawler import BaseCrawler
+
+class GoogleDevBlogCrawler(BaseCrawler):
     """
-    Crawler for the Google Developers Blog.
-    Uses Selenium to handle dynamically loaded content.
-    This class is self-contained and does not inherit from BaseCrawler
-    to match the successfully tested Colab script.
+    Crawler for the Google Developers Blog, using Selenium to handle dynamic content.
     """
-    def __init__(self, url, existing_urls=None, top_k=5):
-        self.url = url
-        self.existing_urls = existing_urls or set()
+    def __init__(self, url, cache_dir, existing_urls, driver, top_k=5):
+        super().__init__(url, cache_dir, existing_urls, driver)
         self.top_k = top_k
-        self.chrome_path = "/usr/bin/google-chrome-stable"
 
     async def crawl(self):
-        articles = []
-        print("\nInitializing WebDriver for GoogleDevBlogCrawler...")
-
-        if not os.path.exists(self.chrome_path):
-            print(f"Error: Chrome binary not found at {self.chrome_path}")
-            print("Please ensure Google Chrome is installed on the server.")
-            return []
-
-        options = webdriver.ChromeOptions()
-        options.binary_location = self.chrome_path
-        options.add_argument('--headless')
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-        options.add_argument('--disable-gpu')
-
-        driver = None
+        """Crawl the list page to get article links and titles."""
+        articles_metadata = []
+        print(f"Crawling list page with Selenium: {self.url}")
+        self.driver.get(self.url)
+        
         try:
-            driver = webdriver.Chrome(
-                service=ChromeService(ChromeDriverManager().install()),
-                options=options
-            )
-            print(f"WebDriver initialized. Getting URL: {self.url}")
-            driver.get(self.url)
-
             xpath = "//main[@id='jump-content']/article/section[contains(@class,'uni-latest-articles')]/uni-article-feed/ul"
-            print(f"Waiting for article list container with XPath: {xpath}")
-            WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located((By.XPATH, xpath))
-            )
-            print("Article container loaded.")
-            time.sleep(3)  # Wait for JS rendering
+            WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, xpath)))
+            time.sleep(3)
 
-            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             container = soup.select_one("uni-article-feed ul.article-list__feed")
-            if not container:
-                print("Error: Could not find article list container in the rendered HTML.")
-                return []
-
             items = container.find_all('li', class_='article-list__item')
-            print(f"Found {len(items)} articles in the feed.")
+            print(f"Found {len(items)} articles in feed.")
 
             count = 0
             for li in items:
-                if count >= self.top_k:
-                    break
+                if count >= self.top_k: break
                 
                 a_tag = li.find('a', class_='feed-article__overlay')
                 h3_tag = li.find('h3', class_='feed-article__title')
@@ -81,36 +51,38 @@ class GoogleDevBlogCrawler:
                     link = urljoin(self.url, a_tag['href'])
 
                     if link in self.existing_urls:
-                        print(f"Skipping existing article: {title}")
                         continue
                     
-                    # Navigate to the article page to get its content
-                    print(f"  -> Navigating to article page: {link}")
-                    driver.get(link)
-                    time.sleep(2) # Wait for page to settle
-                    article_soup = BeautifulSoup(driver.page_source, 'html.parser')
-                    
-                    content_body = article_soup.find('section', class_='article-formatted-body')
-                    if content_body:
-                        content = content_body.get_text(strip=True, separator='\n')
-                    else:
-                        content = "Error: Could not find article content body."
-                        print(f"  -> WARNING: Could not find content for: {title}")
+                    # Fetch full content using the overridden method
+                    content = self.fetch_article_content(link)
 
-                    articles.append({
-                        'title': title,
-                        'link': link,
-                        'date': datetime.now().strftime("%Y-%m-%d"),
-                        'content': content
-                    })
-                    print(f"Successfully processed new article: {title}")
-                    count += 1
-
+                    if content:
+                        articles_metadata.append({
+                            'title': title,
+                            'link': link,
+                            'date': datetime.now().strftime("%Y-%m-%d"),
+                            'content': content
+                        })
+                        print(f"Successfully processed: {title}")
+                        count += 1
         except Exception as e:
-            print(f"An error occurred during the crawl: {e}")
-        finally:
-            if driver:
-                driver.quit()
-                print("WebDriver closed.")
+            print(f"An error occurred during list page crawl: {e}")
+        
+        return articles_metadata
 
-        return articles
+    def fetch_article_content(self, url):
+        """Overrides BaseCrawler method to use Selenium for fetching article content."""
+        print(f"  -> Fetching content with Selenium: {url}")
+        try:
+            self.driver.get(url)
+            time.sleep(2)
+            article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
+            content_body = article_soup.find('section', class_='article-formatted-body')
+            if content_body:
+                return content_body.get_text(strip=True, separator='\n')
+            else:
+                print(f"  -> WARNING: Could not find content body for {url}")
+                return None
+        except Exception as e:
+            print(f"  -> An error occurred fetching content for {url}: {e}")
+            return None
