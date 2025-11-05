@@ -75,13 +75,13 @@ class GoogleDevBlogCrawler(BaseCrawler):
         print(f"  -> Fetching content with Selenium: {url}")
         try:
             self.driver.get(url)
-            time.sleep(2)
+            time.sleep(2) # Wait for page to settle, especially for any lazy-loaded images or scripts
             article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             content_body = article_soup.find('section', class_='article-formatted-body')
             if content_body:
                 return content_body.get_text(strip=True, separator='\n')
             else:
-                print(f"  -> WARNING: Could not find content body for {url}")
+                print(f"  -> WARNING: Could not find content body with class 'article-formatted-body' for {url}")
                 return None
         except Exception as e:
             print(f"  -> An error occurred fetching content for {url}: {e}")

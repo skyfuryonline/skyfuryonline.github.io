@@ -2,29 +2,29 @@
   "global_settings": {
     "days_to_keep": 15
   },
-      "sites": [
-          {
-              "parser": "CnblogsCrawler",
-              "url": "https://www.cnblogs.com/",
-              "top_k": 5,
-              "llm_profile": "default_summary",
-              "enabled": true
-          },
-          {
-              "parser": "HackernewsCrawler",
-              "url": "https://news.ycombinator.com/",
-              "top_k": 5,
-              "llm_profile": "default_summary",
-              "enabled": true
-          },
-          {
-              "parser": "GoogleDevBlogCrawler",
-              "url": "https://blog.google/technology/developers/",
-              "top_k": 3,
-              "llm_profile": "default_summary",
-              "enabled": true
-          }
-      ],  "llm_profiles": {
+          "sites": [
+              {
+                  "parser": "CnblogsCrawler",
+                  "url": "https://www.cnblogs.com/",
+                  "top_k": 5,
+                  "llm_profile": "default_summary",
+                  "enabled": false
+              },
+              {
+                  "parser": "HackernewsCrawler",
+                  "url": "https://news.ycombinator.com/",
+                  "top_k": 5,
+                  "llm_profile": "default_summary",
+                  "enabled": false
+              },
+              {
+                  "parser": "GoogleDevBlogCrawler",
+                  "url": "https://blog.google/technology/developers/",
+                  "top_k": 3,
+                  "llm_profile": "default_summary",
+                  "enabled": true
+              }
+          ],  "llm_profiles": {
     "default_summary": {
       "model": "qwen3-vl-8b-instruct",
       "prompt": "请将以下文章内容总结为一段300字以内的中文摘要，要求：1.提炼核心原理与关键观点，突出文章的中心思想与主要结论； 2.语言简洁明了，使人能快速理解要点； 3.若文章涉及技术、科研或理论内容，请在摘要后生成一个简短、直观的例子（不超过100字）帮助理解； 4.不要输出多余说明或格式，只输出“摘要+例子”。"
