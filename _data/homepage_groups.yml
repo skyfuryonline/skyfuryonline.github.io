@@ -4,7 +4,7 @@
   posts:
     []
 
-- group_name: "杂记"
+- group_name: "博客开发指南"
   group_image: "/img/cover-zaji.png"
   group_description: "记录个人博客搭建的过程"
   posts:

@@ -44,9 +44,6 @@ async def main():
     print(f"Found {len(existing_urls)} existing URLs from the last {days_to_keep} days.")
     print(f"Found {len(summarized_urls)} already summarized URLs.")
 
-    with open(config_path, 'r', encoding='utf-8') as f:
-        config = json.load(f)
-    
     llm_profiles = config.get("llm_profiles", {})
 
     all_articles_metadata = []
