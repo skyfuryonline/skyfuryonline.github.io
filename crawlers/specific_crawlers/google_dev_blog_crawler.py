@@ -9,11 +9,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-import hashlib
 from urllib.parse import urljoin
 from datetime import datetime
 import time
-import hashlib
 
 from crawlers.base_crawler import BaseCrawler
 
@@ -78,33 +76,12 @@ class GoogleDevBlogCrawler(BaseCrawler):
         try:
             self.driver.get(url)
             time.sleep(2) # Wait for page to settle, especially for any lazy-loaded images or scripts
-            # article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-            # content_body = article_soup.find('section', class_='article-formatted-body')
-            # if content_body:
-            #     return content_body.get_text(strip=True, separator='\n')
-            # else:
-            #     # Save the page source to a debug file for later analysis
-            #     debug_dir = self.cache_dir / "debug"
-            #     debug_dir.mkdir(parents=True, exist_ok=True)
-            #     article_hash = hashlib.md5(url.encode()).hexdigest()
-            #     debug_file_path = debug_dir / f"{article_hash}.html"
-            #     with open(debug_file_path, "w", encoding="utf-8") as f:
-            #         f.write(self.driver.page_source)
-            #     print(f"  -> WARNING: Could not find content body for {url}. Page source saved to {debug_file_path}")
-            #     return None
             article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             content_body = article_soup.find('main', {'id': 'jump-content'})
             if content_body:
                 return content_body.get_text(strip=True, separator='\n')
             else:
-                # Save the page source to a debug file for later analysis
-                debug_dir = self.cache_dir / "debug"
-                debug_dir.mkdir(parents=True, exist_ok=True)
-                article_hash = hashlib.md5(url.encode()).hexdigest()
-                debug_file_path = debug_dir / f"{article_hash}.html"
-                with open(debug_file_path, "w", encoding="utf-8") as f:
-                    f.write(self.driver.page_source)
-                print(f"  -> WARNING: Could not find content body for {url}. Page source saved to {debug_file_path}")
+                print(f"  -> WARNING: Could not find content body for {url}.")
                 return None
         except Exception as e:
             print(f"  -> An error occurred fetching content for {url}: {e}")
