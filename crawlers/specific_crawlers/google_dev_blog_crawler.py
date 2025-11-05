@@ -84,12 +84,24 @@ class GoogleDevBlogCrawler:
                         print(f"Skipping existing article: {title}")
                         continue
                     
-                    # Placeholder for full content fetching logic
+                    # Navigate to the article page to get its content
+                    print(f"  -> Navigating to article page: {link}")
+                    driver.get(link)
+                    time.sleep(2) # Wait for page to settle
+                    article_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                    
+                    content_body = article_soup.find('section', class_='article-formatted-body')
+                    if content_body:
+                        content = content_body.get_text(strip=True, separator='\n')
+                    else:
+                        content = "Error: Could not find article content body."
+                        print(f"  -> WARNING: Could not find content for: {title}")
+
                     articles.append({
                         'title': title,
                         'link': link,
                         'date': datetime.now().strftime("%Y-%m-%d"),
-                        'content': 'Placeholder content'
+                        'content': content
                     })
                     print(f"Successfully processed new article: {title}")
                     count += 1

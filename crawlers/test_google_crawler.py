@@ -32,7 +32,7 @@ async def run_test():
     if results:
         print(f"Successfully crawled {len(results)} articles:")
         for i, r in enumerate(results, 1):
-            print(f"{i}. {r['title']}\n   Link: {r['link']}")
+            print(f"{i}. {r['title']}\n   Link: {r['link']}\n   Content Snippet: {r['content'][:150]}...")
     else:
         print("No articles were crawled.")
 
