@@ -77,4 +77,11 @@ class GoogleResearchBlogCrawler(BaseCrawler):
             time.sleep(2) # Wait for page to settle, especially for any lazy-loaded images or scripts
             article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             content_body = article_soup.find('main', {'id': 'jump-content'})
-            if content_body
+            if content_body:
+                return content_body.get_text(strip=True, separator='\n')
+            else:
+                print(f"  -> WARNING: Could not find content body for {url}.")
+                return None
+        except Exception as e:
+            print(f"  -> An error occurred fetching content for {url}: {e}")
+            return None
