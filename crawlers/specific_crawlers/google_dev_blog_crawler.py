@@ -13,6 +13,7 @@ import hashlib
 from urllib.parse import urljoin
 from datetime import datetime
 import time
+import hashlib
 
 from crawlers.base_crawler import BaseCrawler
 
