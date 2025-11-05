@@ -23,6 +23,20 @@
                   "top_k": 3,
                   "llm_profile": "default_summary",
                   "enabled": true
+              },
+              {
+                  "parser": "GoogleResearchBlogCrawler",
+                  "url": "https://blog.google/technology/research/",
+                  "top_k": 3,
+                  "llm_profile": "default_summary",
+                  "enabled": true
+              },
+              {
+                  "parser": "GoogleDeepMindBlogCrawler",
+                  "url": "https://blog.google/technology/google-deepmind/",
+                  "top_k": 3,
+                  "llm_profile": "default_summary",
+                  "enabled": true
               }
           ],  "llm_profiles": {
     "default_summary": {
