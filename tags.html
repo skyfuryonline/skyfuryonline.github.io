@@ -13,14 +13,47 @@ header-img: "img/tag-bg.png"
     top: 80px;
 }
 
-/* Add a subtle breathing animation to the canvas */
-@keyframes breathe {
-    0% { transform: scale(0.98); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(0.98); }
+#wordcloud-container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-#bubble-chart {
+#wordcloud-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(120, 180, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 150, 150, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+#wordcloud {
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+/* Add a subtle breathing animation to the container */
+@keyframes breathe {
+    0% { transform: scale(0.98); opacity: 0.95; }
+    50% { transform: scale(1.00); opacity: 1; }
+    100% { transform: scale(0.98); opacity: 0.95; }
+}
+
+#wordcloud-container {
     animation: breathe 8s ease-in-out infinite;
 }
 </style>
@@ -76,94 +109,56 @@ header-img: "img/tag-bg.png"
 			{% endfor %}
 		</div>
 
-        <!-- Bubble Chart Sidebar (Right Column) -->
+        <!-- Word Cloud Sidebar (Right Column) -->
         <div class="col-lg-4 col-md-4 sidebar-container">
-            <canvas id="bubble-chart"></canvas>
+            <div id="wordcloud-container">
+                <canvas id="wordcloud"></canvas>
+            </div>
         </div>
 	</div>
 </div>
 
-<!-- Scripts for Chart.js and Datalabels Plugin -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<!-- Scripts for WordCloud2 -->
+<script src="https://cdn.jsdelivr.net/npm/wordcloud2.js@1.2.2/src/wordcloud2.min.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Prepare Data
-    const colorPalette = ['rgba(231, 76, 60, 0.7)', 'rgba(52, 152, 219, 0.7)', 'rgba(155, 89, 182, 0.7)', 'rgba(26, 188, 156, 0.7)', 'rgba(241, 196, 15, 0.7)', 'rgba(46, 204, 113, 0.7)', 'rgba(211, 84, 0, 0.7)'];
-    const datasets = [];
-    let colorIndex = 0;
-
+    // Prepare data for word cloud
+    const tagsData = [];
     {% for tag in site.tags %}
         {% if tag[1].size >= site.tag_cloud_threshold %}
-            datasets.push({
-                label: "{{ tag[0] }}",
-                data: [{
-                    x: Math.random() * 10,
-                    y: Math.random() * 10,
-                    r: {{ tag[1].size }} * 5 + 8 // Radius based on post count, with a larger base
-                }],
-                backgroundColor: colorPalette[colorIndex % colorPalette.length]
-            });
-            colorIndex++;
+            tagsData.push(['{{ tag[0] }}', {{ tag[1].size }}]);
         {% endif %}
     {% endfor %}
-
-    // 2. Register Plugin
-    Chart.register(ChartDataLabels);
-
-    // 3. Chart Configuration
-    const config = {
-        type: 'bubble',
-        data: {
-            datasets: datasets
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            aspectRatio: 1,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    enabled: false // Disable default tooltip, as info is now inside the bubble
-                },
-                datalabels: {
-                    color: '#fff',
-                    anchor: 'end',
-                    align: 'center',
-                    font: function(context) {
-                        const radius = context.dataset.data[0].r;
-                        const size = Math.round(radius / 2.5);
-                        return {
-                            size: size,
-                            weight: 'bold'
-                        };
-                    },
-                    formatter: function(value, context) {
-                        return context.dataset.label;
-                    }
-                }
+    
+    // Initialize word cloud if there's data
+    if (tagsData.length > 0) {
+        WordCloud(document.getElementById('wordcloud'), {
+            list: tagsData,
+            gridSize: 12,
+            weightFactor: 8,
+            fontFamily: 'Arial, sans-serif',
+            color: function (word, weight) {
+                // Use a gradient of colors based on frequency
+                const colors = [
+                    '#3498db', '#2ecc71', '#e74c3c', '#9b59b6', 
+                    '#f1c40f', '#1abc9c', '#d35400', '#34495e'
+                ];
+                return colors[Math.floor(Math.random() * colors.length)];
             },
-            scales: {
-                x: { display: false },
-                y: { display: false }
-            },
-            events: [], // Disable all click/hover events
-            animation: {
-                duration: 2000, // Longer initial animation
-                onProgress: function(animation) {
-                    // This is a placeholder for potential future floating animations
-                }
+            backgroundColor: 'transparent',
+            rotateRatio: 0.5,
+            rotationSteps: 2,
+            drawOutOfBound: false,
+            shrinkToFit: true,
+            minSize: 12,
+            wait: 100,
+            hover: function(item, dimension, event) {
+                // Optional hover effect
             }
-        }
-    };
-
-    // 4. Render Chart
-    const ctx = document.getElementById('bubble-chart');
-    if (ctx) {
-        new Chart(ctx, config);
+        });
+    } else {
+        document.getElementById('wordcloud').innerHTML = '<div class="text-center">No tags to display</div>';
     }
 });
 </script>
