@@ -1,18 +1,8 @@
 # crawlers/specific_crawlers/google_deepmind_blog_crawler.py
 
 import os
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
-from datetime import datetime
-import time
-
-from crawlers.base_crawler import BaseCrawler
+import random
+import subprocess
 
 class GoogleDeepmindBlogCrawler(BaseCrawler):
     """
@@ -54,15 +44,19 @@ class GoogleDeepmindBlogCrawler(BaseCrawler):
                     if link in self.existing_urls:
                         continue
                     
-                    # 使用 Selenium 抓取正文
-                    content = self.fetch_article_content(link)
+                    # Random delay to avoid rate limiting
+                    time.sleep(random.uniform(1, 3))
+                    
+                    # Fetch full content and image URLs
+                    content, image_urls = self.fetch_article_content(link)
 
                     if content:
                         articles_metadata.append({
                             'title': title,
                             'link': link,
                             'date': datetime.now().strftime("%Y-%m-%d"),
-                            'content': content
+                            'content': content,
+                            'image_urls': image_urls # Return URLs, not downloaded files
                         })
                         print(f"Successfully processed: {title}")
                         count += 1
@@ -72,7 +66,7 @@ class GoogleDeepmindBlogCrawler(BaseCrawler):
         return articles_metadata
 
     def fetch_article_content(self, url):
-        """Use Selenium to fetch full article text."""
+        """Use Selenium to fetch full article text and images."""
         print(f"  -> Fetching content with Selenium: {url}")
         try:
             self.driver.get(url)
@@ -81,10 +75,12 @@ class GoogleDeepmindBlogCrawler(BaseCrawler):
             article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             content_body = article_soup.find('main', {'id': 'jump-content'})
             if content_body:
-                return content_body.get_text(strip=True, separator='\n')
+                content = content_body.get_text(strip=True, separator='\n')
+                images = [urljoin(url, img.get('src')) for img in content_body.find_all('img') if img.get('src')]
+                return content, images
             else:
                 print(f"  -> WARNING: Could not find content body for {url}.")
-                return None
+                return None, []
         except Exception as e:
             print(f"  -> An error occurred fetching content for {url}: {e}")
-            return None
+            return None, []

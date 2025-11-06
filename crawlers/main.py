@@ -8,7 +8,8 @@ import shutil
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
-import hashlib
+import aiohttp
+from urllib.parse import urlparse
 
 # Add project root to sys.path to allow absolute imports
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -25,11 +26,33 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-# ... (imports remain the same) ...
-
 def sanitize_filename(filename):
     """Remove characters that are illegal in Windows/Linux filenames."""
     return re.sub(r'[\\/*?"<>|:]', '-', filename)
+
+async def download_images(session, image_urls, article_cache_dir):
+    """Asynchronously downloads images from a list of URLs."""
+    image_filenames = []
+    for i, img_url in enumerate(image_urls):
+        try:
+            # Infer file extension from URL
+            path = urlparse(img_url).path
+            ext = os.path.splitext(path)[1]
+            if not ext or len(ext) > 5: # Basic check for valid extension
+                ext = '.jpg' # Fallback extension
+
+            img_filename = f"image_{i+1}{ext}"
+            img_path = article_cache_dir / img_filename
+            
+            async with session.get(img_url) as response:
+                response.raise_for_status()
+                with open(img_path, "wb") as img_file:
+                    img_file.write(await response.read())
+                image_filenames.append(img_filename)
+                print(f"  - Successfully downloaded image: {img_filename}")
+        except Exception as e:
+            print(f"  - Failed to download image {img_url}: {e}")
+    return image_filenames
 
 async def main():
     print("Starting crawler orchestration...")
@@ -70,74 +93,75 @@ async def main():
         llm_profiles = config.get("llm_profiles", {})
         all_articles_metadata = []
 
-        for site in config["sites"]:
-            if not site.get('enabled', True):
-                print(f"--- Skipping disabled crawler: {site['parser']} ---")
-                continue
+        async with aiohttp.ClientSession() as session: # Create session once
+            for site in config["sites"]:
+                if not site.get('enabled', True):
+                    print(f"--- Skipping disabled crawler: {site['parser']} ---")
+                    continue
 
-            print(f"--- Running crawler for: {site['parser']} ---")
-            try:
-                class_name = site['parser']
-                module_name = f"crawlers.specific_crawlers.{camel_to_snake(class_name)}"
-                module = importlib.import_module(module_name)
-                CrawlerClass = getattr(module, class_name)
-                
-                # Pass the shared driver to every crawler instance
-                crawler_instance = CrawlerClass(
-                    url=site["url"], 
-                    cache_dir=todays_cache_dir,
-                    existing_urls=existing_urls, 
-                    driver=driver, # Pass the driver
-                    top_k=site.get('top_k', 5)
-                )
-                
-                # The crawl method now returns metadata with full content
-                articles_with_content = await crawler_instance.crawl()
-
-                # Save content to cache and prepare for summarization
-                articles_for_summary = []
-                for article in articles_with_content:
-                    safe_title = sanitize_filename(article['title'])
-                    article_cache_dir = todays_cache_dir / safe_title
-                    os.makedirs(article_cache_dir, exist_ok=True)
-                    with open(article_cache_dir / "content.txt", "w", encoding="utf-8") as f:
-                        f.write(article['content'])
+                print(f"--- Running crawler for: {site['parser']} ---")
+                try:
+                    class_name = site['parser']
+                    module_name = f"crawlers.specific_crawlers.{camel_to_snake(class_name)}"
+                    module = importlib.import_module(module_name)
+                    CrawlerClass = getattr(module, class_name)
                     
-                    article_meta = {
-                        'title': article['title'],
-                        'link': article['link'],
-                        'date': article['date'],
-                        'source': site['parser'], # Add the source field
-                        'cache_path': str(article_cache_dir),
-                        'image_files': [] # Image handling can be added later
-                    }
-                    all_articles_metadata.append(article_meta)
+                    crawler_instance = CrawlerClass(
+                        url=site["url"], 
+                        cache_dir=todays_cache_dir,
+                        existing_urls=existing_urls, 
+                        driver=driver,
+                        top_k=site.get('top_k', 5)
+                    )
+                    
+                    articles_with_content = await crawler_instance.crawl()
 
-                    # Check if it needs summarization
-                    if article['link'] not in summarized_urls:
-                        articles_for_summary.append(article_meta)
+                    articles_for_summary = []
+                    for article in articles_with_content:
+                        safe_title = sanitize_filename(article['title'])
+                        article_cache_dir = todays_cache_dir / safe_title
+                        os.makedirs(article_cache_dir, exist_ok=True)
+                        
+                        with open(article_cache_dir / "content.txt", "w", encoding="utf-8") as f:
+                            f.write(article['content'])
+                        
+                        # Download images and get their filenames
+                        image_filenames = await download_images(session, article.get('image_urls', []), article_cache_dir)
+                        
+                        article_meta = {
+                            'title': article['title'],
+                            'link': article['link'],
+                            'date': article['date'],
+                            'source': site['parser'],
+                            'cache_path': str(article_cache_dir),
+                            'image_files': image_filenames
+                        }
+                        all_articles_metadata.append(article_meta)
 
-                # --- LLM Integration (Summarization) --- #
-                llm_profile_name = site.get("llm_profile")
-                if llm_profile_name and llm_profile_name in llm_profiles and articles_for_summary:
-                    profile = llm_profiles[llm_profile_name]
-                    print(f"Summarizing {len(articles_for_summary)} new articles using LLM profile: '{llm_profile_name}'")
+                        if article['link'] not in summarized_urls:
+                            articles_for_summary.append(article_meta)
 
-                    tasks = []
-                    for article_meta in articles_for_summary:
-                        with open(os.path.join(article_meta['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
-                            content_to_summarize = content_file.read()
-                        task = get_summary(content_to_summarize, profile['model'], profile['prompt'])
-                        tasks.append(task)
+                    # --- LLM Integration (Summarization) --- #
+                    llm_profile_name = site.get("llm_profile")
+                    if llm_profile_name and llm_profile_name in llm_profiles and articles_for_summary:
+                        profile = llm_profiles[llm_profile_name]
+                        print(f"Summarizing {len(articles_for_summary)} new articles using LLM profile: '{llm_profile_name}'")
 
-                    summaries = await asyncio.gather(*tasks)
+                        tasks = []
+                        for article_meta in articles_for_summary:
+                            with open(os.path.join(article_meta['cache_path'], 'content.txt'), 'r', encoding='utf-8') as content_file:
+                                content_to_summarize = content_file.read()
+                            task = get_summary(content_to_summarize, profile['model'], profile['prompt'])
+                            tasks.append(task)
 
-                    for i, summary_result in enumerate(summaries):
-                        articles_for_summary[i]['summary'] = summary_result
-                        print(f"  - Summarized: {articles_for_summary[i]['title']}")
+                        summaries = await asyncio.gather(*tasks)
 
-            except Exception as e:
-                print(f"Error running crawler for {site['parser']}: {e}")
+                        for i, summary_result in enumerate(summaries):
+                            articles_for_summary[i]['summary'] = summary_result
+                            print(f"  - Summarized: {articles_for_summary[i]['title']}")
+
+                except Exception as e:
+                    print(f"Error running crawler for {site['parser']}: {e}")
 
         if all_articles_metadata:
             with open(todays_data_file, 'w', encoding='utf-8') as f:
@@ -152,8 +176,6 @@ async def main():
         if driver:
             driver.quit()
             print("Shared Selenium WebDriver closed.")
-
-# ... (load_existing_urls and cleanup_old_data functions remain the same) ...
 
 def load_existing_urls(data_dir, days_to_keep):
     existing_urls = set()
@@ -171,7 +193,6 @@ def load_existing_urls(data_dir, days_to_keep):
                         data = json.load(f)
                         for article in data:
                             existing_urls.add(article['link'])
-                            # Check if summary exists and is not empty
                             if article.get('summary') and article['summary'].strip():
                                 summarized_urls.add(article['link'])
             except (ValueError, json.JSONDecodeError):

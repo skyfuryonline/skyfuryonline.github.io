@@ -1,6 +1,7 @@
 # crawlers/specific_crawlers/google_dev_blog_crawler.py
 
 import os
+import random
 import subprocess
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -9,7 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 from datetime import datetime
 import time
 
@@ -53,15 +54,19 @@ class GoogleDevBlogCrawler(BaseCrawler):
                     if link in self.existing_urls:
                         continue
                     
-                    # Fetch full content using the overridden method
-                    content = self.fetch_article_content(link)
+                    # Random delay to avoid rate limiting
+                    time.sleep(random.uniform(1, 3))
+                    
+                    # Fetch full content and image URLs
+                    content, image_urls = self.fetch_article_content(link)
 
                     if content:
                         articles_metadata.append({
                             'title': title,
                             'link': link,
                             'date': datetime.now().strftime("%Y-%m-%d"),
-                            'content': content
+                            'content': content,
+                            'image_urls': image_urls # Return URLs, not downloaded files
                         })
                         print(f"Successfully processed: {title}")
                         count += 1
@@ -79,10 +84,12 @@ class GoogleDevBlogCrawler(BaseCrawler):
             article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             content_body = article_soup.find('main', {'id': 'jump-content'})
             if content_body:
-                return content_body.get_text(strip=True, separator='\n')
+                content = content_body.get_text(strip=True, separator='\n')
+                images = [urljoin(url, img.get('src')) for img in content_body.find_all('img') if img.get('src')]
+                return content, images
             else:
                 print(f"  -> WARNING: Could not find content body for {url}.")
-                return None
+                return None, []
         except Exception as e:
             print(f"  -> An error occurred fetching content for {url}: {e}")
-            return None
+            return None, []
