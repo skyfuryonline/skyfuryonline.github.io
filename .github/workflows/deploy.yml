@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-  # schedule:
-  #   - cron: '0 22 * * *' # Runs at 06:00 CST every day
+  schedule:
+    - cron: '0 22 * * *' # Runs at 06:00 CST every day
   workflow_dispatch: # Allows manual triggering
 
 permissions:
@@ -53,7 +53,7 @@ jobs:
         run: playwright install
 
       - name: Run crawler 🕷️
-        if: github.ref == 'refs/heads/master' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         working-directory: ./main
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
@@ -61,7 +61,7 @@ jobs:
         run: python crawlers/main.py
 
       - name: Commit and push data to data branch 💾
-        if: github.ref == 'refs/heads/master' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           # First, copy the generated content from the main workspace to the data checkout
           # The `.` at the end of the source paths is important
