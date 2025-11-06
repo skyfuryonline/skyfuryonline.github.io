@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "TAGS"
+nav-order: 3
 description: "Keep hungry, keep foolish"
 header-img: "img/tag-bg.png"
 ---
@@ -84,7 +85,18 @@ $(document).ready(function() {
                 shuffleTags: true,
                 wheelZoom: false, // Disable zoom on scroll
                 noSelect: true,
-                clickToFront: 500
+                clickToFront: 500,
+                // Add smooth scroll on click
+                "onClick": function(e) {
+                    e.preventDefault();
+                    var targetId = $(this).attr('href');
+                    var targetElement = $(targetId);
+                    if(targetElement.length) {
+                        $('html, body').animate({ 
+                            scrollTop: targetElement.offset().top - 70 // Adjust offset for fixed navbar
+                        }, 800);
+                    }
+                }
             });
         } catch(e) {
             // Fallback for browsers that don't support canvas
