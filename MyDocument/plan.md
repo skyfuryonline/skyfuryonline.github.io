@@ -65,15 +65,15 @@
 此方案确保 `daily` 页面的侧边栏能持续展示来自“慢更新”源的最新文章，无论其更新频率如何。
 
 **实现细节：**
-1.  **修改 `crawlers/config.json`**:
+1.  **修改 `crawlers/config.json`**: 
     *   为需要特殊处理的“慢更新”爬虫（例如 `AIBrewsSubstackCrawler`）添加一个标记，例如 `"is_sidebar_feature": true`。
 
-2.  **修改 `crawlers/main.py`**:
+2.  **修改 `crawlers/main.py`**: 
     *   在主循环中，当处理完一个 `is_sidebar_feature: true` 的爬虫后，找到 `articles_with_content` 中日期最新的那篇文章。
     *   将该最新文章的元数据（或其精简版本）保存到一个独立的 JSON 文件中，例如 `_data/latest_{parser_name_snake_case}.json`。
     *   这个 `latest_*.json` 文件每次运行时都会被覆盖，确保它始终包含该源的最新文章。
 
-3.  **修改 `daily.html`**:
+3.  **修改 `daily.html`**: 
     *   在 `daily` 页面的侧边栏部分，添加 Liquid 逻辑。
     *   遍历 `_data` 目录下的所有 `latest_*.json` 文件。
     *   为每个文件中的文章，渲染一个精美的卡片，作为“精选”或“每周亮点”模块进行展示。
@@ -82,3 +82,23 @@
 *   **内容持续性**: 侧边栏始终有内容展示，即使“慢更新”源当天没有新文章。
 *   **信息分层**: 将高频更新和低频但重要的内容进行区分展示。
 *   **灵活配置**: 通过 `config.json` 轻松控制哪些源需要这种特殊处理。
+
+---
+
+### **第四部分：处理 `favicon.ico` 的 404 错误**
+
+**问题：** 浏览器在访问网站时，会自动尝试请求网站根目录下的 `favicon.ico` 文件，如果该文件不存在或路径不正确，会导致控制台出现 `404 Not Found` 错误。
+
+**解决方案：**
+
+`favicon.ico` 是“网站图标”或“收藏夹图标”，它显示在浏览器标签页、书签和历史记录中，帮助用户识别网站。虽然 404 错误不影响网站功能，但会使控制台显得不“干净”。
+
+您可以选择以下两种方式来处理：
+
+1.  **创建并放置一个 `favicon.ico` 文件 (推荐)**:
+    *   设计一个代表您博客的图标（通常是 16x16, 32x32, 48x48 像素）。
+    *   使用在线工具（例如 `favicon.io`）将您的图片转换为 `.ico` 格式。
+    *   将生成的 `favicon.ico` 文件放置在您博客的**根目录**下（即 `D:\self-built-web-proj\skyfuryonline.github.io\`）。
+    *   **或者**，如果您想放在 `img/` 目录下，您需要在 `_includes/head.html` 文件中，明确地通过 `<link rel="icon" href="{{ site.baseurl }}/img/favicon.ico">` 来指定它的路径。
+
+2.  **忽略它**: 如果您觉得这个小图标不重要，也可以选择忽略这个 404 错误。它不会对您网站的性能或功能造成任何负面影响。
