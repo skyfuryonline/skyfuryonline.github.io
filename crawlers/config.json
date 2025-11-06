@@ -6,21 +6,21 @@
     {
       "parser": "GoogleDevBlogCrawler",
       "url": "https://blog.google/technology/developers/",
-      "top_k": 3,
+      "top_k": 2,
       "llm_profile": "default_summary",
       "enabled": true
     },
     {
       "parser": "GoogleResearchBlogCrawler",
       "url": "https://blog.google/technology/research/",
-      "top_k": 3,
+      "top_k": 2,
       "llm_profile": "default_summary",
       "enabled": true
     },
     {
       "parser": "GoogleDeepmindBlogCrawler",
       "url": "https://blog.google/technology/google-deepmind/",
-      "top_k": 3,
+      "top_k": 2,
       "llm_profile": "default_summary",
       "enabled": true
     }
