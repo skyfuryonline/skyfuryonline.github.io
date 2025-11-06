@@ -1,4 +1,4 @@
-# 基于 Jekyll和GitHub Action个人博客搭建
+# 基于 Jekyll、GitHub Action、LLMs的个人博客搭建
 
 本项目是一个基于 Jekyll 的博客，其核心特色是集成了一套复杂的、自动化的内容聚合系统。该系统利用由 GitHub Actions 编排的 Python 爬虫，来自动抓取、总结并展示来自多个高质量技术博客的内容。
 ![页面展示](img/screenshot.png)
