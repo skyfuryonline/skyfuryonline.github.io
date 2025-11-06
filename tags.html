@@ -126,9 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Prepare data for word cloud
     const tagsData = [];
     {% for tag in site.tags %}
-        {% if tag[1].size >= site.tag_cloud_threshold %}
-            tagsData.push(['{{ tag[0] }}', {{ tag[1].size }}]);
-        {% endif %}
+        tagsData.push(['{{ tag[0] }}', {{ tag[1].size }}]);
     {% endfor %}
     
     // Debug: Log the tags data to console
@@ -141,13 +139,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('wordcloud-container');
         
         // Set canvas dimensions explicitly
-        canvas.width = container.clientWidth;
-        canvas.height = container.clientHeight;
+        canvas.width = container.clientWidth - 40; // Adjust for padding
+        canvas.height = container.clientHeight - 40; // Adjust for padding
         
         WordCloud(canvas, {
             list: tagsData,
             gridSize: 12,
-            weightFactor: 8,
+            weightFactor: function(size) {
+                return Math.pow(size, 1.2) * 8 / Math.max(...tagsData.map(t => t[1])); // Dynamic scaling
+            },
             fontFamily: 'Arial, sans-serif',
             color: function (word, weight) {
                 // Use a gradient of colors based on frequency
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     } else {
-        document.getElementById('wordcloud').innerHTML = '<div class="text-center">No tags to display</div>';
+        document.getElementById('wordcloud-container').innerHTML = '<div class="text-center" style="width:100%; font-size:18px; color:#666;">No tags to display</div>';
     }
 });
 </script>
