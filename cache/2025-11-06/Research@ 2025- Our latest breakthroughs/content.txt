@@ -1,0 +1,35 @@
+Breadcrumb
+Technology
+Research
+Collection
+Share
+Twitter
+Facebook
+LinkedIn
+Mail
+Copy link
+Research@ 2025: Our latest breakthroughs
+Oct 23, 2025 · 7 articles
+23 Oct, 2025
+articles 7
+Oct 23, 2025
+        7 articles
+23 Oct, 2025
+articles 7
+Google Research’s mission is to drive foundational breakthroughs that advance the frontier of science and technology to benefit people and society. At our Research@ event in Mountain View, we shared our latest progress, guided by the "magic cycle" — where real-world challenges drive foundational research and scientific breakthroughs.
+To fuel the next wave of the “magic cycle,” we’re also investing deeply in a world beyond the limitations of classical supercomputers: quantum computing. Quantum computing is key to solving problems that are utterly impossible today, pointing towards new discoveries in areas like drug design and clean energy.
+We’re excited by the breakthroughs we’re seeing, and we’re just getting started. Take a look at what we shared as we bring research to reality.
+Google Research: accelerating scientific breakthroughs
+Vice President & Head of Google Research, Yossi Matias, shares an overview of big research projects currently underway.
+Our Quantum Echoes algorithm
+Our Willow quantum processor demonstrates the first-ever algorithm to achieve verifiable quantum advantage on hardware.
+New updates and more access to Google Earth AI
+Earth AI is helping enterprises and cities with everything from environmental monitoring to disaster response.
+10 years of genomics research at Google
+An overview of ten years of milestones and breakthroughs in Google’s work on genomics.
+DeepSomatic, an open-source AI model, is speeding up genetic analysis
+An overview of DeepSomatic, a new AI tool that helps identify complex genetic variants in cancer cells.
+Our quantum hardware: the engine for verifiable quantum advantage
+Michel Devorat and Yu Chen provide an overview of the quantum hardware that made the Quantum Echoes breakthrough possible.
+Meet the 2025 Google PhD Fellows
+Our program supports exceptional graduate students working on innovative research in computer science and related fields.
