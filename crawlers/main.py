@@ -27,6 +27,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # ... (imports remain the same) ...
 
+def sanitize_filename(filename):
+    """Remove characters that are illegal in Windows/Linux filenames."""
+    return re.sub(r'[\\/*?"<>|:]', '-', filename)
+
 async def main():
     print("Starting crawler orchestration...")
 
@@ -93,8 +97,8 @@ async def main():
                 # Save content to cache and prepare for summarization
                 articles_for_summary = []
                 for article in articles_with_content:
-                    article_hash = hashlib.md5(article['link'].encode()).hexdigest()
-                    article_cache_dir = todays_cache_dir / article_hash
+                    safe_title = sanitize_filename(article['title'])
+                    article_cache_dir = todays_cache_dir / safe_title
                     os.makedirs(article_cache_dir, exist_ok=True)
                     with open(article_cache_dir / "content.txt", "w", encoding="utf-8") as f:
                         f.write(article['content'])
