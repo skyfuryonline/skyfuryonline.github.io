@@ -12,6 +12,17 @@ header-img: "img/tag-bg.png"
     position: sticky;
     top: 80px;
 }
+
+/* Add a subtle breathing animation to the canvas */
+@keyframes breathe {
+    0% { transform: scale(0.98); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(0.98); }
+}
+
+#bubble-chart {
+    animation: breathe 8s ease-in-out infinite;
+}
 </style>
 
 <!-- Page Header -->
@@ -72,8 +83,10 @@ header-img: "img/tag-bg.png"
 	</div>
 </div>
 
-<!-- Scripts for Chart.js -->
+<!-- Scripts for Chart.js and Datalabels Plugin -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Prepare Data
@@ -82,13 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let colorIndex = 0;
 
     {% for tag in site.tags %}
-        {% if tag[1].size >= 2 %}
+        {% if tag[1].size >= site.tag_cloud_threshold %}
             datasets.push({
                 label: "{{ tag[0] }}",
                 data: [{
-                    x: Math.random() * 10, // Random position for visual appeal
+                    x: Math.random() * 10,
                     y: Math.random() * 10,
-                    r: {{ tag[1].size }} * 5 + 5 // Radius based on post count
+                    r: {{ tag[1].size }} * 5 + 8 // Radius based on post count, with a larger base
                 }],
                 backgroundColor: colorPalette[colorIndex % colorPalette.length]
             });
@@ -96,7 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
         {% endif %}
     {% endfor %}
 
-    // 2. Chart Configuration
+    // 2. Register Plugin
+    Chart.register(ChartDataLabels);
+
+    // 3. Chart Configuration
     const config = {
         type: 'bubble',
         data: {
@@ -108,36 +124,43 @@ document.addEventListener('DOMContentLoaded', function() {
             aspectRatio: 1,
             plugins: {
                 legend: {
-                    display: false // Hide the legend
+                    display: false
                 },
                 tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            // Calculate post count from radius
-                            const postCount = (context.raw.r - 5) / 5;
-                            label += postCount + ' posts';
-                            return label;
-                        }
+                    enabled: false // Disable default tooltip, as info is now inside the bubble
+                },
+                datalabels: {
+                    color: '#fff',
+                    anchor: 'end',
+                    align: 'center',
+                    font: function(context) {
+                        const radius = context.dataset.data[0].r;
+                        const size = Math.round(radius / 2.5);
+                        return {
+                            size: size,
+                            weight: 'bold'
+                        };
+                    },
+                    formatter: function(value, context) {
+                        return context.dataset.label;
                     }
                 }
             },
             scales: {
-                x: {
-                    display: false // Hide X axis
-                },
-                y: {
-                    display: false // Hide Y axis
-                }
+                x: { display: false },
+                y: { display: false }
             },
-            events: [] // Disable all events, making it purely decorative
+            events: [], // Disable all click/hover events
+            animation: {
+                duration: 2000, // Longer initial animation
+                onProgress: function(animation) {
+                    // This is a placeholder for potential future floating animations
+                }
+            }
         }
     };
 
-    // 3. Render Chart
+    // 4. Render Chart
     const ctx = document.getElementById('bubble-chart');
     if (ctx) {
         new Chart(ctx, config);
