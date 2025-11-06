@@ -89,6 +89,21 @@ Includes Veo 2 and Veo 3 generations
 ‘Scene extension’ is coming soon to the Vertex AI API
 Collapse
 Related stories
+Google Labs
+Create flashcards and quizzes in the NotebookLM app.
+Nov 06, 2025
+Search
+Google Finance adds AI features for research, earnings and more
+By
+Robert Dunnette
+Nov 06, 2025
+Learning & Education
+AI and learning: A new chapter for students and educators
+By
+Ben Gomes
+&
+Lila Ibrahim
+Nov 06, 2025
 Developers
 Improving Structured Outputs in the Gemini API
 By
@@ -104,21 +119,6 @@ The latest AI news we announced in October
 By
 Keyword Team
 Nov 04, 2025
-Google Labs
-Mixboard is now available in over 180 more countries.
-Oct 30, 2025
-Developers
-New tools in Google AI Studio to explore, debug and share logs
-By
-Seth Odoom
-&
-Sara Wiltberger
-Oct 30, 2025
-Google Labs
-Chat in NotebookLM: A powerful, goal-focused AI research partner
-By
-Anuja Agrawal
-Oct 29, 2025
 .
 Jump to position 1
 Jump to position 2
