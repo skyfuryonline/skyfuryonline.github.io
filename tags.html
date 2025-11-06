@@ -112,14 +112,14 @@ header-img: "img/tag-bg.png"
         <!-- Word Cloud Sidebar (Right Column) -->
         <div class="col-lg-4 col-md-4 sidebar-container">
             <div id="wordcloud-container">
-                <canvas id="wordcloud"></canvas>
+                <canvas id="wordcloud" width="500" height="500"></canvas>
             </div>
         </div>
 	</div>
 </div>
 
 <!-- Scripts for WordCloud2 -->
-<script src="https://cdn.jsdelivr.net/npm/wordcloud2.js@1.2.2/src/wordcloud2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud2@1.2.2/wordcloud2.min.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -131,9 +131,20 @@ document.addEventListener('DOMContentLoaded', function() {
         {% endif %}
     {% endfor %}
     
+    // Debug: Log the tags data to console
+    console.log('Tags data for word cloud:', tagsData);
+    
     // Initialize word cloud if there's data
     if (tagsData.length > 0) {
-        WordCloud(document.getElementById('wordcloud'), {
+        // Ensure the canvas has proper dimensions
+        const canvas = document.getElementById('wordcloud');
+        const container = document.getElementById('wordcloud-container');
+        
+        // Set canvas dimensions explicitly
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+        
+        WordCloud(canvas, {
             list: tagsData,
             gridSize: 12,
             weightFactor: 8,
