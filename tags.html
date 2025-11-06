@@ -65,28 +65,6 @@ header-img: "img/tag-bg.png"
 <script src="https://www.goat1000.com/tagcanvas.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to handle the click and scroll
-    function tagClickHandler(event) {
-        event.preventDefault(); // Stop the default anchor jump
-        var href = this.getAttribute('href');
-        var targetId = href.substring(1); // Remove the '#'
-        var targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-
-    // Add click listeners to the hidden list for TagCanvas to use
-    var tagLinks = document.querySelectorAll('#tag-list ul li a');
-    tagLinks.forEach(function(link) {
-        link.addEventListener('click', tagClickHandler);
-    });
-
-    // Start TagCanvas
     try {
         TagCanvas.Start('tag-canvas', 'tag-list', {
             textColour: '#337ab7',
