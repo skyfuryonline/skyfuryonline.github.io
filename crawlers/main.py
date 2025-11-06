@@ -138,6 +138,9 @@ async def main():
                         }
                         all_articles_metadata.append(article_meta)
 
+                        # Add the URL to the set for the next crawler in this run
+                        existing_urls.add(article['link'])
+
                         if article['link'] not in summarized_urls:
                             articles_for_summary.append(article_meta)
 
