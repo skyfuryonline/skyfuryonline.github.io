@@ -119,55 +119,59 @@ header-img: "img/tag-bg.png"
 </div>
 
 <!-- Scripts for WordCloud2 -->
- <script src="https://cdn.jsdelivr.net/npm/wordcloud2.js@1.2.2/dist/wordcloud2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud2.js@1.2.2/dist/wordcloud2.min.js" onerror="console.error('CDN 加载失败');"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Prepare data for word cloud
     const tagsData = [];
     {% for tag in site.tags %}
-        tagsData.push(['{{ tag[0] }}', {{ tag[1].size }}]);  // 移除 if 阈值检查，包含所有标签
+        tagsData.push(['{{ tag[0] }}', {{ tag[1].size }}]);
     {% endfor %}
     
-    // Debug: Log the tags data to console
     console.log('Tags data for word cloud:', tagsData);
     
-    // Initialize word cloud if there's data
     if (tagsData.length > 0) {
         const canvas = document.getElementById('wordcloud');
         const container = document.getElementById('wordcloud-container');
         
-        // Set canvas dimensions explicitly
-        canvas.width = container.clientWidth - 40;  // 调整 padding
-        canvas.height = container.clientHeight - 40;
-        
-        WordCloud(canvas, {
-            list: tagsData,
-            gridSize: 12,
-            weightFactor: function(size) {
-                return Math.pow(size, 1.2) * 8;  // 动态缩放，即使 size=1 也能可见
-            },
-            fontFamily: 'Arial, sans-serif',
-            color: function (word, weight) {
-                const colors = [
-                    '#3498db', '#2ecc71', '#e74c3c', '#9b59b6', 
-                    '#f1c40f', '#1abc9c', '#d35400', '#34495e'
-                ];
-                return colors[Math.floor(Math.random() * colors.length)];
-            },
-            backgroundColor: 'transparent',
-            rotateRatio: 0.5,
-            rotationSteps: 2,
-            drawOutOfBound: false,
-            shrinkToFit: true,
-            minSize: 12,  // 最小字体，确保 size=1 可见
-            wait: 100,
-            hover: function(item, dimension, event) {
-                // Optional hover effect
+        // 延迟设置尺寸，确保布局完成
+        setTimeout(() => {
+            canvas.width = container.offsetWidth - 40;  // 用 offsetWidth 更可靠
+            canvas.height = container.offsetHeight - 40;
+            console.log('Canvas size:', canvas.width, 'x', canvas.height);
+            
+            if (typeof WordCloud === 'undefined') {
+                console.error('WordCloud 未加载');
+                container.innerHTML = '<div class="text-center" style="width:100%; font-size:18px; color:#666;">词云加载失败</div>';
+                return;
             }
-        });
+            
+            WordCloud(canvas, {
+                list: tagsData,
+                gridSize: 12,
+                weightFactor: function(size) {
+                    return Math.pow(size, 1.2) * 10;  // 稍增大，确保可见
+                },
+                fontFamily: 'Arial, sans-serif',
+                color: function (word, weight) {
+                    const colors = ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6', '#f1c40f', '#1abc9c', '#d35400', '#34495e'];
+                    return colors[Math.floor(Math.random() * colors.length)];
+                },
+                backgroundColor: 'transparent',
+                rotateRatio: 0.5,
+                rotationSteps: 2,
+                drawOutOfBound: false,
+                shrinkToFit: true,
+                minSize: 14,  // 增大最小字体
+                wait: 100,
+                hover: function(item, dimension) {
+                    // 简单悬停：放大字体（可选）
+                    console.log('Hover:', item[0]);
+                }
+            });
+            console.log('WordCloud 渲染完成');
+        }, 300);  // 300ms 延迟
     } else {
-        // 修复：把消息放到容器中，而不是 canvas
         document.getElementById('wordcloud-container').innerHTML = '<div class="text-center" style="width:100%; font-size:18px; color:#666;">暂无标签可显示</div>';
     }
 });
