@@ -109,12 +109,24 @@ Android
 Google Labs
 Related stories
 Google Labs
-Create flashcards and quizzes in the NotebookLM app.
+Opal is now available in more than 160 countries
+By
+Megan Li
+Nov 06, 2025
+Developers
+Introducing the File Search Tool in Gemini API
+By
+Ivan Solovyev
+&
+Animesh Chatterji
 Nov 06, 2025
 Search
 Google Finance adds AI features for research, earnings and more
 By
 Robert Dunnette
+Nov 06, 2025
+Google Labs
+Create flashcards and quizzes in the NotebookLM app.
 Nov 06, 2025
 Learning & Education
 AI and learning: A new chapter for students and educators
@@ -128,16 +140,6 @@ Our latest fraud and scams advisory
 By
 Laurie Richardson
 Nov 06, 2025
-Learning & Education
-How teachers and students in Miami are using AI in the classroom
-By
-Ben Gomes
-Nov 05, 2025
-Developers
-Improving Structured Outputs in the Gemini API
-By
-Gemini API Team
-Nov 05, 2025
 .
 Jump to position 1
 Jump to position 2

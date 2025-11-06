@@ -156,6 +156,13 @@ POSTED IN:
 Developers
 AI
 Related stories
+Developers
+Introducing the File Search Tool in Gemini API
+By
+Ivan Solovyev
+&
+Animesh Chatterji
+Nov 06, 2025
 Search
 Google Finance adds AI features for research, earnings and more
 By
@@ -185,11 +192,6 @@ Chat in NotebookLM: A powerful, goal-focused AI research partner
 By
 Anuja Agrawal
 Oct 29, 2025
-Entrepreneurs
-Meet the 11 startups using AI to build a safer digital future in Latin America
-By
-Paco Solsona
-Oct 28, 2025
 .
 Jump to position 1
 Jump to position 2
