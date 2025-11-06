@@ -107,6 +107,7 @@ async def main():
                         'title': article['title'],
                         'link': article['link'],
                         'date': article['date'],
+                        'source': site['parser'], # Add the source field
                         'cache_path': str(article_cache_dir),
                         'image_files': [] # Image handling can be added later
                     }
