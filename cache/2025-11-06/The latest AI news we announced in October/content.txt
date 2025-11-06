@@ -108,6 +108,21 @@ Learning & Education
 Android
 Google Labs
 Related stories
+Google Labs
+Create flashcards and quizzes in the NotebookLM app.
+Nov 06, 2025
+Search
+Google Finance adds AI features for research, earnings and more
+By
+Robert Dunnette
+Nov 06, 2025
+Learning & Education
+AI and learning: A new chapter for students and educators
+By
+Ben Gomes
+&
+Lila Ibrahim
+Nov 06, 2025
 Safety & Security
 Our latest fraud and scams advisory
 By
@@ -122,17 +137,6 @@ Developers
 Improving Structured Outputs in the Gemini API
 By
 Gemini API Team
-Nov 05, 2025
-Safety & Security
-A new report from the Google Threat Intelligence Group shows adversaries experimenting with AI for novel capabilities.
-Nov 05, 2025
-Maps
-Google Maps navigation with Gemini is rolling out everywhere Gemini is available.
-Nov 05, 2025
-Arts & Culture
-Listen to the Brazilian rainforests and help contribute to AI research
-By
-Marconi Campos
 Nov 05, 2025
 .
 Jump to position 1
