@@ -119,60 +119,84 @@ header-img: "img/tag-bg.png"
 </div>
 
 <!-- Scripts for WordCloud2 -->
-<script src="https://cdn.jsdelivr.net/npm/wordcloud2.js@1.2.2/dist/wordcloud2.min.js" onerror="console.error('CDN 加载失败');"></script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('wordcloud-container');
     const tagsData = [];
     {% for tag in site.tags %}
-        tagsData.push(['{{ tag[0] }}', {{ tag[1].size }}]);
+        tagsData.push({text: '{{ tag[0] }}', weight: {{ tag[1].size }}, slug: '{{ tag[0] | slugify }}'});
     {% endfor %}
     
     console.log('Tags data for word cloud:', tagsData);
     
     if (tagsData.length > 0) {
-        const canvas = document.getElementById('wordcloud');
-        const container = document.getElementById('wordcloud-container');
+        container.innerHTML = '';  // 清空容器
         
-        // 延迟设置尺寸，确保布局完成
-        setTimeout(() => {
-            canvas.width = container.offsetWidth - 40;  // 用 offsetWidth 更可靠
-            canvas.height = container.offsetHeight - 40;
-            console.log('Canvas size:', canvas.width, 'x', canvas.height);
+        // 简单碰撞避免：多次尝试随机位置
+        function placeTag(tag, attempts = 0) {
+            if (attempts > 10) return;  // 最多试 10 次
             
-            if (typeof WordCloud === 'undefined') {
-                console.error('WordCloud 未加载');
-                container.innerHTML = '<div class="text-center" style="width:100%; font-size:18px; color:#666;">词云加载失败</div>';
-                return;
-            }
+            const span = document.createElement('span');
+            span.textContent = tag.text;
+            span.style.cssText = `
+                position: absolute;
+                font-size: ${12 + tag.weight * 8}px;  /* 频率越高越大 (e.g., 1=12px, 2=20px) */
+                color: hsl(${Math.random() * 360}, 70%, 50%);  /* 随机鲜艳色 */
+                left: ${Math.random() * 80}%;
+                top: ${Math.random() * 80}%;
+                transform: rotate(${Math.random() * 60 - 30}deg);  /* ±30° 旋转 */
+                cursor: pointer;
+                transition: all 0.3s ease;  /* 平滑动画 */
+                z-index: 1;
+                white-space: nowrap;
+                padding: 2px 4px;
+                border-radius: 4px;
+                background: rgba(255,255,255,0.1);  /* 半透明白底，匹配毛玻璃 */
+            `;
             
-            WordCloud(canvas, {
-                list: tagsData,
-                gridSize: 12,
-                weightFactor: function(size) {
-                    return Math.pow(size, 1.2) * 10;  // 稍增大，确保可见
-                },
-                fontFamily: 'Arial, sans-serif',
-                color: function (word, weight) {
-                    const colors = ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6', '#f1c40f', '#1abc9c', '#d35400', '#34495e'];
-                    return colors[Math.floor(Math.random() * colors.length)];
-                },
-                backgroundColor: 'transparent',
-                rotateRatio: 0.5,
-                rotationSteps: 2,
-                drawOutOfBound: false,
-                shrinkToFit: true,
-                minSize: 14,  // 增大最小字体
-                wait: 100,
-                hover: function(item, dimension) {
-                    // 简单悬停：放大字体（可选）
-                    console.log('Hover:', item[0]);
+            // 悬停效果：放大 + 颜色变深
+            span.addEventListener('mouseenter', () => {
+                span.style.transform = `rotate(${Math.random() * 60 - 30}deg) scale(1.2)`;
+                span.style.color = '#fff';  // 白字高亮
+                span.style.background = 'rgba(0,0,0,0.2)';
+            });
+            span.addEventListener('mouseleave', () => {
+                span.style.transform = `rotate(${Math.random() * 60 - 30}deg) scale(1)`;
+                span.style.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+                span.style.background = 'rgba(255,255,255,0.1)';
+            });
+            
+            // 点击跳转到标签锚点
+            span.addEventListener('click', () => {
+                const anchor = document.getElementById(tag.slug);
+                if (anchor) {
+                    anchor.scrollIntoView({ behavior: 'smooth' });
                 }
             });
-            console.log('WordCloud 渲染完成');
-        }, 300);  // 300ms 延迟
+            
+            container.appendChild(span);
+            
+            // 检查重叠（简单版：如果太近，移除重试）
+            const rect = span.getBoundingClientRect();
+            let overlap = false;
+            const existing = container.querySelectorAll('span');
+            existing.forEach(el => {
+                if (el !== span && Math.abs(el.getBoundingClientRect().left - rect.left) < 50 && Math.abs(el.getBoundingClientRect().top - rect.top) < 50) {
+                    overlap = true;
+                }
+            });
+            if (overlap) {
+                container.removeChild(span);
+                placeTag(tag, attempts + 1);  // 重试新位置
+            }
+        }
+        
+        // 逐个放置标签
+        tagsData.forEach(tag => placeTag(tag));
+        
+        console.log('纯 JS 词云渲染完成，共', tagsData.length, '个标签');
     } else {
-        document.getElementById('wordcloud-container').innerHTML = '<div class="text-center" style="width:100%; font-size:18px; color:#666;">暂无标签可显示</div>';
+        container.innerHTML = '<div class="text-center" style="width:100%; font-size:18px; color:#666;">暂无标签可显示</div>';
     }
 });
 </script>
