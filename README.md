@@ -1,54 +1,52 @@
-# LH的博客
+# Automated Jekyll Blog Content Aggregator
 
-![screenshot](img/screenshot.png)
+This project is a Jekyll-based blog that features a sophisticated, automated content aggregation system. It uses Python crawlers orchestrated by GitHub Actions to fetch, summarize, and display content from various high-quality tech blogs.
 
-这是一个基于 Jekyll 和 GitHub Pages 搭建的个人博客，用于记录博主在NLP领域的学习、研究以及生活点滴。
+## Key Features
 
-## 核心特性
+- **Automated Content Crawling**: Daily execution of Python crawlers to discover and fetch new articles.
+- **Dynamic Content Handling**: Utilizes Selenium to render JavaScript-heavy websites, ensuring content is fully loaded before parsing.
+- **AI-Powered Summaries**: Integrates with Large Language Models (LLMs) to generate concise summaries for each fetched article.
+- **Image & Media Caching**: Downloads and caches images locally, making them available to the Jekyll site.
+- **CI/CD Orchestration**: Fully automated workflow managed by GitHub Actions for crawling, data processing, and deployment.
+- **Clean Architecture**: A clear separation of concerns between the crawlers (data fetching) and the main orchestrator (data processing, caching, and LLM interaction).
 
-- **自动化内容聚合**: 每日自动通过 GitHub Actions 运行 Python 爬虫，抓取外部网站的最新文章。
-- **AI 自动摘要**: 利用大语言模型（LLM）API，为每篇抓取的文章自动生成摘要。
-- **现代化 UI/UX**: 在 "DAILY" 页面通过模态框，以图文并茂的形式展示摘要，提升阅读体验。
-- **并发性能优化**: 通过 `asyncio` 实现对 LLM API 的并发调用，极大提升多篇文章的摘要生成效率。
-- **代码与数据分离**: 采用双分支策略，将网站代码 (`master` 分支) 与爬虫数据 (`data` 分支) 完全分离，确保了开发的轻量与部署的健壮。
+## How It Works
 
-## 网站结构
+The entire process is orchestrated by the GitHub Actions workflow defined in `.github/workflows/deploy.yml`.
 
-本项目的架构经过精心设计，以实现自动化和可维护性：
+1.  **Trigger**: The workflow runs on a daily schedule, on manual trigger, or on every push to the `master` branch.
+2.  **Orchestration (`crawlers/main.py`)**:
+    - Initializes a shared Selenium WebDriver instance for all crawlers to use.
+    - Reads the configuration from `crawlers/config.json` to determine which sites to crawl.
+    - Iterates through the enabled crawlers.
+3.  **Crawling (`crawlers/specific_crawlers/`)**:
+    - Each specific crawler is responsible for fetching a list of articles from its target site.
+    - For each new article, it fetches the full article text and a list of all image URLs.
+    - It then returns this structured data (text and image URLs) to the main orchestrator.
+4.  **Processing & Caching (`crawlers/main.py`)**:
+    - For each article received, the orchestrator creates a sanitized cache directory (e.g., `cache/YYYY-MM-DD/article-title/`).
+    - It saves the article text to `content.txt`.
+    - It asynchronously downloads all images from the provided URLs into the cache directory.
+    - It calls the LLM summarizer (`llm/summarizer.py`) to generate a summary of the content.
+5.  **Data Generation**:
+    - The orchestrator compiles all the metadata for the day's articles (title, link, source, summary, relative cache path, image filenames) into a single JSON file (e.g., `_data/daily_YYYY-MM-DD.json`).
+6.  **Jekyll Build & Deploy**:
+    - The GitHub Actions workflow then commits the newly generated data file to the `data` branch.
+    - Finally, it triggers a Jekyll build and deployment, which uses the data in `_data` to render the `daily.html` page.
 
-- **`master` 分支 (代码)**
-  - `_config.yml`: 网站的全局配置文件。
-  - `_posts/`: 存放手动撰写的博客文章。
-  - `_layouts/`, `_includes/`: Jekyll 布局与组件。
-  - `daily.html`, `about.html`, `tags.html`: 各个主要页面。
-  - `assets/`, `css/`, `js/`, `img/`: 网站的静态资源。
-  - `.github/workflows/deploy.yml`: **核心 CI/CD 工作流**。负责定时触发、检出代码和数据、运行爬虫、构建和部署网站，并将新数据推送回 `data` 分支。
-  - `crawlers/`: **Python 爬虫系统**
-    - `main.py`: 主编排脚本，负责调度、查重、并发调用 LLM 和清理过期数据。
-    - `config.json`: 爬虫的配置文件，用于定义爬取目标、`top_k` 策略、LLM 配置等。
-    - `base_crawler.py`: 所有爬虫的基类，封装了通用方法。
-    - `specific_crawlers/`: 存放针对特定网站的爬虫实现。
-  - `llm/`: **LLM 摘要模块**
-    - `summarizer.py`: 封装了对 OpenAI 兼容 API 的**异步**调用，以实现高效并发的摘要生成。
-  - `.gitignore`: 在 `master` 分支上，明确忽略 `cache/` 和 `_data/daily_*.json`，以保持代码库的纯净。
+## Project Structure
 
-- **`data` 分支 (数据)**
-  - `_data/`: 存放由爬虫生成的 `daily_YYYY-MM-DD.json` 文件，供 Jekyll 在构建时使用。
-  - `cache/`: 存放爬取到的文章原文 (`content.txt`) 和图片，作为生成摘要和前端展示的数据源。
+-   `.github/workflows/deploy.yml`: The main GitHub Actions workflow.
+-   `crawlers/`: The heart of the content aggregation system.
+    -   `main.py`: The main orchestrator script.
+    -   `config.json`: Configuration for all crawlers, sites, and LLM prompts.
+    -   `specific_crawlers/`: Contains the individual crawler implementations for each target site.
+-   `llm/`: Contains the logic for interacting with LLMs for summarization.
+-   `_data/`: Where the final, daily JSON files are stored for Jekyll to consume.
+-   `cache/`: Where all downloaded content (text and images) is stored.
+-   `daily.html`: The Jekyll page that reads the data from `_data` and displays the aggregated content.
 
-## 参考
+## Dependencies
 
-本博客的主题修改自以下开源项目，感谢原作者的分享：
-
-- **[qiubaiying/qiubaiying.github.io](https://github.com/qiubaiying/qiubaiying.github.io)**
-
-## 如何在本地运行
-
-1.  **安装 Ruby 和 Jekyll:**
-    请参考 Jekyll 官方文档：[https://jekyllrb.com/docs/installation/](https://jekyllrb.com/docs/installation/)
-
-2.  **安装依赖:**
-    在项目根目录下运行 `bundle install`。
-
-3.  **启动本地服务:**
-    运行 `bundle exec jekyll serve`，然后通过浏览器访问 `http://localhost:4000`。
+All Python dependencies are listed in `requirements.txt`.
