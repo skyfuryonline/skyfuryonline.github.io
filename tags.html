@@ -62,45 +62,56 @@ header-img: "img/tag-bg.png"
 </div>
 
 <!-- Scripts for TagCanvas -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://www.goat1000.com/tagcanvas.min.js"></script>
 <script>
-$(document).ready(function() {
-    if ($('#tag-canvas').length) {
-        try {
-            TagCanvas.Start('tag-canvas', 'tag-list', {
-                textColour: '#337ab7', // A modern blue
-                outlineColour: '#76a2c9',
-                reverse: true,
-                depth: 0.8,
-                maxSpeed: 0.05,
-                initial: [0.05, -0.05],
-                textFont: 'Helvetica, Arial, sans-serif',
-                weight: true, // Use data-weight for font size
-                weightMode: 'size',
-                weightSizeMin: 12, // Min font size
-                weightSizeMax: 30, // Max font size
-                shadow: '#ccf',
-                shadowBlur: 3,
-                shuffleTags: true,
-                wheelZoom: false, // Disable zoom on scroll
-                noSelect: true,
-                clickToFront: 500,
-                // Add smooth scroll on click
-                "onClick": function(e) {
-                    e.preventDefault();
-                    var targetId = $(this).attr('href');
-                    var targetElement = $(targetId);
-                    if(targetElement.length) {
-                        $('html, body').animate({ 
-                            scrollTop: targetElement.offset().top - 70 // Adjust offset for fixed navbar
-                        }, 800);
-                    }
-                }
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to handle the click and scroll
+    function tagClickHandler(event) {
+        event.preventDefault(); // Stop the default anchor jump
+        var href = this.getAttribute('href');
+        var targetId = href.substring(1); // Remove the '#'
+        var targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-        } catch(e) {
-            // Fallback for browsers that don't support canvas
-            document.getElementById('tag-cloud-container').style.display = 'none';
+        }
+    }
+
+    // Add click listeners to the hidden list for TagCanvas to use
+    var tagLinks = document.querySelectorAll('#tag-list ul li a');
+    tagLinks.forEach(function(link) {
+        link.addEventListener('click', tagClickHandler);
+    });
+
+    // Start TagCanvas
+    try {
+        TagCanvas.Start('tag-canvas', 'tag-list', {
+            textColour: '#337ab7',
+            outlineColour: '#76a2c9',
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05,
+            initial: [0.05, -0.05],
+            textFont: 'Helvetica, Arial, sans-serif',
+            weight: true,
+            weightMode: 'size',
+            weightSizeMin: 12,
+            weightSizeMax: 30,
+            shadow: '#ccf',
+            shadowBlur: 3,
+            shuffleTags: true,
+            wheelZoom: false,
+            noSelect: true,
+            clickToFront: 500
+        });
+    } catch(e) {
+        // Fallback for browsers that don't support canvas
+        var tagCloudContainer = document.getElementById('tag-cloud-container');
+        if(tagCloudContainer) {
+            tagCloudContainer.style.display = 'none';
         }
     }
 });
