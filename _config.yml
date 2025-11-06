@@ -4,6 +4,9 @@ SEOTitle: LH的博客 | 代码与生活
 header-img: img/home-bg.png
 email: skyfurynowonline@icloud.com
 description: "一个NLP研究生的博客，记录代码、学习和生活点滴。"
+
+# The threshold for a tag to be displayed in the bubble chart
+tag_cloud_threshold: 2
 keyword: "NLP, Natural Language Processing, Deep Learning, Machine Learning, Python, Blog"
 url: "https://skyfuryonline.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
