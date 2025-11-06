@@ -133,7 +133,7 @@ async def main():
                             'link': article['link'],
                             'date': article['date'],
                             'source': site['parser'],
-                            'cache_path': str(article_cache_dir),
+                            'cache_path': article_cache_dir.relative_to(ROOT_DIR).as_posix(),
                             'image_files': image_filenames
                         }
                         all_articles_metadata.append(article_meta)
