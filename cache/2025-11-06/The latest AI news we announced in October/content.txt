@@ -108,6 +108,11 @@ Learning & Education
 Android
 Google Labs
 Related stories
+Safety & Security
+Our latest fraud and scams advisory
+By
+Laurie Richardson
+Nov 06, 2025
 Learning & Education
 How teachers and students in Miami are using AI in the classroom
 By
@@ -129,9 +134,6 @@ Listen to the Brazilian rainforests and help contribute to AI research
 By
 Marconi Campos
 Nov 05, 2025
-Research
-Meet Project Suncatcher, a research moonshot to scale machine learning compute in space.
-Nov 04, 2025
 .
 Jump to position 1
 Jump to position 2
