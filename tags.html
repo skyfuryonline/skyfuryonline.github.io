@@ -6,6 +6,14 @@ description: "Keep hungry, keep foolish"
 header-img: "img/tag-bg.png"
 ---
 
+<style>
+.sidebar-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+}
+</style>
+
 <!-- Page Header -->
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
@@ -22,75 +30,117 @@ header-img: "img/tag-bg.png"
 
 <!-- Main Content -->
 <div class="container">
-    <div class="row">
-        <!-- Blog Post List -->
-        <div class="col-lg-8 col-md-8">
-            {% for tag in site.tags %}
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="{{ tag[0] | slugify }}">
-                    <span class="tag-text">{{ tag[0] }}</span>
-                </span>
-                {% for post in tag[1] %}
-                 <div class="post-preview">
-                    <a href="{{ post.url | prepend: site.baseurl }}">
-                        <h2 class="post-title">{{ post.title }}</h2>
-                        {% if post.subtitle %}
-                        <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-                        {% endif %}
-                    </a>
-                </div>
-                <hr>
-                {% endfor %}
-            </div>
-            {% endfor %}
-        </div>
-
-        <!-- Tag Cloud Sidebar -->
-        <div class="col-lg-4 col-md-4">
-            <div id="tag-cloud-container" style="position: -webkit-sticky; position: sticky; top: 80px;">
-                <canvas width="300" height="300" id="tag-canvas"></canvas>
-                <div id="tag-list" style="display:none;">
-                    <ul>
-                        {% for tag in site.tags %}
-                        <li><a href="#{{ tag[0] | slugify }}" data-weight="{{ tag[1].size }}">{{ tag[0] }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- Original Top Tag Cloud -->
+			<div id='tag_cloud' class="tags">
+				{% for tag in site.tags %}
+				<a href="#{{ tag[0] | slugify }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
+				{% endfor %}
+			</div>
         </div>
     </div>
+
+    <div class="row">
+        <!-- Blog Post List (Left Column) -->
+		<div class="col-lg-8 col-md-8">
+            <!-- Tag List -->
+			{% for tag in site.tags %}
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="{{ tag[0] | slugify }}">
+                    <span class="tag-text">{{ tag[0] }}</span>
+                </span>
+				{% for post in tag[1] %}
+				 <div class="post-preview">
+				    <a href="{{ post.url | prepend: site.baseurl }}">
+				        <h2 class="post-title">{{ post.title }}</h2>
+				        {% if post.subtitle %}
+				        <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+				        {% endif %}
+				    </a>
+				</div>
+				<hr>
+				{% endfor %}
+			</div>
+			{% endfor %}
+		</div>
+
+        <!-- Bubble Chart Sidebar (Right Column) -->
+        <div class="col-lg-4 col-md-4 sidebar-container">
+            <canvas id="bubble-chart"></canvas>
+        </div>
+	</div>
 </div>
 
-<!-- Scripts for TagCanvas -->
-<script src="https://www.goat1000.com/tagcanvas.min.js"></script>
+<!-- Scripts for Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    try {
-        TagCanvas.Start('tag-canvas', 'tag-list', {
-            textColour: '#337ab7',
-            outlineColour: '#76a2c9',
-            reverse: true,
-            depth: 0.8,
-            maxSpeed: 0.05,
-            initial: [0.05, -0.05],
-            textFont: 'Helvetica, Arial, sans-serif',
-            weight: true,
-            weightMode: 'size',
-            weightSizeMin: 12,
-            weightSizeMax: 30,
-            shadow: '#ccf',
-            shadowBlur: 3,
-            shuffleTags: true,
-            wheelZoom: false,
-            noSelect: true,
-            clickToFront: 500
-        });
-    } catch(e) {
-        // Fallback for browsers that don't support canvas
-        var tagCloudContainer = document.getElementById('tag-cloud-container');
-        if(tagCloudContainer) {
-            tagCloudContainer.style.display = 'none';
+    // 1. Prepare Data
+    const colorPalette = ['rgba(231, 76, 60, 0.7)', 'rgba(52, 152, 219, 0.7)', 'rgba(155, 89, 182, 0.7)', 'rgba(26, 188, 156, 0.7)', 'rgba(241, 196, 15, 0.7)', 'rgba(46, 204, 113, 0.7)', 'rgba(211, 84, 0, 0.7)'];
+    const datasets = [];
+    let colorIndex = 0;
+
+    {% for tag in site.tags %}
+        {% if tag[1].size >= 2 %}
+            datasets.push({
+                label: "{{ tag[0] }}",
+                data: [{
+                    x: Math.random() * 10, // Random position for visual appeal
+                    y: Math.random() * 10,
+                    r: {{ tag[1].size }} * 5 + 5 // Radius based on post count
+                }],
+                backgroundColor: colorPalette[colorIndex % colorPalette.length]
+            });
+            colorIndex++;
+        {% endif %}
+    {% endfor %}
+
+    // 2. Chart Configuration
+    const config = {
+        type: 'bubble',
+        data: {
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 1,
+            plugins: {
+                legend: {
+                    display: false // Hide the legend
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            // Calculate post count from radius
+                            const postCount = (context.raw.r - 5) / 5;
+                            label += postCount + ' posts';
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    display: false // Hide X axis
+                },
+                y: {
+                    display: false // Hide Y axis
+                }
+            },
+            events: [] // Disable all events, making it purely decorative
         }
+    };
+
+    // 3. Render Chart
+    const ctx = document.getElementById('bubble-chart');
+    if (ctx) {
+        new Chart(ctx, config);
     }
 });
 </script>
