@@ -20,11 +20,13 @@ header-img: "img/tag-bg.png"
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: 16px;  /* 圆润边角，苹果风格 */
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);  /* 柔和阴影 */
     padding: 20px;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(20px);  /* 增强毛玻璃 */
+    -webkit-backdrop-filter: blur(20px);
 }
 
 #wordcloud-container::before {
@@ -40,13 +42,38 @@ header-img: "img/tag-bg.png"
     pointer-events: none;
 }
 
-#wordcloud {
-    width: 100%;
-    height: 100%;
-    cursor: default;
+/* 词云标签的苹果式高级样式 */
+.wordcloud-tag {
+    position: absolute;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;  /* 苹果系统字体 */
+    font-weight: 500;  /* 中等粗细，现代感 */
+    -webkit-font-smoothing: antialiased;  /* 抗锯齿，字形平滑 */
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.08);  /* 柔和阴影，提升立体感 */
+    background: rgba(255, 255, 255, 0.25);  /* 半透明白底，毛玻璃子层 */
+    backdrop-filter: blur(10px);  /* 每个标签也带轻微模糊 */
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;  /* 圆润边角 */
+    padding: 6px 12px;  /* 内边距，舒适间距 */
+    border: 1px solid rgba(255, 255, 255, 0.2);  /* 细边框，精致 */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);  /* 苹果式缓动曲线 */
+    z-index: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;  /* 防止过长标签溢出 */
 }
 
-/* Add a subtle breathing animation to the container */
+/* 悬停效果：苹果风微妙放大 + 颜色渐变 */
+.wordcloud-tag:hover {
+    transform: scale(1.1) translateY(-2px);  /* 轻微上浮 + 放大 */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);  /* 增强阴影 */
+    background: rgba(255, 255, 255, 0.35);
+    color: #000;  /* 深色文字，高对比 */
+}
+
+/* 呼吸动画保持 */
 @keyframes breathe {
     0% { transform: scale(0.98); opacity: 0.95; }
     50% { transform: scale(1.00); opacity: 1; }
@@ -112,13 +139,12 @@ header-img: "img/tag-bg.png"
         <!-- Word Cloud Sidebar (Right Column) -->
         <div class="col-lg-4 col-md-4 sidebar-container">
             <div id="wordcloud-container">
-                <canvas id="wordcloud" width="500" height="500"></canvas>
+                <!-- JS 动态填充标签 -->
             </div>
         </div>
 	</div>
 </div>
 
-<!-- Scripts for WordCloud2 -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('wordcloud-container');
@@ -137,36 +163,29 @@ document.addEventListener('DOMContentLoaded', function() {
             if (attempts > 10) return;  // 最多试 10 次
             
             const span = document.createElement('span');
+            span.className = 'wordcloud-tag';
             span.textContent = tag.text;
-            span.style.cssText = `
-                position: absolute;
-                font-size: ${12 + tag.weight * 8}px;  /* 频率越高越大 (e.g., 1=12px, 2=20px) */
-                color: hsl(${Math.random() * 360}, 70%, 50%);  /* 随机鲜艳色 */
-                left: ${Math.random() * 80}%;
-                top: ${Math.random() * 80}%;
-                transform: rotate(${Math.random() * 60 - 30}deg);  /* ±30° 旋转 */
-                cursor: pointer;
-                transition: all 0.3s ease;  /* 平滑动画 */
-                z-index: 1;
-                white-space: nowrap;
-                padding: 2px 4px;
-                border-radius: 4px;
-                background: rgba(255,255,255,0.1);  /* 半透明白底，匹配毛玻璃 */
-            `;
+            span.style.fontSize = `${12 + tag.weight * 8}px`;  /* 频率越高越大 */
+            span.style.color = `hsl(${Math.random() * 360}, 70%, 45%)`;  /* 柔和随机色，苹果风偏冷调 */
+            span.style.left = `${Math.random() * 80}%`;
+            span.style.top = `${Math.random() * 80}%`;
+            span.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
             
-            // 悬停效果：放大 + 颜色变深
+            // 悬停效果
             span.addEventListener('mouseenter', () => {
-                span.style.transform = `rotate(${Math.random() * 60 - 30}deg) scale(1.2)`;
-                span.style.color = '#fff';  // 白字高亮
-                span.style.background = 'rgba(0,0,0,0.2)';
+                span.style.transform = `rotate(${Math.random() * 60 - 30}deg) scale(1.1) translateY(-2px)`;
+                span.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+                span.style.background = 'rgba(255, 255, 255, 0.35)';
+                span.style.color = '#000';
             });
             span.addEventListener('mouseleave', () => {
                 span.style.transform = `rotate(${Math.random() * 60 - 30}deg) scale(1)`;
-                span.style.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
-                span.style.background = 'rgba(255,255,255,0.1)';
+                span.style.boxShadow = '0 1px 2px rgba(0,0,0,0.08)';
+                span.style.background = 'rgba(255, 255, 255, 0.25)';
+                span.style.color = `hsl(${Math.random() * 360}, 70%, 45%)`;
             });
             
-            // 点击跳转到标签锚点
+            // 点击跳转
             span.addEventListener('click', () => {
                 const anchor = document.getElementById(tag.slug);
                 if (anchor) {
@@ -176,25 +195,25 @@ document.addEventListener('DOMContentLoaded', function() {
             
             container.appendChild(span);
             
-            // 检查重叠（简单版：如果太近，移除重试）
+            // 检查重叠
             const rect = span.getBoundingClientRect();
             let overlap = false;
-            const existing = container.querySelectorAll('span');
+            const existing = container.querySelectorAll('.wordcloud-tag');
             existing.forEach(el => {
-                if (el !== span && Math.abs(el.getBoundingClientRect().left - rect.left) < 50 && Math.abs(el.getBoundingClientRect().top - rect.top) < 50) {
+                if (el !== span && Math.abs(el.getBoundingClientRect().left - rect.left) < 60 && Math.abs(el.getBoundingClientRect().top - rect.top) < 60) {
                     overlap = true;
                 }
             });
             if (overlap) {
                 container.removeChild(span);
-                placeTag(tag, attempts + 1);  // 重试新位置
+                placeTag(tag, attempts + 1);
             }
         }
         
-        // 逐个放置标签
+        // 逐个放置
         tagsData.forEach(tag => placeTag(tag));
         
-        console.log('纯 JS 词云渲染完成，共', tagsData.length, '个标签');
+        console.log('苹果式词云渲染完成，共', tagsData.length, '个标签');
     } else {
         container.innerHTML = '<div class="text-center" style="width:100%; font-size:18px; color:#666;">暂无标签可显示</div>';
     }
