@@ -1,0 +1,3 @@
+# Ignore everything in this branch except this file
+*
+!/.gitignore
