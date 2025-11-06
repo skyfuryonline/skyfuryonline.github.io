@@ -65,12 +65,13 @@ header-img: "img/tag-bg.png"
     max-width: 80%;  /* 防止过长标签溢出 */
 }
 
-/* 悬停效果：苹果风微妙放大 + 颜色渐变 */
+/* 悬停效果：苹果风微妙放大 + 颜色渐变 + 提升层级 */
 .wordcloud-tag:hover {
     transform: scale(1.1) translateY(-2px);  /* 轻微上浮 + 放大 */
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);  /* 增强阴影 */
     background: rgba(255, 255, 255, 0.35);
     color: #000;  /* 深色文字，高对比 */
+    z-index: 10;  /* 提升到最上层，避免被挡 */
 }
 
 /* 呼吸动画保持 */
@@ -171,18 +172,13 @@ document.addEventListener('DOMContentLoaded', function() {
             span.style.top = `${Math.random() * 80}%`;
             span.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
             
-            // 悬停效果
+            // 悬停效果（使用 CSS :hover 简化，但 JS 覆盖 z-index 以确保动态）
             span.addEventListener('mouseenter', () => {
-                span.style.transform = `rotate(${Math.random() * 60 - 30}deg) scale(1.1) translateY(-2px)`;
-                span.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
-                span.style.background = 'rgba(255, 255, 255, 0.35)';
-                span.style.color = '#000';
+                span.style.zIndex = '10';  /* 动态提升层级到最上 */
+                // 其他效果由 CSS 处理
             });
             span.addEventListener('mouseleave', () => {
-                span.style.transform = `rotate(${Math.random() * 60 - 30}deg) scale(1)`;
-                span.style.boxShadow = '0 1px 2px rgba(0,0,0,0.08)';
-                span.style.background = 'rgba(255, 255, 255, 0.25)';
-                span.style.color = `hsl(${Math.random() * 360}, 70%, 45%)`;
+                span.style.zIndex = '1';  /* 恢复默认层级 */
             });
             
             // 点击跳转
