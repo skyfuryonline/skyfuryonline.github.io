@@ -2,7 +2,8 @@ function updateClock() {
   const clock = document.getElementById("clock");
   if (!clock) return;
   const now = new Date();
-  clock.textContent = now.toLocaleTimeString();
+  const options = { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  clock.textContent = now.toLocaleTimeString('zh-CN', options);  // 'zh-CN' 用于中文格式，你可以调整为'en-US'等
 }
 
 function updateCountdown() {

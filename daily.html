@@ -8,24 +8,16 @@ http_headers:
   "Pragma": "no-cache"
   "Expires": "0"
 ---
-
 <!-- 左侧信息栏 -->
 <div id="sidebar">
   <div class="section">
     <h3>🕒 当前时间</h3>
     <div id="clock">--:--:--</div>
   </div>
-
   <div class="section">
     <h3>📅 倒计时</h3>
     <div id="countdown">加载中...</div>
   </div>
-
-  <div class="section">
-    <h3>🌤 天气</h3>
-    <div id="weather">加载中...</div>
-  </div>
-
   <div class="section" id="quick-links">
     <h3>🔗 常用链接</h3>
     <a href="https://huggingface.co/papers/trending" target="_blank">Hugging Face Trending</a>
@@ -35,15 +27,15 @@ http_headers:
     <a href="https://ai.paratera.com/#/overview" target="_blank">并行智算云</a>
   </div>
 </div>
-
-
 <style>
 /* ---------------- Sidebar Styles ---------------- */
 #sidebar {
   position: fixed;
-  top: 120px;
+  top: 160px; /* 调整为背景图像的大约高度（桌面约110px + 内容，假设内容50px，总160px；根据实际测试微调） */
   left: 30px;
   width: 240px;
+  max-height: calc(100vh - 200px); /* 限制最大高度不超过视口，留出顶部和底部空间 */
+  overflow: auto; /* 如果内容过多，添加滚动条 */
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -54,26 +46,22 @@ http_headers:
   align-items: center;
   z-index: 1000;
 }
-
 #sidebar h3 {
   font-size: 1.1em;
   color: #333;
   margin-bottom: 8px;
 }
-
 #sidebar .section {
   width: 100%;
   text-align: center;
   margin-bottom: 18px;
 }
-
-#clock, #countdown, #weather {
+#clock, #countdown {
   font-size: 0.95em;
   color: #222;
   font-weight: 500;
   margin-top: 4px;
 }
-
 #quick-links a {
   display: block;
   background: #fff;
@@ -89,7 +77,12 @@ http_headers:
   background: #0077cc;
   color: #fff;
 }
-
+/* 媒体查询调整：移动设备上使用更大的top值以匹配移动padding（约130px + 内容） */
+@media (max-width: 767px) {
+  #sidebar {
+    top: 180px; /* 移动设备：70px top + 60px bottom + 内容约50px = 180px */
+  }
+}
 /* ---------------- Main Daily Styles ---------------- */
 .daily-container {
     display: flex;
@@ -98,19 +91,16 @@ http_headers:
     position: relative;
     z-index: 10;
 }
-
 .square-card-wrapper {
     padding: 0 15px;
     margin-bottom: 30px;
     width: 100%;
 }
-
 @media (min-width: 768px) {
     .square-card-wrapper {
         width: 50%;
     }
 }
-
 .square-card {
     position: relative;
     width: 100%;
@@ -123,12 +113,10 @@ http_headers:
     background-color: #f8f9fa;
     cursor: pointer;
 }
-
 .daily-article-card:hover .square-card {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transform: translateY(-5px);
 }
-
 .square-card-content {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -139,20 +127,17 @@ http_headers:
     align-items: center;
     text-align: center;
 }
-
 .square-card-title {
     font-size: 1.3em;
     font-weight: 600;
     color: #333;
     margin: 0;
 }
-
 .square-card-meta {
     font-size: 0.9em;
     color: #888;
     margin-top: 10px;
 }
-
 .date-header {
     width: 100%;
     text-align: center;
@@ -160,19 +145,16 @@ http_headers:
     color: #555;
     font-size: 2em;
 }
-
 .modal-body {
     max-height: 80vh;
     overflow-y: auto;
 }
-
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
 }
-
 #summaryModal .gallery-item {
     flex: 1 1 100%;
     height: 200px;
@@ -180,27 +162,23 @@ http_headers:
     overflow: hidden;
     background-color: #ddd;
 }
-
 #summaryModal .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
 }
-
 @media (min-width: 576px) {
     #summaryModal .gallery-item {
         flex-basis: calc(50% - 5px);
     }
 }
-
 @media (min-width: 992px) {
     #summaryModal .gallery-item {
         flex-basis: calc(33.333% - 7px);
     }
 }
 </style>
-
 <!-- Daily 内容 -->
 {% assign daily_file_names = "" | split: "" %}
 {% for file in site.data %}
@@ -209,7 +187,6 @@ http_headers:
     {% endif %}
 {% endfor %}
 {% assign daily_file_names = daily_file_names | sort | reverse %}
-
 {% if daily_file_names.size > 0 %}
     {% for file_name in daily_file_names %}
         {% assign file_date_str = file_name | remove: "daily_" %}
@@ -244,7 +221,6 @@ http_headers:
         <p class="text-center" style="width: 100%; margin-top: 50px;">No daily information available yet.</p>
     </div>
 {% endif %}
-
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="summaryModal" tabindex="-1" role="dialog" aria-labelledby="summaryModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -265,7 +241,6 @@ http_headers:
     </div>
   </div>
 </div>
-
 <script>
 // -------- Daily Modal Logic --------
 document.addEventListener('DOMContentLoaded', function () {
@@ -275,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var modalSummary = document.getElementById('modalSummaryContent');
   var modalGallery = document.getElementById('modalImageGallery');
   var modalReadMoreBtn = document.getElementById('modalReadMoreBtn');
-
   cards.forEach(function (card) {
     card.addEventListener('click', function () {
       var title = this.getAttribute('data-title');
@@ -283,11 +257,9 @@ document.addEventListener('DOMContentLoaded', function () {
       var link = this.getAttribute('data-link');
       var cachePath = this.getAttribute('data-cache-path');
       var images = this.getAttribute('data-images').split(',').filter(Boolean);
-
       modalTitle.textContent = title;
       modalSummary.textContent = summary;
       modalReadMoreBtn.href = link;
-
       modalGallery.innerHTML = '';
       if (images.length > 0) {
         images.forEach(function(imageFile) {
@@ -299,24 +271,22 @@ document.addEventListener('DOMContentLoaded', function () {
           modalGallery.appendChild(galleryItem);
         });
       }
-
       modal.modal('show');
     });
   });
 });
-
 // -------- 时钟与倒计时 --------
 function updateClock() {
   const clock = document.getElementById("clock");
   if (!clock) return;
   const now = new Date();
-  clock.textContent = now.toLocaleTimeString();
+  // 设置时区
+  const options = { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  clock.textContent = now.toLocaleTimeString('zh-CN', options);
 }
-
 function updateCountdown() {
   const countdown = document.getElementById("countdown");
   if (!countdown) return;
-
   // 倒计时的目标时间
   const targetDate = new Date("2026-01-19T00:00:00");
   const now = new Date();
@@ -325,36 +295,8 @@ function updateCountdown() {
   // 倒计时文案
   countdown.textContent = `距离寒假还有 ${days} 天`;
 }
-
 setInterval(updateClock, 1000);
 setInterval(updateCountdown, 3600000);
 updateClock();
 updateCountdown();
-
-// -------- 天气信息 --------
-async function loadWeather() {
-  const weatherEl = document.getElementById("weather");
-  if (!weatherEl) return;
-  try {
-    // 自动推测IP的天气
-    // const res = await fetch("https://wttr.in/?format=j1");
-    // 固定
-    const res = await fetch("https://wttr.in/kunming?format=j1");
-
-    const data = await res.json();
-
-    // 同理修改城市显示
-    // const area = data.nearest_area?.[0]?.areaName?.[0]?.value || "你的城市";
-    const area = "昆明"; // 自定义显示的城市名
-    weatherEl.textContent = `${area}: ${condition} ${temp}°C`;
-
-
-    const condition = data.current_condition?.[0]?.weatherDesc?.[0]?.value || "";
-    const temp = data.current_condition?.[0]?.temp_C || "--";
-    weatherEl.textContent = `${area}: ${condition} ${temp}°C`;
-  } catch (e) {
-    weatherEl.textContent = "天气加载失败";
-  }
-}
-loadWeather();
 </script>
