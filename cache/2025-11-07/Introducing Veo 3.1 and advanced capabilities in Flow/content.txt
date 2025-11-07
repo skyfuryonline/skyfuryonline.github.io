@@ -89,6 +89,9 @@ Includes Veo 2 and Veo 3 generations
 ‘Scene extension’ is coming soon to the Vertex AI API
 Collapse
 Related stories
+Company announcements
+Google is investing in Oklahoma’s workforce and talent pipeline.
+Nov 07, 2025
 Google Labs
 Opal is now available in more than 160 countries
 By
@@ -116,11 +119,6 @@ Ben Gomes
 &
 Lila Ibrahim
 Nov 06, 2025
-Developers
-Improving Structured Outputs in the Gemini API
-By
-Gemini API Team
-Nov 05, 2025
 .
 Jump to position 1
 Jump to position 2
