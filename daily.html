@@ -9,14 +9,122 @@ http_headers:
   "Expires": "0"
 ---
 
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 左侧信息栏 -->
+<div id="sidebar">
+  <div class="section">
+    <h3>🕒 当前时间</h3>
+    <div id="clock">--:--:--</div>
+  </div>
+
+  <div class="section">
+    <h3>📅 倒计时</h3>
+    <div id="countdown">加载中...</div>
+  </div>
+
+  <div class="section">
+    <h3>🌤 天气</h3>
+    <div id="weather">加载中...</div>
+  </div>
+
+  <div class="section" id="quick-links">
+    <h3>🔗 常用链接</h3>
+    <a href="https://huggingface.co" target="_blank">Hugging Face</a>
+    <a href="https://arxiv.org" target="_blank">arXiv</a>
+    <a href="https://paperswithcode.com" target="_blank">Papers with Code</a>
+    <a href="https://python.langchain.com" target="_blank">LangChain Docs</a>
+  </div>
+</div>
+
+<img id="cat" src="{{ '/assets/img/cat.png' | relative_url }}" alt="cat">
+
 <style>
-/* --- Card Styles (Copied from index.html) --- */
+/* ---------------- Sidebar Styles ---------------- */
+#sidebar {
+  position: fixed;
+  top: 120px;
+  left: 30px;
+  width: 240px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+#sidebar h3 {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+#sidebar .section {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+#clock, #countdown, #weather {
+  font-size: 0.95em;
+  color: #222;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+#quick-links a {
+  display: block;
+  background: #fff;
+  border-radius: 10px;
+  margin: 5px 0;
+  padding: 6px 0;
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+#quick-links a:hover {
+  background: #0077cc;
+  color: #fff;
+}
+
+#cat {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 30px;
+  left: 50px;
+  pointer-events: none;
+  transition: transform 0.1s linear;
+  z-index: 1200;
+}
+
+/* ---------------- Particle Layer ---------------- */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+}
+
+/* ---------------- Original Daily Styles ---------------- */
 .daily-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px; /* Counteract column padding */
+    margin: 0 -15px;
+    position: relative;
+    z-index: 10; /* ensure it's above the background */
 }
 
+/* 以下保持原样 */
 .square-card-wrapper {
     padding: 0 15px;
     margin-bottom: 30px;
@@ -33,12 +141,12 @@ http_headers:
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 50%; /* Halved the height to make it a rectangle */
+    padding-bottom: 50%;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    background-color: #f8f9fa; /* Added a very light gray background */
+    background-color: #f8f9fa;
     cursor: pointer;
 }
 
@@ -47,28 +155,14 @@ http_headers:
     transform: translateY(-5px);
 }
 
-.square-card-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-}
-
-.square-card-link:hover .square-card {
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    transform: translateY(-5px);
-}
-
 .square-card-content {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     padding: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center;   /* Center content horizontally */
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
@@ -93,32 +187,31 @@ http_headers:
     font-size: 2em;
 }
 
-/* --- Modal Body Scrolling (Fallback) --- */
+/* Modal fallback etc */
 .modal-body {
-    max-height: 80vh; /* Max height is 80% of viewport height */
-    overflow-y: auto; /* Add vertical scrollbar ONLY if content overflows */
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
-/* --- Modal Image Gallery Styles (Primary Fix) --- */
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Spacing between images */
+    gap: 10px;
     margin-top: 20px;
 }
 
-#summaryModal .gallery-item { /* Use ID for higher specificity */
+#summaryModal .gallery-item {
     flex: 1 1 100%;
-    height: 200px; /* Give the container a fixed height */
+    height: 200px;
     border-radius: 5px;
-    overflow: hidden; /* This is crucial for cropping the image */
-    background-color: #ddd; /* Darker placeholder for contain view */
+    overflow: hidden;
+    background-color: #ddd;
 }
 
 #summaryModal .gallery-item img {
     width: 100%;
-    height: 100%; /* Make image fill the container */
-    object-fit: contain; /* Contain the image fully, may leave empty space */
+    height: 100%;
+    object-fit: contain;
     display: block;
 }
 
@@ -135,11 +228,7 @@ http_headers:
 }
 </style>
 
-{% comment %} 
-The layout 'page.html' already provides the main container and row.
-We only need to provide the content that goes inside the `col-lg-8` div.
-{% endcomment %}
-
+<!-- 原 Daily 内容区 -->
 {% assign daily_file_names = "" | split: "" %}
 {% for file in site.data %}
     {% if file[0] contains "daily_" %}
@@ -152,14 +241,12 @@ We only need to provide the content that goes inside the `col-lg-8` div.
     {% for file_name in daily_file_names %}
         {% assign file_date_str = file_name | remove: "daily_" %}
         {% assign articles = site.data[file_name] %}
-
         <h2 class="date-header">{{ file_date_str }}</h2>
-        
         <div class="daily-container">
             {% if articles.size > 0 %}
                 {% for article in articles %}
                     <div class="square-card-wrapper">
-                        <div class="daily-article-card" 
+                        <div class="daily-article-card"
                              data-title="{{ article.title | escape }}"
                              data-summary="{{ article.summary | escape }}"
                              data-link="{{ article.link }}"
@@ -207,43 +294,126 @@ We only need to provide the content that goes inside the `col-lg-8` div.
 </div>
 
 <script>
+// -------- Daily Modal Logic (保持原样) --------
 document.addEventListener('DOMContentLoaded', function () {
-    var cards = document.querySelectorAll('.daily-article-card');
-    var modal = $('#summaryModal');
-    var modalTitle = document.getElementById('summaryModalLabel');
-    var modalSummary = document.getElementById('modalSummaryContent');
-    var modalGallery = document.getElementById('modalImageGallery');
-    var modalReadMoreBtn = document.getElementById('modalReadMoreBtn');
+  var cards = document.querySelectorAll('.daily-article-card');
+  var modal = $('#summaryModal');
+  var modalTitle = document.getElementById('summaryModalLabel');
+  var modalSummary = document.getElementById('modalSummaryContent');
+  var modalGallery = document.getElementById('modalImageGallery');
+  var modalReadMoreBtn = document.getElementById('modalReadMoreBtn');
 
-    cards.forEach(function (card) {
-        card.addEventListener('click', function () {
-            var title = this.getAttribute('data-title');
-            var summary = this.getAttribute('data-summary');
-            var link = this.getAttribute('data-link');
-            var cachePath = this.getAttribute('data-cache-path');
-            var images = this.getAttribute('data-images').split(',').filter(Boolean);
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      var title = this.getAttribute('data-title');
+      var summary = this.getAttribute('data-summary');
+      var link = this.getAttribute('data-link');
+      var cachePath = this.getAttribute('data-cache-path');
+      var images = this.getAttribute('data-images').split(',').filter(Boolean);
 
-            modalTitle.textContent = title;
-            modalSummary.textContent = summary;
-            modalReadMoreBtn.href = link;
+      modalTitle.textContent = title;
+      modalSummary.textContent = summary;
+      modalReadMoreBtn.href = link;
 
-            // Populate image gallery
-            modalGallery.innerHTML = ''; // Clear previous images
-            if (images.length > 0) {
-                images.forEach(function(imageFile) {
-                    var galleryItem = document.createElement('div');
-                    galleryItem.className = 'gallery-item';
-                    
-                    var img = document.createElement('img');
-                    img.src = '{{ site.baseurl }}/' + cachePath + '/' + imageFile;
-                    
-                    galleryItem.appendChild(img);
-                    modalGallery.appendChild(galleryItem);
-                });
-            }
-
-            modal.modal('show');
+      modalGallery.innerHTML = '';
+      if (images.length > 0) {
+        images.forEach(function(imageFile) {
+          var galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          var img = document.createElement('img');
+          img.src = '{{ site.baseurl }}/' + cachePath + '/' + imageFile;
+          galleryItem.appendChild(img);
+          modalGallery.appendChild(galleryItem);
         });
+      }
+
+      modal.modal('show');
     });
+  });
 });
+
+// -------- 小猫跟随鼠标 --------
+document.addEventListener("mousemove", function (e) {
+  const cat = document.getElementById("cat");
+  if (!cat) return;
+  cat.style.transform = `translate(${e.clientX - 25}px, ${e.clientY - 25}px)`;
+});
+
+// -------- 时钟与倒计时 --------
+function updateClock() {
+  const clock = document.getElementById("clock");
+  if (!clock) return;
+  const now = new Date();
+  clock.textContent = now.toLocaleTimeString();
+}
+
+function updateCountdown() {
+  const countdown = document.getElementById("countdown");
+  if (!countdown) return;
+  const targetDate = new Date("2026-06-30T00:00:00"); // 修改你的目标日
+  const now = new Date();
+  const diff = targetDate - now;
+  const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
+  countdown.textContent = `距离毕业还有 ${days} 天`;
+}
+
+setInterval(updateClock, 1000);
+setInterval(updateCountdown, 3600000);
+updateClock();
+updateCountdown();
+
+// -------- 天气信息 --------
+async function loadWeather() {
+  const weatherEl = document.getElementById("weather");
+  if (!weatherEl) return;
+  try {
+    const res = await fetch("https://wttr.in/?format=j1");
+    const data = await res.json();
+    const area = data.nearest_area?.[0]?.areaName?.[0]?.value || "你的城市";
+    const condition = data.current_condition?.[0]?.weatherDesc?.[0]?.value || "";
+    const temp = data.current_condition?.[0]?.temp_C || "--";
+    weatherEl.textContent = `${area}: ${condition} ${temp}°C`;
+  } catch (e) {
+    weatherEl.textContent = "天气加载失败";
+  }
+}
+loadWeather();
+
+// -------- 粒子背景 --------
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+for (let i = 0; i < 250; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5,
+    r: Math.random() * 1.5 + 0.3,
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(255,255,255,0.8)";
+  particles.forEach((p) => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
 </script>
