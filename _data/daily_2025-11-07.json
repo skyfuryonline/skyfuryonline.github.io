@@ -1,78 +1,10 @@
 [
     {
-        "title": "Introducing the File Search Tool in Gemini API",
-        "link": "https://blog.google/technology/developers/file-search-gemini-api/",
+        "title": "New tools in Google AI Studio to explore, debug and share logs",
+        "link": "https://blog.google/technology/developers/google-ai-studio-logs-datasets/",
         "date": "2025-11-07",
         "source": "GoogleDevBlogCrawler",
-        "cache_path": "cache/2025-11-07/Introducing the File Search Tool in Gemini API",
-        "image_files": [
-            "image_1.webp",
-            "image_2.webp",
-            "image_3.webp",
-            "image_4.webp",
-            "image_5.webp",
-            "image_6.webp",
-            "image_7.webp"
-        ],
-        "summary": "摘要：Google DeepMind 正式推出 Gemini API 中的“文件搜索工具”（File Search Tool），这是一个托管式 RAG 系统，旨在简化开发者将自有数据融入 AI 应用的过程。该工具自动处理文件存储、分块、嵌入生成与上下文注入，支持 PDF、DOCX、TXT 等多种格式，并通过 Gemini Embedding 模型实现语义检索。响应中自动附带引用来源，提升答案可验证性。为降低使用门槛，查询时的存储与嵌入生成免费，仅在首次索引文件时按 $0.15/百万 token 收费。已有项目如 Phaser Studio 的游戏生成平台 Beam 利用该工具实现毫秒级跨文档检索，大幅提升开发效率。开发者可通过 Python SDK 快速集成，调用 `generateContent` 接口即可启用文件搜索功能。\n\n例子：开发者上传一份游戏设计文档后，提问“如何实现子弹模式”，系统秒级返回代码片段并标注出处，无需手动翻阅数千份资料。\n\n关键字：RAG, Gemini API, 文件搜索, 自动嵌入, 语义检索"
-    },
-    {
-        "title": "Improving Structured Outputs in the Gemini API",
-        "link": "https://blog.google/technology/developers/gemini-api-structured-outputs/",
-        "date": "2025-11-07",
-        "source": "GoogleDevBlogCrawler",
-        "cache_path": "cache/2025-11-07/Improving Structured Outputs in the Gemini API",
-        "image_files": [
-            "image_1.webp",
-            "image_2.webp",
-            "image_3.webp",
-            "image_4.webp",
-            "image_5.webp",
-            "image_6.webp",
-            "image_7.webp"
-        ],
-        "summary": "摘要：Gemini API近日推出Structured Outputs功能升级，全面支持JSON Schema，并强化输出属性顺序一致性。新特性使开发者可直接使用Pydantic、Zod等主流库，无需额外转换层，提升数据提取、多智能体协作及系统集成效率。新增对`anyOf`、`$ref`、数值约束、`null`类型等关键Schema关键字的支持，增强模型灵活性与准确性。同时，所有Gemini 2.5及以上模型均保证按Schema键顺序输出，降低后端校验成本。真实案例显示，企业如Agentic Users和Alkimi AI通过该功能实现API调用减少6倍、错误率归零、部署更高效。此更新已上线，开发者可立即查阅文档。\n\n例子：AI助手接收到用户输入后，自动按预设JSON Schema结构化输出“是否垃圾邮件”判断结果，前端无需二次解析，直接可用。\n\n关键字：Structured Outputs, JSON Schema, Pydantic, Property Ordering, Multi-Agent Systems"
-    },
-    {
-        "title": "The latest AI news we announced in October",
-        "link": "https://blog.google/technology/ai/google-ai-updates-october-2025/",
-        "date": "2025-11-07",
-        "source": "GoogleResearchBlogCrawler",
-        "cache_path": "cache/2025-11-07/The latest AI news we announced in October",
-        "image_files": [
-            "image_1.webp",
-            "image_2.webp",
-            "image_3.webp",
-            "image_4.webp",
-            "image_5.webp",
-            "image_6.webp",
-            "image_7.webp",
-            "image_8.png",
-            "image_9.webp",
-            "image_10.webp",
-            "image_11.webp",
-            "image_12.webp",
-            "image_13.png"
-        ],
-        "summary": "摘要：2025年10月，谷歌在AI领域取得多项突破性进展，涵盖量子计算、癌症研究、AI安全、智能家居及开发者工具。其“Quantum Echoes”算法首次实现可验证的量子优势，速度超经典超级计算机13,000倍；Cell2Sentence-Scale模型助力发现新型癌症免疫疗法路径；Gemini Enterprise成为企业AI应用门户，支持数据驱动的AI代理部署；Google Home迎来AI升级，支持更自然对话；AI Studio推出“vibe coding”，降低开发门槛；Flow视频工具增强创作能力；同时强化网络安全防护，如AI代码安全代理与欺诈识别系统。此外，谷歌发布首款Android XR头显，结合Gemini实现沉浸式交互，并上线Google Skills平台提供3000+课程。\n\n例子：你只需说“帮我订明天下午三点的会议”，Gemini for Home就能自动调用日历、发送邀请并设置提醒，无需手动操作。\n\n关键字：量子计算、Gemini Enterprise、癌症疗法、AI安全、vibe coding"
-    },
-    {
-        "title": "Meet Project Suncatcher, a research moonshot to scale machine learning compute in space.",
-        "link": "https://blog.google/technology/research/google-project-suncatcher/",
-        "date": "2025-11-07",
-        "source": "GoogleResearchBlogCrawler",
-        "cache_path": "cache/2025-11-07/Meet Project Suncatcher, a research moonshot to scale machine learning compute in space.",
-        "image_files": [
-            "image_1.webp"
-        ],
-        "summary": "摘要：Google启动“Project Suncatcher”研究计划，旨在探索在太空中大规模部署AI计算的可行性。该项目设想通过太阳能供电的卫星网络，搭载Google自研TPU芯片，在轨运行机器学习任务，从而释放太阳能量潜力，推动AI算力突破地球限制。项目借鉴了谷歌过往如自动驾驶与量子计算等“月球计划”的模式，当前已发布预印本论文，涵盖星座设计、控制通信及辐射测试等基础研究，并计划2027年初与Planet公司合作发射两颗原型卫星进行在轨验证，为未来太空AI计算奠定基础。\n\n例子：想象一群太阳能卫星像“太空数据中心”，每颗都装有TPU芯片，自动处理地球遥感数据或训练AI模型，不受地面电力和带宽限制，实现全球实时环境监测。\n\n关键字：Project Suncatcher、TPU芯片、太空AI计算、卫星星座、辐射测试"
-    },
-    {
-        "title": "Listen to the Brazilian rainforests and help contribute to AI research",
-        "link": "https://blog.google/outreach-initiatives/arts-culture/forest-listeners/",
-        "date": "2025-11-07",
-        "source": "GoogleDeepmindBlogCrawler",
-        "cache_path": "cache/2025-11-07/Listen to the Brazilian rainforests and help contribute to AI research",
+        "cache_path": "cache/2025-11-07/New tools in Google AI Studio to explore, debug and share logs",
         "image_files": [
             "image_1.webp",
             "image_2.webp",
@@ -83,14 +15,73 @@
             "image_7.webp",
             "image_8.webp"
         ],
-        "summary": "摘要：Google Arts & Culture与DeepMind联合推出“Forest Listeners”项目，邀请全球用户通过聆听并识别巴西雨林中的动物鸣叫，协助训练AI模型Perch，以提升雨林生物多样性监测效率。该项目利用超过120万小时的雨林音频数据，结合公众参与，帮助科学家更精准、规模化地评估森林健康状况与生态恢复成效。用户在沉浸式3D环境中听辨物种声音，点击确认或否定，其反馈将用于优化AI模型，推动保护工作。此举不仅增强公众对雨林的认知与参与感，也填补了全球音频物种数据库的空白，为生态保护注入科技力量。\n\n例子：你戴上耳机，在虚拟雨林中听到一阵鸟鸣，判断是“绿翅金刚鹦鹉”，点击“是”——你的这一秒判断，正被AI记录并用于训练模型，未来可能帮助科学家在亚马逊雨林快速识别濒危物种分布。\n\n关键字：AI监测、雨林保护、公民科学、Perch模型、生物多样性"
+        "summary": "摘要：Google AI Studio 推出全新日志与数据集功能，帮助开发者无需修改代码即可追踪 GenerateContent API 调用，自动记录用户交互历史，便于调试与性能分析。支持导出日志为 CSV/JSONL 格式数据集，用于离线测试、提示优化及批量评估（如通过 Gemini Batch API），并可选择共享数据给 Google 以反馈模型表现，助力产品迭代与模型改进。该工具提升开发效率、增强可观测性，使开发者能更自信地构建高质量 AI 应用。\n\n例子：开发者上线新功能后，通过启用日志功能自动收集用户提问与模型响应，发现某类问题回答准确率偏低，导出对应数据集后使用 Gemini Batch API 批量测试新提示模板，最终优化模型输出质量。\n\n关键字：AI Studio, 日志追踪, 数据集导出, 模型调试, Gemini API"
     },
     {
-        "title": "Accelerating discovery with the AI for Math Initiative",
-        "link": "https://blog.google/technology/google-deepmind/ai-for-math/",
+        "title": "Introducing vibe coding in Google AI Studio",
+        "link": "https://blog.google/technology/developers/introducing-vibe-coding-in-google-ai-studio/",
+        "date": "2025-11-07",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-11-07/Introducing vibe coding in Google AI Studio",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.gif",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "摘要：Google AI Studio 推出“vibe coding”新体验，让用户仅通过自然语言描述即可快速生成AI驱动应用，无需手动配置API或模型集成。系统自动调用Gemini系列模型完成复杂开发任务，如视频生成、图像编辑或智能写作工具。同时，App Gallery提供视觉化灵感库，Brainstorming Loading Screen在等待时激发创意，Annotation Mode支持视觉化修改界面元素，提升开发效率与流畅度。该功能旨在降低AI应用开发门槛，让开发者与非开发者均可轻松实现创意落地。\n\n例子：想做个“魔法镜”APP，上传照片后自动生成奇幻风格图像？只需输入“把我的照片变成魔法镜效果”，AI Studio自动整合Veo或Nano Banana等模型，几分钟内生成可运行原型。\n\n关键字：vibe coding、Gemini模型、App Gallery、Annotation Mode、AI开发"
+    },
+    {
+        "title": "Research@ 2025: Our latest breakthroughs",
+        "link": "https://blog.google/technology/research/research-to-reality-2025/",
+        "date": "2025-11-07",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-11-07/Research@ 2025- Our latest breakthroughs",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp"
+        ],
+        "summary": "摘要：Google Research在2025年“Research@”活动中展示了多项前沿突破，围绕“魔法循环”理念——即现实挑战驱动基础研究，进而催生科学飞跃。重点成果包括：量子计算领域首次实现可验证的量子优势（Quantum Echoes算法），由Willow量子处理器支撑；地球AI系统升级，助力环境监测与灾害响应；基因组学十年里程碑回顾及开源模型DeepSomatic加速癌症基因变异分析；量子硬件技术详解；并公布2025年博士研究员计划支持顶尖学子。这些成果彰显谷歌推动科技落地、服务社会的使命。\n\n例子：DeepSomatic AI模型能快速识别肿瘤细胞中的复杂基因突变，帮助医生更快制定个性化治疗方案，如从海量基因数据中精准定位致癌突变位点。\n\n关键字：量子计算、地球AI、基因组学、DeepSomatic、魔法循环"
+    },
+    {
+        "title": "Google Research: accelerating scientific breakthroughs to real-world impact",
+        "link": "https://blog.google/technology/research/google-research-team-tackles-big-challenges-with-science/",
+        "date": "2025-11-07",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-11-07/Google Research- accelerating scientific breakthroughs to real-world impact",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp"
+        ],
+        "summary": "摘要：Google Research正通过“魔法循环”加速基础科研向现实应用的转化，推动AI在癌症治疗、量子计算与地球系统建模三大领域取得突破。DeepSomatic可精准识别癌细胞基因变异，助力个性化医疗；Cell2Sentence-Scale 27B模型提出新抗癌疗法并获实验验证；Quantum Echoes算法显著提升Willow量子芯片对分子行为的模拟效率，为药物与材料设计铺路；Earth AI整合多源地理数据，实现对自然灾害与社会风险的综合预测。这些成果体现跨学科协同、AI工具赋能与持续迭代的科研范式，目标是解决全球性挑战并不断催生新问题，推动科技真正造福人类。\n\n例子：DeepSomatic无需训练即可识别脑癌基因突变，相当于让AI“自学”未知癌症类型，大幅提升罕见病诊疗效率。\n\n关键字：魔法循环、DeepSomatic、量子计算、Earth AI、AI共科学家"
+    },
+    {
+        "title": "Introducing Veo 3.1 and advanced capabilities in Flow",
+        "link": "https://blog.google/technology/ai/veo-updates-flow/",
         "date": "2025-11-07",
         "source": "GoogleDeepmindBlogCrawler",
-        "cache_path": "cache/2025-11-07/Accelerating discovery with the AI for Math Initiative",
+        "cache_path": "cache/2025-11-07/Introducing Veo 3.1 and advanced capabilities in Flow",
         "image_files": [
             "image_1.webp",
             "image_2.webp",
@@ -100,8 +91,38 @@
             "image_6.webp",
             "image_7.webp",
             "image_8.webp",
-            "image_9.webp"
+            "image_9.png",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp"
         ],
-        "summary": "摘要：Google DeepMind联合Google发起“AI for Math Initiative”，旨在通过人工智能加速数学研究。该计划携手五所顶尖科研机构（帝国理工学院、高等研究院、IHES、Simons研究所、TIFR），共同探索AI如何解决复杂数学难题，并开发配套工具。依托Gemini Deep Think、AlphaEvolve和AlphaProof等前沿AI技术，项目致力于构建人机协同的数学发现新范式。近期成果包括AlphaEvolve突破矩阵乘法50年纪录，以及Gemini在IMO中获金牌表现，彰显AI在数学推理与算法创新中的潜力。此举标志着AI与数学融合进入关键阶段，有望推动科学突破。\n\n例子：AlphaEvolve为4x4矩阵乘法设计出仅需48次标量运算的新算法，打破1969年Strassen算法的50年纪录，效率提升显著。\n\n关键字：AI for Math, Google DeepMind, AlphaEvolve, 数学发现, 人机协作"
+        "summary": "摘要：Google于2025年10月15日发布Flow平台重大更新，推出Veo 3.1模型及增强创作工具，支持音频功能全面覆盖所有视频生成模块。新版本提升叙事控制力与画面真实感，用户可通过“Ingredients to Video”、“Frames to Video”和“Extend”等功能精准构建场景、衔接镜头并延长视频。新增“Insert”与“Remove”编辑功能，允许用户插入或移除画面元素，系统自动重建光影与背景，保持视觉自然。Veo 3.1还强化了提示词遵循度与音画质量，适用于开发者（Gemini API）、企业（Vertex AI）及终端用户。此次升级旨在赋予创作者更精细的控制权，推动AI视频创作进入更高维度。\n\n例子：用户可上传一张起点图与终点图，用“Frames to Video”自动生成平滑过渡动画，同时添加背景音乐，让史诗级转场更具沉浸感。\n\n关键字：Veo 3.1、Flow、音频支持、叙事控制、AI视频创作"
+    },
+    {
+        "title": "The latest AI news we announced in September",
+        "link": "https://blog.google/technology/ai/google-ai-updates-september-2025/",
+        "date": "2025-11-07",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-07/The latest AI news we announced in September",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.png",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp"
+        ],
+        "summary": "摘要：2025年9月，Google在AI领域发布多项重大更新，涵盖Chrome、Search、Gemini应用、Android系统及机器人技术。Chrome集成Gemini作为AI浏览助手，支持多标签问答与自动化任务；Search升级AI模式，增强视觉搜索与多模态实时交互能力，并扩展至六种新语言。Gemini App推出Nano Banana图像模型、可共享的自定义Gems工具及Guided Learning教育功能。Android新增AI写作辅助、双人音频同步与智能文件共享。DeepMind发布Gemini Robotics系列模型，推动机器人从数字到物理世界的落地。NotebookLM强化学习功能，支持生成闪卡、报告与个性化辅导。同时，Google加大AI教育投入，推出家长资源、教师培训项目及“AI进校园”计划，助力全球AI素养普及。核心目标是让AI更实用、安全、普惠。\n\n例子：用Gemini AI在Chrome中一键汇总多个网页内容，或通过手机摄像头向Search提问“附近有什么适合拍照的景点”，AI即时分析画面并推荐方案——这就是AI如何无缝融入日常。\n\n关键字：Gemini、AI Mode、Chrome、Gemini Robotics、NotebookLM"
     }
 ]
