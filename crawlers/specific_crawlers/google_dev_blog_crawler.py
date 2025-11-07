@@ -80,7 +80,16 @@ class GoogleDevBlogCrawler(BaseCrawler):
         print(f"  -> Fetching content with Selenium: {url}")
         try:
             self.driver.get(url)
-            time.sleep(2) # Wait for page to settle, especially for any lazy-loaded images or scripts
+            
+            # time.sleep(2) # Wait for page to settle, especially for any lazy-loaded images or scripts
+                  # [ 建议的改进 ] 等待特定元素而不是固定 time.sleep
+            WebDriverWait(self.driver, 15).until(
+                EC.presence_of_element_located((By.ID, 'jump-content'))
+            )
+            # 保留一个短暂的睡眠，以防万一有其他JS在运行
+            time.sleep(1)
+
+
             article_soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             content_body = article_soup.find('main', {'id': 'jump-content'})
             if content_body:
