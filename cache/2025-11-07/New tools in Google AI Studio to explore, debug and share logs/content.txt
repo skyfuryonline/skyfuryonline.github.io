@@ -4,7 +4,7 @@ Developers
 New tools in Google AI Studio to explore, debug and share logs
 Oct 30, 2025
 ·
-2 min read
+3 min read
 Read AI-generated summary
 General summary
 Google AI Studio now has logs and datasets to help you check AI quality and build confidently. Enable logging in the AI Studio dashboard to track GenerateContent API calls without changing code. Export logs as datasets to refine prompts track performance and share feedback with Google.
