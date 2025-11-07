@@ -31,10 +31,10 @@ http_headers:
 /* ---------------- Sidebar Styles ---------------- */
 #sidebar {
   position: fixed;
-  top: 160px; /* 调整为背景图像的大约高度（桌面约110px + 内容，假设内容50px，总160px；根据实际测试微调） */
+  top: 240px; /* 调整以适应头部高度（桌面版内边距110px + 内容约110px + 20px间距） */
   left: 30px;
   width: 240px;
-  max-height: calc(100vh - 200px); /* 限制最大高度不超过视口，留出顶部和底部空间 */
+  max-height: calc(100vh - 260px); /* 限制最大高度，留出更多顶部空间 */
   overflow: auto; /* 如果内容过多，添加滚动条 */
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -80,7 +80,7 @@ http_headers:
 /* 媒体查询调整：移动设备上使用更大的top值以匹配移动padding（约130px + 内容） */
 @media (max-width: 767px) {
   #sidebar {
-    top: 180px; /* 移动设备：70px top + 60px bottom + 内容约50px = 180px */
+    top: 230px; /* 移动设备：内边距130px + 内容约80px + 20px间距 */
   }
 }
 /* ---------------- Main Daily Styles ---------------- */
