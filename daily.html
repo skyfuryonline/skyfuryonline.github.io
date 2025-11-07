@@ -9,9 +9,6 @@ http_headers:
   "Expires": "0"
 ---
 
-<!-- 粒子背景 -->
-<canvas id="particles"></canvas>
-
 <!-- 左侧信息栏 -->
 <div id="sidebar">
   <div class="section">
@@ -31,14 +28,14 @@ http_headers:
 
   <div class="section" id="quick-links">
     <h3>🔗 常用链接</h3>
-    <a href="https://huggingface.co" target="_blank">Hugging Face</a>
-    <a href="https://arxiv.org" target="_blank">arXiv</a>
-    <a href="https://paperswithcode.com" target="_blank">Papers with Code</a>
-    <a href="https://python.langchain.com" target="_blank">LangChain Docs</a>
+    <a href="https://huggingface.co/papers/trending" target="_blank">Hugging Face Trending</a>
+    <a href="https://github.com/feed" target="_blank">GitHub Feed</a>
+    <a href="https://www.zhihu.com/" target="_blank">zhihu</a>
+    <a href="https://bailian.console.aliyun.com/?tab=model#/model-market/all" target="_blank">阿里百炼</a>
+    <a href="https://ai.paratera.com/#/overview" target="_blank">并行智算云</a>
   </div>
 </div>
 
-<img id="cat" src="{{ '/assets/img/cat.png' | relative_url }}" alt="cat">
 
 <style>
 /* ---------------- Sidebar Styles ---------------- */
@@ -47,7 +44,7 @@ http_headers:
   top: 120px;
   left: 30px;
   width: 240px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 20px 15px;
@@ -93,38 +90,15 @@ http_headers:
   color: #fff;
 }
 
-#cat {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  bottom: 30px;
-  left: 50px;
-  pointer-events: none;
-  transition: transform 0.1s linear;
-  z-index: 1200;
-}
-
-/* ---------------- Particle Layer ---------------- */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  background: #0a0a0a;
-}
-
-/* ---------------- Original Daily Styles ---------------- */
+/* ---------------- Main Daily Styles ---------------- */
 .daily-container {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -15px;
     position: relative;
-    z-index: 10; /* ensure it's above the background */
+    z-index: 10;
 }
 
-/* 以下保持原样 */
 .square-card-wrapper {
     padding: 0 15px;
     margin-bottom: 30px;
@@ -187,7 +161,6 @@ http_headers:
     font-size: 2em;
 }
 
-/* Modal fallback etc */
 .modal-body {
     max-height: 80vh;
     overflow-y: auto;
@@ -228,7 +201,7 @@ http_headers:
 }
 </style>
 
-<!-- 原 Daily 内容区 -->
+<!-- Daily 内容 -->
 {% assign daily_file_names = "" | split: "" %}
 {% for file in site.data %}
     {% if file[0] contains "daily_" %}
@@ -294,7 +267,7 @@ http_headers:
 </div>
 
 <script>
-// -------- Daily Modal Logic (保持原样) --------
+// -------- Daily Modal Logic --------
 document.addEventListener('DOMContentLoaded', function () {
   var cards = document.querySelectorAll('.daily-article-card');
   var modal = $('#summaryModal');
@@ -332,13 +305,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// -------- 小猫跟随鼠标 --------
-document.addEventListener("mousemove", function (e) {
-  const cat = document.getElementById("cat");
-  if (!cat) return;
-  cat.style.transform = `translate(${e.clientX - 25}px, ${e.clientY - 25}px)`;
-});
-
 // -------- 时钟与倒计时 --------
 function updateClock() {
   const clock = document.getElementById("clock");
@@ -350,11 +316,14 @@ function updateClock() {
 function updateCountdown() {
   const countdown = document.getElementById("countdown");
   if (!countdown) return;
-  const targetDate = new Date("2026-06-30T00:00:00"); // 修改你的目标日
+
+  // 倒计时的目标时间
+  const targetDate = new Date("2026-01-19T00:00:00");
   const now = new Date();
   const diff = targetDate - now;
   const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
-  countdown.textContent = `距离毕业还有 ${days} 天`;
+  // 倒计时文案
+  countdown.textContent = `距离寒假还有 ${days} 天`;
 }
 
 setInterval(updateClock, 1000);
@@ -367,9 +336,19 @@ async function loadWeather() {
   const weatherEl = document.getElementById("weather");
   if (!weatherEl) return;
   try {
-    const res = await fetch("https://wttr.in/?format=j1");
+    // 自动推测IP的天气
+    // const res = await fetch("https://wttr.in/?format=j1");
+    // 固定
+    const res = await fetch("https://wttr.in/kunming?format=j1");
+
     const data = await res.json();
-    const area = data.nearest_area?.[0]?.areaName?.[0]?.value || "你的城市";
+
+    // 同理修改城市显示
+    // const area = data.nearest_area?.[0]?.areaName?.[0]?.value || "你的城市";
+    const area = "昆明"; // 自定义显示的城市名
+    weatherEl.textContent = `${area}: ${condition} ${temp}°C`;
+
+
     const condition = data.current_condition?.[0]?.weatherDesc?.[0]?.value || "";
     const temp = data.current_condition?.[0]?.temp_C || "--";
     weatherEl.textContent = `${area}: ${condition} ${temp}°C`;
@@ -378,42 +357,4 @@ async function loadWeather() {
   }
 }
 loadWeather();
-
-// -------- 粒子背景 --------
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-let particles = [];
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resize);
-resize();
-
-for (let i = 0; i < 250; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.5,
-    vy: (Math.random() - 0.5) * 0.5,
-    r: Math.random() * 1.5 + 0.3,
-  });
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "rgba(255,255,255,0.8)";
-  particles.forEach((p) => {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-    ctx.fill();
-  });
-  requestAnimationFrame(draw);
-}
-draw();
 </script>
