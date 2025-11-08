@@ -4,7 +4,7 @@ Developers
 Introducing the File Search Tool in Gemini API
 Nov 06, 2025
 ·
-2 min read
+3 min read
 Read AI-generated summary
 General summary
 The Gemini API now includes the File Search Tool. It is a fully managed RAG system that simplifies data grounding for more accurate responses. Storage and embedding generation at query time are now free; you only pay $0.15 per 1 million tokens for initial indexing. Check out the File Search documentation or the demo app in Google AI Studio to get started.
