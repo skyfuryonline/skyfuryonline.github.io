@@ -1,0 +1,107 @@
+[
+    {
+        "title": "Introducing the File Search Tool in Gemini API",
+        "link": "https://blog.google/technology/developers/file-search-gemini-api/",
+        "date": "2025-11-08",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-11-08/Introducing the File Search Tool in Gemini API",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp"
+        ],
+        "summary": "摘要：Gemini API 新增 File Search 工具，是一款全托管的 RAG（检索增强生成）系统，简化开发者构建数据接地型 AI 应用的流程。该工具自动管理文件存储、分块、嵌入生成及上下文注入，支持 PDF、DOCX 等多种格式，响应含自动引用来源，提升准确性与可验证性。查询时存储与嵌入生成免费，仅对首次索引收费（$0.15/百万tokens），大幅降低使用成本。已用于智能客服、知识助手和内容平台等场景，如 Phaser Studio 的游戏生成平台通过它实现千次并发搜索，原型开发效率提升数倍。\n\n例子：用户问“如何实现游戏中的子弹模式”，File Search 自动从文档库中检索相关代码片段并返回，附带出处链接，无需人工翻阅。\n\n关键字：RAG系统、Gemini API、文件搜索、数据接地、AI助手"
+    },
+    {
+        "title": "Improving Structured Outputs in the Gemini API",
+        "link": "https://blog.google/technology/developers/gemini-api-structured-outputs/",
+        "date": "2025-11-08",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-11-08/Improving Structured Outputs in the Gemini API",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp"
+        ],
+        "summary": "摘要：Gemini API 近期升级了结构化输出功能，全面支持 JSON Schema，兼容 Pydantic 和 Zod 等主流库，提升数据提取与多智能体协作效率。新增对 `anyOf`、`$ref`、数值约束、数组元组等 Schema 关键词的支持，并确保输出字段顺序与 Schema 定义一致，适用于 Gemini 2.5 及以上模型。该功能显著降低开发成本与错误率，如 Agentic Users 实现 API 调用减少6倍，Alkimi AI 提升系统可靠性与自动化能力。开发者可通过文档快速集成。\n\n例子：使用 Pydantic 定义“内容审核结果”Schema，AI 输出严格符合结构，无需额外校验，直接反序列化为对象。\n\n关键字：Structured Outputs, JSON Schema, Pydantic, Gemini API, 数据提取"
+    },
+    {
+        "title": "The latest AI news we announced in October",
+        "link": "https://blog.google/technology/ai/google-ai-updates-october-2025/",
+        "date": "2025-11-08",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-11-08/The latest AI news we announced in October",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.png",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "摘要：2025年10月，谷歌在AI领域取得多项突破性进展，涵盖量子计算、癌症研究、AI安全、智能家居及开发者工具。其“Quantum Echoes”算法首次实现可验证的量子优势，速度超经典超级计算机13,000倍；Cell2Sentence-Scale模型助力发现新型癌症免疫疗法路径；Gemini Enterprise成为企业AI应用门户，支持数据驱动的智能代理部署；Google Home迎来AI升级，支持更自然对话交互；AI Studio推出“vibe coding”，降低开发门槛；Flow视频工具增强创作能力；同时强化网络安全防护，如AI代码安全代理与欺诈识别机制。此外，谷歌还发布首款搭载Android XR与Gemini AI的头显设备，并上线Google Skills平台提供3000+课程，推动全民AI学习。\n\n例子：用Gemini for Home，你只需说“把客厅灯调暗并播放轻音乐”，AI即可自动执行，无需手动操作多个设备。\n\n关键字：量子计算、Gemini Enterprise、癌症研究、AI安全、智能家居"
+    },
+    {
+        "title": "Meet Project Suncatcher, a research moonshot to scale machine learning compute in space.",
+        "link": "https://blog.google/technology/research/google-project-suncatcher/",
+        "date": "2025-11-08",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-11-08/Meet Project Suncatcher, a research moonshot to scale machine learning compute in space.",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：Google启动“Project Suncatcher”研究计划，旨在探索在太空中大规模部署AI计算的可行性。该项目设想通过太阳能供电的卫星网络，搭载Google自研TPU芯片，在轨运行机器学习任务，从而释放太阳能量潜力，推动AI算力突破地球限制。项目借鉴了谷歌过往如自动驾驶与量子计算等“月球计划”的模式，当前已发布预印本论文，涵盖星座设计、控制通信及辐射测试等基础研究，并计划2027年初与Planet公司合作发射两颗原型卫星进行在轨验证，为未来太空AI计算奠定基础。\n\n例子：想象一群太阳能卫星像“太空数据中心”，每颗都装有TPU芯片，自动处理地球遥感数据或训练AI模型，不受地面电力和带宽限制，实现全球实时环境监测。\n\n关键字：Project Suncatcher、TPU芯片、太空AI计算、卫星星座、辐射测试"
+    },
+    {
+        "title": "Listen to the Brazilian rainforests and help contribute to AI research",
+        "link": "https://blog.google/outreach-initiatives/arts-culture/forest-listeners/",
+        "date": "2025-11-08",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-08/Listen to the Brazilian rainforests and help contribute to AI research",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp"
+        ],
+        "summary": "摘要：Google Arts & Culture与DeepMind联合推出“Forest Listeners”项目，邀请全球用户通过聆听并识别巴西雨林中的动物鸣叫，协助训练AI模型Perch，以提升雨林生物多样性监测效率。该项目利用超过120万小时的雨林音频数据，结合公众参与，帮助科学家更精准、规模化地评估森林健康状况与生态恢复成效。用户在沉浸式3D环境中听辨物种声音，点击确认或否定，其反馈将用于优化AI模型，推动保护工作。此举不仅增强公众对雨林的认知与参与感，也填补了全球音频物种数据库的空白，为生态保护注入科技力量。\n\n例子：你戴上耳机，在虚拟雨林中听到一阵鸟鸣，判断是“绿翅金刚鹦鹉”，点击“是”——你的这一秒判断，正被AI记录并用于训练模型，未来可能帮助科学家在亚马逊雨林快速识别濒危物种分布。\n\n关键字：AI监测、雨林保护、公民科学、Perch模型、生物多样性"
+    },
+    {
+        "title": "Accelerating discovery with the AI for Math Initiative",
+        "link": "https://blog.google/technology/google-deepmind/ai-for-math/",
+        "date": "2025-11-08",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-08/Accelerating discovery with the AI for Math Initiative",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：Google DeepMind联合Google发起“AI for Math Initiative”，旨在通过人工智能加速数学研究。五所顶尖研究机构（帝国理工学院、高等研究院、IHES、Simons研究所、TIFR）将与Google DeepMind合作，识别适合AI探索的数学难题，并开发工具以推动突破。Google提供资金支持及前沿AI技术，如Gemini Deep Think、AlphaEvolve和AlphaProof，已成功在IMO竞赛中取得金牌级表现，并在矩阵乘法等领域刷新纪录。该计划强调人机协同，期望开启数学研究新路径，推动科学进步。\n\n例子：AlphaEvolve发现4x4矩阵乘法新算法，仅需48次标量运算，打破1969年Strassen算法50年纪录。\n\n关键字：AI for Math, Google DeepMind, AlphaEvolve, Gemini Deep Think, 数学突破"
+    }
+]
