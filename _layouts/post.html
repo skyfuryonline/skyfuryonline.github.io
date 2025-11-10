@@ -21,11 +21,8 @@ Find the group background image for the current post.
 {% endif %}
 
 
-<!-- THIS IS A DEBUGGING H1 TAG -->
-<h1 style="color:red; text-align:center; padding: 20px;">DEBUG: {{ final_header_img }}</h1>
-
 <!-- Post Header -->
-<header class="intro-header" style="background-image: url('{{ final_header_img }}')">
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}{{ final_header_img }}') !important">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
