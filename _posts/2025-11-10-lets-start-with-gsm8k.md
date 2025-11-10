@@ -365,7 +365,7 @@ trl vllm-serve --model /home/lihao/gsm8k-rl/models/Qwen2.5-3B  --dtype bfloat16 
 ![vLLM客户端启动示例](/img/llm/gsm8k/vllm.png)
 
 **accelerate端示例：**
-grpo_trainer
+
 ![accelerate端示例](/img/llm/gsm8k/grpo_trainer.png)
 
 ## 总结
