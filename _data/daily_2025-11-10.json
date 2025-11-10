@@ -1,10 +1,10 @@
 [
     {
-        "title": "The latest AI news we announced in September",
-        "link": "https://blog.google/technology/ai/google-ai-updates-september-2025/",
+        "title": "How AI is giving Northern Ireland teachers time back",
+        "link": "https://blog.google/technology/google-deepmind/ai-classroom-northern-ireland/",
         "date": "2025-11-10",
         "source": "GoogleDeepmindBlogCrawler",
-        "cache_path": "cache/2025-11-10/The latest AI news we announced in September",
+        "cache_path": "cache/2025-11-10/How AI is giving Northern Ireland teachers time back",
         "image_files": [
             "image_1.webp",
             "image_2.webp",
@@ -16,12 +16,8 @@
             "image_8.webp",
             "image_9.webp",
             "image_10.webp",
-            "image_11.png",
-            "image_12.webp",
-            "image_13.webp",
-            "image_14.webp",
-            "image_15.webp"
+            "image_11.webp"
         ],
-        "summary": "摘要：2025年9月，Google在AI领域发布多项重大更新，涵盖Chrome、Search、Gemini应用、Android系统及机器人技术。Chrome集成Gemini作为AI浏览助手，支持多标签问答与自动化任务；Search升级AI模式，增强视觉搜索与多模态实时交互能力，并扩展至六种新语言。Gemini App推出Nano Banana图像模型、可共享的自定义Gems工具及“Guided Learning”教育助手。Android新增AI写作辅助、双人音频同步与智能文件传输功能。DeepMind发布Gemini Robotics系列模型，推动机器人从虚拟走向物理世界，实现复杂任务执行与跨设备学习迁移。同时，Google强化AI教育生态，推出面向家长、学生和教师的资源，如“Raising kids in the age of AI”播客、AI Quests游戏化课程，并承诺向全美高中免费提供Gemini for Education。此外，Gemini 2.5 Deep Think在国际编程竞赛中斩获金牌，彰显其顶级推理与编码能力。\n\n例子：用Gemini在Chrome中一键整理多个网页信息，或通过AI Mode拍照搜物并生成购物清单，还能让机器人帮你完成厨房清洁+倒垃圾的复合任务。\n\n关键字：AI升级、Gemini、视觉搜索、机器人技术、教育AI"
+        "summary": "摘要：  \n在北爱尔兰教育局C2k项目的六月试点中，100名教师使用Google DeepMind的Gemini及Workspace工具，平均每周节省10小时行政时间，将精力投入教学与专业发展。AI并非取代教师，而是协作工具——当结合学习科学原理时，它能提升效率、个性化教学、支持包容性课堂。教师们创造了600多种创新用法，如生成爱尔兰语课程、制作学生专属内容、辅助特殊需求学生理解知识等。项目强调与教育生态紧密合作、负责任地推进AI应用，并计划扩大培训覆盖范围。核心理念是“技术赋能教师，而非替代教师”。\n\n例子：  \n一位地理老师用Gemini的思维导图功能，帮助一名神经多样性学生从整体框架理解复杂教材，避免陷入细节焦虑。\n\n关键字：  \nAI教育、Gemini、学习科学、教师赋能、教育创新"
     }
 ]
