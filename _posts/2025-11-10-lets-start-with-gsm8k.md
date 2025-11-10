@@ -177,7 +177,187 @@ accelerate env
 
 本次训练，采用huggingface的GRPO_trainer进行，数据集选择gsm-8k，结合vLLM进行加速。具体而言，代码如下：
 ```python
+# ----------------------------------with logs + early stopping----------------------------------------
+# train_grpo.py
+from datasets import load_dataset
+from trl import GRPOConfig, GRPOTrainer
+from transformers import TrainerCallback
+import re
+import logging
+import os
+import numpy as np
 
+# ==========================
+# Logging setup
+# ==========================
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler('training_details.log')
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logger.addHandler(file_handler)
+
+# ==========================
+# Load and preprocess dataset
+# ==========================
+train_dataset = load_dataset("gsm8k", "main", split="train")
+test_dataset = load_dataset("gsm8k", "main", split="test")
+
+def format_gsm8k(example):
+    prompt = f"Solve the following math problem step by step: {example['question']}\n\nYour answer should be boxed at the end."
+    example['prompt'] = prompt
+    example['answer'] = example['answer']
+    return example
+
+train_dataset = train_dataset.map(format_gsm8k)
+test_dataset = test_dataset.map(format_gsm8k)
+
+# ==========================
+# Reward Function
+# ==========================
+def _normalize_answer(s: str) -> str | None:
+    """Normalize numeric answers (from GSM8K evaluation rules)."""
+    if s is None:
+        return None
+    s = str(s).strip().replace(",", "")
+    if s.endswith("."):
+        s = s[:-1]
+    try:
+        num = float(s)
+        if num.is_integer():
+            return str(int(num))
+        return str(num)
+    except ValueError:
+        return None
+
+
+def reward_gsm8k_accuracy(completions, **kwargs):
+    """Reward = 1 if model's boxed answer matches ground truth."""
+    rewards = []
+    ref_answers = kwargs['answer']
+    ref_prompts = kwargs['prompts']
+
+    gen_answer_regex = r'\\boxed\s*\{\s*([\d\.,]+)\s*\}'
+    gt_answer_regex = r"####\s*([\d\.,]+)"
+
+    for idx, completion in enumerate(completions):
+        content = completion if isinstance(completion, str) else str(completion)
+
+        gen_match = re.findall(gen_answer_regex, content)
+        gen_answer_str = gen_match[-1] if gen_match else None
+
+        gt_match = re.findall(gt_answer_regex, ref_answers[idx])
+        gt_answer_str = gt_match[-1] if gt_match else None
+
+        generated_answer_norm = _normalize_answer(gen_answer_str)
+        gt_answer_norm = _normalize_answer(gt_answer_str)
+
+        reward = 1.0 if (
+            generated_answer_norm is not None
+            and gt_answer_norm is not None
+            and generated_answer_norm == gt_answer_norm
+        ) else 0.0
+
+        rewards.append(reward)
+
+        if idx == 0:
+            logger.info(f"--- Batch Sample Log (Item 0) ---")
+            logger.info(f"Prompt: {ref_prompts[idx]}")
+            logger.info(f"Generated Completion: {content}")
+            logger.info(f"Generated Answer (Raw): {gen_answer_str} -> (Norm): {generated_answer_norm}")
+            logger.info(f"Ground Truth (Raw): {gt_answer_str} -> (Norm): {gt_answer_norm}")
+            logger.info(f"Reward: {reward}")
+            logger.info("---")
+
+    return rewards
+
+
+# ==========================
+# Custom Callbacks
+# ==========================
+class LoggingCallback(TrainerCallback):
+    """Log training progress every few steps."""
+    def on_step_end(self, args, state, control, **kwargs):
+        if state.global_step % 100 == 0:
+            logger.info(f"Training step {state.global_step} completed.")
+
+    def on_evaluate(self, args, state, control, metrics, **kwargs):
+        logger.info(f"Evaluation metrics: {metrics}")
+
+
+class EarlyStoppingCallback(TrainerCallback):
+    """
+    Stop training early if eval reward doesn't improve for `patience` evaluations.
+    """
+    def __init__(self, patience=3, metric_key="eval_reward_mean"):
+        self.patience = patience
+        self.metric_key = metric_key
+        self.best_metric = None
+        self.counter = 0
+
+    def on_evaluate(self, args, state, control, metrics, **kwargs):
+        metric = metrics.get(self.metric_key)
+        if metric is None:
+            return
+
+        if self.best_metric is None or metric > self.best_metric:
+            self.best_metric = metric
+            self.counter = 0
+            logger.info(f"New best reward {metric:.4f}")
+        else:
+            self.counter += 1
+            logger.info(f"No improvement for {self.counter} eval rounds.")
+            if self.counter >= self.patience:
+                logger.info("Early stopping triggered!")
+                control.should_training_stop = True
+
+
+# ==========================
+# Training Configuration
+# ==========================
+training_args = GRPOConfig(
+    output_dir="./Qwen2.5-3B-GRPO-GSM8K",
+    deepspeed="./ds_config.json",
+    num_train_epochs=5,                     # 上限为5；early stopping会提前停止
+    per_device_train_batch_size=8,
+    gradient_accumulation_steps=1,
+    remove_unused_columns=False,
+
+    use_vllm=True,
+    vllm_mode="server",
+
+    # ✅ Save config (only keep last checkpoint)
+    save_strategy="epoch",
+    save_total_limit=1,
+    save_only_model=True,
+    save_safetensors=True,
+    load_best_model_at_end=False,
+
+    # ✅ Evaluation config
+    eval_strategy="epoch",
+    logging_strategy="steps",
+    logging_steps=50,
+)
+
+# ==========================
+# Trainer
+# ==========================
+trainer = GRPOTrainer(
+    model="/home/lihao/gsm8k-rl/models/Qwen2.5-3B",
+    reward_funcs=[reward_gsm8k_accuracy],
+    args=training_args,
+    train_dataset=train_dataset,
+    eval_dataset=test_dataset,
+    callbacks=[LoggingCallback(), EarlyStoppingCallback(patience=2)],  # patience=2 表示连续2次无提升则停止
+)
+
+# ==========================
+# Train
+# ==========================
+if __name__ == "__main__":
+    logger.info("Starting GRPO training on GSM8K with early stopping...")
+    trainer.train()
+    logger.info("Training finished.")
 ```
 
 **训练bash如下：**
