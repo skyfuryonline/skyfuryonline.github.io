@@ -190,6 +190,7 @@ import numpy as np
 # ==========================
 # Logging setup
 # ==========================
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 file_handler = logging.FileHandler('training_details.log')
@@ -200,6 +201,7 @@ logger.addHandler(file_handler)
 # ==========================
 # Load and preprocess dataset
 # ==========================
+
 train_dataset = load_dataset("gsm8k", "main", split="train")
 test_dataset = load_dataset("gsm8k", "main", split="test")
 
@@ -215,6 +217,7 @@ test_dataset = test_dataset.map(format_gsm8k)
 # ==========================
 # Reward Function
 # ==========================
+
 def _normalize_answer(s: str) -> str | None:
     """Normalize numeric answers (from GSM8K evaluation rules)."""
     if s is None:
@@ -275,6 +278,7 @@ def reward_gsm8k_accuracy(completions, **kwargs):
 # ==========================
 # Custom Callbacks
 # ==========================
+
 class LoggingCallback(TrainerCallback):
     """Log training progress every few steps."""
     def on_step_end(self, args, state, control, **kwargs):
@@ -315,6 +319,7 @@ class EarlyStoppingCallback(TrainerCallback):
 # ==========================
 # Training Configuration
 # ==========================
+
 training_args = GRPOConfig(
     output_dir="./Qwen2.5-3B-GRPO-GSM8K",
     deepspeed="./ds_config.json",
@@ -342,6 +347,7 @@ training_args = GRPOConfig(
 # ==========================
 # Trainer
 # ==========================
+
 trainer = GRPOTrainer(
     model="/home/lihao/gsm8k-rl/models/Qwen2.5-3B",
     reward_funcs=[reward_gsm8k_accuracy],
@@ -354,6 +360,7 @@ trainer = GRPOTrainer(
 # ==========================
 # Train
 # ==========================
+
 if __name__ == "__main__":
     logger.info("Starting GRPO training on GSM8K with early stopping...")
     trainer.train()
