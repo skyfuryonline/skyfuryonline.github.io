@@ -183,21 +183,17 @@ async def main():
 def load_existing_urls(data_dir, days_to_keep):
     existing_urls = set()
     summarized_urls = set()
-    cutoff_date = datetime.now() - timedelta(days=days_to_keep)
     if not os.path.exists(data_dir): return existing_urls, summarized_urls
     for item in os.listdir(data_dir):
         if item.startswith("daily_") and item.endswith(".json"):
             try:
-                date_str = item.replace("daily_", "").replace(".json", "")
-                file_date = datetime.strptime(date_str, "%Y-%m-%d")
-                if file_date >= cutoff_date:
-                    file_path = os.path.join(data_dir, item)
-                    with open(file_path, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                        for article in data:
-                            existing_urls.add(article['link'])
-                            if article.get('summary') and article['summary'].strip():
-                                summarized_urls.add(article['link'])
+                file_path = os.path.join(data_dir, item)
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    for article in data:
+                        existing_urls.add(article['link'])
+                        if article.get('summary') and article['summary'].strip():
+                            summarized_urls.add(article['link'])
             except (ValueError, json.JSONDecodeError):
                 continue
     return existing_urls, summarized_urls

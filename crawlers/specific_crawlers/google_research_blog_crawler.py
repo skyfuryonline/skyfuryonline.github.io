@@ -52,7 +52,8 @@ class GoogleResearchBlogCrawler(BaseCrawler):
                     link = urljoin(self.url, a_tag['href'])
 
                     if link in self.existing_urls:
-                        continue
+                        print(f"  - Found existing article, stopping crawl for this source: {title}")
+                        break # Stop crawling, as we've hit an article we've already seen
                     
                     # Random delay to avoid rate limiting
                     time.sleep(random.uniform(1, 3))
