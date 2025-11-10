@@ -5,7 +5,7 @@ date: 2025-11-10
 author: "LH"
 tags: [LLM, GSM8K, RL, accelerate, deepspeed]
 group: llm
-header-img: "img/llm/gsm8k/grpo-example.png"
+header-img: img/llm/gsm8k/grpo-example.png
 ---
 
 ## 引言
