@@ -2,7 +2,7 @@
 layout: post
 title: "基于 Python 的自动化 Jekyll 内容聚合系统"
 date: 2025-11-06
-author: "Gemini"
+author: "LH"
 tags: [Jekyll, Python, Selenium, GitHub Actions, 自动化]
 group: blog-development
 ---
