@@ -8,6 +8,8 @@ group: llm
 # header-img: "img/llm/gsm8k/grpo-example.png"  # <-- Temporarily disabled for testing
 ---
 
+![原理](/img/llm/gsm8k/grpo-example.png)
+
 ## 引言
 
 我们以huggingface的accelerate库结合deepspeed为例，采用DP并行的方式，实现对GSM8K的训练。
