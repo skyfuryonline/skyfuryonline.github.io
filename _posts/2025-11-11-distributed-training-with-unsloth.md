@@ -408,6 +408,179 @@ if __name__ == "__main__":
     print(f"✅ 模型已保存到：{OUTPUT_DIR}")
 ```
 
+评估函数如下：
+```python
+import os
+import torch
+from unsloth import FastLanguageModel
+from datasets import load_dataset
+import evaluate  # 从 Hugging Face 导入 'evaluate' 库
+from tqdm import tqdm
+import warnings
+
+# ==================================================
+# 1. 依赖配置
+# ==================================================
+# 确保已安装指标库：
+# pip install evaluate sacrebleu rouge_score
+warnings.filterwarnings("ignore")
+
+# ==================================================
+# 2. 常量（必须与训练脚本匹配）
+# ==================================================
+MODEL_NAME = "Qwen/Qwen2.5-3B-Instruct"
+OUTPUT_DIR = "./alpaca_unsloth_distributed"  # 保存模型的目录
+
+OUTPUT_DIR = MODEL_NAME
+
+MAX_SEQ_LENGTH = 512
+SEED = 3407
+
+# 评估样本大小（根据需要调整！）
+# 将其更改为 len(test_dataset) 以进行完整评估
+SAMPLE_SIZE = 100 
+
+# ==================================================
+# 3. 加载测试数据集（复制拆分逻辑）
+# ==================================================
+print("加载并拆分数据集...")
+raw_datasets = load_dataset("yahma/alpaca-cleaned")
+full_train_dataset = raw_datasets["train"]
+
+# 复制确切的拆分
+total_samples = len(full_train_dataset)
+train_size = int(0.7 * total_samples)
+val_size = int(0.2 * total_samples)
+test_size = total_samples - train_size - val_size
+
+shuffled_train = full_train_dataset.shuffle(seed=SEED)
+# 我们不需要 train/val，只需要 test
+test_dataset = shuffled_train.select(range(train_size + val_size, total_samples))
+
+print(f"测试数据集加载完成，包含 {len(test_dataset)} 个示例。")
+print(f"使用 {min(SAMPLE_SIZE, len(test_dataset))} 个样本进行评估。")
+
+# ==================================================
+# 4. 加载模型和 tokenizer（带适配器）
+# ==================================================
+print(f"从 '{OUTPUT_DIR}' 加载模型...")
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name=OUTPUT_DIR,
+    max_seq_length=MAX_SEQ_LENGTH,
+    dtype=torch.float16,
+    load_in_4bit=False, 
+    device_map="auto",
+)
+
+# 为生成配置 pad_token_id
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+model.config.pad_token_id = tokenizer.pad_token_id
+
+print("模型和 tokenizer 加载完成，准备推理。")
+
+# ==================================================
+# 5. 定义推理提示
+# ==================================================
+# 此提示必须与训练格式匹配，
+# 但不包括 '{output}' 部分
+alpaca_prompt_inference = """Below is an instruction that describes a task, write a response that appropriately completes the request.
+
+### Instruction:
+{instruction}
+
+### Input:
+{input}
+
+### Response:
+"""
+
+# ==================================================
+# 6. 加载指标
+# ==================================================
+print("加载 ROUGE 和 SacreBLEU 指标...")
+rouge = evaluate.load("rouge")
+sacrebleu = evaluate.load("sacrebleu")
+
+# ==================================================
+# 7. 评估和生成循环
+# ==================================================
+predictions = []
+references = []
+
+print(f"开始生成 {SAMPLE_SIZE} 个预测...")
+# 使用 .select() 获取样本
+sample_dataset = test_dataset.select(range(SAMPLE_SIZE))
+
+for example in tqdm(sample_dataset):
+    prompt = alpaca_prompt_inference.format(
+        instruction=example["instruction"],
+        input=example["input"]
+    )
+    reference = example["output"]
+    
+    # 标记化输入
+    inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
+    input_length = inputs["input_ids"].shape[1]
+    
+    # 生成文本
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=256,  # 预期响应长度
+            pad_token_id=tokenizer.pad_token_id,
+            eos_token_id=tokenizer.eos_token_id
+        )
+    
+    # 仅解码生成的令牌（不包括提示）
+    new_tokens = outputs[0, input_length:]
+    prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    
+    predictions.append(prediction)
+    references.append(reference)
+
+print("生成完成。")
+
+# ==================================================
+# 8. 计算并显示指标
+# ==================================================
+print("计算指标...")
+
+# SacreBLEU 期望引用为列表的列表
+references_bleu = [[r] for r in references]
+
+# 计算 ROUGE
+rouge_results = rouge.compute(predictions=predictions, references=references)
+
+# 计算 SacreBLEU
+bleu_results = sacrebleu.compute(predictions=predictions, references=references_bleu)
+
+print("\n========== 评估结果 ==========")
+print(f"评估了 {SAMPLE_SIZE} 个示例。")
+
+print("\n--- ROUGE 指标 ---")
+print(f"Rouge1: {rouge_results['rouge1'] * 100:.2f}%")
+print(f"Rouge2: {rouge_results['rouge2'] * 100:.2f}%")
+print(f"RougeL: {rouge_results['rougeL'] * 100:.2f}%")
+print(f"RougeLsum: {rouge_results['rougeLsum'] * 100:.2f}%")
+
+print("\n--- SacreBLEU 指标 ---")
+print(f"BLEU 分数: {bleu_results['score']:.2f}")
+print(f"细节 (1-gram/2-gram/3-gram/4-gram): {bleu_results['counts']}")
+
+# 可选：打印一些预测
+print("\n========== 输出示例 ==========")
+for i in range(min(5, SAMPLE_SIZE)):  # 打印前 5 个
+    print(f"\n--- 示例 {i+1} ---")
+    print(f"指令: {sample_dataset[i]['instruction']}")
+    print(f"输入: {sample_dataset[i]['input']}")
+    print("-" * 20)
+    print(f"引用 (黄金标准): {references[i]}")
+    print(f"预测 (模型): {predictions[i]}")
+
+print("\n✅ 评估完成。")
+```
+
 ## 结果
 
 ### encoder-only在IMDB分类上的结果：
@@ -415,10 +588,65 @@ if __name__ == "__main__":
 
 ### decoder-only在alpaca指令跟随上的结果：
 
+训练过程如图：
 ![Unsloth Distributed Alpaca](/img/llm/unsloth/unsloth_multiGPU_1.png)
 ![Unsloth Distributed Alpaca](/img/llm/unsloth/unsloth_multiGPU_2.png)
 
+训练前后再BLEU和Rouge-L指标上的对比：
+![Unsloth Distributed Alpaca](/img/llm/unsloth/multi_before.png)
+![Unsloth Distributed Alpaca](/img/llm/unsloth/multi_after.png)
 
 
 ## 总结
 
+- encoder-only的模型也可以使用unsloth进行训练，不过导入模型的设置不同，具体如下：
+```python
+from unsloth import FastModel
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+# 使用 FastModel 加载带分类头的模型，full_finetuning=True 避免加载冲突
+model, tokenizer = FastModel.from_pretrained(
+    model_name=MODEL_NAME,
+    max_seq_length=MAX_SEQ_LENGTH,
+    auto_model=AutoModelForSequenceClassification,
+    num_labels=NUM_LABELS,
+    id2label=id2label,
+    label2id=label2id,
+    dtype=torch.float16, # 坑
+    load_in_4bit=False,  # 启用 4-bit 量化，节省内存 # 不启用 
+    full_finetuning=True,  # 先完整加载，避免 auto_model 冲突
+)
+
+# 同时注意lora设置的层名称也不一样：
+lora_config = LoraConfig(
+    task_type=TaskType.SEQ_CLS,
+    r=16,
+    lora_alpha=16,
+    lora_dropout=0.0,
+    # target_modules=["query", "key", "value", "dense"],  # ModernBERT 注意力层
+    target_modules=["Wqkv", "Wo", "Wi"],  # ModernBERT 注意力层
+)
+
+# training_args中弃用bf16，避免AMP错误：
+bf16=False     # 坑禁用 BF16，避免 AMP 错误
+```
+
+- 目前(2025-11-11)unsloth的多GPU训练配置依旧比较繁琐，需要自己为每个进程绑定对应 GPU 设备的初始化逻辑：
+```python
+# 从环境变量 LOCAL_RANK 中读取当前进程在 当前节点（机器）上的 GPU 序号。
+# LOCAL_RANK 是 PyTorch 的分布式启动器（例如 torchrun 或 torch.distributed.launch）自动传入的环境变量。根据--num_processes=2 或 --nproc_per_node=4 决定。
+
+local_rank = int(os.environ.get("LOCAL_RANK", "0")) 
+
+# 告诉 PyTorch：当前进程默认使用第 local_rank 块 GPU。
+torch.cuda.set_device(local_rank) 
+
+# 构造一个设备标识字符串，例如 "cuda:0"、"cuda:1"，方便打印或传入其他函数使用。
+device_str = f"cuda:{local_rank}" 
+
+# 打印提示信息，说明当前进程要把模型加载到哪一块 GPU 上。
+print(f"[rank{local_rank}] Loading model to {device_str} ...")
+```
+
+- ` ddp_find_unused_parameters=False`：是 Distributed Data Parallel (DDP) 训练中的一个重要参数设置，也是官方推荐的、启用DDP的一个必要措施。
+![multi-GPU example](/img/llm/unsloth/unsloth_example.png)
