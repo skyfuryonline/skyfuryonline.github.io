@@ -636,18 +636,18 @@ print("\n✅ 评估完成。")
 
 ### decoder-only在alpaca指令跟随上的结果：
 
-训练过程如图：
+**训练过程如图：**
 ![Unsloth Distributed Alpaca](/img/llm/unsloth/unsloth_multiGPU_1.png)
 ![Unsloth Distributed Alpaca](/img/llm/unsloth/unsloth_multiGPU_2.png)
 
-训练前后再BLEU和Rouge-L指标上的对比：
+**训练前后再BLEU和Rouge-L指标上的对比：**
 ![Unsloth Distributed Alpaca](/img/llm/unsloth/multi_before.png)
 ![Unsloth Distributed Alpaca](/img/llm/unsloth/multi_after.png)
 
 
 ## 总结
 
-- encoder-only的模型也可以使用unsloth进行训练，不过导入模型的设置不同，具体如下：
+- **encoder-only的模型也可以使用unsloth进行训练，不过导入模型的设置不同，具体如下：**
 ```python
 from unsloth import FastModel
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
@@ -677,13 +677,12 @@ lora_config = LoraConfig(
 
     target_modules=["Wqkv", "Wo", "Wi"],  # ModernBERT 注意力层
 )
-
 # training_args中弃用bf16，避免AMP错误：
 
 bf16=False     # 坑禁用 BF16，避免 AMP 错误
 ```
 
-- 目前(2025-11-11)unsloth的多GPU训练配置依旧比较繁琐，需要自己为每个进程绑定对应 GPU 设备的初始化逻辑：
+- **目前(2025-11-11)unsloth的多GPU训练配置依旧比较繁琐，需要自己为每个进程绑定对应 GPU 设备的初始化逻辑：**
 ```python
 # 从环境变量 LOCAL_RANK 中读取当前进程在 当前节点（机器）上的 GPU 序号。
 # LOCAL_RANK 是 PyTorch 的分布式启动器（例如 torchrun 或 torch.distributed.launch）自动传入的环境变量。根据--num_processes=2 或 --nproc_per_node=4 决定。
