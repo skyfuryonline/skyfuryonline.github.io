@@ -702,6 +702,7 @@ bf16=False     # 坑禁用 BF16，避免 AMP 错误
 ```
 
 - **目前(2025-11-11)unsloth的多GPU训练配置依旧比较繁琐，需要自己为每个进程绑定对应 GPU 设备的初始化逻辑：**
+
 ```python
 # 从环境变量 LOCAL_RANK 中读取当前进程在 当前节点（机器）上的 GPU 序号。
 # LOCAL_RANK 是 PyTorch 的分布式启动器（例如 torchrun 或 torch.distributed.launch）自动传入的环境变量。根据--num_processes=2 或 --nproc_per_node=4 决定。
