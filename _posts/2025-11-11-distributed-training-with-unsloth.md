@@ -63,6 +63,7 @@ Required-by: peft, trl, unsloth, unsloth_zoo
 ### 在encoder-only模型上测试unsloth
 ```python
 # unsloth_modernbert_imdb.py
+
 from unsloth import FastModel
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from peft import LoraConfig, get_peft_model, TaskType
@@ -80,6 +81,7 @@ import evaluate
 import numpy as np
 
 # ----------------- 配置 -----------------
+
 MODEL_NAME = "answerdotai/ModernBERT-base"
 OUTPUT_DIR = "./imdb_unsloth_lora"
 MAX_SEQ_LENGTH = 512
@@ -95,21 +97,26 @@ SEED = 3407
 USE_FP16 = True
 
 # IMDB 标签映射（用于正确输出和兼容性）
+
 id2label = {0: "NEGATIVE", 1: "POSITIVE"}
 label2id = {"NEGATIVE": 0, "POSITIVE": 1}
 
 # ----------------- 加载数据 -----------------
+
 raw_datasets = load_dataset("imdb")
 full_train_dataset = raw_datasets["train"]  # 25000 样本
 
 # 从训练集中划分 7:2:1 (17500 train, 5000 val, 2500 test)
+
 shuffled_train = full_train_dataset.shuffle(seed=SEED)
 train_dataset = shuffled_train.select(range(17500))  # 70%
 val_dataset = shuffled_train.select(range(17500, 22500))  # 20%
 test_dataset = shuffled_train.select(range(22500, 25000))  # 10%
 
 # ----------------- 加载模型和 tokenizer -----------------
+
 # 使用 FastModel 加载带分类头的模型，full_finetuning=True 避免加载冲突
+
 model, tokenizer = FastModel.from_pretrained(
     model_name=MODEL_NAME,
     max_seq_length=MAX_SEQ_LENGTH,
@@ -127,6 +134,7 @@ model, tokenizer = FastModel.from_pretrained(
 # input()
 
 # ----------------- 打印可训练参数函数 -----------------
+
 def print_trainable_parameters(model):
     trainable = 0
     all_param = 0
@@ -137,6 +145,7 @@ def print_trainable_parameters(model):
     print(f"Trainable params: {trainable} / {all_param} ({100 * trainable / all_param:.2f}%)")
 
 # ----------------- LoRA 配置（加载后应用） -----------------
+
 lora_config = LoraConfig(
     task_type=TaskType.SEQ_CLS,
     r=16,
@@ -146,10 +155,12 @@ lora_config = LoraConfig(
     target_modules=["Wqkv", "Wo", "Wi"],  # ModernBERT 注意力层
 )
 # 应用 LoRA：冻结基模型，只训练适配器
+
 model = get_peft_model(model, lora_config)
 print_trainable_parameters(model)  # 现在应显示 ~0.5-1% 可训练参数
 
 # ----------------- 数据预处理 -----------------
+
 def preprocess_function(examples):
     tokenized = tokenizer(
         examples["text"],
@@ -161,11 +172,13 @@ def preprocess_function(examples):
     return tokenized
 
 # 预处理所有数据集
+
 train_dataset = train_dataset.map(preprocess_function, batched=True, remove_columns=train_dataset.column_names)
 val_dataset = val_dataset.map(preprocess_function, batched=True, remove_columns=val_dataset.column_names)
 test_dataset = test_dataset.map(preprocess_function, batched=True, remove_columns=test_dataset.column_names)
 
 # ----------------- DataCollator & Metrics -----------------
+
 data_collator = DataCollatorWithPadding(tokenizer)
 accuracy = evaluate.load("accuracy")
 f1 = evaluate.load("f1")
@@ -178,12 +191,15 @@ def compute_metrics(eval_pred):
     return {"accuracy": acc, "f1": f1_micro}
 
 # ----------------- TrainingArguments -----------------
+
 training_args = TrainingArguments(
     output_dir=OUTPUT_DIR,
     eval_strategy="epoch",
     # eval_steps=EVAL_STEPS,
+
     save_strategy="epoch",
     # save_steps=EVAL_STEPS,
+    
     save_total_limit=1,
     num_train_epochs=NUM_EPOCHS,
     per_device_train_batch_size=PER_DEVICE_BATCH,
@@ -203,6 +219,7 @@ training_args = TrainingArguments(
 )
 
 # ----------------- Trainer -----------------
+
 trainer = Trainer(
     model=model,  # 使用 model（已带 LoRA）
     args=training_args,
@@ -214,18 +231,18 @@ trainer = Trainer(
 )
 
 # ----------------- 开始训练 -----------------
+
 if __name__ == "__main__":
     trainer.train()
     trainer.save_model(OUTPUT_DIR)
     
     # 使用 test_dataset 进行最终评估
+
     test_results = trainer.evaluate(eval_dataset=test_dataset)
     print(f"Test Accuracy: {test_results['eval_accuracy']}")
     print(f"Test F1: {test_results['eval_f1']}")
     print("训练完成，模型已保存到：", OUTPUT_DIR)
 ```
-
-
 
 ### 在decoder-only模型上进行多卡训练
 
@@ -250,6 +267,7 @@ from datasets import load_dataset
 # ==================================================
 # 1. 设置设备和分布式环境
 # ==================================================
+
 local_rank = int(os.environ.get("LOCAL_RANK", "0"))
 torch.cuda.set_device(local_rank)
 device_str = f"cuda:{local_rank}"
@@ -258,6 +276,7 @@ print(f"[rank{local_rank}] Loading model to {device_str} ...")
 # ==================================================
 # 2. 基础配置
 # ==================================================
+
 MODEL_NAME = "Qwen/Qwen2.5-3B-Instruct"
 OUTPUT_DIR = "./alpaca_unsloth_distributed"
 MAX_SEQ_LENGTH = 512
@@ -274,10 +293,12 @@ USE_FP16 = True
 # ==================================================
 # 3. 加载数据
 # ==================================================
+
 raw_datasets = load_dataset("yahma/alpaca-cleaned")
 full_train_dataset = raw_datasets["train"]
 
 # 划分数据
+
 total_samples = len(full_train_dataset)
 train_size = int(0.7 * total_samples)
 val_size = int(0.2 * total_samples)
@@ -291,6 +312,7 @@ test_dataset = shuffled_train.select(range(train_size + val_size, total_samples)
 # ==================================================
 # 4. 加载模型和 tokenizer
 # ==================================================
+
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=MODEL_NAME,
     max_seq_length=MAX_SEQ_LENGTH,
@@ -303,6 +325,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 # ==================================================
 # 5. LoRA 配置
 # ==================================================
+
 model = FastLanguageModel.get_peft_model(
     model,
     r=16,
@@ -324,6 +347,7 @@ print_trainable_parameters(model)
 # ==================================================
 # 6. 数据预处理函数（核心修正点⚠️）
 # ==================================================
+
 EOS_TOKEN = tokenizer.eos_token
 alpaca_prompt = """Below is an instruction that describes a task, write a response that appropriately completes the request.
 
@@ -343,6 +367,7 @@ def formatting_and_tokenizing_func(examples):
         texts.append(text)
 
     # ✅ 修正：显式设置 truncation/padding，避免 batch_size mismatch
+
     tokenized = tokenizer(
         texts,
         max_length=MAX_SEQ_LENGTH,
@@ -360,6 +385,7 @@ test_dataset = test_dataset.map(formatting_and_tokenizing_func, batched=True, re
 # ==================================================
 # 7. 训练参数
 # ==================================================
+
 training_args = TrainingArguments(
     output_dir=OUTPUT_DIR,
     eval_strategy="steps",
@@ -387,6 +413,7 @@ training_args = TrainingArguments(
 # ==================================================
 # 8. Trainer
 # ==================================================
+
 trainer = SFTTrainer(
     model=model,
     args=training_args,
@@ -400,6 +427,7 @@ trainer = SFTTrainer(
 # ==================================================
 # 9. 开始训练
 # ==================================================
+
 if __name__ == "__main__":
     trainer.train()
     trainer.save_model(OUTPUT_DIR)
@@ -423,11 +451,13 @@ import warnings
 # ==================================================
 # 确保已安装指标库：
 # pip install evaluate sacrebleu rouge_score
+
 warnings.filterwarnings("ignore")
 
 # ==================================================
 # 2. 常量（必须与训练脚本匹配）
 # ==================================================
+
 MODEL_NAME = "Qwen/Qwen2.5-3B-Instruct"
 OUTPUT_DIR = "./alpaca_unsloth_distributed"  # 保存模型的目录
 
@@ -438,16 +468,19 @@ SEED = 3407
 
 # 评估样本大小（根据需要调整！）
 # 将其更改为 len(test_dataset) 以进行完整评估
+
 SAMPLE_SIZE = 100 
 
 # ==================================================
 # 3. 加载测试数据集（复制拆分逻辑）
 # ==================================================
+
 print("加载并拆分数据集...")
 raw_datasets = load_dataset("yahma/alpaca-cleaned")
 full_train_dataset = raw_datasets["train"]
 
 # 复制确切的拆分
+
 total_samples = len(full_train_dataset)
 train_size = int(0.7 * total_samples)
 val_size = int(0.2 * total_samples)
@@ -455,6 +488,7 @@ test_size = total_samples - train_size - val_size
 
 shuffled_train = full_train_dataset.shuffle(seed=SEED)
 # 我们不需要 train/val，只需要 test
+
 test_dataset = shuffled_train.select(range(train_size + val_size, total_samples))
 
 print(f"测试数据集加载完成，包含 {len(test_dataset)} 个示例。")
@@ -463,6 +497,7 @@ print(f"使用 {min(SAMPLE_SIZE, len(test_dataset))} 个样本进行评估。")
 # ==================================================
 # 4. 加载模型和 tokenizer（带适配器）
 # ==================================================
+
 print(f"从 '{OUTPUT_DIR}' 加载模型...")
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=OUTPUT_DIR,
@@ -473,6 +508,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 )
 
 # 为生成配置 pad_token_id
+
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 model.config.pad_token_id = tokenizer.pad_token_id
@@ -484,6 +520,7 @@ print("模型和 tokenizer 加载完成，准备推理。")
 # ==================================================
 # 此提示必须与训练格式匹配，
 # 但不包括 '{output}' 部分
+
 alpaca_prompt_inference = """Below is an instruction that describes a task, write a response that appropriately completes the request.
 
 ### Instruction:
@@ -498,6 +535,7 @@ alpaca_prompt_inference = """Below is an instruction that describes a task, writ
 # ==================================================
 # 6. 加载指标
 # ==================================================
+
 print("加载 ROUGE 和 SacreBLEU 指标...")
 rouge = evaluate.load("rouge")
 sacrebleu = evaluate.load("sacrebleu")
@@ -505,11 +543,13 @@ sacrebleu = evaluate.load("sacrebleu")
 # ==================================================
 # 7. 评估和生成循环
 # ==================================================
+
 predictions = []
 references = []
 
 print(f"开始生成 {SAMPLE_SIZE} 个预测...")
 # 使用 .select() 获取样本
+
 sample_dataset = test_dataset.select(range(SAMPLE_SIZE))
 
 for example in tqdm(sample_dataset):
@@ -520,10 +560,12 @@ for example in tqdm(sample_dataset):
     reference = example["output"]
     
     # 标记化输入
+
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
     input_length = inputs["input_ids"].shape[1]
     
     # 生成文本
+
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
@@ -533,6 +575,7 @@ for example in tqdm(sample_dataset):
         )
     
     # 仅解码生成的令牌（不包括提示）
+
     new_tokens = outputs[0, input_length:]
     prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
     
@@ -544,15 +587,19 @@ print("生成完成。")
 # ==================================================
 # 8. 计算并显示指标
 # ==================================================
+
 print("计算指标...")
 
 # SacreBLEU 期望引用为列表的列表
+
 references_bleu = [[r] for r in references]
 
 # 计算 ROUGE
+
 rouge_results = rouge.compute(predictions=predictions, references=references)
 
 # 计算 SacreBLEU
+
 bleu_results = sacrebleu.compute(predictions=predictions, references=references_bleu)
 
 print("\n========== 评估结果 ==========")
@@ -569,6 +616,7 @@ print(f"BLEU 分数: {bleu_results['score']:.2f}")
 print(f"细节 (1-gram/2-gram/3-gram/4-gram): {bleu_results['counts']}")
 
 # 可选：打印一些预测
+
 print("\n========== 输出示例 ==========")
 for i in range(min(5, SAMPLE_SIZE)):  # 打印前 5 个
     print(f"\n--- 示例 {i+1} ---")
@@ -605,6 +653,7 @@ from unsloth import FastModel
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 # 使用 FastModel 加载带分类头的模型，full_finetuning=True 避免加载冲突
+
 model, tokenizer = FastModel.from_pretrained(
     model_name=MODEL_NAME,
     max_seq_length=MAX_SEQ_LENGTH,
@@ -618,16 +667,19 @@ model, tokenizer = FastModel.from_pretrained(
 )
 
 # 同时注意lora设置的层名称也不一样：
+
 lora_config = LoraConfig(
     task_type=TaskType.SEQ_CLS,
     r=16,
     lora_alpha=16,
     lora_dropout=0.0,
     # target_modules=["query", "key", "value", "dense"],  # ModernBERT 注意力层
+
     target_modules=["Wqkv", "Wo", "Wi"],  # ModernBERT 注意力层
 )
 
 # training_args中弃用bf16，避免AMP错误：
+
 bf16=False     # 坑禁用 BF16，避免 AMP 错误
 ```
 
@@ -639,12 +691,15 @@ bf16=False     # 坑禁用 BF16，避免 AMP 错误
 local_rank = int(os.environ.get("LOCAL_RANK", "0")) 
 
 # 告诉 PyTorch：当前进程默认使用第 local_rank 块 GPU。
+
 torch.cuda.set_device(local_rank) 
 
 # 构造一个设备标识字符串，例如 "cuda:0"、"cuda:1"，方便打印或传入其他函数使用。
+
 device_str = f"cuda:{local_rank}" 
 
 # 打印提示信息，说明当前进程要把模型加载到哪一块 GPU 上。
+
 print(f"[rank{local_rank}] Loading model to {device_str} ...")
 ```
 
