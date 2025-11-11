@@ -4,6 +4,7 @@
   group_description: "LLMs在多卡服务器上的训练"
   posts:
     - "2025-11-10-lets-start-with-gsm8k.md"
+    - "2025-11-11-distributed-training-with-unsloth.md"
 
 - group_name: "博客开发指南"
   url: "/groups/blog-development"
