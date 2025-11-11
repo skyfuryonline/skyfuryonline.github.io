@@ -405,6 +405,24 @@ trl vllm-serve --model /home/lihao/gsm8k-rl/models/Qwen2.5-3B  --dtype bfloat16 
 
 ![accelerate端示例](/img/llm/gsm8k/grpo_trainer.png)
 
+**在GRPO的训练中，遇到了下列情况：**
+
+![accelerate端示例](/img/llm/gsm8k/GRPO_字符噪声.png)
+即出现了 生成的completion里拖着一大串`“.”`点点点、`\.\.\.\.\.`之类的多余字符串。 模型输出完 `\(\boxed{33}\)` 后还觉得自己没“结束”，于是凭语言模型的分布继续生成一些“低信息噪声”，最常见就是句号、空格、`\n` 或 `.` 的重复模式。
+
+同时，reward pipeline 比较的是 `Generated Answer (Norm) vs Ground Truth (Norm)`→ 即，它只看 `“33 == 33”`，不管生成尾巴多长。没有格式惩罚项（format reward / KL penalty），所以模型可以随意输出。
+
+解决的思路：
+```python
+trainer = GRPOTrainer(
+    model=model,
+    
+    # 在检测到 } 后（即答案闭合），就会提前停止生成。
+
+    stop_sequences=["\\boxed{", "}"]
+)
+```
+
 ## 总结
 
 `pip freeze  > requirements.txt`
