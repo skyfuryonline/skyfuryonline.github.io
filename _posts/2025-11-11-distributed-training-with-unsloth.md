@@ -250,12 +250,13 @@ if __name__ == "__main__":
 
 本次仅实现为DDP。
 
-启动指令为：
+**启动指令为：**
 ```bash
 export CUDA_VISIBLE_DEVICES=6,7
 accelerate launch --num_processes=2 train.py
 ```
 
+**训练代码如下：**
 ```python
 import os
 import torch
@@ -436,7 +437,7 @@ if __name__ == "__main__":
     print(f"✅ 模型已保存到：{OUTPUT_DIR}")
 ```
 
-评估函数如下：
+**评估函数如下：**
 ```python
 import os
 import torch
