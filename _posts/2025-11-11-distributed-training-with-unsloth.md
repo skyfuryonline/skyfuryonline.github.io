@@ -7,8 +7,9 @@ tags: [LLM, Unsloth, 深度学习, SFT, encoder-only, 分布式训练]
 group: llm
 ---
 
-## 引言
+![unsloth](/img/llm/unsloth/unsloth.jpg)
 
+## 引言
 
 [使用 Unsloth 进行多 GPU 训练](https://docs.unsloth.ai/basics/multi-gpu-training-with-unsloth) 参考官方发布的公告，本篇博客意在测试unsloth的多卡训练的情况。
 
@@ -125,8 +126,11 @@ model, tokenizer = FastModel.from_pretrained(
     id2label=id2label,
     label2id=label2id,
     dtype=torch.float16, # 坑
+
     load_in_4bit=False,  # 启用 4-bit 量化，节省内存 # 不启用 
+
     full_finetuning=True,  # 先完整加载，避免 auto_model 冲突
+    
 )
 
 # for name, _ in model.named_modules():
@@ -152,7 +156,9 @@ lora_config = LoraConfig(
     lora_alpha=16,
     lora_dropout=0.0,
     # target_modules=["query", "key", "value", "dense"],  # ModernBERT 注意力层
+
     target_modules=["Wqkv", "Wo", "Wi"],  # ModernBERT 注意力层
+
 )
 # 应用 LoRA：冻结基模型，只训练适配器
 
@@ -209,12 +215,14 @@ training_args = TrainingArguments(
     logging_steps=LOGGING_STEPS,
     fp16=USE_FP16,
     bf16=False,     # 坑禁用 BF16，避免 AMP 错误
+
     report_to=None,
     load_best_model_at_end=True,
     metric_for_best_model="accuracy",
     greater_is_better=True,
     seed=SEED,
     optim="adamw_torch",  # 改为标准 AdamW，避免 8bit 与 FP16 冲突
+
     gradient_checkpointing=True
 )
 
@@ -225,7 +233,9 @@ trainer = Trainer(
     args=training_args,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,  # 使用 val_dataset 进行训练中评估
+
     processing_class=tokenizer,  # Unsloth 推荐：使用 processing_class 优化
+
     data_collator=data_collator,
     compute_metrics=compute_metrics
 )
@@ -377,6 +387,7 @@ def formatting_and_tokenizing_func(examples):
         return_tensors=None,
     )
     tokenized["labels"] = tokenized["input_ids"].copy()  # label 与 input 对齐
+
     return tokenized
 
 train_dataset = train_dataset.map(formatting_and_tokenizing_func, batched=True, remove_columns=train_dataset.column_names)
@@ -571,6 +582,7 @@ for example in tqdm(sample_dataset):
         outputs = model.generate(
             **inputs,
             max_new_tokens=256,  # 预期响应长度
+
             pad_token_id=tokenizer.pad_token_id,
             eos_token_id=tokenizer.eos_token_id
         )
@@ -620,6 +632,7 @@ print(f"细节 (1-gram/2-gram/3-gram/4-gram): {bleu_results['counts']}")
 
 print("\n========== 输出示例 ==========")
 for i in range(min(5, SAMPLE_SIZE)):  # 打印前 5 个
+
     print(f"\n--- 示例 {i+1} ---")
     print(f"指令: {sample_dataset[i]['instruction']}")
     print(f"输入: {sample_dataset[i]['input']}")
@@ -649,6 +662,7 @@ print("\n✅ 评估完成。")
 ## 总结
 
 - **encoder-only的模型也可以使用unsloth进行训练，不过导入模型的设置不同，具体如下：**
+
 ```python
 from unsloth import FastModel
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
@@ -663,8 +677,11 @@ model, tokenizer = FastModel.from_pretrained(
     id2label=id2label,
     label2id=label2id,
     dtype=torch.float16, # 坑
+
     load_in_4bit=False,  # 启用 4-bit 量化，节省内存 # 不启用 
+
     full_finetuning=True,  # 先完整加载，避免 auto_model 冲突
+
 )
 
 # 同时注意lora设置的层名称也不一样：
@@ -677,6 +694,7 @@ lora_config = LoraConfig(
     # target_modules=["query", "key", "value", "dense"],  # ModernBERT 注意力层
 
     target_modules=["Wqkv", "Wo", "Wi"],  # ModernBERT 注意力层
+
 )
 # training_args中弃用bf16，避免AMP错误：
 
