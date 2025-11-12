@@ -407,8 +407,10 @@ trl vllm-serve --model /home/lihao/gsm8k-rl/models/Qwen2.5-3B  --dtype bfloat16 
 
 **简单评估结果示例：**
 
+- **下列是qwen2.5-3B在zero-shot下的表现：**
 ![benchmark_result](/img/llm/gsm8k/benchmark_result.png)
 
+- **下列是qwen2.5-3B在GRPO约12800 steps下的表现：**
 ![GRPO_result](/img/llm/gsm8k/GRPO_result.png)
 
 **在GRPO的训练中，遇到了下列情况：**
@@ -431,9 +433,21 @@ trainer = GRPOTrainer(
 
 ## 总结
 
-`pip freeze  > requirements.txt`
+可以使用下列指令查看日志中的对应步数：
+```bash
+grep "Training step" training_details.log | tail -n 10
+```
+
+可以使用下列指令合并分布式训练后的模型权重：
+```bash
+python zero_to_fp32.py ./ output
+```
+> 同时，注意合并后只有权重文件，如果需要加载推理还需要将原模型的json文件拷贝进新的目录中；
 
 我的各个库的版本如下：
+
+`pip freeze  > requirements.txt`
+
 ```bash
 Package                           Version
 --------------------------------- ---------------
