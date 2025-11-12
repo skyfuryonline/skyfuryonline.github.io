@@ -405,6 +405,12 @@ trl vllm-serve --model /home/lihao/gsm8k-rl/models/Qwen2.5-3B  --dtype bfloat16 
 
 ![accelerate端示例](/img/llm/gsm8k/grpo_trainer.png)
 
+**简单评估结果示例：**
+
+![benchmark_result](/img/llm/gsm8k/benchmark_result.png)
+
+![GRPO_result](/img/llm/gsm8k/GRPO_result.png)
+
 **在GRPO的训练中，遇到了下列情况：**
 
 ![accelerate端示例](/img/llm/gsm8k/GRPO_字符噪声.png)
