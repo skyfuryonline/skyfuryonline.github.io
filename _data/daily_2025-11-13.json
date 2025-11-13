@@ -1,10 +1,10 @@
 [
     {
-        "title": "Gen AI is bringing New Yorkers' imagination to life",
-        "link": "https://blog.google/technology/google-deepmind/imagine-if/",
+        "title": "The road to useful quantum computing applications",
+        "link": "https://blog.google/technology/research/useful-quantum-computing-applications/",
         "date": "2025-11-13",
-        "source": "GoogleDeepmindBlogCrawler",
-        "cache_path": "cache/2025-11-13/Gen AI is bringing New Yorkers' imagination to life",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-11-13/The road to useful quantum computing applications",
         "image_files": [
             "image_1.webp",
             "image_2.webp",
@@ -17,8 +17,9 @@
             "image_9.webp",
             "image_10.webp",
             "image_11.webp",
-            "image_12.webp"
+            "image_12.webp",
+            "image_13.webp"
         ],
-        "summary": "摘要：2025年11月，Google DeepMind联合OUTFRONT在纽约市发起“Imagine If…”艺术项目，邀请市民通过扫描地铁站屏幕二维码提交对纽约的天马行空想象，由五位来自不同行政区的本地艺术家（Ariana Cimino、Jeff Wave、Lauren Camara、Molly Goldfarb、Subway Doodle）使用AI模型Veo与Nano Banana将其转化为视觉艺术作品，并在全市MTA地铁屏上展出。该项目旨在激发公众创造力，推动AI与艺术融合，让城市成为流动的艺术画布。活动将持续四周，最终于12月14日Times Square举行盛大的成果展示。即使不在纽约，用户也可通过Gemini App体验AI创作。\n\n例子：一位布鲁克林居民幻想“曼哈顿摩天楼变成发光的垂直花园”，上传后被艺术家Subway Doodle以蓝色怪兽穿梭其间的方式呈现，画面充满奇幻色彩，迅速在地铁屏传播。\n\n关键字：AI艺术、Veo、纽约地铁、社区共创、生成式AI"
+        "summary": "摘要：谷歌研究团队提出五阶段框架，系统梳理从量子算法发现到实际应用落地的完整路径。第一阶段为抽象算法发现（如Grover、Simon算法），第二阶段需锁定具备真实量子优势的具体问题实例，第三阶段验证其与现实场景的关联性并弥合跨领域知识鸿沟，第四阶段进行工程化优化与资源估算，第五阶段实现部署并产生实际效益。当前多数应用尚处第二至第四阶段，尚未完成第五阶段的硬件部署验证。文章呼吁采用“算法优先”策略，并推动量子与行业专家协同合作，以加速实用化进程。\n\n例子：量子模拟药物分子时，需先确认特定分子结构在量子计算下具优势（Stage II），再结合药理学需求设计实验（Stage III），最后优化编译与纠错方案（Stage IV）才能投入临床研发流程。\n\n关键字：量子算法、量子优势、跨学科协作、工程化部署、应用落地"
     }
 ]

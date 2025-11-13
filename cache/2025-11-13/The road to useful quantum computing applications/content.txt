@@ -1,0 +1,145 @@
+Breadcrumb
+Technology
+Research
+The road to useful quantum computing applications
+Nov 13, 2025
+·
+6 min read
+Share
+Twitter
+Facebook
+LinkedIn
+Mail
+Copy link
+Our new framework, published today, helps us understand and navigate the promising pathways and critical obstacles on the journey from new discovery to real world application.
+Ryan Babbush
+Director of Research, Quantum Algorithms and Applications
+Share
+Twitter
+Facebook
+LinkedIn
+Mail
+Copy link
+Sometimes, history happens all at once. A few short years can usher in decades of progress and innovation. We’re now seeing that with quantum computing.
+Forty years of research
+, work and investment are converging, and the grand challenge of building large-scale, capable quantum computers is within humanity's reach.
+The quantum computing community has made remarkable progress on hardware, and our high-performance Willow chip is leading the charge. We’re now focused on achieving our
+next milestone
+, a long-lived logical qubit, which will enable more powerful and stable quantum computers. While challenges remain, there’s growing confidence at Google and across the community that no insurmountable obstacles exist on the road ahead.
+However, a critical question remains:
+what will we actually do with the full power of a fault-tolerant quantum computer?
+To map the journey from an idea to a deployed, real-world tool, our team developed a five-stage framework, published in our paper, “
+The Grand Challenge of Quantum Applications
+.” Today, we are sharing these five stages and evaluating where some of the most promising applications currently stand in the process.
+The five stages building from idea to impact
+The wide-ranging research required to uncover useful quantum computing applications can be divided into five main stages, and an idea typically passes through all of them on the way to real-world impact.
+Stage I - Discovery:
+A new abstract quantum algorithm — like
+Simon’s algorithm
+for finding hidden patterns,
+Grover's algorithm
+for unstructured search or the
+quantum phase estimation algorithm
+— is discovered and analyzed. These algorithms may theoretically tackle problems faster than classical methods, and deliver foundational results in a given field, but their direct practical utility is often uncertain or limited at this early stage. This work is frequently built upon the most basic, fundamental research into quantum computation's features and limits (Stage 0).
+Stage II - Finding the right problem instances:
+This stage focuses on finding and characterizing concrete, verifiable problem instances where a quantum algorithm demonstrates a true advantage over all known classical methods. For example, addressing an abstract Stage I problem like “finding a molecule's lowest energy state” requires identifying specific molecules (the "problem instances") for which a quantum computer will provide an advantage. This can be challenging because often many instances of real-world problems are solvable by classical computers. The quantum advantage may only be guaranteed in the most complex cases, and classically hard instances can be difficult to identify. The quantum algorithm must successfully compete against a vast array of constantly improving classical approaches to pass this stage.
+Stage III - Establishing real-world advantage:
+This is the "so what?" stage. Having characterized problem instances that we can solve better than classical, this stage asks whether those instances connect to
+specific, real-world
+use cases. For example, how does simulating particular molecules we know to be challenging classically (the Stage II “problem instances”) create value for drug discovery? The first common issue at this stage is that the devil is in the details, and it is often challenging to find real world use cases that fit the criteria for quantum advantage identified in Stage II. There is also a knowledge gap for both quantum and application area experts. For example, quantum algorithmists often don't know the fine details of an application area like battery chemistry, and battery engineers don't know the fine print of quantum algorithms.
+Stage IV - Engineering for use:
+Once we have a real-world problem instance with quantum advantage, we need to understand how much it will actually cost computationally. This stage is where we do practical optimization, multiple layers of compilation and resource estimation for a specific use case. Key questions here include: how many qubits and gates? How long will the algorithm need to run? For fault-tolerant quantum computing use cases (i.e. cases that use quantum error correction) Stage IV also involves mapping how this error correction will be implemented.
+Over the last decade, Stage IV research has reduced the estimated resources required to solve problems like factoring integers (left) and simulating molecules (right) by many orders of magnitude
+Stage V - Application deployment:
+The final leg of the journey. The proven quantum solution is deployed and used in a practical, real-world workflow where it provides an advantage over all classical alternatives. This stage lies in the future. Due to the still-early state of hardware development, no end-to-end quantum application has yet been implemented in hardware with a conclusive advantage on a problem of real-world consequence.
+Where do some of today’s most promising applications stand?
+Our framework shows where three potential applications stand on their respective journeys.
+For details, see our Stage III research on
+industrial quantum simulation
+and
+Quantum Echoes
+for
+measuring molecules
+; our Stage IV papers on
+quantum chemistry
+,
+fusion reactors
+, and
+physics simulations
+; and the
+Qualtran software library
+.
+For details, see our
+security blog
+and
+accompanying paper
+on factoring large integers using a quantum computer.
+For details, see our recent papers on
+optimization
+and
+machine learning
+, and our
+Stage II
+and
+Stage IV
+work on
+DQI
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Next steps and the work ahead
+Our framework helps us see that while the community has made impressive progress on new algorithms and resource estimates, there are real bottlenecks in identifying the right problem instances and finding real-world advantage. We highlight two of the calls to action from our paper, to help humanity reach the full potential of quantum computing applications.
+Adopt an algorithm-first approach:
+Instead of starting with a vague business problem, which has had limited historical success, we should focus on getting algorithms to a level of proven advantage (clearing Stage II) and
+then
+actively search for a real-world application (Stage III). In addition, a useful solution should be verifiable to lead to a practical application. Our Quantum Echoes experiment is the first example of an algorithm run on a quantum computer with verifiable quantum advantage.
+Bridge the knowledge gap:
+We need to cultivate more cross-disciplinary experts and teams who can speak both quantum and a specific domain language (e.g., chemistry, finance, materials science). We are optimistic that AI could be a powerful tool for bridging this Stage III-related gap, by scanning vast amounts of scientific literature to find connections between abstract quantum problems and practical industry challenges.
+Governments and other research funders can play a key role in addressing gaps by targeting programs and funding to Stage II and III applications development.
+Building a fault-tolerant quantum computer is a grand challenge of hardware. Using it is a grand challenge of applications — and our five-stage framework offers the community a clearer way to see the road we're on and the challenges ahead, as we work toward quantum computing that delivers real-world benefits.
+Read the full details in our perspective paper, "
+The Grand Challenge of Quantum Applications
+."
+POSTED IN:
+Research
+Related stories
+AI
+The latest AI news we announced in October
+By
+Keyword Team
+Nov 04, 2025
+Research
+Meet Project Suncatcher, a research moonshot to scale machine learning compute in space.
+Nov 04, 2025
+Research
+Google Research: accelerating scientific breakthroughs to real-world impact
+By
+Yossi Matias
+Oct 23, 2025
+Google.org
+Announcing the 2025 Google PhD Fellows
+By
+Leslie Yeh
+Oct 23, 2025
+Research
+New updates and more access to Google Earth AI
+By
+Yossi Matias
+&
+Chris Phillips
+Oct 23, 2025
+Research
+Our Quantum Echoes algorithm is a big step toward real-world applications for quantum computing
+By
+Hartmut Neven
+&
+Vadim Smelyanskiy
+Oct 22, 2025
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6
