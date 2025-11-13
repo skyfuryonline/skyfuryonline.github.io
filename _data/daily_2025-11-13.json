@@ -1,0 +1,24 @@
+[
+    {
+        "title": "Gen AI is bringing New Yorkers' imagination to life",
+        "link": "https://blog.google/technology/google-deepmind/imagine-if/",
+        "date": "2025-11-13",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-13/Gen AI is bringing New Yorkers' imagination to life",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp"
+        ],
+        "summary": "摘要：2025年11月，Google DeepMind联合OUTFRONT在纽约市发起“Imagine If…”艺术项目，邀请市民通过扫描地铁站屏幕二维码提交对纽约的天马行空想象，由五位来自不同行政区的本地艺术家（Ariana Cimino、Jeff Wave、Lauren Camara、Molly Goldfarb、Subway Doodle）使用AI模型Veo与Nano Banana将其转化为视觉艺术作品，并在全市MTA地铁屏上展出。该项目旨在激发公众创造力，推动AI与艺术融合，让城市成为流动的艺术画布。活动将持续四周，最终于12月14日Times Square举行盛大的成果展示。即使不在纽约，用户也可通过Gemini App体验AI创作。\n\n例子：一位布鲁克林居民幻想“曼哈顿摩天楼变成发光的垂直花园”，上传后被艺术家Subway Doodle以蓝色怪兽穿梭其间的方式呈现，画面充满奇幻色彩，迅速在地铁屏传播。\n\n关键字：AI艺术、Veo、纽约地铁、社区共创、生成式AI"
+    }
+]
