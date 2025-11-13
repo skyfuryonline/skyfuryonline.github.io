@@ -6,7 +6,7 @@
     - "2025-11-10-lets-start-with-gsm8k.md"
     - "2025-11-11-distributed-training-with-unsloth.md"
 
-- group_name: "记录labuladong算法小抄刷题"
+- group_name: "labuladong的算法小抄"
   url: "/groups/labuladong-algorithm"
   group_image: "/img/cover_algorithm.webp"
   group_description: "记录labuladong算法小抄刷题"
