@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Labuladong刷题笔记：动态规划系列"
+title: "Labuladong刷题笔记：动态规划系列（1）"
+subtitle: "动态规划设计：最长递增子序列"
 date: 2025-11-11
-author: "LH" # 请替换为您的名字
+author: "LH"
 tags: [动态规划, LeetCode]
 group: labuladong-algorithm
 catalog: true # 默认开启大纲目录
