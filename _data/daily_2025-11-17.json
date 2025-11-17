@@ -1,0 +1,23 @@
+[
+    {
+        "title": "WeatherNext 2: Our most advanced weather forecasting model",
+        "link": "https://blog.google/technology/google-deepmind/weathernext-2/",
+        "date": "2025-11-17",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-11-17/WeatherNext 2- Our most advanced weather forecasting model",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp"
+        ],
+        "summary": "摘要：Google DeepMind发布新一代AI天气模型WeatherNext 2，显著提升全球天气预测的效率与精度。该模型可在一分钟内生成数百种可能的天气情景，单TPU即可完成，速度比前代快8倍，分辨率提升至1小时级，并在99.9%的变量和预报时段上超越前代。其核心技术“功能生成网络”（FGN）通过注入噪声模拟真实物理系统，仅训练独立气象要素（如温度、风速），却能精准预测复杂联动系统（如区域高温或风电场输出）。WeatherNext 2现已集成于Search、Gemini、Pixel Weather及Maps平台，并开放Earth Engine、BigQuery数据访问及Vertex AI早期接入，推动科研与商业应用落地。\n\n例子：当台风逼近时，WeatherNext 2可同时模拟数十种路径与强度变化，帮助航空公司提前规划备降航线，降低极端天气风险。\n\n关键字：WeatherNext 2、AI天气预测、功能生成网络、高分辨率预报、Vertex AI"
+    }
+]
