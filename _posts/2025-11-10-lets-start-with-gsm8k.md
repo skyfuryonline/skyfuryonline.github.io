@@ -408,10 +408,22 @@ trl vllm-serve --model /home/lihao/gsm8k-rl/models/Qwen2.5-3B  --dtype bfloat16 
 **简单评估结果示例：**
 
 - **下列是qwen2.5-3B在zero-shot下的表现：**
+
 ![benchmark_result](/img/llm/gsm8k/benchmark_result.png)
 
 - **下列是qwen2.5-3B在GRPO约12800 steps下的表现：**
+
 ![GRPO_result](/img/llm/gsm8k/GRPO_result.png)
+
+**注意到即使在从未训练过的Math500数据集上，也体现出了提升：**
+
+- **下列是qwen2.5-3B在Math500数据集中zero-shot下的表现：**
+
+![zero-shot on Math500](/img/llm/gsm8k/zero-show-qwen2.5-3b-math500.png)
+
+- **下列是qwen2.5-3B在GRPO约12800 steps下（on gsm8k）在Math500数据集中的表现：**
+  
+![after gsm8k on Math500](/img/llm/gsm8k/12800steps-qwen2.5-3b-math500.png)
 
 **在GRPO的训练中，遇到了下列情况：**
 
