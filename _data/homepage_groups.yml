@@ -11,7 +11,7 @@
   group_image: "/img/cover_algorithm.webp"
   group_description: "记录labuladong算法小抄刷题"
   posts:
-    []
+    - "2025-11-11-labuladong-binary-tree-intro.md"
 
 - group_name: "博客开发指南"
   url: "/groups/blog-development"
