@@ -1,0 +1,53 @@
+[
+    {
+        "title": "Start building with Gemini 3",
+        "link": "https://blog.google/technology/developers/gemini-3-developers/",
+        "date": "2025-11-18",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-11-18/Start building with Gemini 3",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.gif",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp"
+        ],
+        "summary": "摘要：Google 正式发布 Gemini 3 Pro，其为目前最智能的AI模型，在多项基准测试和编码任务中超越前代，尤其擅长多模态理解、视觉推理与“氛围编码”（vibe coding）。开发者可通过 Google AI Studio、Vertex AI 和新平台 Google Antigravity 等工具快速接入，实现从自然语言到完整应用的端到端开发。Gemini 3 Pro 支持长上下文处理、复杂工具调用及跨文件重构，显著提升自动化编程效率；同时强化空间与视频理解能力，适用于机器人、XR设备等场景。该模型已集成至主流IDE如 Android Studio、Cursor、JetBrains 等，并提供 API 预览版（按用量计费），助力企业构建下一代智能应用。\n\n例子：只需一句“帮我做一个复古像素风格的太空射击游戏”，Gemini 3 Pro 就能在 Google AI Studio 自动生成可运行的游戏原型，包含界面、逻辑与交互，无需任何代码基础。\n\n关键字：Gemini 3 Pro、氛围编码、多模态理解、视觉推理、Agentic开发"
+    },
+    {
+        "title": "A new era of intelligence with Gemini 3",
+        "link": "https://blog.google/products/gemini/gemini-3/",
+        "date": "2025-11-18",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-18/A new era of intelligence with Gemini 3",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.gif",
+            "image_7.webp",
+            "image_8.gif",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp",
+            "image_16.webp"
+        ],
+        "summary": "摘要：Google发布Gemini 3，其为目前最智能的AI模型，显著提升推理能力、多模态理解与工具使用效率。Gemini 3 Pro在多项基准测试中全面超越前代，尤其在复杂问题解决、代码生成与视觉化交互方面表现突出；Deep Think模式进一步强化深度思考能力，适用于高阶任务。用户可通过Gemini App、AI Studio、Vertex AI及搜索功能即时体验，AI Ultra订阅者将率先获得Deep Think模式。Gemini 3还支持“学习-构建-规划”全流程，赋能开发者通过Google Antigravity平台实现自动化编程与任务执行，同时强化安全机制以防范滥用。\n\n例子：用Gemini 3分析你的网球比赛视频，自动生成训练计划并优化动作细节，助你快速提升球技。\n\n关键字：Gemini 3、多模态推理、Deep Think、AI Studio、Agentic开发"
+    }
+]
