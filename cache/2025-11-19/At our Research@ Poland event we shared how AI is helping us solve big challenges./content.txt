@@ -1,0 +1,45 @@
+Breadcrumb
+Technology
+Research
+Nov 19, 2025
+At our Research@ Poland event we shared how AI is helping us solve big challenges.
+During a keynote at our Research@ event in Poland last week, Yossi Matias, Head of Google Research shared how his team’s work is guided by the "
+magic cycle
+" — where real-world challenges drive foundational research and scientific breakthroughs.
+Our latest
+Research@
+event gathered hundreds of researchers, academics, policymakers and partners to explore how we continue this cycle, turning complex research into real-world solutions that serve people in their daily lives.
+A clear theme emerged across every conversation: collaboration. From deploying
+Google Earth AI
+to help tackle
+public health
+and
+disaster response
+challenges,
+creating new methods for brain mapping
+and supporting responsible
+AI literacy
+and
+education
+, to developing AI that can act
+as a virtual collaborator
+for scientists — partnership has been key, and we’re excited to see what we can build together next.
+VP and Head of Google Research, Yossi Matias, leads a discussion on AI Co-Scientist with Googler Vivek Natarajan and Dr. Tiago Dias da Costa from Imperial College London.
+Ronit Levavi Morad explains the importance of AI literacy for future generations.
+Luke Barrington shares how Google Earth AI uses geospatial AI models and datasets for critical global challenges.
+Demo booths helped attendees connect with the real world impact Google Research is having across science, health, and education.
+We were joined by Polish researchers, academics, policymakers and partners for this year’s flagship European Research@ event.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+POSTED IN:
+Research
+AI
+Related stories
+Google Search with Gemini 3: Our most intelligent search yet
+Learn more about Gemini 3 and how it’s upgrading Google Search and AI Mode.
+A new era of intelligence with Gemini 3
+New ways to plan travel with AI in Search
+WeatherNext 2: Our most advanced weather forecasting model

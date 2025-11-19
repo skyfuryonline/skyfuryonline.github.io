@@ -1,0 +1,31 @@
+[
+    {
+        "title": "At our Research@ Poland event we shared how AI is helping us solve big challenges.",
+        "link": "https://blog.google/technology/research/ai-collaboration-poland-2025/",
+        "date": "2025-11-19",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-11-19/At our Research@ Poland event we shared how AI is helping us solve big challenges.",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp"
+        ],
+        "summary": "摘要：在波兰举办的Research@活动上，Google Research负责人Yossi Matias提出“魔法循环”理念——以现实世界挑战驱动基础研究与科学突破。活动汇聚数百名研究人员、学者及政策制定者，聚焦AI如何转化为服务大众的实用解决方案。合作成为核心主题：从利用Google Earth AI应对公共卫生与灾害响应，到推动脑图谱新方法、提升AI素养教育，再到开发虚拟科研合作者，多方协作是关键。现场演示展示了AI在科学、健康与教育领域的实际影响，彰显Google致力于构建开放、负责任的AI生态。\n\n例子：通过Google Earth AI，研究人员可快速识别灾区受损区域，辅助救援决策，实现“数据即行动”。\n\n关键字：AI协作、魔法循环、公共健康、脑图谱、AI素养"
+    },
+    {
+        "title": "Google DeepMind is opening a new AI research lab in Singapore to advance AI in Asia Pacific",
+        "link": "https://blog.google/around-the-globe/google-asia/google-deepmind-is-opening-a-new-ai-research-lab-in-singapore-to-advance-ai-in-asia-pacific/",
+        "date": "2025-11-19",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-19/Google DeepMind is opening a new AI research lab in Singapore to advance AI in Asia Pacific",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp"
+        ],
+        "summary": "摘要：Google DeepMind于2025年11月19日宣布在新加坡设立新的人工智能研究实验室，旨在加速亚太地区AI技术的落地与普惠应用。该实验室将聚焦于提升Gemini模型能力，强化语言与文化包容性，服务多元亚太市场，并推动AI在Google产品及云服务中的深度整合。此举延续了谷歌对亚太生态的长期投入，团队规模在过去一年已翻倍增长，涵盖顶尖科研人员、工程师与AI影响专家，致力于让AI更贴近本地需求。\n\n例子：实验室将优化中文、泰语、印尼语等多语种模型，使东南亚用户能更自然地使用Google翻译、搜索和AI助手，提升本地化体验。\n\n关键字：AI研究、Gemini模型、亚太地区、语言包容性、Google DeepMind"
+    }
+]
