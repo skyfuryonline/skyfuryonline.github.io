@@ -1,0 +1,142 @@
+Breadcrumb
+Technology
+Developers
+Build with Nano Banana Pro, our Gemini 3 Pro Image model
+5 min read
+Share
+Twitter
+Facebook
+LinkedIn
+Mail
+Copy link
+Here’s how developers can use Nano Banana Pro (Gemini 3 Pro Image), a powerful new image generation and editing model with advanced features and creative control.
+A
+Alisa Fortin
+Product Manager, Google DeepMind
+N
+Naina Raisinghani
+Product Manager, Google DeepMind
+Share
+Twitter
+Facebook
+LinkedIn
+Mail
+Copy link
+Today, we’re releasing
+Nano Banana Pro
+(Gemini 3 Pro Image), a higher-fidelity model built on
+Gemini 3 Pro
+for developers to access studio-quality image generation. This follows our release of
+Nano Banana
+(Gemini 2.5 Flash Image) just a few months ago. Since then, we’ve loved seeing the community put its
+key features
+to work — from character consistency to
+photo restoration
+, and even using its capabilities to make
+local edits
+in an infinite canvas.
+This state-of-the-art image generation and editing model is starting to roll out in paid preview to build a new wave of intelligent, multimodal applications with the
+Gemini API
+in
+Google AI Studio
+and
+Vertex AI
+for enterprises. This model unlocks high-fidelity images with higher accuracy in text rendering and robust world knowledge, supercharged by the model's ability to use grounding with Google Search to retrieve data based on the user's prompt.
+Gemini 3 Pro Image excels on Text to Image AI benchmarks.
+We are also expanding the reach of Gemini 3 Pro Image across the developer ecosystem. In
+Google Antigravity
+— our new agentic development platform — coding agents can now directly leverage these image generation capabilities to generate detailed UI mockups for user review or even new visual assets before implementing in code. Additionally, leading creative platforms are integrating the model, including Adobe and Figma.
+High fidelity and controls
+If you’re building advanced tools that require precision, Gemini 3 Pro Image gives you control over the physics (lighting, camera, focus, color grading) and composition of the image to ensure professional-quality outputs.
+A silhouette lost in a sea of golden bokeh and morning mist.
+Prompt: Replace volumetric lighting with bokeh
+With 2K and 4k resolution available, you can ensure outputs meet resolution standards required for professional production. Effortlessly create cohesive advertisements by combining diverse elements such as product images, logos, and references. Achieve consistent resemblance for up to five individuals, integrate six high-fidelity shots, or blend as many as fourteen standard inputs into a single, polished ad. Try our
+demo app
+that allows you to pair logos with products to create your own mockup designs.
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+Demo app that brings product design to life with reference images. Sequences shortened.
+Improved text rendering and localization
+Gemini 3 Pro Image offers a significant leap forward from 2.5 Flash Image, transforming abstract image generation into functional assets. It excels in handling logic and language, and delivers state-of-the-art text rendering, producing clear, accurate text integrated in your images.
+Creative food photography where each word is artistically spelled out using the actual ingredients associated with that food.
+Prompt: Make 8 sophisticated minimalistic logos, each is a fun food word, and make letters from realistic food to express the meaning of this word. composition: a rendering of all logos on a single solid white background
+It's also an ideal solution for developing marketing collateral, educational content and numerous other applications. Try the model’s capabilities in our
+comic book generator app
+in Google AI Studio, where you can create original multi-page comic books featuring you and a friend, complete with advanced text rendering and stylization.
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+Demo app that creates a comic book in your chosen language based on photos and selected genre. Sequences shortened.
+With Gemini 3 Pro Image, we’ve removed the barrier between image generation and localization logic. This advanced model grasps the semantic context of an image, enabling effortless language changes on elements like menus, signs, or documents utilizing image-to-image generation keeping original artistic style or layout.
+A beverage campaign concept showcasing accurate translation and rendering of English text into French.
+Prompt: Translate to French
+Access to the world’s knowledge
+Gemini 3 Pro Image connects a vast knowledge base to produce more factual assets over previous image generation models. Additionally, when enabled, grounding with Google Search connects the model to real-time web content for data-driven outputs. This is particularly valuable for applications requiring precise representations, such as biological diagrams or historical maps. Try this for yourself with our
+demo app
+where you can dynamically create infographics on any topic tailored to your audience.
+Bike care and maintenance infographic generated from a demo app that creates educational infographics.
+Go bananas and start building today
+This new model release incorporates much of the input you have already shared with us, but we aren’t stopping here. To ensure clear provenance in AI-generated media, we have integrated
+SynthID digital watermarks
+directly into every image created or edited with Gemini 3 Pro Image to denote its AI-generated or edited origin.
+Start by exploring our
+collection of apps
+that use Gemini 3 Pro Image to spark your imagination and see what’s possible. Once you’re inspired, remix these demo apps or integrate the model directly into your own projects via the
+Gemini API
+in
+Google AI Studio
+and
+Vertex AI
+for enterprise use. For technical details along the way, check out the
+documentation
+,
+prompt guide
+,
+cookbook
+or visit the
+developer forum
+to get help and share feedback.
+Use Gemini 2.5 Flash Image for faster, lower cost image generation, or 3 Pro Image for higher quality image generation, with higher cost and latency.
+POSTED IN:
+Developers
+AI
+Gemini Models
+Related stories
+Learning & Education
+Develop a deeper understanding with interactive images in Gemini.
+By
+Dave Messer
+Nov 20, 2025
+AI
+How we’re bringing AI image verification to the Gemini app
+By
+Pushmeet Kohli
+&
+Laurie Richardson
+Nov 20, 2025
+Gemini App
+7 tips to get the most out of Nano Banana Pro
+By
+Bea Alessio
+Nov 20, 2025
+AI
+Introducing Nano Banana Pro
+By
+Naina Raisinghani
+Nov 20, 2025
+Google Cloud
+How Westinghouse is reenergizing nuclear power with — and for — AI
+By
+Matt A.V. Chaban
+Nov 20, 2025
+Research
+At our Research@ Poland event we shared how AI is helping us solve big challenges.
+Nov 19, 2025
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6

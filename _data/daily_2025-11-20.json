@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Build with Nano Banana Pro, our Gemini 3 Pro Image model",
+        "link": "https://blog.google/technology/developers/gemini-3-pro-image-developers/",
+        "date": "2025-11-20",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-11-20/Build with Nano Banana Pro, our Gemini 3 Pro Image model",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.jpg",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "摘要：Google DeepMind 推出新一代图像生成与编辑模型 Nano Banana Pro（Gemini 3 Pro Image），专为开发者设计，支持高保真度图像生成、精细物理控制（如光照、色彩）、多元素融合及本地编辑。相比前代，其文本渲染更精准、支持多语言本地化，并能通过 Google Search 实现事实性内容增强，适用于广告、教育、漫画等场景。该模型已在 Google AI Studio 和 Vertex AI 上提供付费预览，同时集成于 Adobe、Figma 等创意平台及 Antigravity 开发平台，助力构建智能多模态应用。所有输出均内置 SynthID 水印以确保内容可追溯。开发者可通过 Gemini API 快速接入，或使用 Demo 应用激发创意。\n\n例子：输入“将咖啡杯上的‘Coffee’字样替换为法语‘Café’，保持手绘风格”，模型可自动翻译并保留原画风，适合跨国品牌宣传。\n\n关键字：高保真图像、文本渲染、多语言本地化、Google Search 地理知识、SynthID 水印"
+    },
+    {
+        "title": "How we’re bringing AI image verification to the Gemini app",
+        "link": "https://blog.google/technology/ai/ai-image-verification-gemini-app/",
+        "date": "2025-11-20",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-20/How we’re bringing AI image verification to the Gemini app",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.jpg",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：Google 正在 Gemini 应用中推出 AI 图像验证功能，用户可通过上传图片并提问“是否由 Google AI 生成”等方式，借助 SynthID 数字水印技术自动检测图像是否由其 AI 创作或编辑。SynthID 自2023年推出以来已标记超200亿件内容，并配合检测工具为媒体从业者提供验证支持。该功能不仅增强内容透明度，也与 C2PA 联盟合作推动行业标准，未来将扩展至视频、音频及更多平台（如搜索、YouTube），并支持非 Google 生态系统的 C2PA 内容凭证。此举是 Google 负责任 AI 发展的重要一步。\n\n例子：用户在 Gemini 中上传一张风景图，问“这是AI生成的吗？”，系统会检测水印并回复“此图为 Google AI 生成，使用了 SynthID 标记”。\n\n关键字：SynthID、AI图像验证、Gemini App、C2PA、内容透明度"
+    }
+]
