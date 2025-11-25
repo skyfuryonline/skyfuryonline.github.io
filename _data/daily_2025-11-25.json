@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Watch ‘The Thinking Game,’ a documentary about Google DeepMind, for free on YouTube.",
+        "link": "https://blog.google/technology/google-deepmind/the-thinking-game/",
+        "date": "2025-11-25",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-11-25/Watch ‘The Thinking Game,’ a documentary about Google DeepMind, for free on YouTube.",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：为庆祝AlphaFold发布五周年，Google DeepMind于2025年11月25日起在YouTube免费上线纪录片《The Thinking Game》。该片由曾拍摄AlphaGo的获奖团队制作，深入记录了DeepMind实验室探索通用人工智能（AGI）的历程，聚焦创始人Demis Hassabis及其团队的关键突破，尤其是AlphaFold解决蛋白质结构预测这一生物学世纪难题并斩获诺贝尔奖的时刻。影片展现了AI科研的激情、挑战与未来愿景。\n\n例子：就像破解密码一样，AlphaFold通过算法“读懂”蛋白质折叠规律，让人类首次能快速预测生命分子结构，推动药物研发和疾病治疗。\n\n关键字：AlphaFold、通用人工智能（AGI）、DeepMind、诺贝尔奖、蛋白质折叠"
+    }
+]
