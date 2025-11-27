@@ -1,0 +1,112 @@
+Breadcrumb
+Outreach and Initiatives
+Google.org
+Deepening our AI research partnership with Tel Aviv University
+Nov 27, 2025
+·
+3 min read
+Share
+Twitter
+Facebook
+LinkedIn
+Mail
+Copy link
+L
+Leslie Yeh
+Director, Scientific Progress, Google.org
+A
+Avinatan Hassidim
+VP Research, Google Research
+Share
+Twitter
+Facebook
+LinkedIn
+Mail
+Copy link
+Google and Tel Aviv University Leadership
+Google and
+Tel Aviv University (TAU)
+have a history of substantial partnership. Formalized in 2020, the Google-TAU partnership has since led to successful collaborations between
+Google Research
+and
+TAU’s Center for AI and Data Science (TAD)
+in areas like AI for Social Good (
+launched
+in 2021) and AI for Sustainability and Education (
+launched
+in 2023). These efforts have promoted multidisciplinary research for societal benefit, including more than 20 research projects ranging from
+educational values in LLMs
+, to the connection between
+3D neural representations and language
+, and
+using AI to enhance wastewater treatment
+. Through these partnerships, we have also supported student education and mentoring initiatives at TAU.
+Building on this successful foundation, today we are announcing a new three-year engagement for 2026-2028, supported by $1 million in funding from
+Google.org
+. This new milestone marks a significant expansion of our collaborative work, fueling cutting-edge foundational AI research and investing in the local ecosystem.
+Prof. Yossi Matias, Vice president, Google and Head of Google Research. Photography by: Chen Galili
+Google and Tel Aviv University (TAU) Leadership (from left to right) Prof. Avinatan Hassidim, VP Research, Google Research; Prof. Tova Milo, Dean, Faculty of Exact Sciences, TAU; Prof. Yossi Matias, Vice President, Google and Head of Google Research; Prof. Ariel Porat, President, TAU; Prof. Yishay Mansour, Head of TAU’s Center for AI and Data Science. Photography by: Chen Galili
+AI & Higher Education panel (from left to right): Prof. Avinatan Hassidim, VP Research, Google Research; Prof. Noga Kronfeld Schor, Rector, Tel Aviv University; Niv Efron, Senior Director of Engineering, Google Research; Prof. Meir Feder, School of Electrical Engineering, Tel Aviv University. Photography by: Chen Galili
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Fostering foundational AI research and discovery
+This effort is focused on driving scientific discovery and empowering the next generation of AI researchers. Working with
+TAD
+, we aim to support frontier research through grants and joint projects that push the state-of-the-art. Funding is targeted at critical areas that will help researchers tackle some of the most fundamental challenges in AI, focusing on goals with far-reaching potential:
+Making AI more efficient and sustainable:
+Developing algorithmic innovations that drive more efficiency in Machine Learning models and systems.
+Building multilingual, multimodal and multicultural AI:
+Creating better ways to evaluate how generative models understand text and images across different languages.
+Exploring the next frontier of computing:
+Investigating novel quantum algorithms for real-world applications.
+Advancing safe and privacy-preserving AI:
+Researching new techniques for better privacy and security .
+We are simultaneously launching collaborative projects between
+Google Research
+teams and TAU researchers on timely topics like Evaluations for GenAI, and AI for Climate & Weather Research. These joint efforts will be focused on exciting research fields, such as using ML to create the first-ever global map of flower color for conservation efforts, and developing generative navigation methods for embodied agents.
+To further enable these and other discoveries, we are providing Google Cloud Platform (GCP) credits. We hope this infrastructure will help ensure that researchers can tackle the most ambitious, resource-intensive projects and explore the capabilities of Google's latest open models, such as Gemma, directly within their research.
+Empowering the next generation of AI researchers
+We are actively supporting the TAU research community through the integration of specialized AI and Data Science courses across traditionally non-computational fields—from Law and Humanities to Life Sciences—equipping students with advanced tools to tackle complex research questions in ways previously impossible. This effort supports the expansion of critical early education initiatives, like the
+BITS of AI
+program, designed to cultivate the next generation of AI researchers.
+The funding from this collaboration will directly support PhD students, through scholarships and travel awards to help researchers present their findings globally. Additionally, this year we were able to award fellowships to two PhD students at TAU through our
+Google PhD Fellowship program
+. And to further expand students' access to Google AI tools, we are also offering students in Israeli universities one year of a
+Google AI Pro plan for free
+.
+Advancing AI research through collaboration
+The partnership between Google and Tel Aviv University is based on a shared belief that the biggest challenges can only be solved when we work together. By combining TAU’s academic excellence and pioneering spirit with Google’s groundbreaking engineering and AI research capabilities, we can help accelerate the next wave of scientific breakthroughs.
+POSTED IN:
+Google.org
+Research
+Related stories
+Research
+At our Research@ Poland event we shared how AI is helping us solve big challenges.
+Nov 19, 2025
+Google DeepMind
+WeatherNext 2: Our most advanced weather forecasting model
+By
+The WeatherNext team
+Nov 17, 2025
+Research
+The road to useful quantum computing applications
+By
+Ryan Babbush
+Nov 13, 2025
+Company announcements
+Google is investing in Oklahoma’s workforce and talent pipeline.
+Nov 07, 2025
+Google.org
+Google is helping girls “scout” a path to digital wellbeing.
+Nov 04, 2025
+Research
+Meet Project Suncatcher, a research moonshot to scale machine learning compute in space.
+Nov 04, 2025
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6
