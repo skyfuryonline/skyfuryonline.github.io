@@ -1,4 +1,4 @@
-- group_name: "分布式训练笔记"
+- group_name: "模型及分布式训练笔记"
   url: "/groups/llm"
   group_image: "/img/cover-llms.png"
   group_description: "LLMs在多卡服务器上的训练"
