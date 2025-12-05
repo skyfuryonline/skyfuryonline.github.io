@@ -1,0 +1,47 @@
+[
+    {
+        "title": "The latest AI news we announced in November",
+        "link": "https://blog.google/technology/ai/google-ai-updates-november-2025/",
+        "date": "2025-12-05",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-05/The latest AI news we announced in November",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp"
+        ],
+        "summary": "摘要：2025年11月，谷歌发布多项AI重大更新，核心为Gemini 3模型的全面上线，强化多模态理解与自主规划能力，并集成至Google Search、Gemini App及Android Auto等平台。同时推出图像生成工具Nano Banana Pro、开发者平台Antigravity、智能导航升级、天气预测模型WeatherNext 2及教育学习功能增强。谷歌还宣布400亿美元投资于德州AI与云基础设施，推动全球AI人才培养与落地。此外，SIMA 2迈向AGI、AlphaFold五周年纪念等科研成果亦被重点呈现，彰显谷歌在AI应用、科研与产业布局上的系统性推进。\n\n例子：开车时用语音说“找家咖啡馆”，Google Maps结合Gemini自动规划路线并播报“右转经过Thai Siam餐厅”，实现真正无感交互导航。\n\n关键字：Gemini 3、Nano Banana Pro、Google Antigravity、AI基础设施、教育科技"
+    },
+    {
+        "title": "15 examples of what Gemini 3 can do",
+        "link": "https://blog.google/products/gemini/gemini-3-examples-demos/",
+        "date": "2025-12-05",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-05/15 examples of what Gemini 3 can do",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp"
+        ],
+        "summary": "摘要：Gemini 3 是谷歌推出的最新AI模型，具备强大的多模态理解能力，可处理文本、图像、视频、音频和代码等多种信息形式。它不仅擅长学习与解释复杂科学概念，还能生成交互式界面、可视化图表、个性化教学内容，甚至协助用户完成从编程到旅行规划、邮件管理等实际任务。其核心优势在于“行动代理”能力——能自主执行多步骤工作流，同时保持用户控制权。通过 Gemini App、AI Mode 搜索及 Google AI Studio 等平台，用户可直接体验其提升效率的潜力。\n\n例子：上传一段自己打篮球的视频，Gemini 3 可自动识别动作、分析姿势缺陷，并提供定制化训练建议，如同私人教练般指导你进步。\n\n关键字：多模态理解、行动代理、生成式UI、深度推理、开发者工具"
+    }
+]
