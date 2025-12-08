@@ -5,7 +5,7 @@
   posts:
     - "2025-11-10-lets-start-with-gsm8k.md"
     - "2025-11-11-distributed-training-with-unsloth.md"
-    - "2025-11-17-minimind-reproduction-and-tuning.md"
+    - "2025-11-17-minimind-v-reproduction-and-tuning.md"
 
 - group_name: "labuladong算法小抄"
   url: "/groups/labuladong-algorithm"
