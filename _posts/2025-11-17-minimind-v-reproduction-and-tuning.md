@@ -144,13 +144,13 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight sft_vlm
 
 ### 模型输入示例：
 
-VLM的输入依然是一段文本，其中包含特殊的<image>占位符。 在计算文本嵌入后，可以将图像编码器生成的向量投影到该占位符对应的嵌入部分，替换掉原先的占位符embedding。 例如：
+VLM的输入依然是一段文本，其中包含特殊的`<image>`占位符。 在计算文本嵌入后，可以将图像编码器生成的向量投影到该占位符对应的嵌入部分，替换掉原先的占位符embedding。 例如：
 
 ```text
 <image>\n这个图像中有什么内容？
 ```
 
-在minimind-v中，使用196个字符组成的 @@@...@@@ 占位符代替图像，之所以是196个字符，前面有所提及： 任何图像都被clip模型encoder为196×768维的token， 因此minimind-v的prompt为：
+在minimind-v中，使用196个字符组成的 `@@@...@@@` 占位符代替图像，之所以是196个字符，前面有所提及： 任何图像都被clip模型encoder为196×768维的token， 因此minimind-v的prompt为：
 
 ```text
 @@@......@@@\n这个图片描述的是什么内容？
@@ -160,7 +160,7 @@ VLM的输入依然是一段文本，其中包含特殊的<image>占位符。 在
 
 ![minimind-input](/img/llm/minimind/minimind-v-input.png)
 
-`一次性多图的实现方法就是通过注入多个<image>图像占位符进行实现，不需要修改任何框架。`
+一次性多图的实现方法就是通过注入多个`<image>`图像占位符进行实现，不需要修改任何框架。
 
 ### 视觉模块分析
 
