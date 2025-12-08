@@ -10,7 +10,7 @@ catalog: true
 
 ## 引言
 
-![logo](img/llm/minimind/logo.png)
+![logo](/img/llm/minimind/logo.png)
 
 [Minimind-v项目链接](https://github.com/jingyaogong/minimind-v)
 
@@ -40,7 +40,7 @@ hf download  openai/clip-vit-base-patch16 --local-dir /home/lihao/minimind-v/mod
 https://huggingface.co/jingyaogong/MiniMind2-V-PyTorch/blob/main/llm_768.pth # or llm_512.pth
 ```
 
-![model_weight](img/llm/minimind/model_weight.png)
+![model_weight](/img/llm/minimind/model_weight.png)
 
 创建环境：
 ```bash
@@ -60,7 +60,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight llm
 ```
 
 效果如下图：
-![origin](img/llm/minimind/before_PT.png)
+![origin](/img/llm/minimind/before_PT.png)
 
 
 ### 2. 数据准备
@@ -96,9 +96,9 @@ tmux new-session -t mm
 torchrun --nproc_per_node 2 train_pretrain_vlm.py --epochs 4 --from_weight llm --hidden_size 768 --batch_size 256
 ```
 
-![PT效果图](img/llm/minimind/PT.png)
+![PT效果图](/img/llm/minimind/PT.png)
 
-![PT_GPU_usage](img/llm/minimind/PT_GPU_usage.png)
+![PT_GPU_usage](/img/llm/minimind/PT_GPU_usage.png)
 
 
 测试PT模型的效果（使用项目自带的eval_vlm.py）：
@@ -109,7 +109,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight pretrain_vlm
 
 效果如图：
 
-![after_PT](img/llm/minimind/after_PT.png)
+![after_PT](/img/llm/minimind/after_PT.png)
 
 
 SFT训练（学习看图对话）：
@@ -132,7 +132,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight sft_vlm
 
 效果如图：
 
-![after_SFT](img/llm/minimind/after_SFT.png)
+![after_SFT](/img/llm/minimind/after_SFT.png)
 
 ---
 
@@ -140,7 +140,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight sft_vlm
 
 ### 模型结构如下：
 
-![minimind模型细节-DenseModel](img/llm/minimind/VLM-structure.png)
+![minimind模型细节-DenseModel](/img/llm/minimind/VLM-structure.png)
 
 ### 模型输入示例：
 
@@ -158,9 +158,9 @@ VLM的输入依然是一段文本，其中包含特殊的<image>占位符。 在
 
 计算完embedding和projection，并对图像部分token替换后整个计算过程到输出则和LLM部分没有任何区别。
 
-![minimind-input](img/llm/minimind/minimind-v-input.png)
+![minimind-input](/img/llm/minimind/minimind-v-input.png)
 
-一次性多图的实现方法就是通过注入多个<image>图像占位符进行实现，不需要修改任何框架。
+`一次性多图的实现方法就是通过注入多个<image>图像占位符进行实现，不需要修改任何框架。`
 
 ### 视觉模块分析
 
