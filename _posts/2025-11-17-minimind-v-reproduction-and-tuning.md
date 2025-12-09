@@ -30,13 +30,17 @@ catalog: true
 克隆项目及模型：
 ```bash
 # clone项目文件
+
 git clone https://github.com/jingyaogong/minimind-v.git
 
 # 下载clip模型到 ./model/vision_model 目录下
+
 hf download  openai/clip-vit-base-patch16 --local-dir /home/lihao/minimind-v/model/vision_model/clip-vit-base-patch16
 
 # 下载minimind语言模型权重到 ./out 目录下（作为训练VLM的基座语言模型）
+
 # HuggingFace
+
 https://huggingface.co/jingyaogong/MiniMind2-V-PyTorch/blob/main/llm_768.pth # or llm_512.pth
 ```
 
@@ -49,6 +53,7 @@ conda create -n minimind python=3.11 -y
 conda activate minimind
 
 # 使用uv进行包管理
+
 pip install -U uv
 uv pip install -r requirements.txt 
 ```
@@ -56,6 +61,7 @@ uv pip install -r requirements.txt
 测试已有模型的效果（使用项目自带的eval_vlm.py）：
 ```bash
 # 指令的参数解析见eval_vlm.py中main部分
+
 python eval_vlm.py --load_from model --hidden_size 768 --weight llm
 ```
 
@@ -67,12 +73,14 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight llm
 
 ```bash
 # pretrain阶段的数据集
+
 cd ./dataset
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/pretrain_data.jsonl
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/pretrain_images.zip
 unzip pretrain_images.zip && rm pretrain_images.zip
 
 # SFT阶段的数据集
+
 cd ./dataset
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/sft_data.jsonl
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/sft_images.zip
@@ -85,13 +93,17 @@ pretrained训练(学习图像描述)：
 
 ```bash
 # 注意这步必不可少，否则后续加载tokenizer的路径会有误
+
 cd trainer/
 
 # 基础训练命令（从LLM权重开始，仅训练vision_proj）
+
 python train_pretrain_vlm.py --epochs 4 --from_weight llm --hidden_size 768
 
 # 使用多张GPU进行DDP：
+
 # 设置tmux进行后台训练
+
 tmux new-session -t mm
 torchrun --nproc_per_node 2 train_pretrain_vlm.py --epochs 4 --from_weight llm --hidden_size 768 --batch_size 256
 ```
@@ -104,6 +116,7 @@ torchrun --nproc_per_node 2 train_pretrain_vlm.py --epochs 4 --from_weight llm -
 测试PT模型的效果（使用项目自带的eval_vlm.py）：
 ```bash
 # 指令的参数解析见eval_vlm.py中main部分
+
 python eval_vlm.py --load_from model --hidden_size 768 --weight pretrain_vlm
 ```
 
@@ -118,15 +131,18 @@ SFT训练（学习看图对话）：
 cd trainer/
 
 # 基础训练命令（从预训练权重开始，全参数微调）
+
 python train_sft_vlm.py --epochs 2 --from_weight pretrain_vlm --hidden_size 768 --batch_size 256
 
 # 使用多张GPU进行DDP：
+
 torchrun --nproc_per_node 2 train_sft_vlm.py --epochs 2 --from_weight pretrain_vlm --hidden_size 768 --batch_size 256
 ```
 
 测试SFT模型的效果（使用项目自带的eval_vlm.py）：
 ```bash
 # 指令的参数解析见eval_vlm.py中main部分
+
 python eval_vlm.py --load_from model --hidden_size 768 --weight sft_vlm
 ```
 
@@ -499,6 +515,7 @@ class MiniMindVLM(MiniMindForCausalLM):
         self.vision_proj = VisionProj(hidden_size=params.hidden_size)
 
     # 加载 vision model（CLIP）并冻结参数
+
     @staticmethod
     def get_vision_model(model_path: str):
         from transformers import logging as hf_logging
@@ -529,10 +546,15 @@ class MiniMindVLM(MiniMindForCausalLM):
         return inputs
 
     # 经过 CLIP 得到图像 embedding
+
     # CLIP vision_model 输出：
+
     # [CLS] token
+
     # 196 patch tokens
+
     # 这里我们 丢掉 CLS（第 0 个），只取 patch embedding（196 个）
+
     @staticmethod
     def get_image_embeddings(image_tensors, vision_model):
         with torch.no_grad():
@@ -549,7 +571,9 @@ class MiniMindVLM(MiniMindForCausalLM):
         return img_embedding
 
     # 寻找 image token 并替换为图像 embedding
+
     # 这段是整个 VLM 的核心逻辑：把原本 196 个 image special token 替换成 vision encoder 的输出
+
     def count_vision_proj(self, tokens, h, vision_tensors=None, seqlen=512):
         def find_indices(tokens, image_ids):
             
@@ -610,6 +634,7 @@ class MiniMindVLM(MiniMindForCausalLM):
         return h
 
     # forward：语言模型 + vision 特征替换
+
     def forward(self,
                 input_ids: Optional[torch.Tensor] = None,
                 attention_mask: Optional[torch.Tensor] = None,
@@ -660,6 +685,7 @@ class MiniMindVLM(MiniMindForCausalLM):
                                                    seqlen=input_ids.shape[1])
 
         # 位置编码 + Transformer 层计算
+
         position_embeddings = (
             self.model.freqs_cos[start_pos:start_pos + seq_length],
             self.model.freqs_sin[start_pos:start_pos + seq_length]
@@ -682,6 +708,7 @@ class MiniMindVLM(MiniMindForCausalLM):
         hidden_states = self.model.norm(hidden_states)
 
         # 累加所有 MoE 层的负载均衡损失 aux_loss
+
         aux_loss = sum(
             layer.mlp.aux_loss
             for layer in self.model.layers
@@ -689,6 +716,7 @@ class MiniMindVLM(MiniMindForCausalLM):
         )
 
         # 输出 logits
+
         slice_indices = slice(-logits_to_keep, None) if isinstance(logits_to_keep, int) else logits_to_keep
         logits = self.lm_head(hidden_states[:, slice_indices, :])
         output = CausalLMOutputWithPast(logits=logits, past_key_values=presents, hidden_states=hidden_states)
@@ -711,7 +739,6 @@ import time
 import warnings
 import torch
 import torch.distributed as dist
-
 # 从contextlib导入nullcontext上下文管理器，作为autocast的回退选项。
 
 from contextlib import nullcontext
@@ -720,18 +747,15 @@ from torch.nn.parallel import DistributedDataParallel
 from torch.utils.data import DataLoader, DistributedSampler
 from transformers import AutoTokenizer
 from model.model_vlm import MiniMindVLM, VLMConfig
-
 # 从本地dataset模块导入自定义VLMDataset类，用于处理视觉语言数据。
 
 from dataset.lm_dataset import VLMDataset
 from trainer.trainer_utils import get_lr, Logger, is_main_process, init_distributed_mode, setup_seed, init_vlm_model, vlm_checkpoint, SkipBatchSampler
 
 warnings.filterwarnings('ignore')
-
 # 定义train_epoch函数，用于训练一个epoch，参数包括当前epoch、数据加载器、总迭代次数、起始步数和可选的wandb日志器。
 
 def train_epoch(epoch, loader, iters, start_step=0, wandb=None):
-    
     #创建交叉熵损失函数，reduction='none'表示不进行平均或求和，便于后续自定义计算。
     
     loss_fct = nn.CrossEntropyLoss(reduction='none')
@@ -744,37 +768,30 @@ def train_epoch(epoch, loader, iters, start_step=0, wandb=None):
         lr = get_lr(epoch * iters + step, args.epochs * iters, args.learning_rate)
         for param_group in optimizer.param_groups:
             param_group['lr'] = lr
-
         # 进入混合精度上下文（如果启用）。
 
         with autocast_ctx:
             res = model(X, pixel_values=pixel_values)
             loss = loss_fct(
-                
                 # 将logits展平为(-1, vocab_size)。
                 
                 res.logits.view(-1, res.logits.size(-1)),
-
                 #将Y展平为(-1,)。
 
                 Y.view(-1)
-
             # 将损失重塑回Y的形状。
             
             ).view(Y.size())
-
             # 应用掩码计算加权平均损失。
 
             loss = (loss * loss_mask).sum() / loss_mask.sum()
             loss += res.aux_loss
             loss = loss / args.accumulation_steps
-
         # 使用scaler缩放损失并进行反向传播。
 
         scaler.scale(loss).backward()
 
         if (step + 1) % args.accumulation_steps == 0:
-
             # 取消缩放以检查梯度。
 
             scaler.unscale_(optimizer)
@@ -806,7 +823,9 @@ def train_epoch(epoch, loader, iters, start_step=0, wandb=None):
             clean_state_dict = {
                 key: value for key, value in state_dict.items() if not key.startswith('vision_encoder.')
             }
-            clean_state_dict = {k: v.half().cpu() for k, v in clean_state_dict.items()}  # 半精度保存并移到CPU
+            clean_state_dict = {k: v.half().cpu() for k, v in clean_state_dict.items()}  
+            # 半精度保存并移到CPU
+            
             torch.save(clean_state_dict, ckp)
             vlm_checkpoint(vlm_config, weight=args.save_weight, model=model, optimizer=optimizer, 
                          epoch=epoch, step=step, wandb=wandb, save_dir='../checkpoints', scaler=scaler)
@@ -904,12 +923,16 @@ if __name__ == "__main__":
 
     for epoch in range(start_epoch, args.epochs):
         train_sampler and train_sampler.set_epoch(epoch)
-        if epoch == start_epoch and start_step > 0: # 第一个epoch且存在检查点
+        if epoch == start_epoch and start_step > 0: 
+            # 第一个epoch且存在检查点
+            
             batch_sampler = SkipBatchSampler(train_sampler or range(len(train_ds)), args.batch_size, start_step + 1)
             loader = DataLoader(train_ds, batch_sampler=batch_sampler, num_workers=args.num_workers, pin_memory=True)
             Logger(f'Epoch [{epoch + 1}/{args.epochs}]: 跳过前{start_step}个step，从step {start_step + 1}开始')
             train_epoch(epoch, loader, len(loader) + start_step + 1, start_step, wandb)
-        else: # 默认从头开始
+        else: 
+            # 默认从头开始
+            
             loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=(train_sampler is None), sampler=train_sampler, num_workers=args.num_workers, pin_memory=True)
             train_epoch(epoch, loader, len(loader), 0, wandb)
 
@@ -973,7 +996,8 @@ def init_distributed_mode():
     初始化分布式训练模式（如果环境变量设置），返回本地 rank。
     """
     if int(os.environ.get("RANK", -1)) == -1:
-        return 0  # 非DDP模式
+        return 0  
+        # 非DDP模式
     
     dist.init_process_group(backend="nccl")
     local_rank = int(os.environ["LOCAL_RANK"])
@@ -1008,17 +1032,20 @@ def init_vlm_model(vlm_config, from_weight='pretrain_vlm', tokenizer_path='../mo
         weight_path = f'{save_dir}/{from_weight}_{vlm_config.hidden_size}{moe_suffix}.pth'
         weights = torch.load(weight_path, map_location=device)
         model.load_state_dict(weights, strict=False)
-    
     # Pretrain阶段：冻结除 vision_proj 外的所有参数
+    
     if freeze_llm:
         for name, param in model.named_parameters():
             if 'vision_proj' not in name:
                 param.requires_grad = False
-    
     # 默认全参训练时的可选配置（已注释）
+    
     # # 只解冻注意力机制中的投影层参数
+    
     # for name, param in model.model.named_parameters():
+    
     #     if any(proj in name for proj in ['q_proj', 'k_proj', 'v_proj', 'o_proj']):
+    
     #         param.requires_grad = True
     
     Logger(f'所加载VLM Model可训练参数：{sum(p.numel() for p in model.parameters() if p.requires_grad) / 1e6:.3f} 百万')
