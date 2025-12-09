@@ -1143,3 +1143,11 @@ class SkipBatchSampler(Sampler):
 
 ![LLM-loss](/img/llm/minimind/auto-regressive.png)
 
+- **BOS**：取决于 tokenizer（例如，Llama tokenizer 常自动添加 BOS）。如果 prompt 以 BOS 开头，input_ids 会包含它；X 以 BOS 开头，Y 从下一个 token 开始（Y 不包含 BOS 作为第一个，除非特殊配置）。Loss 通常不计算 BOS 的预测（mask=0），因为 BOS 是序列起始符，无需“预测”。
+- **EOS**：如果 prompt 末尾有 EOS（手动添加或 tokenizer 生成），它会出现在 input_ids 末尾；X 不包含 EOS，Y 以 EOS 结尾。Loss 会计算预测 EOS 的位置（如果 mask=1），帮助模型学习结束序列。如果无 EOS，序列可能以 pad 结束，loss_mask 在 pad 上为 0。
+- **Loss Mask**：Mask 也必须和 **标签 Y** 的长度和位置保持一致。
+- 即：
+	- Y 的第一个 token 的 loss 常被忽略（在标准中，第一个预测基于 `[BOS]` 或空前缀）。
+	- Y 的最后一个有标签，如果是 EOS，它就是标签。
+	- 标准实现中，所有 Y 位置都有标签，mask 决定是否计算。
+
