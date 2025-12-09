@@ -29,14 +29,14 @@ catalog: true
 
 克隆项目及模型：
 ```bash
-# clone项目文件
+'''clone项目文件'''
 git clone https://github.com/jingyaogong/minimind-v.git
 
-# 下载clip模型到 ./model/vision_model 目录下
+'''下载clip模型到 ./model/vision_model 目录下'''
 hf download  openai/clip-vit-base-patch16 --local-dir /home/lihao/minimind-v/model/vision_model/clip-vit-base-patch16
 
-# 下载minimind语言模型权重到 ./out 目录下（作为训练VLM的基座语言模型）
-# HuggingFace
+'''下载minimind语言模型权重到 ./out 目录下（作为训练VLM的基座语言模型）'''
+'''HuggingFace'''
 https://huggingface.co/jingyaogong/MiniMind2-V-PyTorch/blob/main/llm_768.pth # or llm_512.pth
 ```
 
@@ -48,14 +48,14 @@ conda create -n minimind python=3.11 -y
 
 conda activate minimind
 
-# 使用uv进行包管理
+'''使用uv进行包管理'''
 pip install -U uv
 uv pip install -r requirements.txt 
 ```
 
 测试已有模型的效果（使用项目自带的eval_vlm.py）：
 ```bash
-# 指令的参数解析见eval_vlm.py中main部分
+'''指令的参数解析见eval_vlm.py中main部分'''
 python eval_vlm.py --load_from model --hidden_size 768 --weight llm
 ```
 
@@ -66,13 +66,13 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight llm
 ### 2. 数据准备
 
 ```bash
-# pretrain阶段的数据集
+'''pretrain阶段的数据集'''
 cd ./dataset
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/pretrain_data.jsonl
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/pretrain_images.zip
 unzip pretrain_images.zip && rm pretrain_images.zip
 
-# SFT阶段的数据集
+'''SFT阶段的数据集'''
 cd ./dataset
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/sft_data.jsonl
 wget https://hf-mirror.com/datasets/jingyaogong/minimind-v_dataset/resolve/main/sft_images.zip
@@ -84,14 +84,14 @@ unzip sft_images.zip && rm sft_images.zip
 pretrained训练(学习图像描述)：
 
 ```bash
-# 注意这步必不可少，否则后续加载tokenizer的路径会有误
+'''注意这步必不可少，否则后续加载tokenizer的路径会有误'''
 cd trainer/
 
-# 基础训练命令（从LLM权重开始，仅训练vision_proj）
+'''基础训练命令（从LLM权重开始，仅训练vision_proj）'''
 python train_pretrain_vlm.py --epochs 4 --from_weight llm --hidden_size 768
 
-# 使用多张GPU进行DDP：
-# 设置tmux进行后台训练
+'''使用多张GPU进行DDP：'''
+'''设置tmux进行后台训练'''
 tmux new-session -t mm
 torchrun --nproc_per_node 2 train_pretrain_vlm.py --epochs 4 --from_weight llm --hidden_size 768 --batch_size 256
 ```
@@ -103,7 +103,7 @@ torchrun --nproc_per_node 2 train_pretrain_vlm.py --epochs 4 --from_weight llm -
 
 测试PT模型的效果（使用项目自带的eval_vlm.py）：
 ```bash
-# 指令的参数解析见eval_vlm.py中main部分
+'''指令的参数解析见eval_vlm.py中main部分'''
 python eval_vlm.py --load_from model --hidden_size 768 --weight pretrain_vlm
 ```
 
@@ -117,16 +117,16 @@ SFT训练（学习看图对话）：
 ```bash
 cd trainer/
 
-# 基础训练命令（从预训练权重开始，全参数微调）
+'''基础训练命令（从预训练权重开始，全参数微调）'''
 python train_sft_vlm.py --epochs 2 --from_weight pretrain_vlm --hidden_size 768 --batch_size 256
 
-# 使用多张GPU进行DDP：
+'''使用多张GPU进行DDP：'''
 torchrun --nproc_per_node 2 train_sft_vlm.py --epochs 2 --from_weight pretrain_vlm --hidden_size 768 --batch_size 256
 ```
 
 测试SFT模型的效果（使用项目自带的eval_vlm.py）：
 ```bash
-# 指令的参数解析见eval_vlm.py中main部分
+'''指令的参数解析见eval_vlm.py中main部分'''
 python eval_vlm.py --load_from model --hidden_size 768 --weight sft_vlm
 ```
 
@@ -180,7 +180,7 @@ import torch
 from model.model_vlm import MiniMindVLM
 import os
 
-# 关闭 tokenizer 的多线程并行（避免 warning）
+'''关闭 tokenizer 的多线程并行（避免 warning）'''
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
@@ -405,20 +405,20 @@ import os
 import torch
 import warnings
 
-# 导入 MiniMind 基础语言模型
+'''导入 MiniMind 基础语言模型'''
 
 from .model_minimind import * 
 from typing import Optional, Tuple, List
 from torch import nn
 from transformers import CLIPProcessor, CLIPModel 
-# HuggingFace 的 CLIP 模型
+'''HuggingFace 的 CLIP 模型'''
 
 from typing import List
 
 warnings.filterwarnings('ignore')
 
 
-# 扩展语言模型用于多模态（图像）
+'''扩展语言模型用于多模态（图像）'''
 
 class VLMConfig(MiniMindConfig):
     model_type = "minimind-v" 
@@ -447,7 +447,7 @@ class VLMConfig(MiniMindConfig):
         # 调用 MiniMindConfig 的初始化   
 
 
-# 把 CLIP 输出降维成 LLM 能接受的维度:CLIP 输出维度 768，MiniMind LLM hidden_size 是 512 → 所以要线性投影。
+'''把 CLIP 输出降维成 LLM 能接受的维度:CLIP 输出维度 768，MiniMind LLM hidden_size 是 512 → 所以要线性投影。'''
 
 class VisionProj(nn.Module):
     def __init__(self, ve_hidden_size=768, hidden_size=512):
@@ -473,7 +473,7 @@ class VisionProj(nn.Module):
         return vision_proj
 
 
-# 继承自语言模型:视觉-语言模型主类.继承 MiniMindForCausalLM（语言模型），在其基础上加入图像编码器。
+'''继承自语言模型:视觉-语言模型主类.继承 MiniMindForCausalLM（语言模型），在其基础上加入图像编码器。'''
 
 class MiniMindVLM(MiniMindForCausalLM):
     config_class = VLMConfig
@@ -712,7 +712,7 @@ import warnings
 import torch
 import torch.distributed as dist
 
-# 从contextlib导入nullcontext上下文管理器，作为autocast的回退选项。
+'''从contextlib导入nullcontext上下文管理器，作为autocast的回退选项。'''
 
 from contextlib import nullcontext
 from torch import optim, nn
@@ -721,14 +721,14 @@ from torch.utils.data import DataLoader, DistributedSampler
 from transformers import AutoTokenizer
 from model.model_vlm import MiniMindVLM, VLMConfig
 
-# 从本地dataset模块导入自定义VLMDataset类，用于处理视觉语言数据。
+'''从本地dataset模块导入自定义VLMDataset类，用于处理视觉语言数据。'''
 
 from dataset.lm_dataset import VLMDataset
 from trainer.trainer_utils import get_lr, Logger, is_main_process, init_distributed_mode, setup_seed, init_vlm_model, vlm_checkpoint, SkipBatchSampler
 
 warnings.filterwarnings('ignore')
 
-# 定义train_epoch函数，用于训练一个epoch，参数包括当前epoch、数据加载器、总迭代次数、起始步数和可选的wandb日志器。
+'''定义train_epoch函数，用于训练一个epoch，参数包括当前epoch、数据加载器、总迭代次数、起始步数和可选的wandb日志器。'''
 
 def train_epoch(epoch, loader, iters, start_step=0, wandb=None):
     
