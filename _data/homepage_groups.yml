@@ -7,6 +7,13 @@
     - "2025-11-11-distributed-training-with-unsloth.md"
     - "2025-11-17-minimind-v-reproduction-and-tuning.md"
 
+- group_name: "NLP工坊"
+  url: "/groups/nlp-workshop"
+  group_image: "/img/cover-zaji.png" # 默认占位图，您可以替换为更合适的
+  group_description: "NLP项目复现与实践"
+  posts:
+    - "2025-11-17-generative-agents-replication.md"
+
 - group_name: "labuladong算法小抄"
   url: "/groups/labuladong-algorithm"
   group_image: "/img/cover_algorithm.webp"
