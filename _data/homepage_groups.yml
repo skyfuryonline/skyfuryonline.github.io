@@ -8,7 +8,7 @@
 
 - group_name: "NLP工坊"
   url: "/groups/nlp-workshop"
-  group_image: "/img/cover-zaji.png" # 默认占位图，您可以替换为更合适的
+  group_image: "/img/cover_nlp_workshop.png" 
   group_description: "NLP项目复现与实践"
   posts:
     - "2025-11-17-generative-agents-replication.md"
