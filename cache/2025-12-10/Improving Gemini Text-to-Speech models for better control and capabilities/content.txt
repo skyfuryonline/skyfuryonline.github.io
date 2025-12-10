@@ -1,0 +1,137 @@
+Breadcrumb
+Technology
+Developers
+Improving Gemini Text-to-Speech models for better control and capabilities
+Dec 10, 2025
+·
+3 min read
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+I
+Ivan Solovyev
+Product Manager, Google DeepMind
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Today, we’re announcing significant enhancements to our
+Gemini 2.5 Flash
+and
+Gemini 2.5 Pro
+Text-to-Speech (TTS) preview models.
+Key improvements include:
+Enhanced expressivity
+: Richer tone versatility and stricter adherence to style prompts.
+Precision pacing
+: Smarter context-aware speed adjustments and better instruction following.
+Seamless dialogue
+: Consistent character voices in multi-speaker scenarios.
+These models will replace our TTS models released in May. You can start vibe coding apps in
+Google AI Studio
+and explore model capabilities today in the
+Playground
+.
+New TTS Flash and Pro models
+Many developers rely on text-to-speech for generating high-fidelity content that requires granular control over style, tone, pace, and accents—from long-form audiobooks to localized e-learning modules. Use cases like product tutorials, marketing videos or creator content also often require multiple voice interactions and reliable technical pronunciations.
+To address these needs, we are launching updates to both Gemini 2.5 Flash TTS preview (optimized for low latency) and Gemini 2.5 Pro TTS preview (optimized for quality).
+Enhanced style and tone versatility
+Whether you are building a role-playing game character, a helpful virtual assistant, or a dramatic narrator, the voice needs to fit the role. Our Gemini TTS models are now far more expressive and align much more closely with specific instructions provided in your style prompt, dramatically improving role adherence. You can request a specific tone—from "cheerful and optimistic" to "somber and serious"—and the model will deliver a performance that feels authentic to that instruction.
+Explore the Gemini 2.5 TTS model’s range of styles in action in our
+Synergy Intro
+demo app.
+00:00
+Context-aware pacing control
+To create natural speaking patterns, pacing is a critical element: a joke needs timing, a complex explanation needs room to breathe, and an action sequence needs speed. We have refined the model's ability to adjust pacing based on the context of the message, allowing it to naturally slow down for emphasis or speed up for excitement. Furthermore, we've improved pacing control, meaning the model now follows your explicit pace-related instructions with much higher fidelity.
+Listen to how the model adjusts its pacing according to the instructions:
+"Style: You are a storyteller for a mystery novel. Start with a nervous tone that accelerates into excitement and relief"
+Text: "I tried unlocking the door slowly. I fiddled around nervously... nothing... breathing deeply, I tried a second time. Click, I got in! I can't believe it, I actually got in!"
+Your browser does not support the audio element.
+Gemini 2.5 Flash TTS Preview 05-2025
+0:17
+0:17
+0:00
+0:17
+Your browser does not support the audio element.
+Gemini 2.5 Flash TTS Preview 12-2025
+0:14
+0:14
+0:00
+0:14
+Improved multiple-speaker capabilities
+For use cases like podcasts, simulated interviews, or multi-character narratives, creating realistic dialogue with distinct identities is key. We have refined the models to maintain consistent character voices and handle the "handoff" between speakers more naturally during back-and-forth exchanges.
+We've also improved the multilingual capabilities of our model, so that it can preserve the unique tone, pitch, and style of each character throughout the conversation across all
+24 supported languages
+.
+Explore the model’s multi-speaker, multilingual capabilities in our
+Voices from History
+demo app.
+00:00
+What customers are saying
+Partners are already seeing the impact of these improvements in production.
+Wondercraft
+, an AI audio platform, uses Gemini TTS to build two of their most important features: Convo Mode, which lets anyone create life-like multi-speaker conversations with control over pacing and delivery, and Director Mode, which gives precise control over pronunciations, intonation and non-verbal cues, making edits feel effortless.
+Gemini TTS has been the key to taking Wondercraft from demos to real production use-cases. Customers have always wanted more natural speech, and traditional TTS engines fell short. Since adopting Gemini TTS, subscriptions are up 20 percent, churn in the first month is down 20 percent, and our costs have dropped by 20 percent.
+Y
+Youssef Rizk
+Founder, Wondercraft
+Toonsutra
+brings their stories to life with cinematic voiceovers for characters and promotional video ads, relying on Gemini TTS for its ability to handle diverse languages and character nuances.
+We generate audio for characters based on their context within a comic panel and overall story. This includes tailoring the pitch, tone, and accent for each character to make the experience as immersive as possible. Currently, we’re doing this for both English and Hindi comics, where we've found the character tone consistency and quality to be exceptional.
+V
+Vishal Anand
+CEO, Toonsutra
+Get started today
+Gemini 2.5 Flash TTS and 2.5 Pro TTS models are available via the Gemini API in Google AI Studio. Read our
+developer docs
+, explore the
+prompting guide
+, or check out the
+Gemini API Cookbook
+to get started.
+POSTED IN:
+Developers
+Gemini Models
+Related stories
+Developers
+These developers are changing lives with Gemma 3n
+By
+Glenn Cameron
+&
+Kristen Quan
+Dec 10, 2025
+Developers
+Bring your app ideas to life with Gemini 3 in Stitch.
+By
+Rustin Banks
+Dec 10, 2025
+Developers
+New updates make Jules a proactive AI partner
+By
+AK Kulkarni
+Dec 10, 2025
+AI
+The latest AI news we announced in November
+By
+Keyword Team
+Dec 05, 2025
+Gemini
+15 examples of what Gemini 3 can do
+By
+Zahra Thompson
+Dec 05, 2025
+Developers
+Google AI Pro and Ultra subscribers now have higher rate limits for Google Antigravity.
+Dec 05, 2025
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6

@@ -1,0 +1,63 @@
+[
+    {
+        "title": "These developers are changing lives with Gemma 3n",
+        "link": "https://blog.google/technology/developers/developers-changing-lives-with-gemma-3n/",
+        "date": "2025-12-10",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-10/These developers are changing lives with Gemma 3n",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp"
+        ],
+        "summary": "摘要：  \nGemma 3n 发布后，开发者们利用其边缘计算、多模态能力，在 Kaggle 的“Gemma 3n 影响力挑战赛”中提交了超600个项目。获奖作品涵盖视觉障碍人士的AI助手、认知障碍者的自主生活工具、个性化AAC沟通系统、安防智能分析、离线语音助手及边缘设备部署方案等，充分体现了技术赋能弱势群体与现实场景落地的能力。项目强调本地化部署、低功耗、无网络依赖，突出Gemini模型在边缘端的实际应用价值。八项获奖作品分别获得不同专项奖，如Google AI Edge、Ollama、Jetson等，彰显跨平台生态协同潜力。\n\n例子：  \n一位盲人用户佩戴胸带摄像头，通过语音或控制器触发Gemma Vision识别环境，无需触屏即可导航——真正实现“无障碍移动AI”。\n\n关键字：  \nGemma 3n、边缘计算、无障碍科技、离线部署、AI辅助沟通"
+    },
+    {
+        "title": "Improving Gemini Text-to-Speech models for better control and capabilities",
+        "link": "https://blog.google/technology/developers/gemini-2-5-text-to-speech/",
+        "date": "2025-12-10",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-10/Improving Gemini Text-to-Speech models for better control and capabilities",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：Google DeepMind宣布升级Gemini 2.5 Flash与Pro文本转语音（TTS）模型，显著提升语音表达力、语速精准控制及多角色对话能力。新模型能更严格遵循风格指令，实现从欢快到沉郁等多样音色；智能调整语速以匹配上下文情绪（如紧张→兴奋），并支持跨24种语言保持角色声音一致性。适用于游戏NPC、虚拟助手、播客、教育内容等场景。开发者可通过Google AI Studio接入API，快速构建高保真语音应用。用户反馈显示，采用该模型后产品订阅增长20%，首月流失率下降20%，成本降低20%。\n\n例子：在制作悬疑小说配音时，可提示“开场紧张加速至惊喜释放”，模型将自动调节语速与语气，使听众沉浸于情节起伏。\n\n关键字：文本转语音、风格控制、语速调节、多角色对话、多语言支持"
+    },
+    {
+        "title": "The 7 finalists in the XPRIZE Quantum Applications competition",
+        "link": "https://blog.google/technology/research/google-gesda-xprize-quantum-applications-finalists/",
+        "date": "2025-12-10",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-12-10/The 7 finalists in the XPRIZE Quantum Applications competition",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp"
+        ],
+        "summary": "摘要：XPRIZE量子应用竞赛公布了7支入围团队，他们正开发可超越经典计算机的量子算法，解决材料科学、健康和优化等现实世界难题。这些团队来自全球，涵盖美国、匈牙利、英国、加拿大、瑞士等地，聚焦如半导体模拟、药物发现、太阳能电池优化等领域。每支队伍现获100万美元奖金，2027年将角逐剩余400万美元大奖（含300万冠军奖）。评审团由跨领域量子与行业专家组成，强调“真实世界优势”与“性能评估”，推动量子计算从理论走向落地。此竞赛旨在加速量子算法从抽象问题到实际应用的关键阶段，助力联合国可持续发展目标。\n\n例子：量子算法帮助模拟蛋白质相互作用，从而精准预测多基因疾病风险，指导靶向治疗方案。\n\n关键字：量子算法、真实世界优势、材料科学、药物发现、性能评估"
+    }
+]
