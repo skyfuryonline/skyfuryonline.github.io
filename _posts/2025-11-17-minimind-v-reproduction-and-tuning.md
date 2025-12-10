@@ -4,7 +4,7 @@ title: "Minimind-v复现及调优"
 date: 2025-11-17
 author: "LH"
 tags: [LLM, Minimind, 复现, 预训练, 后训练]
-group: llm
+group: nlp-workshop
 catalog: true
 ---
 
