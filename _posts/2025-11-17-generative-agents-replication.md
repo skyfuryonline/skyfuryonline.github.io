@@ -2,9 +2,9 @@
 layout: post
 title: "Generative Agents复现"
 date: 2025-11-17
-author: "Your Name" # 请替换为您的名字
-tags: [NLP, Agent, 复现, LLM, 模拟]
-group: nlp-workshop # 链接到新的分组
+author: "LH"
+tags: [NLP, Agent, 复现, LLM]
+group: nlp-workshop
 catalog: true
 ---
 
