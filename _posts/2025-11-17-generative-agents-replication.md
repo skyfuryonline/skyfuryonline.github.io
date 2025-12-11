@@ -10,21 +10,24 @@ catalog: true
 
 ## 引言
 
-[项目链接](https://github.com/joonspk-research/generative_agents)
+[generative_agents](https://github.com/joonspk-research/generative_agents)
 
-[related-paper: Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)
+[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)
 
 ![project-cover](/img/nlp-workshop/generative-agents/cover.png)
 
 - 包含用于生成式智能体（一种能够模拟逼真人类行为的计算智能体）的核心模拟模块及其游戏环境；
-- 以下我们将详细介绍如何在本地计算机上设置模拟环境，以及如何将模拟结果以演示动画的形式回放；
+- 使用`memory->reflection->planning`框架提高NPC的行为目标性；
+  - 为每个AI编写人设：例如，John Lin是Willow市场和药房的药店店员，他喜欢帮助别人。他总是想方设法使顾客买药的过程更容易。
+  - 创建可互动的小镇：智能体将会在这个被称为SmallVille的小镇里生活。研究人员为小镇配置了很多可以互动的组件，有居民区，Cafe，酒吧，大学，商店，公园。
+  - 为每个AI创建记忆流管理系统：智能体使用自然语言储存与它相关的完整记录，将这些记忆随着时间的推移合成为更高层次的思考，并动态地检索它们来规划行为。
+- 详细记录如何在本地计算机上设置模拟环境，以及如何将模拟结果以演示动画的形式回放；
 
 ![generative-agent-architecture](/img/nlp-workshop/generative-agents/architecture.png)
 
 ---
 
-## 环境搭建
-
+## 环境搭建 
 ```bash
 conda create -n generative_agent python=3.9.12
 
