@@ -9,9 +9,12 @@ catalog: true
 ---
 
 ## 引言 
+项目相关参考如下: 
 [generative_agents](https://github.com/joonspk-research/generative_agents)  
 [Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)  
 [Generative-agent-proj](https://github.com/skyfuryonline/Generative-agent-proj) 
+[Generative Agents和代码实践](https://blog.csdn.net/qq_35812205/article/details/143484516)  
+[我让六个AI合租，居然出了个海王?](https://www.bilibili.com/video/BV1MkxeeYEEb/)  
 ![project-cover](/img/nlp-workshop/generative-agents/cover.png) 
 
 - 包含用于生成式智能体（一种能够模拟逼真人类行为的计算智能体）的核心模拟模块及其游戏环境；
@@ -30,7 +33,7 @@ catalog: true
 **初始化项目和对应的配置环境：**    
 ```bash
 git clone https://github.com/joonspk-research/generative_agents.git 
-conda create -n generative_agent python=3.9.12 -y   
+conda create -n generative_agent python=3.11 -y   
 conda activate generative_agent 
 # 使用uv进行包管理  
 pip install -U uv   
