@@ -10,6 +10,7 @@ catalog: true
 
 ## 引言 
 项目相关参考如下: 
+
 [generative_agents](https://github.com/joonspk-research/generative_agents)  
 [Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)  
 [Generative-agent-proj](https://github.com/skyfuryonline/Generative-agent-proj) 
