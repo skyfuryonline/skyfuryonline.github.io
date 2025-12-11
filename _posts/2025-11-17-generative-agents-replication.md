@@ -11,6 +11,7 @@ catalog: true
 ## 引言 
 [generative_agents](https://github.com/joonspk-research/generative_agents)  
 [Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)  
+[Generative-agent-proj](https://github.com/skyfuryonline/Generative-agent-proj) 
 ![project-cover](/img/nlp-workshop/generative-agents/cover.png) 
 
 - 包含用于生成式智能体（一种能够模拟逼真人类行为的计算智能体）的核心模拟模块及其游戏环境；
@@ -38,9 +39,31 @@ uv pip install -r ./requirements.txt
 
 **在`reverie/backend_server`新建utils.py：**
 ```python
-# reverie/backend_server/utils.py
+# reverie/backend_server/utils.py   
+# Copy and paste your OpenAI API Key    
+openai_api_key = "<Your OpenAI API>"
+# Put your name 
+key_owner = "<Name>"
 
+maze_assets_loc = "../../environment/frontend_server/static_dirs/assets"
+env_matrix = f"{maze_assets_loc}/the_ville/matrix"
+env_visuals = f"{maze_assets_loc}/the_ville/visuals"
+
+fs_storage = "../../environment/frontend_server/storage"
+fs_temp_storage = "../../environment/frontend_server/temp_storage"
+
+collision_block_id = "32125"
+
+# Verbose   
+debug = True
 ```
+
+> 考虑到服务器具有一定的计算资源，本次部署将修改为使用本地模型进行拟真。模型选用`Qwen2.5-7B-Instruct`,嵌入模型选用`all-MiniLM-L6-v2`,同时使用`vLLM`加速推理；
+
+
+
+
+
 
 
 ## 数据与模拟环境
