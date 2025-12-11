@@ -10,7 +10,7 @@ catalog: true
 
 ## 引言
 
-![logo](/img/llm/minimind/logo.png)
+![logo](/img/nlp-workshop/minimind/logo.png)
 
 [Minimind-v项目链接](https://github.com/jingyaogong/minimind-v)
 
@@ -44,7 +44,7 @@ hf download  openai/clip-vit-base-patch16 --local-dir /home/lihao/minimind-v/mod
 https://huggingface.co/jingyaogong/MiniMind2-V-PyTorch/blob/main/llm_768.pth # or llm_512.pth
 ```
 
-![model_weight](/img/llm/minimind/model_weight.png)
+![model_weight](/img/nlp-workshop/minimind/model_weight.png)
 
 创建环境：
 ```bash
@@ -66,7 +66,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight llm
 ```
 
 效果如下图：
-![origin](/img/llm/minimind/before_PT.png)
+![origin](/img/nlp-workshop/minimind/before_PT.png)
 
 
 ### 2. 数据准备
@@ -108,9 +108,9 @@ tmux new-session -t mm
 torchrun --nproc_per_node 2 train_pretrain_vlm.py --epochs 4 --from_weight llm --hidden_size 768 --batch_size 256
 ```
 
-![PT效果图](/img/llm/minimind/PT.png)
+![PT效果图](/img/nlp-workshop/minimind/PT.png)
 
-![PT_GPU_usage](/img/llm/minimind/PT_GPU_usage.png)
+![PT_GPU_usage](/img/nlp-workshop/minimind/PT_GPU_usage.png)
 
 
 测试PT模型的效果（使用项目自带的eval_vlm.py）：
@@ -122,7 +122,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight pretrain_vlm
 
 效果如图：
 
-![after_PT](/img/llm/minimind/after_PT.png)
+![after_PT](/img/nlp-workshop/minimind/after_PT.png)
 
 
 SFT训练（学习看图对话）：
@@ -148,7 +148,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight sft_vlm
 
 效果如图：
 
-![after_SFT](/img/llm/minimind/after_SFT.png)
+![after_SFT](/img/nlp-workshop/minimind/after_SFT.png)
 
 ---
 
@@ -156,7 +156,7 @@ python eval_vlm.py --load_from model --hidden_size 768 --weight sft_vlm
 
 ### 模型结构如下：
 
-![minimind模型细节-DenseModel](/img/llm/minimind/VLM-structure.png)
+![minimind模型细节-DenseModel](/img/nlp-workshop/minimind/VLM-structure.png)
 
 ### 模型输入示例：
 
@@ -174,7 +174,7 @@ VLM的输入依然是一段文本，其中包含特殊的`<image>`占位符。 �
 
 计算完embedding和projection，并对图像部分token替换后整个计算过程到输出则和LLM部分没有任何区别。
 
-![minimind-input](/img/llm/minimind/minimind-v-input.png)
+![minimind-input](/img/nlp-workshop/minimind/minimind-v-input.png)
 
 一次性多图的实现方法就是通过注入多个`<image>`图像占位符进行实现，不需要修改任何框架。
 
@@ -1168,7 +1168,7 @@ class SkipBatchSampler(Sampler):
 
 一个关于自回归语言模型的loss计算的分析：
 
-![LLM-loss](/img/llm/minimind/auto-regressive.png)
+![LLM-loss](/img/nlp-workshop/minimind/auto-regressive.png)
 
 - **BOS**：取决于 tokenizer（例如，Llama tokenizer 常自动添加 BOS）。如果 prompt 以 BOS 开头，input_ids 会包含它；X 以 BOS 开头，Y 从下一个 token 开始（Y 不包含 BOS 作为第一个，除非特殊配置）。Loss 通常不计算 BOS 的预测（mask=0），因为 BOS 是序列起始符，无需“预测”。
 - **EOS**：如果 prompt 末尾有 EOS（手动添加或 tokenizer 生成），它会出现在 input_ids 末尾；X 不包含 EOS，Y 以 EOS 结尾。Loss 会计算预测 EOS 的位置（如果 mask=1），帮助模型学习结束序列。如果无 EOS，序列可能以 pad 结束，loss_mask 在 pad 上为 0。

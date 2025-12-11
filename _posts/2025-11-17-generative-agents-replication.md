@@ -10,31 +10,28 @@ catalog: true
 
 ## 引言
 
-(此处简要介绍Generative Agents项目，其核心思想、研究背景和重要性)
+[项目链接](https://github.com/joonspk-research/generative_agents)
+
+[related-paper: Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)
+
+![project-cover](/img/nlp-workshop/generative-agents/cover.png)
+
+- 包含用于生成式智能体（一种能够模拟逼真人类行为的计算智能体）的核心模拟模块及其游戏环境；
+- 以下我们将详细介绍如何在本地计算机上设置模拟环境，以及如何将模拟结果以演示动画的形式回放；
 
 ---
 
-## 项目背景与研究动机
-
-(详细阐述Generative Agents论文的核心发现、实验设计以及其对Agent研究的启发)
-
----
-
-## 复现过程
-
-(详细记录复现Generative Agents项目的步骤、遇到的挑战、使用的技术栈和工具)
-
-### 1. 环境搭建
+## 环境搭建
 
 (记录所需的硬件、软件、库版本，以及如何配置运行环境)
 
-### 2. 代码实现
-
-(对复现代码的关键部分进行说明，例如：记忆流、反思机制、规划过程等)
-
-### 3. 数据与模拟环境
+## 数据与模拟环境
 
 (说明模拟环境中Agent的初始化、交互逻辑和数据收集方式)
+
+## 代码分析
+
+(对复现代码的关键部分进行说明，例如：记忆流、反思机制、规划过程等)
 
 ---
 
@@ -44,11 +41,6 @@ catalog: true
 
 ![Generative Agents 模拟场景示例](/img/nlp-workshop/generative-agents/simulation-example.png)
 
----
-
-## 调优与未来展望
-
-(讨论在复现过程中进行的调优工作、可能的改进方向以及对未来研究的展望)
 
 ---
 
