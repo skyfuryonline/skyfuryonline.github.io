@@ -1,0 +1,60 @@
+[
+    {
+        "title": "Interactions API: A unified foundation for models and agents",
+        "link": "https://blog.google/technology/developers/interactions-api/",
+        "date": "2025-12-11",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-11/Interactions API- A unified foundation for models and agents",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp"
+        ],
+        "summary": "摘要：Google DeepMind 推出 Interactions API，作为统一接口用于与 Gemini 模型及智能体（如 Gemini Deep Research）交互。该 API 提供单一 REST 端点，支持复杂上下文管理、服务器端状态、后台执行和 MCP 工具调用等功能，简化构建代理应用的开发流程。当前处于公开测试阶段，开发者可通过 Google AI Studio 的 Gemini API 使用，并可反馈优化建议。未来将扩展更多内置智能体并开放自定义智能体接入能力，推动 Gemini 生态向全托管智能体演进。\n\n例子：开发者只需调用 `/interactions` 端点并指定 `agent=\"deep-research-pro-preview\"`，即可让模型自动检索资料、分析并生成报告，无需手动管理工具链或历史状态。\n\n关键字：Interactions API、Gemini Deep Research、服务器端状态、背景执行、智能体开发"
+    },
+    {
+        "title": "Build with Gemini Deep Research",
+        "link": "https://blog.google/technology/developers/deep-research-agent-gemini-api/",
+        "date": "2025-12-11",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-11/Build with Gemini Deep Research",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.jpg",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：Google 正式推出更强大的 Gemini Deep Research 代理，通过全新 Interactions API 开放给开发者，使其可嵌入应用实现自主深度研究。该模型基于 Gemini 3 Pro 构建，专为多步骤信息检索与合成优化，显著降低错误率并提升报告质量。新版本在 Human Last Exam、DeepSearchQA 和 BrowseComp 等基准测试中取得领先成绩，支持文件上传、结构化输出、精准引用等功能。同时开源 DeepSearchQA 评估基准，涵盖900个因果链任务，推动研究向更复杂、多步推理方向发展。已在金融、生物医药等领域落地，大幅缩短研究周期，提升效率。未来将扩展至 Google Search、Gemini App 等平台，并支持图表生成与 MCP 数据源集成。\n\n例子：金融团队用 Deep Research 自动整合竞品数据、市场信号和合规风险，将原本耗时数日的尽调压缩至数小时，且保持同等精度。\n\n关键字：Gemini Deep Research、Interactions API、DeepSearchQA、自主研究、多步推理"
+    },
+    {
+        "title": "4 highlights from Google Beam in 2025",
+        "link": "https://blog.google/technology/research/google-beam-2025-moments/",
+        "date": "2025-12-11",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-12-11/4 highlights from Google Beam in 2025",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.png",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp"
+        ],
+        "summary": "摘要：2025年，Google Beam作为Project Starline的演进成果正式推出，是一款基于AI的3D视频通信平台，旨在让远程沟通“如临其境”。该平台通过AI将2D视频转化为沉浸式3D体验，并支持实时语音翻译等未来功能。Beam已与HP、Zoom等企业合作落地商用产品，获行业大奖认可；全球多家公司（如Google、Schwarz Digits、Huntington Bank）将其应用于招聘、协作、客户服务等场景，用户反馈称其“如同身处同一空间”。此外，Beam还启动与USO的合作，为军人提供与家人视频连接的服务。整体来看，Beam代表了下一代视频通信技术的突破，强调真实存在感与深度协作。\n\n例子：一位远程面试官使用Beam与应聘者沟通时，对方仿佛坐在对面，无需调整摄像头角度或背景，自然互动增强信任感。\n\n关键字：Google Beam、AI视频通信、3D沉浸体验、远程协作、真实存在感"
+    }
+]

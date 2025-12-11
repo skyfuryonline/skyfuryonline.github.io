@@ -1,0 +1,122 @@
+Breadcrumb
+Technology
+Research
+4 highlights from Google Beam in 2025
+Dec 11, 2025
+·
+3 min read
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Here's a look at Google Beam's progress over the last year.
+A
+Aaron Luber
+Director Business Development, Google Beam
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+In 2021, we introduced
+Project Starline
+with the ambitious goal of making remote communication feel like you’d instantly traveled across distances to be together. This year, our vision became reality with the announcement of
+Google Beam
+— our first true-to-life 3D video-communication platform, powered by Google AI. Here’s a look at how Beam progressed this year:
+1. Google Beam took center stage at I/O.
+At I/O in May, CEO Sundar Pichai unveiled the evolution of Project Starline into a new AI-powered video communication platform,
+Google Beam
+. He showed how Google is bringing its AI technology to Google Beam through breakthrough AI-powered video models that transform 2D video streams to 3D experiences, and how we’re paving the way for future features like real-time
+speech translation
+.
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+2. Beam began working with industry leaders in video.
+At InfoComm 2025, we announced
+HP Dimension with Google Beam
+, the first product specifically for businesses developed in partnership with our partner, HP. Our technology earned a "
+Best of Show
+" win at InfoComm, recognized for its broad impact and remote conversation experience that’s far closer to being in the same room. HP Dimension with Google Beam was later named an Honoree in
+Fast Company's Next Big Things in Tech Awards 2025
+.
+Google Beam was also showcased at Zoomtopia, Zoom's annual user conference, highlighting a partnership to integrate the Google Beam platform with their video conferencing software. To further expand Beam's reach, we collaborated with HP to establish a network of distribution partners like Diversified, AVI-SPL and more.
+Zoom CEO, Eric Yuan
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Google Beam represents a transformative breakthrough in video communication. Our partnership with Google Beam is about delivering that deeply immersive, true-to-life presence directly into the Zoom experience, empowering users to connect and collaborate more deeply than ever.
+X
+Xuedong Huang
+Chief Technology Officer, Zoom
+In October, we co-hosted with industry experts at a
+WORKTECH
+event where founder and CEO of UnWork and WORKTECH Philip Ross called Beam “an AI game-changer that connects people and not just pixels, changing the way we enable presence and collaboration.”
+3. Workplaces all over the world became early users — including Google.
+Organizations globally began using Beam's true-to-life capabilities firsthand in their offices. Workplaces like Schwarz Digits and Huntington Bank were among them.
+At Schwarz we envision Google Beam enhancing our work by deepening international collaboration, significantly reducing the need for executive travel, and enabling more efficient communication with our worldwide vendor partners. It is redefining connection in ways we’ve never experienced.
+C
+Christian Müller
+Co-CEO Schwarz Digits
+The list is growing, too: Bain, Duolingo, Salesforce, Citadel, NEC, Hackensack Meridian Health and more are actively embracing Beam.
+At Huntington, we want customers to leave every interaction feeling valued and cared for, whether we’re talking with them remotely or in person. Google Beam enhances customer connection and trust, two key drivers of relationship-building in financial services. Pioneering this technology is a new and compelling way to power our high-touch model for financial advice and guidance, regardless of location.
+V
+Vijay Konduru
+Chief Marketing Officer, Huntington
+Here at Google, Googlers testing Beam said they prefer it over typical video conferencing and 90% agreed that using Beam makes it feel like they're in the same space as their meeting partner. Through testing, we’ve identified five key use cases where Beam truly shines: job interviews and recruiting; mentoring and talent development; productivity and collaboration; critical conversations and connecting distributed teams.
+4. We announced a pilot program with the USO.
+We began work to place Beam devices in select USO centers worldwide, enabling deployed active duty service members to connect with their families.
+Related Article
+Google Beam is working with the USO
+Learn more about Google’s work with the USO and how it plans to launch a program that will enable service members to stay in touch with loved ones.
+See more
+Learn more about Google Beam and connect with our sales team at
+beam.google
+.
+POSTED IN:
+Research
+AI
+Related stories
+AI
+Gradient Canvas: Celebrating over a decade of artistic collaborations with AI
+By
+Mira Lane
+&
+Amit Sood
+Dec 11, 2025
+Developers
+These developers are changing lives with Gemma 3n
+By
+Glenn Cameron
+&
+Kristen Quan
+Dec 10, 2025
+Research
+The 7 finalists in the XPRIZE Quantum Applications competition
+By
+Ryan Babbush
+Dec 10, 2025
+Google Workspace
+Learn more about AI in the workplace in our new research report.
+Dec 09, 2025
+Learning & Education
+How we’re supporting the next generation of innovators
+By
+Maggie Johnson
+&
+Ronit Levavi Morad
+Dec 08, 2025
+Google in Europe
+Transforming Nordic classrooms through responsible AI partnerships
+By
+Alexandra Ahtiainen
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6
