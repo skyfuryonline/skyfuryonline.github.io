@@ -11,10 +11,14 @@ catalog: true
 ## 引言 
 项目相关参考如下: 
 
-[generative_agents](https://github.com/joonspk-research/generative_agents)  
-[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)  
-[Generative-agent-proj](https://github.com/skyfuryonline/Generative-agent-proj) 
-[Generative Agents和代码实践](https://blog.csdn.net/qq_35812205/article/details/143484516)  
+[generative_agents](https://github.com/joonspk-research/generative_agents)
+
+[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)
+
+[Generative-agent-proj](https://github.com/skyfuryonline/Generative-agent-proj)
+
+[Generative Agents和代码实践](https://blog.csdn.net/qq_35812205/article/details/143484516)
+
 [我让六个AI合租，居然出了个海王?](https://www.bilibili.com/video/BV1MkxeeYEEb/)  
 ![project-cover](/img/nlp-workshop/generative-agents/cover.png) 
 
