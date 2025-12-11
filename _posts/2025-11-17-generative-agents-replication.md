@@ -19,11 +19,16 @@ catalog: true
 - 包含用于生成式智能体（一种能够模拟逼真人类行为的计算智能体）的核心模拟模块及其游戏环境；
 - 以下我们将详细介绍如何在本地计算机上设置模拟环境，以及如何将模拟结果以演示动画的形式回放；
 
+![generative-agent-architecture](/img/nlp-workshop/generative-agents/architecture.png)
+
 ---
 
 ## 环境搭建
 
-(记录所需的硬件、软件、库版本，以及如何配置运行环境)
+```bash
+conda create -n generative_agent python=3.9.12
+
+```
 
 ## 数据与模拟环境
 
