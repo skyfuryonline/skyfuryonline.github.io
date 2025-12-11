@@ -8,13 +8,10 @@ group: nlp-workshop
 catalog: true
 ---
 
-## 引言
-
-[generative_agents](https://github.com/joonspk-research/generative_agents)
-
-[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)
-
-![project-cover](/img/nlp-workshop/generative-agents/cover.png)
+## 引言 
+[generative_agents](https://github.com/joonspk-research/generative_agents)  
+[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)  
+![project-cover](/img/nlp-workshop/generative-agents/cover.png) 
 
 - 包含用于生成式智能体（一种能够模拟逼真人类行为的计算智能体）的核心模拟模块及其游戏环境；
 - 使用`memory->reflection->planning`框架提高NPC的行为目标性；
