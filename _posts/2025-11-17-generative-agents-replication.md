@@ -24,11 +24,24 @@ catalog: true
 
 ---
 
-## 环境搭建 
+## 环境搭建
+
+**初始化项目和对应的配置环境：**    
 ```bash
-conda create -n generative_agent python=3.9.12
+git clone https://github.com/joonspk-research/generative_agents.git 
+conda create -n generative_agent python=3.9.12 -y   
+conda activate generative_agent 
+# 使用uv进行包管理  
+pip install -U uv   
+uv pip install -r ./requirements.txt    
+```
+
+**在`reverie/backend_server`新建utils.py：**
+```python
+# reverie/backend_server/utils.py
 
 ```
+
 
 ## 数据与模拟环境
 
