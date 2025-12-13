@@ -11,7 +11,6 @@
   group_image: "/img/cover_nlp_workshop.png" 
   group_description: "NLP项目复现与实践"
   posts:
-    - "2025-11-17-generative-agents-replication.md"
     - "2025-11-17-minimind-v-reproduction-and-tuning.md"
 
 - group_name: "labuladong算法小抄"
