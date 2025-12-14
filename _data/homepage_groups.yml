@@ -12,6 +12,7 @@
   group_description: "NLP项目复现与实践"
   posts:
     - "2025-11-17-minimind-v-reproduction-and-tuning.md"
+    - "2025-11-18-generative-agents-replication-and-analysis.md"
 
 - group_name: "labuladong算法小抄"
   url: "/groups/labuladong-algorithm"
