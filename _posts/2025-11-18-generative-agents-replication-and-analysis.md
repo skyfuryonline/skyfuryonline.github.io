@@ -28,6 +28,7 @@ catalog: true
 ## 运行环境配置及vLLM支持
 
 - 拷贝项目并创建环境
+
 ```bash
 git clone https://github.com/x-glacier/GenerativeAgentsCN.git
 
@@ -41,6 +42,7 @@ uv pip install -r requirements.txt
 ```
 
 - 启动运行（默认项目启动方式）
+
 ```bash
 cd generative_agents
 python start.py --name sim-test --start "20250213-09:30" --step 10 --stride 10
