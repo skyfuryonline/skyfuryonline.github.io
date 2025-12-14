@@ -127,9 +127,9 @@ python start.py --name sim-test --start "20250213-09:30" --step 10 --stride 10
 
 - 代码位置：`generative_agents/modules/agent.py`的 `think` 方法中，并利用了`generative_agents/data/prompts/` 目录下的多个 prompt 文件;
   - 触发时机:在 `Agent.think` 方法中，系统会检查智能体自上次反思以来，新产生的记忆的`poignancy` (重要性)总和是否超过了阈值 `poignancy_max`（在 config.json 中配置，默认为 150）
-  - 反思过程 (`reflect` 方法):
+  - 反思过程 (`_reflect()` 方法):
     - 第一步：确定反思主题。程序会调用 LLM，让它阅读最近的 100 条记忆，并提出 3个最值得思考的高层次问题。这是通过 `reflect_focus.txt` 这个 prompt 实现的。它会引导 LLM 生成问题。
-    - 第二步：生成洞见 (Insights)。程序会遍历上一步生成的每个问题，然后：
+    - 第二步：生成洞见 (`reflect_insights.txt`)。程序会遍历上一步生成的每个问题，然后：
       - 使用该问题作为关键词，再次从记忆流中检索相关的记忆片段（事件、想法等）。
       - 将这些相关的记忆片段和问题一起提交给 LLM，让 LLM根据这些材料进行总结，并得出结论（即“洞见”）。
       - 这是通过 `reflect_insights.txt` 这个 prompt 实现的。
@@ -144,17 +144,17 @@ python start.py --name sim-test --start "20250213-09:30" --step 10 --stride 10
    3. 动态调整: 智能体在执行计划时，会根据当前的环境和他人的互动，动态地调整或中断自己的计划。
 - 代码位置：`generative_agents/modules/agent.py` 和 `generative_agents/modules/memory/schedule.py` 共同完成;
   - 生成日度计划 (`schedule_daily` 方法):
-       * 在智能体“醒来”时（`wake_up` 方法），会调用 `schedule_daily`。
+       * 在智能体“醒来”时（`_wake_up` 方法），会调用 `_schedule_daily()`。
        * 该方法使用 `schedule_daily.txt` 这个prompt，将智能体的基本信息（姓名、性格、最近的总结）和前一天的总结作为输入，要求 LLM生成一份当天的总体计划（以小时为单位）。
-  - 计划分解 (`decompose` 方法):
+  - 计划分解 (`_decompose_schedule()` 方法):
        * 当智能体需要决定接下来一两个小时做什么时，它会调用 decompose 方法。
        * 该方法使用 `schedule_decompose.txt` 这个 prompt，将日度计划中当前时间段的任务（例如，“9am:go to the library to write a book”）作为输入，要求 LLM 将其分解为更精细的、以 5-15分钟为单位的行动序列。
   - 计划存储和管理:
        * 所有生成的计划和行动都存储在 Schedule 对象中（定义在`schedule.py`）。这个对象负责跟踪每个任务的状态（未开始、进行中、已完成）。
        * Agent 对象持有一个 _schedule 成员变量，在每个时间步（`_act`方法）都会检查当前的计划，并决定是继续当前行动、开始新行动还是对环境做出反应。
   - 重新规划/反应 (`_revise_schedule` 和 `_react` 方法):
-       * 当智能体观察到某个重要事件时（例如，有人和它打招呼），_react 方法会被触发。
-       * 系统会判断当前事件是否重要到需要中断当前计划。如果需要，它可能会调用_revise_schedule方法，并使用 schedule_revise.txt prompt 来更新或调整后续的计划。
+       * 当智能体观察到某个重要事件时（例如，有人和它打招呼），`_react` 方法会被触发(用于响应外部事件)。
+       * 系统会判断当前事件是否重要到需要中断当前计划。如果需要，它可能会调用`_revise_schedule`方法(用于修正计划)，并使用 `schedule_revise.txt` prompt 来更新或调整后续的计划。
 
 ## 总结
 
