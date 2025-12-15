@@ -1,245 +1,75 @@
 ---
-layout: default
-title: "公务员"
-description: "星光不问赶路人"
-header-img: "img/home-bg.png"
-permalink: /gwy/
+layout: gwy_layout
+title: "备考日记"
 nav-order: 2
 ---
 
-<!-- 引入自定义样式 -->
-<style>
-    /* 倒计时与头部增强 */
-    .gwy-header-overlay {
-        background: rgba(0, 0, 0, 0.4);
-        padding: 40px 20px;
-        color: white;
-        text-align: center;
-        border-radius: 10px;
-        margin-top: 20px;
-    }
-    
-    .countdown-number {
-        font-size: 6rem;
-        font-weight: 800;
-        color: #ffcc00;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        line-height: 1;
-        margin-bottom: 10px;
-    }
-    
-    .progress-container {
-        width: 80%;
-        max-width: 600px;
-        background-color: rgba(255,255,255,0.2);
-        border-radius: 20px;
-        margin: 20px auto;
-        overflow: hidden;
-        height: 24px;
-        border: 1px solid rgba(255,255,255,0.3);
-    }
-    
-    .progress-bar {
-        height: 100%;
-        background: linear-gradient(90deg, #ff9900, #ffcc00);
-        width: 0%; /* JS 将控制这里 */
-        transition: width 1s ease-in-out;
-        border-radius: 20px;
-    }
-
-    /* 格言区域 */
-    .quote-section {
-        text-align: center;
-        padding: 40px 20px;
-        font-family: "Georgia", "Times New Roman", serif;
-        font-style: italic;
-        color: #555;
-        background: #f9f9f9;
-        margin-bottom: 30px;
-        border-left: 5px solid #0085a1;
-    }
-    
-    .quote-text {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    /* 热力图区域 */
-    .heatmap-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 40px 0;
-        overflow-x: auto;
-    }
-
-    .heatmap-grid {
-        display: grid;
-        grid-template-rows: repeat(7, 12px);
-        grid-auto-flow: column; /* 按列填充（周） */
-        grid-gap: 3px;
-    }
-
-    .heatmap-cell {
-        width: 12px;
-        height: 12px;
-        border-radius: 2px;
-        background-color: #ebedf0;
-        position: relative;
-    }
-    
-    /* 颜色等级 */
-    .level-0 { background-color: #ebedf0; }
-    .level-1 { background-color: #9be9a8; } /* < 2h */
-    .level-2 { background-color: #40c463; } /* 2-4h */
-    .level-3 { background-color: #30a14e; } /* 4-6h */
-    .level-4 { background-color: #216e39; } /* > 6h */
-
-    .heatmap-cell:hover::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0,0,0,0.8);
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 12px;
-        white-space: nowrap;
-        pointer-events: none;
-        z-index: 100;
-        margin-bottom: 5px;
-    }
-</style>
-
-<!-- 页面主要内容 -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-            <!-- Section 0: 倒计时头部 -->
-            <div class="gwy-header-overlay" style="background-image: url('{{ site.baseurl }}/img/home-bg.png'); background-size: cover; background-position: center;">
-                <div style="background: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px;">
-                    <h3>距离 2027年国考 仅剩</h3>
-                    <div id="countdown-display" class="countdown-number">---</div>
-                    <p>天</p>
-                    <div class="progress-container">
-                        <div id="life-progress" class="progress-bar"></div>
-                    </div>
-                    <p id="progress-text" style="font-size: 0.9rem; margin-top: 5px; color: #ddd;">Loading...</p>
-                </div>
-            </div>
-
-            <!-- Section 1: 今日格言 -->
-            <div class="quote-section">
-                <div class="quote-text" id="daily-quote">"Loading..."</div>
-            </div>
-
-            <!-- Section 2: 奋斗热力图 -->
-            <h3>奋斗热力图</h3>
-            <p class="text-muted">记录每一天的努力 (过去一年)</p>
-            <div class="heatmap-container">
-                <div id="study-heatmap" class="heatmap-grid">
-                    <!-- JS 将在这里生成格子 -->
-                </div>
-                <div style="display: flex; gap: 5px; align-items: center; margin-top: 10px; font-size: 12px; color: #666;">
-                    <span>Less</span>
-                    <span class="heatmap-cell level-0"></span>
-                    <span class="heatmap-cell level-1"></span>
-                    <span class="heatmap-cell level-2"></span>
-                    <span class="heatmap-cell level-3"></span>
-                    <span class="heatmap-cell level-4"></span>
-                    <span>More</span>
-                </div>
-            </div>
-
-            <hr>
-
-            <!-- Section 3: 最近日志 (可选) -->
-            <h3>最近记录</h3>
-            <ul>
-                {% for log in site.gwy_logs limit:5 %}
-                <li>
-                    <a href="{{ log.url }}">
-                        {{ log.date | date: "%Y-%m-%d" }} - 学习 {{ log.study_hours }} 小时
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-
-        </div>
-    </div>
-</div>
-
-<!-- 数据准备 (Liquid -> JSON) -->
+<!-- 1. 数据准备 (用于热力图和格言) -->
 <script>
-    // 1. 准备格言数据
     const quotes = [
         {% for quote in site.data.gwy_quotes %}
         "{{ quote.text }}",
         {% endfor %}
     ];
 
-    // 2. 准备热力图数据
     const studyLogs = {
         {% for log in site.gwy_logs %}
         "{{ log.date | date: '%Y-%m-%d' }}": {{ log.study_hours | default: 0 }},
         {% endfor %}
     };
-</script>
 
-<!-- 核心逻辑 JS -->
-<script>
+    // 随机格言注入
     document.addEventListener('DOMContentLoaded', function() {
-        // --- 1. 倒计时逻辑 ---
-        const targetDate = new Date("2026-11-29"); // 2027年国考预估时间
-        const startDate = new Date("2025-01-01");  // 假设备考开始时间，用于计算进度条
-        const today = new Date();
-        
-        const totalTime = targetDate - startDate;
-        const timePassed = today - startDate;
-        const timeLeft = targetDate - today;
-        
-        const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24));
-        const progressPercent = Math.min(100, Math.max(0, (timePassed / totalTime) * 100)).toFixed(1);
-
-        document.getElementById('countdown-display').textContent = daysLeft;
-        document.getElementById('life-progress').style.width = progressPercent + "%";
-        document.getElementById('progress-text').textContent = `备考进度: ${progressPercent}%`;
-
-        // --- 2. 随机格言 ---
         if (quotes.length > 0) {
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById('daily-quote').textContent = randomQuote;
+            const quoteEl = document.getElementById('daily-quote');
+            if(quoteEl) quoteEl.textContent = randomQuote;
         }
 
-        // --- 3. 生成热力图 ---
+        // 热力图生成
         const heatmapContainer = document.getElementById('study-heatmap');
-        const oneYearAgo = new Date();
-        oneYearAgo.setFullYear(today.getFullYear() - 1);
-        
-        // 生成过去365天的日期
-        for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
-            const dateStr = d.toISOString().split('T')[0];
-            const hours = studyLogs[dateStr] || 0;
+        if(heatmapContainer) {
+            const today = new Date();
+            const oneYearAgo = new Date();
+            oneYearAgo.setFullYear(today.getFullYear() - 1);
             
-            const cell = document.createElement('div');
-            cell.classList.add('heatmap-cell');
-            
-            // 决定颜色等级
-            let level = 0;
-            if (hours > 0) level = 1;
-            if (hours >= 2) level = 2;
-            if (hours >= 4) level = 3;
-            if (hours >= 6) level = 4;
-            
-            cell.classList.add(`level-${level}`);
-            
-            // Tooltip
-            cell.setAttribute('data-tooltip', `${dateStr}: ${hours} hrs`);
-            
-            heatmapContainer.appendChild(cell);
+            for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                const hours = studyLogs[dateStr] || 0;
+                const cell = document.createElement('div');
+                cell.classList.add('heatmap-cell');
+                
+                let level = 0;
+                if (hours > 0) level = 1;
+                if (hours >= 2) level = 2;
+                if (hours >= 4) level = 3;
+                if (hours >= 6) level = 4;
+                
+                cell.classList.add(`level-${level}`);
+                cell.title = `${dateStr}: ${hours} hrs`; // Simple tooltip
+                heatmapContainer.appendChild(cell);
+            }
         }
     });
 </script>
+
+<!-- 2. 时间轴内容 (Liquid 渲染) -->
+{% assign logs = site.gwy_logs | sort: 'date' | reverse %}
+{% for log in logs %}
+<div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-date">{{ log.date | date: "%Y年%m月%d日" }}</div>
+    <div class="timeline-card">
+        <h3 class="timeline-title">{{ log.title }}</h3>
+        <div class="timeline-meta">
+            <span>⏱️ 学习 {{ log.study_hours }} 小时</span>
+            {% if log.tags %}
+            <span style="margin-left: 10px;">🏷️ {{ log.tags | join: ", " }}</span>
+            {% endif %}
+        </div>
+        <div class="timeline-content">
+            {{ log.content | markdownify }}
+        </div>
+    </div>
+</div>
+{% endfor %}
