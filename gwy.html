@@ -38,14 +38,14 @@ nav-order: 1
             if(quoteEl) quoteEl.textContent = "“" + randomQuote + "”";
         }
 
-        // --- B. 热力图生成 (GitHub 绿) ---
+        // --- B. 热力图生成 (2026 全年) ---
         const heatmapContainer = document.getElementById('study-heatmap');
         if(heatmapContainer) {
-            const today = new Date();
-            const oneYearAgo = new Date();
-            oneYearAgo.setFullYear(today.getFullYear() - 1);
+            // 固定从 2026-01-01 开始
+            const startDate = new Date("2026-01-01");
+            const endDate = new Date("2026-12-31");
             
-            for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
+            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
                 const dateStr = d.toISOString().split('T')[0];
                 const hours = studyLogs[dateStr] || 0;
                 const cell = document.createElement('div');
