@@ -2,9 +2,9 @@
 layout: post
 title: "Agent-Kernel的复现与分析"
 date: 2025-12-15
-author: "Your Name" # 请替换为您的名字
-tags: [NLP, Agent, 复现, LLM, Kernel, 分析]
-group: nlp-workshop # 链接到NLP工坊分组
+author: "LH"
+tags: [NLP, Agent, 复现, LLM, Agent Kernel,]
+group: nlp-workshop
 catalog: true
 ---
 
