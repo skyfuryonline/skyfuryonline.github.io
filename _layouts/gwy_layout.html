@@ -3,130 +3,77 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} | 备考小窝</title>
-    <!-- 引入字体 -->
+    <title>备考小窝 | 星光不问赶路人</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- 引入 Bootstrap (仅用于基础重置和栅格，大部分手写) -->
     <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
     
     <style>
-        /* --- 1. 全局温馨风格 --- */
-        body {
-            background-color: #fdf6e3; /* 羊皮纸色 */
-            color: #5a5a5a;
-            font-family: 'Lora', 'Noto Serif SC', serif; /* 衬线体 */
-            line-height: 1.8;
-        }
-        
+        /* --- 全局 --- */
+        body { background-color: #fdf6e3; color: #5a5a5a; font-family: 'Lora', 'Noto Serif SC', serif; line-height: 1.8; }
         a { color: #d35400; text-decoration: none; transition: color 0.3s; }
         a:hover { color: #e67e22; text-decoration: underline; }
-
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
 
-        /* --- 2. 密码锁遮罩 --- */
+        /* --- 密码锁 --- */
         #lock-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #fdf6e3;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fdf6e3; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 0.5s ease;
         }
-        .lock-content { text-align: center; }
-        .lock-input {
-            padding: 10px;
-            font-size: 1.2rem;
-            border: 2px solid #d35400;
-            border-radius: 5px;
-            background: transparent;
-            outline: none;
-            color: #5a5a5a;
-            font-family: inherit;
-            margin-top: 20px;
-            width: 200px;
-            text-align: center;
-        }
-        .lock-btn {
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: #d35400;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        .lock-hint { color: #d35400; margin-top: 10px; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s; }
+        .lock-input { padding: 10px; font-size: 1.2rem; border: 2px solid #d35400; border-radius: 5px; background: transparent; outline: none; color: #5a5a5a; text-align: center; width: 200px; margin-top: 20px; }
+        .lock-btn { margin-top: 10px; padding: 8px 20px; background: #d35400; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+        .lock-hint { color: #d35400; margin-top: 10px; font-size: 0.9rem; opacity: 0; }
 
-        /* --- 3. 头部设计 --- */
-        header { text-align: center; margin-bottom: 60px; }
-        .page-title { font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 10px; }
-        .countdown-wrapper { 
-            background: rgba(255,255,255,0.6); 
-            padding: 20px; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            display: inline-block;
-            margin-top: 20px;
-        }
-        .days-left { font-size: 3rem; color: #d35400; font-weight: bold; line-height: 1; }
-        .sub-text { font-size: 1rem; color: #7f8c8d; font-style: italic; }
+        /* --- Header --- */
+        header { text-align: center; margin-bottom: 50px; }
+        .main-title { font-size: 3rem; font-weight: 700; color: #2c3e50; margin-bottom: 15px; letter-spacing: 2px; }
+        .daily-quote { font-size: 1.4rem; color: #d35400; font-style: italic; margin-bottom: 30px; min-height: 1.8em; }
+        
+        /* 倒计时 & 进度条 */
+        .status-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: inline-block; width: 100%; max-width: 600px; }
+        .countdown-row { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin-bottom: 15px; }
+        .days-num { font-size: 2.5rem; font-weight: bold; color: #d35400; line-height: 1; }
+        .days-label { font-size: 1rem; color: #7f8c8d; }
+        
+        .progress-wrapper { position: relative; height: 10px; background: #eee; border-radius: 5px; overflow: hidden; margin-top: 10px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #f39c12, #d35400); width: 0%; transition: width 1s ease; }
+        .progress-text { font-size: 0.8rem; color: #999; margin-top: 5px; display: flex; justify-content: space-between; }
 
-        /* --- 4. 热力图 (适配暖色) --- */
-        .heatmap-container { margin: 40px 0; overflow-x: auto; display: flex; justify-content: center;}
-        .heatmap-grid { display: grid; grid-template-rows: repeat(7, 12px); grid-auto-flow: column; gap: 3px; }
-        .heatmap-cell { width: 12px; height: 12px; border-radius: 2px; background-color: #e0e0e0; }
+        /* --- 统计面板 --- */
+        .stats-panel { display: flex; justify-content: space-around; margin: 40px 0; gap: 15px; }
+        .stat-box { background: white; padding: 15px; border-radius: 10px; text-align: center; flex: 1; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .stat-val { font-size: 1.5rem; font-weight: bold; color: #2c3e50; }
+        .stat-label { font-size: 0.9rem; color: #95a5a6; }
+
+        /* --- 热力图 --- */
+        .heatmap-section { margin: 40px 0; overflow-x: auto; }
+        .heatmap-grid { display: grid; grid-template-rows: repeat(7, 12px); grid-auto-flow: column; gap: 3px; padding-bottom: 5px; }
+        .heatmap-cell { width: 12px; height: 12px; border-radius: 2px; background-color: #e0e0e0; position: relative; }
         /* 暖色调等级 */
         .level-0 { background-color: #e0e0e0; }
-        .level-1 { background-color: #fce38a; } /* 浅黄 */
-        .level-2 { background-color: #f39c12; } /* 橙色 */
-        .level-3 { background-color: #d35400; } /* 深橙 */
-        .level-4 { background-color: #c0392b; } /* 红棕 */
+        .level-1 { background-color: #fce38a; } 
+        .level-2 { background-color: #f39c12; } 
+        .level-3 { background-color: #d35400; } 
+        .level-4 { background-color: #c0392b; }
+        /* Tooltip */
+        .heatmap-cell:hover::after {
+            content: attr(title); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.8); color: white; padding: 4px 8px; border-radius: 4px;
+            font-size: 12px; white-space: nowrap; z-index: 10; margin-bottom: 5px;
+        }
 
-        /* --- 5. 时间轴日记 --- */
+        /* --- 时间轴 --- */
         .timeline { position: relative; margin-top: 50px; padding-left: 30px; }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 2px;
-            background: #e0e0e0;
-        }
-        
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #e0e0e0; }
         .timeline-item { position: relative; margin-bottom: 40px; }
-        .timeline-dot {
-            position: absolute;
-            left: -35px; top: 5px;
-            width: 12px; height: 12px;
-            background: #d35400;
-            border-radius: 50%;
-            border: 2px solid #fdf6e3;
-            box-shadow: 0 0 0 2px #d35400;
-        }
-        .timeline-date {
-            font-size: 0.9rem;
-            color: #999;
-            margin-bottom: 5px;
-            font-style: italic;
-        }
-        .timeline-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.02);
-            transition: transform 0.2s;
-        }
+        .timeline-dot { position: absolute; left: -35px; top: 5px; width: 12px; height: 12px; background: #d35400; border-radius: 50%; border: 2px solid #fdf6e3; box-shadow: 0 0 0 2px #d35400; }
+        .timeline-date { font-size: 0.9rem; color: #999; margin-bottom: 5px; font-style: italic; }
+        .timeline-card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s; }
         .timeline-card:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.06); }
         .timeline-title { font-size: 1.4rem; margin-top: 0; color: #34495e; }
         .timeline-meta { font-size: 0.85rem; color: #bdc3c7; margin-bottom: 15px; }
         .timeline-content { font-size: 1rem; color: #5a5a5a; }
-        
-        /* 简单的 Markdown 内容样式修正 */
         .timeline-content h3 { font-size: 1.2rem; margin-top: 15px; }
         .timeline-content ul { padding-left: 20px; }
     </style>
@@ -148,18 +95,46 @@
     <div class="container">
         <!-- 头部 -->
         <header>
-            <div class="page-title">星光不问赶路人</div>
-            <div class="countdown-wrapper">
-                <div class="sub-text">距离 2027年国考 还有</div>
-                <div class="days-left" id="countdown-display">---</div>
-                <div class="sub-text">Day</div>
+            <div id="daily-quote" class="daily-quote">Loading...</div>
+            <div class="main-title">星光不问赶路人</div>
+            
+            <div class="status-card">
+                <div class="countdown-row">
+                    <span class="days-label">距离 2027年国考 还有</span>
+                    <span class="days-num" id="countdown-display">---</span>
+                    <span class="days-label">天</span>
+                </div>
+                <!-- 进度条 -->
+                <div class="progress-wrapper">
+                    <div id="life-progress" class="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Start: 2025-01-01</span>
+                    <span id="progress-percent">0%</span>
+                    <span>End: 2026-11-29</span>
+                </div>
             </div>
-            <div id="daily-quote" style="margin-top: 30px; font-size: 1.1rem; color: #7f8c8d;">Loading...</div>
         </header>
 
         <!-- 热力图 -->
-        <div class="heatmap-container">
+        <div class="heatmap-section">
             <div id="study-heatmap" class="heatmap-grid"></div>
+        </div>
+
+        <!-- 统计面板 -->
+        <div class="stats-panel">
+            <div class="stat-box">
+                <div class="stat-val" id="stat-total-hours">0</div>
+                <div class="stat-label">总学习时长 (h)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val" id="stat-days">0</div>
+                <div class="stat-label">打卡天数</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val" id="stat-streak">0</div>
+                <div class="stat-label">当前连续 (天)</div>
+            </div>
         </div>
 
         <!-- 时间轴日记流 -->
@@ -167,7 +142,6 @@
             {{ content }}
         </div>
         
-        <!-- 页脚 -->
         <footer style="text-align: center; margin-top: 80px; color: #bdc3c7; font-size: 0.8rem;">
             <p>&copy; {{ site.time | date: '%Y' }} 备考小窝</p>
         </footer>
@@ -175,38 +149,52 @@
 
     <!-- 逻辑脚本 -->
     <script>
-        // --- 1. 密码锁逻辑 ---
-        // 修改这里的 '123456' 为您想要的密码
+        // --- 1. 密码锁 ---
         const CORRECT_PASSWORD = '123456'; 
-        
         function checkPassword() {
             const input = document.getElementById('password-input').value;
-            const hint = document.getElementById('lock-hint');
             if (input === CORRECT_PASSWORD) {
                 document.getElementById('lock-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('lock-screen').style.display = 'none';
-                }, 500);
+                setTimeout(() => { document.getElementById('lock-screen').style.display = 'none'; }, 500);
                 localStorage.setItem('gwy_unlocked', 'true');
-            } else {
-                hint.style.opacity = '1';
-            }
+            } else { document.getElementById('lock-hint').style.opacity = '1'; }
         }
+        if (localStorage.getItem('gwy_unlocked') === 'true') { document.getElementById('lock-screen').style.display = 'none'; }
 
-        // 检查是否已解锁
-        if (localStorage.getItem('gwy_unlocked') === 'true') {
-            document.getElementById('lock-screen').style.display = 'none';
-        }
-
-        // --- 2. 倒计时逻辑 ---
+        // --- 2. 倒计时 & 进度条 ---
         const targetDate = new Date("2026-11-29"); 
+        const startDate = new Date("2025-01-01");
         const today = new Date();
+        
+        const totalTime = targetDate - startDate;
+        const timePassed = today - startDate;
         const timeLeft = targetDate - today;
+        
         const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24));
+        const progress = Math.min(100, Math.max(0, (timePassed / totalTime) * 100));
+        
         document.getElementById('countdown-display').textContent = daysLeft;
+        document.getElementById('life-progress').style.width = progress + "%";
+        document.getElementById('progress-percent').textContent = progress.toFixed(1) + "%";
 
-        // --- 3. 随机格言 ---
-        // (格言数据将由 gwy.html 注入)
+        // --- 3. 统计数据注入 (将被 gwy.html 调用) ---
+        function updateStats(logs) {
+            let totalHours = 0;
+            let days = Object.keys(logs).length;
+            // 简单计算 streak (需要日期排序)
+            let sortedDates = Object.keys(logs).sort().reverse();
+            let streak = 0;
+            // 简单逻辑：如果是今天或昨天有打卡，就开始算 streak
+            // 这里为了简单，只统计总数
+            
+            for(let date in logs) {
+                totalHours += logs[date];
+            }
+            
+            document.getElementById('stat-total-hours').textContent = totalHours.toFixed(1);
+            document.getElementById('stat-days').textContent = days;
+            // document.getElementById('stat-streak').textContent = streak; // 暂未实现复杂 streak
+        }
     </script>
 
 </body>

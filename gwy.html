@@ -1,7 +1,7 @@
 ---
 layout: gwy_layout
-title: "备考日记"
-nav-order: 2
+title: "Gwy"
+nav-order: 1
 ---
 
 <!-- 1. 数据准备 (用于热力图和格言) -->
@@ -18,15 +18,15 @@ nav-order: 2
         {% endfor %}
     };
 
-    // 随机格言注入
     document.addEventListener('DOMContentLoaded', function() {
+        // --- A. 随机格言 ---
         if (quotes.length > 0) {
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
             const quoteEl = document.getElementById('daily-quote');
-            if(quoteEl) quoteEl.textContent = randomQuote;
+            if(quoteEl) quoteEl.textContent = "“" + randomQuote + "”";
         }
 
-        // 热力图生成
+        // --- B. 热力图生成 ---
         const heatmapContainer = document.getElementById('study-heatmap');
         if(heatmapContainer) {
             const today = new Date();
@@ -46,10 +46,50 @@ nav-order: 2
                 if (hours >= 6) level = 4;
                 
                 cell.classList.add(`level-${level}`);
-                cell.title = `${dateStr}: ${hours} hrs`; // Simple tooltip
+                cell.title = `${dateStr}: ${hours} hrs`; 
                 heatmapContainer.appendChild(cell);
             }
         }
+
+        // --- C. 统计数据计算 ---
+        let totalHours = 0;
+        let totalDays = 0;
+        let currentStreak = 0;
+        
+        // 1. 总时长 & 总天数
+        for (let date in studyLogs) {
+            if (studyLogs[date] > 0) {
+                totalHours += studyLogs[date];
+                totalDays++;
+            }
+        }
+
+        // 2. 连续打卡 (Streak)
+        // 逻辑：从昨天开始倒推，如果昨天没打卡，看今天有没有。如果都没有，streak=0。
+        const todayStr = new Date().toISOString().split('T')[0];
+        let checkDate = new Date();
+        
+        // 先检查今天是否已打卡，如果打了，streak 至少为 1
+        if (studyLogs[todayStr] > 0) {
+            currentStreak = 1;
+        }
+        
+        // 从昨天开始倒推
+        checkDate.setDate(checkDate.getDate() - 1);
+        while (true) {
+            const checkStr = checkDate.toISOString().split('T')[0];
+            if (studyLogs[checkStr] > 0) {
+                currentStreak++;
+                checkDate.setDate(checkDate.getDate() - 1);
+            } else {
+                break;
+            }
+        }
+
+        // --- D. 更新 UI ---
+        document.getElementById('stat-total-hours').textContent = totalHours.toFixed(1);
+        document.getElementById('stat-days').textContent = totalDays;
+        document.getElementById('stat-streak').textContent = currentStreak;
     });
 </script>
 
