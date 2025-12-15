@@ -24,7 +24,7 @@
         
         /* 左侧边栏 */
         .gwy-sidebar {
-            width: 300px;
+            width: 260px; /* 缩小宽度 */
             flex-shrink: 0;
             position: -webkit-sticky; position: sticky; top: 40px;
         }
@@ -236,8 +236,15 @@
             // 3.1 准备数据：最近7天
             const last7Days = [];
             const trendData = [];
+            
+            // 预览模式逻辑：如果还没到2026年，就显示2026年第一周的数据作为预览
+            let baseDate = new Date();
+            if (baseDate < new Date("2026-01-01")) {
+                baseDate = new Date("2026-01-07"); 
+            }
+
             for (let i = 6; i >= 0; i--) {
-                const d = new Date();
+                const d = new Date(baseDate); // 使用基准日期
                 d.setDate(d.getDate() - i);
                 const dateStr = d.toISOString().split('T')[0];
                 last7Days.push(dateStr.slice(5)); 
