@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Generative Agents复现与分析"
-date: 2025-11-18
+date: 2025-12-14
 author: "LH"
 tags: [NLP, Agent, 复现, LLM,]
 group: nlp-workshop 
