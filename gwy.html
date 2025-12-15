@@ -4,7 +4,7 @@ title: "Gwy"
 nav-order: 1
 ---
 
-<!-- 1. 数据准备 -->
+<!-- 1. 数据准备 (Raw Data) -->
 <script>
     const quotes = [
         {% for quote in site.data.gwy_quotes %}
@@ -12,36 +12,80 @@ nav-order: 1
         {% endfor %}
     ];
 
-    // 简单映射：日期 -> 时长 (用于热力图 & 简单统计)
-    const studyLogs = {
-        {% for log in site.gwy_logs %}
-        "{{ log.date | date: '%Y-%m-%d' }}": {{ log.study_hours | default: 0 }},
-        {% endfor %}
-    };
-
-    // 详细数组：用于图表统计 (包含 tags)
-    const detailedLogs = [
+    // 原始日志数据 (未合并)
+    const rawLogs = [
         {% for log in site.gwy_logs %}
         {
             date: "{{ log.date | date: '%Y-%m-%d' }}",
-            study_hours: {{ log.study_hours | default: 0 }},
-            tags: {{ log.tags | jsonify }}
+            // 兼容旧格式：如果没配 subjects，就用 study_hours + tags
+            totalHours: {{ log.study_hours | default: 0 }}, 
+            subjects: [
+                {% if log.subjects %}
+                    {% for sub in log.subjects %}
+                    { name: "{{ sub.name }}", hours: {{ sub.hours }} },
+                    {% endfor %}
+                {% else %}
+                    // 旧格式回退逻辑: 将 tags 视为科目，时长平均分
+                    {% if log.tags %}
+                        {% assign tag_count = log.tags.size %}
+                        {% assign avg_hour = log.study_hours | divided_by: tag_count %}
+                        {% for tag in log.tags %}
+                        { name: "{{ tag }}", hours: {{ avg_hour }} },
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            ]
         },
         {% endfor %}
     ];
 
     document.addEventListener('DOMContentLoaded', function() {
-        // --- A. 随机格言 ---
+        // --- A. 数据处理 (核心升级) ---
+        // 我们在这里把 rawLogs 转换成 studyLogs (日期->总时长) 和 subjectStats (科目->总时长)
+        
+        const studyLogs = {}; // { '2026-01-01': 8.5 }
+        const subjectStats = {}; // { '申论': 20, '行测': 15 }
+        let totalHours = 0;
+        let totalDaysSet = new Set(); // 用 Set 统计天数，自动去重
+
+        rawLogs.forEach(log => {
+            // 1. 处理日期合并
+            // 如果 subjects 存在，重新计算这篇日志的总时长（覆盖 Front Matter 里的 study_hours，防止手写错误）
+            let logTotal = log.totalHours;
+            if (log.subjects && log.subjects.length > 0) {
+                logTotal = log.subjects.reduce((sum, sub) => sum + sub.hours, 0);
+            }
+
+            // 累加到对应日期
+            studyLogs[log.date] = (studyLogs[log.date] || 0) + logTotal;
+            
+            // 2. 全局统计
+            if (logTotal > 0) {
+                totalHours += logTotal;
+                totalDaysSet.add(log.date);
+            }
+
+            // 3. 科目统计
+            if (log.subjects && log.subjects.length > 0) {
+                log.subjects.forEach(sub => {
+                    subjectStats[sub.name] = (subjectStats[sub.name] || 0) + sub.hours;
+                });
+            } else if (log.totalHours > 0) {
+                // 如果既没 subjects 也没 tags (罕见)，归为 "其他"
+                subjectStats['其他'] = (subjectStats['其他'] || 0) + log.totalHours;
+            }
+        });
+
+        // --- B. 随机格言 ---
         if (quotes.length > 0) {
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
             const quoteEl = document.getElementById('daily-quote');
             if(quoteEl) quoteEl.textContent = "“" + randomQuote + "”";
         }
 
-        // --- B. 热力图生成 (2026 全年) ---
+        // --- C. 热力图生成 ---
         const heatmapContainer = document.getElementById('study-heatmap');
         if(heatmapContainer) {
-            // 固定从 2026-01-01 开始
             const startDate = new Date("2026-01-01");
             const endDate = new Date("2026-12-31");
             
@@ -58,23 +102,14 @@ nav-order: 1
                 if (hours >= 6) level = 4;
                 
                 cell.classList.add(`level-${level}`);
-                cell.title = `${dateStr}: ${hours} hrs`; 
+                cell.title = `${dateStr}: ${hours.toFixed(1)} hrs`; 
                 heatmapContainer.appendChild(cell);
             }
         }
 
-        // --- C. 统计数据计算 ---
-        let totalHours = 0;
-        let totalDays = 0;
+        // --- D. 统计数据 UI ---
+        // Streak 计算
         let currentStreak = 0;
-        
-        for (let date in studyLogs) {
-            if (studyLogs[date] > 0) {
-                totalHours += studyLogs[date];
-                totalDays++;
-            }
-        }
-
         const todayStr = new Date().toISOString().split('T')[0];
         let checkDate = new Date();
         if (studyLogs[todayStr] > 0) currentStreak = 1;
@@ -88,17 +123,17 @@ nav-order: 1
         }
 
         document.getElementById('stat-total-hours').textContent = totalHours.toFixed(1);
-        document.getElementById('stat-days').textContent = totalDays;
+        document.getElementById('stat-days').textContent = totalDaysSet.size;
         document.getElementById('stat-streak').textContent = currentStreak;
 
-        // --- D. 调用图表渲染 ---
+        // --- E. 调用图表渲染 (传递处理好的 subjectStats) ---
         if (typeof renderCharts === 'function') {
-            renderCharts(studyLogs, detailedLogs);
+            renderCharts(studyLogs, subjectStats);
         }
     });
 </script>
 
-<!-- 2. 时间轴内容 (Liquid 渲染) -->
+<!-- 2. 时间轴内容 -->
 {% assign logs = site.gwy_logs | sort: 'date' | reverse %}
 {% for log in logs %}
 <div class="timeline-item">
@@ -107,9 +142,18 @@ nav-order: 1
     <div class="timeline-card">
         <h3 class="timeline-title">{{ log.title }}</h3>
         <div class="timeline-meta">
-            <span>⏱️ 学习 {{ log.study_hours }} 小时</span>
-            {% if log.tags %}
-            <span style="margin-left: 10px;">🏷️ {{ log.tags | join: ", " }}</span>
+            <!-- 显示具体的科目耗时 -->
+            {% if log.subjects %}
+                {% for sub in log.subjects %}
+                <span style="margin-right: 10px; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em;">
+                    {{ sub.name }}: {{ sub.hours }}h
+                </span>
+                {% endfor %}
+            {% else %}
+                <span>⏱️ 学习 {{ log.study_hours }} 小时</span>
+                {% if log.tags %}
+                <span style="margin-left: 10px;">🏷️ {{ log.tags | join: ", " }}</span>
+                {% endif %}
             {% endif %}
         </div>
         <div class="timeline-content">

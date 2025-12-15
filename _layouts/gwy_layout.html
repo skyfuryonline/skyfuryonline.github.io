@@ -232,7 +232,8 @@
         document.getElementById('progress-percent').textContent = progress.toFixed(1) + "%";
 
         // --- 3. 图表渲染函数 ---
-        function renderCharts(logs, detailedLogs) {
+        function renderCharts(logs, subjectStats) {
+            // 3.1 准备数据：最近7天
             const last7Days = [];
             const trendData = [];
             for (let i = 6; i >= 0; i--) {
@@ -243,16 +244,9 @@
                 trendData.push(logs[dateStr] || 0);
             }
 
-            const subjectStats = {};
-            detailedLogs.forEach(log => {
-                if (log.tags) {
-                    log.tags.forEach(tag => {
-                        subjectStats[tag] = (subjectStats[tag] || 0) + log.study_hours; 
-                    });
-                }
-            });
+            // 3.2 准备数据：科目分布 (直接使用传入的 subjectStats)
             const subjectLabels = Object.keys(subjectStats);
-            const subjectData = Object.values(subjectStats);
+            const subjectData = Object.values(subjectStats).map(v => v.toFixed(1));
 
             new Chart(document.getElementById('trendChart'), {
                 type: 'bar',
@@ -268,7 +262,14 @@
                 options: {
                     responsive: true,
                     plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, grid: { display: false } }, x: { grid: { display: false } } }
+                    scales: { 
+                        y: { 
+                            beginAtZero: true, 
+                            grid: { display: false },
+                            title: { display: true, text: '小时' }
+                        }, 
+                        x: { grid: { display: false } } 
+                    }
                 }
             });
 
@@ -278,7 +279,7 @@
                     labels: subjectLabels,
                     datasets: [{
                         data: subjectData,
-                        backgroundColor: ['#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#f1c40f'],
+                        backgroundColor: ['#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#f1c40f', '#1abc9c'],
                         borderWidth: 0
                     }]
                 },
