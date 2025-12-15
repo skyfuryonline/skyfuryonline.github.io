@@ -6,13 +6,35 @@
     <title>备考小窝 | 星光不问赶路人</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         /* --- 全局 --- */
         body { background-color: #fdf6e3; color: #5a5a5a; font-family: 'Lora', 'Noto Serif SC', serif; line-height: 1.8; }
         a { color: #d35400; text-decoration: none; transition: color 0.3s; }
         a:hover { color: #e67e22; text-decoration: underline; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* 布局容器 */
+        .gwy-wrapper { 
+            max-width: 1200px; margin: 0 auto; padding: 40px 20px; 
+            display: flex; gap: 40px; align-items: flex-start;
+        }
+        
+        /* 左侧边栏 */
+        .gwy-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            position: -webkit-sticky; position: sticky; top: 40px;
+        }
+        .chart-card {
+            background: white; padding: 20px; border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px;
+        }
+        .chart-title { font-size: 1.1rem; font-weight: bold; color: #2c3e50; margin-bottom: 15px; text-align: center; }
+
+        /* 主内容区 */
+        .gwy-main { flex-grow: 1; min-width: 0; } /* min-width 0 防止 flex 子项溢出 */
 
         /* --- 密码锁 --- */
         #lock-screen {
@@ -28,10 +50,18 @@
         /* --- Header --- */
         header { text-align: center; margin-bottom: 50px; }
         .main-title { font-size: 3rem; font-weight: 700; color: #2c3e50; margin-bottom: 15px; letter-spacing: 2px; }
-        .daily-quote { font-size: 1.4rem; color: #d35400; font-style: italic; margin-bottom: 30px; min-height: 1.8em; }
+        /* 格言样式升级：红色、大字 */
+        .daily-quote { 
+            font-size: 1.8rem; 
+            color: #c0392b; /* 红色系 */
+            font-style: italic; 
+            margin-bottom: 30px; 
+            font-weight: bold;
+            font-family: "KaiTi", "楷体", serif; /* 尝试用楷体增加书法感 */
+        }
         
         /* 倒计时 & 进度条 */
-        .status-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: inline-block; width: 100%; max-width: 600px; }
+        .status-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: inline-block; width: 100%; }
         .countdown-row { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin-bottom: 15px; }
         .days-num { font-size: 2.5rem; font-weight: bold; color: #d35400; line-height: 1; }
         .days-label { font-size: 1rem; color: #7f8c8d; }
@@ -46,16 +76,16 @@
         .stat-val { font-size: 1.5rem; font-weight: bold; color: #2c3e50; }
         .stat-label { font-size: 0.9rem; color: #95a5a6; }
 
-        /* --- 热力图 --- */
+        /* --- 热力图 (GitHub 风格绿色) --- */
         .heatmap-section { margin: 40px 0; overflow-x: auto; }
         .heatmap-grid { display: grid; grid-template-rows: repeat(7, 12px); grid-auto-flow: column; gap: 3px; padding-bottom: 5px; }
-        .heatmap-cell { width: 12px; height: 12px; border-radius: 2px; background-color: #e0e0e0; position: relative; }
-        /* 暖色调等级 */
-        .level-0 { background-color: #e0e0e0; }
-        .level-1 { background-color: #fce38a; } 
-        .level-2 { background-color: #f39c12; } 
-        .level-3 { background-color: #d35400; } 
-        .level-4 { background-color: #c0392b; }
+        .heatmap-cell { width: 12px; height: 12px; border-radius: 2px; background-color: #ebedf0; position: relative; }
+        /* GitHub 绿色等级 */
+        .level-0 { background-color: #ebedf0; }
+        .level-1 { background-color: #9be9a8; } 
+        .level-2 { background-color: #40c463; } 
+        .level-3 { background-color: #30a14e; } 
+        .level-4 { background-color: #216e39; }
         /* Tooltip */
         .heatmap-cell:hover::after {
             content: attr(title); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
@@ -76,6 +106,12 @@
         .timeline-content { font-size: 1rem; color: #5a5a5a; }
         .timeline-content h3 { font-size: 1.2rem; margin-top: 15px; }
         .timeline-content ul { padding-left: 20px; }
+        
+        /* 响应式调整 */
+        @media (max-width: 992px) {
+            .gwy-wrapper { flex-direction: column; }
+            .gwy-sidebar { width: 100%; position: static; }
+        }
     </style>
 </head>
 <body>
@@ -92,59 +128,74 @@
         </div>
     </div>
 
-    <div class="container">
-        <!-- 头部 -->
-        <header>
-            <div id="daily-quote" class="daily-quote">Loading...</div>
-            <div class="main-title">星光不问赶路人</div>
+    <div class="gwy-wrapper">
+        <!-- 左侧仪表盘 -->
+        <aside class="gwy-sidebar">
+            <div class="chart-card">
+                <div class="chart-title">最近7天趋势</div>
+                <canvas id="trendChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">科目分布 (本周)</div>
+                <canvas id="subjectChart"></canvas>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="gwy-main">
+            <!-- 头部 -->
+            <header>
+                <div id="daily-quote" class="daily-quote">Loading...</div>
+                <div class="main-title">星光不问赶路人</div>
+                
+                <div class="status-card">
+                    <div class="countdown-row">
+                        <span class="days-label">距离 2027年国考 还有</span>
+                        <span class="days-num" id="countdown-display">---</span>
+                        <span class="days-label">天</span>
+                    </div>
+                    <!-- 进度条 -->
+                    <div class="progress-wrapper">
+                        <div id="life-progress" class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Start: 2025-01-01</span>
+                        <span id="progress-percent">0%</span>
+                        <span>End: 2026-11-29</span>
+                    </div>
+                </div>
+            </header>
+    
+            <!-- 热力图 -->
+            <div class="heatmap-section">
+                <div id="study-heatmap" class="heatmap-grid"></div>
+            </div>
+    
+            <!-- 统计面板 -->
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <div class="stat-val" id="stat-total-hours">0</div>
+                    <div class="stat-label">总学习时长 (h)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="stat-days">0</div>
+                    <div class="stat-label">打卡天数</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="stat-streak">0</div>
+                    <div class="stat-label">当前连续 (天)</div>
+                </div>
+            </div>
+    
+            <!-- 时间轴日记流 -->
+            <div class="timeline">
+                {{ content }}
+            </div>
             
-            <div class="status-card">
-                <div class="countdown-row">
-                    <span class="days-label">距离 2027年国考 还有</span>
-                    <span class="days-num" id="countdown-display">---</span>
-                    <span class="days-label">天</span>
-                </div>
-                <!-- 进度条 -->
-                <div class="progress-wrapper">
-                    <div id="life-progress" class="progress-fill"></div>
-                </div>
-                <div class="progress-text">
-                    <span>Start: 2025-01-01</span>
-                    <span id="progress-percent">0%</span>
-                    <span>End: 2026-11-29</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- 热力图 -->
-        <div class="heatmap-section">
-            <div id="study-heatmap" class="heatmap-grid"></div>
-        </div>
-
-        <!-- 统计面板 -->
-        <div class="stats-panel">
-            <div class="stat-box">
-                <div class="stat-val" id="stat-total-hours">0</div>
-                <div class="stat-label">总学习时长 (h)</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-val" id="stat-days">0</div>
-                <div class="stat-label">打卡天数</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-val" id="stat-streak">0</div>
-                <div class="stat-label">当前连续 (天)</div>
-            </div>
-        </div>
-
-        <!-- 时间轴日记流 -->
-        <div class="timeline">
-            {{ content }}
-        </div>
-        
-        <footer style="text-align: center; margin-top: 80px; color: #bdc3c7; font-size: 0.8rem;">
-            <p>&copy; {{ site.time | date: '%Y' }} 备考小窝</p>
-        </footer>
+            <footer style="text-align: center; margin-top: 80px; color: #bdc3c7; font-size: 0.8rem;">
+                <p>&copy; {{ site.time | date: '%Y' }} 备考小窝</p>
+            </footer>
+        </main>
     </div>
 
     <!-- 逻辑脚本 -->
@@ -163,7 +214,7 @@
 
         // --- 2. 倒计时 & 进度条 ---
         const targetDate = new Date("2026-11-29"); 
-        const startDate = new Date("2025-01-01");
+        const startDate = new Date("2025-01-01"); // 设置为 2025-01-01 以显示当前进度
         const today = new Date();
         
         const totalTime = targetDate - startDate;
@@ -177,23 +228,67 @@
         document.getElementById('life-progress').style.width = progress + "%";
         document.getElementById('progress-percent').textContent = progress.toFixed(1) + "%";
 
-        // --- 3. 统计数据注入 (将被 gwy.html 调用) ---
-        function updateStats(logs) {
-            let totalHours = 0;
-            let days = Object.keys(logs).length;
-            // 简单计算 streak (需要日期排序)
-            let sortedDates = Object.keys(logs).sort().reverse();
-            let streak = 0;
-            // 简单逻辑：如果是今天或昨天有打卡，就开始算 streak
-            // 这里为了简单，只统计总数
-            
-            for(let date in logs) {
-                totalHours += logs[date];
+        // --- 3. 图表渲染函数 (将被 gwy.html 调用) ---
+        function renderCharts(logs, detailedLogs) {
+            // 3.1 准备数据：最近7天
+            const last7Days = [];
+            const trendData = [];
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date();
+                d.setDate(d.getDate() - i);
+                const dateStr = d.toISOString().split('T')[0];
+                last7Days.push(dateStr.slice(5)); // MM-DD
+                trendData.push(logs[dateStr] || 0);
             }
-            
-            document.getElementById('stat-total-hours').textContent = totalHours.toFixed(1);
-            document.getElementById('stat-days').textContent = days;
-            // document.getElementById('stat-streak').textContent = streak; // 暂未实现复杂 streak
+
+            // 3.2 准备数据：科目分布 (从 detailedLogs 中统计)
+            const subjectStats = {};
+            detailedLogs.forEach(log => {
+                if (log.tags) {
+                    log.tags.forEach(tag => {
+                        subjectStats[tag] = (subjectStats[tag] || 0) + log.study_hours; // 简单按时长累加，如果一篇日志多个tag，这里会重复计算时长，作为“投入关注度”的近似
+                        // 更精确的做法是：study_hours / tags.length
+                    });
+                }
+            });
+            const subjectLabels = Object.keys(subjectStats);
+            const subjectData = Object.values(subjectStats);
+
+            // 3.3 渲染 Trend Chart
+            new Chart(document.getElementById('trendChart'), {
+                type: 'bar',
+                data: {
+                    labels: last7Days,
+                    datasets: [{
+                        label: '小时',
+                        data: trendData,
+                        backgroundColor: '#f39c12',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, grid: { display: false } }, x: { grid: { display: false } } }
+                }
+            });
+
+            // 3.4 渲染 Subject Chart
+            new Chart(document.getElementById('subjectChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: subjectLabels,
+                    datasets: [{
+                        data: subjectData,
+                        backgroundColor: ['#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#f1c40f'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } }
+                }
+            });
         }
     </script>
 
