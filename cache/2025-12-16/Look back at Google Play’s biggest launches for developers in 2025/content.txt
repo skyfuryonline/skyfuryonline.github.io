@@ -1,0 +1,20 @@
+Breadcrumb
+The latest news
+Dec 16, 2025
+Look back at Google Play’s biggest launches for developers in 2025
+As 2025 comes to an end, we’re revisiting some of the biggest updates and key developments in Google Play this year. It all reflects our commitment to making Google Play a rewarding platform for our developer community.
+Highlights include:
+Significant updates to the store to improve discoverability and user engagement.
+New features designed to save developers time and streamline their workflow.
+Collaborative efforts and new policies that help make Play a more secure and trustworthy ecosystem for users and developers.
+Watch our Year in Review video recap to learn more.
+00:00
+POSTED IN:
+Google Play
+Developers
+Related stories
+Build with Gemini Deep Research
+We have reimagined Gemini Deep Research to be more powerful than ever, now accessible to developers via the new Interactions API.
+Interactions API: A unified foundation for models and agents
+These developers are changing lives with Gemma 3n
+New updates make Jules a proactive AI partner

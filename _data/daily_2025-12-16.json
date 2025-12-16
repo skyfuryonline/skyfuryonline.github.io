@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Look back at Google Play’s biggest launches for developers in 2025",
+        "link": "https://blog.google/feed/year-in-review-developers-2025/",
+        "date": "2025-12-16",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-16/Look back at Google Play’s biggest launches for developers in 2025",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：2025年Google Play为开发者推出多项重大更新，旨在提升应用可发现性、优化用户体验并简化开发流程。平台强化了安全与信任机制，推动协作生态建设，并通过新API（如Interactions API）赋能AI模型集成，助力开发者高效构建创新产品。整体目标是打造更友好、高效、安全的开发者生态系统。\n\n例子：开发者可通过Interactions API快速接入Gemini Deep Research，无需复杂配置即可实现智能问答或内容生成，大幅提升应用智能化效率。\n\n关键字：Google Play、开发者工具、AI集成、Interactions API、生态安全"
+    }
+]
