@@ -1,0 +1,58 @@
+[
+    {
+        "title": "Build with Gemini 3 Flash, frontier intelligence that scales with you",
+        "link": "https://blog.google/technology/developers/build-with-gemini-3-flash/",
+        "date": "2025-12-17",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-17/Build with Gemini 3 Flash, frontier intelligence that scales with you",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.gif",
+            "image_4.gif",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "摘要：Google发布Gemini 3 Flash，是一款兼具前沿智能与高效性能的AI模型，成本仅为Gemini 3 Pro的四分之一，推理速度提升三倍。它在编码、游戏开发、深度伪造检测和法律文档分析等领域表现突出，支持视觉空间推理与代码执行。开发者可通过Google AI Studio、Antigravity、Vertex AI等平台接入，适用于高并发、低延迟生产场景，并提供批量API与上下文缓存以降低成本。该模型在多项基准测试中超越前代产品，同时保持极高的性价比，推动AI应用规模化落地。\n\n例子：一个游戏公司用Gemini 3 Flash在几秒内生成完整游戏逻辑代码并实时渲染角色行为，比传统方案快4倍且成本降低70%。\n\n关键字：Gemini 3 Flash、前沿智能、多模态推理、开发效率、成本优化"
+    },
+    {
+        "title": "Gemini 3 Flash: frontier intelligence built for speed",
+        "link": "https://blog.google/products/gemini/gemini-3-flash/",
+        "date": "2025-12-17",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-12-17/Gemini 3 Flash- frontier intelligence built for speed",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp",
+            "image_16.webp",
+            "image_17.webp",
+            "image_18.webp",
+            "image_19.webp",
+            "image_20.webp",
+            "image_21.webp",
+            "image_22.webp",
+            "image_23.webp"
+        ],
+        "summary": "摘要：Google 正式发布 Gemini 3 Flash，一款兼具前沿智能与极致速度的AI模型，旨在为普通用户和开发者提供高效、低成本的交互体验。该模型继承 Gemini 3 的专业推理能力，同时大幅降低延迟与成本（输入0.5美元/百万token），在多项基准测试中超越 Gemini 2.5 Pro，并媲美大型模型表现。适用于编码、多模态分析、实时应用开发及日常任务加速，现已默认集成于 Gemini App 和 AI 搜索模式，开发者可通过 API、CLI、Antigravity 等平台接入。其核心优势在于“性能 vs 成本 vs 速度”的帕累托前沿优化，支持动态资源分配以适应复杂或简单任务。\n\n例子：你上传一张手绘草图，Gemini 3 Flash 能边画边识别内容并即时生成设计建议，甚至帮你一键转成可交互原型——无需编程即可快速实现创意。\n\n关键字：Gemini 3 Flash、前沿智能、低延迟、多模态推理、成本效率"
+    }
+]
