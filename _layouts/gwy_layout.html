@@ -212,16 +212,28 @@
     <!-- 逻辑脚本 -->
     <script>
         // --- 1. 密码锁 ---
-        const CORRECT_PASSWORD = '000214'; 
+        const CORRECT_PASSWORD = '123456'; 
+        
         function checkPassword() {
             const input = document.getElementById('password-input').value;
             if (input === CORRECT_PASSWORD) {
-                document.getElementById('lock-screen').style.opacity = '0';
-                setTimeout(() => { document.getElementById('lock-screen').style.display = 'none'; }, 500);
-                localStorage.setItem('gwy_unlocked', 'true');
-            } else { document.getElementById('lock-hint').style.opacity = '1'; }
+                unlockPage();
+            } else { 
+                document.getElementById('lock-hint').style.opacity = '1'; 
+            }
         }
-        if (localStorage.getItem('gwy_unlocked') === 'true') { document.getElementById('lock-screen').style.display = 'none'; }
+
+        function unlockPage() {
+            document.getElementById('lock-screen').style.opacity = '0';
+            setTimeout(() => { document.getElementById('lock-screen').style.display = 'none'; }, 500);
+            // 存储当前密码作为令牌，这样一旦密码修改，旧令牌自动失效
+            localStorage.setItem('gwy_unlocked_token', CORRECT_PASSWORD);
+        }
+
+        // 检查令牌是否匹配当前密码
+        if (localStorage.getItem('gwy_unlocked_token') === CORRECT_PASSWORD) { 
+            document.getElementById('lock-screen').style.display = 'none'; 
+        }
 
         // --- 2. 倒计时 & 进度条 ---
         const targetDate = new Date("2026-11-29"); 
