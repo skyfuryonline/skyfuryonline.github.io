@@ -1,0 +1,59 @@
+[
+    {
+        "title": "T5Gemma 2: The next generation of encoder-decoder models",
+        "link": "https://blog.google/technology/developers/t5gemma-2/",
+        "date": "2025-12-18",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-18/T5Gemma 2- The next generation of encoder-decoder models",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp",
+            "image_16.webp",
+            "image_17.webp"
+        ],
+        "summary": "摘要：T5Gemma 2 是基于 Gemma 3 架构的下一代编码器-解码器模型，首次实现多模态与超长上下文能力。相比前代，它采用词嵌入共享和解码器注意力合并等架构优化，显著减少参数量（如 270M 模型总参数约 370M），提升部署效率。模型支持图像理解、128K 长上下文处理及 140+ 种语言，性能全面超越 Gemma 3 和 T5Gemma，在多模态、长文本和通用任务上表现突出。适用于边缘设备与快速实验场景，预训练权重已开放，开发者可微调适配特定任务。\n\n例子：用 270M 参数的 T5Gemma 2 在手机端实时回答图片中的问题，并支持长达 128K 的文档摘要生成。\n\n关键字：编码器-解码器、多模态、长上下文、参数压缩、高效部署"
+    },
+    {
+        "title": "FunctionGemma: Bringing bespoke function calling to the edge",
+        "link": "https://blog.google/technology/developers/functiongemma/",
+        "date": "2025-12-18",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-18/FunctionGemma- Bringing bespoke function calling to the edge",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.png",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：Google 推出 FunctionGemma，这是 Gemma 3 270M 模型的专用函数调用版本，专为边缘设备设计，支持本地执行自然语言指令并调用系统API。它具备统一对话与行动能力、高度可定制化、轻量高效（适配 Jetson Nano/手机），且支持主流框架部署。通过微调，其在 Mobile Actions 数据集上的准确率从58%提升至85%，验证了专用训练优于零样本提示。适用于需隐私、低延迟、本地化智能体的场景，如智能家居控制或游戏交互。FunctionGemma 是从“聊天”迈向“行动”的关键一步，赋能开发者构建真正离线、私有、快速响应的AI代理。\n\n例子：用户说“明天中午设个会议提醒”，FunctionGemma 自动解析为“calendar.create_event()”，无需联网，立即执行并回复“已为您创建会议”。\n\n关键字：FunctionGemma、边缘计算、函数调用、微调、本地智能体"
+    },
+    {
+        "title": "Watch a podcast discussion about Gemini 3 and the future of Search.",
+        "link": "https://blog.google/technology/ai/release-notes-podcast-search/",
+        "date": "2025-12-18",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2025-12-18/Watch a podcast discussion about Gemini 3 and the future of Search.",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：Google在最新AI播客中宣布将最强大的Gemini 3模型直接集成至搜索服务，使其能处理复杂查询并生成物理模拟、实时图表等内容。主持人Logan Kilpatrick与Robby Stein、Rhiannon Bell探讨了Gemini 3如何结合高级推理与编程能力，为用户提供前所未有的交互体验，并揭示背后的技术实现路径，旨在让千万用户无缝享受前沿AI功能。\n\n例子：用户输入“生成一个太阳系行星轨道模拟”，Gemini 3可在秒级内输出动态可视化图表并附带可交互参数调整，无需额外工具或代码。\n\n关键字：Gemini 3、AI搜索集成、前沿模型、推理能力、实时生成"
+    }
+]

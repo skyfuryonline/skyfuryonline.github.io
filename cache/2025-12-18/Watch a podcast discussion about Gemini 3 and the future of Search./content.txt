@@ -1,0 +1,24 @@
+Breadcrumb
+Technology
+AI
+Dec 18, 2025
+Watch a podcast discussion about Gemini 3 and the future of Search.
+The latest episode of the Google AI: Release Notes podcast looks at how we are integrating our most capable frontier models directly into Search.
+Host Logan Kilpatrick talks with Robby Stein and Rhiannon Bell about how Gemini 3 uses advanced reasoning and coding capabilities to solve complex user questions — creating everything from physics simulations to live graphs — and the technical work behind bringing these features to millions of users.
+Watch the episode below, or listen to the podcast on
+Apple Podcasts
+or
+Spotify
+.
+00:00
+POSTED IN:
+AI
+Gemini Models
+Google DeepMind
+Search
+Related stories
+You can now verify Google AI-generated videos in the Gemini app.
+We’re expanding our content transparency tools to help you more easily identify AI-generated content. You can now check if a video was…
+Inside Kaggle's AI Agents intensive course with Google
+Gemini 3 Flash is rolling out globally in Google Search
+Gemini 3 Flash: frontier intelligence built for speed

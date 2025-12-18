@@ -1,0 +1,194 @@
+Breadcrumb
+Technology
+Developers
+FunctionGemma: Bringing bespoke function calling to the edge
+Dec 18, 2025
+·
+4 min read
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+We’re releasing a specialized version of our Gemma 3 270M model fine-tuned for function calling and a training recipe for users to specialize for even better performance.
+K
+Kat Black
+Product Manager on behalf of the Gemma and ODML teams
+R
+Ravin Kumar
+Research Engineer
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+It has been a transformative year for the Gemma family of models. In 2025, we have grown from 100 million to over 300 million downloads while demonstrating the
+transformative potential of open models
+, from defining state-of-the-art single-accelerator performance with
+Gemma 3
+to advancing cancer research through
+the C2S Scale initiative
+.
+Since launching the
+Gemma 3 270M model,
+the number one request we’ve received from developers is for native function calling capabilities. We listened, recognizing that as the industry shifts from purely conversational interfaces to active agents, models need to do more than just talk — they need to act. This is particularly compelling on-device, where agents can automate complex, multi-step workflows, from setting reminders to toggling system settings. To enable this at the edge, models must be lightweight enough to run locally and specialized enough to be reliable.
+Today, we are releasing FunctionGemma, a specialized version of our
+Gemma 3 270M
+model tuned for function calling. It is designed as a strong base for further training into custom, fast, private, local agents that translate natural language into executable API actions.
+FunctionGemma acts as a fully independent agent for private, offline tasks, or as an intelligent traffic controller for larger connected systems. In this role, it can handle common commands instantly at the edge, while routing more complex tasks to models like Gemma 3 27B.
+00:00
+What makes FunctionGemma unique
+Unified action and chat:
+FunctionGemma knows how to talk to both computers and humans. It can generate structured function calls to execute tools, then switch context to summarize the results in natural language for the user.
+Built for customization:
+FunctionGemma is designed to be molded, not just prompted. In our "Mobile Actions" evaluation, fine-tuning transformed the model’s reliability, boosting accuracy from a 58% baseline to 85%. This confirms that for edge agents, a dedicated, trained specialist is an efficient path to production-grade performance.
+Engineered for the edge:
+Small enough to run on edge devices like the
+NVIDIA Jetson Nano
+and mobile phones, the model uses Gemma’s 256k vocabulary to efficiently tokenize JSON and multilingual inputs. This makes it a strong base for fine-tuning in specific domains, reducing sequence length to ensure minimum latency and total user privacy.
+Broad ecosystem support:
+The model is supported by popular tools across the entire workflow: fine-tune with
+Hugging Face Transformers
+,
+Unsloth
+, Keras or
+NVIDIA NeMo
+and deploy using
+LiteRT-LM
+, vLLM,
+MLX
+,
+Llama.cpp
+,
+Ollama
+,
+Vertex AI
+or
+LM Studio
+.
+FunctionGemma accuracy on Mobile Actions dataset before and after
+fine-tuning
+on a held out eval set.
+When to choose FunctionGemma
+FunctionGemma is the bridge between natural language and software execution. It is the right tool if:
+You have a defined API surface:
+Your application has a defined set of actions (e.g., smart home, media, navigation).
+You are ready to fine-tune:
+You need the consistent, deterministic behavior that comes from fine-tuning on specific data, rather than the variability of zero-shot prompting.
+You prioritize local-first deployment:
+Your application requires near-instant latency and total data privacy, running efficiently within the compute and battery limits of edge devices.
+You are building compound systems:
+You need a lightweight edge model to handle local actions, allowing your system to process common commands on-device and only query larger models (like Gemma 3 27B) for more complex tasks.
+How to see it in action
+Let's look at how these models transform actual user experiences. You can explore these capabilities in the
+Google AI Edge Gallery app
+through two distinct experiences: an interactive game and a developer challenge.
+Mobile Actions fine tuning
+This demo reimagines assistant interaction as a fully offline capability. Whether it’s "
+Create a calendar event for lunch tomorrow,
+" "
+Add John to my contacts
+" or "
+Turn on the flashlight,
+" the model parses the natural language and identifies the correct OS tool to execute the command. To unlock this agent, developers are invited to use our
+fine-tuning cookbook
+to build the model and load it onto their mobile device.
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+TinyGarden game demo
+In this interactive mini-game, players use voice commands to manage a virtual plot of land. You might say, "Plant sunflowers in the top row and water them," and the model decomposes this into specific app functions like plantCrop or waterCrop targeting specific grid coordinates. This proves that a 270M model can handle multi-turn logic to drive custom game mechanics, on a mobile phone, without ever pinging a server.
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+FunctionGemma Physics Playground
+Use natural language to solve fun physics simulation puzzles in
+a game that runs 100% locally in your browser
+, powered by FunctionGemma and Transformers.js!
+Credit: @xenovacom on X
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+How to try FunctionGemma today
+We are moving from an era of chatbots to an era of action. With FunctionGemma, that power now fits in your pocket.
+Download:
+Get the model on
+Hugging Face
+or
+Kaggle
+.
+Learn:
+Check out the
+guides
+on
+function calling templates
+,
+how to sequence the model with function responses
+and
+fine-tuning
+.
+Explore:
+Download the updated
+Google AI Edge Gallery
+to try the demos.
+Build:
+Access the Mobile Actions
+guide
+with a
+Colab notebook
+and
+dataset
+to train your own specialized agent.
+Deploy:
+Easily publish your own models onto mobile devices using
+LiteRT-LM
+or use alongside larger models on Vertex AI or NVIDIA devices like RTX PRO and DGX Spark.
+We can’t wait to see the unique, private, and ultra-fast experiences you unlock on-device.
+POSTED IN:
+Developers
+Related stories
+Developers
+T5Gemma 2: The next generation of encoder-decoder models
+By
+Biao Zhang
+&
+Ben Hora
+Dec 18, 2025
+Developers
+Inside Kaggle's AI Agents intensive course with Google
+By
+Brenda Flynn
+&
+Anant Nawalgaria
+Dec 18, 2025
+Developers
+Build with Gemini 3 Flash, frontier intelligence that scales with you
+By
+Logan Kilpatrick
+Dec 17, 2025
+Google Play
+Look back at Google Play’s biggest launches for developers in 2025
+Dec 16, 2025
+Developers
+Build with Gemini Deep Research
+By
+Lukas Haas
+&
+Shrestha Basu Mallick
+Dec 11, 2025
+Developers
+Interactions API: A unified foundation for models and agents
+By
+Ali Çevik
+&
+Philipp Schmid
+Dec 11, 2025
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6
