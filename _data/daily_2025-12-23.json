@@ -1,0 +1,28 @@
+[
+    {
+        "title": "Google's year in review: 8 areas with research breakthroughs in 2025",
+        "link": "https://blog.google/technology/ai/2025-research-breakthroughs/",
+        "date": "2025-12-23",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2025-12-23/Google's year in review- 8 areas with research breakthroughs in 2025",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.gif",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp",
+            "image_16.webp"
+        ],
+        "summary": "摘要：2025年，谷歌在人工智能领域取得多项突破性进展，核心成果包括Gemini 3系列模型在推理、多模态理解与效率上的飞跃，以及Gemma 3等开源轻量模型的优化。AI能力已从工具演变为“实用”，深度融入产品如Pixel 10、搜索、Gemini App和NotebookLM，并催生了如Google Antigravity等新型开发协作系统。创意方面，Veo 3.1、Nano Banana Pro等生成式媒体工具极大提升视觉与音频创作能力。科研层面，AlphaFold持续推动基因组学发展，Gemini Deep Think在数学与编程竞赛中达金牌水准；量子计算领域亦有重要突破，如Quantum Echoes算法及Michel Devoret获诺奖。基础设施上，Ironwood TPU强化推理性能，同时注重能效与环保。全球影响方面，WeatherNext 2实现8倍速天气预测覆盖超20亿人，FireSat助力早期野火监测，AI正成为应对气候、健康与教育挑战的关键力量。谷歌强调负责任创新与跨领域合作。\n\n例子：用Gemini 3 Flash快速编写复杂代码并实时调试，同时调用Veo 3.1生成演示视频，再通过Google Earth AI分析城市热力分布——AI已无缝整合为生产力中枢。\n\n关键字：Gemini 3, 多模态推理, 生成式AI, 科研赋能, 负责任创新"
+    }
+]
