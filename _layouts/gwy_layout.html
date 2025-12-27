@@ -6,12 +6,10 @@
     <title>备考小窝 | 2027国考</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
-    <!-- 引入 Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         /* --- 全局 --- */
-        /* 背景色调整：更淡、更柔和的米白色 */
         body { background-color: #fbf7f5; color: #5a5a5a; font-family: 'Lora', 'Noto Serif SC', serif; line-height: 1.8; }
         a { color: #d35400; text-decoration: none; transition: color 0.3s; }
         a:hover { color: #e67e22; text-decoration: underline; }
@@ -24,8 +22,7 @@
         
         /* 左侧边栏 */
         .gwy-sidebar {
-            width: 240px;
-            flex-shrink: 0;
+            width: 240px; flex-shrink: 0;
             position: -webkit-sticky; position: sticky; top: 40px;
         }
         .chart-card {
@@ -50,58 +47,58 @@
 
         /* --- Header --- */
         header { text-align: center; margin-bottom: 50px; }
-        /* 标题样式 */
         .main-title { font-size: 3rem; font-weight: 700; color: #2c3e50; margin-bottom: 25px; letter-spacing: 1px; }
-        /* 格言样式升级：更大 */
         .daily-quote { 
-            font-size: 2.2rem; /* 放大 */
-            color: #c0392b; 
-            font-style: italic; 
-            margin-bottom: 40px; 
-            font-weight: bold;
-            font-family: "KaiTi", "楷体", serif;
-            min-height: 1.5em;
+            font-size: 2.2rem; color: #c0392b; font-style: italic; 
+            margin-bottom: 40px; font-weight: bold; font-family: "KaiTi", "楷体", serif; min-height: 1.5em;
         }
         
-        /* 倒计时 & 进度条 */
         .status-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: inline-block; width: 100%; }
         .countdown-row { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin-bottom: 15px; }
         .days-num { font-size: 2.5rem; font-weight: bold; color: #d35400; line-height: 1; }
         .days-label { font-size: 1rem; color: #7f8c8d; }
-        
         .progress-wrapper { position: relative; height: 10px; background: #eee; border-radius: 5px; overflow: hidden; margin-top: 10px; }
         .progress-fill { height: 100%; background: linear-gradient(90deg, #f39c12, #d35400); width: 0%; transition: width 1s ease; }
         .progress-text { font-size: 0.8rem; color: #999; margin-top: 5px; display: flex; justify-content: space-between; }
+
+        /* --- 月历卡片 (New!) --- */
+        .calendar-section { margin: 40px 0; }
+        .calendar-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        
+        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .calendar-title { font-size: 1.5rem; font-weight: bold; color: #2c3e50; }
+        .calendar-nav-btn { 
+            background: none; border: 1px solid #ddd; border-radius: 50%; width: 32px; height: 32px; 
+            cursor: pointer; color: #7f8c8d; transition: all 0.2s; font-size: 1.2rem; line-height: 1; padding: 0;
+        }
+        .calendar-nav-btn:hover { background: #f39c12; color: white; border-color: #f39c12; }
+
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; }
+        .calendar-day-header { font-weight: bold; color: #95a5a6; font-size: 0.9rem; padding-bottom: 10px; }
+        
+        .calendar-day { 
+            aspect-ratio: 1; /* 正方形 */
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-radius: 8px; background-color: #f9f9f9; color: #7f8c8d; font-size: 1rem;
+            position: relative; transition: transform 0.2s;
+        }
+        .calendar-day.empty { background: transparent; }
+        .calendar-day:not(.empty):hover { transform: scale(1.1); z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        
+        /* 颜色等级 (GitHub Green) */
+        .day-level-0 { background-color: #f9f9f9; }
+        .day-level-1 { background-color: #d6e685; color: #2c3e50; }
+        .day-level-2 { background-color: #8cc665; color: white; }
+        .day-level-3 { background-color: #44a340; color: white; }
+        .day-level-4 { background-color: #1e6823; color: white; }
+        
+        .day-hours { font-size: 0.7rem; opacity: 0.8; margin-top: 2px; }
 
         /* --- 统计面板 --- */
         .stats-panel { display: flex; justify-content: space-around; margin: 40px 0; gap: 15px; }
         .stat-box { background: white; padding: 15px; border-radius: 10px; text-align: center; flex: 1; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
         .stat-val { font-size: 1.5rem; font-weight: bold; color: #2c3e50; }
         .stat-label { font-size: 0.9rem; color: #95a5a6; }
-
-        /* --- 热力图 (GitHub 风格绿色) --- */
-        .heatmap-section { 
-            margin: 40px 0; 
-            overflow-x: auto; 
-            -webkit-overflow-scrolling: touch;
-            /* 隐藏滚动条但允许滚动 */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .heatmap-section::-webkit-scrollbar { display: none; } /* Chrome */
-        
-        .heatmap-grid { display: grid; grid-template-rows: repeat(7, 11px); grid-auto-flow: column; gap: 2px; padding-bottom: 5px; }
-        .heatmap-cell { width: 11px; height: 11px; border-radius: 2px; background-color: #ebedf0; position: relative; }
-        .level-0 { background-color: #ebedf0; }
-        .level-1 { background-color: #9be9a8; } 
-        .level-2 { background-color: #40c463; } 
-        .level-3 { background-color: #30a14e; } 
-        .level-4 { background-color: #216e39; }
-        .heatmap-cell:hover::after {
-            content: attr(title); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
-            background: rgba(0,0,0,0.8); color: white; padding: 4px 8px; border-radius: 4px;
-            font-size: 12px; white-space: nowrap; z-index: 10; margin-bottom: 5px;
-        }
 
         /* --- 时间轴 --- */
         .timeline { position: relative; margin-top: 50px; padding-left: 30px; }
@@ -154,7 +151,6 @@
         <main class="gwy-main">
             <!-- 头部 -->
             <header>
-                <!-- 交换位置：标题在上，格言在下 -->
                 <div class="main-title">2027年国家公务员考试备考</div>
                 <div id="daily-quote" class="daily-quote">Loading...</div>
                 
@@ -164,12 +160,10 @@
                         <span class="days-num" id="countdown-display">---</span>
                         <span class="days-label">天</span>
                     </div>
-                    <!-- 进度条 -->
                     <div class="progress-wrapper">
                         <div id="life-progress" class="progress-fill"></div>
                     </div>
                     <div class="progress-text">
-                        <!-- 修正显示时间 -->
                         <span>Start: 2026-01-01</span>
                         <span id="progress-percent">0%</span>
                         <span>End: 2026-11-29</span>
@@ -177,9 +171,18 @@
                 </div>
             </header>
     
-            <!-- 热力图 -->
-            <div class="heatmap-section">
-                <div id="study-heatmap" class="heatmap-grid"></div>
+            <!-- 月历卡片 (New!) -->
+            <div class="calendar-section">
+                <div class="calendar-card">
+                    <div class="calendar-header">
+                        <button class="calendar-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
+                        <div class="calendar-title" id="calendar-month-year">2026年 1月</div>
+                        <button class="calendar-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid">
+                        <!-- JS 填充 -->
+                    </div>
+                </div>
             </div>
     
             <!-- 统计面板 -->
@@ -212,38 +215,27 @@
     <!-- 逻辑脚本 -->
     <script>
         // --- 1. 密码锁 ---
-        const CORRECT_PASSWORD = '134679'; 
-        
+        const CORRECT_PASSWORD = '123456'; 
         function checkPassword() {
             const input = document.getElementById('password-input').value;
             if (input === CORRECT_PASSWORD) {
                 unlockPage();
-            } else { 
-                document.getElementById('lock-hint').style.opacity = '1'; 
-            }
+            } else { document.getElementById('lock-hint').style.opacity = '1'; }
         }
-
         function unlockPage() {
             document.getElementById('lock-screen').style.opacity = '0';
             setTimeout(() => { document.getElementById('lock-screen').style.display = 'none'; }, 500);
-            // 存储当前密码作为令牌，这样一旦密码修改，旧令牌自动失效
             localStorage.setItem('gwy_unlocked_token', CORRECT_PASSWORD);
         }
-
-        // 检查令牌是否匹配当前密码
-        if (localStorage.getItem('gwy_unlocked_token') === CORRECT_PASSWORD) { 
-            document.getElementById('lock-screen').style.display = 'none'; 
-        }
+        if (localStorage.getItem('gwy_unlocked_token') === CORRECT_PASSWORD) { document.getElementById('lock-screen').style.display = 'none'; }
 
         // --- 2. 倒计时 & 进度条 ---
         const targetDate = new Date("2026-11-29"); 
-        const startDate = new Date("2026-01-01"); // 保持 2026
+        const startDate = new Date("2026-01-01"); 
         const today = new Date();
-        
         const totalTime = targetDate - startDate;
         const timePassed = today - startDate;
         const timeLeft = targetDate - today;
-        
         const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24));
         const progress = Math.min(100, Math.max(0, (timePassed / totalTime) * 100));
         
@@ -251,70 +243,114 @@
         document.getElementById('life-progress').style.width = progress + "%";
         document.getElementById('progress-percent').textContent = progress.toFixed(1) + "%";
 
-        // --- 3. 图表渲染函数 ---
+        // --- 3. 图表渲染 (Trends & Pie) ---
         function renderCharts(logs, subjectStats) {
-            // 3.1 准备数据：最近7天
+            let baseDate = new Date();
+            if (baseDate < new Date("2026-01-01")) baseDate = new Date("2026-01-07"); // 预览模式
+
             const last7Days = [];
             const trendData = [];
-            
-            // 预览模式逻辑：如果还没到2026年，就显示2026年第一周的数据作为预览
-            let baseDate = new Date();
-            if (baseDate < new Date("2026-01-01")) {
-                baseDate = new Date("2026-01-07"); 
-            }
-
             for (let i = 6; i >= 0; i--) {
-                const d = new Date(baseDate); // 使用基准日期
+                const d = new Date(baseDate);
                 d.setDate(d.getDate() - i);
                 const dateStr = d.toISOString().split('T')[0];
                 last7Days.push(dateStr.slice(5)); 
                 trendData.push(logs[dateStr] || 0);
             }
 
-            // 3.2 准备数据：科目分布 (直接使用传入的 subjectStats)
             const subjectLabels = Object.keys(subjectStats);
             const subjectData = Object.values(subjectStats).map(v => v.toFixed(1));
 
             new Chart(document.getElementById('trendChart'), {
                 type: 'bar',
-                data: {
-                    labels: last7Days,
-                    datasets: [{
-                        label: '小时',
-                        data: trendData,
-                        backgroundColor: '#f39c12',
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: { 
-                        y: { 
-                            beginAtZero: true, 
-                            grid: { display: false },
-                            title: { display: true, text: '小时' }
-                        }, 
-                        x: { grid: { display: false } } 
-                    }
-                }
+                data: { labels: last7Days, datasets: [{ label: '小时', data: trendData, backgroundColor: '#f39c12', borderRadius: 4 }] },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { display: false }, title: { display: true, text: '小时' } }, x: { grid: { display: false } } } }
             });
 
             new Chart(document.getElementById('subjectChart'), {
                 type: 'doughnut',
-                data: {
-                    labels: subjectLabels,
-                    datasets: [{
-                        data: subjectData,
-                        backgroundColor: ['#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#f1c40f', '#1abc9c'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } }
-                }
+                data: { labels: subjectLabels, datasets: [{ data: subjectData, backgroundColor: ['#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#f1c40f', '#1abc9c'], borderWidth: 0 }] },
+                options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } } }
             });
+        }
+
+        // --- 4. 月历渲染逻辑 (核心更新) ---
+        let currentCalendarDate = new Date();
+        // 如果当前还没到 2026，默认显示 2026 年 1 月作为预览
+        if (currentCalendarDate < new Date("2026-01-01")) {
+            currentCalendarDate = new Date("2026-01-01");
+        }
+
+        function renderCalendar(logs) {
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth();
+            
+            document.getElementById('calendar-month-year').textContent = `${year}年 ${month + 1}月`;
+            
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = ''; // 清空
+
+            // 星期头
+            const weekDays = ['日', '一', '二', '三', '四', '五', '六'];
+            weekDays.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                grid.appendChild(header);
+            });
+
+            // 计算当月第一天是周几
+            const firstDay = new Date(year, month, 1).getDay();
+            // 计算当月总天数
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // 填充前面的空白
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day empty';
+                grid.appendChild(empty);
+            }
+
+            // 填充日期
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateObj = new Date(year, month, day);
+                // 修正时区偏移导致的 ISOString 日期错误，手动构建 YYYY-MM-DD
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                
+                const hours = logs[dateStr] || 0;
+                
+                const cell = document.createElement('div');
+                cell.className = 'calendar-day';
+                
+                // 颜色等级
+                let level = 0;
+                if (hours > 0) level = 1;
+                if (hours >= 2) level = 2;
+                if (hours >= 4) level = 3;
+                if (hours >= 6) level = 4;
+                cell.classList.add(`day-level-${level}`);
+                
+                cell.innerHTML = `<div>${day}</div>`;
+                if (hours > 0) {
+                    cell.innerHTML += `<div class="day-hours">${hours.toFixed(1)}h</div>`;
+                }
+                
+                cell.title = `${dateStr}: 学习 ${hours} 小时`;
+                grid.appendChild(cell);
+            }
+        }
+
+        // 全局变量存储 logs，以便切换月份时使用
+        let globalLogs = {}; 
+
+        function initCalendar(logs) {
+            globalLogs = logs;
+            renderCalendar(logs);
+        }
+
+        function changeMonth(delta) {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + delta);
+            renderCalendar(globalLogs);
         }
     </script>
 

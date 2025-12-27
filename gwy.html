@@ -12,12 +12,10 @@ nav-order: 1
         {% endfor %}
     ];
 
-    // 原始日志数据 (未合并)
     const rawLogs = [
         {% for log in site.gwy_logs %}
         {
             date: "{{ log.date | date: '%Y-%m-%d' }}",
-            // 兼容旧格式：如果没配 subjects，就用 study_hours + tags
             totalHours: {{ log.study_hours | default: 0 }}, 
             subjects: [
                 {% if log.subjects %}
@@ -25,7 +23,6 @@ nav-order: 1
                     { name: "{{ sub.name }}", hours: {{ sub.hours }} },
                     {% endfor %}
                 {% else %}
-                    // 旧格式回退逻辑: 将 tags 视为科目，时长平均分
                     {% if log.tags %}
                         {% assign tag_count = log.tags.size %}
                         {% assign avg_hour = log.study_hours | divided_by: tag_count %}
@@ -40,38 +37,29 @@ nav-order: 1
     ];
 
     document.addEventListener('DOMContentLoaded', function() {
-        // --- A. 数据处理 (核心升级) ---
-        // 我们在这里把 rawLogs 转换成 studyLogs (日期->总时长) 和 subjectStats (科目->总时长)
-        
-        const studyLogs = {}; // { '2026-01-01': 8.5 }
-        const subjectStats = {}; // { '申论': 20, '行测': 15 }
+        // --- A. 数据处理 ---
+        const studyLogs = {}; 
+        const subjectStats = {}; 
         let totalHours = 0;
-        let totalDaysSet = new Set(); // 用 Set 统计天数，自动去重
+        let totalDaysSet = new Set(); 
 
         rawLogs.forEach(log => {
-            // 1. 处理日期合并
-            // 如果 subjects 存在，重新计算这篇日志的总时长（覆盖 Front Matter 里的 study_hours，防止手写错误）
             let logTotal = log.totalHours;
             if (log.subjects && log.subjects.length > 0) {
                 logTotal = log.subjects.reduce((sum, sub) => sum + sub.hours, 0);
             }
-
-            // 累加到对应日期
             studyLogs[log.date] = (studyLogs[log.date] || 0) + logTotal;
             
-            // 2. 全局统计
             if (logTotal > 0) {
                 totalHours += logTotal;
                 totalDaysSet.add(log.date);
             }
 
-            // 3. 科目统计
             if (log.subjects && log.subjects.length > 0) {
                 log.subjects.forEach(sub => {
                     subjectStats[sub.name] = (subjectStats[sub.name] || 0) + sub.hours;
                 });
             } else if (log.totalHours > 0) {
-                // 如果既没 subjects 也没 tags (罕见)，归为 "其他"
                 subjectStats['其他'] = (subjectStats['其他'] || 0) + log.totalHours;
             }
         });
@@ -83,32 +71,12 @@ nav-order: 1
             if(quoteEl) quoteEl.textContent = "“" + randomQuote + "”";
         }
 
-        // --- C. 热力图生成 ---
-        const heatmapContainer = document.getElementById('study-heatmap');
-        if(heatmapContainer) {
-            const startDate = new Date("2026-01-01");
-            const endDate = new Date("2026-12-31");
-            
-            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-                const dateStr = d.toISOString().split('T')[0];
-                const hours = studyLogs[dateStr] || 0;
-                const cell = document.createElement('div');
-                cell.classList.add('heatmap-cell');
-                
-                let level = 0;
-                if (hours > 0) level = 1;
-                if (hours >= 2) level = 2;
-                if (hours >= 4) level = 3;
-                if (hours >= 6) level = 4;
-                
-                cell.classList.add(`level-${level}`);
-                cell.title = `${dateStr}: ${hours.toFixed(1)} hrs`; 
-                heatmapContainer.appendChild(cell);
-            }
+        // --- C. 初始化月历 (New!) ---
+        if (typeof initCalendar === 'function') {
+            initCalendar(studyLogs);
         }
 
         // --- D. 统计数据 UI ---
-        // Streak 计算
         let currentStreak = 0;
         const todayStr = new Date().toISOString().split('T')[0];
         let checkDate = new Date();
@@ -126,7 +94,7 @@ nav-order: 1
         document.getElementById('stat-days').textContent = totalDaysSet.size;
         document.getElementById('stat-streak').textContent = currentStreak;
 
-        // --- E. 调用图表渲染 (传递处理好的 subjectStats) ---
+        // --- E. 调用图表渲染 ---
         if (typeof renderCharts === 'function') {
             renderCharts(studyLogs, subjectStats);
         }
@@ -142,7 +110,6 @@ nav-order: 1
     <div class="timeline-card">
         <h3 class="timeline-title">{{ log.title }}</h3>
         <div class="timeline-meta">
-            <!-- 显示具体的科目耗时 -->
             {% if log.subjects %}
                 {% for sub in log.subjects %}
                 <span style="margin-right: 10px; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em;">
