@@ -1,0 +1,25 @@
+[
+    {
+        "title": "The latest AI news we announced in December",
+        "link": "https://blog.google/technology/ai/google-ai-updates-december-2025/",
+        "date": "2025-12-29",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2025-12-29/The latest AI news we announced in December",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.png",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "Error calling LLM API: Error code: 403 - {'error': {'message': 'The free tier of the model has been exhausted. If you wish to continue access the model on a paid basis, please disable the \"use free tier only\" mode in the management console.', 'type': 'AllocationQuota.FreeTierOnly', 'param': None, 'code': 'AllocationQuota.FreeTierOnly'}, 'id': 'chatcmpl-39861640-0ea8-9da2-a466-c90d97fc585f', 'request_id': '39861640-0ea8-9da2-a466-c90d97fc585f'}"
+    }
+]
