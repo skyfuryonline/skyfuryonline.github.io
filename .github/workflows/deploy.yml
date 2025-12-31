@@ -105,20 +105,19 @@ jobs:
           echo "--- Before Encryption ---"
           ls -l _site/gwy/
           
-          # Set legacy peer deps to avoid Grunt conflicts
-          export npm_config_legacy_peer_deps=true
-          # Install locally to ensure command is available
-          npm install staticrypt
+          # Install and run PageCrypt, a modern alternative
+          npm install -g page-crypt
+          page-crypt _site/gwy/index.html _site/gwy/index_crypted.html -p "${{ secrets.GWY_PASSWORD }}"
           
-          # Use local binary path for maximum reliability
-          ./node_modules/.bin/staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
+          # Overwrite the original file
+          mv _site/gwy/index_crypted.html _site/gwy/index.html
           
           echo "--- After Encryption ---"
           ls -l _site/gwy/
           
-          # Verification
-          if grep -q "staticrypt" _site/gwy/index.html; then
-            echo "✅ Encryption verification PASSED."
+          # Verification: Check for page-crypt's signature
+          if grep -q "page-crypt" _site/gwy/index.html; then
+            echo "✅ Encryption verification PASSED: File contains 'page-crypt' signature."
           else
             echo "❌ Encryption verification FAILED."
             exit 1
