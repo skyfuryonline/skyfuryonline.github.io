@@ -113,11 +113,15 @@ jobs:
             echo "GWY_PASSWORD secret is set."
           fi
 
-          # Use yes to bypass prompts, remove --short to see logs
-          yes | npx staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地" || echo "Staticrypt failed"
+          # Install locally to avoid npx/global issues
+          npm install staticrypt
+          
+          # Use echo "y" to force accept short password warning
+          # Use local binary path
+          echo "y" | ./node_modules/.bin/staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
           
           echo "--- File Listing After Encryption ---"
-          ls -R
+          ls -l _site/gwy/
           
           # Overwrite the original file
           mv _site/gwy/index_encrypted.html _site/gwy/index.html
