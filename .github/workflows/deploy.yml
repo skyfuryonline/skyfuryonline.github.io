@@ -114,6 +114,14 @@ jobs:
           
           echo "--- After Encryption ---"
           ls -l _site/gwy/
+          
+          # Verification: Check if file contains Staticrypt signature
+          if grep -q "staticrypt" _site/gwy/index.html; then
+            echo "✅ Encryption verification PASSED: File contains 'staticrypt' signature."
+          else
+            echo "❌ Encryption verification FAILED: File does NOT contain 'staticrypt' signature."
+            exit 1
+          fi
 
       - name: Upload artifact 📦
         uses: actions/upload-pages-artifact@v3
