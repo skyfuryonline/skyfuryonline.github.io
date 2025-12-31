@@ -102,18 +102,19 @@ jobs:
       - name: Encrypt Gwy page 🔒
         working-directory: ./main
         run: |
-          # Get file size before encryption
+          echo "--- Before Encryption ---"
+          ls -l _site/gwy/
           size_before=$(stat -c%s "_site/gwy/index.html")
-
-          # Run pagecrypt
+          
+          # Install and run pagecrypt with the correct positional password argument
           npm install -g pagecrypt
-          pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html -p "${{ secrets.GWY_PASSWORD }}"
+          pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html "${{ secrets.GWY_PASSWORD }}"
           mv _site/gwy/index_crypted.html _site/gwy/index.html
           
           echo "--- After Encryption ---"
           ls -l _site/gwy/
-
-          # Verification: Check if file size has increased
+          
+          # Verification using file size
           size_after=$(stat -c%s "_site/gwy/index.html")
           if [ "$size_after" -gt "$size_before" ]; then
             echo "✅ Encryption verification PASSED: File size increased from $size_before to $size_after."
