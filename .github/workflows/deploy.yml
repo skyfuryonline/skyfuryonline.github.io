@@ -108,7 +108,8 @@ jobs:
           
           # Install and run pagecrypt with the correct positional password argument
           npm install -g pagecrypt
-          pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html "${{ secrets.GWY_PASSWORD }}" -r 30
+          # Run pagecrypt with only the required positional arguments
+          pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html "${{ secrets.GWY_PASSWORD }}"
           
           # Overwrite the original file
           mv _site/gwy/index_crypted.html _site/gwy/index.html
