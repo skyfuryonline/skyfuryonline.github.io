@@ -97,19 +97,20 @@ jobs:
 
       - name: Build the site 🏗️
         working-directory: ./main
-        run: bundle exec jekyll build --destination ../_site
+        run: bundle exec jekyll build
 
       - name: Encrypt Gwy page 🔒
+        working-directory: ./main
         run: |
           npm install -g staticrypt
           # Encrypt gwy/index.html and overwrite it
           # Using the secret password
-          staticrypt ../_site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o ../_site/gwy/index.html --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
+          staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index.html --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
 
       - name: Upload artifact 📦
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ../_site
+          path: main/_site
 
   deploy:
     needs: build
