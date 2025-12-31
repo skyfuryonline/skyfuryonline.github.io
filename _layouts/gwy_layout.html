@@ -110,7 +110,16 @@
         .timeline-card:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.06); }
         .timeline-title { font-size: 1.4rem; margin-top: 0; color: #34495e; }
         .timeline-meta { font-size: 0.85rem; color: #bdc3c7; margin-bottom: 15px; }
-        .timeline-content { font-size: 1rem; color: #5a5a5a; }
+        /* 放大日志正文，提升可读性 */
+        .timeline-content { 
+            font-size: 1.15rem; /* ~18px */
+            color: #5a5a5a; 
+            line-height: 1.9;
+        }
+        .timeline-content p { margin-bottom: 1.2em; }
+        .timeline-content ul, .timeline-content ol { padding-left: 25px; margin-bottom: 1.2em; }
+        .timeline-content li { margin-bottom: 0.5em; }
+        
         .timeline-content h3 { font-size: 1.2rem; margin-top: 15px; }
         .timeline-content ul { padding-left: 20px; }
         
