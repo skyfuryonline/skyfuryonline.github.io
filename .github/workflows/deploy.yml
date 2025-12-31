@@ -102,11 +102,10 @@ jobs:
       - name: Encrypt Gwy page 🔒
         working-directory: ./main
         run: |
-          npm install -g staticrypt
           echo "--- Before Encryption ---"
           ls -l _site/gwy/
           
-          # Debug: Check if password secret exists (without revealing it)
+          # Debug: Check if password secret exists
           if [ -z "${{ secrets.GWY_PASSWORD }}" ]; then
             echo "::error::GWY_PASSWORD secret is NOT set or is empty!"
             exit 1
@@ -114,8 +113,8 @@ jobs:
             echo "GWY_PASSWORD secret is set."
           fi
 
-          # Encrypt to a temporary file first (removed --short for logs)
-          staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
+          # Use npx and --short to suppress interactive warnings about password length
+          npx staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
           
           # Overwrite the original file
           mv _site/gwy/index_encrypted.html _site/gwy/index.html
