@@ -107,19 +107,20 @@ jobs:
           
           # Set legacy peer deps to avoid Grunt conflicts
           export npm_config_legacy_peer_deps=true
+          # Install locally to ensure command is available
+          npm install staticrypt
           
-          # Use npx directly with --yes to skip install prompt
-          # Staticrypt 3.x encrypts IN PLACE by default. No -o needed. No mv needed.
-          npx --yes staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
+          # Use local binary path for maximum reliability
+          ./node_modules/.bin/staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
           
           echo "--- After Encryption ---"
           ls -l _site/gwy/
           
-          # Verification: Check if file contains Staticrypt signature
+          # Verification
           if grep -q "staticrypt" _site/gwy/index.html; then
-            echo "✅ Encryption verification PASSED: File contains 'staticrypt' signature."
+            echo "✅ Encryption verification PASSED."
           else
-            echo "❌ Encryption verification FAILED: File does NOT contain 'staticrypt' signature."
+            echo "❌ Encryption verification FAILED."
             exit 1
           fi
 
