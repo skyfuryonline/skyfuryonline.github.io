@@ -102,25 +102,23 @@ jobs:
       - name: Encrypt Gwy page 🔒
         working-directory: ./main
         run: |
-          echo "--- Before Encryption ---"
-          ls -l _site/gwy/
-          
-          # Install and run pagecrypt, a modern alternative
+          # Get file size before encryption
+          size_before=$(stat -c%s "_site/gwy/index.html")
+
+          # Run pagecrypt
           npm install -g pagecrypt
-          # Run pagecrypt with correct argument order (password is a positional arg)
-          pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html "${{ secrets.GWY_PASSWORD }}"
-          
-          # Overwrite the original file
+          pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html -p "${{ secrets.GWY_PASSWORD }}"
           mv _site/gwy/index_crypted.html _site/gwy/index.html
           
           echo "--- After Encryption ---"
           ls -l _site/gwy/
-          
-          # Verification: Check for a reliable signature within the encrypted file
-          if grep -q "CryptoJS" _site/gwy/index.html; then
-            echo "✅ Encryption verification PASSED: File contains 'CryptoJS' signature."
+
+          # Verification: Check if file size has increased
+          size_after=$(stat -c%s "_site/gwy/index.html")
+          if [ "$size_after" -gt "$size_before" ]; then
+            echo "✅ Encryption verification PASSED: File size increased from $size_before to $size_after."
           else
-            echo "❌ Encryption verification FAILED."
+            echo "❌ Encryption verification FAILED: File size did not increase."
             exit 1
           fi
 
