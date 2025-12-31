@@ -116,9 +116,9 @@ jobs:
           echo "--- After Encryption ---"
           ls -l _site/gwy/
           
-          # Verification: Check for pagecrypt's signature
-          if grep -q "pagecrypt" _site/gwy/index.html; then
-            echo "✅ Encryption verification PASSED: File contains 'page-crypt' signature."
+          # Verification: Check for a reliable signature within the encrypted file
+          if grep -q "CryptoJS" _site/gwy/index.html; then
+            echo "✅ Encryption verification PASSED: File contains 'CryptoJS' signature."
           else
             echo "❌ Encryption verification FAILED."
             exit 1
