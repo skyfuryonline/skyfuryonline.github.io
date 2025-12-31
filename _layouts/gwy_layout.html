@@ -122,18 +122,6 @@
 </head>
 <body>
 
-    <!-- 密码锁 -->
-    <div id="lock-screen">
-        <div class="lock-content">
-            <h2 style="color: #2c3e50; margin-bottom: 10px;">🔒 备考禁地</h2>
-            <p style="color: #7f8c8d;">保持专注，闲人免进</p>
-            <input type="password" id="password-input" class="lock-input" placeholder="输入密码">
-            <br>
-            <button onclick="checkPassword()" class="lock-btn">解锁</button>
-            <p id="lock-hint" class="lock-hint">密码错误</p>
-        </div>
-    </div>
-
     <div class="gwy-wrapper">
         <!-- 左侧仪表盘 -->
         <aside class="gwy-sidebar">
@@ -214,23 +202,8 @@
 
     <!-- 逻辑脚本 -->
     <script>
-        // --- 1. 密码锁 ---
-        const CORRECT_PASSWORD = '134679'; 
-        function checkPassword() {
-            const input = document.getElementById('password-input').value;
-            if (input === CORRECT_PASSWORD) {
-                unlockPage();
-            } else { document.getElementById('lock-hint').style.opacity = '1'; }
-        }
-        function unlockPage() {
-            document.getElementById('lock-screen').style.opacity = '0';
-            setTimeout(() => { document.getElementById('lock-screen').style.display = 'none'; }, 500);
-            localStorage.setItem('gwy_unlocked_token', CORRECT_PASSWORD);
-        }
-        if (localStorage.getItem('gwy_unlocked_token') === CORRECT_PASSWORD) { document.getElementById('lock-screen').style.display = 'none'; }
-
         // --- 2. 倒计时 & 进度条 ---
-        const targetDate = new Date("2026-11-29"); 
+        const targetDate = new Date("2026-11-29");
         const startDate = new Date("2026-01-01"); 
         const today = new Date();
         const totalTime = targetDate - startDate;

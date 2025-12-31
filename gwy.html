@@ -44,6 +44,9 @@ nav-order: 1
         let totalDaysSet = new Set(); 
 
         rawLogs.forEach(log => {
+            // 过滤掉 2026-01-01 之前的日志
+            if (log.date < "2026-01-01") return;
+
             let logTotal = log.totalHours;
             if (log.subjects && log.subjects.length > 0) {
                 logTotal = log.subjects.reduce((sum, sub) => sum + sub.hours, 0);
