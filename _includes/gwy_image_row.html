@@ -1,0 +1,19 @@
+<div style="display: flex; gap: 10px; margin-top: 20px; align-items: flex-start;">
+    {% if include.img1 %}
+    <div style="flex: 1;">
+        <img src="{{ include.img1 | prepend: site.baseurl }}" alt="{{ include.alt1 | default: 'Image 1' }}" style="width: 100%; border-radius: 8px; display: block;">
+    </div>
+    {% endif %}
+    
+    {% if include.img2 %}
+    <div style="flex: 1;">
+        <img src="{{ include.img2 | prepend: site.baseurl }}" alt="{{ include.alt2 | default: 'Image 2' }}" style="width: 100%; border-radius: 8px; display: block;">
+    </div>
+    {% endif %}
+
+    {% if include.img3 %}
+    <div style="flex: 1;">
+        <img src="{{ include.img3 | prepend: site.baseurl }}" alt="{{ include.alt3 | default: 'Image 3' }}" style="width: 100%; border-radius: 8px; display: block;">
+    </div>
+    {% endif %}
+</div>
