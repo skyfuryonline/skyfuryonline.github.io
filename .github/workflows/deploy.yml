@@ -113,13 +113,16 @@ jobs:
             echo "GWY_PASSWORD secret is set."
           fi
 
-          # Use npx and --short to suppress interactive warnings about password length
-          npx staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
+          # Use yes to bypass prompts, remove --short to see logs
+          yes | npx staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地" || echo "Staticrypt failed"
+          
+          echo "--- File Listing After Encryption ---"
+          ls -R
           
           # Overwrite the original file
           mv _site/gwy/index_encrypted.html _site/gwy/index.html
           
-          echo "--- After Encryption ---"
+          echo "--- Final Check ---"
           ls -l _site/gwy/
 
       - name: Upload artifact 📦
