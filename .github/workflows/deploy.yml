@@ -105,9 +105,9 @@ jobs:
           echo "--- Before Encryption ---"
           ls -l _site/gwy/
           
-          # Install and run PageCrypt, a modern alternative
-          npm install -g page-crypt
-          page-crypt _site/gwy/index.html _site/gwy/index_crypted.html -p "${{ secrets.GWY_PASSWORD }}"
+          # Install and run pagecrypt, a modern alternative
+          npm install -g pagecrypt
+          pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html -p "${{ secrets.GWY_PASSWORD }}"
           
           # Overwrite the original file
           mv _site/gwy/index_crypted.html _site/gwy/index.html
@@ -115,8 +115,8 @@ jobs:
           echo "--- After Encryption ---"
           ls -l _site/gwy/
           
-          # Verification: Check for page-crypt's signature
-          if grep -q "page-crypt" _site/gwy/index.html; then
+          # Verification: Check for pagecrypt's signature
+          if grep -q "pagecrypt" _site/gwy/index.html; then
             echo "✅ Encryption verification PASSED: File contains 'page-crypt' signature."
           else
             echo "❌ Encryption verification FAILED."
