@@ -109,19 +109,10 @@ jobs:
           export npm_config_legacy_peer_deps=true
           
           # Use npx directly with --yes to skip install prompt
-          npx --yes staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
-          
-          # Overwrite the original file
-          mv _site/gwy/index_encrypted.html _site/gwy/index.html
+          # Staticrypt 3.x encrypts IN PLACE by default. No -o needed. No mv needed.
+          npx --yes staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
           
           echo "--- After Encryption ---"
-          ls -l _site/gwy/
-          ls -l _site/gwy/
-          
-          # Overwrite the original file
-          mv _site/gwy/index_encrypted.html _site/gwy/index.html
-          
-          echo "--- Final Check ---"
           ls -l _site/gwy/
 
       - name: Upload artifact 📦
