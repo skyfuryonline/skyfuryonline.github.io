@@ -105,21 +105,17 @@ jobs:
           echo "--- Before Encryption ---"
           ls -l _site/gwy/
           
-          # Debug: Check if password secret exists
-          if [ -z "${{ secrets.GWY_PASSWORD }}" ]; then
-            echo "::error::GWY_PASSWORD secret is NOT set or is empty!"
-            exit 1
-          else
-            echo "GWY_PASSWORD secret is set."
-          fi
-
-          # Install locally (now that package.json is fixed)
-          npm install staticrypt
+          # Set legacy peer deps to avoid Grunt conflicts
+          export npm_config_legacy_peer_deps=true
           
-          # Run using local binary, remove --short to see FULL output/errors
-          ./node_modules/.bin/staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
+          # Use npx directly with --yes to skip install prompt
+          npx --yes staticrypt _site/gwy/index.html -p "${{ secrets.GWY_PASSWORD }}" -o _site/gwy/index_encrypted.html --short --template-title "备考小窝 - 访问受限" --template-instructions "请输入密码进入备考禁地"
           
-          echo "--- File Listing After Encryption ---"
+          # Overwrite the original file
+          mv _site/gwy/index_encrypted.html _site/gwy/index.html
+          
+          echo "--- After Encryption ---"
+          ls -l _site/gwy/
           ls -l _site/gwy/
           
           # Overwrite the original file
