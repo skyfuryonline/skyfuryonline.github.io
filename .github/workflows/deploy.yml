@@ -108,11 +108,13 @@ jobs:
           
           # Install and run pagecrypt with the correct positional password argument
           npm install -g pagecrypt
-          # Run pagecrypt with only the required positional arguments
           pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html "${{ secrets.GWY_PASSWORD }}"
-          
-          # Overwrite the original file
           mv _site/gwy/index_crypted.html _site/gwy/index.html
+          
+          # Localize the lock screen UI
+          sed -i 's/Password Protected/备考禁地 - 请输入密码/g' _site/gwy/index.html
+          sed -i 's/placeholder="Password"/placeholder="请输入密码"/g' _site/gwy/index.html
+          sed -i 's/>Submit</>解锁</g' _site/gwy/index.html
           
           echo "--- After Encryption ---"
           ls -l _site/gwy/
