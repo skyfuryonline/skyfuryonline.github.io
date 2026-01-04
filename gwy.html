@@ -105,30 +105,44 @@ nav-order: 1
 </script>
 
 <!-- 2. 时间轴内容 -->
+{% assign today = site.time | date: "%Y-%m-%d" %}
 {% assign logs = site.gwy_logs | sort: 'date' | reverse %}
 {% for log in logs %}
-<div class="timeline-item">
-    <div class="timeline-dot"></div>
-    <div class="timeline-date">{{ log.date | date: "%Y年%m月%d日" }}</div>
-    <div class="timeline-card">
-        <h3 class="timeline-title">{{ log.title }}</h3>
-        <div class="timeline-meta">
-            {% if log.subjects %}
-                {% for sub in log.subjects %}
-                <span style="margin-right: 10px; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em;">
-                    {{ sub.name }}: {{ sub.hours }}h
-                </span>
-                {% endfor %}
-            {% else %}
-                <span>⏱️ 学习 {{ log.study_hours }} 小时</span>
-                {% if log.tags %}
-                <span style="margin-left: 10px;">🏷️ {{ log.tags | join: ", " }}</span>
+  {% assign log_date = log.date | date: "%Y-%m-%d" %}
+  {% assign total_hours = 0 %}
+  {% if log.subjects %}
+    {% for sub in log.subjects %}
+      {% assign total_hours = total_hours | plus: sub.hours %}
+    {% endfor %}
+  {% else %}
+    {% assign total_hours = log.study_hours | default: 0 %}
+  {% endif %}
+
+  <!-- 只显示：过去的、且学习时长 > 0 的记录 -->
+  {% if log_date <= today and total_hours > 0 %}
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">{{ log.date | date: "%Y年%m月%d日" }}</div>
+        <div class="timeline-card">
+            <h3 class="timeline-title">{{ log.title }}</h3>
+            <div class="timeline-meta">
+                {% if log.subjects %}
+                    {% for sub in log.subjects %}
+                    <span style="margin-right: 10px; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em;">
+                        {{ sub.name }}: {{ sub.hours }}h
+                    </span>
+                    {% endfor %}
+                {% else %}
+                    <span>⏱️ 学习 {{ log.study_hours }} 小时</span>
+                    {% if log.tags %}
+                    <span style="margin-left: 10px;">🏷️ {{ log.tags | join: ", " }}</span>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </div>
-        <div class="timeline-content">
-            {{ log.content | markdownify }}
+            </div>
+            <div class="timeline-content">
+                {{ log.content | markdownify }}
+            </div>
         </div>
     </div>
-</div>
+  {% endif %}
 {% endfor %}
