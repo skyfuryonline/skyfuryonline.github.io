@@ -118,12 +118,25 @@ nav-order: 1
     {% assign total_hours = log.study_hours | default: 0 %}
   {% endif %}
 
-  <!-- 只显示：过去的、且学习时长 > 0 的记录 -->
-  {% if log_date <= today and total_hours > 0 %}
-    <div class="timeline-item">
+  <!-- 只显示：今天的或过去的记录 -->
+  {% if log_date <= today %}
+    
+    <!-- 计算样式等级 -->
+    {% assign status_class = "level-4" %}
+    {% if total_hours == 0 %}
+        {% assign status_class = "alert" %}
+    {% elsif total_hours < 2 %}
+        {% assign status_class = "level-1" %}
+    {% elsif total_hours < 4 %}
+        {% assign status_class = "level-2" %}
+    {% elsif total_hours < 6 %}
+        {% assign status_class = "level-3" %}
+    {% endif %}
+
+    <div class="timeline-item {{ status_class }}-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">{{ log.date | date: "%Y年%m月%d日" }}</div>
-        <div class="timeline-card">
+        <div class="timeline-card {{ status_class }}-card">
             <h3 class="timeline-title">{{ log.title }}</h3>
             <div class="timeline-meta">
                 {% if log.subjects %}
