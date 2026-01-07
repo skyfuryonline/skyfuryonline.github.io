@@ -1,0 +1,100 @@
+[
+    {
+        "title": "The latest AI news we announced in December",
+        "link": "https://blog.google/innovation-and-ai/products/google-ai-updates-december-2025/",
+        "date": "2026-01-07",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-07/The latest AI news we announced in December",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "摘要：  \n2025年12月，Google推出多项AI创新成果，旨在提升用户体验与技术实用性。核心更新包括发布Gemini 3 Flash模型，以高速推理能力优化日常任务处理，并作为默认模型集成至Gemini应用和搜索AI模式中。同时，Gemini应用新增视频AI生成检测功能，通过SynthID水印分析内容真伪。Google Labs推出Disco实验性浏览工具，利用GenTabs整合开放标签页与聊天记录，自动生成交互式网页应用。音频方面，升级Gemini 2.5 Flash Native Audio模型，支持更自然的语音对话及实时翻译，覆盖70多种语言。此外，推出Deep Research智能代理、虚拟试衣工具优化、YouTube年度回顾及Google Photos个性化回忆功能，全面推动AI在搜索、购物、创作与沟通中的落地应用。\n\n例子：  \n用户打开多个网页研究旅行计划，Disco自动整合这些页面内容，生成一个互动式行程规划工具，一键完成航班、酒店和景点推荐，无需手动整理信息。\n\n关键字：  \nGemini 3 Flash、Disco、SynthID、GenTabs、实时翻译"
+    },
+    {
+        "title": "T5Gemma 2: The next generation of encoder-decoder models",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/t5gemma-2/",
+        "date": "2026-01-07",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-07/T5Gemma 2- The next generation of encoder-decoder models",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp",
+            "image_16.webp",
+            "image_17.webp"
+        ],
+        "summary": "摘要：T5Gemma 2是基于Gemma 3架构的下一代编码器-解码器模型，不仅继承了其多模态、长上下文和多语言能力，还引入了多项架构优化以提升效率。通过绑定编码器与解码器的词嵌入、合并自注意力与交叉注意力机制，显著减少参数量，推出270M、1B和4B三种紧凑型预训练模型，适用于边缘设备部署。模型支持图像与文本联合处理，具备高达128K的上下文窗口，并覆盖140多种语言。在多模态、长上下文及通用任务上表现优于Gemma 3和原版T5Gemma，适合研究与实际应用。\n\n例子：用户上传一张包含数学题的图片，T5Gemma 2能识别图像内容并生成解答步骤，同时支持跨语言提问，如用中文输入问题、用英文输出答案，且能处理长达数万字的文档推理。\n\n关键字：T5Gemma 2、编码器-解码器、多模态、长上下文、参数效率"
+    },
+    {
+        "title": "Google's year in review: 8 areas with research breakthroughs in 2025",
+        "link": "https://blog.google/innovation-and-ai/products/2025-research-breakthroughs/",
+        "date": "2026-01-07",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-01-07/Google's year in review- 8 areas with research breakthroughs in 2025",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.gif",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp",
+            "image_16.webp"
+        ],
+        "summary": "摘要：2025年，Google在AI领域取得多项突破，推出Gemini 3和Gemma 3等先进模型，显著提升推理、多模态理解与效率。Gemini 3 Pro在多个基准测试中领先，Gemini 3 Flash则兼顾性能与成本。AI深度融入产品，如Pixel 10、Search及开发者工具，推动“AI代理”应用。同时，AI助力科学进步，在基因组学、医疗、数学、量子计算等领域实现突破，AlphaFold五年影响超300万研究者。Google还通过WeatherNext 2、FireSat等技术应对气候变化与灾害预警，并持续关注AI安全、能源效率与全球合作。\n\n例子：用户用Gemini 3快速生成一个包含图像、视频和代码的创意项目，从想法到成品仅需几分钟，体现了AI作为“智能助手”的高效协作能力。\n\n关键字：Gemini 3、AI代理、多模态、AlphaFold、WeatherNext 2"
+    },
+    {
+        "title": "4 highlights from Google Beam in 2025",
+        "link": "https://blog.google/innovation-and-ai/technology/research/google-beam-2025-moments/",
+        "date": "2026-01-07",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-01-07/4 highlights from Google Beam in 2025",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp"
+        ],
+        "summary": "摘要：  \n2025年，Google Beam作为Project Starline的升级版正式推出，成为首个由AI驱动的真三维视频通信平台。通过AI模型将2D视频流转化为3D体验，Beam实现了“身临其境”的远程沟通效果，并支持实时语音翻译等未来功能。在I/O大会上亮相后，Beam与HP合作推出企业级产品“HP Dimension with Google Beam”，获InfoComm“最佳展品”奖及Fast Company技术大奖提名；同时与Zoom达成集成合作，拓展办公场景应用。全球多家企业如Schwarz Digits、Huntington Bank、Salesforce等已投入使用，反馈显示其显著提升协作效率与情感连接。Beam还被用于美军USO中心，帮助服役人员与家人保持联系。测试表明，90%用户认为Beam带来“同处一室”的真实感，尤其适用于招聘、导师指导、团队协作等关键场景。\n\n例子：  \n想象你在纽约办公室，通过Google Beam与远在东京的同事开会——对方以立体影像出现在你面前，动作自然、表情生动，仿佛就在身边，无需出差即可实现高效沟通。\n\n关键字：  \nGoogle Beam、AI视频通信、三维影像、远程协作、实时翻译"
+    }
+]
