@@ -102,7 +102,7 @@ def get_llm_summary(prompt):
     print(prompt)
     
     response = client.chat.completions.create(
-        model="qwen2.5-max",
+        model="deepseek-v3.2",
         messages=[
             {"role": "system", "content": "你是一位专业的学习分析与激励教练。"},
             {"role": "user", "content": prompt}
