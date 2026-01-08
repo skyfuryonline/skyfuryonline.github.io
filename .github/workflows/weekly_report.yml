@@ -30,8 +30,12 @@ jobs:
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           path: private-source
       
-      - name: Make Gwy Logs available for script
-        run: mv private-source/_gwy_logs ./_gwy_logs
+      - name: Make private content available for script
+        run: |
+          mv private-source/_gwy_logs ./_gwy_logs
+          # Also move reports, in case future logic needs to read them
+          mv private-source/_gwy_reports ./_gwy_reports
+          # No need to move img for this script, as it only reads text
           
       - name: Install dependencies
         run: pip install -r requirements.txt
