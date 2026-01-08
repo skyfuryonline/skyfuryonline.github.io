@@ -42,19 +42,17 @@ jobs:
       
       - name: Move private content into main
         run: |
-          # Ensure target directories exist in the main checkout
-          mkdir -p main/_gwy_logs main/_gwy_reports main/img
-          # Move the log, report, and image directories from the temp checkout into main
-          mv private-source/_gwy_logs/. main/_gwy_logs/
-          mv private-source/_gwy_reports/. main/_gwy_reports/
-          # Use cp for images to merge the private gwy images into the public img folder
-          cp -r private-source/img/gwy main/img/
+          # Use rsync for robust directory merging
+          mkdir -p main/_gwy_logs main/_gwy_reports main/img/gwy
+          rsync -av private-source/_gwy_logs/ main/_gwy_logs/
+          rsync -av private-source/_gwy_reports/ main/_gwy_reports/
+          rsync -av private-source/gwy/ main/img/gwy/ # Note the new source path
 
       - name: Move data into main directory
         run: |
           mkdir -p main/_data main/cache
-          cp -a data/_data/. main/_data/ || echo "No _data to copy"
-          cp -a data/cache/. main/cache/ || echo "No cache to copy"
+          rsync -av data/_data/ main/_data/
+          rsync -av data/cache/ main/cache/
         
       - name: Setup Python 🐍
         uses: actions/setup-python@v4
