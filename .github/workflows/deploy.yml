@@ -32,7 +32,7 @@ jobs:
           ref: data
           path: data
 
-      - name: Checkout Gwy Logs (private) 📚
+      - name: Checkout Gwy Logs & Reports (private) 📚
         uses: actions/checkout@v4
         with:
           repository: skyfuryonline/blog-source

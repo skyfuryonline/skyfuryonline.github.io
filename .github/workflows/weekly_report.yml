@@ -21,6 +21,17 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+      
+      - name: Checkout Gwy Logs (private) 📚
+        uses: actions/checkout@v4
+        with:
+          repository: skyfuryonline/blog-source
+          ref: main
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: private-source
+      
+      - name: Make Gwy Logs available for script
+        run: mv private-source/_gwy_logs ./_gwy_logs
           
       - name: Install dependencies
         run: pip install -r requirements.txt
