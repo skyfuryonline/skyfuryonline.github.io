@@ -116,6 +116,13 @@ nav-order: 1
     });
 </script>
 
+<!-- 2. 时间轴内容 -->
+{% assign today = site.time | date: "%Y-%m-%d" %}
+{% assign all_entries = site.gwy_logs | concat: site.gwy_reports | sort: 'date' | reverse %}
+
+{% for entry in all_entries %}
+  {% assign entry_date = entry.date | date: "%Y-%m-%d" %}
+
   <!-- 只显示：今天的或过去的记录 -->
   {% if entry_date <= today %}
     
