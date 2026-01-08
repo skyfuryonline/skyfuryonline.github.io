@@ -2,7 +2,7 @@ name: Generate Weekly Gwy Report
 
 on:
   schedule:
-    - cron: '0 15 * * 0' # Runs at 15:00 UTC on Sunday
+    - cron: '0 15 * * 6' # Runs at 15:00 UTC on Saturday (23:00 Beijing Time)
   workflow_dispatch: # Allows manual triggering
 
 permissions:
@@ -27,9 +27,8 @@ jobs:
         
       - name: Generate Weekly Report
         env:
-          # 您需要在这里设置您的 LLM API 密钥
-          # OPENAI_API_KEY: ${{ secrets.YOUR_LLM_API_KEY_SECRET }} 
-          # ...
+          OPENAI_API_KEY: ${{ secrets.LLM_API_KEY }}
+          OPENAI_API_BASE: ${{ secrets.LLM_API_BASE_URL }}
         run: python crawlers/weekly_summary_generator.py
         
       - name: Commit and push report
