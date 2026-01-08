@@ -97,46 +97,18 @@ def create_prompt(data):
 
 # --- 3. 调用 LLM (示例) ---
 def get_llm_summary(prompt):
-    """调用 LLM API 获取周报。这是一个示例，需要替换为真实调用。"""
+    """调用 LLM API 获取周报。"""
     print("\n--- 发送给 LLM 的 Prompt ---")
     print(prompt)
     
-    # response = client.chat.completions.create(
-    #     model="qwen2.5-max",
-    #     messages=[
-    #         {"role": "system", "content": "你是一位专业的学习分析与激励教练。"},
-    #         {"role": "user", "content": prompt}
-    #     ]
-    # )
-    # summary = response.choices[0].message.content
-    
-    # --- For testing purposes ---
-    summary = """
-# 备考周报 (示例)
-
-你好！这是你过去一周的备考分析报告，你做得非常棒！
-
-### 1. 本周概览
-
-你本周有效学习了 **15.5 小时**，共打卡 **3** 天。与上周相比，时长有所增加，这是一个积极的信号！整体来看，你正逐步进入稳定的学习节奏。
-
-### 2. 学习重点
-
-本周的绝对重心是 **判断推理**，投入了超过一半的时间。这表明你可能正在攻克一个难点，或者对这个模块特别感兴趣。同时，**申论** 的学习时间较少，需要关注。
-
-### 3. 状态与反思
-
-从你的日记中可以看出，你对“一笔画”问题感到困惑，这是一个非常具体的学习难点。同时，你也意识到了素材积累的重要性。这些都是宝贵的自我洞察！
-
-### 4. 改进建议
-
-1.  **专项突破**: 下周可以继续巩固“一笔画”问题，找一些专题视频或课程，彻底解决它。
-2.  **平衡科目**: 建议下周至少安排 2-3 次申论学习，特别是素材的阅读和积累，避免偏科。
-3.  **保持复盘**: 你已经有了复盘的习惯，这非常好，请务必坚持下去！
-
-继续加油，你正在正确的道路上稳步前进！
-"""
-    # --- End of testing block ---
+    response = client.chat.completions.create(
+        model="qwen2.5-max",
+        messages=[
+            {"role": "system", "content": "你是一位专业的学习分析与激励教练。"},
+            {"role": "user", "content": prompt}
+        ]
+    )
+    summary = response.choices[0].message.content
     
     print("\n--- 从 LLM 收到的周报 ---")
     print(summary)
