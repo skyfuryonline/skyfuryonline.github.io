@@ -38,12 +38,20 @@ jobs:
           repository: skyfuryonline/blog-source
           ref: main
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
-          path: main/_gwy_logs
+          path: private-source # Checkout to a temporary directory
       
+      - name: Move private content into main
+        run: |
+          # Move the log and report directories from the temp checkout into main
+          mv private-source/_gwy_logs main/
+          mv private-source/_gwy_reports main/
+
       - name: Verify Gwy Logs Checkout
         run: |
           echo "--- Content of main/_gwy_logs ---"
           ls -lR main/_gwy_logs
+          echo "--- Content of main/_gwy_reports ---"
+          ls -lR main/_gwy_reports
 
       - name: Move data into main directory
         run: |
