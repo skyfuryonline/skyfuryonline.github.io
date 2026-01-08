@@ -7,8 +7,12 @@ from datetime import datetime, timedelta
 LOG_DIR = "_gwy_logs"
 REPORT_DIR = "_gwy_reports"
 # 注意：在 GitHub Actions 中，我们需要配置 OPENAI_API_KEY 等环境变量
-# from openai import OpenAI
-# client = OpenAI()
+# 从环境变量读取
+
+api_key = os.environ.get("LLM_API_KEY")
+base_url = os.environ.get("LLM_API_BASE_URL")
+from openai import OpenAI
+client = OpenAI(api_key=api_key, base_url=base_url)
 
 # --- 1. 数据收集 ---
 def get_this_week_data():
