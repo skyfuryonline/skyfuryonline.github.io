@@ -47,8 +47,8 @@ jobs:
           # Move the log, report, and image directories from the temp checkout into main
           mv private-source/_gwy_logs/. main/_gwy_logs/
           mv private-source/_gwy_reports/. main/_gwy_reports/
-          # Use cp for images in case the directory already contains public images
-          cp -r private-source/img/. main/img/
+          # Use cp for images to merge the private gwy images into the public img folder
+          cp -r private-source/img/gwy main/img/
 
       - name: Move data into main directory
         run: |
