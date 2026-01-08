@@ -24,24 +24,25 @@ jobs:
       - name: Checkout master branch (code) 🛎️
         uses: actions/checkout@v4
         with:
-          path: main # Checkout code to a 'main' directory
+          path: main
 
-            - name: Checkout data branch (data) 📦
-              uses: actions/checkout@v4
-              with:
-                ref: data # The branch to checkout
-                path: data # Checkout data to a 'data' directory
-      
-                  - name: Checkout Gwy Logs (private) 📚
-                    uses: actions/checkout@v4
-                    with:
-                      repository: skyfuryonline/blog-source # Your private repository
-                      ref: main # <<<<<<<<<<< Explicitly specify the 'main' branch
-                      token: ${{ secrets.PRIVATE_REPO_TOKEN }} # The PAT you created
-                      path: main/_gwy_logs # Checkout directly into the target location                
-            - name: Move data into main directory        run: |
-          # Move the existing _data and cache directories into the main checkout
-          # Use `cp -a` to preserve directory structure and handle non-existent source
+      - name: Checkout data branch (data) 📦
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+
+      - name: Checkout Gwy Logs (private) 📚
+        uses: actions/checkout@v4
+        with:
+          repository: skyfuryonline/blog-source
+          ref: main
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: main/_gwy_logs
+          
+      - name: Move data into main directory
+        run: |
+          mkdir -p main/_data main/cache
           cp -a data/_data/. main/_data/ || echo "No _data to copy"
           cp -a data/cache/. main/cache/ || echo "No cache to copy"
         
@@ -69,20 +70,12 @@ jobs:
       - name: Commit and push data to data branch 💾
         if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          # First, copy the generated content from the main workspace to the data checkout
-          # The `.` at the end of the source paths is important
-          # cp -rf main/_data/. data/_data/
           rsync -av --exclude='homepage_groups.yml' main/_data/ data/_data/
           cp -rf main/cache/. data/cache/
-
-          # Now, go into the data checkout directory and commit
           cd data
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # Add all changes, including deletions, without erroring on ignored files
           git add -A
-
           if ! git diff --staged --quiet; then
             git commit -m "chore: Update daily data and cache"
             git push
@@ -112,12 +105,10 @@ jobs:
           ls -l _site/gwy/
           size_before=$(stat -c%s "_site/gwy/index.html")
           
-          # Install and run pagecrypt with the correct positional password argument
           npm install -g pagecrypt
           pagecrypt _site/gwy/index.html _site/gwy/index_crypted.html "${{ secrets.GWY_PASSWORD }}"
           mv _site/gwy/index_crypted.html _site/gwy/index.html
           
-          # Localize the PageCrypt UI based on actual source analysis
           sed -i 's/<title>Protected Page<\/title>/<title>备考小窝 - 访问受限<\/title>/g' _site/gwy/index.html
           sed -i 's/This page is password protected\./请输入密码进入备考禁地/g' _site/gwy/index.html
           sed -i 's/aria-label=Password/aria-label="密码"/g' _site/gwy/index.html
@@ -129,7 +120,6 @@ jobs:
           echo "--- After Encryption ---"
           ls -l _site/gwy/
           
-          # Verification using file size
           size_after=$(stat -c%s "_site/gwy/index.html")
           if [ "$size_after" -gt "$size_before" ]; then
             echo "✅ Encryption verification PASSED: File size increased from $size_before to $size_after."
