@@ -116,13 +116,6 @@ nav-order: 1
     });
 </script>
 
-<!-- 2. 时间轴内容 -->
-{% assign today = site.time | date: "%Y-%m-%d" %}
-{% assign all_entries = site.gwy_logs | concat: site.gwy_reports | sort: 'date' | reverse %}
-
-{% for entry in all_entries %}
-  {% assign entry_date = entry.date | date: "%Y-%m-%d" %}
-
   <!-- 只显示：今天的或过去的记录 -->
   {% if entry_date <= today %}
     
@@ -149,33 +142,36 @@ nav-order: 1
         {% assign total_hours = entry.study_hours | default: 0 %}
       {% endif %}
 
-      {% if total_hours > 0 %}
-        {% assign status_class = "level-4" %}
-        {% if total_hours < 2 %}{% assign status_class = "level-1" %}
-        {% elsif total_hours < 4 %}{% assign status_class = "level-2" %}
-        {% elsif total_hours < 6 %}{% assign status_class = "level-3" %}
-        {% endif %}
-
-        <div class="timeline-item {{ status_class }}-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">{{ entry.date | date: "%Y年%m月%d日" }}</div>
-            <div class="timeline-card {{ status_class }}-card">
-                <h3 class="timeline-title">{{ entry.title }}</h3>
-                <div class="timeline-meta">
-                    {% if entry.subjects %}
-                        {% for sub in entry.subjects %}
-                        <span style="margin-right: 10px; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em;">
-                            {{ sub.name }}: {{ sub.hours }}h
-                        </span>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div class="timeline-content">
-                    {{ entry.content | markdownify }}
-                </div>
-            </div>
-        </div>
+      {% assign status_class = "level-4" %}
+      {% if total_hours == 0 %}{% assign status_class = "alert" %}
+      {% elsif total_hours < 2 %}{% assign status_class = "level-1" %}
+      {% elsif total_hours < 4 %}{% assign status_class = "level-2" %}
+      {% elsif total_hours < 6 %}{% assign status_class = "level-3" %}
       {% endif %}
+
+      <div class="timeline-item {{ status_class }}-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">{{ entry.date | date: "%Y年%m月%d日" }}</div>
+          <div class="timeline-card {{ status_class }}-card">
+              <h3 class="timeline-title">{{ entry.title }}</h3>
+              <div class="timeline-meta">
+                  {% if entry.subjects and total_hours > 0 %}
+                      {% for sub in entry.subjects %}
+                         {% if sub.hours > 0 %}
+                          <span style="margin-right: 10px; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em;">
+                              {{ sub.name }}: {{ sub.hours }}h
+                          </span>
+                         {% endif %}
+                      {% endfor %}
+                  {% else %}
+                      <span>⏱️ 学习 {{ total_hours }} 小时</span>
+                  {% endif %}
+              </div>
+              <div class="timeline-content">
+                  {{ entry.content | markdownify }}
+              </div>
+          </div>
+      </div>
     {% endif %}
   {% endif %}
 {% endfor %}
