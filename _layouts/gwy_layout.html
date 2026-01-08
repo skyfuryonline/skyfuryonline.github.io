@@ -144,6 +144,20 @@
         /* Level 4: > 6h (极深绿) */
         .timeline-card.level-4-card { border-left: 5px solid #216e39; }
         .timeline-item.level-4-item .timeline-dot { background-color: #216e39; }
+
+        /* 新增：周报卡片特殊样式 */
+        .timeline-card.report-card {
+            background: linear-gradient(135deg, #fffbeb, #fff3cd);
+            border-left: 6px solid #f1c40f;
+        }
+        .report-item .timeline-dot {
+            background-color: #f1c40f;
+            box-shadow: 0 0 0 3px #f39c12;
+            transform: scale(1.2);
+        }
+        .report-card .timeline-title {
+            color: #c69200; /* 金色 */
+        }
         
         @media (max-width: 992px) {
             .gwy-wrapper { flex-direction: column; }

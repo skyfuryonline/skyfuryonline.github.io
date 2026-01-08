@@ -1,0 +1,46 @@
+name: Generate Weekly Gwy Report
+
+on:
+  schedule:
+    - cron: '0 15 * * 0' # Runs at 15:00 UTC on Sunday
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: write
+
+jobs:
+  generate_report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Generate Weekly Report
+        env:
+          # 您需要在这里设置您的 LLM API 密钥
+          # OPENAI_API_KEY: ${{ secrets.YOUR_LLM_API_KEY_SECRET }} 
+          # ...
+        run: python crawlers/weekly_summary_generator.py
+        
+      - name: Commit and push report
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add _gwy_reports/
+          # 如果有新文件才提交
+          if ! git diff --staged --quiet; then
+            git commit -m "docs(gwy): Generate weekly report"
+            git push
+          else
+            echo "No new report generated."
+          fi
