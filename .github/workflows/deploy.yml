@@ -26,14 +26,20 @@ jobs:
         with:
           path: main # Checkout code to a 'main' directory
 
-      - name: Checkout data branch (data) 📦
-        uses: actions/checkout@v4
-        with:
-          ref: data # The branch to checkout
-          path: data # Checkout data to a 'data' directory
-
-      - name: Move data into main directory
-        run: |
+            - name: Checkout data branch (data) 📦
+              uses: actions/checkout@v4
+              with:
+                ref: data # The branch to checkout
+                path: data # Checkout data to a 'data' directory
+      
+                  - name: Checkout Gwy Logs (private) 📚
+                    uses: actions/checkout@v4
+                    with:
+                      repository: skyfuryonline/blog-source # Your private repository
+                      ref: main # <<<<<<<<<<< Explicitly specify the 'main' branch
+                      token: ${{ secrets.PRIVATE_REPO_TOKEN }} # The PAT you created
+                      path: main/_gwy_logs # Checkout directly into the target location                
+            - name: Move data into main directory        run: |
           # Move the existing _data and cache directories into the main checkout
           # Use `cp -a` to preserve directory structure and handle non-existent source
           cp -a data/_data/. main/_data/ || echo "No _data to copy"
