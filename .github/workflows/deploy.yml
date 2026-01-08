@@ -39,12 +39,22 @@ jobs:
           ref: main
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           path: main/_gwy_logs
-          
+      
+      - name: Verify Gwy Logs Checkout
+        run: |
+          echo "--- Content of main/_gwy_logs ---"
+          ls -lR main/_gwy_logs
+
       - name: Move data into main directory
         run: |
           mkdir -p main/_data main/cache
           cp -a data/_data/. main/_data/ || echo "No _data to copy"
           cp -a data/cache/. main/cache/ || echo "No cache to copy"
+
+      - name: Verify Data Move
+        run: |
+          echo "--- Content of main/_data ---"
+          ls -l main/_data
         
       - name: Setup Python 🐍
         uses: actions/setup-python@v4
