@@ -41,7 +41,12 @@ def get_this_week_data():
                 print(f"  - 跳过文件（YAML 解析失败）: {filename}")
                 continue
                 
-            log_date = post.get('date').date()
+            log_date_obj = post.get('date')
+            # The parser might return a datetime.datetime or a datetime.date object
+            if isinstance(log_date_obj, datetime):
+                log_date = log_date_obj.date()
+            else:
+                log_date = log_date_obj
 
             if start_of_week.date() <= log_date <= end_of_week.date():
                 log_hours = 0
