@@ -51,7 +51,7 @@ jobs:
       - name: Move data into main directory
         run: |
           mkdir -p main/_data main/cache
-          rsync -av data/_data/ main/_data/
+          rsync -av --exclude 'gwy_quotes.yml' data/_data/ main/_data/
           rsync -av data/cache/ main/cache/
         
       - name: Setup Python 🐍
