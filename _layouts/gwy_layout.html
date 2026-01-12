@@ -330,25 +330,14 @@
                                          fill="freeze" begin="0.2s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
                             </circle>
                             
-                            <!-- 内部嵌入您设计的SVG元素 (经过缩放和重新定位) -->
-                            <g transform="scale(0.2) translate(150, 90)">
-                                <!-- 时间刻度 -->
-                                <g transform="translate(250,210)">
-                                    <path d="M -120 0 A 120 120 0 0 1 120 0" fill="none" stroke="#9aa4af" stroke-width="10"/>
-                                    <g stroke="#9aa4af" stroke-width="8">
-                                        <line x1="-120" y1="0" x2="-105" y2="0"/> <line x1="-85" y1="-60" x2="-72" y2="-50"/>
-                                        <line x1="-30" y1="-100" x2="-25" y2="-82"/> <line x1="30" y1="-100" x2="25" y2="-82"/>
-                                        <line x1="85" y1="-60" x2="72" y2="-50"/> <line x1="120" y1="0" x2="105" y2="0"/>
-                                    </g>
+                            <!-- 内部简化的半圆刻度 (已缩放和居中) -->
+                            <g transform="scale(0.3) translate(100, 150)" fill="none" stroke="#6b7280" stroke-width="12">
+                                <path d="M -120 0 A 120 120 0 0 1 120 0"/>
+                                <g stroke-linecap="round">
+                                    <line x1="-120" y1="0" x2="-110" y2="0"/>
+                                    <line x1="120" y1="0" x2="110" y2="0"/>
+                                    <line x1="0" y1="-120" x2="0" y2="-110"/>
                                 </g>
-                                <!-- 截止线 -->
-                                <line x1="450" y1="80" x2="450" y2="340" stroke="#c2410c" stroke-width="12"/>
-                                <!-- 复习进度 -->
-                                <g transform="translate(520,130)">
-                                    <rect x="0" y="0" width="220" height="26" fill="#1f2933"/> <rect x="0" y="40" width="170" height="26" fill="#374151"/>
-                                    <rect x="0" y="80" width="120" height="26" fill="#4b5563"/> <rect x="0" y="120" width="70" height="26" fill="#6b7280"/>
-                                </g>
-                            </g>
                             </g>
                         </svg>
                         <p style="text-align: center; color: #6b7280; font-weight: bold; margin-top: 10px; font-size: 1em;">
