@@ -86,7 +86,8 @@
         .calendar-day:not(.empty):hover { transform: scale(1.1); z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         
         /* 颜色等级 (GitHub Green) */
-        .day-level-0 { background-color: #f9f9f9; }
+        .day-level-0 { background-color: #f9f9f9; } /* 未来日 & 默认 */
+        .day-alert { background-color: #ffebee; color: #c62828; } /* 警示：过去的空白日 */
         .day-level-1 { background-color: #d6e685; color: #2c3e50; }
         .day-level-2 { background-color: #8cc665; color: white; }
         .day-level-3 { background-color: #44a340; color: white; }
@@ -375,21 +376,27 @@
             // 填充日期
             for (let day = 1; day <= daysInMonth; day++) {
                 const dateObj = new Date(year, month, day);
-                // 修正时区偏移导致的 ISOString 日期错误，手动构建 YYYY-MM-DD
                 const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                
                 const hours = logs[dateStr] || 0;
                 
                 const cell = document.createElement('div');
                 cell.className = 'calendar-day';
                 
                 // 颜色等级
-                let level = 0;
-                if (hours > 0) level = 1;
-                if (hours >= 2) level = 2;
-                if (hours >= 4) level = 3;
-                if (hours >= 6) level = 4;
-                cell.classList.add(`day-level-${level}`);
+                if (hours > 0) {
+                    let level = 1;
+                    if (hours >= 6) level = 4;
+                    else if (hours >= 4) level = 3;
+                    else if (hours >= 2) level = 2;
+                    cell.classList.add(`day-level-${level}`);
+                } else {
+                    // 如果是过去或今天的空白日，则警示
+                    if (dateObj <= new Date()) {
+                        cell.classList.add('day-alert');
+                    } else {
+                        cell.classList.add('day-level-0');
+                    }
+                }
                 
                 cell.innerHTML = `<div>${day}</div>`;
                 if (hours > 0) {
