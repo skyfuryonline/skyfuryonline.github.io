@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Increased file size limits and expanded inputs support in Gemini API",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-new-file-limits/",
+        "date": "2026-01-12",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-12/Increased file size limits and expanded inputs support in Gemini API",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp"
+        ],
+        "summary": "摘要：  \nGemini API 推出多项数据输入优化功能，包括支持通过 Google Cloud Storage（GCS）直接注册文件、使用公共或签名的 HTTPS URL 传入数据，以及将内联文件大小限制从20MB提升至100MB。这些更新消除了数据上传瓶颈，允许开发者无需重新上传即可直接调用存储在云端的数据，显著提升AI应用开发效率和可扩展性。无论是原型设计还是生产环境，用户均可根据需求灵活选择数据接入方式，实现更高效、低延迟的多模态模型调用。\n\n例子：  \n某开发者需分析存储于AWS S3中的PDF报告，只需生成一个预签名URL并传入Gemini API，无需下载或迁移文件，系统即可直接读取内容并生成摘要，节省时间和带宽。\n\n关键字：  \nGemini API、Google Cloud Storage、HTTPS/Signed URLs、文件大小限制、多模态数据处理"
+    }
+]
