@@ -132,10 +132,14 @@ nav-order: 1
           <div class="timeline-dot"></div>
           <div class="timeline-date">{{ entry.date | date: "%Y年%m月%d日" }}</div>
           <div class="timeline-card report-card">
-              <h3 class="timeline-title">👑 {{ entry.title }}</h3>
-              <div class="timeline-content">
-                  {{ entry.content | markdownify }}
-              </div>
+              <details>
+                  <summary style="cursor: pointer; font-size: 1.4rem; font-weight: bold; outline: none;">
+                      👑 {{ entry.title }} (点击展开/收起)
+                  </summary>
+                  <div class="timeline-content" style="margin-top: 20px; border-top: 1px dashed #ddd; padding-top: 20px;">
+                      {{ entry.content | markdownify }}
+                  </div>
+              </details>
           </div>
       </div>
     {% else %}
