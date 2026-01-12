@@ -177,7 +177,9 @@
             </div>
             <div class="chart-card">
                 <div class="chart-title">科目分布 (本周)</div>
-                <canvas id="subjectChart"></canvas>
+                <div id="subject-chart-container" style="position: relative; height: 200px;">
+                    <canvas id="subjectChart"></canvas>
+                </div>
             </div>
         </aside>
 
@@ -263,7 +265,7 @@
         document.getElementById('progress-percent').textContent = progress.toFixed(1) + "%";
 
         // --- 3. 图表渲染 (Trends & Pie) ---
-        function renderCharts(logs, subjectStats) {
+        function renderCharts(logs, subjectStats, weeklySubjectStats) { // 添加 weeklySubjectStats
             let baseDate = new Date();
             if (baseDate < new Date("2026-01-01")) baseDate = new Date("2026-01-07"); // 预览模式
 
@@ -277,7 +279,7 @@
                 trendData.push(logs[dateStr] || 0);
             }
 
-            // 3.2 准备数据：科目分布 (颜色映射)
+            // 3.2 准备数据：科目分布 (使用 weeklySubjectStats)
             const colorMap = {
                 "资料分析": "#3498db", // 蓝
                 "判断推理": "#9b59b6", // 紫
@@ -290,10 +292,45 @@
                 "其他": "#95a5a6"      // 灰
             };
 
-            const subjectLabels = Object.keys(subjectStats).sort(); // 排序以保持顺序稳定
-            const subjectData = subjectLabels.map(label => subjectStats[label].toFixed(1));
-            const backgroundColors = subjectLabels.map(label => colorMap[label] || colorMap["其他"]);
+            // 计算本周总小时
+            let weeklyTotal = Object.values(weeklySubjectStats).reduce((sum, val) => sum + val, 0);
 
+            if (weeklyTotal > 0) {
+                const subjectLabels = Object.keys(weeklySubjectStats).sort(); // 排序以保持顺序稳定
+                const subjectData = subjectLabels.map(label => weeklySubjectStats[label].toFixed(1));
+                const backgroundColors = subjectLabels.map(label => colorMap[label] || colorMap["其他"]);
+
+                new Chart(document.getElementById('subjectChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: subjectLabels,
+                        datasets: [{
+                            data: subjectData,
+                            backgroundColor: backgroundColors,
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } }
+                    }
+                });
+            } else {
+                // 无数据：显示 SVG 和提示
+                const container = document.getElementById('subject-chart-container');
+                container.innerHTML = `
+                    <svg width="150" height="150" viewBox="0 0 150 150" style="display: block; margin: 0 auto;">
+                        <circle cx="75" cy="75" r="60" fill="none" stroke="#d35400" stroke-width="8" stroke-dasharray="377" stroke-dashoffset="377">
+                            <animate attributeName="stroke-dashoffset" from="377" to="377" dur="1s" repeatCount="1" />
+                        </circle>
+                        <text x="75" y="75" text-anchor="middle" dy=".3em" font-size="18" fill="#d35400">No Data</text>
+                        <text x="75" y="95" text-anchor="middle" font-size="12" fill="#5a5a5a">本周0h</text>
+                    </svg>
+                    <p style="text-align: center; color: #c0392b; font-weight: bold; margin-top: 10px;">本周没有学习数据，加紧学习吧！</p>
+                `;
+            }
+
+            // 趋势图 (不变，确认正确：使用最近7天，包括今天，如果今天有数据会显示)
             new Chart(document.getElementById('trendChart'), {
                 type: 'bar',
                 data: {
@@ -316,22 +353,6 @@
                         }, 
                         x: { grid: { display: false } } 
                     }
-                }
-            });
-
-            new Chart(document.getElementById('subjectChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: subjectLabels,
-                    datasets: [{
-                        data: subjectData,
-                        backgroundColor: backgroundColors,
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } }
                 }
             });
         }
