@@ -316,17 +316,32 @@
                     }
                 });
             } else {
-                // 无数据：显示 SVG 和提示
+                // 无数据：显示新的、带动画的SVG和激励文字
                 const container = document.getElementById('subject-chart-container');
                 container.innerHTML = `
-                    <svg width="150" height="150" viewBox="0 0 150 150" style="display: block; margin: 0 auto;">
-                        <circle cx="75" cy="75" r="60" fill="none" stroke="#d35400" stroke-width="8" stroke-dasharray="377" stroke-dashoffset="377">
-                            <animate attributeName="stroke-dashoffset" from="377" to="377" dur="1s" repeatCount="1" />
-                        </circle>
-                        <text x="75" y="75" text-anchor="middle" dy=".3em" font-size="18" fill="#d35400">No Data</text>
-                        <text x="75" y="95" text-anchor="middle" font-size="12" fill="#5a5a5a">本周0h</text>
-                    </svg>
-                    <p style="text-align: center; color: #c0392b; font-weight: bold; margin-top: 10px;">本周没有学习数据，加紧学习吧！</p>
+                    <div style="text-align: center; padding-top: 15px;">
+                        <svg width="120" height="120" viewBox="0 0 120 120">
+                            <!-- 背景圆环 -->
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <!-- 动态的进度圆弧 -->
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#e74c3c" stroke-width="8"
+                                    stroke-linecap="round" stroke-dasharray="339.29" stroke-dashoffset="339.29"
+                                    transform="rotate(-90 60 60)">
+                                <animate attributeName="stroke-dashoffset" from="339.29" to="0" dur="1.5s" 
+                                         fill="freeze" begin="0.2s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+                            </circle>
+                            <!-- 中间的拳头图标 -->
+                            <g fill="#c0392b">
+                                <path d="M77.1,51.3c-2.6-1.8-5.8-2.9-9.1-2.9c-3.4,0-6.6,1.2-9.1,2.9c-0.6,0.4-1.2,0.8-1.8,1.3V38.1c0-2.5-2-4.5-4.5-4.5
+                                         s-4.5,2-4.5,4.5v16.3c-1,0.5-2,1.2-2.9,2c-3.8,3.4-6.1,8.2-6.1,13.4c0,9.9,8.1,18,18,18s18-8.1,18-18
+                                         C83.2,59.5,80.9,54.7,77.1,51.3z M62.5,82.1c-6.1,0-11-4.9-11-11c0-3.6,1.8-6.9,4.5-8.9c1.4-1,3.1-1.6,4.9-1.7V80
+                                         c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5V60.3c1.4,0.3,2.7,0.8,3.9,1.6c2.7,1.8,4.5,4.9,4.5,8.3C73.5,77.2,68.6,82.1,62.5,82.1z"/>
+                            </g>
+                        </svg>
+                        <p style="text-align: center; color: #c0392b; font-weight: bold; margin-top: 10px; font-size: 1.1em;">
+                            本周尚未开战！
+                        </p>
+                    </div>
                 `;
             }
 
