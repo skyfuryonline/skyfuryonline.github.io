@@ -330,14 +330,14 @@
                                          fill="freeze" begin="0.2s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
                             </circle>
                             
-                            <!-- 内部简化的半圆刻度 (已缩放和居中) -->
-                            <g transform="scale(0.3) translate(100, 150)" fill="none" stroke="#6b7280" stroke-width="12">
-                                <path d="M -120 0 A 120 120 0 0 1 120 0"/>
-                                <g stroke-linecap="round">
-                                    <line x1="-120" y1="0" x2="-110" y2="0"/>
-                                    <line x1="120" y1="0" x2="110" y2="0"/>
-                                    <line x1="0" y1="-120" x2="0" y2="-110"/>
-                                </g>
+                            <!-- 内部静态闹钟 (已缩放, 居中, 改为灰色) -->
+                            <g transform="scale(3.5) translate(5, 4.5)" fill="none" stroke="#6b7280" stroke-width="1">
+                                <circle cx="12" cy="13" r="8"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m12 9.5l.01 3.504l2.49.996"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 18.5l-1 2.5"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 18.5l1 2.5"/>
+                                <path d="M5.122 4.542C6.18 3.51 7.42 3 8.5 3c2.485 0 4.5 2.015 4.5 4.5"/>
+                                <path d="M18.878 4.542C17.82 3.51 16.58 3 15.5 3c-2.485 0-4.5 2.015-4.5 4.5"/>
                             </g>
                         </svg>
                         <p style="text-align: center; color: #6b7280; font-weight: bold; margin-top: 10px; font-size: 1em;">
