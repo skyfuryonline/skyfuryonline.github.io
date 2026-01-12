@@ -320,26 +320,39 @@
                 const container = document.getElementById('subject-chart-container');
                 container.innerHTML = `
                     <div style="text-align: center; padding-top: 15px;">
-                        <svg width="120" height="120" viewBox="0 0 24 24">
-                            <g fill="none" stroke="#c0392b" stroke-width="1.5">
-                                <g>
-                                    <!-- 闹钟振动动画 -->
-                                    <animateTransform attributeName="transform" type="rotate"
-                                                      values="-2 0 2 0 -2" dur="0.4s" repeatCount="indefinite"/>
-                                    <!-- 闹钟主体 -->
-                                    <circle cx="12" cy="13" r="8"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m12 9.5l.01 3.504l2.49.996"/>
-                                    <!-- 闹钟的脚 -->
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 18.5l-1 2.5"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 18.5l1 2.5"/>
-                                    <!-- 顶部的铃铛 -->
-                                    <path d="M5.122 4.542C6.18 3.51 7.42 3 8.5 3c2.485 0 4.5 2.015 4.5 4.5"/>
-                                    <path d="M18.878 4.542C17.82 3.51 16.58 3 15.5 3c-2.485 0-4.5 2.015-4.5 4.5"/>
+                        <svg width="120" height="120" viewBox="0 0 120 120">
+                            <!-- 外部动态圆环 -->
+                            <circle cx="60" cy="60" r="58" fill="none" stroke="#e0e0e0" stroke-width="4"/>
+                            <circle cx="60" cy="60" r="58" fill="none" stroke="#c2410c" stroke-width="4"
+                                    stroke-linecap="round" stroke-dasharray="364.42" stroke-dashoffset="364.42"
+                                    transform="rotate(-90 60 60)">
+                                <animate attributeName="stroke-dashoffset" from="364.42" to="0" dur="1.5s" 
+                                         fill="freeze" begin="0.2s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+                            </circle>
+                            
+                            <!-- 内部嵌入您设计的SVG元素 (经过缩放和重新定位) -->
+                            <g transform="scale(0.2) translate(150, 90)">
+                                <!-- 时间刻度 -->
+                                <g transform="translate(250,210)">
+                                    <path d="M -120 0 A 120 120 0 0 1 120 0" fill="none" stroke="#9aa4af" stroke-width="10"/>
+                                    <g stroke="#9aa4af" stroke-width="8">
+                                        <line x1="-120" y1="0" x2="-105" y2="0"/> <line x1="-85" y1="-60" x2="-72" y2="-50"/>
+                                        <line x1="-30" y1="-100" x2="-25" y2="-82"/> <line x1="30" y1="-100" x2="25" y2="-82"/>
+                                        <line x1="85" y1="-60" x2="72" y2="-50"/> <line x1="120" y1="0" x2="105" y2="0"/>
+                                    </g>
+                                </g>
+                                <!-- 截止线 -->
+                                <line x1="450" y1="80" x2="450" y2="340" stroke="#c2410c" stroke-width="12"/>
+                                <!-- 复习进度 -->
+                                <g transform="translate(520,130)">
+                                    <rect x="0" y="0" width="220" height="26" fill="#1f2933"/> <rect x="0" y="40" width="170" height="26" fill="#374151"/>
+                                    <rect x="0" y="80" width="120" height="26" fill="#4b5563"/> <rect x="0" y="120" width="70" height="26" fill="#6b7280"/>
                                 </g>
                             </g>
+                            </g>
                         </svg>
-                        <p style="text-align: center; color: #c0392b; font-weight: bold; margin-top: 10px; font-size: 1.1em;">
-                            时间不等人，开始战斗！
+                        <p style="text-align: center; color: #6b7280; font-weight: bold; margin-top: 10px; font-size: 1em;">
+                            时间在减少，任务仍在前方
                         </p>
                     </div>
                 `;
