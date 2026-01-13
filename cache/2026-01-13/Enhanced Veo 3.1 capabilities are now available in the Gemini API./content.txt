@@ -1,0 +1,38 @@
+Breadcrumb
+Innovation & AI
+Technology
+Developer tools
+By
+Alisa Fortin
+|
+Product Manager, Gemini API & AI Studio
+Jan 13, 2026
+Enhanced Veo 3.1 capabilities are now available in the Gemini API.
+Today, we are releasing
+updates to Veo 3.1
+in the
+Gemini API
+and
+Google AI Studio
+, giving developers greater creative control and production-ready quality.
+Enhanced Ingredients to Video:
+The updated model intelligently synthesizes your inputs to preserve character identity and background details, ensuring your characters and settings remain consistent across videos.
+Native Vertical Format Videos for Ingredients to Video (Portrait Mode):
+Generate social-ready 9:16 videos directly. Designed for mobile-first applications, this mode delivers faster results and optimized composition by generating full-frame vertical video rather than cropping from landscape.
+New 4K and Improved 1080p definition:
+Unlock professional fidelity directly within your workflow. Using state-of-the-art enhancement techniques, the model now outputs clearer, crisp 1080p and creates stunning 4K videos suitable for the big screen.
+These capabilities, along with our SynthID digital watermark, are available today in the
+Gemini API
+and
+Vertex AI
+for enterprises. See this in action via the Google AI Studio
+demo app
+.
+POSTED IN:
+Developer tools
+Related stories
+Increased file size limits and expanded inputs support in Gemini API
+The Gemini API now supports increased inline file size limit of 100MB and new file inputs from GCS buckets and any HTTP/Signed URL.
+The latest AI news we announced in December
+T5Gemma 2: The next generation of encoder-decoder models
+FunctionGemma: Bringing bespoke function calling to the edge

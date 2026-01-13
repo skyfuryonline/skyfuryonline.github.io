@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Enhanced Veo 3.1 capabilities are now available in the Gemini API.",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/veo-3-1-gemini-api/",
+        "date": "2026-01-13",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-13/Enhanced Veo 3.1 capabilities are now available in the Gemini API.",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：  \nGoogle 于2026年1月13日宣布在Gemini API和Google AI Studio中推出Veo 3.1的增强功能，为开发者提供更强大的视频生成能力。新版本支持“食材到视频”（Ingredients to Video）功能，能智能合成输入内容，保持角色身份与背景一致性。新增原生竖屏9:16格式，专为移动端优化，提升生成效率与构图质量。同时，模型支持4K分辨率及更清晰的1080p输出，满足专业级需求。所有功能均集成SynthID数字水印，保障内容可追溯性，并已在Gemini API和Vertex AI中面向企业开放。此外，Gemini API还提升了文件大小限制至100MB，并支持GCS存储桶及HTTP/Signed URL输入。\n\n例子：  \n用户输入一段描述“一位穿红色外套的女孩在樱花树下跳舞”，系统自动生成一段9:16竖屏视频，女孩形象、服装颜色和樱花背景全程一致，画面清晰达4K，适合直接发布至抖音或Instagram。\n\n关键字：  \nVeo 3.1、Gemini API、竖屏视频、4K分辨率、SynthID"
+    }
+]
