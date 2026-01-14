@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Introducing Community Benchmarks on Kaggle",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-community-benchmarks/",
+        "date": "2026-01-14",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-14/Introducing Community Benchmarks on Kaggle",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp"
+        ],
+        "summary": "摘要：Kaggle推出“社区基准”（Community Benchmarks），允许全球AI开发者设计、运行和共享自定义模型评估任务，以更真实地反映AI模型在实际场景中的表现。传统静态准确率已无法满足当前大语言模型（LLM）在多步推理、代码生成、工具调用等复杂任务中的评估需求。社区基准通过构建可复现的任务与基准集合，支持跨多个前沿模型的性能比较，并提供排行榜追踪进展。用户可免费访问Google、Anthropic、DeepSeek等实验室的先进模型，在多模态输入、代码执行、多轮对话等复杂交互中测试模型。该功能依托kaggle-benchmarks SDK实现快速原型开发，推动AI评估向动态、透明、持续演进的方向发展，助力塑造下一代智能系统。\n\n例子：开发者可创建一个“编写并运行Python脚本解决数学题”的任务，将其加入“编程能力基准”，然后对比不同AI模型（如Gemini、Claude、DeepSeek）在此任务中的准确率与执行效率，结果实时更新于排行榜，便于选择最适合生产环境的模型。\n\n关键字：社区基准、AI模型评估、可复现性、多模态交互、kaggle-benchmarks SDK"
+    }
+]
