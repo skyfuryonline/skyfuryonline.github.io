@@ -108,7 +108,7 @@ def create_prompt(data):
 def get_llm_summary(prompt):
     """调用 LLM API 获取周报。"""
     print("\n--- 发送给 LLM 的 Prompt ---")
-    print(prompt)
+    # print(prompt)
     
     response = client.chat.completions.create(
         model="deepseek-v3.2",
