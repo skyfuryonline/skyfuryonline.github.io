@@ -120,7 +120,7 @@ def get_llm_summary(prompt):
     summary = response.choices[0].message.content
     
     print("\n--- 从 LLM 收到的周报 ---")
-    print(summary)
+    # print(summary)
     return summary.strip()
 
 # --- 4. 写入文件 ---
