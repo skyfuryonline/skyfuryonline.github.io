@@ -1,0 +1,20 @@
+[
+    {
+        "title": "TranslateGemma: A new suite of open translation models",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/translategemma/",
+        "date": "2026-01-15",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-15/TranslateGemma- A new suite of open translation models",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp"
+        ],
+        "summary": "摘要：  \nTranslateGemma 是基于 Gemma 3 构建的全新开源翻译模型系列，提供 4B、12B 和 27B 三种参数规模，支持55种语言的高质量翻译。通过两阶段训练——监督微调（SFT）和强化学习（RL），模型融合了 Gemini 的先进能力，在效率与质量间取得突破性平衡。技术评估显示，12B 模型在 WMT24++ 基准上超越 27B 基线模型，4B 模型性能接近 12B，适用于移动端。模型还具备强大的多模态能力，可有效翻译图像中的文本。其设计兼顾多种部署环境，从移动设备到云端 GPU 均可运行，为开发者提供灵活、高效、高质的翻译工具。\n\n例子：  \n一名开发者在手机上运行 TranslateGemma 4B 模型，将一段中文新闻实时翻译成西班牙语，准确流畅且响应迅速，无需联网或依赖云端服务。\n\n关键字：  \nTranslateGemma、Gemma 3、多语言翻译、强化学习、多模态"
+    }
+]
