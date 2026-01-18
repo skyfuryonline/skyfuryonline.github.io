@@ -1,0 +1,10 @@
+- name: 国家公务员局官网
+  url: http://www.scs.gov.cn/
+- name: 粉笔 - 公考社区
+  url: https://www.fenbi.com/
+- name: 腰果 - 申论批改
+  url: https://www.yaoguo.com/
+- name: Bilibili - 学习视频
+  url: https://www.bilibili.com/
+- name: 知乎 - 备考经验
+  url: https://www.zhihu.com/
