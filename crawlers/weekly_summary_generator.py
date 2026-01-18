@@ -15,14 +15,9 @@ from openai import OpenAI
 client = OpenAI(api_key=api_key, base_url=base_url)
 
 # --- 1. 数据收集 ---
-def get_this_week_data():
-    """收集本周的学习数据和日记内容"""
-    today = datetime.now()
-    # 周一为 0，周日为 6
-    start_of_week = today - timedelta(days=today.weekday())
-    end_of_week = start_of_week + timedelta(days=6)
-
-    print(f"正在收集本周数据: {start_of_week.date()} -> {end_of_week.date()}")
+def get_week_data(start_of_week, end_of_week):
+    """收集指定周的学习数据和日记内容（通用函数）"""
+    # print(f"正在收集数据: {start_of_week.date()} -> {end_of_week.date()}")
 
     weekly_total_hours = 0
     subject_distribution = {}
@@ -42,7 +37,6 @@ def get_this_week_data():
                 continue
                 
             log_date_obj = post.get('date')
-            # The parser might return a datetime.datetime or a datetime.date object
             if isinstance(log_date_obj, datetime):
                 log_date = log_date_obj.date()
             else:
@@ -74,10 +68,39 @@ def get_this_week_data():
         "diaries": diary_content.strip()
     }
 
+def get_this_week_data():
+    """收集本周的学习数据和日记内容"""
+    today = datetime.now()
+    start_of_week = today - timedelta(days=today.weekday())
+    end_of_week = start_of_week + timedelta(days=6)
+    return get_week_data(start_of_week, end_of_week)
+
+def get_last_week_data():
+    """收集上周的学习数据和日记内容"""
+    today = datetime.now()
+    start_of_this_week = today - timedelta(days=today.weekday())
+    start_of_last_week = start_of_this_week - timedelta(days=7)
+    end_of_last_week = start_of_last_week + timedelta(days=6)
+    return get_week_data(start_of_last_week, end_of_last_week)
+
 # --- 2. 生成 Prompt ---
-def create_prompt(data):
+def create_prompt(this_week_data, last_week_data=None):
     """根据数据创建发送给 LLM 的 Prompt"""
-    subject_lines = "\n".join([f"- {name}: {hours:.1f} 小时" for name, hours in data["subjects"].items()])
+    subject_lines = "\n".join([f"- {name}: {hours:.1f} 小时" for name, hours in this_week_data["subjects"].items()])
+    
+    last_week_section = ""
+    if last_week_data and last_week_data["total_hours"] > 0:
+        last_subject_lines = "\n".join([f"- {name}: {hours:.1f} 小时" for name, hours in last_week_data["subjects"].items()])
+        last_week_section = f"""
+【我的上周数据】
+- 总学习时长: {last_week_data['total_hours']:.1f} 小时
+- 有效打卡天数: {last_week_data['active_days']} 天
+- 科目分布:
+{last_subject_lines}
+
+【我的上周日记内容】
+{last_week_data['diaries']}
+"""
     
     prompt = f"""
 你是一位专业的学习分析与激励教练。请根据我过去一周的学习数据和日记，为我生成一份周报。
@@ -92,14 +115,16 @@ def create_prompt(data):
 
 ---
 【我的本周数据】
-- 总学习时长: {data['total_hours']:.1f} 小时
-- 有效打卡天数: {data['active_days']} 天
+- 总学习时长: {this_week_data['total_hours']:.1f} 小时
+- 有效打卡天数: {this_week_data['active_days']} 天
 - 科目分布:
 {subject_lines}
 
 ---
 【我的日记内容】
-{data['diaries']}
+{this_week_data['diaries']}
+---
+{last_week_section}
 ---
 """
     return prompt.strip()
@@ -146,11 +171,11 @@ def save_report(summary):
 
 # --- 主函数 ---
 if __name__ == "__main__":
-    weekly_data = get_this_week_data()
-    if weekly_data["total_hours"] > 0:
-        llm_prompt = create_prompt(weekly_data)
+    this_week_data = get_this_week_data()
+    if this_week_data["total_hours"] > 0:
+        last_week_data = get_last_week_data()  # 新增：获取上周数据
+        llm_prompt = create_prompt(this_week_data, last_week_data)  # 更新：传入上周数据
         report_content = get_llm_summary(llm_prompt)
         save_report(report_content)
     else:
         print("本周没有学习记录，跳过周报生成。")
-
