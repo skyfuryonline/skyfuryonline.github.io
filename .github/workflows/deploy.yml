@@ -43,10 +43,14 @@ jobs:
       - name: Move private content into main
         run: |
           # Use rsync for robust directory merging
-          mkdir -p main/_gwy_logs main/_gwy_reports main/img/gwy
+          mkdir -p main/_gwy_logs main/_gwy_reports main/img/gwy main/_data
           rsync -av private-source/_gwy_logs/ main/_gwy_logs/
           rsync -av private-source/_gwy_reports/ main/_gwy_reports/
-          rsync -av private-source/gwy/ main/img/gwy/ # Note the new source path
+          rsync -av private-source/gwy/ main/img/gwy/
+          # Copy the new sources file from the root of the private repo
+          if [ -f private-source/gwy_sources.yml ]; then
+            cp private-source/gwy_sources.yml main/_data/gwy_sources.yml
+          fi
 
       - name: Move data into main directory
         run: |

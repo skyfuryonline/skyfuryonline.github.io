@@ -184,16 +184,9 @@
             <div class="chart-card">
                 <div class="chart-title">信息源</div>
                 <ul style="list-style-type: disc; padding-left: 20px; font-size: 1.5rem; line-height: 1.6;">
-                    <li><a href="https://www.gjgwy.org/" target="_blank">国家公务员局官网</a></li>
-                    <li><a href="https://example.com/resource2" target="_blank">备考资源2 - 模拟题库</a></li>
-                    <li><a href="https://example.com/resource3" target="_blank">备考资源3 - 视频教程</a></li>
-                    <li><a href="https://example.com/resource4" target="_blank">备考资源4 - 论坛讨论</a></li>
-                    <li><a href="https://example.com/resource5" target="_blank">备考资源5 - 书籍推荐</a></li>
-                    <li><a href="https://example.com/resource6" target="_blank">备考资源6 - 时事新闻</a></li>
-                    <li><a href="https://example.com/resource7" target="_blank">备考资源7 - 面试指南</a></li>
-                    <li><a href="https://example.com/resource8" target="_blank">备考资源8 - 政策解读</a></li>
-                    <li><a href="https://example.com/resource9" target="_blank">备考资源9 - 学习社区</a></li>
-                    <li><a href="https://example.com/resource10" target="_blank">备考资源10 - 工具下载</a></li>
+                    {% for source in site.data.gwy_sources %}
+                        <li><a href="{{ source.url }}" target="_blank">{{ source.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </aside>
