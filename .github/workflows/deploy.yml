@@ -40,6 +40,12 @@ jobs:
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           path: private-source # Checkout to a temporary directory
       
+      - name: Move data into main directory
+        run: |
+          mkdir -p main/_data main/cache
+          rsync -av data/_data/ main/_data/
+          rsync -av data/cache/ main/cache/
+
       - name: Move private content into main
         run: |
           # Use rsync for robust directory merging
@@ -51,25 +57,7 @@ jobs:
           if [ -f private-source/gwy_sources.yml ]; then
             cp private-source/gwy_sources.yml main/_data/gwy_sources.yml
           fi
-
-      - name: Debug after copy 🐛
-        run: |
-          echo "--- Content of main/_data directory ---"
-          ls -l main/_data
-          echo "--- Content of gwy_sources.yml ---"
-          if [ -f main/_data/gwy_sources.yml ]; then
-            cat main/_data/gwy_sources.yml
-          else
-            echo "gwy_sources.yml NOT FOUND."
-          fi
-          echo "------------------------------------"
-
-      - name: Move data into main directory
-        run: |
-          mkdir -p main/_data main/cache
-          rsync -av data/_data/ main/_data/
-          rsync -av data/cache/ main/cache/
-        
+      
       - name: Setup Python 🐍
         uses: actions/setup-python@v4
         with:
@@ -94,7 +82,7 @@ jobs:
       - name: Commit and push data to data branch 💾
         if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          rsync -av --exclude='homepage_groups.yml' main/_data/ data/_data/
+          rsync -av --exclude='homepage_groups.yml' --exclude='gwy_sources.yml' main/_data/ data/_data/
           cp -rf main/cache/. data/cache/
           cd data
           git config --global user.name 'github-actions[bot]'
@@ -121,16 +109,6 @@ jobs:
       - name: Build the site 🏗️
         working-directory: ./main
         run: bundle exec jekyll build
-
-      - name: Debug after build 🧐
-        run: |
-          echo "--- Searching for keyword in unencrypted HTML ---"
-          if grep -q "粉笔" "main/_site/gwy/index.html"; then
-            echo "✅ SUCCESS: Keyword '粉笔' found in the generated HTML."
-          else
-            echo "❌ FAILURE: Keyword '粉笔' NOT found in the generated HTML."
-          fi
-          echo "---------------------------------------------------"
 
       - name: Encrypt Gwy page 🔒
         working-directory: ./main
