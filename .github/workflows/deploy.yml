@@ -47,9 +47,16 @@ jobs:
           rsync -av private-source/_gwy_logs/ main/_gwy_logs/
           rsync -av private-source/_gwy_reports/ main/_gwy_reports/
           rsync -av private-source/gwy/ main/img/gwy/
-          # Copy the new sources file from the root of the private repo
-          if [ -f private-source/gwy_sources.yml ]; then
+          
+          # Copy the new sources file, checking both nested and root paths
+          if [ -f private-source/private-source/gwy_sources.yml ]; then
+            echo "Found gwy_sources.yml in nested directory. Copying..."
+            cp private-source/private-source/gwy_sources.yml main/_data/gwy_sources.yml
+          elif [ -f private-source/gwy_sources.yml ]; then
+            echo "Found gwy_sources.yml in root directory. Copying..."
             cp private-source/gwy_sources.yml main/_data/gwy_sources.yml
+          else
+            echo "WARNING: gwy_sources.yml not found in private-source."
           fi
 
       - name: Move data into main directory
