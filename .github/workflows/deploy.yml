@@ -47,17 +47,22 @@ jobs:
           rsync -av private-source/_gwy_logs/ main/_gwy_logs/
           rsync -av private-source/_gwy_reports/ main/_gwy_reports/
           rsync -av private-source/gwy/ main/img/gwy/
-          
-          # Copy the new sources file, checking both nested and root paths
-          if [ -f private-source/private-source/gwy_sources.yml ]; then
-            echo "Found gwy_sources.yml in nested directory. Copying..."
-            cp private-source/private-source/gwy_sources.yml main/_data/gwy_sources.yml
-          elif [ -f private-source/gwy_sources.yml ]; then
-            echo "Found gwy_sources.yml in root directory. Copying..."
+          # Copy the new sources file from the root of the private repo
+          if [ -f private-source/gwy_sources.yml ]; then
             cp private-source/gwy_sources.yml main/_data/gwy_sources.yml
-          else
-            echo "WARNING: gwy_sources.yml not found in private-source."
           fi
+
+      - name: Debug after copy 🐛
+        run: |
+          echo "--- Content of main/_data directory ---"
+          ls -l main/_data
+          echo "--- Content of gwy_sources.yml ---"
+          if [ -f main/_data/gwy_sources.yml ]; then
+            cat main/_data/gwy_sources.yml
+          else
+            echo "gwy_sources.yml NOT FOUND."
+          fi
+          echo "------------------------------------"
 
       - name: Move data into main directory
         run: |
@@ -116,6 +121,16 @@ jobs:
       - name: Build the site 🏗️
         working-directory: ./main
         run: bundle exec jekyll build
+
+      - name: Debug after build 🧐
+        run: |
+          echo "--- Searching for keyword in unencrypted HTML ---"
+          if grep -q "粉笔" "main/_site/gwy/index.html"; then
+            echo "✅ SUCCESS: Keyword '粉笔' found in the generated HTML."
+          else
+            echo "❌ FAILURE: Keyword '粉笔' NOT found in the generated HTML."
+          fi
+          echo "---------------------------------------------------"
 
       - name: Encrypt Gwy page 🔒
         working-directory: ./main
