@@ -83,6 +83,15 @@ def get_last_week_data():
     end_of_last_week = start_of_last_week + timedelta(days=6)
     return get_week_data(start_of_last_week, end_of_last_week)
 
+def get_week_before_last_data():
+    """收集上上周的学习数据和日记内容"""
+    today = datetime.now()
+    start_of_this_week = today - timedelta(days=today.weekday())
+    start_of_last_week = start_of_this_week - timedelta(days=7)
+    start_of_week_before_last = start_of_last_week - timedelta(days=7)
+    end_of_week_before_last = start_of_week_before_last + timedelta(days=6)
+    return get_week_data(start_of_week_before_last, end_of_week_before_last)
+
 # --- 2. 生成 Prompt ---
 def create_prompt(this_week_data, last_week_data=None):
     """根据数据创建发送给 LLM 的 Prompt"""
@@ -149,19 +158,17 @@ def get_llm_summary(prompt):
     return summary.strip()
 
 # --- 4. 写入文件 ---
-def save_report(summary):
+def save_report(summary, report_start_date):
     """将周报保存为新的 Markdown 文件"""
-    today = datetime.now()
-    # 使用周一的日期来命名文件
-    start_of_week = today - timedelta(days=today.weekday())
-    filename = f"week-of-{start_of_week.strftime('%Y-%m-%d')}.md"
+    # 使用传入的报告周的周一日期来命名文件
+    filename = f"week-of-{report_start_date.strftime('%Y-%m-%d')}.md"
     filepath = os.path.join(REPORT_DIR, filename)
 
     # 创建一个新的 frontmatter post 对象
     post = frontmatter.Post(summary)
     post['layout'] = 'gwy_log_entry' # 假设我们为周报和日记用同一个布局
-    post['title'] = f"{start_of_week.strftime('%Y年%m月%d日')} 学习周报"
-    post['date'] = today
+    post['title'] = f"{report_start_date.strftime('%Y年%m月%d日')} 学习周报"
+    post['date'] = datetime.now() # 文件创建日期依然是今天
     post['is_report'] = True # 添加一个特殊标记
 
     with open(filepath, 'wb') as f:
@@ -171,11 +178,23 @@ def save_report(summary):
 
 # --- 主函数 ---
 if __name__ == "__main__":
-    this_week_data = get_this_week_data()
-    if this_week_data["total_hours"] > 0:
-        last_week_data = get_last_week_data()  # 新增：获取上周数据
-        llm_prompt = create_prompt(this_week_data, last_week_data)  # 更新：传入上周数据
+    # 核心逻辑改变：现在脚本在周一运行，生成的是“上一周”的报告
+    report_week_data = get_last_week_data()
+    
+    if report_week_data["total_hours"] > 0:
+        # 为了对比，获取“上上周”的数据
+        comparison_week_data = get_week_before_last_data()
+        
+        # 创建 Prompt 时，上周数据是主体，上上周数据是用于对比的“更早一周”
+        llm_prompt = create_prompt(report_week_data, comparison_week_data)
+        
         report_content = get_llm_summary(llm_prompt)
-        save_report(report_content)
+        
+        # 计算报告周（上一周）的开始日期，并传给 save_report
+        today = datetime.now()
+        start_of_this_week = today - timedelta(days=today.weekday())
+        start_of_last_week = start_of_this_week - timedelta(days=7)
+        
+        save_report(report_content, start_of_last_week)
     else:
-        print("本周没有学习记录，跳过周报生成。")
+        print("上周没有学习记录，跳过周报生成。")
