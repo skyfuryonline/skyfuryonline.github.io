@@ -1,0 +1,24 @@
+Breadcrumb
+Products & Platforms
+Products
+Gemini
+Jan 27, 2026
+In our latest podcast, hear how the “Smokejumpers” team brings Gemini to billions of people.
+The latest episode of the Google AI: Release Notes podcast focuses on how the Gemini team built one of the world’s leading AI coding models.
+Host Logan Kilpatrick chats with Connie Fan and Danny Tarlow, the product and research leads for Gemini’s coding capabilities. They discuss the early goals that shaped Gemini’s approach to code, the rise of "vibe coding" and the future of programming languages in the age of AI.
+Hear the full conversation below, or listen to the Google AI: Release Notes podcast on
+Apple Podcasts
+or
+Spotify
+.
+00:00
+POSTED IN:
+AI
+Google DeepMind
+Gemini models
+Related stories
+Introducing Agentic Vision in Gemini 3 Flash
+Agentic Vision, a new capability introduced in Gemini 3 Flash, converts image understanding from a static act into an agentic process
+New developer tools for Google AI Pro and Ultra subscribers
+Google AI Plus is now available everywhere our AI plans are available, including the U.S.
+Just ask anything: a seamless new Search experience

@@ -1,0 +1,49 @@
+[
+    {
+        "title": "Introducing Agentic Vision in Gemini 3 Flash",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/",
+        "date": "2026-01-27",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-27/Introducing Agentic Vision in Gemini 3 Flash",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：  \nGemini 3 Flash 引入了“Agentic Vision”新能力，将视觉理解从静态观察转变为动态、主动的推理过程。该技术通过“思考-行动-观察”循环，结合视觉推理与代码执行（如裁剪、标注、计算等），使模型能逐步操作图像并基于视觉证据生成更准确的回答。在多个视觉任务中，启用代码执行可带来5-10%的性能提升。典型应用包括高精度细节检查（如建筑图纸合规性验证）、图像标注辅助计数，以及通过Python执行可视化数学运算以避免幻觉。未来，Google计划扩展更多隐式行为、工具集成（如反向图像搜索）及支持更多模型尺寸。\n\n例子：  \n用户问“图中有几个脚踏板？”，模型自动生成Python代码裁剪相关区域、标注每个踏板，并基于处理后的图像给出准确答案。\n\n关键字：  \nAgentic Vision、代码执行、视觉推理、Gemini 3 Flash、图像操作"
+    },
+    {
+        "title": "New developer tools for Google AI Pro and Ultra subscribers",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/gdp-premium-ai-pro-ultra/",
+        "date": "2026-01-27",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-01-27/New developer tools for Google AI Pro and Ultra subscribers",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp"
+        ],
+        "summary": "摘要：Google 为 AI Pro 和 AI Ultra 订阅用户提供每月 Google Cloud 信用额度（分别为10美元和100美元），以支持其从原型开发到应用部署的全流程。此举整合了 Google Developer Program 的高级权益，简化了开发者将生成式 AI 实验转化为实际应用的过程，无需额外设置云计费。用户可通过 AI Studio、新 IDE Antigravity 或 Gemini CLI 开发，并利用信用额度在 Vertex AI 或 Cloud Run 上部署，甚至用于调用 Gemini API。\n\n例子：一位开发者用 AI Studio 调试好一个智能客服提示词后，直接使用每月赠送的 Cloud 信用额度将其部署到 Cloud Run 上线，无需额外付费或复杂配置。\n\n关键字：Google AI Pro、Google Cloud 信用额度、AI 应用部署、Google Developer Program、Gemini API"
+    },
+    {
+        "title": "In our latest podcast, hear how the “Smokejumpers” team brings Gemini to billions of people.",
+        "link": "https://blog.google/products-and-platforms/products/gemini/release-notes-podcast-smokejumpers/",
+        "date": "2026-01-27",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2026-01-27/In our latest podcast, hear how the “Smokejumpers” team brings Gemini to billions of people.",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：  \n在最新一期《Google AI：Release Notes》播客中，Gemini团队的Connie Fan和Danny Tarlow介绍了Gemini如何打造全球领先的AI编程模型。他们回顾了项目初期目标，探讨了“氛围编程”（vibe coding）的兴起，并展望了AI时代下编程语言的未来。该团队致力于将Gemini的编码能力带给数十亿用户，强调模型在理解与生成代码方面的高效性与自然交互体验。\n\n例子：  \n用户只需用自然语言描述功能需求（如“帮我写一个排序函数”），Gemini即可自动生成对应代码，实现“氛围编程”。\n\n关键字：  \nGemini、AI编程、氛围编程、代码生成、Google DeepMind"
+    }
+]
