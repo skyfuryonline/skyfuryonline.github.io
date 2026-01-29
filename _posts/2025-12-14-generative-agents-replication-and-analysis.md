@@ -173,6 +173,7 @@ ZJU在这篇论文的基础上，发布了一个关于基于LLM的自适应社�
 
 **一个总结对比：**
 - 🤖generative_agents:
+
 ```text
 
 for step in simulation:
@@ -184,6 +185,7 @@ for step in simulation:
 ```
 
 - 🤖Agent-Kernel
+
 ```text
 [事件] 时间 +1
         ↓
