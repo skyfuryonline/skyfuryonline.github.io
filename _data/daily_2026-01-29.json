@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Project Genie: Experimenting with infinite, interactive worlds",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/",
+        "date": "2026-01-29",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2026-01-29/Project Genie- Experimenting with infinite, interactive worlds",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：  \nGoogle DeepMind 推出实验性研究原型 Project Genie，面向美国 Google AI Ultra 订阅用户开放。该项目基于 Genie 3 世界模型，允许用户通过文本和图像“草图”创建、实时探索并混搭交互式虚拟世界。Genie 3 能在用户移动和互动时动态生成环境路径，模拟物理与交互逻辑，支持第一人称或第三人称视角。尽管当前存在世界真实性不足、角色控制延迟及60秒生成限制等问题，Google 旨在通过用户反馈优化技术，并逐步扩大访问范围，推动通用人工智能（AGI）在沉浸式内容与模拟环境中的应用。\n\n例子：  \n用户输入“一座会飞的城堡，周围有彩虹瀑布”，Project Genie 即时生成可进入探索的3D世界，行走时自动延伸地形，还能将他人创作的“蒸汽朋克城市”混搭进自己的场景。\n\n关键字：  \nProject Genie、Genie 3、世界模型、交互式生成、AI虚拟世界"
+    }
+]
