@@ -1,0 +1,49 @@
+[
+    {
+        "title": "How we’re helping preserve the genetic information of endangered species with AI",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/ai-to-preserve-endangered-species/",
+        "date": "2026-02-03",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-02-03/How we’re helping preserve the genetic information of endangered species with AI",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.jpg",
+            "image_15.webp",
+            "image_16.webp",
+            "image_17.webp"
+        ],
+        "summary": "摘要：  \n面对全球约一百万物种濒临灭绝的危机，谷歌正通过AI技术助力保存濒危物种的遗传信息。其与“脊椎动物基因组计划”和“地球生物基因组计划”合作，利用AI工具如DeepPolisher、DeepVariant等，显著提升基因组测序的速度、准确性和成本效益。目前已完成13种濒危动物的基因组测序，并计划扩展至150种，所有数据将公开共享，以支持全球保护研究。基因组信息有助于维持遗传多样性、制定科学繁育策略，并为生态、农业及医学研究提供基础。\n\n例子：  \n例如，科学家通过分析每一只鸮鹦鹉（kākāpō）的基因组，制定精准配对繁殖计划，成功避免近亲繁殖，使该濒危鸟类种群逐步恢复。\n\n关键字：  \nAI、基因组测序、濒危物种保护、遗传多样性、DeepPolisher"
+    },
+    {
+        "title": "Advancing AI benchmarking with Game Arena",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/kaggle-game-arena-updates/",
+        "date": "2026-02-03",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2026-02-03/Advancing AI benchmarking with Game Arena",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.jpg",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp"
+        ],
+        "summary": "摘要：  \nGoogle DeepMind 扩展其 Kaggle Game Arena 平台，新增狼人杀和扑克作为 AI 基准测试环境，以评估模型在不完全信息、社交推理与风险决策等复杂场景中的能力。相比象棋这类完美信息博弈，新游戏更贴近现实世界的不确定性，有助于衡量 AI 的沟通、欺骗识别、风险量化等“软技能”，并为智能体安全性研究提供可控沙盒。当前 Gemini 3 系列模型在三项游戏中均表现领先。平台还联合专家举办直播赛事，公开展示 AI 对决过程。\n\n例子：  \n就像人类玩家在狼人杀中通过发言判断谁在说谎，AI 需分析其他玩家言行矛盾来找出“狼人”，从而测试其社交推理能力。\n\n关键字：  \nGame Arena、AI 基准测试、不完全信息博弈、社交推理、风险决策"
+    }
+]
