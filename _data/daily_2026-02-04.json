@@ -1,0 +1,26 @@
+[
+    {
+        "title": "The latest AI news we announced in January",
+        "link": "https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/",
+        "date": "2026-02-04",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-02-04/The latest AI news we announced in January",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp"
+        ],
+        "summary": "摘要：2026年1月，谷歌全面升级其AI产品体系，推出“个人智能”（Personal Intelligence）功能，通过Gemini应用连接Gmail、Google Photos等服务，实现高度个性化体验。Gmail新增免费AI写作辅助及付费高级校对功能；Chrome浏览器集成Gemini 3，支持自动完成复杂任务和图像处理；教育领域与可汗学院、牛津大学合作推出AI学习工具及免费SAT/JEE备考资源。此外，谷歌还发布了Agentic Vision视觉技术、Veo 3.1视频生成模型，并在零售、艺术文化等领域拓展AI应用场景，强调AI的实用性、安全性和普惠性。\n\n例子：学生使用Gemini应用中的免费SAT模拟测试，答题后立即获得错题解析，并由AI生成个性化复习计划。\n\n关键字：Personal Intelligence、Gemini、AI教育工具、Agentic Vision、Universal Commerce Protocol"
+    }
+]
