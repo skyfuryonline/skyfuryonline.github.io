@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Natively Adaptive Interfaces: A new framework for AI accessibility",
+        "link": "https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/",
+        "date": "2026-02-05",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-02-05/Natively Adaptive Interfaces- A new framework for AI accessibility",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：  \n谷歌提出“原生自适应界面”（Natively Adaptive Interfaces, NAI）框架，将AI驱动的可访问性直接融入产品设计之初，而非事后添加。该方法通过个性化调整界面与功能，满足不同用户需求，例如为视障者生成音频描述或为ADHD用户简化页面布局。NAI遵循“没有我们，就不代表我们”的原则，强调与残障群体合作开发，并资助如RIT/NTID等机构打造实用工具。典型应用如Grammar Lab，利用AI为聋人学生提供ASL和英语的个性化语言训练。此类设计常产生“路缘坡效应”，使更多人受益。\n\n例子：  \nGrammar Lab根据聋生的语言水平，自动生成ASL与英语对照的练习题，提升其双语能力。\n\n关键字：  \n原生自适应界面、AI可访问性、路缘坡效应、残障社区协作、个性化交互"
+    }
+]
