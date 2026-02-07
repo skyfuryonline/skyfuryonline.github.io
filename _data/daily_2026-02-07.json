@@ -1,0 +1,22 @@
+[
+    {
+        "title": "The quantum era is coming. Are we ready to secure it?",
+        "link": "https://blog.google/innovation-and-ai/technology/safety-security/the-quantum-era-is-coming-are-we-ready-to-secure-it/",
+        "date": "2026-02-07",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-02-07/The quantum era is coming. Are we ready to secure it-",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp"
+        ],
+        "summary": "摘要：  \n随着量子计算技术的快速发展，其在解决复杂科学问题的同时，也对当前广泛使用的公钥加密体系构成严重威胁。文章指出，恶意行为者可能已开始实施“现在存储、未来解密”攻击，窃取并囤积加密数据，等待量子计算机破解。为应对这一挑战，Google 自2016年起积极推动后量子密码学（PQC）研究与部署，强调“密码敏捷性”，并计划在NIST标准框架内完成迁移。文章呼吁政策制定者采取五大行动：推动关键基础设施转型、将PQC融入AI系统、减少全球标准碎片化、优先云迁移、并与专家保持协作，以确保数字安全平稳过渡至量子时代。\n\n例子：  \n银行若继续使用传统RSA加密，未来可能被量子计算机破解；采用PQC算法后，即使面对量子攻击也能保障交易安全。\n\n关键字：  \n量子计算、后量子密码学（PQC）、加密安全、NIST标准、密码敏捷性"
+    }
+]
