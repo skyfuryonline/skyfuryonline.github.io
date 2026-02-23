@@ -1,11 +1,11 @@
 [
     {
-        "title": "全网关键词情报简报 (2026-02-23)",
-        "link": "trend-radar://keyword-report/2026-02-23",
+        "title": "GitHub 开源情报 (2026-02-23)",
+        "link": "github-intelligence://daily-report/2026-02-23",
         "date": "2026-02-23",
-        "source": "TrendRadar",
-        "cache_path": "cache/2026-02-23/全网关键词情报简报 (2026-02-23)",
+        "source": "GitHubIntelligence",
+        "cache_path": "cache/2026-02-23/GitHub 开源情报 (2026-02-23)",
         "image_files": [],
-        "summary": "## 今日关键词情报简报：agent\n\n### 简报概览  \n2026年2月23日，“agent”关键词在技术社区（尤其是GitHub）呈现活跃态势，聚焦于**AI智能体的自动化构建与垂直场景应用**；而中文主流社交平台（知乎、微博、贴吧）因数据加载异常暂无有效舆情反馈，小红书内容则完全无关。\n\n---\n\n### 平台情报  \n\n#### **GitHub（技术风向）**  \n今日新涌现多个以“agent”为核心的开源项目，体现出三大趋势：  \n- **动态组队能力**：如 `dynamic-agent-assembler` 强调基于向量匹配的运行时智能体团队构建。  \n- **垂直任务自动化**：包括自动求职（`job-auto-apply-agent`）和科研辅助（`smart-research-agent-app`），后者整合PDF解析、网络搜索与文献对比，技术栈明确（LangGraph + FastAPI）。  \n- **工程协作工具化**：`amigo-ai-tools` 试图建立可共享的智能体/技能工具集，面向开发者协同场景。  \n- **商业集成探索**：`shopify-agentic-starter` 暗示智能体正向电商工作流渗透（TypeScript实现）。\n\n#### **小红书 / 微博 / 知乎 / 贴吧**  \n- 小红书内容均为娱乐、美妆类笔记，**无任何与“agent”相关讨论**。  \n- 知乎、微博、贴吧均**页面加载超时**，无法获取当日舆论或深度分析，可能受平台临时故障或接口限制影响。\n\n---\n\n### 技术风向  \nGitHub项目显示，**轻量化、模块化、场景专用型AI Agent**成为开发热点，尤其强调：  \n- **工具链集成**（如Web搜索、文档处理）  \n- **记忆与状态管理**（如计划接入ChromaDB）  \n- **低代码/协作友好架构**（如Amigo工具集）\n\n---\n\n### 舆论焦点  \n**暂缺**。主流中文舆论场今日未形成关于“agent”的有效讨论，可能因技术话题尚未破圈，或数据采集异常。\n\n---\n\n### 核心关键字  \n#AIAgent #智能体 #自动化工具 #LangGraph #JobAutomation"
+        "summary": "## GitHub 开源情报简报（2026年02月23日）\n\n### 情报概览  \n今日 GitHub Trending 聚焦 **AI Agent 与提示工程（Prompt Engineering）**，多个高星项目围绕系统提示、智能体技能和金融 AI 展开，凸显社区对 **可复用 AI 构建模块** 的强烈需求。\n\n---\n\n### 精选项目\n\n- **[system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)**（★119k）  \n  **核心价值**：汇集主流 AI 工具（如 Cursor、Devin、Perplexity、VSCode Agent 等）的**系统提示词、内部工具与模型配置**。  \n  **适用场景**：研究竞品 AI 行为逻辑、复现智能体能力、构建自定义 AI 开发助手。\n\n- **[prompts.chat](https://github.com/f/prompts.chat)**（★146k）  \n  **核心价值**：开源版“Awesome ChatGPT Prompts”，支持**社区共享与私有化部署**。  \n  **适用场景**：企业内搭建安全可控的提示词库，提升团队 AI 使用效率。\n\n- **[Agent-Skills-for-Context-Engineering](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering)**（★8.7k）  \n  **核心价值**：提供面向**上下文工程（Context Engineering）的智能体技能集**，优化多智能体协作与生产级部署。  \n  **适用场景**：开发复杂 AI Agent 系统时，解决上下文丢失、指令漂移等问题。\n\n- **[OpenBB](https://github.com/OpenBB-finance/OpenBB)**（★61k）  \n  **核心价值**：面向**量化分析师与 AI 金融代理**的一站式开源金融数据平台。  \n  **适用场景**：构建投研自动化流水线、训练金融领域大模型。\n\n---\n\n### 技术风向  \n- **Python 主导 AI 工具链**：除提示词库（HTML）外，其余项目均以 Python 为核心，体现其在 AI 基础设施中的统治地位。  \n- **Agent 生态爆发**：从提示词到技能模块再到垂直领域（如金融），AI Agent 的**模块化、工程化**趋势明显。\n\n### 核心关键字  \n`#AI_Agents` `#Prompt_Engineering` `#Context_Engineering` `#Open_Source_AI` `#Financial_AI`"
     }
 ]
