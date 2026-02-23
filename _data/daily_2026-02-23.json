@@ -5,7 +5,6 @@
         "date": "2026-02-23",
         "source": "GitHubIntelligence",
         "cache_path": "cache/2026-02-23/GitHub 开源情报 (2026-02-23)",
-        "image_files": [],
-        "summary": "## GitHub 开源情报简报（2026年02月23日）\n\n### 情报概览  \n今日 GitHub Trending 聚焦 **AI Agent 与提示工程（Prompt Engineering）**，多个高星项目围绕系统提示、智能体技能和金融 AI 展开，凸显社区对 **可复用 AI 构建模块** 的强烈需求。\n\n---\n\n### 精选项目\n\n- **[system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)**（★119k）  \n  **核心价值**：汇集主流 AI 工具（如 Cursor、Devin、Perplexity、VSCode Agent 等）的**系统提示词、内部工具与模型配置**。  \n  **适用场景**：研究竞品 AI 行为逻辑、复现智能体能力、构建自定义 AI 开发助手。\n\n- **[prompts.chat](https://github.com/f/prompts.chat)**（★146k）  \n  **核心价值**：开源版“Awesome ChatGPT Prompts”，支持**社区共享与私有化部署**。  \n  **适用场景**：企业内搭建安全可控的提示词库，提升团队 AI 使用效率。\n\n- **[Agent-Skills-for-Context-Engineering](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering)**（★8.7k）  \n  **核心价值**：提供面向**上下文工程（Context Engineering）的智能体技能集**，优化多智能体协作与生产级部署。  \n  **适用场景**：开发复杂 AI Agent 系统时，解决上下文丢失、指令漂移等问题。\n\n- **[OpenBB](https://github.com/OpenBB-finance/OpenBB)**（★61k）  \n  **核心价值**：面向**量化分析师与 AI 金融代理**的一站式开源金融数据平台。  \n  **适用场景**：构建投研自动化流水线、训练金融领域大模型。\n\n---\n\n### 技术风向  \n- **Python 主导 AI 工具链**：除提示词库（HTML）外，其余项目均以 Python 为核心，体现其在 AI 基础设施中的统治地位。  \n- **Agent 生态爆发**：从提示词到技能模块再到垂直领域（如金融），AI Agent 的**模块化、工程化**趋势明显。\n\n### 核心关键字  \n`#AI_Agents` `#Prompt_Engineering` `#Context_Engineering` `#Open_Source_AI` `#Financial_AI`"
+        "image_files": []
     }
 ]
