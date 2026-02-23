@@ -1,0 +1,11 @@
+[
+    {
+        "title": "全网趋势雷达简报 (2026-02-23)",
+        "link": "trend-radar://daily-report/2026-02-23",
+        "date": "2026-02-23",
+        "source": "TrendRadarCrawler",
+        "cache_path": "cache/2026-02-23/全网趋势雷达简报 (2026-02-23)",
+        "image_files": [],
+        "summary": "【简报时间】2026年02月23日 21:55  \n\n【今日全网热点简报】  \n尽管知乎热榜数据暂不可用，但从微博与GitHub趋势可见，AI工程化与智能体（Agent）生态正成为技术焦点。GitHub今日Top榜单中，多个项目聚焦于AI系统提示词（System Prompts）、智能体技能库与上下文工程，如 x1xhlol/system-prompts-and-models-of-ai-tools 汇总了数十款主流AI工具的内部提示模板，而 muratcankoylan/Agent-Skills-for-Context-Engineering 则提供面向生产级多智能体系统的上下文管理方案，反映出行业对“可复现、可调试、可部署”AI工作流的强烈需求。\n\n同时，开源RAG（检索增强生成）技术持续演进：GitNexus 实现浏览器端零服务器代码知识图谱构建，PageIndex 推出无需向量化的推理型文档索引，均试图突破传统RAG对嵌入模型和向量数据库的依赖。此外，金融AI平台 OpenBB 和经典文生图模型 Stable Diffusion 仍保持高活跃度，显示垂直领域与基础模态应用并行发展的格局。\n\n整体来看，AI开发正从“单模型调用”迈向“系统化智能体协作”，提示工程、上下文架构与轻量化RAG成为关键基础设施。  \n\n【核心关键字】AI智能体、系统提示词、上下文工程、无向量RAG、开源AI工具"
+    }
+]

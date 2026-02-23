@@ -1,0 +1,29 @@
+【系统提示：当前北京时间是 2026年02月23日 21:55:40。以下是各大平台最新的实时热榜数据】
+
+### 知乎热榜 ###
+获取失败，状态码: 401
+
+### 微博热搜 ###
+
+### GitHub Trending (今日) ###
+1. x1xhlol/system-prompts-and-models-of-ai-tools
+   描述: FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models
+2. huggingface/skills
+   描述: No description
+3. OpenBB-finance/OpenBB
+   描述: Financial data platform for analysts, quants and AI agents.
+4. muratcankoylan/Agent-Skills-for-Context-Engineering
+   描述: A comprehensive collection of Agent Skills for context engineering, multi-agent architectures, and production agent systems. Use when building, optimizing, or debugging agent systems that require effective context management.
+5. f/prompts.chat
+   描述: a.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.
+6. CompVis/stable-diffusion
+   描述: A latent text-to-image diffusion model
+7. abhigyanpatwari/GitNexus
+   描述: GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration
+8. Stremio/stremio-web
+   描述: Stremio - Freedom to Stream
+9. stan-smith/FossFLOW
+   描述: Make beautiful isometric infrastructure diagrams
+10. VectifyAI/PageIndex
+   描述: 📑 PageIndex: Document Index for Vectorless, Reasoning-based RAG
+
