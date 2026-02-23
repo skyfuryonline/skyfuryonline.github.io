@@ -4,6 +4,13 @@
   },
   "sites": [
     {
+      "parser": "TrendRadarCrawler",
+      "url": "trend-radar",
+      "top_k": 10,
+      "llm_profile": "trend_radar_summary",
+      "enabled": true
+    },
+    {
       "parser": "GoogleDevBlogCrawler",
       "url": "https://blog.google/technology/developers/",
       "top_k": 2,
@@ -33,6 +40,10 @@
     "academic_summary": {
       "model": "",
       "prompt": ""
+    },
+    "trend_radar_summary": {
+      "model": "qwen3-max-2026-01-23",
+      "prompt": "你是一个“全网趋势观察员”。我将提供给你一份融合了当前时间、知乎热榜、微博热搜以及 GitHub Trending 的数据文本。请你根据这些信息，生成一份500字以内的中文《今日全网热点简报》。\n要求：\n1. 在简报开头明确指出简报生成的依据时间。\n2. 结构清晰地分板块总结（如：社会热点、科技与开源风向等），不需要罗列原榜单，而是对相似主题进行归纳和评论。\n3. 如果有明显的技术趋势（如 AI、新的开源项目爆炸），请作为重点简短点评。\n4. 语气专业、精炼，具备信息价值。\n5. 请按照：【简报时间】+【正文简报】+【核心关键字(3-5个)】的格式输出。"
     }
   }
 }
