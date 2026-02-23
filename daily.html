@@ -333,7 +333,7 @@ http_headers:
         <h4 class="modal-title" id="summaryModalLabel">Article Summary</h4>
       </div>
       <div class="modal-body">
-        <p id="modalSummaryContent"></p>
+        <div id="modalSummaryContent" class="markdown-body"></div>
         <hr>
         <div id="modalImageGallery" class="image-gallery"></div>
       </div>
@@ -344,41 +344,213 @@ http_headers:
     </div>
   </div>
 </div>
-<script>
-// -------- Daily Modal Logic --------
-document.addEventListener('DOMContentLoaded', function () {
-  var cards = document.querySelectorAll('.daily-article-card');
-  var modal = $('#summaryModal');
-  var modalTitle = document.getElementById('summaryModalLabel');
-  var modalSummary = document.getElementById('modalSummaryContent');
-  var modalGallery = document.getElementById('modalImageGallery');
-  var modalReadMoreBtn = document.getElementById('modalReadMoreBtn');
-  cards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      var title = this.getAttribute('data-title');
-      var summary = this.getAttribute('data-summary');
-      var link = this.getAttribute('data-link');
-      var cachePath = this.getAttribute('data-cache-path');
-      var images = this.getAttribute('data-images').split(',').filter(Boolean);
-      modalTitle.textContent = title;
-      modalSummary.textContent = summary;
-      modalReadMoreBtn.href = link;
-      modalGallery.innerHTML = '';
-      if (images.length > 0) {
-        images.forEach(function(imageFile) {
-          var galleryItem = document.createElement('div');
-          galleryItem.className = 'gallery-item';
-          var img = document.createElement('img');
-          img.src = '{{ site.baseurl }}/' + cachePath + '/' + imageFile;
-          galleryItem.appendChild(img);
-          modalGallery.appendChild(galleryItem);
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Modal Customization */
+        .modal-content {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: none;
+        }
+        .modal-header {
+            border-bottom: 1px solid #eee;
+            padding: 20px 25px;
+            background: #f8f9fa;
+            border-radius: 12px 12px 0 0;
+        }
+        .modal-title {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+        .modal-body {
+            padding: 25px;
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #333;
+        }
+        /* Markdown Styles within Modal */
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .markdown-body h1 { font-size: 1.8em; border-bottom: 2px solid #eee; padding-bottom: 0.3em; }
+        .markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+        .markdown-body h3 { font-size: 1.25em; }
+        .markdown-body ul, .markdown-body ol {
+            padding-left: 20px;
+            margin-bottom: 1em;
+        }
+        .markdown-body li {
+            margin-bottom: 0.5em;
+        }
+        .markdown-body p {
+            margin-bottom: 1em;
+        }
+        .markdown-body blockquote {
+            border-left: 4px solid #007bff;
+            padding: 10px 15px;
+            color: #666;
+            background: #f1f8ff;
+            border-radius: 4px;
+            margin: 1em 0;
+        }
+        .markdown-body code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+        .markdown-body pre {
+            background: #f6f8fa;
+            padding: 15px;
+            border-radius: 8px;
+            overflow: auto;
+            margin: 1em 0;
+        }
+        .markdown-body pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+        .markdown-body a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .markdown-body a:hover {
+            text-decoration: underline;
+        }
+        /* Dark Theme Specifics for TrendRadar */
+        .modal-content.trend-radar-theme {
+            background: #1a2942;
+            color: #e0e6ed;
+        }
+        .trend-radar-theme .modal-header {
+            background: #152238;
+            border-bottom: 1px solid #2c3e50;
+        }
+        .trend-radar-theme .modal-title {
+            color: #fff;
+        }
+        .trend-radar-theme .close {
+            color: #fff;
+            opacity: 0.8;
+            text-shadow: none;
+        }
+        .trend-radar-theme .close:hover {
+            opacity: 1;
+        }
+        .trend-radar-theme .modal-body {
+            color: #e0e6ed;
+        }
+        .trend-radar-theme .markdown-body h1, 
+        .trend-radar-theme .markdown-body h2, 
+        .trend-radar-theme .markdown-body h3 {
+            color: #fff;
+            border-color: #34495e;
+        }
+        .trend-radar-theme .markdown-body blockquote {
+            background: #25334d;
+            border-left-color: #e74c3c;
+            color: #b0b8c3;
+        }
+        .trend-radar-theme .markdown-body code {
+            background: #2c3e50;
+            color: #ff7b72;
+        }
+        .trend-radar-theme .markdown-body pre {
+            background: #25334d;
+            border: 1px solid #34495e;
+        }
+        .trend-radar-theme .markdown-body a {
+            color: #58a6ff;
+        }
+        .trend-radar-theme .modal-footer {
+            border-top: 1px solid #2c3e50;
+        }
+        .trend-radar-theme .btn-default {
+            background: #34495e;
+            border: none;
+            color: #fff;
+        }
+        .trend-radar-theme .btn-default:hover {
+            background: #465f76;
+        }
+        
+        .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 15px 25px;
+        }
+    </style>
+    <script>
+    // -------- Daily Modal Logic --------
+    document.addEventListener('DOMContentLoaded', function () {
+      var cards = document.querySelectorAll('.daily-article-card');
+      var modalEl = document.getElementById('summaryModal'); // DOM element
+      var modalJq = $('#summaryModal'); // jQuery object for Bootstrap 3
+      var modalContent = modalEl.querySelector('.modal-content');
+      var modalTitle = document.getElementById('summaryModalLabel');
+      var modalSummary = document.getElementById('modalSummaryContent');
+      var modalGallery = document.getElementById('modalImageGallery');
+      var modalReadMoreBtn = document.getElementById('modalReadMoreBtn');
+    
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          var title = this.getAttribute('data-title');
+          var summary = this.getAttribute('data-summary'); // This is raw text or Markdown
+          var link = this.getAttribute('data-link');
+          var cachePath = this.getAttribute('data-cache-path');
+          var images = this.getAttribute('data-images').split(',').filter(Boolean);
+          var isTrendRadar = link.startsWith('trend-radar://');
+    
+          modalTitle.textContent = title;
+          
+          // --- Content Rendering ---
+          // Use marked.parse to render Markdown if available, otherwise plain text
+          if (typeof marked !== 'undefined' && (isTrendRadar || summary.includes('##') || summary.includes('**'))) {
+              modalSummary.innerHTML = marked.parse(summary);
+              modalSummary.className = 'markdown-body'; // Apply markdown styles
+          } else {
+              modalSummary.textContent = summary;
+              modalSummary.className = '';
+          }
+    
+          // --- Theme & Button Logic ---
+          if (isTrendRadar) {
+              modalContent.classList.add('trend-radar-theme');
+              modalReadMoreBtn.style.display = 'none'; // Hide "Read Original" for TrendRadar
+          } else {
+              modalContent.classList.remove('trend-radar-theme');
+              modalReadMoreBtn.style.display = 'inline-block'; // Show for others
+              modalReadMoreBtn.href = link;
+          }
+    
+          // --- Image Gallery ---
+          modalGallery.innerHTML = '';
+          if (images.length > 0) {
+            images.forEach(function(imageFile) {
+              var galleryItem = document.createElement('div');
+              galleryItem.className = 'gallery-item';
+              var img = document.createElement('img');
+              img.src = '{{ site.baseurl }}/' + cachePath + '/' + imageFile;
+              galleryItem.appendChild(img);
+              modalGallery.appendChild(galleryItem);
+            });
+            modalGallery.style.display = 'flex';
+          } else {
+            modalGallery.style.display = 'none';
+          }
+    
+          modalJq.modal('show');
         });
-      }
-      modal.modal('show');
+      });
     });
-  });
-});
-// -------- 时钟与倒计时 --------
+    // -------- 时钟与倒计时 --------
 function updateClock() {
   const clock = document.getElementById("clock");
   if (!clock) return;
