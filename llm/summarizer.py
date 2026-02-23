@@ -41,7 +41,11 @@ async def get_summary(content: str, model: str, prompt_template: str) -> str:
             temperature=0.5,
             timeout=180
         )
-        summary = response.choices[0].message.content.strip()
+        content_text = response.choices[0].message.content
+        summary = content_text.strip() if content_text else "(No content returned)"
         return summary
     except Exception as e:
+        error_msg = str(e).lower()
+        if any(keyword in error_msg for keyword in ["insufficient_quota", "balance", "arrearage", "rate limit", "429", "402", "403"]):
+            return "[QUOTA_EXHAUSTED]"
         return f"Error calling LLM API: {e}"

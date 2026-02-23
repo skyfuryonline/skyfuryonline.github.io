@@ -160,8 +160,15 @@ async def main():
                         summaries = await asyncio.gather(*tasks)
 
                         for i, summary_result in enumerate(summaries):
-                            articles_for_summary[i]['summary'] = summary_result
-                            print(f"  - Summarized: {articles_for_summary[i]['title']}")
+                            if summary_result == "[QUOTA_EXHAUSTED]" or "quota" in str(summary_result).lower() or "balance" in str(summary_result).lower():
+                                articles_for_summary[i]['summary'] = "⚠️ AI 摘要生成失败：API 额度已耗尽。请补充额度后重试。"
+                                print(f"  - Quota exhausted for: {articles_for_summary[i]['title']}")
+                                # 从 existing_urls 移除，以便下次重新抓取和生成摘要
+                                if articles_for_summary[i]['link'] in existing_urls:
+                                    existing_urls.remove(articles_for_summary[i]['link'])
+                            else:
+                                articles_for_summary[i]['summary'] = summary_result
+                                print(f"  - Summarized: {articles_for_summary[i]['title']}")
 
                 except Exception as e:
                     print(f"Error running crawler for {site['parser']}: {e}")
@@ -191,8 +198,11 @@ def load_existing_urls(data_dir, days_to_keep):
                 with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
                     for article in data:
+                        summary_text = article.get('summary', '')
+                        if summary_text and summary_text.startswith("⚠️ AI 摘要生成失败"):
+                            continue # Do not track failed ones
                         existing_urls.add(article['link'])
-                        if article.get('summary') and article['summary'].strip():
+                        if summary_text.strip():
                             summarized_urls.add(article['link'])
             except (ValueError, json.JSONDecodeError):
                 continue
