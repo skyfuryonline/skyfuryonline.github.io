@@ -1,0 +1,31 @@
+# GitHub 开源情报简报 (2026年02月23日)
+
+> 来源：GitHub Trending (Today)
+
+## 今日热榜 (Trending)
+
+1. **[x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)** (★119,369)
+   - 语言: Unknown
+   - 简介: FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models
+
+2. **[huggingface/skills](https://github.com/huggingface/skills)** (★3,506)
+   - 语言: Python
+   - 简介: 暂无描述
+
+3. **[OpenBB-finance/OpenBB](https://github.com/OpenBB-finance/OpenBB)** (★61,281)
+   - 语言: Python
+   - 简介: Financial data platform for analysts, quants and AI agents.
+
+4. **[muratcankoylan/Agent-Skills-for-Context-Engineering](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering)** (★8,720)
+   - 语言: Python
+   - 简介: A comprehensive collection of Agent Skills for context engineering, multi-agent architectures, and production agent systems. Use when building, optimizing, or debugging agent systems that require effective context management.
+
+5. **[f/prompts.chat](https://github.com/f/prompts.chat)** (★146,854)
+   - 语言: HTML
+   - 简介: a.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.
+
+6. **[CompVis/stable-diffusion](https://github.com/CompVis/stable-diffusion)** (★72,451)
+   - 语言: Jupyter Notebook
+   - 简介: A latent text-to-image diffusion model
+
+
