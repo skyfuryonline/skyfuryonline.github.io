@@ -1,0 +1,32 @@
+# 2026-02-23 关键词情报简报
+
+> 生成时间：2026年02月23日 23:15:17
+> 监测关键词：agent
+
+## 关键词：agent
+
+### GitHub (技术风向)
+- **[yksanjo/dynamic-agent-assembler](https://github.com/yksanjo/dynamic-agent-assembler)** (★0, Python): Runtime Agent Team Construction with Vector-based Capability Matching
+- **[amigoapp/amigo-ai-tools](https://github.com/amigoapp/amigo-ai-tools)** (★0, None): Create a super set of tools like agents, skills and others to be shared between all engineers.
+- **[fahadNoufal/job-auto-apply-agent](https://github.com/fahadNoufal/job-auto-apply-agent)** (★0, None): An AI agent that can automate the entire job application process
+- **[shirshmohan/smart-research-agent-app](https://github.com/shirshmohan/smart-research-agent-app)** (★0, None): LangGraph-based Smart Research Agent that chains tools for PDF summarization, web search, source ranking & citations, and document comparison—built with Python + FastAPI, with planned ChromaDB memory and React frontend.
+- **[scottbushell/shopify-agentic-starter](https://github.com/scottbushell/shopify-agentic-starter)** (★0, TypeScript): None
+
+### 知乎 (深度讨论)
+  - 页面加载超时。
+
+### 微博 (实时舆论)
+  - 页面加载超时。
+
+### 小红书 (笔记/经验)
+- **我终于想起来浣碧像谁了** (by @菇果儿)
+- **小宋的夏日OOTD** (by @宋雨琦_i-dle)
+- **乌鲁木齐美甲｜夏日闪闪** (by @D Nail-(带娃版))
+- **你认为，他不火的原因是什么？** (by @Terre)
+- **好像一只小兔子ʕ•ᴥ•ʔ** (by @椰子不是抹布)
+
+### 百度贴吧 (社区讨论)
+  - 页面加载超时。
+
+---
+
