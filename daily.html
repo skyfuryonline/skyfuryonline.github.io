@@ -92,6 +92,40 @@ http_headers:
     top: 230px; /* 移动设备：内边距130px + 内容约80px + 20px间距 */
   }
 }
+/* ---------------- TrendRadar Special Card ---------------- */
+.trend-radar-card {
+    background: linear-gradient(135deg, #1a2942 0%, #2c3e50 100%) !important;
+    color: #fff !important;
+    border: 1px solid #34495e;
+}
+.trend-radar-card .feed-title {
+    color: #fff !important;
+    font-size: 1.4em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.trend-radar-card .feed-meta {
+    color: rgba(255,255,255,0.6) !important;
+}
+.trend-radar-card .feed-summary {
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 1em;
+}
+.trend-radar-card .trend-radar-badge {
+    background-color: #e74c3c; /* Keep red badge for contrast */
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.trend-radar-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+/* Hide the image container for TrendRadar cards to give more space to text */
+.trend-radar-card .feed-image {
+    display: none !important;
+}
+
 /* ---------------- Main Daily Styles ---------------- */
 .daily-container {
     display: flex;
@@ -251,7 +285,7 @@ http_headers:
         <div class="daily-container">
             {% if articles.size > 0 %}
                 {% for article in articles %}
-                    <div class="feed-item daily-article-card"
+                    <div class="feed-item daily-article-card {% if article.source == 'TrendRadar' %}trend-radar-card{% endif %}"
                          data-title="{{ article.title | escape }}"
                          data-summary="{{ article.summary | escape }}"
                          data-link="{{ article.link }}"

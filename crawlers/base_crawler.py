@@ -1,5 +1,7 @@
 # crawlers/base_crawler.py
 
+import requests
+from bs4 import BeautifulSoup
 from abc import ABC, abstractmethod
 import os
 import json
@@ -55,6 +57,6 @@ class BaseCrawler(ABC):
             json.dump(items, f, ensure_ascii=False, indent=4)
 
     @abstractmethod
-    def crawl(self):
+    async def crawl(self):
         """Crawl the website and return structured data."""
         pass

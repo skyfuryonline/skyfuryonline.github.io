@@ -2,6 +2,7 @@
 
 import json
 import requests
+from bs4 import BeautifulSoup
 from datetime import datetime, timezone, timedelta
 from crawlers.base_crawler import BaseCrawler
 
@@ -52,13 +53,13 @@ class TrendRadarCrawler(BaseCrawler):
         aggregated_text = f"【系统提示：当前北京时间是 {self._get_beijing_time_str()}。以下是各大平台最新的实时热榜数据】\n"
         aggregated_text += f"【关注关键词】：{', '.join(self.keywords)}\n\n"
         
-        # 1. Fetch Zhihu Hot
+        # 1. Fetch Zhihu Hot (Direct API)
         aggregated_text += self._fetch_zhihu()
         
-        # 2. Fetch Weibo Hot
+        # 2. Fetch Weibo Hot (NewsNow Cookie Strategy)
         aggregated_text += self._fetch_weibo()
         
-        # 3. Fetch GitHub Trending (using a reliable 3rd party API or simple scrape)
+        # 3. Fetch GitHub Trending (HTML Parsing with Retry)
         aggregated_text += self._fetch_github()
 
         # Compile the single pseudo-article
@@ -78,7 +79,7 @@ class TrendRadarCrawler(BaseCrawler):
         print("  -> Fetching Zhihu Hot...")
         text = "### 知乎热榜 ###\n"
         try:
-            # Zhihu public API for hot lists
+            # Zhihu public API for hot lists - Very stable
             url = f"https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit={self.top_k}"
             resp = requests.get(url, headers=self.headers, timeout=10)
             if resp.status_code == 200:
@@ -95,53 +96,87 @@ class TrendRadarCrawler(BaseCrawler):
         return text + "\n"
 
     def _fetch_weibo(self):
-        print("  -> Fetching Weibo Hot...")
+        print("  -> Fetching Weibo Hot (using NewsNow strategy)...")
         text = "### 微博热搜 ###\n"
         try:
-            # We can use a free third-party API or the simple weibo topic page
-            # Here we use a popular third-party API for simpler JSON parsing without complex cookie logic
-            # If that fails, fallback to something else, but for simplicity, let's use the Tenapi or similar, 
-            # OR parse the HTML of https://s.weibo.com/top/summary
-            url = "https://s.weibo.com/top/summary"
-            resp = requests.get(url, headers=self.headers, timeout=10)
+            # NewsNow strategy: Use specific Cookie and Referer to bypass anti-scraping
+            url = "https://s.weibo.com/top/summary?cate=realtimehot"
+            headers = self.headers.copy()
+            headers["Cookie"] = "SUB=_2AkMWIuNSf8NxqwJRmP8dy2rhaoV2ygrEieKgfhKJJRMxHRl-yT9jqk86tRB6PaLNvQZR6zYUcYVT1zSjoSreQHidcUq7"
+            headers["Referer"] = url
+            
+            resp = requests.get(url, headers=headers, timeout=10)
             if resp.status_code == 200:
-                from bs4 import BeautifulSoup
                 soup = BeautifulSoup(resp.text, 'html.parser')
-                items = soup.select('td.td-02 a')
+                # Iterate over tr rows, skipping the first (header)
+                rows = soup.select("#pl_top_realtimehot table tbody tr")
+                
                 count = 0
-                for item in items:
-                    title = item.text.strip()
-                    # Skip the pinned top search which often doesn't have a rank number
-                    if "置顶" in item.parent.parent.text or count >= self.top_k:
-                        if "置顶" not in item.parent.parent.text:
-                            count += 1
-                        if count > self.top_k:
-                            break
-                    if title:
-                        text += f"- {title}\n"
+                for row in rows:
+                    if count >= self.top_k: break
+                    
+                    # Check for 'td-02' class which contains the title link
+                    title_td = row.find("td", class_="td-02")
+                    if not title_td: continue
+                    
+                    a_tag = title_td.find("a")
+                    if not a_tag: continue
+                    
+                    title = a_tag.get_text(strip=True)
+                    href = a_tag.get('href', '')
+                    
+                    # Filter out ads or invalid links (javascript:void(0))
+                    if not href or "javascript:void(0)" in href: continue
+                    
+                    # Check if it is a 'pinned' top search (usually no rank)
+                    rank_td = row.find("td", class_="td-01")
+                    is_pinned = False
+                    if rank_td:
+                        rank_text = rank_td.get_text(strip=True)
+                        if not rank_text.isdigit(): # If rank is not a number, it's likely pinned
+                             is_pinned = True
+                    
+                    # Logic: We want top K *numbered* hot searches. 
+                    # If pinned, we can include it but don't increment count, OR skip it.
+                    # Let's include it but label it.
+                    if is_pinned:
+                         text += f"- [置顶] {title}\n"
+                    else:
+                         count += 1
+                         text += f"{count}. {title}\n"
             else:
                 text += f"获取失败，状态码: {resp.status_code}\n"
         except Exception as e:
-            text += f"获取异常: {e}\n"
+             text += f"获取异常: {e}\n"
         return text + "\n"
 
     def _fetch_github(self):
         print("  -> Fetching GitHub Trending...")
         text = "### GitHub Trending (今日) ###\n"
         try:
-            # Use GitHub Trending HTML parsing
+            # GitHub Trending HTML parsing
             url = "https://github.com/trending"
-            resp = requests.get(url, headers=self.headers, timeout=10)
+            resp = requests.get(url, headers=self.headers, timeout=15) # Increased timeout
+            
             if resp.status_code == 200:
-                from bs4 import BeautifulSoup
                 soup = BeautifulSoup(resp.text, 'html.parser')
                 articles = soup.select('article.Box-row')
+                
+                if not articles:
+                     text += "未找到 GitHub Trending 数据（可能页面结构变更或反爬）。\n"
+                
                 for i, article in enumerate(articles[:self.top_k], 1):
                     h2 = article.find('h2', class_='h3 lh-condensed')
                     repo_name = h2.text.strip().replace(' ', '').replace('\n', '') if h2 else 'Unknown'
+                    
                     p_desc = article.find('p', class_='col-9 color-fg-muted my-1 pr-4')
                     desc = p_desc.text.strip() if p_desc else 'No description'
-                    text += f"{i}. {repo_name}\n   描述: {desc}\n"
+                    
+                    # Language
+                    lang_span = article.find('span', itemprop='programmingLanguage')
+                    lang = lang_span.text.strip() if lang_span else 'Unknown'
+                    
+                    text += f"{i}. {repo_name} ({lang})\n   描述: {desc}\n"
             else:
                 text += f"获取失败，状态码: {resp.status_code}\n"
         except Exception as e:
