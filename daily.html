@@ -182,6 +182,18 @@ http_headers:
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.trend-radar-badge {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: fit-content;
+}
 .date-header {
     width: 100%;
     text-align: center;
@@ -253,9 +265,18 @@ http_headers:
                             {% endif %}
                         </div>
                         <div class="feed-content">
+                            {% if article.source == 'TrendRadar' %}
+                                <div class="trend-radar-badge"><i class="fa fa-bolt"></i> 今日全网趋势</div>
+                            {% endif %}
                             <h3 class="feed-title">{{ article.title }}</h3>
                             <p class="feed-meta">Source: {{ article.source }} &nbsp;|&nbsp; {{ article.date | date: "%Y-%m-%d" }}</p>
-                            <p class="feed-summary">{{ article.summary | strip_html | truncate: 150 }}</p>
+                            <p class="feed-summary">
+                                {% if article.source == 'TrendRadar' %}
+                                    {{ article.summary | strip_html | truncate: 300 }}
+                                {% else %}
+                                    {{ article.summary | strip_html | truncate: 150 }}
+                                {% endif %}
+                            </p>
                         </div>
                     </div>
                 {% endfor %}

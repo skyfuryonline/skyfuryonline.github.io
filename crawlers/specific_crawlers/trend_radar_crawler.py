@@ -10,13 +10,22 @@ class TrendRadarCrawler(BaseCrawler):
     Crawler for fetching trending topics from various platforms (Zhihu, Weibo, GitHub Trending)
     to generate a unified Daily Trend Radar.
     """
-    def __init__(self, url, cache_dir, existing_urls, driver, top_k=10):
+    def __init__(self, url, cache_dir, existing_urls, driver, top_k=20):
         # `url` is a placeholder for this crawler, maybe GitHub project link or simply "TrendRadar"
         super().__init__(url, cache_dir, existing_urls, driver)
         self.top_k = top_k
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
+        
+        # Load keywords from config
+        try:
+            with open(self.cache_dir.parent.parent / "crawlers" / "config.json", 'r', encoding='utf-8') as f:
+                config_data = json.load(f)
+                self.keywords = config_data.get("keywords", [])
+        except Exception as e:
+            print(f"Warning: Could not load keywords from config.json: {e}")
+            self.keywords = []
 
     def _get_beijing_time_str(self):
         """Returns the current Beijing time string to prevent LLM hallucinations."""
@@ -40,7 +49,8 @@ class TrendRadarCrawler(BaseCrawler):
 
         print(f"Generating Trend Radar Report for {today_date}...")
 
-        aggregated_text = f"【系统提示：当前北京时间是 {self._get_beijing_time_str()}。以下是各大平台最新的实时热榜数据】\n\n"
+        aggregated_text = f"【系统提示：当前北京时间是 {self._get_beijing_time_str()}。以下是各大平台最新的实时热榜数据】\n"
+        aggregated_text += f"【关注关键词】：{', '.join(self.keywords)}\n\n"
         
         # 1. Fetch Zhihu Hot
         aggregated_text += self._fetch_zhihu()
@@ -57,6 +67,7 @@ class TrendRadarCrawler(BaseCrawler):
             'title': f"全网趋势雷达简报 ({today_date})",
             'link': unique_link,
             'date': today_date,
+            'source': 'TrendRadar',
             'content': aggregated_text,
             'image_urls': [] # Usually trending reports don't need a specific scraped image, or we could add a placeholder
         })
