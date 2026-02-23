@@ -92,37 +92,37 @@ http_headers:
     top: 230px; /* 移动设备：内边距130px + 内容约80px + 20px间距 */
   }
 }
-/* ---------------- TrendRadar Special Card ---------------- */
-.trend-radar-card {
+/* ---------------- TrendRadar/GitHubIntelligence Special Card ---------------- */
+.trend-radar-card, .github-intelligence-card {
     background: linear-gradient(135deg, #1a2942 0%, #2c3e50 100%) !important;
     color: #fff !important;
     border: 1px solid #34495e;
 }
-.trend-radar-card .feed-title {
+.trend-radar-card .feed-title, .github-intelligence-card .feed-title {
     color: #fff !important;
     font-size: 1.4em;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
-.trend-radar-card .feed-meta {
+.trend-radar-card .feed-meta, .github-intelligence-card .feed-meta {
     color: rgba(255,255,255,0.6) !important;
 }
-.trend-radar-card .feed-summary {
+.trend-radar-card .feed-summary, .github-intelligence-card .feed-summary {
     color: rgba(255,255,255,0.9) !important;
     font-size: 1em;
 }
-.trend-radar-card .trend-radar-badge {
+.trend-radar-card .trend-radar-badge, .github-intelligence-card .trend-radar-badge {
     background-color: #e74c3c; /* Keep red badge for contrast */
     color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
-.trend-radar-card:hover {
+.trend-radar-card:hover, .github-intelligence-card:hover {
     transform: translateY(-3px) scale(1.01);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 /* Hide the image container for TrendRadar cards to give more space to text */
-.trend-radar-card .feed-image {
+.trend-radar-card .feed-image, .github-intelligence-card .feed-image {
     display: none !important;
 }
 
@@ -285,7 +285,7 @@ http_headers:
         <div class="daily-container">
             {% if articles.size > 0 %}
                 {% for article in articles %}
-                    <div class="feed-item daily-article-card {% if article.source == 'TrendRadar' %}trend-radar-card{% endif %}"
+                    <div class="feed-item daily-article-card {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}github-intelligence-card{% endif %}"
                          data-title="{{ article.title | escape }}"
                          data-summary="{{ article.summary | escape }}"
                          data-link="{{ article.link }}"
@@ -299,13 +299,13 @@ http_headers:
                             {% endif %}
                         </div>
                         <div class="feed-content">
-                            {% if article.source == 'TrendRadar' %}
-                                <div class="trend-radar-badge"><i class="fa fa-bolt"></i> 今日全网趋势</div>
+                            {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}
+                                <div class="trend-radar-badge"><i class="fa fa-code-fork"></i> GitHub 开源情报</div>
                             {% endif %}
                             <h3 class="feed-title">{{ article.title }}</h3>
                             <p class="feed-meta">Source: {{ article.source }} &nbsp;|&nbsp; {{ article.date | date: "%Y-%m-%d" }}</p>
                             <p class="feed-summary">
-                                {% if article.source == 'TrendRadar' %}
+                                {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}
                                     {{ article.summary | strip_html | truncate: 300 }}
                                 {% else %}
                                     {{ article.summary | strip_html | truncate: 150 }}
@@ -506,13 +506,13 @@ http_headers:
           var link = this.getAttribute('data-link');
           var cachePath = this.getAttribute('data-cache-path');
           var images = this.getAttribute('data-images').split(',').filter(Boolean);
-          var isTrendRadar = link.startsWith('trend-radar://');
+          var isGitHubIntelligence = link.startsWith('trend-radar://') || link.startsWith('github-intelligence://');
     
           modalTitle.textContent = title;
           
           // --- Content Rendering ---
           // Use marked.parse to render Markdown if available, otherwise plain text
-          if (typeof marked !== 'undefined' && (isTrendRadar || summary.includes('##') || summary.includes('**'))) {
+          if (typeof marked !== 'undefined' && (isGitHubIntelligence || summary.includes('##') || summary.includes('**'))) {
               modalSummary.innerHTML = marked.parse(summary);
               modalSummary.className = 'markdown-body'; // Apply markdown styles
           } else {
@@ -521,9 +521,9 @@ http_headers:
           }
     
           // --- Theme & Button Logic ---
-          if (isTrendRadar) {
+          if (isGitHubIntelligence) {
               modalContent.classList.add('trend-radar-theme');
-              modalReadMoreBtn.style.display = 'none'; // Hide "Read Original" for TrendRadar
+              modalReadMoreBtn.style.display = 'none'; // Hide "Read Original" for GitHubIntelligence
           } else {
               modalContent.classList.remove('trend-radar-theme');
               modalReadMoreBtn.style.display = 'inline-block'; // Show for others

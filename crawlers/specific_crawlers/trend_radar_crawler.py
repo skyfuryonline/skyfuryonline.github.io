@@ -62,9 +62,9 @@ class TrendRadarCrawler(BaseCrawler):
         articles_metadata = []
         articles_metadata.append({
             'title': f"GitHub 开源情报 ({today_date})",
-            'link': unique_link,
+            'link': f"github-intelligence://daily-report/{today_date}",
             'date': today_date,
-            'source': 'TrendRadar',
+            'source': 'GitHubIntelligence',
             'content': aggregated_text,
             'image_urls': [] 
         })

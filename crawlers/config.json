@@ -2,9 +2,7 @@
   "global_settings": {
     "days_to_keep": 15
   },
-  "keywords": [
-    "agent"
-  ],
+  "keywords": [],
   "sites": [
     {
       "parser": "TrendRadarCrawler",
