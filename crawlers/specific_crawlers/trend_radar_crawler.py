@@ -79,9 +79,19 @@ class TrendRadarCrawler(BaseCrawler):
         print("  -> Fetching Zhihu Hot...")
         text = "### 知乎热榜 ###\n"
         try:
-            # Zhihu public API for hot lists - Very stable
+            # Zhihu public API for hot lists
+            # 401 Fix: Add a more complete set of headers to mimic a real browser visit
             url = f"https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit={self.top_k}"
-            resp = requests.get(url, headers=self.headers, timeout=10)
+            headers = self.headers.copy()
+            # Adding generic Accept and Upgrade-Insecure-Requests headers often helps with 401s on public APIs
+            headers.update({
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+                "Cache-Control": "max-age=0",
+                "Upgrade-Insecure-Requests": "1"
+            })
+            
+            resp = requests.get(url, headers=headers, timeout=10)
             if resp.status_code == 200:
                 data = resp.json()
                 for i, item in enumerate(data.get('data', [])[:self.top_k], 1):
@@ -90,7 +100,8 @@ class TrendRadarCrawler(BaseCrawler):
                     excerpt = target.get('excerpt', '').replace('\n', ' ')
                     text += f"{i}. {title}\n   摘要: {excerpt}\n"
             else:
-                text += f"获取失败，状态码: {resp.status_code}\n"
+                text += f"获取失败，状态码: {resp.status_code} (可能需要更新 Cookie)\n"
+                print(f"    - Zhihu Failed: {resp.status_code} - {resp.text[:100]}")
         except Exception as e:
             text += f"获取异常: {e}\n"
         return text + "\n"

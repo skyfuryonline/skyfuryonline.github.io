@@ -132,7 +132,7 @@ async def main():
                             'title': article['title'],
                             'link': article['link'],
                             'date': article['date'],
-                            'source': site['parser'],
+                            'source': article.get('source', site['parser']),
                             'cache_path': article_cache_dir.relative_to(ROOT_DIR).as_posix(),
                             'image_files': image_filenames
                         }

@@ -57,6 +57,6 @@ class BaseCrawler(ABC):
             json.dump(items, f, ensure_ascii=False, indent=4)
 
     @abstractmethod
-    async def crawl(self):
+    async def crawl(self) -> list:
         """Crawl the website and return structured data."""
         pass
