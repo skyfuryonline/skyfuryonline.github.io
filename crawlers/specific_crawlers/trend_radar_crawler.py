@@ -108,10 +108,10 @@ class TrendRadarCrawler(BaseCrawler):
         return text + "---\n\n"
 
     def _fetch_github_trending(self):
-        print("  -> Fetching GitHub Trending...")
-        text = "## 今日热榜 (Trending)\n\n"
+        print("  -> Fetching GitHub Trending (Weekly)...")
+        text = "## 本周热榜 (Weekly Trending)\n\n"
         try:
-            url = "https://github.com/trending"
+            url = "https://github.com/trending?since=weekly"
             resp = requests.get(url, headers={"User-Agent": self.headers["User-Agent"]}, timeout=15)
             
             if resp.status_code == 200:
@@ -121,6 +121,7 @@ class TrendRadarCrawler(BaseCrawler):
                 if not articles:
                      text += "未找到 GitHub Trending 数据。\n"
                 
+                # Fetch top_k items
                 for i, article in enumerate(articles[:self.top_k], 1):
                     h2 = article.find('h2', class_='h3 lh-condensed')
                     repo_name = h2.text.strip().replace(' ', '').replace('\n', '') if h2 else 'Unknown'

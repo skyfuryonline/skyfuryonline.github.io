@@ -523,10 +523,16 @@ http_headers:
           // --- Theme & Button Logic ---
           if (isGitHubIntelligence) {
               modalContent.classList.add('trend-radar-theme');
-              modalReadMoreBtn.style.display = 'none'; // Hide "Read Original" for GitHubIntelligence
+              // REMOVE the button completely from DOM flow to avoid layout issues, or use display: none
+              // Using display: none is standard for toggling visibility
+              modalReadMoreBtn.style.display = 'none'; 
+              
+              // Double check visibility in case of CSS overrides
+              modalReadMoreBtn.setAttribute('hidden', 'true');
           } else {
               modalContent.classList.remove('trend-radar-theme');
-              modalReadMoreBtn.style.display = 'inline-block'; // Show for others
+              modalReadMoreBtn.style.display = 'inline-block';
+              modalReadMoreBtn.removeAttribute('hidden');
               modalReadMoreBtn.href = link;
           }
     

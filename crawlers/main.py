@@ -161,14 +161,37 @@ async def main():
 
                         for i, summary_result in enumerate(summaries):
                             if summary_result == "[QUOTA_EXHAUSTED]" or "quota" in str(summary_result).lower() or "balance" in str(summary_result).lower():
-                                articles_for_summary[i]['summary'] = "⚠️ AI 摘要生成失败：API 额度已耗尽。请补充额度后重试。"
                                 print(f"  - Quota exhausted for: {articles_for_summary[i]['title']}")
-                                # 从 existing_urls 移除，以便下次重新抓取和生成摘要
-                                if articles_for_summary[i]['link'] in existing_urls:
-                                    existing_urls.remove(articles_for_summary[i]['link'])
+                                
+                                # Special handling for GitHubIntelligence (Weekly Report)
+                                if articles_for_summary[i].get('source') == 'GitHubIntelligence':
+                                     print("    -> Skipping saving this GitHub Intelligence report to avoid incomplete data.")
+                                     # Mark for removal
+                                     articles_for_summary[i]['_skip'] = True
+                                else:
+                                     articles_for_summary[i]['summary'] = "⚠️ AI 摘要生成失败：API 额度已耗尽。请补充额度后重试。"
+                                     # Remove from existing_urls so it can be retried next time
+                                     if articles_for_summary[i]['link'] in existing_urls:
+                                         existing_urls.remove(articles_for_summary[i]['link'])
                             else:
                                 articles_for_summary[i]['summary'] = summary_result
                                 print(f"  - Summarized: {articles_for_summary[i]['title']}")
+
+                        # Remove skipped items from all_articles_metadata
+                        # Since articles_for_summary items are NOT references to all_articles_metadata items (they are copies/dicts created in loop)
+                        # We need to filter based on link/title matching or just rebuild all_articles_metadata
+                        # Actually, let's look at how they were added:
+                        # all_articles_metadata.append(article_meta) -> article_meta was a dict
+                        # articles_for_summary.append(article_meta) -> same dict reference!
+                        # So modifying articles_for_summary[i] DOES modify the dict in all_articles_metadata.
+                        
+                        # Filter out items marked with _skip
+                        if any(a.get('_skip') for a in articles_for_summary):
+                            all_articles_metadata = [a for a in all_articles_metadata if not a.get('_skip')]
+                            # Also remove from existing_urls to allow retry
+                            for a in articles_for_summary:
+                                if a.get('_skip') and a['link'] in existing_urls:
+                                    existing_urls.remove(a['link'])
 
                 except Exception as e:
                     print(f"Error running crawler for {site['parser']}: {e}")
