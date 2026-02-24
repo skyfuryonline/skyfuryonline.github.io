@@ -2,7 +2,7 @@ name: Generate Weekly Gwy Report
 
 on:
   schedule:
-    - cron: '0 15 * * 1' # Runs at 15:00 UTC on Monday (23:00 Beijing Time)
+    - cron: '0 20 * * 0' # Runs at 20:00 UTC on Sunday (04:00 Beijing Time on Monday)
   workflow_dispatch: # Allows manual triggering
 
 permissions:

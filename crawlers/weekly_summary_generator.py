@@ -70,14 +70,18 @@ def get_week_data(start_of_week, end_of_week):
 
 def get_this_week_data():
     """收集本周的学习数据和日记内容"""
-    today = datetime.now()
+    # 修正：使用北京时间，确保在周一凌晨运行（UTC周日）时，日期判定为周一
+    beijing_tz = timedelta(hours=8)
+    today = datetime.now() + beijing_tz
     start_of_week = today - timedelta(days=today.weekday())
     end_of_week = start_of_week + timedelta(days=6)
     return get_week_data(start_of_week, end_of_week)
 
 def get_last_week_data():
     """收集上周的学习数据和日记内容"""
-    today = datetime.now()
+    # 修正：使用北京时间
+    beijing_tz = timedelta(hours=8)
+    today = datetime.now() + beijing_tz
     start_of_this_week = today - timedelta(days=today.weekday())
     start_of_last_week = start_of_this_week - timedelta(days=7)
     end_of_last_week = start_of_last_week + timedelta(days=6)
@@ -85,7 +89,9 @@ def get_last_week_data():
 
 def get_week_before_last_data():
     """收集上上周的学习数据和日记内容"""
-    today = datetime.now()
+    # 修正：使用北京时间
+    beijing_tz = timedelta(hours=8)
+    today = datetime.now() + beijing_tz
     start_of_this_week = today - timedelta(days=today.weekday())
     start_of_last_week = start_of_this_week - timedelta(days=7)
     start_of_week_before_last = start_of_last_week - timedelta(days=7)
@@ -191,7 +197,8 @@ if __name__ == "__main__":
         report_content = get_llm_summary(llm_prompt)
         
         # 计算报告周（上一周）的开始日期，并传给 save_report
-        today = datetime.now()
+        beijing_tz = timedelta(hours=8)
+        today = datetime.now() + beijing_tz
         start_of_this_week = today - timedelta(days=today.weekday())
         start_of_last_week = start_of_this_week - timedelta(days=7)
         

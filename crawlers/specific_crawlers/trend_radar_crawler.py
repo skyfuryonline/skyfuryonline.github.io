@@ -37,14 +37,21 @@ class TrendRadarCrawler(BaseCrawler):
 
     async def crawl(self):
         beijing_tz = timezone(timedelta(hours=8))
-        today_date = datetime.now(beijing_tz).strftime("%Y-%m-%d")
-        unique_link = f"trend-radar://github-report/{today_date}"
+        now = datetime.now(beijing_tz)
+        
+        # Calculate this week's Monday
+        # weekday(): Monday is 0, Sunday is 6
+        monday_date_obj = now - timedelta(days=now.weekday())
+        monday_date = monday_date_obj.strftime("%Y-%m-%d")
+        
+        # Use a consistent unique link anchored to Monday
+        unique_link = f"github-intelligence://daily-report/{monday_date}"
 
         if unique_link in self.existing_urls:
-            print(f"  - GitHub Intelligence Report for {today_date} already exists, skipping.")
+            print(f"  - GitHub Intelligence Report for week of {monday_date} already exists, skipping.")
             return []
 
-        print(f"Generating GitHub Intelligence Report for {today_date}...")
+        print(f"Generating GitHub Intelligence Report for week of {monday_date}...")
         
         aggregated_text = f"# GitHub 开源情报简报 ({self._get_beijing_time_str()})\n\n"
 
@@ -55,15 +62,15 @@ class TrendRadarCrawler(BaseCrawler):
                 aggregated_text += self._search_github_keyword(keyword)
         else:
             print(f"  - Mode: Trending (No keywords configured)")
-            aggregated_text += "> 来源：GitHub Trending (Today)\n\n"
+            aggregated_text += "> 来源：GitHub Trending (Weekly)\n\n"
             aggregated_text += self._fetch_github_trending()
 
         # Compile metadata
         articles_metadata = []
         articles_metadata.append({
-            'title': f"GitHub 开源情报 ({today_date})",
-            'link': f"github-intelligence://daily-report/{today_date}",
-            'date': today_date,
+            'title': f"GitHub 开源情报 ({monday_date})",
+            'link': unique_link,
+            'date': monday_date, # Force date to Monday to group properly
             'source': 'GitHubIntelligence',
             'content': aggregated_text,
             'image_urls': [] 
