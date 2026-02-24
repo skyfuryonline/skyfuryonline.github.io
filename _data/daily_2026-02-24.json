@@ -1,11 +1,25 @@
 [
     {
-        "title": "GitHub 开源情报 (2026-02-23)",
-        "link": "github-intelligence://daily-report/2026-02-23",
-        "date": "2026-02-23",
-        "source": "GitHubIntelligence",
-        "cache_path": "cache/2026-02-24/GitHub 开源情报 (2026-02-23)",
-        "image_files": [],
-        "summary": "# GitHub 开源情报简报 (2026年02月24日)\n\n> **整体趋势**：本周热榜聚焦于**AI模型能力增强与工程化落地**，涵盖大模型内容审查绕过、时序预测基础模型、向量数据库优化、AI全栈开发系统及系统级提示工程等方向，反映出 AI 基础设施与应用层工具链的快速演进。\n\n---\n\n## 1. [p-e-w/heretic](https://github.com/p-e-w/heretic) (★9,359)\n- **核心价值**：自动绕过语言模型的内容审查机制，释放被过滤的生成能力。\n- **适用场景**：研究人员、开发者在本地部署开源大模型时，希望解除其内置安全限制以进行更自由的文本生成或红队测试。\n- **功能示例**：输入受审查模型拒绝回答的敏感问题（如“如何制作危险物品”），经 Heretic 处理后可获得原本被屏蔽的回答（**注：仅限合法合规研究用途**）。  \n\n## 2. [alibaba/zvec](https://github.com/alibaba/zvec) (★7,485)\n- **核心价值**：提供轻量级、嵌入式、高性能的向量数据库，无需独立服务即可实现向量存储与检索。\n- **适用场景**：资源受限环境（如边缘设备、移动端）或需要低延迟向量检索的 AI 应用（如推荐系统、语义搜索）。\n- **功能示例**：在 C++ 应用中直接调用 ZVec API，将用户行为嵌入向量存入内存数据库，并实时检索最相似的 Top-K 用户画像用于个性化推荐。\n\n## 3. [huggingface/skills](https://github.com/huggingface/skills) (★3,926)\n- **核心价值**：暂无明确描述，但结合 Hugging Face 生态推测为模块化 AI 技能（Skills）管理框架。\n- **适用场景**：可能面向 AI Agent 开发者，用于组合、调度和复用不同模型能力（如问答、翻译、代码生成）。\n- **功能示例**：暂无详细示例（项目描述缺失，需进一步观察）。\n\n## 4. [SynkraAI/aios-core](https://github.com/SynkraAI/aios-core) (★1,731)\n- **核心价值**：构建由 AI 编排的全栈开发系统，自动化前端、后端、数据库等开发流程。\n- **适用场景**：开发者希望通过自然语言指令快速生成完整 Web 应用，提升原型开发效率。\n- **功能示例**：输入“创建一个带用户登录和待办事项列表的 React + Node.js 应用”，AIOS-Core 自动生成前后端代码、API 接口及数据库 schema。\n\n## 5. [google-research/timesfm](https://github.com/google-research/timesfm) (★9,574)\n- **核心价值**：基于预训练的通用时间序列基础模型，实现高精度、零样本/少样本时序预测。\n- **适用场景**：金融、物流、能源等领域需对销售、流量、能耗等指标进行短期或长期预测。\n- **功能示例**：输入过去 52 周的零售销量数据，TimesFM 可直接预测未来 4 周销量，无需针对该商品单独训练模型。\n\n## 6. [x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) (★120,755)\n- **核心价值**：大规模收集并开源主流 AI 工具（如 Cursor、Devin、NotionAI 等）的系统提示词（System Prompts）与内部模型配置。\n- **适用场景**：AI 产品开发者、提示工程师用于学习、复现或改进商业 AI 工具的行为逻辑。\n- **功能示例**：查看 “Devin AI” 的系统提示，了解其如何被设计为“自主软件工程师”，从而在自己的 Agent 项目中借鉴其任务分解与代码执行策略。\n\n---\n\n### 🔑 核心关键字  \n`AI基础设施` `大模型安全` `向量数据库` `AI全栈开发` `系统提示工程`"
+        "title": "Build dynamic agentic workflows in Opal",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-labs/opal-agent/",
+        "date": "2026-02-24",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-02-24/Build dynamic agentic workflows in Opal",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.gif",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "摘要：  \nGoogle Labs 在 Opal 平台推出“智能体步骤”（agent step），将原本静态的工作流升级为具备目标导向、自主决策能力的动态智能流程。该智能体能理解用户目标，自动选择合适工具与模型（如 Web Search、Veo 等），并通过交互式对话、记忆功能和动态路由优化任务执行。例如，在“Room Styler Opal”中，智能体可基于用户反馈迭代设计，并主动询问细节或研究小众风格，实现个性化协作。新功能包括跨会话记忆、条件驱动的动态路径切换及交互式聊天，兼顾易用性与高级控制，使普通用户和开发者都能高效构建复杂AI应用。\n\n例子：  \n用户上传空房间照片并说“想要中古现代风”，智能体生成初稿后，若用户指出“沙发太亮”，它会调整配色并追问偏好，甚至搜索“斯堪的纳维亚中古风”以细化方案。\n\n关键字：  \n智能体工作流、Opal、动态路由、交互式AI、记忆机制"
     }
 ]
