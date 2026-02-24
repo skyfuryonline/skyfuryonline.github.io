@@ -1,0 +1,31 @@
+# GitHub 开源情报简报 (2026年02月24日)
+
+> 来源：GitHub Trending (Weekly)
+
+## 本周热榜 (Weekly Trending)
+
+1. **[p-e-w/heretic](https://github.com/p-e-w/heretic)** (★9,359)
+   - 语言: Python
+   - 简介: Fully automatic censorship removal for language models
+
+2. **[alibaba/zvec](https://github.com/alibaba/zvec)** (★7,485)
+   - 语言: C++
+   - 简介: A lightweight, lightning-fast, in-process vector database
+
+3. **[huggingface/skills](https://github.com/huggingface/skills)** (★3,926)
+   - 语言: Python
+   - 简介: 暂无描述
+
+4. **[SynkraAI/aios-core](https://github.com/SynkraAI/aios-core)** (★1,731)
+   - 语言: JavaScript
+   - 简介: Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0
+
+5. **[google-research/timesfm](https://github.com/google-research/timesfm)** (★9,574)
+   - 语言: Python
+   - 简介: TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.
+
+6. **[x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)** (★120,755)
+   - 语言: Unknown
+   - 简介: FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models
+
+
