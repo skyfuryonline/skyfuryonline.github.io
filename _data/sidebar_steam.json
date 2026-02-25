@@ -1,0 +1,82 @@
+[
+    {
+        "title": "Resident Evil Requiem",
+        "link": "https://store.steampowered.com/app/3764200/Resident_Evil_Requiem/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1769125588",
+        "price": "¥ 348.00",
+        "discount": "",
+        "rank": 1
+    },
+    {
+        "title": "Counter-Strike 2",
+        "link": "https://store.steampowered.com/app/730/CounterStrike_2/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/capsule_231x87_schinese.jpg?t=1749053861",
+        "price": "Free",
+        "discount": "",
+        "rank": 2
+    },
+    {
+        "title": "Apex Legends™",
+        "link": "https://store.steampowered.com/app/1172470/Apex_Legends/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/b2163cc2e8d366e26d8d463d178d86690d9a402e/capsule_231x87.jpg?t=1770753360",
+        "price": "Free",
+        "discount": "",
+        "rank": 3
+    },
+    {
+        "title": "方舟: 生存飞升",
+        "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1766710980",
+        "price": "¥ 62.00",
+        "discount": "",
+        "rank": 4
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS",
+        "link": "https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/578080/14f42ab797699a9c9f137fda66582d8776da4330/capsule_231x87.jpg?t=1764817633",
+        "price": "Free",
+        "discount": "",
+        "rank": 5
+    },
+    {
+        "title": "三角洲行动",
+        "link": "https://store.steampowered.com/app/2507950/_/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2507950/782cc3663b992d719017b8a7ea0bafd68e2e4dfb/capsule_231x87_alt_assets_9_schinese.jpg?t=1771066101",
+        "price": "Free",
+        "discount": "",
+        "rank": 6
+    },
+    {
+        "title": "Climber Animals: Together",
+        "link": "https://store.steampowered.com/app/2744880/Climber_Animals_Together/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2744880/4f2efd12c5ddf2da023a4aae2be92421c5c54132/capsule_231x87.jpg?t=1771951869",
+        "price": "¥ 18.00",
+        "discount": "",
+        "rank": 7
+    },
+    {
+        "title": "双人成行",
+        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1763484491",
+        "price": "¥ 39.60",
+        "discount": "",
+        "rank": 8
+    },
+    {
+        "title": "It Takes Two Friend's Pass",
+        "link": "https://store.steampowered.com/app/2995920/It_Takes_Two_Friends_Pass/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2995920/capsule_231x87.jpg?t=1733241802",
+        "price": "",
+        "discount": "",
+        "rank": 9
+    },
+    {
+        "title": "天国：拯救2",
+        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_7000_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1769507535",
+        "price": "¥ 114.00",
+        "discount": "",
+        "rank": 10
+    }
+]
