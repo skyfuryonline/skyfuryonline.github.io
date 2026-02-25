@@ -38,23 +38,39 @@ http_headers:
 <style>
 /* ---------------- Sidebar Styles ---------------- */
 #sidebar {
-  position: fixed;
-  top: 260px; /* 调整以适应头部高度（桌面版内边距110px + 内容约110px + 20px间距） */
-  bottom: 40px; /* 距离页面底部40px */
+  position: absolute; /* 改为 absolute，随页面滚动 */
+  top: 100px; /* 调整顶部距离，因为它现在是相对于页面内容定位 */
   left: 30px;
   width: 240px;
-  max-height: calc(100vh - 260px); /* 限制最大高度，留出更多顶部空间 */
-  overflow-y: auto; /* 明确使用 overflow-y */
-  background: rgba(255, 255, 255, 0.7);
+  /* max-height 不需要限制得那么死，因为它可以随页面延伸 */
+  background: rgba(255, 255, 255, 0.85); /* 稍微增加不透明度，减少背景杂乱带来的视觉干扰 */
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 20px 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 9999; /* 提高 z-index 确保不被覆盖 */
-  transform: translateZ(0); /* 尝试触发 GPU 加速以修复某些渲染问题 */
+  z-index: 100; /* 不需要太高，避免遮挡弹窗 */
+}
+
+/* 在大屏幕下，为了防止它盖住文章，我们可以给 daily-container 加一个左边距，或者让 sidebar 在左侧留白处 */
+@media (min-width: 1200px) {
+    /* 如果屏幕足够宽，我们可以尝试让文章列表稍微往右一点，给左侧 sidebar 腾出空间 
+       但目前 daily-container 是居中的。
+       如果 sidebar 是 absolute，它可能会盖住内容。
+       为了安全起见，我们先看看效果。如果遮挡了内容，我们需要调整布局结构。
+    */
+}
+
+/* 针对移动端，通常 absolute 会占用宝贵空间，可以隐藏或改为静态流 */
+@media (max-width: 767px) {
+  #sidebar {
+    position: static; /* 移动端变为普通流，放在最上面 */
+    width: 100%;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.5);
+  }
 }
 #sidebar h3 {
   font-size: 1.1em;
