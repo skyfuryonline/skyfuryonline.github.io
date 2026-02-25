@@ -38,32 +38,23 @@ http_headers:
 <style>
 /* ---------------- Sidebar Styles ---------------- */
 #sidebar {
-  position: fixed; /* 恢复为 fixed，确保悬浮在视窗中 */
-  top: 50%; /* 垂直居中 */
-  transform: translateY(-50%); /* 修正偏移 */
+  position: fixed;
+  top: 260px; /* 调整以适应头部高度（桌面版内边距110px + 内容约110px + 20px间距） */
+  bottom: 40px; /* 距离页面底部40px */
   left: 30px;
   width: 240px;
-  max-height: 80vh; 
-  overflow-y: auto; 
-  background: rgba(255, 255, 255, 0.7); /* 保持一定的通透感 */
+  max-height: calc(100vh - 260px); /* 限制最大高度，留出更多顶部空间 */
+  overflow-y: auto; /* 明确使用 overflow-y */
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 20px 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 100;
-  
-  /* 添加过渡动画 */
-  transition: opacity 0.3s ease;
-  opacity: 1;
-}
-
-/* 滚动时隐藏的样式 */
-#sidebar.is-scrolling {
-  opacity: 0;
-  pointer-events: none; /* 防止误触 */
+  z-index: 9999;
+  transform: translateZ(0); /* 尝试触发 GPU 加速以修复某些渲染问题 */
 }
 
 /* 移动端逻辑保持不变 */
@@ -74,7 +65,6 @@ http_headers:
     width: 100%;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, 0.5);
-    opacity: 1 !important; /* 移动端不隐藏 */
   }
 }
 #sidebar h3 {
@@ -538,28 +528,6 @@ http_headers:
         }
     </style>
     <script>
-    // -------- 滚动时隐藏左侧栏逻辑 --------
-    var isScrolling;
-    var sidebar = document.getElementById('sidebar');
-
-    window.addEventListener('scroll', function ( event ) {
-        // 仅在桌面端（fixed定位时）启用此逻辑
-        // 通过检测 getComputedStyle 的 position 属性来判断
-        if (window.getComputedStyle(sidebar).position === 'fixed') {
-            // 滚动开始：添加隐藏类
-            sidebar.classList.add('is-scrolling');
-
-            // 清除之前的定时器
-            window.clearTimeout( isScrolling );
-
-            // 设置新定时器：如果 250ms 后没滚动，就认为是停住了
-            isScrolling = setTimeout(function() {
-                // 停止后：移除隐藏类，显示出来
-                sidebar.classList.remove('is-scrolling');
-            }, 250);
-        }
-    }, false);
-    
     // -------- Daily Modal Logic --------
     document.addEventListener('DOMContentLoaded', function () {
       var cards = document.querySelectorAll('.daily-article-card');
