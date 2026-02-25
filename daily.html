@@ -279,16 +279,7 @@ http_headers:
 {% assign daily_file_names = daily_file_names | sort | reverse %}
 
 <!-- 1. Find the latest GitHub Intelligence article to pin -->
-{% assign pinned_article = nil %}
-{% for file_name in daily_file_names %}
-    {% if pinned_article != nil %}{% continue %}{% endif %}
-    {% assign articles = site.data[file_name] %}
-    {% for article in articles %}
-        {% if article.source == 'GitHubIntelligence' or article.source == 'TrendRadar' %}
-            {% assign pinned_article = article %}
-        {% endif %}
-    {% endfor %}
-{% endfor %}
+{% assign pinned_article = site.data.github_intelligence[0] %}
 
 <!-- 2. Render Pinned Article (if exists) -->
 {% if pinned_article %}
@@ -326,21 +317,11 @@ http_headers:
         {% assign file_date_str = file_name | remove: "daily_" %}
         {% assign articles = site.data[file_name] %}
         
-        <!-- Filter out the pinned article from the list -->
-        {% assign visible_articles = "" | split: "" %}
-        {% for article in articles %}
-            {% if pinned_article and article.link == pinned_article.link %}
-                <!-- Skip pinned article -->
-            {% else %}
-                {% assign visible_articles = visible_articles | push: article %}
-            {% endif %}
-        {% endfor %}
-        
-        <!-- Only render date header if there are visible articles -->
-        {% if visible_articles.size > 0 %}
+        <!-- Only render date header if there are articles -->
+        {% if articles.size > 0 %}
             <h2 class="date-header">{{ file_date_str }}</h2>
             <div class="daily-container">
-                {% for article in visible_articles %}
+                {% for article in articles %}
                     <div class="feed-item daily-article-card"
                          data-title="{{ article.title | escape }}"
                          data-summary="{{ article.summary | escape }}"

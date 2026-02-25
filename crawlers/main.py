@@ -196,11 +196,23 @@ async def main():
                 except Exception as e:
                     print(f"Error running crawler for {site['parser']}: {e}")
 
-        if all_articles_metadata:
+        # Separate GitHub Intelligence reports
+        github_intelligence_items = [item for item in all_articles_metadata if item.get('source') == 'GitHubIntelligence']
+        daily_items = [item for item in all_articles_metadata if item.get('source') != 'GitHubIntelligence']
+
+        # Save GitHub Intelligence report to a dedicated file
+        if github_intelligence_items:
+            # Overwrite the dedicated file with the latest report(s)
+            github_intelligence_file = data_dir / "github_intelligence.json"
+            with open(github_intelligence_file, 'w', encoding='utf-8') as f:
+                json.dump(github_intelligence_items, f, ensure_ascii=False, indent=4)
+            print(f"Successfully saved GitHub Intelligence report to {github_intelligence_file}")
+
+        if daily_items:
             with open(todays_data_file, 'w', encoding='utf-8') as f:
-                json.dump(all_articles_metadata, f, ensure_ascii=False, indent=4)
+                json.dump(daily_items, f, ensure_ascii=False, indent=4)
             print(f"Successfully saved today's metadata to {todays_data_file}")
-        else:
+        elif not github_intelligence_items:
             print("No new articles found to save.")
 
         cleanup_old_data(cache_dir, data_dir, days_to_keep=days_to_keep)
@@ -214,6 +226,8 @@ def load_existing_urls(data_dir, days_to_keep):
     existing_urls = set()
     summarized_urls = set()
     if not os.path.exists(data_dir): return existing_urls, summarized_urls
+    
+    # Load from daily_*.json files
     for item in os.listdir(data_dir):
         if item.startswith("daily_") and item.endswith(".json"):
             try:
@@ -229,6 +243,22 @@ def load_existing_urls(data_dir, days_to_keep):
                             summarized_urls.add(article['link'])
             except (ValueError, json.JSONDecodeError):
                 continue
+
+    # Load from github_intelligence.json
+    gh_intel_path = os.path.join(data_dir, "github_intelligence.json")
+    if os.path.exists(gh_intel_path):
+        try:
+            with open(gh_intel_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                # Ensure data is a list
+                if isinstance(data, list):
+                    for article in data:
+                        existing_urls.add(article['link'])
+                        # Assume if it exists here, it's "summarized" or complete enough
+                        summarized_urls.add(article['link'])
+        except (ValueError, json.JSONDecodeError):
+            print(f"Warning: Failed to load existing GitHub Intelligence data from {gh_intel_path}")
+
     return existing_urls, summarized_urls
 
 def cleanup_old_data(cache_dir, data_dir, days_to_keep):
