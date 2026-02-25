@@ -1,0 +1,31 @@
+# GitHub 开源情报简报 (2026年02月25日)
+
+> 来源：GitHub Trending (Weekly)
+
+## 本周热榜 (Weekly Trending)
+
+1. **[x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)** (★123,091)
+   - 语言: Unknown
+   - 简介: 暂无描述
+
+2. **[huggingface/skills](https://github.com/huggingface/skills)** (★5,348)
+   - 语言: Python
+   - 简介: 暂无描述
+
+3. **[google-research/timesfm](https://github.com/google-research/timesfm)** (★9,676)
+   - 语言: Python
+   - 简介: 暂无描述
+
+4. **[alibaba/zvec](https://github.com/alibaba/zvec)** (★7,733)
+   - 语言: C++
+   - 简介: 暂无描述
+
+5. **[p-e-w/heretic](https://github.com/p-e-w/heretic)** (★9,551)
+   - 语言: Python
+   - 简介: 暂无描述
+
+6. **[SynkraAI/aios-core](https://github.com/SynkraAI/aios-core)** (★1,786)
+   - 语言: JavaScript
+   - 简介: 暂无描述
+
+
