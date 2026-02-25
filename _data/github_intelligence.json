@@ -1,0 +1,11 @@
+[
+    {
+        "title": "GitHub 开源情报 (2026-02-23)",
+        "link": "github-intelligence://daily-report/2026-02-23",
+        "date": "2026-02-23",
+        "source": "GitHubIntelligence",
+        "cache_path": "cache/2026-02-25/GitHub 开源情报 (2026-02-23)",
+        "image_files": [],
+        "summary": "# GitHub 开源情报简报 (2026年02月25日)\n\n> 来源：GitHub Trending (Weekly)\n\n## 情报概览  \n本周热榜项目集中体现了 **AI 工具链生态的快速演进**，涵盖大模型技能调度、系统提示工程、时序预测、向量计算、智能体框架及流媒体平台，反映出 AI 基础设施与应用层同步爆发的趋势。\n\n---\n\n## 本周热榜项目深度解析\n\n- **[huggingface/skills](https://github.com/huggingface/skills)** (★6,120)  \n  - **核心价值**：为 Hugging Face 生态提供模块化“技能”（skills）机制，使 AI 模型能动态调用外部工具或执行特定任务。  \n  - **适用场景**：适用于构建具备工具调用能力的智能体（Agent），如客服机器人、自动化助手等。  \n  - **功能示例**：暂无详细示例（项目描述缺失，但结合 Hugging Face 近期方向，可能支持如“调用天气 API 回答用户问题”等技能注册与调度）。\n\n- **[x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)** (★123,715)  \n  - **核心价值**：汇总主流 AI 工具（如 Copilot、Claude、Gemini 等）的系统提示（system prompts）与模型行为配置，揭示其底层指令设计逻辑。  \n  - **适用场景**：适合 AI 研究者、提示工程师或产品开发者，用于逆向学习或复现商业 AI 工具的行为模式。  \n  - **功能示例**：输入某款 AI 写作助手的名称，可获取其系统级提示模板，用于本地 LLM 微调以模仿其风格。\n\n- **[google-research/timesfm](https://github.com/google-research/timesfm)** (★9,726)  \n  - **核心价值**：Google 推出的基于 Transformer 的通用时间序列预测模型（Time Series Foundation Model），支持零样本（zero-shot）预测。  \n  - **适用场景**：适用于金融、物流、能源等领域的时间序列分析，无需针对每个任务重新训练模型。  \n  - **功能示例**：输入过去 30 天的销售数据，TimesFM 可直接预测未来 7 天销量，无需额外训练。\n\n- **[alibaba/zvec](https://github.com/alibaba/zvec)** (★7,840)  \n  - **核心价值**：阿里开源的高性能向量计算库，专注于低延迟、高吞吐的向量相似度搜索与运算，可能用于推荐系统或大模型推理加速。  \n  - **适用场景**：适用于需要大规模向量检索的场景，如语义搜索、个性化推荐、RAG（检索增强生成）等。  \n  - **功能示例**：暂无详细示例（项目描述缺失，但基于 C++ 实现和阿里背景，推测可用于在亿级向量库中毫秒级查找最近邻）。\n\n- **[cloudflare/agents](https://github.com/cloudflare/agents)** (★4,215)  \n  - **核心价值**：Cloudflare 推出的轻量级智能体（Agent）运行时框架，旨在在边缘网络中安全、高效地执行 AI 代理任务。  \n  - **适用场景**：适合构建分布式、低延迟的 AI 应用，如边缘设备上的实时决策、自动化运维等。  \n  - **功能示例**：暂无详细示例（项目描述缺失，但结合 Cloudflare Workers 生态，可能支持在 CDN 节点上运行小型 AI 代理处理用户请求）。\n\n- **[Stremio/stremio-web](https://github.com/Stremio/stremio-web)** (★10,104)  \n  - **核心价值**：开源的流媒体聚合平台 Web 版本，支持整合多个视频源（如 Torrent、官方 API）并提供统一播放界面。  \n  - **适用场景**：适用于个人用户或社区搭建去中心化的影视内容聚合服务。  \n  - **功能示例**：用户搜索《星际穿越》，Stremio 自动从多个插件源（如 YouTube、P2P 网络）聚合播放链接并在网页端播放。\n\n---\n\n## 核心关键字  \n`AI Agent` `系统提示工程` `时间序列预测` `向量计算` `边缘智能`"
+    }
+]
