@@ -9,7 +9,9 @@
       "url": "trend-radar",
       "top_k": 6,
       "llm_profile": "trend_radar_summary",
-      "enabled": true
+      "enabled": true,
+      "is_widget": true,
+      "output_file": "github_intelligence.json"
     },
     {
       "parser": "GoogleDevBlogCrawler",

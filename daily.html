@@ -277,6 +277,47 @@ http_headers:
     {% endif %}
 {% endfor %}
 {% assign daily_file_names = daily_file_names | sort | reverse %}
+
+<!-- GitHub Intelligence Weekly Report (Pinned) -->
+{% assign gh_intel = site.data.github_intelligence %}
+{% if gh_intel and gh_intel.size > 0 %}
+    {% assign latest_report = gh_intel[0] %}
+    {% assign current_time = "now" | date: "%s" %}
+    {% assign report_time = latest_report.date | date: "%s" %}
+    {% assign diff_seconds = current_time | minus: report_time %}
+    {% assign diff_days = diff_seconds | divided_by: 86400 %}
+    
+    <!-- Only display if the report is within the last 7 days -->
+    {% if diff_days <= 7 %}
+    <div class="daily-container" style="margin-bottom: 40px;">
+        <h2 class="date-header" style="font-size: 1.5rem; color: #e74c3c; margin-bottom: 15px;">🔥 本周开源情报 ({{ latest_report.date }})</h2>
+        <div class="feed-item daily-article-card github-intelligence-card"
+             data-title="{{ latest_report.title | escape }}"
+             data-summary="{{ latest_report.summary | escape }}"
+             data-link="{{ latest_report.link }}"
+             data-cache-path="{{ latest_report.cache_path }}"
+             data-images='{{ latest_report.image_files | join: "," }}'
+             style="border: 2px solid #e74c3c; transform: scale(1.02); box-shadow: 0 8px 25px rgba(231, 76, 60, 0.15);">
+            <div class="feed-image">
+                {% if latest_report.image_files and latest_report.image_files.size > 0 %}
+                    <img src="{{ site.baseurl }}/{{ latest_report.cache_path }}/{{ latest_report.image_files[0] }}" alt="Cover">
+                {% else %}
+                    <div class="feed-placeholder"><i class="fa fa-code-fork" aria-hidden="true"></i></div>
+                {% endif %}
+            </div>
+            <div class="feed-content">
+                <div class="trend-radar-badge"><i class="fa fa-thumb-tack"></i> 置顶推荐</div>
+                <h3 class="feed-title">{{ latest_report.title }}</h3>
+                <p class="feed-meta">Source: {{ latest_report.source }} &nbsp;|&nbsp; {{ latest_report.date | date: "%Y-%m-%d" }}</p>
+                <p class="feed-summary">
+                    {{ latest_report.summary | strip_html | truncate: 300 }}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+
 {% if daily_file_names.size > 0 %}
     {% for file_name in daily_file_names %}
         {% assign file_date_str = file_name | remove: "daily_" %}

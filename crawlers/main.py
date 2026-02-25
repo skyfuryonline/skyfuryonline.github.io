@@ -214,48 +214,11 @@ async def main():
                 except Exception as e:
                     print(f"Error running crawler for {site['parser']}: {e}")
 
-        # Separate GitHub Intelligence reports
-        github_intelligence_items = [item for item in all_articles_metadata if item.get('source') == 'GitHubIntelligence']
-        daily_items = [item for item in all_articles_metadata if item.get('source') != 'GitHubIntelligence']
-
-        # Save GitHub Intelligence report to a dedicated file (Append/Merge mode)
-        # Even if github_intelligence_items is empty, we might have existing data to write back
-        # Combine new items (front) with existing items (back)
-        # Avoid duplicates based on link
-        if github_intelligence_items or existing_github_intelligence_data:
-            # Create a dict for easy deduplication, preferring new items
-            combined_data_map = {}
-            # First add existing items
-            for item in existing_github_intelligence_data:
-                combined_data_map[item['link']] = item
-            # Then overwrite with new items
-            for item in github_intelligence_items:
-                combined_data_map[item['link']] = item
-            
-            # Convert back to list and sort/order? 
-            # We want new items at the top. Since dicts preserve insertion order (mostly), 
-            # let's explicitly reconstruct the list: new items + (old items - new items)
-            final_gh_list = []
-            final_gh_list.extend(github_intelligence_items)
-            
-            existing_links_set = set(item['link'] for item in github_intelligence_items)
-            for item in existing_github_intelligence_data:
-                if item['link'] not in existing_links_set:
-                    final_gh_list.append(item)
-            
-            # Limit list size if needed? Maybe keep last 10 reports?
-            # final_gh_list = final_gh_list[:10] 
-
-            github_intelligence_file = data_dir / "github_intelligence.json"
-            with open(github_intelligence_file, 'w', encoding='utf-8') as f:
-                json.dump(final_gh_list, f, ensure_ascii=False, indent=4)
-            print(f"Successfully saved GitHub Intelligence report to {github_intelligence_file} (Total: {len(final_gh_list)})")
-
-        if daily_items:
+        if all_articles_metadata:
             with open(todays_data_file, 'w', encoding='utf-8') as f:
-                json.dump(daily_items, f, ensure_ascii=False, indent=4)
+                json.dump(all_articles_metadata, f, ensure_ascii=False, indent=4)
             print(f"Successfully saved today's metadata to {todays_data_file}")
-        elif not github_intelligence_items:
+        else:
             print("No new articles found to save.")
 
         cleanup_old_data(cache_dir, data_dir, days_to_keep=days_to_keep)

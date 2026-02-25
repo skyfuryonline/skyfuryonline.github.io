@@ -2,10 +2,13 @@
 
 import json
 import requests
+import asyncio
 from datetime import datetime, timezone, timedelta
 from urllib.parse import quote
 from bs4 import BeautifulSoup
 from crawlers.base_crawler import BaseCrawler
+from pathlib import Path
+from llm.summarizer import get_summary
 
 class TrendRadarCrawler(BaseCrawler):
     """
@@ -22,14 +25,24 @@ class TrendRadarCrawler(BaseCrawler):
             "Accept": "application/vnd.github.v3+json"
         }
         
-        # Load keywords from config
+        # Load keywords and LLM profile from config
+        self.keywords = []
+        self.llm_model = ""
+        self.llm_prompt = ""
+        
         try:
-            with open(self.cache_dir.parent.parent / "crawlers" / "config.json", 'r', encoding='utf-8') as f:
+            config_path = Path(__file__).resolve().parents[2] / "crawlers" / "config.json"
+            with open(config_path, 'r', encoding='utf-8') as f:
                 config_data = json.load(f)
                 self.keywords = config_data.get("keywords", [])
+                
+                # Fetch LLM config for trend_radar_summary
+                llm_profiles = config_data.get("llm_profiles", {})
+                profile = llm_profiles.get("trend_radar_summary", {})
+                self.llm_model = profile.get("model", "")
+                self.llm_prompt = profile.get("prompt", "")
         except Exception as e:
-            print(f"Warning: Could not load keywords from config.json: {e}")
-            self.keywords = []
+            print(f"Warning: Could not load config.json: {e}")
 
     def _get_beijing_time_str(self):
         beijing_tz = timezone(timedelta(hours=8))
@@ -40,13 +53,13 @@ class TrendRadarCrawler(BaseCrawler):
         now = datetime.now(beijing_tz)
         
         # Calculate this week's Monday
-        # weekday(): Monday is 0, Sunday is 6
         monday_date_obj = now - timedelta(days=now.weekday())
         monday_date = monday_date_obj.strftime("%Y-%m-%d")
         
-        # Use a consistent unique link anchored to Monday
         unique_link = f"github-intelligence://daily-report/{monday_date}"
 
+        # As a widget, if we return None, main.py will NOT overwrite the existing file.
+        # Check if we already have it in existing_urls (from github_intelligence.json)
         if unique_link in self.existing_urls:
             print(f"  - GitHub Intelligence Report for week of {monday_date} already exists, skipping.")
             return []
@@ -64,19 +77,30 @@ class TrendRadarCrawler(BaseCrawler):
             print(f"  - Mode: Trending (No keywords configured)")
             aggregated_text += "> 来源：GitHub Trending (Weekly)\n\n"
             aggregated_text += self._fetch_github_trending()
-
-        # Compile metadata
-        articles_metadata = []
-        articles_metadata.append({
+            
+        # Summarize using LLM
+        summary_result = "⚠️ AI 摘要生成失败，请检查 LLM 配置或 API 额度。"
+        if self.llm_model and self.llm_prompt:
+            print(f"  - Summarizing GitHub data using LLM...")
+            try:
+                summary_result = await get_summary(aggregated_text, self.llm_model, self.llm_prompt)
+                if summary_result == "[QUOTA_EXHAUSTED]" or "quota" in str(summary_result).lower() or "balance" in str(summary_result).lower():
+                    print("  - Quota exhausted! Returning empty to avoid overwriting existing data.")
+                    return []
+            except Exception as e:
+                print(f"  - LLM Summarization failed: {e}")
+                return []
+        
+        # We wrap it in a list so it stays compatible with Jekyll's assignment
+        return [{
             'title': f"GitHub 开源情报 ({monday_date})",
             'link': unique_link,
-            'date': monday_date, # Force date to Monday to group properly
+            'date': monday_date,
             'source': 'GitHubIntelligence',
-            'content': aggregated_text,
-            'image_urls': [] 
-        })
-
-        return articles_metadata
+            'summary': summary_result,
+            'cache_path': '',
+            'image_files': [] 
+        }]
 
     def _search_github_keyword(self, keyword):
         print(f"  -> Searching GitHub for '{keyword}'...")
