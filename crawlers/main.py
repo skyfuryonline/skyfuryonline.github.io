@@ -201,13 +201,34 @@ async def main():
         daily_items = [item for item in all_articles_metadata if item.get('source') != 'GitHubIntelligence']
 
         # Save GitHub Intelligence report to a dedicated file
-        if github_intelligence_items:
-            # Overwrite the dedicated file with the latest report(s)
-            github_intelligence_file = data_dir / "github_intelligence.json"
-            with open(github_intelligence_file, 'w', encoding='utf-8') as f:
-                json.dump(github_intelligence_items, f, ensure_ascii=False, indent=4)
-            print(f"Successfully saved GitHub Intelligence report to {github_intelligence_file}")
+        # Always load existing data first to preserve history
+        github_intelligence_file = data_dir / "github_intelligence.json"
+        existing_gh_data = []
+        if os.path.exists(github_intelligence_file):
+            try:
+                with open(github_intelligence_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    if isinstance(data, list):
+                        existing_gh_data = data
+            except (json.JSONDecodeError, ValueError):
+                print(f"Warning: Could not read existing GitHub Intelligence data from {github_intelligence_file}")
 
+        if github_intelligence_items:
+            # Merge new items with existing ones (deduplicate by link)
+            combined_gh_data = {item['link']: item for item in existing_gh_data}
+            for item in github_intelligence_items:
+                combined_gh_data[item['link']] = item # Update or add new
+            
+            # Convert back to list and sort by date descending
+            final_gh_data = list(combined_gh_data.values())
+            final_gh_data.sort(key=lambda x: x.get('date', ''), reverse=True)
+            
+            with open(github_intelligence_file, 'w', encoding='utf-8') as f:
+                json.dump(final_gh_data, f, ensure_ascii=False, indent=4)
+            print(f"Successfully saved merged GitHub Intelligence report to {github_intelligence_file}")
+        elif existing_gh_data:
+             print("No new GitHub Intelligence items found. Existing data preserved.")
+        
         if daily_items:
             with open(todays_data_file, 'w', encoding='utf-8') as f:
                 json.dump(daily_items, f, ensure_ascii=False, indent=4)
