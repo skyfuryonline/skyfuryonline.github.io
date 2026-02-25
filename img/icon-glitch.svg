@@ -1,0 +1,6 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 12 L20 12" stroke="#ff00ff" stroke-width="2" />
+    <path d="M12 4 L12 20" stroke="#00ffff" stroke-width="2" />
+    <!-- Diagonal glitch lines -->
+    <path d="M0 0 L24 24" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1" />
+</svg>

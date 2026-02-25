@@ -1,0 +1,46 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#66fcf1" />
+            <stop offset="100%" stop-color="#45a29e" />
+        </linearGradient>
+        <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <!-- Background Hexagon -->
+    <path d="M256 40 L470 145 L470 367 L256 472 L42 367 L42 145 Z" 
+          fill="#0b0c10" 
+          stroke="url(#glow)" 
+          stroke-width="20"
+          filter="url(#neon-glow)" />
+          
+    <!-- Inner Hexagon Rim -->
+    <path d="M256 80 L430 165 L430 347 L256 432 L82 347 L82 165 Z" 
+          fill="none" 
+          stroke="#45a29e" 
+          stroke-width="5" 
+          opacity="0.5"/>
+
+    <!-- Terminal Prompt Symbol >_ -->
+    <g transform="translate(110, 130) scale(1.2)">
+        <!-- The > arrow -->
+        <path d="M20 50 L120 120 L20 190" 
+              fill="none" 
+              stroke="#66fcf1" 
+              stroke-width="35" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+              filter="url(#neon-glow)" />
+              
+        <!-- The _ cursor -->
+        <rect x="140" y="160" width="100" height="35" fill="#4caf50">
+            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+        </rect>
+    </g>
+</svg>

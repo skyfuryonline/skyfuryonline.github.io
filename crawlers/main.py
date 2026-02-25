@@ -87,8 +87,10 @@ async def main():
         global_settings = config.get("global_settings", {})
         days_to_keep = global_settings.get("days_to_keep", 15)
 
-        existing_urls, summarized_urls = load_existing_urls(data_dir, days_to_keep=days_to_keep)
+        # Load existing URLs AND existing GitHub Intelligence data
+        existing_urls, summarized_urls, existing_github_intelligence_data = load_existing_data(data_dir, days_to_keep=days_to_keep)
         print(f"Found {len(existing_urls)} existing URLs.")
+        print(f"Found {len(existing_github_intelligence_data)} existing GitHub Intelligence reports.")
 
         llm_profiles = config.get("llm_profiles", {})
         all_articles_metadata = []
@@ -114,6 +116,22 @@ async def main():
                         top_k=site.get('top_k', 5)
                     )
                     
+                    # --- WIDGET HANDLING (NEW) ---
+                    if site.get('is_widget', False):
+                        print(f"  -> Processing as Sidebar Widget...")
+                        widget_data = await crawler_instance.crawl()
+                        if widget_data:
+                            output_filename = site.get('output_file', f"widget_{camel_to_snake(class_name)}.json")
+                            output_path = data_dir / output_filename
+                            
+                            # For widgets, we overwrite the file every time to keep it fresh
+                            with open(output_path, 'w', encoding='utf-8') as f:
+                                json.dump(widget_data, f, ensure_ascii=False, indent=4)
+                            print(f"  -> Saved widget data to {output_filename}")
+                        else:
+                            print(f"  -> No data found for widget {class_name}")
+                        continue # Skip standard article processing
+
                     articles_with_content = await crawler_instance.crawl()
 
                     articles_for_summary = []
@@ -200,35 +218,39 @@ async def main():
         github_intelligence_items = [item for item in all_articles_metadata if item.get('source') == 'GitHubIntelligence']
         daily_items = [item for item in all_articles_metadata if item.get('source') != 'GitHubIntelligence']
 
-        # Save GitHub Intelligence report to a dedicated file
-        # Always load existing data first to preserve history
-        github_intelligence_file = data_dir / "github_intelligence.json"
-        existing_gh_data = []
-        if os.path.exists(github_intelligence_file):
-            try:
-                with open(github_intelligence_file, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    if isinstance(data, list):
-                        existing_gh_data = data
-            except (json.JSONDecodeError, ValueError):
-                print(f"Warning: Could not read existing GitHub Intelligence data from {github_intelligence_file}")
-
-        if github_intelligence_items:
-            # Merge new items with existing ones (deduplicate by link)
-            combined_gh_data = {item['link']: item for item in existing_gh_data}
+        # Save GitHub Intelligence report to a dedicated file (Append/Merge mode)
+        # Even if github_intelligence_items is empty, we might have existing data to write back
+        # Combine new items (front) with existing items (back)
+        # Avoid duplicates based on link
+        if github_intelligence_items or existing_github_intelligence_data:
+            # Create a dict for easy deduplication, preferring new items
+            combined_data_map = {}
+            # First add existing items
+            for item in existing_github_intelligence_data:
+                combined_data_map[item['link']] = item
+            # Then overwrite with new items
             for item in github_intelligence_items:
-                combined_gh_data[item['link']] = item # Update or add new
+                combined_data_map[item['link']] = item
             
-            # Convert back to list and sort by date descending
-            final_gh_data = list(combined_gh_data.values())
-            final_gh_data.sort(key=lambda x: x.get('date', ''), reverse=True)
+            # Convert back to list and sort/order? 
+            # We want new items at the top. Since dicts preserve insertion order (mostly), 
+            # let's explicitly reconstruct the list: new items + (old items - new items)
+            final_gh_list = []
+            final_gh_list.extend(github_intelligence_items)
             
+            existing_links_set = set(item['link'] for item in github_intelligence_items)
+            for item in existing_github_intelligence_data:
+                if item['link'] not in existing_links_set:
+                    final_gh_list.append(item)
+            
+            # Limit list size if needed? Maybe keep last 10 reports?
+            # final_gh_list = final_gh_list[:10] 
+
+            github_intelligence_file = data_dir / "github_intelligence.json"
             with open(github_intelligence_file, 'w', encoding='utf-8') as f:
-                json.dump(final_gh_data, f, ensure_ascii=False, indent=4)
-            print(f"Successfully saved merged GitHub Intelligence report to {github_intelligence_file}")
-        elif existing_gh_data:
-             print("No new GitHub Intelligence items found. Existing data preserved.")
-        
+                json.dump(final_gh_list, f, ensure_ascii=False, indent=4)
+            print(f"Successfully saved GitHub Intelligence report to {github_intelligence_file} (Total: {len(final_gh_list)})")
+
         if daily_items:
             with open(todays_data_file, 'w', encoding='utf-8') as f:
                 json.dump(daily_items, f, ensure_ascii=False, indent=4)
@@ -243,10 +265,12 @@ async def main():
             driver.quit()
             print("Shared Selenium WebDriver closed.")
 
-def load_existing_urls(data_dir, days_to_keep):
+def load_existing_data(data_dir, days_to_keep):
     existing_urls = set()
     summarized_urls = set()
-    if not os.path.exists(data_dir): return existing_urls, summarized_urls
+    existing_github_intelligence_data = []
+
+    if not os.path.exists(data_dir): return existing_urls, summarized_urls, existing_github_intelligence_data
     
     # Load from daily_*.json files
     for item in os.listdir(data_dir):
@@ -273,6 +297,7 @@ def load_existing_urls(data_dir, days_to_keep):
                 data = json.load(f)
                 # Ensure data is a list
                 if isinstance(data, list):
+                    existing_github_intelligence_data = data # Store the list for writing back
                     for article in data:
                         existing_urls.add(article['link'])
                         # Assume if it exists here, it's "summarized" or complete enough
@@ -280,7 +305,7 @@ def load_existing_urls(data_dir, days_to_keep):
         except (ValueError, json.JSONDecodeError):
             print(f"Warning: Failed to load existing GitHub Intelligence data from {gh_intel_path}")
 
-    return existing_urls, summarized_urls
+    return existing_urls, summarized_urls, existing_github_intelligence_data
 
 def cleanup_old_data(cache_dir, data_dir, days_to_keep):
     print("Starting cleanup of old data...")

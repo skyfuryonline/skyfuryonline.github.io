@@ -44,7 +44,7 @@ http_headers:
   left: 30px;
   width: 240px;
   max-height: calc(100vh - 260px); /* 限制最大高度，留出更多顶部空间 */
-  overflow-y: auto; /* 明确使用 overflow-y */
+  overflow: auto; /* 如果内容过多，添加滚动条 */
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -53,19 +53,7 @@ http_headers:
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 9999;
-  transform: translateZ(0); /* 尝试触发 GPU 加速以修复某些渲染问题 */
-}
-
-/* 移动端逻辑保持不变 */
-@media (max-width: 767px) {
-  #sidebar {
-    position: static;
-    transform: none;
-    width: 100%;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.5);
-  }
+  z-index: 1000;
 }
 #sidebar h3 {
   font-size: 1.1em;
@@ -289,52 +277,15 @@ http_headers:
     {% endif %}
 {% endfor %}
 {% assign daily_file_names = daily_file_names | sort | reverse %}
-
-<!-- 1. Find the latest GitHub Intelligence article to pin -->
-{% assign pinned_article = site.data.github_intelligence[0] %}
-
-<!-- 2. Render Pinned Article (if exists) -->
-{% if pinned_article %}
-<div class="daily-container" style="margin-bottom: 40px;">
-    <h2 class="date-header" style="font-size: 1.5rem; color: #e74c3c; margin-bottom: 15px;">🔥 本周开源情报 ({{ pinned_article.date }})</h2>
-    <div class="feed-item daily-article-card github-intelligence-card"
-         data-title="{{ pinned_article.title | escape }}"
-         data-summary="{{ pinned_article.summary | escape }}"
-         data-link="{{ pinned_article.link }}"
-         data-cache-path="{{ pinned_article.cache_path }}"
-         data-images='{{ pinned_article.image_files | join: "," }}'
-         style="border: 2px solid #e74c3c; transform: scale(1.02); box-shadow: 0 8px 25px rgba(231, 76, 60, 0.15);">
-        <div class="feed-image">
-            {% if pinned_article.image_files and pinned_article.image_files.size > 0 %}
-                <img src="{{ site.baseurl }}/{{ pinned_article.cache_path }}/{{ pinned_article.image_files[0] }}" alt="Cover">
-            {% else %}
-                <div class="feed-placeholder"><i class="fa fa-code-fork" aria-hidden="true"></i></div>
-            {% endif %}
-        </div>
-        <div class="feed-content">
-            <div class="trend-radar-badge"><i class="fa fa-thumb-tack"></i> 置顶推荐</div>
-            <h3 class="feed-title">{{ pinned_article.title }}</h3>
-            <p class="feed-meta">Source: {{ pinned_article.source }} &nbsp;|&nbsp; {{ pinned_article.date | date: "%Y-%m-%d" }}</p>
-            <p class="feed-summary">
-                {{ pinned_article.summary | strip_html | truncate: 300 }}
-            </p>
-        </div>
-    </div>
-</div>
-{% endif %}
-
-<!-- 3. Render Daily Lists -->
 {% if daily_file_names.size > 0 %}
     {% for file_name in daily_file_names %}
         {% assign file_date_str = file_name | remove: "daily_" %}
         {% assign articles = site.data[file_name] %}
-        
-        <!-- Only render date header if there are articles -->
-        {% if articles.size > 0 %}
-            <h2 class="date-header">{{ file_date_str }}</h2>
-            <div class="daily-container">
+        <h2 class="date-header">{{ file_date_str }}</h2>
+        <div class="daily-container">
+            {% if articles.size > 0 %}
                 {% for article in articles %}
-                    <div class="feed-item daily-article-card"
+                    <div class="feed-item daily-article-card {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}github-intelligence-card{% endif %}"
                          data-title="{{ article.title | escape }}"
                          data-summary="{{ article.summary | escape }}"
                          data-link="{{ article.link }}"
@@ -348,16 +299,25 @@ http_headers:
                             {% endif %}
                         </div>
                         <div class="feed-content">
+                            {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}
+                                <div class="trend-radar-badge"><i class="fa fa-code-fork"></i> GitHub 开源情报</div>
+                            {% endif %}
                             <h3 class="feed-title">{{ article.title }}</h3>
                             <p class="feed-meta">Source: {{ article.source }} &nbsp;|&nbsp; {{ article.date | date: "%Y-%m-%d" }}</p>
                             <p class="feed-summary">
-                                {{ article.summary | strip_html | truncate: 150 }}
+                                {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}
+                                    {{ article.summary | strip_html | truncate: 300 }}
+                                {% else %}
+                                    {{ article.summary | strip_html | truncate: 150 }}
+                                {% endif %}
                             </p>
                         </div>
                     </div>
                 {% endfor %}
-            </div>
-        {% endif %}
+            {% else %}
+                <p class="text-center" style="width: 100%;">No articles found for this day.</p>
+            {% endif %}
+        </div>
     {% endfor %}
 {% else %}
     <div class="daily-container">

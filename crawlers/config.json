@@ -31,6 +31,22 @@
       "top_k": 2,
       "llm_profile": "default_summary",
       "enabled": true
+    },
+    {
+      "parser": "SteamCrawler",
+      "url": "https://store.steampowered.com/search/?filter=topsellers&specials=1&os=win&cc=CN",
+      "top_k": 10,
+      "enabled": true,
+      "is_widget": true,
+      "output_file": "sidebar_steam.json"
+    },
+    {
+      "parser": "MovieCrawler",
+      "url": "https://movie.douban.com/cinema/nowplaying/beijing/",
+      "top_k": 5,
+      "enabled": true,
+      "is_widget": true,
+      "output_file": "sidebar_movies.json"
     }
   ],
   "llm_profiles": {

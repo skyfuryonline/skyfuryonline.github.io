@@ -1,0 +1,20 @@
+<svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Neon Underline Effect -->
+    <path d="M0 20 L15 20 L20 35 L180 35 L185 20 L200 20" stroke="#00ffff" fill="none" stroke-width="2" filter="url(#glow)"/>
+    <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="
+                0 0 0 0 0
+                0 0 0 0 1
+                0 0 0 0 1
+                0 0 0 1 0" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <!-- Text Placeholder (for illustration) -->
+    <text x="100" y="15" text-anchor="middle" font-family="monospace" font-size="10" fill="#00ffff" opacity="0.8">SYS.READY</text>
+</svg>
