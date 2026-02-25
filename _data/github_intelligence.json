@@ -1,0 +1,11 @@
+[
+    {
+        "title": "GitHub 开源情报 (2026-02-23)",
+        "link": "github-intelligence://daily-report/2026-02-23",
+        "date": "2026-02-23",
+        "source": "GitHubIntelligence",
+        "summary": "# GitHub 开源情报简报 (2026年02月25日)\n\n> 来源：GitHub Trending (Weekly)  \n> **整体趋势**：本周热榜项目集中于 **AI 工具链生态建设**，涵盖模型提示工程、时序预测、向量处理及智能体框架，反映出 AI 基础设施与应用层协同发展的加速态势。\n\n---\n\n## 1. [huggingface/skills](https://github.com/huggingface/skills) (★6,153)\n- **核心价值**：为 Hugging Face 生态提供模块化“技能”（Skills）定义，可能用于构建可组合的 AI 功能单元。\n- **适用场景**：AI 应用开发者、LLM 编排工程师，在需要将大模型能力拆解为可复用、可调度的原子操作时使用。\n- **功能示例**：暂无详细示例（项目暂无描述，但结合 Hugging Face 近期方向，可能支持如“文本摘要”、“情感分析”等技能的注册与调用）。\n\n## 2. [x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) (★123,779)\n- **核心价值**：汇集主流 AI 工具的系统提示（System Prompts）与模型配置，解决提示工程黑盒化问题。\n- **适用场景**：Prompt 工程师、AI 产品设计者、研究人员，用于学习、复现或优化现有 AI 工具的行为。\n- **功能示例**：输入某款知名 AI 写作工具名称，可获取其内部使用的 system prompt 模板与推荐模型参数（如 temperature、max_tokens）。\n\n## 3. [google-research/timesfm](https://github.com/google-research/timesfm) (★9,727)\n- **核心价值**：Google 推出的通用时间序列基础模型（TimesFM），支持零样本（zero-shot）预测，无需任务微调。\n- **适用场景**：金融、物联网、运维监控等领域的时间序列预测任务，尤其适合数据稀缺或需快速部署的场景。\n- **功能示例**：输入过去 30 天的服务器 CPU 使用率序列，TimesFM 可直接输出未来 7 天的预测值，无需额外训练。\n\n## 4. [alibaba/zvec](https://github.com/alibaba/zvec) (★7,842)\n- **核心价值**：高性能向量压缩与近似最近邻（ANN）搜索库，优化高维向量存储与检索效率。\n- **适用场景**：推荐系统、语义搜索、大模型 RAG 架构中的向量数据库后端，适用于对延迟和内存敏感的生产环境。\n- **功能示例**：将百万级商品嵌入向量压缩至原大小的 1/4，同时保持 Top-10 相似商品召回率 >95%。\n\n## 5. [cloudflare/agents](https://github.com/cloudflare/agents) (★4,217)\n- **核心价值**：基于 Cloudflare Workers 构建的轻量级 AI 智能体（Agent）运行时框架。\n- **适用场景**：边缘 AI 应用开发者，希望在 Cloudflare 全球网络上部署低延迟、高并发的智能体服务。\n- **功能示例**：部署一个客服对话智能体，用户请求经由最近边缘节点处理，自动调用 LLM 并返回响应，全程 <100ms。\n\n## 6. [Stremio/stremio-web](https://github.com/Stremio/stremio-web) (★10,106)\n- **核心价值**：开源流媒体聚合平台的 Web 客户端，支持跨来源内容整合与播放。\n- **适用场景**：视频爱好者、媒体聚合服务开发者，用于构建去中心化的影视资源发现与播放体验。\n- **功能示例**：用户在 Stremio Web 中搜索“星际穿越”，系统自动从多个插件源（如 Torrent、官方 API）聚合影片并提供播放选项。\n\n---\n\n### 🔑 核心关键字\n`AI Agents` `Prompt Engineering` `Time Series Forecasting` `Vector Compression` `Edge AI`",
+        "cache_path": "",
+        "image_files": []
+    }
+]
