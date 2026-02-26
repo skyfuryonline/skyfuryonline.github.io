@@ -1,0 +1,41 @@
+[
+    {
+        "title": "The quantum era is coming. Are we ready to secure it?",
+        "link": "https://blog.google/innovation-and-ai/technology/safety-security/the-quantum-era-is-coming-are-we-ready-to-secure-it/",
+        "date": "2026-02-26",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-02-26/The quantum era is coming. Are we ready to secure it-",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp"
+        ],
+        "summary": "摘要：  \n文章指出，随着量子计算技术的快速发展，当前广泛使用的公钥加密体系（如RSA）将面临被破解的风险，恶意行为者可能已开始“现在存储、未来解密”的攻击。为此，谷歌强调必须加速向抗量子密码学（PQC）过渡，并已自2016年起开展相关研究与部署，聚焦“密码敏捷性”、关键基础设施安全及生态协同。同时呼吁政策制定者推动全社会准备，包括保护关键行业、将PQC融入AI发展、减少全球标准碎片化、优先云迁移以及依靠专家预判威胁，以确保量子时代带来的是突破而非安全崩溃。\n\n例子：  \n例如，银行目前用RSA加密交易数据，未来量子计算机可轻易破解；若提前采用NIST认证的PQC算法，即使数据被截获也无法解密。\n\n关键字：  \n量子计算、后量子密码学（PQC）、加密安全、NIST标准、密码敏捷性"
+    },
+    {
+        "title": "Natively Adaptive Interfaces: A new framework for AI accessibility",
+        "link": "https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/",
+        "date": "2026-02-26",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-02-26/Natively Adaptive Interfaces- A new framework for AI accessibility",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：  \n谷歌提出“原生自适应界面”（Natively Adaptive Interfaces, NAI）框架，利用AI将无障碍功能内嵌于产品设计之初，而非事后添加。该方法通过个性化调整界面与交互方式，满足不同用户需求，如为视障者生成音频描述、为注意力缺陷用户简化页面布局等。NAI遵循“没有我们参与，就不要替我们做决定”的原则，强调与残障群体合作开发，并资助RIT/NTID等组织打造实用工具，如支持ASL和英语学习的AI辅导工具Grammar Lab。此类设计常产生“路缘坡效应”，即专为特定群体设计的功能最终惠及更广泛人群。\n\n例子：  \nGrammar Lab根据聋人学生语言水平，自动生成个性化英语与手语练习题，提升双语能力。\n\n关键字：  \n原生自适应界面、AI无障碍、个性化体验、路缘坡效应、残障社区协作"
+    }
+]

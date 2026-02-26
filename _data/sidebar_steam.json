@@ -16,60 +16,44 @@
         "rank": 2
     },
     {
-        "title": "Resident Evil 4",
-        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1770093365",
-        "price": "¥79.20",
-        "discount": "-60%",
-        "rank": 3
-    },
-    {
         "title": "ARK: Bob's Tall Tales",
         "link": "https://store.steampowered.com/app/2881150/ARK_Bobs_Tall_Tales/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2881150/d1282b9f18cc86e6a8f97630622a46ccb3b4a435/capsule_231x87.jpg?t=1765684569",
         "price": "¥71.28",
         "discount": "-67%",
-        "rank": 4
-    },
-    {
-        "title": "Monster Hunter Wilds",
-        "link": "https://store.steampowered.com/app/2246340/Monster_Hunter_Wilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1771382452",
-        "price": "¥191.40",
-        "discount": "-45%",
-        "rank": 5
-    },
-    {
-        "title": "Euro Truck Simulator 2",
-        "link": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/da84d11d3ddd817e0cca299608b469a854d75ba5/capsule_231x87.jpg?t=1764266628",
-        "price": "¥13.50",
-        "discount": "-72%",
-        "rank": 6
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/0ffdd59df23c0204fa922ab0704c7faccb56a934/capsule_231x87_alt_assets_3.jpg?t=1771603429",
-        "price": "¥172.84",
-        "discount": "",
-        "rank": 7
+        "rank": 3
     },
     {
         "title": "Warhammer 40,000: 星际战士2",
         "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/capsule_231x87_schinese.jpg?t=1772039993",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/d1f871399bd69702df42f14d78d0e09ce5b37b06/capsule_231x87_alt_assets_11.jpg?t=1772125422",
         "price": "¥82.17",
         "discount": "-67%",
-        "rank": 8
+        "rank": 4
     },
     {
-        "title": "ARK: Survival Evolved",
-        "link": "https://store.steampowered.com/app/346110/ARK_Survival_Evolved/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346110/capsule_231x87.jpg?t=1765677889",
-        "price": "¥38.28",
-        "discount": "-34%",
-        "rank": 9
+        "title": "逆袭重启",
+        "link": "https://store.steampowered.com/app/4164580/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4164580/151acc47a5c5879d3790071ddd7fec561c7ff348/capsule_231x87_schinese.jpg?t=1772092698",
+        "price": "¥38.25",
+        "discount": "-15%",
+        "rank": 5
+    },
+    {
+        "title": "NINJA GAIDEN 4",
+        "link": "https://store.steampowered.com/app/2627260/NINJA_GAIDEN_4/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2627260/1a6a9ecfb6f6d62d005a1942ad5c4b4e5bf42d5c/capsule_231x87.jpg?t=1762366827",
+        "price": "¥193.70",
+        "discount": "-35%",
+        "rank": 6
+    },
+    {
+        "title": "博德之门3",
+        "link": "https://store.steampowered.com/app/1086940/3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/3dd81008e9c385caf68152450c22353f6a8abec9/capsule_231x87.jpg?t=1765505948",
+        "price": "¥223.50",
+        "discount": "-25%",
+        "rank": 7
     },
     {
         "title": "PEAK",
@@ -77,6 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1764003551",
         "price": "¥20.46",
         "discount": "-38%",
+        "rank": 8
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/0ffdd59df23c0204fa922ab0704c7faccb56a934/capsule_231x87_alt_assets_3.jpg?t=1771603429",
+        "price": "¥172.84",
+        "discount": "",
+        "rank": 9
+    },
+    {
+        "title": "ARK: Survival Evolved",
+        "link": "https://store.steampowered.com/app/346110/ARK_Survival_Evolved/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346110/capsule_231x87.jpg?t=1765677889",
+        "price": "¥38.28",
+        "discount": "-34%",
         "rank": 10
     }
 ]
