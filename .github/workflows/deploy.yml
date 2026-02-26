@@ -82,8 +82,8 @@ jobs:
       - name: Commit and push data to data branch 💾
         if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          rsync -av --exclude='homepage_groups.yml' --exclude='gwy_sources.yml' main/_data/ data/_data/
-          cp -rf main/cache/. data/cache/
+          rsync -av --delete --exclude='homepage_groups.yml' --exclude='gwy_sources.yml' --exclude='.gitkeep' main/_data/ data/_data/
+          rsync -av --delete --exclude='.gitkeep' main/cache/ data/cache/
           cd data
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
