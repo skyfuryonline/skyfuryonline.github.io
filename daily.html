@@ -62,6 +62,7 @@ http_headers:
       <div class="snapshot-list">
         {% for game in site.data.sidebar_steam limit:8 %}
           <a href="{{ game.link }}" target="_blank" class="snapshot-item">
+            <img src="{{ game.image_url }}" alt="{{ game.title }}" class="steam-img" loading="lazy">
             <div class="snapshot-info">
               <div class="snapshot-title" title="{{ game.title }}">{{ game.title }}</div>
               <div class="snapshot-meta">
@@ -191,6 +192,18 @@ http_headers:
   transform: translateY(-2px);
   background: #f0f8ff;
   color: #0077cc;
+}
+.snapshot-item img {
+  width: 45px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.snapshot-item img.steam-img {
+  width: 75px;
+  height: 35px;
 }
 .snapshot-info {
   display: flex;
