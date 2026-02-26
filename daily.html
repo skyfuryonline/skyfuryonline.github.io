@@ -44,11 +44,11 @@ http_headers:
       <div class="snapshot-list">
         {% for movie in site.data.sidebar_movies limit:5 %}
           <a href="{{ movie.link }}" target="_blank" class="snapshot-item">
-            <img src="{{ movie.image_url }}" alt="{{ movie.title }}" loading="lazy" referrerpolicy="no-referrer">
             <div class="snapshot-info">
               <div class="snapshot-title" title="{{ movie.title }}">{{ movie.title }}</div>
               <div class="snapshot-meta">
                 <span class="score">⭐ {{ movie.score }}</span>
+                <span class="region" style="color: #7f8c8d; margin-left: 8px;">{{ movie.region }}</span>
               </div>
             </div>
           </a>
@@ -62,7 +62,6 @@ http_headers:
       <div class="snapshot-list">
         {% for game in site.data.sidebar_steam limit:8 %}
           <a href="{{ game.link }}" target="_blank" class="snapshot-item">
-            <img src="{{ game.image_url }}" alt="{{ game.title }}" class="steam-img" loading="lazy">
             <div class="snapshot-info">
               <div class="snapshot-title" title="{{ game.title }}">{{ game.title }}</div>
               <div class="snapshot-meta">
@@ -193,35 +192,24 @@ http_headers:
   background: #f0f8ff;
   color: #0077cc;
 }
-.snapshot-item img {
-  width: 45px;
-  height: 65px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-right: 10px;
-  flex-shrink: 0;
-}
-.snapshot-item img.steam-img {
-  width: 75px;
-  height: 35px;
-}
 .snapshot-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
   flex-grow: 1;
+  width: 100%;
 }
 .snapshot-title {
-  font-size: 0.85em;
+  font-size: 0.9em;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .snapshot-meta {
-  font-size: 0.75em;
+  font-size: 0.8em;
   display: flex;
   align-items: center;
   gap: 6px;
