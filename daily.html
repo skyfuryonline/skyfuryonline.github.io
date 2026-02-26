@@ -44,7 +44,7 @@ http_headers:
       <div class="snapshot-list">
         {% for movie in site.data.sidebar_movies limit:5 %}
           <a href="{{ movie.link }}" target="_blank" class="snapshot-item">
-            <img src="{{ movie.image_url }}" alt="{{ movie.title }}" loading="lazy">
+            <img src="{{ movie.image_url }}" alt="{{ movie.title }}" loading="lazy" referrerpolicy="no-referrer">
             <div class="snapshot-info">
               <div class="snapshot-title" title="{{ movie.title }}">{{ movie.title }}</div>
               <div class="snapshot-meta">

@@ -61,9 +61,9 @@ class MovieCrawler(BaseCrawler):
                         if raw_img_url.startswith('//'):
                             raw_img_url = 'https:' + raw_img_url
                         
-                        # Use wsrv.nl to proxy the image
-                        # output=webp for better compression, q=80 for quality
-                        img_url = f"https://wsrv.nl/?url={raw_img_url}&output=webp&q=80"
+                        # We are passing the raw URL directly now and handling hotlink protection
+                        # on the frontend via referrerpolicy="no-referrer" instead of unreliable proxies
+                        img_url = raw_img_url
                     else:
                         img_url = ""
                     
