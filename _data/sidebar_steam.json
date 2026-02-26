@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "PEAK",
-        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1764003551",
-        "price": "¥20.46",
-        "discount": "-38%",
-        "rank": 9
-    },
-    {
         "title": "ARK: Survival Evolved",
         "link": "https://store.steampowered.com/app/346110/ARK_Survival_Evolved/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346110/capsule_231x87.jpg?t=1765677889",
         "price": "¥38.28",
         "discount": "-34%",
+        "rank": 9
+    },
+    {
+        "title": "PEAK",
+        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1764003551",
+        "price": "¥20.46",
+        "discount": "-38%",
         "rank": 10
     }
 ]
