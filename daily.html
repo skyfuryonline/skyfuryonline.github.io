@@ -35,6 +35,48 @@ http_headers:
     <a href="https://ai.paratera.com/#/overview" target="_blank">并行智算云</a>
   </div>
 </div>
+
+<!-- 右侧信息栏 -->
+<div id="right-sidebar">
+  <div class="section" id="movies-section">
+    <h3>🎬 热门影视</h3>
+    {% if site.data.sidebar_movies %}
+      <div class="snapshot-list">
+        {% for movie in site.data.sidebar_movies limit:5 %}
+          <a href="{{ movie.link }}" target="_blank" class="snapshot-item">
+            <img src="{{ movie.image_url }}" alt="{{ movie.title }}" loading="lazy">
+            <div class="snapshot-info">
+              <div class="snapshot-title" title="{{ movie.title }}">{{ movie.title }}</div>
+              <div class="snapshot-meta">
+                <span class="score">⭐ {{ movie.score }}</span>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="section" id="steam-section">
+    <h3>🎮 Steam 特惠</h3>
+    {% if site.data.sidebar_steam %}
+      <div class="snapshot-list">
+        {% for game in site.data.sidebar_steam limit:8 %}
+          <a href="{{ game.link }}" target="_blank" class="snapshot-item">
+            <img src="{{ game.image_url }}" alt="{{ game.title }}" class="steam-img" loading="lazy">
+            <div class="snapshot-info">
+              <div class="snapshot-title" title="{{ game.title }}">{{ game.title }}</div>
+              <div class="snapshot-meta">
+                <span class="discount">{{ game.discount }}</span>
+                <span class="price">{{ game.price }}</span>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
 <style>
 /* ---------------- Sidebar Styles ---------------- */
 #sidebar {
@@ -90,6 +132,119 @@ http_headers:
 @media (max-width: 767px) {
   #sidebar {
     top: 230px; /* 移动设备：内边距130px + 内容约80px + 20px间距 */
+  }
+}
+/* ---------------- Right Sidebar Styles ---------------- */
+#right-sidebar {
+  position: fixed;
+  top: 260px;
+  bottom: 40px;
+  right: 30px;
+  width: 280px;
+  max-height: calc(100vh - 260px);
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+#right-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+#right-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+#right-sidebar h3 {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: center;
+}
+#right-sidebar .section {
+  width: 100%;
+  margin-bottom: 18px;
+}
+.snapshot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.snapshot-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.snapshot-item:hover {
+  transform: translateY(-2px);
+  background: #f0f8ff;
+  color: #0077cc;
+}
+.snapshot-item img {
+  width: 45px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.snapshot-item img.steam-img {
+  width: 75px;
+  height: 35px;
+}
+.snapshot-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  flex-grow: 1;
+}
+.snapshot-title {
+  font-size: 0.85em;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+.snapshot-meta {
+  font-size: 0.75em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.score {
+  color: #e67e22;
+  font-weight: bold;
+}
+.discount {
+  background: #4c6b22;
+  color: #a4d007;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.price {
+  color: #66c0f4;
+  font-weight: bold;
+}
+/* 防止在平板/手机端遮挡中间主内容，小屏幕时隐藏右侧栏 */
+@media (max-width: 1200px) {
+  #right-sidebar {
+    display: none;
   }
 }
 /* ---------------- TrendRadar/GitHubIntelligence Special Card ---------------- */
