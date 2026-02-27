@@ -32,3 +32,9 @@
     - "2025-11-03-add-crawler-to-jekyll-blog.md"
     - "2025-11-04-llm-integration-for-crawler.md"
     - "2025-11-04-concurrent-llm-summarization.md"
+
+- group_name: "视野"
+  url: "/groups/vision"
+  group_image: "/img/cover-vision.svg"
+  group_description: "记录对新兴技术的发现、了解与粗略分析"
+  posts: []

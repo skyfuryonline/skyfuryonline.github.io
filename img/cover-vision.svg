@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <!-- Base gradient background -> Deep space/cyberpunk feel -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b132b" />
+      <stop offset="50%" stop-color="#1c2541" />
+      <stop offset="100%" stop-color="#0d1117" />
+    </linearGradient>
+    
+    <!-- Tech grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(102, 252, 241, 0.05)" stroke-width="1" />
+      <circle cx="0" cy="0" r="1.5" fill="rgba(102, 252, 241, 0.2)" />
+    </pattern>
+
+    <!-- Glowing eye / radar gradient -->
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(102, 252, 241, 0.8)" />
+      <stop offset="40%" stop-color="rgba(69, 162, 158, 0.4)" />
+      <stop offset="100%" stop-color="rgba(11, 19, 43, 0)" />
+    </radialGradient>
+    
+    <!-- Neon text filter -->
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)" />
+  <rect width="800" height="500" fill="url(#grid)" />
+
+  <!-- Abstract Radar / Eye / Vision Elements -->
+  <g transform="translate(400, 250)">
+    <!-- Outer tracking rings -->
+    <circle cx="0" cy="0" r="180" fill="none" stroke="rgba(102, 252, 241, 0.15)" stroke-width="1" stroke-dasharray="4 8" />
+    <circle cx="0" cy="0" r="140" fill="none" stroke="rgba(102, 252, 241, 0.2)" stroke-width="2" stroke-dasharray="20 10 5 10" />
+    <circle cx="0" cy="0" r="100" fill="none" stroke="rgba(102, 252, 241, 0.3)" stroke-width="1" />
+    
+    <!-- Radar sweeping arc -->
+    <path d="M 0 0 L 0 -140 A 140 140 0 0 1 121.2 -70 Z" fill="rgba(102, 252, 241, 0.1)" />
+    <line x1="0" y1="0" x2="99" y2="-99" stroke="rgba(102, 252, 241, 0.5)" stroke-width="2" />
+    
+    <!-- Center Eye/Core -->
+    <circle cx="0" cy="0" r="60" fill="url(#eyeGlow)" />
+    <circle cx="0" cy="0" r="25" fill="#0b132b" stroke="rgba(102, 252, 241, 0.8)" stroke-width="3" />
+    <circle cx="0" cy="0" r="8" fill="#66fcf1" />
+    
+    <!-- HUD Crosshairs and framing -->
+    <path d="M -220 -220 L -180 -220 M -220 -220 L -220 -180" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+    <path d="M 220 -220 L 180 -220 M 220 -220 L 220 -180" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+    <path d="M -220 220 L -180 220 M -220 220 L -220 180" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+    <path d="M 220 220 L 180 220 M 220 220 L 220 180" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+    
+    <!-- Axis lines -->
+    <line x1="-250" y1="0" x2="-110" y2="0" stroke="rgba(102, 252, 241, 0.2)" stroke-width="1" />
+    <line x1="110" y1="0" x2="250" y2="0" stroke="rgba(102, 252, 241, 0.2)" stroke-width="1" />
+    <line x1="0" y1="-250" x2="0" y2="-110" stroke="rgba(102, 252, 241, 0.2)" stroke-width="1" />
+    <line x1="0" y1="110" x2="0" y2="250" stroke="rgba(102, 252, 241, 0.2)" stroke-width="1" />
+    
+    <!-- Floating Data Nodes -->
+    <g transform="translate(-120, -80)">
+      <circle cx="0" cy="0" r="4" fill="#fff" />
+      <line x1="0" y1="0" x2="30" y2="-20" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
+      <text x="35" y="-18" fill="rgba(255,255,255,0.6)" font-family="monospace" font-size="10">SYS.OBSERVE</text>
+    </g>
+    
+    <g transform="translate(130, 60)">
+      <circle cx="0" cy="0" r="4" fill="#66fcf1" />
+      <line x1="0" y1="0" x2="40" y2="10" stroke="rgba(102, 252, 241, 0.3)" stroke-width="1" />
+      <text x="45" y="14" fill="rgba(102, 252, 241, 0.8)" font-family="monospace" font-size="10">TECH.RADAR</text>
+    </g>
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(40, 60)">
+    <text x="0" y="0" fill="#66fcf1" font-family="'JetBrains Mono', monospace, sans-serif" font-weight="bold" font-size="42" filter="url(#neonGlow)" letter-spacing="8">VISION</text>
+    <text x="0" y="30" fill="#c9d1d9" font-family="monospace" font-size="14" letter-spacing="2">// EMERGING_TECH_OBSERVATORY</text>
+  </g>
+  
+  <g transform="translate(40, 460)">
+    <text x="0" y="0" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="12">STATUS: SCANNING...</text>
+  </g>
+  <g transform="translate(680, 460)">
+    <text x="0" y="0" fill="rgba(102, 252, 241, 0.5)" font-family="monospace" font-size="12">v1.0.0_STABLE</text>
+  </g>
+</svg>
