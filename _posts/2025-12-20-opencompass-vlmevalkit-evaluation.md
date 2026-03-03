@@ -2,7 +2,7 @@
 layout: post
 title: "OpenCompass与VLMEvalKit：大模型评估工具调研与实践"
 date: 2025-11-18
-author: "Your Name" # 请替换为您的名字
+author: "LH"
 tags: [NLP, 评估, OpenCompass, VLMEvalKit, LLM, VLM]
 group: nlp-workshop
 catalog: true
