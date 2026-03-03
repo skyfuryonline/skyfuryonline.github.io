@@ -37,4 +37,5 @@
   url: "/groups/vision"
   group_image: "/img/cover-vision.svg"
   group_description: "记录对新兴技术的发现、了解与粗略分析"
-  posts: []
+  posts: 
+    - "2026-03-03-OpenClaw.md"
