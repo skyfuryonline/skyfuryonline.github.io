@@ -1,0 +1,22 @@
+{
+  "New Jekyll Post": {
+    "scope": "markdown",
+    "prefix": ["!post", "fm"],
+    "body": [
+      "---",
+      "layout: post",
+      "title: \"${1:这里填写标题}\"",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "author: \"LH\"",
+      "catalog: true",
+      "tags: [${2:tag1, tag2}]",
+      "group: ${3|vision,llm,nlp-workshop,labuladong-algorithm,blog-development|}",
+      "---",
+      "",
+      "## 引言",
+      "",
+      "$0"
+    ],
+    "description": "Generate Front Matter for a new Jekyll blog post"
+  }
+}

@@ -51,3 +51,13 @@
 ## 依赖项
 
 所有 Python 相关的依赖项都在 `requirements.txt` 文件中列出。
+
+## 写作指南
+
+为了在使用 VS Code (或 GitHub `remote-repository`/`github.dev`) 时更方便地创建新博客，本项目已经配置了 VS Code 代码片段 (Snippets)。
+
+**使用方法：**
+1. 在 `_posts/` 目录下新建一个格式为 `YYYY-MM-DD-your-title.md` 的空文件。
+2. 在文件中输入 `!post` 或 `fm`，然后按 `Tab` 键。
+3. 系统会自动生成带有当前日期的 Front Matter，你可以使用 `Tab` 键快速在“标题”、“标签”和“分组（提供下拉列表选择）”之间切换输入。
+4. `catalog: true` 默认开启，用于生成文章侧边栏目录。
