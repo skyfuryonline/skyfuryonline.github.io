@@ -10,7 +10,7 @@
     {
         "title": "NINJA GAIDEN 4",
         "link": "https://store.steampowered.com/app/2627260/NINJA_GAIDEN_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2627260/1a6a9ecfb6f6d62d005a1942ad5c4b4e5bf42d5c/capsule_231x87.jpg?t=1762366827",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2627260/1a6a9ecfb6f6d62d005a1942ad5c4b4e5bf42d5c/capsule_231x87.jpg?t=1772643576",
         "price": "¥193.70",
         "discount": "-35%",
         "rank": 2
@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "PEAK",
-        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1772555281",
-        "price": "¥20.46",
-        "discount": "-38%",
-        "rank": 4
-    },
-    {
         "title": "Warhammer 40,000: 星际战士2",
         "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/d1f871399bd69702df42f14d78d0e09ce5b37b06/capsule_231x87_alt_assets_11.jpg?t=1772125422",
         "price": "¥82.17",
         "discount": "-67%",
+        "rank": 4
+    },
+    {
+        "title": "不寐之境:女巫与魔咒",
+        "link": "https://store.steampowered.com/app/2395770/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2395770/64c8a8cb9c836f2e88e78cb34415bbf5627f4a34/capsule_231x87_schinese.jpg?t=1772636511",
+        "price": "¥59.40",
+        "discount": "-10%",
         "rank": 5
     },
     {
@@ -48,17 +48,17 @@
         "rank": 6
     },
     {
-        "title": "ARK: Survival Evolved",
-        "link": "https://store.steampowered.com/app/346110/ARK_Survival_Evolved/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346110/capsule_231x87.jpg?t=1765677889",
-        "price": "¥38.28",
-        "discount": "-34%",
+        "title": "炎姬",
+        "link": "https://store.steampowered.com/app/1820000/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1820000/265975d7aec1c0294e869b109991dbe58ac60296/capsule_231x87.jpg?t=1772611371",
+        "price": "¥79.20",
+        "discount": "-10%",
         "rank": 7
     },
     {
         "title": "《飙酷车神：轰鸣盛典》",
         "link": "https://store.steampowered.com/app/2698940/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2698940/capsule_231x87.jpg?t=1770836070",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2698940/00e891f441e375b602eb28a69f7892425bfa2010/capsule_231x87_alt_assets_1.jpg?t=1772640313",
         "price": "¥29.80",
         "discount": "-90%",
         "rank": 8
