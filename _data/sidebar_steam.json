@@ -1,11 +1,43 @@
 [
     {
+        "title": "王国保卫战 5：联盟",
+        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
+        "price": "¥41.80",
+        "discount": "-45%",
+        "rank": 1
+    },
+    {
         "title": "Wallpaper Engine：壁纸引擎",
         "link": "https://store.steampowered.com/app/431960/Wallpaper_Engine/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431960/capsule_231x87_schinese.jpg?t=1739211362",
         "price": "¥18.32",
         "discount": "-20%",
-        "rank": 1
+        "rank": 2
+    },
+    {
+        "title": "王国保卫战 5：巨龙战争",
+        "link": "https://store.steampowered.com/app/4260510/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4260510/a21425ff1b9b1815de07cb28bede8267d1fafb2a/capsule_231x87_schinese.jpg?t=1772719657",
+        "price": "¥19.80",
+        "discount": "-10%",
+        "rank": 3
+    },
+    {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1769020260",
+        "price": "¥74.40",
+        "discount": "-70%",
+        "rank": 4
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/0ffdd59df23c0204fa922ab0704c7faccb56a934/capsule_231x87_alt_assets_3.jpg?t=1771603429",
+        "price": "¥92.25",
+        "discount": "-75%",
+        "rank": 5
     },
     {
         "title": "NINJA GAIDEN 4",
@@ -13,15 +45,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2627260/1a6a9ecfb6f6d62d005a1942ad5c4b4e5bf42d5c/capsule_231x87.jpg?t=1772643576",
         "price": "¥193.70",
         "discount": "-35%",
-        "rank": 2
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/0ffdd59df23c0204fa922ab0704c7faccb56a934/capsule_231x87_alt_assets_3.jpg?t=1771603429",
-        "price": "¥172.84",
-        "discount": "",
-        "rank": 3
+        "rank": 6
     },
     {
         "title": "Warhammer 40,000: 星际战士2",
@@ -29,15 +53,23 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/d1f871399bd69702df42f14d78d0e09ce5b37b06/capsule_231x87_alt_assets_11.jpg?t=1772125422",
         "price": "¥82.17",
         "discount": "-67%",
-        "rank": 4
+        "rank": 7
     },
     {
-        "title": "不寐之境:女巫与魔咒",
-        "link": "https://store.steampowered.com/app/2395770/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2395770/64c8a8cb9c836f2e88e78cb34415bbf5627f4a34/capsule_231x87_schinese.jpg?t=1772636511",
-        "price": "¥59.40",
+        "title": "卡牌修仙传",
+        "link": "https://store.steampowered.com/app/2963600/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2963600/a55266ac1f295780f423fa43897bb0afe9a6fd99/capsule_231x87_schinese.jpg?t=1772704845",
+        "price": "¥46.80",
         "discount": "-10%",
-        "rank": 5
+        "rank": 8
+    },
+    {
+        "title": "Slay the Spire",
+        "link": "https://store.steampowered.com/app/646570/Slay_the_Spire/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
+        "price": "¥22.00",
+        "discount": "-75%",
+        "rank": 9
     },
     {
         "title": "刺客信条：影",
@@ -45,38 +77,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3159330/5960b68c44465f7ad8fd75b9dbb277d0cac23479/capsule_231x87_schinese.jpg?t=1770145731",
         "price": "¥174.00",
         "discount": "-50%",
-        "rank": 6
-    },
-    {
-        "title": "炎姬",
-        "link": "https://store.steampowered.com/app/1820000/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1820000/265975d7aec1c0294e869b109991dbe58ac60296/capsule_231x87.jpg?t=1772611371",
-        "price": "¥79.20",
-        "discount": "-10%",
-        "rank": 7
-    },
-    {
-        "title": "《飙酷车神：轰鸣盛典》",
-        "link": "https://store.steampowered.com/app/2698940/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2698940/00e891f441e375b602eb28a69f7892425bfa2010/capsule_231x87_alt_assets_1.jpg?t=1772640313",
-        "price": "¥29.80",
-        "discount": "-90%",
-        "rank": 8
-    },
-    {
-        "title": "WRC 7 FIA World Rally Championship",
-        "link": "https://store.steampowered.com/app/621830/WRC_7_FIA_World_Rally_Championship/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/621830/capsule_231x87.jpg?t=1725354050",
-        "price": "¥7.00",
-        "discount": "-90%",
-        "rank": 9
-    },
-    {
-        "title": "WRC 9 FIA World Rally Championship",
-        "link": "https://store.steampowered.com/app/1267540/WRC_9_FIA_World_Rally_Championship/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1267540/capsule_231x87.jpg?t=1725354407",
-        "price": "¥9.00",
-        "discount": "-90%",
         "rank": 10
     }
 ]
