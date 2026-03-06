@@ -1,0 +1,28 @@
+[
+    {
+        "title": "How our open-source AI model SpeciesNet is helping to promote wildlife conservation",
+        "link": "https://blog.google/company-news/outreach-and-initiatives/sustainability/speciesnet-open-source-ai-wildlife/",
+        "date": "2026-03-06",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-03-06/How our open-source AI model SpeciesNet is helping to promote wildlife conservation",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.svg",
+            "image_8.svg",
+            "image_9.svg",
+            "image_10.svg",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp",
+            "image_14.webp",
+            "image_15.webp",
+            "image_16.webp"
+        ],
+        "summary": "摘要：  \nSpeciesNet 是一款开源人工智能模型，专为自动识别相机陷阱拍摄的近2500种野生动物图像而设计，显著提升了全球多个保护项目的分析效率。自2019年通过Wildlife Insights平台投入使用并于一年前开源以来，该模型已被广泛应用于非洲、南美、北美和澳大利亚等地。例如，Snapshot Serengeti项目利用它在数日内处理了1100万张照片；哥伦比亚的Red Otus网络借助它发现动物行为变化；爱达荷州用其加速审查数百万张图像；澳大利亚团队则基于它定制本地特有物种识别模型。SpeciesNet 能在不同光照、角度和部分遮挡条件下准确识别物种，极大减轻了研究人员负担，助力生物多样性保护。\n\n例子：  \n在坦桑尼亚，研究人员用 SpeciesNet 三天内完成原本需数年的1100万张相机照片分类，快速掌握塞伦盖蒂动物种群动态。\n\n关键字：  \nSpeciesNet、野生动物保护、相机陷阱、开源AI、生物多样性"
+    }
+]
