@@ -24,36 +24,12 @@
         "rank": 3
     },
     {
-        "title": "王国保卫战 5：联盟",
-        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
-        "price": "¥41.80",
-        "discount": "-45%",
-        "rank": 4
-    },
-    {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1769020260",
-        "price": "¥74.40",
-        "discount": "-70%",
-        "rank": 5
-    },
-    {
-        "title": "镇邪Ⅱ",
-        "link": "https://store.steampowered.com/app/3399780/II/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3399780/9d5f6273584918a52ab25a371d6bd4e173f70472/capsule_231x87_schinese.jpg?t=1772793382",
-        "price": "¥57.80",
-        "discount": "-15%",
-        "rank": 6
-    },
-    {
         "title": "Wallpaper Engine：壁纸引擎",
         "link": "https://store.steampowered.com/app/431960/Wallpaper_Engine/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431960/capsule_231x87_schinese.jpg?t=1739211362",
         "price": "¥18.32",
         "discount": "-20%",
-        "rank": 7
+        "rank": 4
     },
     {
         "title": "Dead Cells",
@@ -61,15 +37,23 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_231x87.jpg?t=1772726488",
         "price": "¥32.00",
         "discount": "-60%",
-        "rank": 8
+        "rank": 5
     },
     {
-        "title": "Warhammer 40,000: 星际战士2",
-        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/d1f871399bd69702df42f14d78d0e09ce5b37b06/capsule_231x87_alt_assets_11.jpg?t=1772125422",
-        "price": "¥82.17",
-        "discount": "-67%",
-        "rank": 9
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1769020260",
+        "price": "¥74.40",
+        "discount": "-70%",
+        "rank": 6
+    },
+    {
+        "title": "王国保卫战 5：联盟",
+        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
+        "price": "¥41.80",
+        "discount": "-45%",
+        "rank": 7
     },
     {
         "title": "人类一败涂地 / Human Fall Flat",
@@ -77,6 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/527795a8bbe4eff34aee62450c82b35d54fc6755/capsule_231x87_alt_assets_27_schinese.jpg?t=1772741188",
         "price": "¥17.40",
         "discount": "-70%",
+        "rank": 8
+    },
+    {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥98.56",
+        "discount": "-56%",
+        "rank": 9
+    },
+    {
+        "title": "WRC 7 FIA World Rally Championship",
+        "link": "https://store.steampowered.com/app/621830/WRC_7_FIA_World_Rally_Championship/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/621830/capsule_231x87.jpg?t=1725354050",
+        "price": "¥7.00",
+        "discount": "-90%",
         "rank": 10
     }
 ]
