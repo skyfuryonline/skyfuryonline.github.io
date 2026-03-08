@@ -8,18 +8,18 @@
         "rank": 1
     },
     {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥98.56",
+        "discount": "-56%",
+        "rank": 2
+    },
+    {
         "title": "Slay the Spire",
         "link": "https://store.steampowered.com/app/646570/Slay_the_Spire/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
         "price": "¥22.00",
-        "discount": "-75%",
-        "rank": 2
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/0ffdd59df23c0204fa922ab0704c7faccb56a934/capsule_231x87_alt_assets_3.jpg?t=1771603429",
-        "price": "¥92.25",
         "discount": "-75%",
         "rank": 3
     },
@@ -32,11 +32,11 @@
         "rank": 4
     },
     {
-        "title": "Dead Cells",
-        "link": "https://store.steampowered.com/app/588650/Dead_Cells/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_231x87.jpg?t=1772726488",
-        "price": "¥32.00",
-        "discount": "-60%",
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/0ffdd59df23c0204fa922ab0704c7faccb56a934/capsule_231x87_alt_assets_3.jpg?t=1771603429",
+        "price": "¥92.25",
+        "discount": "-75%",
         "rank": 5
     },
     {
@@ -48,11 +48,11 @@
         "rank": 6
     },
     {
-        "title": "王国保卫战 5：联盟",
-        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
-        "price": "¥41.80",
-        "discount": "-45%",
+        "title": "Dead Cells",
+        "link": "https://store.steampowered.com/app/588650/Dead_Cells/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_231x87.jpg?t=1772726488",
+        "price": "¥32.00",
+        "discount": "-60%",
         "rank": 7
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥98.56",
-        "discount": "-56%",
+        "title": "王国保卫战 5：联盟",
+        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
+        "price": "¥41.80",
+        "discount": "-45%",
         "rank": 9
     },
     {
-        "title": "WRC 7 FIA World Rally Championship",
-        "link": "https://store.steampowered.com/app/621830/WRC_7_FIA_World_Rally_Championship/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/621830/capsule_231x87.jpg?t=1725354050",
-        "price": "¥7.00",
-        "discount": "-90%",
+        "title": "The Riftbreaker 银河破裂者",
+        "link": "https://store.steampowered.com/app/780310/The_Riftbreaker/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/780310/58a86fd6b5d9b3f2f568caf0934634a2a6cc0349/capsule_231x87_alt_assets_6_schinese.jpg?t=1772733887",
+        "price": "¥29.37",
+        "discount": "-67%",
         "rank": 10
     }
 ]

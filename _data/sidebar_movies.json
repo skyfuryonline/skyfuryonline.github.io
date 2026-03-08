@@ -1,17 +1,17 @@
 [
     {
-        "title": "非穷尽列举",
-        "link": "https://movie.douban.com/subject/37293378/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2929789264.jpg",
-        "score": "9.3",
-        "region": "英国",
+        "title": "洛杉矶劫案",
+        "link": "https://movie.douban.com/subject/36901008/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2929956678.jpg",
+        "score": "7.2",
+        "region": "美国 英国",
         "rank": 1
     },
     {
         "title": "暗黑新娘！",
         "link": "https://movie.douban.com/subject/36503073/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2929036260.jpg",
-        "score": "暂无评分",
+        "score": "6.6",
         "region": "美国",
         "rank": 2
     },
@@ -32,11 +32,11 @@
         "rank": 4
     },
     {
-        "title": "飞驰人生3",
-        "link": "https://movie.douban.com/subject/37311135/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2929427346.jpg",
-        "score": "7.3",
-        "region": "中国大陆",
+        "title": "非穷尽列举",
+        "link": "https://movie.douban.com/subject/37293378/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2929789264.jpg",
+        "score": "9.3",
+        "region": "英国",
         "rank": 5
     }
 ]
