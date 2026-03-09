@@ -2,10 +2,18 @@
     {
         "title": "Cities: Skylines",
         "link": "https://store.steampowered.com/app/255710/Cities_Skylines/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/255710/3c3329e003427d19a77a3b1b59d517103782cb25/capsule_231x87_alt_assets_6_schinese.jpg?t=1772730040",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/255710/d737f3022e1c3add984f53d907e7c1822cc3a541/capsule_231x87_schinese.jpg?t=1772730040",
         "price": "¥13.80",
         "discount": "-90%",
         "rank": 1
+    },
+    {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1769020260",
+        "price": "¥74.40",
+        "discount": "-70%",
+        "rank": 2
     },
     {
         "title": "Grand Theft Auto V 增强版",
@@ -13,7 +21,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥98.56",
         "discount": "-56%",
-        "rank": 2
+        "rank": 3
     },
     {
         "title": "Slay the Spire",
@@ -21,14 +29,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
         "price": "¥22.00",
         "discount": "-75%",
-        "rank": 3
-    },
-    {
-        "title": "Wallpaper Engine：壁纸引擎",
-        "link": "https://store.steampowered.com/app/431960/Wallpaper_Engine/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431960/capsule_231x87_schinese.jpg?t=1739211362",
-        "price": "¥18.32",
-        "discount": "-20%",
         "rank": 4
     },
     {
@@ -40,19 +40,19 @@
         "rank": 5
     },
     {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1769020260",
-        "price": "¥74.40",
-        "discount": "-70%",
-        "rank": 6
-    },
-    {
         "title": "Dead Cells",
         "link": "https://store.steampowered.com/app/588650/Dead_Cells/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_231x87.jpg?t=1772726488",
         "price": "¥32.00",
         "discount": "-60%",
+        "rank": 6
+    },
+    {
+        "title": "十三州行动：三国搜打撤",
+        "link": "https://store.steampowered.com/app/3684500/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3684500/992cf5cae65deb425f97622c940c9ab84f880dd2/capsule_231x87_schinese.jpg?t=1773037840",
+        "price": "¥38.40",
+        "discount": "-20%",
         "rank": 7
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "王国保卫战 5：联盟",
-        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
-        "price": "¥41.80",
-        "discount": "-45%",
-        "rank": 9
-    },
-    {
         "title": "The Riftbreaker 银河破裂者",
         "link": "https://store.steampowered.com/app/780310/The_Riftbreaker/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/780310/58a86fd6b5d9b3f2f568caf0934634a2a6cc0349/capsule_231x87_alt_assets_6_schinese.jpg?t=1772733887",
         "price": "¥29.37",
         "discount": "-67%",
+        "rank": 9
+    },
+    {
+        "title": "王国保卫战 5：联盟",
+        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
+        "price": "¥41.80",
+        "discount": "-45%",
         "rank": 10
     }
 ]
