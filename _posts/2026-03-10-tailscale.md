@@ -32,7 +32,7 @@ tailscale介绍如下：
 ```bash
 cd ~
 wget https://pkgs.tailscale.com/stable/tailscale_1.94.2_amd64.tgz   
-# 替换为你实际版本  
+
 tar xzf tailscale_*.tgz
 mv tailscale_*/ tailscale/
 rm tailscale_*.tgz
@@ -42,7 +42,6 @@ rm tailscale_*.tgz
 ```bash
 cat >> ~/.bashrc << 'EOF'
 
-# Tailscale 无 root 设置  
 export PATH="$HOME/tailscale:$PATH"
 alias tailscale='tailscale --socket=$HOME/tailscale/tailscaled.sock'
 EOF
