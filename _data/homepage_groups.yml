@@ -39,3 +39,4 @@
   group_description: "记录对新兴技术的发现、了解与粗略分析"
   posts: 
     - "2026-03-03-OpenClaw.md"
+    - "2026-03-10-tailscale.md"
