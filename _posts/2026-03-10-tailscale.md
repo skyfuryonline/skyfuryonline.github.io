@@ -57,20 +57,20 @@ mkdir -p ~/tailscale
 
 持久化：    
 ```bash
-cat > ~/tailscale/start_tailscaled.sh << 'EOF'
+cat > ~/tailscale/start_tailscaled.sh << 'EOF'  
 #!/bin/bash 
-cd ~
-TAILSCALED="$HOME/tailscale/tailscaled --state=$HOME/tailscale/tailscaled.state --socket=$HOME/tailscale/tailscaled.sock --tun=userspace-networking --port=41641"
-if ! pgrep -x tailscaled > /dev/null; then
-    nohup $HOME/tailscale/tailscaled --cleanup >> ~/tailscale/tailscaled.log 2>&1 &
-    nohup $TAILSCALED >> ~/tailscale/tailscaled.log 2>&1 &
-    echo "$(date) tailscaled 已启动" >> ~/tailscale/tailscaled.log
-fi
-EOF
+cd ~  
+TAILSCALED="$HOME/tailscale/tailscaled --state=$HOME/tailscale/tailscaled.state --socket=$HOME/tailscale/tailscaled.sock --tun=userspace-networking --port=41641" 
+if ! pgrep -x tailscaled > /dev/null; then  
+    nohup $HOME/tailscale/tailscaled --cleanup >> ~/tailscale/tailscaled.log 2>&1 & 
+    nohup $TAILSCALED >> ~/tailscale/tailscaled.log 2>&1 &  
+    echo "$(date) tailscaled 已启动" >> ~/tailscale/tailscaled.log  
+fi  
+EOF 
 
-chmod +x ~/tailscale/start_tailscaled.sh
+chmod +x ~/tailscale/start_tailscaled.sh  
 (crontab -l 2>/dev/null; echo "@reboot $HOME/tailscale/start_tailscaled.sh"; echo "* * * * * $HOME/tailscale/start_tailscaled.sh") | crontab -
-$HOME/tailscale/start_tailscaled.sh
+$HOME/tailscale/start_tailscaled.sh 
 ```
 
 
