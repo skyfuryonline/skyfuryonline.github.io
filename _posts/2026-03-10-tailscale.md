@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "tailscale配置及"
+title: "TailScale"
 date: 2026-03-10
 author: "LH"
 catalog: true
@@ -31,7 +31,8 @@ tailscale介绍如下：
 选择特定的安装包:    
 ```bash
 cd ~
-wget https://pkgs.tailscale.com/stable/tailscale_1.94.2_amd64.tgz   # 替换为你实际版本
+wget https://pkgs.tailscale.com/stable/tailscale_1.94.2_amd64.tgz   
+# 替换为你实际版本  
 tar xzf tailscale_*.tgz
 mv tailscale_*/ tailscale/
 rm tailscale_*.tgz
@@ -41,7 +42,7 @@ rm tailscale_*.tgz
 ```bash
 cat >> ~/.bashrc << 'EOF'
 
-# Tailscale 无 root 设置
+# Tailscale 无 root 设置  
 export PATH="$HOME/tailscale:$PATH"
 alias tailscale='tailscale --socket=$HOME/tailscale/tailscaled.sock'
 EOF
@@ -57,7 +58,7 @@ mkdir -p ~/tailscale
 持久化：    
 ```bash
 cat > ~/tailscale/start_tailscaled.sh << 'EOF'
-#!/bin/bash
+#!/bin/bash 
 cd ~
 TAILSCALED="$HOME/tailscale/tailscaled --state=$HOME/tailscale/tailscaled.state --socket=$HOME/tailscale/tailscaled.sock --tun=userspace-networking --port=41641"
 if ! pgrep -x tailscaled > /dev/null; then
