@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Gemini Embedding 2: Our first natively multimodal embedding model",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2/",
+        "date": "2026-03-10",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-03-10/Gemini Embedding 2- Our first natively multimodal embedding model",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp"
+        ],
+        "summary": "摘要：  \nGemini Embedding 2 是 Google DeepMind 推出的首个原生多模态嵌入模型，基于 Gemini 架构，能将文本、图像、视频、音频和文档统一映射到同一嵌入空间，支持跨模态语义理解和检索。该模型支持多语言、多模态混合输入（如图文+音频），并采用 Matryoshka 表示学习技术，允许灵活调整输出维度（如3072、1536、768），在保证性能的同时优化存储成本。其在文本、图像、视频和语音任务中表现优于现有模型，适用于 RAG、语义搜索、情感分析等场景，并已通过 Gemini API 和 Vertex AI 提供公测。\n\n例子：  \n用户上传一张猫的图片和一段“这只猫很可爱”的语音，模型可生成统一嵌入向量，用于跨模态搜索或分类。\n\n关键字：  \n多模态嵌入、Gemini Embedding 2、语义检索、Matryoshka 表示学习、跨模态理解"
+    }
+]

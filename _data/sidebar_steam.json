@@ -2,18 +2,10 @@
     {
         "title": "Cities: Skylines",
         "link": "https://store.steampowered.com/app/255710/Cities_Skylines/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/255710/d737f3022e1c3add984f53d907e7c1822cc3a541/capsule_231x87_schinese.jpg?t=1772730040",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/255710/dcf88cc47815f5af69a6d87cb9a45cd84b525694/capsule_231x87_alt_assets_8_schinese.jpg?t=1773157607",
         "price": "¥13.80",
         "discount": "-90%",
         "rank": 1
-    },
-    {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥98.56",
-        "discount": "-56%",
-        "rank": 2
     },
     {
         "title": "Slay the Spire",
@@ -21,6 +13,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
         "price": "¥22.00",
         "discount": "-75%",
+        "rank": 2
+    },
+    {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥98.56",
+        "discount": "-56%",
         "rank": 3
     },
     {
@@ -40,28 +40,12 @@
         "rank": 5
     },
     {
-        "title": "Dead Cells",
-        "link": "https://store.steampowered.com/app/588650/Dead_Cells/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_231x87.jpg?t=1772726488",
-        "price": "¥32.00",
-        "discount": "-60%",
-        "rank": 6
-    },
-    {
         "title": "王国保卫战 5：联盟",
         "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1772720308",
         "price": "¥41.80",
         "discount": "-45%",
-        "rank": 7
-    },
-    {
-        "title": "人类一败涂地 / Human Fall Flat",
-        "link": "https://store.steampowered.com/app/477160/__Human_Fall_Flat/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/527795a8bbe4eff34aee62450c82b35d54fc6755/capsule_231x87_alt_assets_27_schinese.jpg?t=1772741188",
-        "price": "¥17.40",
-        "discount": "-70%",
-        "rank": 8
+        "rank": 6
     },
     {
         "title": "每日亲亲洛丽塔",
@@ -69,7 +53,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3780110/dbe1aca6fb48d2e9f270d5fafcfd0d8ca48a23b7/capsule_231x87_schinese.jpg?t=1773108130",
         "price": "¥31.50",
         "discount": "-10%",
-        "rank": 9
+        "rank": 7
     },
     {
         "title": "新枪弹辩驳V3 大家自相残杀的新学期",
@@ -77,6 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/567640/capsule_231x87.jpg?t=1750134757",
         "price": "¥40.00",
         "discount": "-80%",
+        "rank": 8
+    },
+    {
+        "title": "死亡空间",
+        "link": "https://store.steampowered.com/app/1693980/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1693980/capsule_231x87.jpg?t=1769464545",
+        "price": "¥37.20",
+        "discount": "-85%",
+        "rank": 9
+    },
+    {
+        "title": "Dead Cells",
+        "link": "https://store.steampowered.com/app/588650/Dead_Cells/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_231x87.jpg?t=1772726488",
+        "price": "¥32.00",
+        "discount": "-60%",
         "rank": 10
     }
 ]
