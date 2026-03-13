@@ -1,27 +1,35 @@
 [
     {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1769020260",
-        "price": "¥74.40",
-        "discount": "-70%",
+        "title": "龙胤立志传",
+        "link": "https://store.steampowered.com/app/3202030/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3202030/ede15bdc5ab6893e3ee01df6d7239e2b2245f096/capsule_231x87.jpg?t=1773392717",
+        "price": "¥61.20",
+        "discount": "-10%",
         "rank": 1
     },
     {
-        "title": "Crusader Kings III",
-        "link": "https://store.steampowered.com/app/1158310/Crusader_Kings_III/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1158310/969346b7534d84360e80d8997c3f58636140893f/capsule_231x87.jpg?t=1773237974",
-        "price": "¥59.40",
-        "discount": "-70%",
+        "title": "《战地风云 5》",
+        "link": "https://store.steampowered.com/app/1238810/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1238810/capsule_231x87.jpg?t=1772707365",
+        "price": "¥11.40",
+        "discount": "-95%",
         "rank": 2
     },
     {
-        "title": "Slay the Spire",
-        "link": "https://store.steampowered.com/app/646570/Slay_the_Spire/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
-        "price": "¥22.00",
-        "discount": "-75%",
+        "title": "《战地风云™ 2042》",
+        "link": "https://store.steampowered.com/app/1517290/_2042/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1517290/capsule_231x87_schinese.jpg?t=1772707432",
+        "price": "¥12.40",
+        "discount": "-95%",
         "rank": 3
+    },
+    {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1773426592",
+        "price": "¥74.40",
+        "discount": "-70%",
+        "rank": 4
     },
     {
         "title": "Grand Theft Auto V 增强版",
@@ -29,31 +37,39 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥98.56",
         "discount": "-56%",
-        "rank": 4
+        "rank": 5
     },
     {
-        "title": "索拉斯塔2",
-        "link": "https://store.steampowered.com/app/2975950/2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2975950/af1dc02431cdfae5c644773cc0714a8128b45fc7/capsule_231x87.jpg?t=1773332597",
-        "price": "¥124.20",
-        "discount": "-10%",
-        "rank": 5
+        "title": "Victoria 3",
+        "link": "https://store.steampowered.com/app/529340/Victoria_3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/529340/2dc650289c03a0f227ca50ea387fc42a2f64ec5d/capsule_231x87_alt_assets_8_schinese.jpg?t=1773335146",
+        "price": "¥59.40",
+        "discount": "-70%",
+        "rank": 6
     },
     {
         "title": "NBA 2K26",
         "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/0ffdd59df23c0204fa922ab0704c7faccb56a934/capsule_231x87_alt_assets_3.jpg?t=1771603429",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1771603429",
         "price": "¥92.25",
         "discount": "-75%",
-        "rank": 6
+        "rank": 7
     },
     {
-        "title": "王国保卫战 5：联盟",
-        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1773236084",
-        "price": "¥41.80",
-        "discount": "-45%",
-        "rank": 7
+        "title": "Slay the Spire",
+        "link": "https://store.steampowered.com/app/646570/Slay_the_Spire/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
+        "price": "¥22.00",
+        "discount": "-75%",
+        "rank": 8
+    },
+    {
+        "title": "Crusader Kings III",
+        "link": "https://store.steampowered.com/app/1158310/Crusader_Kings_III/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1158310/969346b7534d84360e80d8997c3f58636140893f/capsule_231x87.jpg?t=1773237974",
+        "price": "¥59.40",
+        "discount": "-70%",
+        "rank": 9
     },
     {
         "title": "人类一败涂地 / Human Fall Flat",
@@ -61,22 +77,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/527795a8bbe4eff34aee62450c82b35d54fc6755/capsule_231x87_alt_assets_27_schinese.jpg?t=1772741188",
         "price": "¥17.40",
         "discount": "-70%",
-        "rank": 8
-    },
-    {
-        "title": "World War Z",
-        "link": "https://store.steampowered.com/app/699130/World_War_Z/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/699130/bc262c3fd0b77d064cae97471f4218a8f1f34495/capsule_231x87.jpg?t=1772017589",
-        "price": "¥32.25",
-        "discount": "-75%",
-        "rank": 9
-    },
-    {
-        "title": "The Riftbreaker 银河破裂者",
-        "link": "https://store.steampowered.com/app/780310/The_Riftbreaker/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/780310/58a86fd6b5d9b3f2f568caf0934634a2a6cc0349/capsule_231x87_alt_assets_6_schinese.jpg?t=1772733887",
-        "price": "¥29.37",
-        "discount": "-67%",
         "rank": 10
     }
 ]
