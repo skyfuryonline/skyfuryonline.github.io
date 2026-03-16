@@ -1,80 +1,80 @@
 [
     {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1773426592",
+        "price": "¥74.40",
+        "discount": "-70%",
+        "rank": 1
+    },
+    {
         "title": "龙胤立志传",
         "link": "https://store.steampowered.com/app/3202030/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3202030/ede15bdc5ab6893e3ee01df6d7239e2b2245f096/capsule_231x87.jpg?t=1773587720",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3202030/ede15bdc5ab6893e3ee01df6d7239e2b2245f096/capsule_231x87.jpg?t=1773633862",
         "price": "¥61.20",
         "discount": "-10%",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "《战地风云 5》",
         "link": "https://store.steampowered.com/app/1238810/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1238810/capsule_231x87.jpg?t=1772707365",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1238810/capsule_231x87.jpg?t=1772707365",
         "price": "¥11.40",
         "discount": "-95%",
-        "rank": 2
-    },
-    {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1773426592",
-        "price": "¥74.40",
-        "discount": "-70%",
         "rank": 3
     },
     {
-        "title": "《战地风云™ 2042》",
-        "link": "https://store.steampowered.com/app/1517290/_2042/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1517290/capsule_231x87_schinese.jpg?t=1772707432",
-        "price": "¥12.40",
-        "discount": "-95%",
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥98.56",
+        "discount": "-56%",
         "rank": 4
     },
     {
         "title": "Slay the Spire",
         "link": "https://store.steampowered.com/app/646570/Slay_the_Spire/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/646570/capsule_231x87.jpg?t=1769094928",
         "price": "¥22.00",
         "discount": "-75%",
         "rank": 5
     },
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥98.56",
-        "discount": "-56%",
+        "title": "《战地风云™ 2042》",
+        "link": "https://store.steampowered.com/app/1517290/_2042/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1517290/capsule_231x87_schinese.jpg?t=1772707432",
+        "price": "¥12.40",
+        "discount": "-95%",
         "rank": 6
     },
     {
         "title": "NBA 2K26",
         "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1771603429",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1771603429",
         "price": "¥92.25",
         "discount": "-75%",
         "rank": 7
     },
     {
-        "title": "王国保卫战 5：联盟",
-        "link": "https://store.steampowered.com/app/2849080/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2849080/2ce743872996dcc98153d14475817b0b4fe9198f/capsule_231x87.jpg?t=1773236084",
-        "price": "¥41.80",
-        "discount": "-45%",
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥138.60",
+        "discount": "-30%",
         "rank": 8
     },
     {
-        "title": "霍格沃茨之遗",
-        "link": "https://store.steampowered.com/app/990080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/990080/1b2e4eeed79dd06971492825a461bc5130bf7c28/capsule_231x87.jpg?t=1765473525",
-        "price": "¥57.60",
-        "discount": "-85%",
+        "title": "FINAL FANTASY VII REMAKE INTERGRADE",
+        "link": "https://store.steampowered.com/app/1462040/FINAL_FANTASY_VII_REMAKE_INTERGRADE/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1462040/capsule_231x87.jpg?t=1770723745",
+        "price": "¥99.00",
+        "discount": "-50%",
         "rank": 9
     },
     {
         "title": "人类一败涂地 / Human Fall Flat",
         "link": "https://store.steampowered.com/app/477160/__Human_Fall_Flat/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/527795a8bbe4eff34aee62450c82b35d54fc6755/capsule_231x87_alt_assets_27_schinese.jpg?t=1772741188",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/477160/527795a8bbe4eff34aee62450c82b35d54fc6755/capsule_231x87_alt_assets_27_schinese.jpg?t=1772741188",
         "price": "¥17.40",
         "discount": "-70%",
         "rank": 10

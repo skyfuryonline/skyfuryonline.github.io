@@ -1,0 +1,120 @@
+Breadcrumb
+Innovation & AI
+Technology
+Developer tools
+Giving you more transparency and control over your Gemini API costs
+Mar 16, 2026
+·
+3 min read
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+New features in Google AI Studio enable developers to set monthly spend caps, scale effectively through their usage tiers, and more.
+J
+Jason Stephen
+N
+Nabila Babar
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Today, we are announcing
+Project Spend Caps
+in Google AI Studio to give you precise control over your monthly Gemini API expenses. We are also revamping our
+Usage Tiers
+to enable you to scale faster and help ensure fair access to our API service.
+Project Spend Caps: Granular control for better cost management
+With
+Project Spend Caps
+, you can now easily establish a monthly dollar limit for Gemini API spend on your projects in Google AI Studio. Once configured, this limit remains active until you choose to modify or disable it, ensuring consistent oversight of your costs. This is particularly useful for accounts with multiple projects where you’d want granular control over project-level spend. Spend caps have a ~10 minute delay and users are responsible for overages incurred during that period.
+Project owners can now set these spend caps per project in AI Studio by going to the
+Spend
+tab, under “Monthly spend cap.”
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+Setup your monthly spend caps by project in the
+Spend
+tab in Google AI Studio
+Usage Tiers: Less friction and more transparency as you scale
+We’ve completely revamped our
+Usage Tiers
+to get you higher capacity faster. While we rely on these tiers to manage aggregate load and help to ensure equitable API access, your progression through them is now automated and transparent. Here is what’s changing:
+Lower spend qualifications:
+To make it easier for users with a strong payment history to get higher quotas, we are also reducing the spend qualifications for higher tiers.
+Automatic and faster upgrades:
+The system now automatically upgrades you to the next tier as your usage grows and your payment history matures. You get access to higher rate limits and increased monthly quota as soon as the criteria is met.
+Billing account tier cap:
+Each
+Usage Tier
+will now have a maximum monthly spend limit ($) enforced across your entire billing account (similar to other platforms in the industry). This
+system-defined cap
+automatically increases as you graduate to higher tiers, and operates independently of the custom Project Spend Caps you set yourself.
+You can see the usage tier limits along with the new criteria in
+our docs
+and discover how different tiers impact your
+rate limit metrics directly within Google AI Studio
+.
+Improved billing flow with enhanced observability and control
+Over the past few months, we’ve launched a suite of updates in Google AI Studio to improve our billing experience, observability and cost management, with the goal to give developers an easier and more transparent experience with our paid services. Here’s what’s new:
+New
+billing setup
+directly in Google AI Studio:
+You can now configure your billing profile and link it to your projects right from the settings, ensuring you can scale your application more seamlessly as your needs grow. No more jumping between 3 different windows and tabs.
+New
+rate limit dashboard
+:
+The dashboard gives you a clear view of your progress towards rate limits for every project imported into Google AI Studio. You can monitor usage against three key metrics: Requests Per Minute (RPM), Tokens Per Minute (TPM) and Requests Per Day (RPD), view and filter graphs for these metrics to identify traffic spikes and explore rate limits across different models.
+New
+cost dashboard
+:
+To help you manage your budget, we also launched a Daily Cost Breakdown Graph within the Billing Dashboard. This tool provides a transparent view of your spend, allowing you to track costs per project over different time frames — from the last 7 days to the entire month, and filter by model.
+New
+usage dashboard
+:
+An expanded, comprehensive view of your system's performance. Beyond standard request counts, you can now dive into error metrics, token usage and specific generation stats. We’ve also added dedicated graphs for Imagen and Veo requests per day, in addition to tools like Grounding with Google Search and Maps.
+We hope these updates help you build more confidently with the Gemini API, and we will continue to make improvements to provide a more reliable and transparent service.
+POSTED IN:
+Developer tools
+Related stories
+Developer tools
+Gemini Embedding 2: Our first natively multimodal embedding model
+By
+Min Choi
+&
+Tom Duerig
+Mar 10, 2026
+Developer tools
+Play AI-based games in our I/O Save the date
+By
+Ari Marini
+Mar 06, 2026
+AI
+The latest AI news we announced in February
+By
+Keyword Team
+Google Labs
+Build dynamic agentic workflows in Opal
+By
+Dimitri Glazkov
+Feb 24, 2026
+Developer tools
+Save the date! Google I/O 2026 is May 19-20.
+Feb 17, 2026
+AI
+The latest AI news we announced in January
+By
+Keyword Team
+Feb 04, 2026
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6

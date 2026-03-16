@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "拼桌",
-        "link": "https://movie.douban.com/subject/36539452/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929789167.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆",
-        "rank": 4
-    },
-    {
         "title": "洛杉矶劫案",
         "link": "https://movie.douban.com/subject/36901008/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2929956678.jpg",
         "score": "7.0",
         "region": "美国 英国",
+        "rank": 4
+    },
+    {
+        "title": "拼桌",
+        "link": "https://movie.douban.com/subject/36539452/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930539333.jpg",
+        "score": "暂无评分",
+        "region": "中国大陆",
         "rank": 5
     }
 ]
