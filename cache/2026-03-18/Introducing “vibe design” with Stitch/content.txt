@@ -1,0 +1,105 @@
+Breadcrumb
+Innovation & AI
+Models & research
+Google Labs
+Introducing “vibe design” with Stitch
+Mar 18, 2026
+·
+4 min read
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Stitch is evolving into an AI-native software design canvas that allows anyone to create, iterate and collaborate on high-fidelity UI from natural language.
+R
+Rustin Banks
+Product Manager, Google Labs
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Over the last year, AI has fundamentally changed how we build, turning simple descriptions into functional software. We launched
+Stitch
+to bring your ideas to life starting with the design process.
+Today, we are evolving Stitch into an AI-native software design canvas. With it, anyone can create, iterate and collaborate to turn natural language into high-fidelity UI designs.
+Creating with intent
+When “vibe designing” in Stitch, you can explore many ideas quickly leading to a higher quality outcome. Instead of starting with a wireframe, you can start by explaining the business objective you’re hoping to achieve, what you want your users to feel, or even examples of what’s currently inspiring you.
+AI can be a creativity multiplier, helping people explore many ideas quickly
+Josh Woodward
+VP Google Labs
+A new AI native design canvas
+We’re introducing a complete redesign of the Stitch UI. It now features a new AI-native, infinite canvas that gives your ideas room to grow from early ideations to working prototypes. The new Stitch canvas is built to amplify your creativity throughout the design process, where you often diverge and converge before landing on something great. It allows you to bring your ideas regardless of the shape they take — images, text or even code — directly to the canvas as context.
+A new design agent
+The canvas's extensive context is also being paired with a brand new design agent that can reason across the entire project’s evolution. And when you want to explore more directions, we’re introducing the new Agent manager. It tracks your progress and helps you to work on multiple ideas in parallel, all while staying organized.
+Design systems with DESIGN.md
+We have broadened our design system toolkit to enable creation with deeper context. You can easily extract a design system from any URL, or use the new
+DESIGN.md
+— an agent-friendly markdown file — to export or import your design rules to or from other design and coding tools. This lets you, for instance, apply your designs to a different Stitch project so you don’t have to reinvent the wheel every time you start.
+Iterating quickly and in the flow
+Design is a process of constant refinement, and being able to test ideas in real-time is crucial to maintaining creative momentum.
+By transforming static designs into interactive prototypes instantly, Stitch allows you to experience the user journey immediately. You can “Stitch” screens together in seconds and simply click “Play” to quickly preview your interactive app flow. Stitch can automatically generate logical next screens based on the click, mapping out user journeys effortlessly. This rapid feedback loop means you can refine individual elements or overhaul entire flows with a single click, ensuring your best ideas are validated and polished in record time.
+Collaborating with AI
+In Stitch, we are transforming collaboration into an integrated creative partnership that spans your workflow.
+Vibe design with your voice
+We’re introducing voice capabilities, where you can speak directly to your canvas. The agent can give you real-time design critiques, design a new landing page by interviewing you, and make real-time updates — like "give me three different menu options," or "show me this screen in different color palettes" — as you speak.
+By acting as a sounding board, AI helps you uncover your top ideas through dynamic critique and dialogue, ensuring you remain in your creative flow.
+From design to code with MCP, Skills, and exports
+But the collaboration doesn’t stop there. Stitch can also act as a bridge to all of the other tools in your team’s workflow. Using the recently released Stitch
+MCP server
+and
+SDK
+, you can leverage Stitch’s capabilities via
+skills
+(2.4k stars) and tools. Or export your designs to developer tools like AI Studio and Antigravity, ensuring that the partnership between you, the AI, and your developers remains seamless and synchronized.
+Start building
+Whether you’re a professional designer looking to explore dozens of variations or a founder manifesting your first software idea, we’re building Stitch to help you close the gap from idea to reality in minutes rather than days.
+POSTED IN:
+Google Labs
+Developer tools
+Related stories
+Developer tools
+Gemini API tooling updates: context circulation, tool combos and Maps grounding for Gemini 3
+By
+Mariano Cocirio
+&
+Philipp Schmid
+Mar 17, 2026
+Developer tools
+Giving you more transparency and control over your Gemini API costs
+By
+Jason Stephen
+&
+Nabila Babar
+Mar 16, 2026
+Developer tools
+Gemini Embedding 2: Our first natively multimodal embedding model
+By
+Min Choi
+&
+Tom Duerig
+Mar 10, 2026
+Developer tools
+Play AI-based games in our I/O Save the date
+By
+Ari Marini
+Mar 06, 2026
+AI
+The latest AI news we announced in February
+By
+Keyword Team
+NotebookLM
+Generate your own Cinematic Video Overviews in NotebookLM.
+By
+Pete Aykroyd
+Mar 04, 2026
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6

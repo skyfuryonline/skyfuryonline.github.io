@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Introducing “vibe design” with Stitch",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/",
+        "date": "2026-03-18",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-03-18/Introducing “vibe design” with Stitch",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp",
+            "image_13.webp"
+        ],
+        "summary": "摘要：  \nGoogle Labs 推出“氛围设计”（vibe design）理念，并升级其 AI 工具 Stitch 为原生 AI 设计画布。用户可通过自然语言、语音或图像直接表达设计意图，AI 代理将据此生成高保真 UI，并支持实时交互原型、多方案并行探索与设计系统复用（通过 DESIGN.md）。Stitch 还打通开发流程，可导出至开发者工具，实现从创意到代码的无缝协作，大幅提升设计效率与创造力。\n\n例子：  \n用户说：“做一个让人感到放松的冥想 App 首页，参考 Calm 的风格”，Stitch 自动生成多个高保真界面，并可语音指令切换配色或布局。\n\n关键字：  \n氛围设计、AI 原生画布、自然语言生成 UI、DESIGN.md、设计-开发协作"
+    },
+    {
+        "title": "Gemini API tooling updates: context circulation, tool combos and Maps grounding for Gemini 3",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tooling-updates/",
+        "date": "2026-03-18",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-03-18/Gemini API tooling updates- context circulation, tool combos and Maps grounding for Gemini 3",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp"
+        ],
+        "summary": "摘要：Google DeepMind 推出 Gemini API 新功能，支持在单次调用中结合内置工具（如 Google Search 和 Maps）与自定义函数，简化智能体工作流。新增“上下文循环”机制，使多步骤任务中各工具调用结果可被后续步骤复用；同时为每个工具调用分配唯一 ID，提升调试与异步处理精度。Gemini 3 系列模型现已支持 Google Maps 地理定位能力，可获取实时位置、商家信息等数据，增强本地化响应准确性。官方推荐使用 Interactions API 以利用其服务端状态管理和统一推理追踪。\n\n例子：用户询问“附近有哪些营业中的高评分咖啡馆？”，Gemini 调用 Google Maps 获取结果，并将位置信息传递给自定义预订工具完成后续操作。\n\n关键字：Gemini API、工具组合、上下文循环、Google Maps、智能体工作流"
+    }
+]
