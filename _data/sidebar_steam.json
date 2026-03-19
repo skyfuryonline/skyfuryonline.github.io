@@ -2,81 +2,81 @@
     {
         "title": "双影奇境",
         "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
         "price": "¥138.60",
         "discount": "-30%",
         "rank": 1
     },
     {
-        "title": "黎明杀机",
-        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/381210/80aa9887c96ca6866ae5aa8ff202f79cfbb48c6b/capsule_231x87_alt_assets_7.jpg?t=1773849399",
-        "price": "¥37.50",
-        "discount": "-60%",
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1773426592",
+        "price": "¥74.40",
+        "discount": "-70%",
         "rank": 2
     },
     {
-        "title": "龙胤立志传",
-        "link": "https://store.steampowered.com/app/3202030/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3202030/ede15bdc5ab6893e3ee01df6d7239e2b2245f096/capsule_231x87.jpg?t=1773814677",
-        "price": "¥61.20",
-        "discount": "-10%",
+        "title": "赛博朋克 2077",
+        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
+        "price": "¥104.30",
+        "discount": "-65%",
         "rank": 3
     },
     {
-        "title": "战锤40K：暗潮",
-        "link": "https://store.steampowered.com/app/1361210/40K/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1361210/7d743eb7d4a7824aea8a903d18b8e11ea2971f55/capsule_231x87_alt_assets_19_schinese.jpg?t=1773826449",
-        "price": "¥47.00",
-        "discount": "-75%",
+        "title": "极限竞速：地平线 5",
+        "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
+        "price": "¥99.00",
+        "discount": "-50%",
         "rank": 4
-    },
-    {
-        "title": "《战地风云 5》",
-        "link": "https://store.steampowered.com/app/1238810/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1238810/capsule_231x87.jpg?t=1772707365",
-        "price": "¥11.40",
-        "discount": "-95%",
-        "rank": 5
     },
     {
         "title": "Grand Theft Auto V 增强版",
         "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥98.56",
-        "discount": "-56%",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥74.50",
+        "discount": "-50%",
+        "rank": 5
+    },
+    {
+        "title": "Stardew Valley",
+        "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
+        "price": "¥24.00",
+        "discount": "-50%",
         "rank": 6
     },
     {
-        "title": "《恶意不息》",
-        "link": "https://store.steampowered.com/app/1371980/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/9d2efe7754b0843dddbf7c495fe55ccc69e99b6c/capsule_231x87.jpg?t=1769237814",
-        "price": "¥97.30",
-        "discount": "-30%",
+        "title": "黎明杀机",
+        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/80aa9887c96ca6866ae5aa8ff202f79cfbb48c6b/capsule_231x87_alt_assets_7.jpg?t=1773849399",
+        "price": "¥37.50",
+        "discount": "-60%",
         "rank": 7
     },
     {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1771603429",
-        "price": "¥92.25",
-        "discount": "-75%",
+        "title": "艾尔登法环",
+        "link": "https://store.steampowered.com/app/1245620/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_231x87.jpg?t=1767883716",
+        "price": "¥193.70",
+        "discount": "-35%",
         "rank": 8
     },
     {
-        "title": "《战地风云™ 2042》",
-        "link": "https://store.steampowered.com/app/1517290/_2042/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1517290/capsule_231x87_schinese.jpg?t=1772707432",
-        "price": "¥12.40",
-        "discount": "-95%",
+        "title": "Climber Animals: Together",
+        "link": "https://store.steampowered.com/app/2744880/Climber_Animals_Together/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2744880/4f2efd12c5ddf2da023a4aae2be92421c5c54132/capsule_231x87.jpg?t=1773736436",
+        "price": "¥14.40",
+        "discount": "-20%",
         "rank": 9
     },
     {
-        "title": "风屿奇航",
-        "link": "https://store.steampowered.com/app/2253100/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2253100/68f61e41ccf7a7765550625523f07b98c05f6ff0/capsule_231x87_schinese.jpg?t=1773865886",
-        "price": "¥79.20",
-        "discount": "-10%",
+        "title": "Red Dead Redemption 2",
+        "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
+        "price": "¥69.75",
+        "discount": "-75%",
         "rank": 10
     }
 ]
