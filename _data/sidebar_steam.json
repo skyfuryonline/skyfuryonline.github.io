@@ -2,7 +2,7 @@
     {
         "title": "赛博朋克 2077",
         "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
         "price": "¥104.30",
         "discount": "-65%",
         "rank": 1
@@ -10,7 +10,7 @@
     {
         "title": "Resident Evil 3",
         "link": "https://store.steampowered.com/app/952060/Resident_Evil_3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/952060/capsule_231x87.jpg?t=1768956538",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/capsule_231x87.jpg?t=1768956538",
         "price": "¥19.80",
         "discount": "-90%",
         "rank": 2
@@ -18,7 +18,7 @@
     {
         "title": "Stardew Valley",
         "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
         "price": "¥24.00",
         "discount": "-50%",
         "rank": 3
@@ -26,7 +26,7 @@
     {
         "title": "极限竞速：地平线 5",
         "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
         "price": "¥99.00",
         "discount": "-50%",
         "rank": 4
@@ -34,7 +34,7 @@
     {
         "title": "双人成行",
         "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1763484491",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1763484491",
         "price": "¥39.60",
         "discount": "-80%",
         "rank": 5
@@ -42,7 +42,7 @@
     {
         "title": "Red Dead Redemption 2",
         "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
         "rank": 6
@@ -50,33 +50,33 @@
     {
         "title": "Grand Theft Auto V 增强版",
         "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥74.50",
         "discount": "-50%",
         "rank": 7
     },
     {
-        "title": "艾尔登法环",
-        "link": "https://store.steampowered.com/app/1245620/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_231x87.jpg?t=1767883716",
-        "price": "¥193.70",
-        "discount": "-35%",
-        "rank": 8
-    },
-    {
         "title": "Sons Of The Forest",
         "link": "https://store.steampowered.com/app/1326470/Sons_Of_The_Forest/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1326470/capsule_231x87.jpg?t=1708624856",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1326470/capsule_231x87.jpg?t=1708624856",
         "price": "¥32.40",
         "discount": "-70%",
-        "rank": 9
+        "rank": 8
     },
     {
         "title": "双影奇境",
         "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
         "price": "¥138.60",
         "discount": "-30%",
+        "rank": 9
+    },
+    {
+        "title": "《赛博朋克 2077：往日之影》",
+        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
+        "price": "¥96.85",
+        "discount": "-35%",
         "rank": 10
     }
 ]
