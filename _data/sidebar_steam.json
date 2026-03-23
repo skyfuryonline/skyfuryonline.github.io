@@ -8,19 +8,19 @@
         "rank": 1
     },
     {
-        "title": "Resident Evil 3",
-        "link": "https://store.steampowered.com/app/952060/Resident_Evil_3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/capsule_231x87.jpg?t=1768956538",
-        "price": "¥19.80",
-        "discount": "-90%",
-        "rank": 2
-    },
-    {
         "title": "Stardew Valley",
         "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
         "price": "¥24.00",
         "discount": "-50%",
+        "rank": 2
+    },
+    {
+        "title": "Resident Evil 3",
+        "link": "https://store.steampowered.com/app/952060/Resident_Evil_3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/capsule_231x87.jpg?t=1768956538",
+        "price": "¥19.80",
+        "discount": "-90%",
         "rank": 3
     },
     {
@@ -48,11 +48,11 @@
         "rank": 6
     },
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥74.50",
-        "discount": "-50%",
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥138.60",
+        "discount": "-30%",
         "rank": 7
     },
     {
@@ -64,11 +64,11 @@
         "rank": 8
     },
     {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥138.60",
-        "discount": "-30%",
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥74.50",
+        "discount": "-50%",
         "rank": 9
     },
     {
