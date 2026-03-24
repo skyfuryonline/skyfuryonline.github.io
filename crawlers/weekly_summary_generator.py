@@ -2,11 +2,28 @@ import os
 import frontmatter
 import yaml
 import re
+import json
 from datetime import datetime, timedelta
 
 # --- 配置 ---
 LOG_DIR = "_gwy_logs"
 REPORT_DIR = "_gwy_reports"
+CONFIG_FILE = os.path.join(os.path.dirname(__file__), 'config.json')
+
+# 从配置中读取 LLM 模型
+COACH_MODEL = "qwen3-max-2026-01-23"
+COACH_SYSTEM_PROMPT = "你是一位专业的学习分析与激励教练。"
+try:
+    with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
+        config_data = json.load(f)
+        coach_profile = config_data.get("llm_profiles", {}).get("learning_coach", {})
+        if coach_profile.get("model"):
+            COACH_MODEL = coach_profile.get("model")
+        if coach_profile.get("prompt"):
+            COACH_SYSTEM_PROMPT = coach_profile.get("prompt")
+except Exception as e:
+    print(f"Warning: Failed to load LLM config from {CONFIG_FILE}, using defaults. Error: {e}")
+
 # 注意：在 GitHub Actions 中，我们需要配置 OPENAI_API_KEY 等环境变量
 # 从环境变量读取
 
@@ -115,9 +132,9 @@ def get_reports_by_month(month_str):
     return reports
 
 def extract_core_sections(content):
-    """从周报中提取核心的 '状态与反思' 和 '改进建议' 章节"""
-    # 匹配 "状态与反思" 以及其后的所有内容
-    match = re.search(r'(#+)?\s*(?:\d+\.\s*)?\**状态与反思\**.*', content, re.IGNORECASE | re.DOTALL)
+    """从周报中提取核心的 '状态与不足' 和 '教练寄语' 章节"""
+    # 匹配 "状态与不足" 以及其后的所有内容
+    match = re.search(r'(#+)?\s*(?:\d+\.\s*)?\**状态与不足\**.*', content, re.IGNORECASE | re.DOTALL)
     if match:
         return match.group(0).strip()
     return content[:800] + "..." # Fallback，如果没有找到匹配项则截取前半部分
@@ -133,12 +150,12 @@ def generate_and_save_monthly_report(month_str):
     for r in reports:
         content_concat += f"\n\n### {r['date_str']} 周报\n{r['content']}\n"
     
-    prompt = f"""你是一位专业的学习分析与战略教练。请根据我 {month_str} 月份的所有周报内容，为我生成一份【月度学习画像与长期战略建议】。
+    prompt = f"""你是一位专业的学习分析与战略教练。请重点根据我 {month_str} 月份各周的【本周概览】和【学习重点】两部分内容，为我生成一份【月度学习画像与长期战略建议】。
 
-请直接输出核心分析，避免繁琐的数据罗列。你的报告应当遵循 Markdown 格式，包含以下核心部分：
-1. **长期情绪与状态变化轨迹**: 总结这个月情绪周期的起伏。
-2. **核心瓶颈与突破**: 指出我在这个月克服了什么困难，还有哪些瓶颈未能突破。
-3. **下个月宏观战略建议**: 为下个月的学习定下基调和核心策略。
+请直接输出核心分析，避免繁琐的数据罗列，客观、立体地看待我的问题，并给予适当的鼓励。你的报告应当遵循 Markdown 格式，包含以下核心部分：
+1. **月度概览**: 根据各周的概览，评估这个月总体的学习投入度与稳定性。
+2. **重点演变**: 梳理各周学习重点的变化轨迹，分析这个月的核心成果。
+3. **问题诊断与下月基调**: 结合这几周暴露出的不足，立体地指出我的核心问题，给出下个月的宏观战略建议，并给出恰当的教练鼓励。
 
 【我的 {month_str} 月份所有周报记录】：
 {content_concat}
@@ -193,10 +210,10 @@ def create_prompt(this_week_data, last_week_data=None, last_month_report="", cur
 
 1.  **本周概览**: 基于数据，一句话总结总时长和打卡天数，并与上周对比。给出简短的总体评价。
 2.  **学习重点**: 分析科目分布，指出本周投入最多的科目，并分析可能的原因。
-3.  **状态与反思**: 结合我的日记内容和【历史状态】，敏锐地洞察我本周的学习状态、情绪波动。如果我曾经在历史中遇到过某个问题且本周有改善，请给予肯定；如果某个问题反复出现，请提出更深度的干预建议。
-4.  **改进建议**: 根据以上分析，为我提出 2-3 条具体的、可执行的下周学习建议。
+3.  **状态与不足**: 多维立体地分析问题。结合我的日记内容和【历史状态】，敏锐地洞察我的学习状态和情绪波动。重点指出我的不足、心态问题或学习盲区。如果曾经在历史中遇到过某个问题且本周有改善，请给予肯定；如果某个问题反复出现，请深度剖析。
+4.  **教练寄语**: 根据以上分析，给出恰当的鼓励，并用精炼的话语点拨下周方向（避免机械的建议罗列）。
 
-请让你的语言风格既专业又充满鼓励性，像一位真正的教练。
+请让你的语言风格既客观专业，又充满温度和鼓励性，像一位真正的教练。
 
 {context_section}
 
@@ -221,9 +238,9 @@ def get_llm_summary(prompt):
     print(prompt[:500] + "\n...[内容截断]...\n")
     
     response = client.chat.completions.create(
-        model="qwen3-max-2026-01-23",
+        model=COACH_MODEL,
         messages=[
-            {"role": "system", "content": "你是一位专业的学习分析与激励教练。"},
+            {"role": "system", "content": COACH_SYSTEM_PROMPT},
             {"role": "user", "content": prompt}
         ]
     )
