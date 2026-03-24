@@ -3,7 +3,7 @@ layout: post
 title: "博客开发指南 (四)：VS Code 极速创作与发文指南"
 subtitle: "用自定义 Snippets 告别繁琐的 Front Matter"
 date: 2026-03-24 10:00:00 +0800
-author: "skyfury"
+author: "LH"
 header-img: "img/cover-zaji.png"
 catalog: true
 tags:
@@ -31,7 +31,7 @@ layout: post
 title: "Your Title Here"
 subtitle: "Optional Subtitle"
 date: 2026-03-24 12:00:00 +0800
-author: "skyfury"
+author: "LH"
 header-img: "img/post-bg-os-metro.jpg"
 catalog: true
 group: tech
