@@ -1,0 +1,19 @@
+[
+    {
+        "title": "Building superconducting and neutral atom quantum computers",
+        "link": "https://blog.google/innovation-and-ai/technology/research/neutral-atom-quantum-computers/",
+        "date": "2026-03-24",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-03-24/Building superconducting and neutral atom quantum computers",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp"
+        ],
+        "summary": "摘要：  \nGoogle Quantum AI 正在扩展其量子计算研究，除原有的超导量子比特技术外，新增中性原子量子计算路径。超导系统擅长实现高深度电路（时间维度可扩展），而中性原子系统则在大规模量子比特数量（空间维度可扩展）和灵活连接性方面具有优势。公司通过并行推进两种技术，加速实现容错量子计算，并依托科罗拉多博尔德地区的顶尖物理与工程生态，组建由Adam Kaufman博士领导的中性原子硬件团队。该计划涵盖量子纠错、建模仿真与实验硬件三大支柱，并与QuEra等企业及CU Boulder、NIST等机构紧密合作，旨在为不同问题提供定制化量子平台。\n\n例子：  \n如同同时研发电动车（超导）和氢能源车（中性原子），利用各自优势更快实现绿色交通目标。\n\n关键字：  \n量子计算、超导量子比特、中性原子、量子纠错、多路径研发"
+    }
+]
