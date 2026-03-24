@@ -1,63 +1,55 @@
-# 基于 Jekyll、GitHub Action、LLMs的个人博客搭建
+# 基于 Jekyll、GitHub Actions 与 LLM 的现代个人知识库
 
-本项目是一个基于 Jekyll 的博客，其核心特色是集成了一套复杂的、自动化的内容聚合系统。该系统利用由 GitHub Actions 编排的 Python 爬虫，来自动抓取、总结并展示来自多个高质量技术博客的内容。
+本项目是一个高度定制化的 Jekyll 静态博客，核心特色是采用了 **代码与内容分离的双仓库架构**，并深度集成了 **Python 自动化工作流** 和 **具备长时记忆的 AI 学习教练**。
+
 ![页面展示](img/screenshot.png)
 
-## 核心功能
+## 架构特色
 
-- **自动化内容抓取**: 每日定时执行 Python 爬虫，以发现并抓取最新的文章。
-- **动态内容处理**: 利用 Selenium 来渲染重度依赖 JavaScript 的网站，确保在解析前内容已完全加载。
-- **AI 驱动的摘要**: 集成大语言模型 (LLM)，为每篇抓取的文章生成精炼的摘要。
-- **图片与媒体缓存**: 自动下载并缓存文章中的图片，使其可被 Jekyll 站点直接访问。
-- **CI/CD 编排**: 由 GitHub Actions 管理的全自动化工作流，负责抓取、数据处理和最终部署。
-- **清晰的架构**: 在爬虫（负责数据抓取）和主编排器（负责数据处理、缓存和 LLM 交互）之间实现了明确的关注点分离。
+1. **内容与源码分离 (双仓库设计)**：
+   - **源码仓库 (当前仓库)**：负责存放 Jekyll 布局、CSS 样式、前端交互脚本（Chart.js 大屏）以及 Python 自动化部署脚本。
+   - **数据仓库 (`blog-source`，私有)**：负责存放所有包含个人隐私的 Markdown 文章、日记和 AI 生成的周报数据。
+   - **安全性**：通过 GitHub Actions，在云端 CI/CD 流程中拉取私有数据进行静态渲染。博客源码即使公开，也绝对不会泄漏未发布的草稿或个人敏感日记。
 
-## 工作原理
+2. **数据驱动的模块化设计**：
+   - 首页专栏完全由 `_data/homepage_groups.yml` 驱动（分为 Tech, Life, Vision, Gwy 等）。
+   - 任何专栏和页面的增减无需修改 HTML，只需修改配置文件和补充对应的 Markdown 路由即可。
 
-整个流程由定义在 `.github/workflows/deploy.yml` 中的 GitHub Actions 工作流进行编排。
+3. **动态可交互的备考数据大屏 (Gwy)**：
+   - 使用 Chart.js 与自定义的月历热力图，构建了类似 GitHub Contributions 风格的仪表盘。
+   - 可以在纯静态页面上，动态统计和展示每日/每周的学习时长、连续打卡天数以及各科目的精力分布。
 
-1.  **触发**: 工作流会按每日计划、手动触发，或在每次推送到 `master` 分支时运行。
-2.  **编排 (`crawlers/main.py`)**:
-    - 初始化一个共享的 Selenium WebDriver 实例，供所有爬虫使用。
-    - 从 `crawlers/config.json` 读取配置，以确定要抓取哪些网站。
-    - 遍历所有启用的爬虫。
-3.  **抓取 (`crawlers/specific_crawlers/`)**:
-    - 每个具体的爬虫都负责从其目标站点抓取一个文章列表。
-    - 对于每篇新文章，它会抓取其完整的文章文本和所有图片的 URL。
-    - 然后，它将这些结构化数据（文本和图片 URL）返回给主编排器。
-4.  **处理与缓存 (`crawlers/main.py`)**:
-    - 对于接收到的每篇文章，编排器会创建一个经过净化的缓存目录（例如 `cache/YYYY-MM-DD/article-title/`）。
-    - 它将文章文本保存到 `content.txt` 中。
-    - 它会异步地将所有图片从提供的 URL 下载到该缓存目录中。
-    - 它调用 LLM 摘要器 (`llm/summarizer.py`) 来生成内容摘要。
-5.  **数据生成**:
-    - 编排器将当天所有文章的元数据（标题、链接、来源、摘要、相对缓存路径、图片文件名）编译到一个 JSON 文件中（例如 `_data/daily_YYYY-MM-DD.json`）。
-6.  **Jekyll 构建与部署**:
-    - GitHub Actions 工作流接着会将新生成的数据文件提交到 `data` 分支。
-    - 最后，它触发 Jekyll 的构建和部署流程，Jekyll 会使用 `_data` 目录中的数据来渲染 `daily.html` 页面。
+4. **AI 原生学习教练**：
+   - 在后端的自动化流程中集成了基于 LLM 的生成器 (`crawlers/weekly_summary_generator.py`)。
+   - **长时递归记忆**：AI 不仅总结本周的日志，还会自动读取上周/上月的旧报告，实现状态和问题的跨周继承，给出连贯的教练建议。
+   - LLM 的配置（模型切换、系统提示词）被统一抽离在 `crawlers/config.json` 中，可轻松无缝切换不同厂商大模型。
 
-## 项目结构
+## 部署工作流 (.github/workflows/deploy.yml)
 
--   `.github/workflows/deploy.yml`: 主要的 GitHub Actions 工作流文件。
--   `crawlers/`: 内容聚合系统的核心。
-    -   `main.py`: 主编排器脚本。
-    -   `config.json`: 用于所有爬虫、站点和 LLM 提示词的配置文件。
-    -   `specific_crawlers/`: 包含针对每个目标站点的具体爬虫实现。
--   `llm/`: 包含与 LLM 交互以进行摘要的逻辑。
--   `_data/`: 最终生成的、供 Jekyll 使用的每日 JSON 文件存放处。
--   `cache/`: 所有下载的内容（文本和图片）的缓存位置。
--   `daily.html`: 读取 `_data` 中的数据并展示聚合内容的 Jekyll 页面。
+整个发布流程完全自动化：
+1. **触发**: 推送代码或内容仓库有更新时，触发 Actions。
+2. **拉取依赖**: 拉取源码仓库及私有的内容仓库（使用 PAT Token）。
+3. **内容融合**: 将私有仓库中的文章和日志利用 `rsync` 挂载到 Jekyll 的对应目录。
+4. **自动化脚本**: 运行 Python 环境，执行 AI 周报/月报自动生成或外部爬虫获取。
+5. **构建部署**: 调用 Jekyll 插件进行静态编译，发布至 GitHub Pages。
 
-## 依赖项
+## 极速创作指南
 
-所有 Python 相关的依赖项都在 `requirements.txt` 文件中列出。
+本仓库内置了 VS Code 的专属工作流设置，极大优化了写作体验。
 
-## 写作指南
+**如何写新文章：**
+1. 在 `_posts/` 或内容库对应目录下新建文件，格式如 `YYYY-MM-DD-your-title.md`。
+2. 输入 **`!post`** 并按 `Tab` 或 `Enter` 键。
+3. 系统将自动生成包含今天日期的完整 Jekyll Front Matter。
+4. 使用 `Tab` 键即可在**标题**、**文章分组**（下拉菜单选择如 tech, life, vision）和**标签**中快速跳转补全，无需手敲繁琐的 YAML。
+5. 如需写学习日记，可以使用 **`!gwy`** 命令，同样一键补全。
 
-为了在使用 VS Code (或 GitHub `remote-repository`/`github.dev`) 时更方便地创建新博客，本项目已经配置了 VS Code 代码片段 (Snippets)。
+## 目录结构速览
 
-**使用方法：**
-1. 在 `_posts/` 目录下新建一个格式为 `YYYY-MM-DD-your-title.md` 的空文件。
-2. 在文件中输入 `!post` 或 `fm`，然后按 `Tab` 键。
-3. 系统会自动生成带有当前日期的 Front Matter，你可以使用 `Tab` 键快速在“标题”、“标签”和“分组（提供下拉列表选择）”之间切换输入。
-4. `catalog: true` 默认开启，用于生成文章侧边栏目录。
+- `.github/workflows/deploy.yml`: 自动化部署编排。
+- `_layouts/`, `_includes/`: 页面排版（如 `gwy_layout.html` 自定义了大屏组件）。
+- `_data/`: 驱动首页分类和卡片的数据源。
+- `crawlers/`: Python 自动化脚本集。
+  - `weekly_summary_generator.py`: 带长时记忆的 AI 报告生成引擎。
+  - `config.json`: LLM 调度与爬虫配置文件。
+- `.vscode/`: 包含快捷输入指令 `markdown.code-snippets` 及环境配置。
