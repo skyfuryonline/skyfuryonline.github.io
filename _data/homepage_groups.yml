@@ -27,11 +27,11 @@
   group_image: "/img/cover-zaji.png"
   group_description: "记录个人博客搭建的过程"
   posts:
-    - "2025-10-30-helloworld.md"
-    - "2025-11-03-migrate-to-github-actions.md"
-    - "2025-11-03-add-crawler-to-jekyll-blog.md"
-    - "2025-11-04-llm-integration-for-crawler.md"
-    - "2025-11-04-concurrent-llm-summarization.md"
+    - "2026-03-24-blog-dev-guide-architecture.md"
+    - "2026-03-24-blog-dev-guide-cicd.md"
+    - "2026-03-24-blog-dev-guide-crawler-llm.md"
+    - "2026-03-24-blog-dev-guide-new-post.md"
+    - "2026-03-24-blog-dev-guide-new-group.md"
 
 - group_name: "视野"
   url: "/groups/vision"
