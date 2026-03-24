@@ -67,10 +67,6 @@ jobs:
         working-directory: ./main
         run: pip install -r requirements.txt
 
-      - name: Install Playwright Browsers 🎭
-        working-directory: ./main
-        run: playwright install
-
       - name: Run crawler 🕷️
         if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         working-directory: ./main
