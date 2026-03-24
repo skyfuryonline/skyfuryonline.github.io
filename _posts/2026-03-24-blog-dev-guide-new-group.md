@@ -43,7 +43,7 @@ description: "分享最近听到的好歌与感受"
 header-img: "img/cover-music.svg"
 ---
 
-{% include group_posts.html group_name="音乐分享" %}
+{% raw %}{% include group_posts.html group_name="音乐分享" %}{% endraw %}
 ```
 
 **搞定了！**

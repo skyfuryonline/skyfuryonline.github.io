@@ -60,5 +60,5 @@
      posts: []
    ```
 3. 在 `img/` 下放一张 `cover-music.svg`。
-4. 在 `_groups/` 目录下新建 `music.md` 承载路由，利用 Liquid 的 `{% include group_posts.html %}` 引入文章列表。
+4. 在 `_groups/` 目录下新建 `music.md` 承载路由，利用 Liquid 的 `{% raw %}{% include group_posts.html %}{% endraw %}` 引入文章列表。
 一个全新的响应式板块就自动在首页上线了！
