@@ -4,7 +4,7 @@ title: "博客开发指南 (二)：GitHub Actions 自动化部署流"
 subtitle: "解密网站背后的自动化构建与发布流水线"
 date: 2026-03-24 10:00:00 +0800
 author: "skyfury"
-header-img: "img/post-bg-universe.jpg"
+header-img: "img/cover-zaji.png"
 catalog: true
 tags:
   - GitHub Actions
