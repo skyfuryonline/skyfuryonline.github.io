@@ -2,7 +2,7 @@
 layout: post
 title: "博客开发指南 (五)：数据驱动的新分组创建"
 subtitle: "不用写 HTML，教你一分钟在首页增加新专栏"
-date: 2026-03-24 10:00:00 +0800
+date: 2026-03-24 10:00:05 +0800
 author: "LH"
 group: blog-development
 catalog: true

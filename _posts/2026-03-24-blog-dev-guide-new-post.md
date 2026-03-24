@@ -2,7 +2,7 @@
 layout: post
 title: "博客开发指南 (四)：VS Code 极速创作与发文指南"
 subtitle: "用自定义 Snippets 告别繁琐的 Front Matter"
-date: 2026-03-24 10:00:00 +0800
+date: 2026-03-24 10:00:04 +0800
 author: "LH"
 group: blog-development
 catalog: true
