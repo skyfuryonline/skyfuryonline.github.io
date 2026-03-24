@@ -74,12 +74,12 @@
         .calendar-nav-btn:hover { background: #f39c12; color: white; border-color: #f39c12; }
 
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; }
-        .calendar-day-header { font-weight: bold; color: #95a5a6; font-size: 0.9rem; padding-bottom: 10px; }
+        .calendar-day-header { font-size: 1.1rem; font-weight: bold; color: #95a5a6; padding-bottom: 10px; }
         
         .calendar-day { 
             aspect-ratio: 1; /* 正方形 */
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            border-radius: 8px; background-color: #f9f9f9; color: #7f8c8d; font-size: 1rem;
+            border-radius: 8px; background-color: #f9f9f9; color: #7f8c8d; font-size: 1.5rem;
             position: relative; transition: transform 0.2s;
         }
         .calendar-day.empty { background: transparent; }
@@ -93,7 +93,7 @@
         .day-level-3 { background-color: #44a340; color: white; }
         .day-level-4 { background-color: #1e6823; color: white; }
         
-        .day-hours { font-size: 0.7rem; opacity: 0.8; margin-top: 2px; }
+        .day-hours { font-size: 1rem; opacity: 0.8; margin-top: 2px; }
 
         /* --- 统计面板 --- */
         .stats-panel { display: flex; justify-content: space-around; margin: 40px 0; gap: 15px; }
@@ -110,7 +110,7 @@
         .timeline-card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s; }
         .timeline-card:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.06); }
         .timeline-title { font-size: 1.4rem; margin-top: 0; color: #34495e; }
-        .timeline-meta { font-size: 0.85rem; color: #bdc3c7; margin-bottom: 15px; }
+        .timeline-meta { font-size: 1.1rem; color: #bdc3c7; margin-bottom: 15px; }
         /* 放大日志正文，提升可读性 */
         .timeline-content { 
             font-size: 1.5rem; /* ~24px, 大字号 */
