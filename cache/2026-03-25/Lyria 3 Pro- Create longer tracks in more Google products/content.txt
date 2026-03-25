@@ -1,0 +1,134 @@
+Breadcrumb
+Innovation & AI
+Technology
+AI
+Lyria 3 Pro: Create longer tracks in more Google products
+Mar 25, 2026
+·
+3 min read
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+Introducing Lyria 3 Pro, which unlocks longer tracks with structural awareness. We’re also bringing Lyria to more Google products and surfaces.
+M
+Myriam Hamed Torres
+Senior Product Manager, Google DeepMind
+Share
+x.com
+Facebook
+LinkedIn
+Mail
+Copy link
+00:00
+Last month, we introduced
+Lyria 3
+, featuring custom music generation designed to spark creative expression. Now, we’re bringing our most advanced music generation model to more Google products, and introducing Lyria 3 Pro. This advanced version allows the creation of tracks up to 3 minutes long, with customization and creative control. Lyria 3 Pro better understands musical composition, so you can now prompt for specific elements like intros, verses, choruses and bridges. It’s great for experimenting with different styles or generating songs with complex transitions.
+Your browser does not support the audio element.
+Lyria 3 Pro Musical Overview
+2:29
+2:29
+0:00
+2:29
+Providing new places to generate music
+High-quality music generation should be accessible wherever creativity happens. Whether you are an app developer, a business or music professional, or a creator, these integrations allow you to use Lyria’s advanced musical awareness to scale your production.
+Vertex AI
+:
+Lyria 3 Pro is now in public preview on Vertex AI for businesses who require on-demand audio at scale. It gives organizations the ability to scale high-fidelity production, from rapidly generating bespoke soundtracks for gaming to integrating into creative tools, music and video platforms.
+Google AI Studio
+and the
+Gemini API
+:
+For
+developers
+building the next generation of creative tools, Lyria 3 provides improved musical awareness and structural coherence to offer creative flexibility. Lyria 3 Pro is now available alongside
+Lyria RealTime
+in AI Studio.
+Google Vids
+:
+Vids is an AI-powered video creation app that anyone can use. With Lyria 3 and Lyria 3 Pro in Vids, you can add custom music that matches your style for everything from creative projects to marketing videos. This is rolling out to Google Workspace
+customers
+and Google AI Pro & Ultra
+subscribers
+starting this week.
+Gemini app
+:
+Longer generations with Lyria 3 Pro are now available in the Gemini app, starting with paid subscribers. Lyria 3 Pro’s enhanced customization offers more space to experiment and play with longer tracks. So now, you can add more details to bring your full vision to life, or create personalized tracks for vlogs, podcasts or tutorial videos.
+ProducerAI
+:
+We recently introduced
+ProducerAI
+, a collaborative music creation tool, built by musicians looking for new ways to enhance their creative process. With Lyria 3 Pro, ProducerAI offers an agentic experience designed to help artists, producers and songwriters at every level iterate on comprehensive songs. It’s available globally to free and paid subscribers.
+Partnering with creatives
+We have been developing our music generation tools responsibly and in close partnership with the industry to ensure AI serves as a tool for creative expression.
+Through our
+Music AI Sandbox
+, we provide musicians, producers and songwriters with a suite of experimental tools designed to expand their creative horizons. The insights from this collaboration helped shape the development of Lyria 3.
+We’re inviting artists to integrate AI into their workflows to make sure our technology helps the people who use it. Grammy-winning producer Yung Spielburg
+used Lyria
+in his composition and production process for the score of the Google DeepMind short film “
+Dear Upstairs Neighbors
+.” And we’re also collaborating with DJ and producer
+François K
+, who used Lyria in an iterative process to create a soon-to-be-released song.
+“Having explored the vast landscape of music tools, the progress on Lyria 3 is incredible, especially the fidelity and musicality. The fashion in which I use generative AI tools never boils down to 'one-button-click' prompting. Instead it’s becoming a versatile part of my arsenal, allowing me to refine ideas with realism and precision.”
+F
+François K
+Responsibility was foundational, and remains integral in the design and training of Lyria 3, using materials that YouTube and Google has a right to use under our terms of service, partner agreements, and applicable law. To protect original expression, Lyria 3 and Gemini do not mimic artists; if a prompt names a creator, the model takes that as broad inspiration. Additionally, we employ filters to check outputs against existing content and users must adhere to the
+Terms of Service
+and
+Gen AI prohibited use policies
+, which prohibit violating others' intellectual property and privacy rights. All Lyria 3 and Lyria 3 Pro outputs are embedded with
+SynthID
+, our imperceptible watermark for identifying Google AI-generated content.
+Lyria 3 Pro is rolling out to professionals, developers, organizations and everyday creators to help craft high quality music generations.
+POSTED IN:
+AI
+Gemini App
+Developer tools
+Google Labs
+Related stories
+Developer tools
+Build with Lyria 3, our newest music generation model
+By
+Alisa Fortin
+&
+Guillaume Vernade
+Mar 25, 2026
+Developer tools
+Now anyone can host a global AI challenge
+By
+Jessica Lee
+&
+Addison Howard
+Mar 19, 2026
+Google Labs
+Introducing “vibe design” with Stitch
+By
+Rustin Banks
+Mar 18, 2026
+Developer tools
+Introducing the new full-stack vibe coding experience in Google AI Studio
+By
+Ammaar Reshi
+&
+Kat Kampf
+Search
+Bringing the power of Personal Intelligence to more people
+Mar 17, 2026
+Safety & Security
+Our latest investment in open source security for the AI era
+By
+Evan Kotsovinos
+&
+Four Flynn
+Mar 17, 2026
+.
+Jump to position 1
+Jump to position 2
+Jump to position 3
+Jump to position 4
+Jump to position 5
+Jump to position 6
