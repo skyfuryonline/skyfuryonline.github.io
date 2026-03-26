@@ -1,59 +1,11 @@
 [
     {
-        "title": "赛博朋克 2077",
-        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
-        "price": "¥104.30",
-        "discount": "-65%",
-        "rank": 1
-    },
-    {
-        "title": "Stardew Valley",
-        "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
-        "price": "¥24.00",
-        "discount": "-50%",
-        "rank": 2
-    },
-    {
-        "title": "双人成行",
-        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1763484491",
-        "price": "¥39.60",
-        "discount": "-80%",
-        "rank": 3
-    },
-    {
-        "title": "Resident Evil 3",
-        "link": "https://store.steampowered.com/app/952060/Resident_Evil_3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/capsule_231x87.jpg?t=1768956538",
-        "price": "¥19.80",
-        "discount": "-90%",
-        "rank": 4
-    },
-    {
-        "title": "极限竞速：地平线 5",
-        "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
-        "price": "¥99.00",
-        "discount": "-50%",
-        "rank": 5
-    },
-    {
         "title": "Grand Theft Auto V 增强版",
         "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥74.50",
         "discount": "-50%",
-        "rank": 6
-    },
-    {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥138.60",
-        "discount": "-30%",
-        "rank": 7
+        "rank": 1
     },
     {
         "title": "Red Dead Redemption 2",
@@ -61,22 +13,70 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
+        "rank": 2
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1774299394",
+        "price": "¥74.50",
+        "discount": "-75%",
+        "rank": 3
+    },
+    {
+        "title": "The Outlast Trials",
+        "link": "https://store.steampowered.com/app/1304930/The_Outlast_Trials/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1304930/0006315ae2565f31c7675488766cccbc79fc34a8/capsule_231x87.jpg?t=1774362779",
+        "price": "¥40.80",
+        "discount": "-70%",
+        "rank": 4
+    },
+    {
+        "title": "Palworld / 幻兽帕鲁",
+        "link": "https://store.steampowered.com/app/1623730/Palworld/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1623730/c5806289105932d9729d1ccba4bd5fc6158078af/capsule_231x87_schinese.jpg?t=1773936597",
+        "price": "¥81.00",
+        "discount": "-25%",
+        "rank": 5
+    },
+    {
+        "title": "刮个爽",
+        "link": "https://store.steampowered.com/app/3948120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3948120/6d407ae6617096681e9b7447264af9899d2953b3/capsule_231x87_schinese.jpg?t=1773831686",
+        "price": "¥20.39",
+        "discount": "-20%",
+        "rank": 6
+    },
+    {
+        "title": "Last Epoch",
+        "link": "https://store.steampowered.com/app/899770/Last_Epoch/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/899770/7b349f115c9b3d82aae00ca97138d00a89f8fce9/capsule_231x87.jpg?t=1774542931",
+        "price": "¥102.40",
+        "discount": "-20%",
+        "rank": 7
+    },
+    {
+        "title": "The Long Dark",
+        "link": "https://store.steampowered.com/app/305620/The_Long_Dark/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/305620/capsule_231x87.jpg?t=1768865059",
+        "price": "¥10.50",
+        "discount": "-90%",
         "rank": 8
     },
     {
-        "title": "Sons Of The Forest",
-        "link": "https://store.steampowered.com/app/1326470/Sons_Of_The_Forest/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1326470/capsule_231x87.jpg?t=1708624856",
-        "price": "¥32.40",
-        "discount": "-70%",
+        "title": "猎杀：对决 1896",
+        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/594650/fe1308827313aad73c14182ecfb7ece356b42c22/capsule_231x87_alt_assets_23.jpg?t=1774427675",
+        "price": "¥67.20",
+        "discount": "-60%",
         "rank": 9
     },
     {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
-        "price": "¥96.85",
-        "discount": "-35%",
+        "title": "Escape the Backrooms",
+        "link": "https://store.steampowered.com/app/1943950/Escape_the_Backrooms/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1943950/afc284c9431338d8a56960fe943e17dcd50b812d/capsule_231x87.jpg?t=1774545500",
+        "price": "¥29.60",
+        "discount": "-20%",
         "rank": 10
     }
 ]
