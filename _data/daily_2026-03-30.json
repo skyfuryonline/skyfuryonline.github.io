@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Evolving expectations of what’s possible",
+        "link": "https://blog.google/innovation-and-ai/technology/safety-security/evolving-expectations-of-whats-possible/",
+        "date": "2026-03-30",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-03-30/Evolving expectations of what’s possible",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：  \n文章阐述了在AI技术飞速发展的背景下，用户对个性化、智能化服务的期待不断提升，同时也对隐私保护提出了更高要求。Google强调其核心理念始终是以用户为中心，在推出如“Personal Intelligence”等新功能时，通过小范围测试、持续反馈和渐进式推广确保产品符合用户需求。面对AI助手能主动执行任务的新能力，信任与控制成为关键——用户希望掌握数据使用的主导权。为此，Google提出需结合情境化隐私保护、精细化权限控制及隐私增强技术（PETs），并呼吁行业与监管机构协作，推动隐私规则与时俱进，实现“隐私即创新”的目标。\n\n例子：  \n例如，乌克兰政府与Google合作推出的Diia.AI助手，不仅能回答问题，还能根据用户指令直接生成并发送收入证明到个人账户，全程无需跳转多个页面，同时严格限制敏感信息的使用。\n\n关键字：  \nAI隐私保护、个性化助手、用户控制、隐私增强技术、情境化数据治理"
+    }
+]

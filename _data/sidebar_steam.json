@@ -8,20 +8,28 @@
         "rank": 1
     },
     {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1774299394",
-        "price": "¥74.50",
-        "discount": "-75%",
-        "rank": 2
-    },
-    {
         "title": "Grand Theft Auto V 增强版",
         "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥74.50",
         "discount": "-50%",
+        "rank": 2
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1774299394",
+        "price": "¥74.50",
+        "discount": "-75%",
         "rank": 3
+    },
+    {
+        "title": "灰烬之国 Cinderia",
+        "link": "https://store.steampowered.com/app/3214610/_Cinderia/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3214610/2f30eac6e348abec423338cf94310e79f9b3a60a/capsule_231x87_schinese.jpg?t=1774896909",
+        "price": "¥61.20",
+        "discount": "-10%",
+        "rank": 4
     },
     {
         "title": "灰区战争",
@@ -29,14 +37,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2479810/64b412b6e2afb188113c157ec0d90b082877aa36/capsule_231x87_schinese.jpg?t=1774643106",
         "price": "¥125.96",
         "discount": "-33%",
-        "rank": 4
-    },
-    {
-        "title": "宗门起源",
-        "link": "https://store.steampowered.com/app/3446240/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3446240/d2a464fb56b563dd9350577f1a43e0f92db9f0b5/capsule_231x87_schinese.jpg?t=1774681384",
-        "price": "¥68.40",
-        "discount": "-10%",
         "rank": 5
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
+        "title": "宗门起源",
+        "link": "https://store.steampowered.com/app/3446240/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3446240/d2a464fb56b563dd9350577f1a43e0f92db9f0b5/capsule_231x87_schinese.jpg?t=1774681384",
+        "price": "¥68.40",
+        "discount": "-10%",
+        "rank": 9
+    },
+    {
         "title": "刮个爽",
         "link": "https://store.steampowered.com/app/3948120/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3948120/6d407ae6617096681e9b7447264af9899d2953b3/capsule_231x87_schinese.jpg?t=1773831686",
         "price": "¥20.39",
         "discount": "-20%",
-        "rank": 9
-    },
-    {
-        "title": "Sid Meier’s Civilization® VI",
-        "link": "https://store.steampowered.com/app/289070/Sid_Meiers_Civilization_VI/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/289070/capsule_231x87.jpg?t=1740607040",
-        "price": "¥22.00",
-        "discount": "-90%",
         "rank": 10
     }
 ]
