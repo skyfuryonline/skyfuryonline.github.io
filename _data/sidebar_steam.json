@@ -1,11 +1,27 @@
 [
     {
+        "title": "浣熊推币机",
+        "link": "https://store.steampowered.com/app/3784030/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3784030/a30392f8d0602f66e7b9a3604486710800396eea/capsule_231x87_schinese.jpg?t=1774994442",
+        "price": "¥36.90",
+        "discount": "-18%",
+        "rank": 1
+    },
+    {
         "title": "Red Dead Redemption 2",
         "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
-        "rank": 1
+        "rank": 2
+    },
+    {
+        "title": "灰烬之国 Cinderia",
+        "link": "https://store.steampowered.com/app/3214610/_Cinderia/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3214610/2f30eac6e348abec423338cf94310e79f9b3a60a/capsule_231x87_schinese.jpg?t=1774979768",
+        "price": "¥61.20",
+        "discount": "-10%",
+        "rank": 3
     },
     {
         "title": "Grand Theft Auto V 增强版",
@@ -13,31 +29,23 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥74.50",
         "discount": "-50%",
-        "rank": 2
+        "rank": 4
     },
     {
         "title": "NBA 2K26",
         "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1774299394",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1774961465",
         "price": "¥74.50",
         "discount": "-75%",
-        "rank": 3
-    },
-    {
-        "title": "灰烬之国 Cinderia",
-        "link": "https://store.steampowered.com/app/3214610/_Cinderia/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3214610/2f30eac6e348abec423338cf94310e79f9b3a60a/capsule_231x87_schinese.jpg?t=1774896909",
-        "price": "¥61.20",
-        "discount": "-10%",
-        "rank": 4
+        "rank": 5
     },
     {
         "title": "灰区战争",
         "link": "https://store.steampowered.com/app/2479810/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2479810/64b412b6e2afb188113c157ec0d90b082877aa36/capsule_231x87_schinese.jpg?t=1774643106",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2479810/cfd2a378bbcc83eb062e52192e057fbb044228ac/capsule_231x87_alt_assets_3_schinese.jpg?t=1774967493",
         "price": "¥125.96",
         "discount": "-33%",
-        "rank": 5
+        "rank": 6
     },
     {
         "title": "The Outlast Trials",
@@ -45,7 +53,15 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1304930/0006315ae2565f31c7675488766cccbc79fc34a8/capsule_231x87.jpg?t=1774362779",
         "price": "¥40.80",
         "discount": "-70%",
-        "rank": 6
+        "rank": 7
+    },
+    {
+        "title": "焕家物语 (Hozy)",
+        "link": "https://store.steampowered.com/app/3326230/_Hozy/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3326230/8ff4b4fec711a85dfdd550097c511693f06b68a3/capsule_231x87_schinese.jpg?t=1774899989",
+        "price": "¥44.10",
+        "discount": "-10%",
+        "rank": 8
     },
     {
         "title": "Palworld / 幻兽帕鲁",
@@ -53,29 +69,13 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1623730/c5806289105932d9729d1ccba4bd5fc6158078af/capsule_231x87_schinese.jpg?t=1773936597",
         "price": "¥81.00",
         "discount": "-25%",
-        "rank": 7
-    },
-    {
-        "title": "猎杀：对决 1896",
-        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/594650/fe1308827313aad73c14182ecfb7ece356b42c22/capsule_231x87_alt_assets_23.jpg?t=1774427675",
-        "price": "¥67.20",
-        "discount": "-60%",
-        "rank": 8
-    },
-    {
-        "title": "宗门起源",
-        "link": "https://store.steampowered.com/app/3446240/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3446240/d2a464fb56b563dd9350577f1a43e0f92db9f0b5/capsule_231x87_schinese.jpg?t=1774681384",
-        "price": "¥68.40",
-        "discount": "-10%",
         "rank": 9
     },
     {
-        "title": "刮个爽",
-        "link": "https://store.steampowered.com/app/3948120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3948120/6d407ae6617096681e9b7447264af9899d2953b3/capsule_231x87_schinese.jpg?t=1773831686",
-        "price": "¥20.39",
+        "title": "克鲁赛德战记 : 英雄之城",
+        "link": "https://store.steampowered.com/app/4126220/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4126220/7d4fa46cc46cea1c91fd3926dfe93b1ce07d0cd1/capsule_231x87.jpg?t=1774928304",
+        "price": "¥24.00",
         "discount": "-20%",
         "rank": 10
     }

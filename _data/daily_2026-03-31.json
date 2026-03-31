@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Build with Veo 3.1 Lite, our most cost-effective video generation model",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/",
+        "date": "2026-03-31",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-03-31/Build with Veo 3.1 Lite, our most cost-effective video generation model",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：谷歌DeepMind推出Veo 3.1 Lite，这是其成本最低的视频生成模型，价格不到Veo 3.1 Fast的一半，但保持相同生成速度，支持文本/图像生成720p或1080p视频，适配横屏（16:9）和竖屏（9:16），时长可选4s、6s或8s。该模型通过Gemini API和Google AI Studio向开发者开放，旨在降低高产量视频应用的开发门槛。同时，Veo 3.1 Fast将于4月7日降价，进一步推动视频生成技术普及。\n\n例子：开发者可用Veo 3.1 Lite以低成本批量生成短视频广告，例如输入“一只猫在太空漫步”自动生成8秒1080p竖版视频。\n\n关键字：Veo 3.1 Lite、视频生成、成本效益、Gemini API、AI模型"
+    }
+]
