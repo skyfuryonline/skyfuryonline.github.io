@@ -1,0 +1,28 @@
+Breadcrumb
+Innovation & AI
+Technology
+Developer tools
+By
+Trey Nguyen
+|
+Product Manager, Google DeepMind
+Apr 01, 2026
+Improve coding agents’ performance with Gemini API Docs MCP and Agent Skills.
+Agents can generate outdated Gemini API code because their training data has a cutoff date. We built two complementary tools to fix this.
+The
+Gemini API Docs MCP
+(https://gemini-api-docs-mcp.dev) connects your coding agent to the current Gemini API documentation, SDKs and model information via the Model Context Protocol. This ensures that your coding agent has access to the most up-to-date APIs and code and builds with the most optimal configuration settings.
+The
+Gemini API Developer Skills
+adds best-practice instructions, resources-links and patterns to guide the agent toward current SDK patterns.
+While each tool independently improves your workflow, using them together unlocks their full potential. Our evals show that combining MCP and Skills leads to a 96.3% pass rate on our eval set, with 63% fewer tokens per correct answer compared to vanilla prompting. Set up both at
+ai.google.dev/gemini-api/docs/coding-agents
+.
+POSTED IN:
+Developer tools
+Related stories
+Build with Veo 3.1 Lite, our most cost-effective video generation model
+Veo 3.1 Lite  is now available in paid preview through the Gemini API and for testing in Google AI Studio.
+Build real-time conversational agents with Gemini 3.1 Flash Live
+Build with Lyria 3, our newest music generation model
+Lyria 3 Pro: Create longer tracks in more Google products
