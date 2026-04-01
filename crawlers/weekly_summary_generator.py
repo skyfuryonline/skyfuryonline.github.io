@@ -299,8 +299,8 @@ if __name__ == "__main__":
             with open(monthly_report_path, 'r', encoding='utf-8') as f:
                 last_month_report_content = frontmatter.load(f).content
         else:
-            # 如果上个月的月报不存在，尝试自动生成
-            print(f"检测到上个月 ({prev_month_str}) 尚未生成月度报告，尝试自动生成...")
+            # 如果上个月的月报不存在，尝试自动生成 (作为兜底机制)
+            print(f"检测到上个月 ({prev_month_str}) 未按时生成月度报告，作为兜底机制现在尝试自动补发...")
             last_month_report_content = generate_and_save_monthly_report(prev_month_str)
             
         # 4. 处理“中期连贯记忆” (本月内，处于当前目标周之前的周报)

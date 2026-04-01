@@ -1,0 +1,68 @@
+name: Generate Monthly Gwy Report
+
+on:
+  schedule:
+    - cron: '30 15 28-31 * *' # 15:30 UTC -> 23:30 Beijing Time on days 28, 29, 30, 31
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: write
+
+jobs:
+  generate_report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }} # Use PAT to get push access later
+          
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Checkout Gwy Logs (private) 📚
+        uses: actions/checkout@v4
+        with:
+          repository: skyfuryonline/blog-source
+          ref: main
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: private-source
+      
+      - name: Make private content available for script
+        run: |
+          mv private-source/_gwy_logs ./_gwy_logs
+          # Also move reports, in case future logic needs to read them
+          mv private-source/_gwy_reports ./_gwy_reports
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Generate Monthly Report
+        env:
+          OPENAI_API_KEY: ${{ secrets.LLM_API_KEY }}
+          OPENAI_API_BASE: ${{ secrets.LLM_API_BASE_URL }}
+        run: python crawlers/monthly_summary_generator.py
+        
+      - name: Commit and push report to blog-source
+        run: |
+          # Clone the private repo's main branch
+          git clone --branch main https://x-access-token:${{ secrets.PRIVATE_REPO_TOKEN }}@github.com/skyfuryonline/blog-source.git source-repo
+          
+          # Copy the newly generated report(s) into the clone
+          # Ensure the _gwy_reports directory exists
+          mkdir -p source-repo/_gwy_reports
+          cp -r _gwy_reports/. source-repo/_gwy_reports/
+          
+          cd source-repo
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add _gwy_reports/
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "docs(gwy): Generate monthly report"
+            git push
+          else
+            echo "No new report generated (or not the last day of the month)."
+          fi
