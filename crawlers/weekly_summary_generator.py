@@ -132,12 +132,19 @@ def get_reports_by_month(month_str):
     return reports
 
 def extract_core_sections(content):
-    """从周报中提取核心的 '状态与不足' 和 '教练寄语' 章节"""
-    # 匹配 "状态与不足" 以及其后的所有内容
-    match = re.search(r'(#+)?\s*(?:\d+\.\s*)?\**状态与不足\**.*', content, re.IGNORECASE | re.DOTALL)
+    """从周报中提取核心的 '行动纠偏' 或 '状态与不足' 及之后的章节"""
+    # 兼容新旧版本的周报格式
+    match = re.search(r'(#+)?\s*(?:\d+\.\s*)?\**(?:行动纠偏与具体任务|状态与不足|状态与反思|状态与不足)\**.*', content, re.IGNORECASE | re.DOTALL)
     if match:
         return match.group(0).strip()
     return content[:800] + "..." # Fallback，如果没有找到匹配项则截取前半部分
+
+def extract_soul_questions(content):
+    """专门从上一篇周报中提取 '灵魂拷问' 环节"""
+    match = re.search(r'(#+)?\s*(?:\d+\.\s*)?\**教练的灵魂拷问\**.*', content, re.IGNORECASE | re.DOTALL)
+    if match:
+        return match.group(0).strip()
+    return ""
 
 def generate_and_save_monthly_report(month_str):
     """生成并保存月度报告"""
@@ -184,7 +191,7 @@ def generate_and_save_monthly_report(month_str):
     return summary
 
 # --- 2. 生成 Prompt ---
-def create_prompt(this_week_data, last_week_data=None, last_month_report="", current_month_reports=""):
+def create_prompt(this_week_data, last_week_data=None, last_month_report="", current_month_reports="", last_week_soul_questions=""):
     """根据数据创建发送给 LLM 的 Prompt"""
     subject_lines = "\n".join([f"- {name}: {hours:.1f} 小时" for name, hours in this_week_data["subjects"].items()])
     
@@ -200,6 +207,8 @@ def create_prompt(this_week_data, last_week_data=None, last_month_report="", cur
 """
 
     context_section = ""
+    if last_week_soul_questions:
+        context_section += f"\n【🎯 上周你留给我的灵魂拷问 (重点验收区)】\n这是上周周报末尾你给我留下的作业。请你在本次周报中，首先根据我的日记严格验收我是否回答了它：\n{last_week_soul_questions}\n"
     if last_month_report:
         context_section += f"\n【我的上个月学习画像 (长期背景)】\n这是我上个月的总体状态总结，请将其作为大背景参考：\n{last_month_report}\n"
     if current_month_reports:
@@ -210,16 +219,17 @@ def create_prompt(this_week_data, last_week_data=None, last_month_report="", cur
 
 请根据我的历史状态（月报）、本月前置周报、以及本周的数据和日记，生成一份高质量的 Markdown 周报，包含以下核心部分：
 
-1. **时间分布与效率诊断**:
+1. **问题验收 (如适用)**:
+   - 严格检查我本周的日记中，是否回答了你在【上周留给我的灵魂拷问】。如果我逃避了，请严厉指出；如果我回答了，请对我的反思进行辛辣点评。
+2. **时间分布与效率诊断**:
    - 客观对比本周与上周的总时长、打卡天数。
-   - 深度剖析本周各个科目的时间分布情况。不要只是罗列百分比，必须指出数据背后的隐患（例如：是否出现严重偏科？某个模块的投入产出比是否极低？是否在舒适区内无限刷题而回避了真正的弱点模块？）。
-2. **行动纠偏与具体任务**:
-   - 从我的日记中提取出本周遇到的具体困难（如正确率低、心态崩溃、某类题型做不完等），并结合【历史状态】看该问题是否为老毛病。
-   - 针对这些困难，给出**具体到执行层面**的纠偏动作。不要说“加强练习”，要说“每天规定30分钟完成20道题，并强制写出错因”。建议必须具有极强的实操性。
-3. **教练的灵魂拷问 (关键环节)**:
-   - 基于本周暴露出的最核心、最致命的问题，向我提出 1 到 2 个极其尖锐、直击痛点的问题。
-   - 这两个问题不需要你在周报里解答，而是**留作我下周每日日记必须回答的“作业”**。通过这种方式，强制我在下周保持刻意反思。
-   - （例如：“你本周资料分析花了20小时，但实战依然超时。究竟是列式慢还是计算慢？下周请在每日日记中精确记录每个计算环节的耗时。”）
+   - 深度剖析本周各个科目的时间分布情况。指出数据背后的隐患（例如：是否出现严重偏科？舒适区刷题？）。
+3. **行动纠偏与具体任务**:
+   - 从日记中提取出本周遇到的具体困难，结合【历史状态】看是否为老毛病。
+   - 针对这些困难，给出**具体到执行层面**的纠偏动作（如“每天规定30分钟完成20道题，并强制写出错因”），必须具有极强的实操性。
+4. **教练的灵魂拷问 (关键环节)**:
+   - 基于本周暴露出的最核心问题，向我提出 1 到 2 个极其尖锐、直击痛点的新问题。
+   - 明确指出这两个问题是留作我下周日记必须回答的“作业”。
 
 请保持你的语言极度专业、一针见血，少用形容词，多用动词和名词。
 
@@ -316,6 +326,18 @@ if __name__ == "__main__":
         current_month_reports = get_reports_by_month(report_month_str)
         target_date_str = start_of_last_week.strftime('%Y-%m-%d')
         
+        last_week_soul_questions = "" # 提取上周灵魂拷问
+        
+        # 为了找上周灵魂拷问，我们需要所有已生成的周报（包括可能跨月的“上周”）
+        # 简单处理：我们看看上周对应日期的报告文件是否存在
+        start_of_week_before_last = start_of_last_week - timedelta(days=7)
+        last_week_report_filename = f"week-of-{start_of_week_before_last.strftime('%Y-%m-%d')}.md"
+        last_week_report_filepath = os.path.join(REPORT_DIR, last_week_report_filename)
+        if os.path.exists(last_week_report_filepath):
+            with open(last_week_report_filepath, 'r', encoding='utf-8') as f:
+                last_week_content = frontmatter.load(f).content
+                last_week_soul_questions = extract_soul_questions(last_week_content)
+
         for r in current_month_reports:
             # 只提取在本周报之前生成的周报
             if r['date_str'] < target_date_str:
@@ -327,7 +349,8 @@ if __name__ == "__main__":
             this_week_data=report_week_data, 
             last_week_data=comparison_week_data, 
             last_month_report=last_month_report_content, 
-            current_month_reports=current_month_reports_concat
+            current_month_reports=current_month_reports_concat,
+            last_week_soul_questions=last_week_soul_questions
         )
         
         report_content = get_llm_summary(llm_prompt)
