@@ -110,25 +110,37 @@ def get_week_before_last_data():
 # --- 新增：月报与历史数据读取 ---
 
 def get_reports_by_month(month_str):
-    """读取某个月份（如'2026-02'）的所有周报，按日期排序返回"""
+    """读取某个月份（如'2026-02'）的所有周报，按日期排序返回（跨月周报也会被正确归属）"""
     reports = []
     if not os.path.exists(REPORT_DIR):
         return reports
     
+    try:
+        target_year, target_month = map(int, month_str.split('-'))
+    except ValueError:
+        return reports
+        
     for filename in sorted(os.listdir(REPORT_DIR)):
-        # 匹配 `week-of-2026-02-xx.md`
-        if filename.startswith(f"week-of-{month_str}"):
-            filepath = os.path.join(REPORT_DIR, filename)
-            with open(filepath, 'r', encoding='utf-8') as f:
-                try:
-                    post = frontmatter.load(f)
-                    date_str = filename.replace('week-of-', '').replace('.md', '')
-                    reports.append({
-                        'date_str': date_str,
-                        'content': post.content
-                    })
-                except:
-                    continue
+        if filename.startswith("week-of-") and filename.endswith(".md"):
+            date_str = filename.replace('week-of-', '').replace('.md', '')
+            try:
+                start_date = datetime.strptime(date_str, '%Y-%m-%d').date()
+                end_date = start_date + timedelta(days=6)
+                
+                # 如果这周的周一或周日在这个月内，就认为属于这个月的周报
+                start_match = (start_date.year == target_year and start_date.month == target_month)
+                end_match = (end_date.year == target_year and end_date.month == target_month)
+                
+                if start_match or end_match:
+                    filepath = os.path.join(REPORT_DIR, filename)
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        post = frontmatter.load(f)
+                        reports.append({
+                            'date_str': date_str,
+                            'content': post.content
+                        })
+            except:
+                continue
     return reports
 
 def extract_core_sections(content):
@@ -394,9 +406,12 @@ if __name__ == "__main__":
             with open(monthly_report_path, 'r', encoding='utf-8') as f:
                 last_month_report_content = frontmatter.load(f).content
         else:
-            # 如果上个月的月报不存在，尝试自动生成 (作为兜底机制)
-            print(f"检测到上个月 ({prev_month_str}) 未按时生成月度报告，作为兜底机制现在尝试自动补发...")
-            last_month_report_content = generate_and_save_monthly_report(prev_month_str)
+            # 修复：只对 2026-03 及以后的月份触发月报兜底，避免复活早期没有正确跑通的废弃月报
+            if prev_month_str >= "2026-03":
+                print(f"检测到上个月 ({prev_month_str}) 未按时生成月度报告，作为兜底机制现在尝试自动补发...")
+                last_month_report_content = generate_and_save_monthly_report(prev_month_str)
+            else:
+                print(f"检测到上个月 ({prev_month_str}) 报告不存在，但属于早期数据，跳过自动补发以避免复活旧错误。")
             
         # 4. 处理“中期连贯记忆” (本月内，处于当前目标周之前的周报)
         current_month_reports_concat = ""
