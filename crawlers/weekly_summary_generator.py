@@ -146,6 +146,13 @@ def extract_soul_questions(content):
         return match.group(0).strip()
     return ""
 
+def extract_monthly_strategy(content):
+    """专门从上个月的月报中提取 '强制战略部署' 和 '终极灵魂拷问' 环节"""
+    match = re.search(r'(#+)?\s*(?:\d+\.\s*)?\**(?:下月强制战略部署|强制战略部署|宏观战略建议)\**.*', content, re.IGNORECASE | re.DOTALL)
+    if match:
+        return match.group(0).strip()
+    return ""
+
 def generate_and_save_monthly_report(month_str):
     """生成并保存月度报告"""
     reports = get_reports_by_month(month_str)
@@ -157,13 +164,50 @@ def generate_and_save_monthly_report(month_str):
     for r in reports:
         content_concat += f"\n\n### {r['date_str']} 周报\n{r['content']}\n"
     
-    prompt = f"""你是一位极其严格、务实、直击痛点的公考备考主教练。请重点根据我 {month_str} 月份各周的数据和报告内容，为我生成一份【月度战略复盘与下月部署】。
+    # 尝试获取上个月的月报，提取战略部署和灵魂拷问
+    prev_month_context = ""
+    try:
+        current_month_date = datetime.strptime(month_str, '%Y-%m')
+        # 获取上个月的日期（当前月1号减去1天）
+        prev_month_date = current_month_date.replace(day=1) - timedelta(days=1)
+        prev_month_str = prev_month_date.strftime('%Y-%m')
+        
+        prev_month_report_path = os.path.join(REPORT_DIR, f"month-of-{prev_month_str}.md")
+        if os.path.exists(prev_month_report_path):
+            with open(prev_month_report_path, 'r', encoding='utf-8') as f:
+                prev_content = frontmatter.load(f).content
+                strategy_content = extract_monthly_strategy(prev_content)
+                if strategy_content:
+                    prev_month_context = f"\n【🎯 上个月 ({prev_month_str}) 你定下的强制战略部署与灵魂拷问】\n这是你在上个月末给我定下的铁律。请在本次月报的开头，**极其严厉地复盘我这整个月是否贯彻了它们**：\n{strategy_content}\n"
+    except Exception as e:
+        print(f"尝试读取上月月报时出错: {e}")
+
+    if prev_month_context:
+        prompt = f"""你是一位极其严格、务实、直击痛点的公考备考主教练。请重点根据我 {month_str} 月份各周的数据和报告内容，为我生成一份【月度战略复盘与下月部署】。
 
 请摒弃空洞的赞美和客套话，客观、冷酷地指出战略级问题。你的报告应当遵循 Markdown 格式，包含以下核心部分：
+
+1. **历史遗留问题清算 (重点验收)**: 
+   - 检查我本月是否真正执行了上个月的【强制战略部署】，并回答了【上个月的终极灵魂拷问】。如果没有执行到位，请直接进行冷血的批评。
+2. **月度时间与精力盘点**: 评估整个月的精力投放是否健康？模块的时间侧重点演变是否符合备考阶段的需要？指出本月最大的时间浪费或隐患在哪里。
+3. **核心短板与瓶颈诊断**: 结合这几周反复出现的问题，一针见血地指出我当前最致命的能力短板（如做题策略僵化、心态脆弱、逃避某个困难模块等）。
+4. **下月强制战略部署**: 给出下个月的宏观战略方向。必须包含 2-3 条**强制性的执行纪律**（如：强制每周进行一次全真模考；强制缩减某个舒适区模块的刷题时间等）。
+5. **月度终极灵魂拷问**: 提出 1 个宏观的战略级问题，要求我在下个月的备考日记中持续思考并用行动回答。
+
+{prev_month_context}
+
+【我的 {month_str} 月份所有周报记录】：
+{content_concat}
+"""
+    else:
+        prompt = f"""你是一位极其严格、务实、直击痛点的公考备考主教练。请重点根据我 {month_str} 月份各周的数据和报告内容，为我生成一份【月度战略复盘与下月部署】。
+
+请摒弃空洞的赞美和客套话，客观、冷酷地指出战略级问题。你的报告应当遵循 Markdown 格式，包含以下核心部分：
+
 1. **月度时间与精力盘点**: 评估整个月的精力投放是否健康？模块的时间侧重点演变是否符合备考阶段的需要？指出本月最大的时间浪费或隐患在哪里。
 2. **核心短板与瓶颈诊断**: 结合这几周反复出现的问题，一针见血地指出我当前最致命的能力短板（如做题策略僵化、心态脆弱、逃避某个困难模块等）。
 3. **下月强制战略部署**: 给出下个月的宏观战略方向。必须包含 2-3 条**强制性的执行纪律**（如：强制每周进行一次全真模考；强制缩减某个舒适区模块的刷题时间等）。
-4. **月度终极灵魂拷问**: 提出 1 个宏观的战略级问题，要求我在下个月的备考日记中持续思考并用行动回答（例如：“你一直在刷题，但你的错题复盘究竟转化为实战分数了吗？”）。
+4. **月度终极灵魂拷问**: 提出 1 个宏观的战略级问题，要求我在下个月的备考日记中持续思考并用行动回答。
 
 【我的 {month_str} 月份所有周报记录】：
 {content_concat}
