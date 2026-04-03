@@ -8,27 +8,27 @@
         "rank": 1
     },
     {
+        "title": "哀鸿：城破十日记",
+        "link": "https://store.steampowered.com/app/3220060/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3220060/78a8da3304b7466125ccea3e9d4c636010ed155b/capsule_231x87_schinese.jpg?t=1775210834",
+        "price": "¥35.70",
+        "discount": "-15%",
+        "rank": 2
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1775229436",
+        "price": "¥74.50",
+        "discount": "-75%",
+        "rank": 3
+    },
+    {
         "title": "Red Dead Redemption 2",
         "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
-        "rank": 2
-    },
-    {
-        "title": "Monster Hunter: World",
-        "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
-        "price": "¥38.48",
-        "discount": "-74%",
-        "rank": 3
-    },
-    {
-        "title": "Resident Evil 7 Biohazard",
-        "link": "https://store.steampowered.com/app/418370/Resident_Evil_7_Biohazard/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/418370/capsule_231x87.jpg?t=1770931202",
-        "price": "¥39.20",
-        "discount": "-60%",
         "rank": 4
     },
     {
@@ -40,12 +40,36 @@
         "rank": 5
     },
     {
-        "title": "End of Zoe",
-        "link": "https://store.steampowered.com/app/530611/End_of_Zoe/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/530611/capsule_231x87.jpg?t=1683527618",
-        "price": "¥19.50",
-        "discount": "-75%",
+        "title": "Monster Hunter: World",
+        "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
+        "price": "¥38.48",
+        "discount": "-74%",
         "rank": 6
+    },
+    {
+        "title": "灰区战争",
+        "link": "https://store.steampowered.com/app/2479810/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2479810/ffd00474064ffe033f48117a3fbbb2b765fc846e/capsule_231x87_alt_assets_4_schinese.jpg?t=1775217284",
+        "price": "¥125.96",
+        "discount": "-33%",
+        "rank": 7
+    },
+    {
+        "title": "Resident Evil 7 Biohazard",
+        "link": "https://store.steampowered.com/app/418370/Resident_Evil_7_Biohazard/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/418370/capsule_231x87.jpg?t=1770931202",
+        "price": "¥39.20",
+        "discount": "-60%",
+        "rank": 8
+    },
+    {
+        "title": "Subnautica - 深海迷航",
+        "link": "https://store.steampowered.com/app/264710/Subnautica/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1774323987",
+        "price": "¥37.25",
+        "discount": "-75%",
+        "rank": 9
     },
     {
         "title": "灰烬之国 Cinderia",
@@ -53,30 +77,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3214610/2f30eac6e348abec423338cf94310e79f9b3a60a/capsule_231x87_schinese.jpg?t=1775050367",
         "price": "¥61.20",
         "discount": "-10%",
-        "rank": 7
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/356867a38f3bfef003b091766c4eebcf1f994df6/capsule_231x87.jpg?t=1774961465",
-        "price": "¥74.50",
-        "discount": "-75%",
-        "rank": 8
-    },
-    {
-        "title": "浣熊推币机",
-        "link": "https://store.steampowered.com/app/3784030/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3784030/a30392f8d0602f66e7b9a3604486710800396eea/capsule_231x87_schinese.jpg?t=1775124889",
-        "price": "¥36.90",
-        "discount": "-18%",
-        "rank": 9
-    },
-    {
-        "title": "Monster Hunter Wilds",
-        "link": "https://store.steampowered.com/app/2246340/Monster_Hunter_Wilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1771382452",
-        "price": "¥191.40",
-        "discount": "-45%",
         "rank": 10
     }
 ]
