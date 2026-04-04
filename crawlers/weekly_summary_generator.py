@@ -11,7 +11,7 @@ REPORT_DIR = "_gwy_reports"
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), 'config.json')
 
 # 从配置中读取 LLM 模型
-COACH_MODEL = "qwen3-max-2026-01-23"
+COACH_MODEL = "qwen3.6-plus-2026-04-02"
 COACH_SYSTEM_PROMPT = "你是一位专业的学习分析与激励教练。"
 try:
     with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
