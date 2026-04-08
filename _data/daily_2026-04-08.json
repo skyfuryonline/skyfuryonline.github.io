@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Introducing Learn Mode: your personal coding tutor in Google Colab",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/colab-updates/",
+        "date": "2026-04-08",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-04-08/Introducing Learn Mode- your personal coding tutor in Google Colab",
+        "image_files": [
+            "image_1.webp",
+            "image_2.svg",
+            "image_3.svg",
+            "image_4.svg",
+            "image_5.svg",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp"
+        ],
+        "summary": "摘要：谷歌Colab平台为Gemini AI代理推出“自定义指令”与“学习模式”两大功能。自定义指令允许用户根据编码风格或项目需求定制AI回复逻辑，并随笔记本共享以实现个性化协作。学习模式则将AI转化为编程导师，摒弃直接生成代码的传统方式，转而提供分步指导与底层原理解析，旨在培养用户的独立编程能力。两项功能结合提升了AI辅助开发的灵活性，推动编程教育从“结果导向”向“过程学习”转变，助力开发者与师生高效构建并分享知识。\n例子：例如，当用户询问“如何对列表排序”时，开启学习模式的AI不会直接输出代码，而是先解释排序算法原理，再逐步引导用户编写循环与比较逻辑，最终让其独立掌握方法。\n关键字：Google Colab、Gemini AI、自定义指令、学习模式"
+    }
+]

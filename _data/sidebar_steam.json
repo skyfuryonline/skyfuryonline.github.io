@@ -1,11 +1,19 @@
 [
     {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥74.50",
+        "discount": "-50%",
+        "rank": 1
+    },
+    {
         "title": "Resident Evil 4",
         "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
         "price": "¥79.20",
         "discount": "-60%",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "灰区战争",
@@ -13,14 +21,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2479810/ffd00474064ffe033f48117a3fbbb2b765fc846e/capsule_231x87_alt_assets_4_schinese.jpg?t=1775217284",
         "price": "¥125.96",
         "discount": "-33%",
-        "rank": 2
-    },
-    {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥74.50",
-        "discount": "-50%",
         "rank": 3
     },
     {
@@ -48,20 +48,12 @@
         "rank": 6
     },
     {
-        "title": "Monster Hunter: World",
-        "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
-        "price": "¥38.48",
-        "discount": "-74%",
-        "rank": 7
-    },
-    {
         "title": "方舟: 生存飞升",
         "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1766710980",
         "price": "¥62.00",
         "discount": "-75%",
-        "rank": 8
+        "rank": 7
     },
     {
         "title": "Euro Truck Simulator 2",
@@ -69,14 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/da84d11d3ddd817e0cca299608b469a854d75ba5/capsule_231x87.jpg?t=1773641450",
         "price": "¥22.00",
         "discount": "-75%",
+        "rank": 8
+    },
+    {
+        "title": "丧尸末世：地底全是财，挖宝造炮台",
+        "link": "https://store.steampowered.com/app/3976500/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3976500/47be085b2bde7f483083d05dcad99695a0ceac06/capsule_231x87_schinese.jpg?t=1775560984",
+        "price": "¥36.00",
+        "discount": "-25%",
         "rank": 9
     },
     {
-        "title": "Subnautica - 深海迷航",
-        "link": "https://store.steampowered.com/app/264710/Subnautica/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1774323987",
-        "price": "¥37.25",
-        "discount": "-75%",
+        "title": "Monster Hunter: World",
+        "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
+        "price": "¥38.48",
+        "discount": "-74%",
         "rank": 10
     }
 ]
