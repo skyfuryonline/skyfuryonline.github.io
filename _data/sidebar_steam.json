@@ -1,18 +1,18 @@
 [
     {
-        "title": "GUILTY GEAR -STRIVE-",
-        "link": "https://store.steampowered.com/app/1384160/GUILTY_GEAR_STRIVE/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1384160/078c6f623ab033c4671a61c1f5391a1a915c7576/capsule_231x87.jpg?t=1775722103",
-        "price": "¥109.00",
-        "discount": "-50%",
+        "title": "灵魂面甲(Soulmask)",
+        "link": "https://store.steampowered.com/app/2646460/Soulmask/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2646460/d10aa4590773d6684108641c895fc489228fccdc/capsule_231x87_alt_assets_29_schinese.jpg?t=1775859740",
+        "price": "¥97.20",
+        "discount": "-10%",
         "rank": 1
     },
     {
-        "title": "Resident Evil 4",
-        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
-        "price": "¥79.20",
-        "discount": "-60%",
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1775257702",
+        "price": "¥281.40",
+        "discount": "-34%",
         "rank": 2
     },
     {
@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1775257702",
-        "price": "¥281.40",
-        "discount": "-34%",
+        "title": "Resident Evil 4",
+        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
+        "price": "¥79.20",
+        "discount": "-60%",
         "rank": 4
     },
     {
-        "title": "异变金属",
-        "link": "https://store.steampowered.com/app/1866130/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1866130/6ead132bdf1fcd9243578fd46dbac5115c0f6ca5/capsule_231x87_alt_assets_0.jpg?t=1775753718",
-        "price": "¥58.50",
-        "discount": "-25%",
+        "title": "饥荒联机版",
+        "link": "https://store.steampowered.com/app/322330/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/2ee35cc972015318e5c75bd06bbb8a8a1c2f79f7/capsule_231x87_schinese.jpg?t=1775799180",
+        "price": "¥12.00",
+        "discount": "-50%",
         "rank": 5
     },
     {
@@ -48,35 +48,35 @@
         "rank": 6
     },
     {
-        "title": "Euro Truck Simulator 2",
-        "link": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/da84d11d3ddd817e0cca299608b469a854d75ba5/capsule_231x87.jpg?t=1773641450",
-        "price": "¥22.00",
-        "discount": "-75%",
-        "rank": 7
-    },
-    {
-        "title": "灰烬之国 Cinderia",
-        "link": "https://store.steampowered.com/app/3214610/_Cinderia/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3214610/2f30eac6e348abec423338cf94310e79f9b3a60a/capsule_231x87_schinese.jpg?t=1775514740",
-        "price": "¥61.20",
-        "discount": "-10%",
-        "rank": 8
-    },
-    {
         "title": "Monster Hunter: World",
         "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
         "price": "¥38.48",
         "discount": "-74%",
+        "rank": 7
+    },
+    {
+        "title": "Euro Truck Simulator 2",
+        "link": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/da84d11d3ddd817e0cca299608b469a854d75ba5/capsule_231x87.jpg?t=1773641450",
+        "price": "¥22.00",
+        "discount": "-75%",
+        "rank": 8
+    },
+    {
+        "title": "Warhammer 40,000: 星际战士2",
+        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/capsule_231x87_schinese.jpg?t=1774004924",
+        "price": "¥82.17",
+        "discount": "-67%",
         "rank": 9
     },
     {
-        "title": "丧尸末世：地底全是财，挖宝造炮台",
-        "link": "https://store.steampowered.com/app/3976500/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3976500/47be085b2bde7f483083d05dcad99695a0ceac06/capsule_231x87_schinese.jpg?t=1775560984",
-        "price": "¥36.00",
-        "discount": "-25%",
+        "title": "缺氧",
+        "link": "https://store.steampowered.com/app/457140/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/457140/capsule_231x87_schinese.jpg?t=1772559127",
+        "price": "¥17.40",
+        "discount": "-70%",
         "rank": 10
     }
 ]
