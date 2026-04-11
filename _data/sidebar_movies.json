@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "阳光女子合唱团",
-        "link": "https://movie.douban.com/subject/37193250/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930838026.jpg",
-        "score": "7.4",
-        "region": "中国台湾",
-        "rank": 4
-    },
-    {
         "title": "天才游戏",
         "link": "https://movie.douban.com/subject/35159709/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931149949.jpg",
         "score": "5.9",
         "region": "中国大陆",
+        "rank": 4
+    },
+    {
+        "title": "阳光女子合唱团",
+        "link": "https://movie.douban.com/subject/37193250/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930838026.jpg",
+        "score": "7.4",
+        "region": "中国台湾",
         "rank": 5
     }
 ]
