@@ -1,0 +1,20 @@
+Breadcrumb
+Innovation & AI
+Models & research
+Google DeepMind
+Apr 14, 2026
+Gemini Robotics ER-1.6 enhances reasoning to help robots navigate real-world tasks.
+For robots to be truly helpful, they need to understand the physical world like we do. That’s why today we're introducing Gemini Robotics-ER 1.6, an upgrade to our reasoning-first model that enables robots to understand their environments with unprecedented precision.
+By enhancing spatial logic and multi-view understanding, we’re bringing a new level of autonomy to the next generation of physical agents. This model specializes in capabilities critical for robotics, including visual and spatial understanding, task planning and success detection.
+We’re also helping robots with instrument reading, a new capability to enable robots to read complex gauges and sight glasses — a capability discovered through collaboration with Boston Dynamics. Gemini Robotics-ER 1.6 is our safest robotics model to date, demonstrating superior compliance with safety policies on adversarial spatial reasoning tasks.
+Starting today, Gemini Robotics-ER 1.6 is available to developers via the Gemini API and Google AI Studio. Read more on the
+Google DeepMind blog
+.
+POSTED IN:
+Google DeepMind
+Related stories
+The latest AI news we announced in March 2026
+Here are Google’s latest AI updates from March 2026
+Measuring progress toward AGI: A cognitive framework
+Broadening advanced AI education across Africa
+Platform 37 and The AI Exchange: new spaces for AI innovation and discovery

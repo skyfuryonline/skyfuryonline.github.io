@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Gemini Robotics ER-1.6 enhances reasoning to help robots navigate real-world tasks.",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-1-6/",
+        "date": "2026-04-14",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2026-04-14/Gemini Robotics ER-1.6 enhances reasoning to help robots navigate real-world tasks.",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：Google DeepMind发布Gemini Robotics-ER 1.6模型，通过强化空间逻辑与多视角理解能力，使机器人更精准感知物理环境并实现自主操作。该模型聚焦视觉空间理解、任务规划与成功检测，新增复杂仪表读取功能，并在对抗性空间推理任务中展现卓越的安全合规性，是目前最安全的机器人模型。现已通过API向开发者开放，标志着具身智能在真实场景落地与安全性方面取得关键突破。\n例子：在化工厂巡检中，机器人能自主规划避障路线，精准读取压力表刻度与视镜液位，判断阀门状态，并严格遵循安全规范完成操作。\n关键字：具身智能、空间推理、仪表读取、机器人安全、Gemini Robotics"
+    }
+]

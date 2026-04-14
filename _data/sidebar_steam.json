@@ -1,11 +1,27 @@
 [
     {
+        "title": "Windrose: 风启之旅",
+        "link": "https://store.steampowered.com/app/3041230/Windrose/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3041230/cd75685a04b997e230b141fcc4a6ed5c1770b453/capsule_231x87_schinese.jpg?t=1776158614",
+        "price": "¥88.20",
+        "discount": "-10%",
+        "rank": 1
+    },
+    {
         "title": "Resident Evil 4",
         "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
         "price": "¥79.20",
         "discount": "-60%",
-        "rank": 1
+        "rank": 2
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1776196566",
+        "price": "¥281.40",
+        "discount": "-34%",
+        "rank": 3
     },
     {
         "title": "方舟: 生存飞升",
@@ -13,15 +29,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1766710980",
         "price": "¥62.00",
         "discount": "-75%",
-        "rank": 2
-    },
-    {
-        "title": "饥荒联机版",
-        "link": "https://store.steampowered.com/app/322330/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/2ee35cc972015318e5c75bd06bbb8a8a1c2f79f7/capsule_231x87_schinese.jpg?t=1775799180",
-        "price": "¥12.00",
-        "discount": "-50%",
-        "rank": 3
+        "rank": 4
     },
     {
         "title": "Monster Hunter: World",
@@ -29,15 +37,23 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
         "price": "¥38.48",
         "discount": "-74%",
-        "rank": 4
+        "rank": 5
+    },
+    {
+        "title": "饥荒联机版",
+        "link": "https://store.steampowered.com/app/322330/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/2ee35cc972015318e5c75bd06bbb8a8a1c2f79f7/capsule_231x87_schinese.jpg?t=1775799180",
+        "price": "¥12.00",
+        "discount": "-50%",
+        "rank": 6
     },
     {
         "title": "灵魂面甲(Soulmask)",
         "link": "https://store.steampowered.com/app/2646460/Soulmask/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2646460/d10aa4590773d6684108641c895fc489228fccdc/capsule_231x87_alt_assets_29_schinese.jpg?t=1776078441",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2646460/d10aa4590773d6684108641c895fc489228fccdc/capsule_231x87_alt_assets_29_schinese.jpg?t=1776154391",
         "price": "¥97.20",
         "discount": "-10%",
-        "rank": 5
+        "rank": 7
     },
     {
         "title": "Warhammer 40,000: 星际战士2",
@@ -45,30 +61,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/capsule_231x87_schinese.jpg?t=1774004924",
         "price": "¥82.17",
         "discount": "-67%",
-        "rank": 6
-    },
-    {
-        "title": "缺氧",
-        "link": "https://store.steampowered.com/app/457140/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/457140/capsule_231x87_schinese.jpg?t=1772559127",
-        "price": "¥17.40",
-        "discount": "-70%",
-        "rank": 7
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1775257702",
-        "price": "¥281.40",
-        "discount": "-34%",
         "rank": 8
     },
     {
-        "title": "PEAK",
-        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
-        "price": "¥20.46",
-        "discount": "-38%",
+        "title": "《猎人：荒野的召唤™》",
+        "link": "https://store.steampowered.com/app/518790/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/518790/afc842e242ec41acf75e62fa465fb0c999ef0de4/capsule_231x87_alt_assets_28_schinese.jpg?t=1776175310",
+        "price": "¥7.00",
+        "discount": "-90%",
         "rank": 9
     },
     {
