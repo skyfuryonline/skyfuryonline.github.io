@@ -1,0 +1,60 @@
+[
+    {
+        "title": "Prepay for the Gemini API to get more control over your spend",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/prepay-gemini-api/",
+        "date": "2026-04-15",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-04-15/Prepay for the Gemini API to get more control over your spend",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp"
+        ],
+        "summary": "摘要：谷歌AI Studio推出Gemini API预付费计费模式，旨在提升开发者对API支出的控制力与成本可预测性。该模式支持预先购买额度、低余额自动充值及站内透明化管理，有效避免月末意外扣费。随着使用稳定并升级配额，用户可无缝切换至后付费模式以整合账单并获取更高限额。该功能初期面向美国新账户，将逐步全球推广。核心在于通过“先充值后使用”机制降低财务风险，助力应用从原型开发平稳迈向规模化。\n例子：开发者在平台预充值100美元额度调用API，系统实时扣减余额并清晰展示明细。余额不足时可自动续充，若连续使用稳定且配额升级，即可一键转为后付费模式，解锁更高并发权限。\n关键字：预付费计费、Gemini API、成本控制、账单透明、AI Studio"
+    },
+    {
+        "title": "Evolving expectations of what’s possible",
+        "link": "https://blog.google/innovation-and-ai/technology/safety-security/evolving-expectations-of-whats-possible/",
+        "date": "2026-04-15",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-04-15/Evolving expectations of what’s possible",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.webp",
+            "image_4.webp",
+            "image_5.webp",
+            "image_6.webp",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp"
+        ],
+        "summary": "摘要：随着AI向高度个性化与自主化演进，用户渴望“可信助手”但核心诉求仍是数据控制权。谷歌主张以用户为中心，通过情境化权限管理、敏感数据防护护栏及最小化训练，推动“隐私创新”以替代传统弹窗同意。文章强调隐私即产品质量，呼吁行业与监管协同推广隐私增强技术，建立动态适配的数据保护框架与全球标准。唯有在技术突破与隐私保障间取得平衡，持续对话并满足用户合理预期，方能构建可信AI生态并实现技术安全普及。\n例子：例如，AI助手可凭授权自动读取日历预订餐厅，但涉及病历等敏感信息时则默认隔离，仅在用户明确授权后才有限调用，实现“场景化按需保护”。\n关键字：AI隐私保护、用户控制权、隐私创新、隐私增强技术、可信AI"
+    },
+    {
+        "title": "Quantum frontiers may be closer than they appear",
+        "link": "https://blog.google/innovation-and-ai/technology/safety-security/cryptography-migration-timeline/",
+        "date": "2026-04-15",
+        "source": "GoogleResearchBlogCrawler",
+        "cache_path": "cache/2026-04-15/Quantum frontiers may be closer than they appear",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.svg",
+            "image_4.svg",
+            "image_5.svg",
+            "image_6.svg",
+            "image_7.png",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp"
+        ],
+        "summary": "摘要：谷歌宣布将于2029年完成向后量子密码学（PQC）的全面迁移，以应对未来量子计算机对现有加密体系与数字签名的破解威胁。随着量子硬件与纠错技术进步，“先存储后解密”攻击已成现实风险。谷歌已调整威胁模型，优先升级身份验证服务，并在Android 17、Chrome及云服务中集成NIST标准算法，呼吁全行业以此时间表为基准加速转型，共建抗量子安全基础设施。\n例子：黑客可先截获并存储加密数据，待未来量子计算机成熟后瞬间破解。部署PQC如同提前换上“量子级防盗锁”，确保数据即使现在被窃取，未来也无法被解密。\n关键字：后量子密码学、2029迁移时间表、量子计算威胁、数字签名安全、先存储后解密"
+    }
+]

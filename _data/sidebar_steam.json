@@ -8,19 +8,19 @@
         "rank": 1
     },
     {
-        "title": "Resident Evil 4",
-        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
-        "price": "¥79.20",
-        "discount": "-60%",
+        "title": "猎杀：对决 1896",
+        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/594650/37141786f337b23a16876e66834e6309387685fb/capsule_231x87_alt_assets_24.jpg?t=1776268441",
+        "price": "¥57.60",
+        "discount": "-55%",
         "rank": 2
     },
     {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1776196566",
-        "price": "¥281.40",
-        "discount": "-34%",
+        "title": "Hades II",
+        "link": "https://store.steampowered.com/app/1145350/Hades_II/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145350/10c9138570a8d7ac9144f601ab0f2ccbc820337e/capsule_231x87.jpg?t=1765831644",
+        "price": "¥86.40",
+        "discount": "-20%",
         "rank": 3
     },
     {
@@ -32,12 +32,20 @@
         "rank": 4
     },
     {
-        "title": "Monster Hunter: World",
-        "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
-        "price": "¥38.48",
-        "discount": "-74%",
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1776196566",
+        "price": "¥281.40",
+        "discount": "-34%",
         "rank": 5
+    },
+    {
+        "title": "Hades",
+        "link": "https://store.steampowered.com/app/1145360/Hades/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145360/capsule_231x87_schinese.jpg?t=1758127023",
+        "price": "¥23.00",
+        "discount": "-75%",
+        "rank": 6
     },
     {
         "title": "饥荒联机版",
@@ -45,14 +53,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/2ee35cc972015318e5c75bd06bbb8a8a1c2f79f7/capsule_231x87_schinese.jpg?t=1775799180",
         "price": "¥12.00",
         "discount": "-50%",
-        "rank": 6
-    },
-    {
-        "title": "灵魂面甲(Soulmask)",
-        "link": "https://store.steampowered.com/app/2646460/Soulmask/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2646460/d10aa4590773d6684108641c895fc489228fccdc/capsule_231x87_alt_assets_29_schinese.jpg?t=1776154391",
-        "price": "¥97.20",
-        "discount": "-10%",
         "rank": 7
     },
     {
@@ -72,11 +72,11 @@
         "rank": 9
     },
     {
-        "title": "Monster Hunter Wilds",
-        "link": "https://store.steampowered.com/app/2246340/Monster_Hunter_Wilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1771382452",
-        "price": "¥191.40",
-        "discount": "-45%",
+        "title": "灵魂面甲(Soulmask)",
+        "link": "https://store.steampowered.com/app/2646460/Soulmask/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2646460/d10aa4590773d6684108641c895fc489228fccdc/capsule_231x87_alt_assets_29_schinese.jpg?t=1776154391",
+        "price": "¥97.20",
+        "discount": "-10%",
         "rank": 10
     }
 ]
