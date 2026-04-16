@@ -16,26 +16,26 @@
         "rank": 2
     },
     {
+        "title": "情感价值",
+        "link": "https://movie.douban.com/subject/36413501/?from=playing_poster",
+        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2931602981.jpg",
+        "score": "7.6",
+        "region": "挪威 德国 丹麦 法国 瑞典 英国",
+        "rank": 3
+    },
+    {
         "title": "植物学家",
         "link": "https://movie.douban.com/subject/36053104/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931582988.jpg",
         "score": "暂无评分",
         "region": "中国大陆",
-        "rank": 3
+        "rank": 4
     },
     {
         "title": "我的妈耶",
         "link": "https://movie.douban.com/subject/36217763/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930427050.jpg",
         "score": "6.9",
-        "region": "中国大陆",
-        "rank": 4
-    },
-    {
-        "title": "天才游戏",
-        "link": "https://movie.douban.com/subject/35159709/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931149949.jpg",
-        "score": "5.9",
         "region": "中国大陆",
         "rank": 5
     }
