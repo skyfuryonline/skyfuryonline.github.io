@@ -1,35 +1,19 @@
 [
     {
-        "title": "女吊",
-        "link": "https://store.steampowered.com/app/3513600/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3513600/4c22681db6b48a30cb3844d61ad819c1ca81c42b/capsule_231x87_schinese.jpg?t=1776441348",
-        "price": "¥38.25",
-        "discount": "-15%",
-        "rank": 1
-    },
-    {
         "title": "极限竞速：地平线 5",
         "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
         "price": "¥99.00",
         "discount": "-50%",
+        "rank": 1
+    },
+    {
+        "title": "女吊",
+        "link": "https://store.steampowered.com/app/3513600/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3513600/4c22681db6b48a30cb3844d61ad819c1ca81c42b/capsule_231x87_schinese.jpg?t=1776441348",
+        "price": "¥38.25",
+        "discount": "-15%",
         "rank": 2
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1776196566",
-        "price": "¥281.40",
-        "discount": "-34%",
-        "rank": 3
-    },
-    {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1775577454",
-        "price": "¥99.50",
-        "discount": "-75%",
-        "rank": 4
     },
     {
         "title": "Windrose: 风启之旅",
@@ -37,7 +21,15 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3041230/cd75685a04b997e230b141fcc4a6ed5c1770b453/capsule_231x87_schinese.jpg?t=1776158614",
         "price": "¥88.20",
         "discount": "-10%",
-        "rank": 5
+        "rank": 3
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1776196566",
+        "price": "¥281.40",
+        "discount": "-34%",
+        "rank": 4
     },
     {
         "title": "Ready or Not",
@@ -45,7 +37,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144200/capsule_231x87.jpg?t=1775492374",
         "price": "¥79.50",
         "discount": "-50%",
-        "rank": 6
+        "rank": 5
     },
     {
         "title": "NINJA GAIDEN 4",
@@ -53,6 +45,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2627260/1a6a9ecfb6f6d62d005a1942ad5c4b4e5bf42d5c/capsule_231x87.jpg?t=1772643576",
         "price": "¥178.80",
         "discount": "-40%",
+        "rank": 6
+    },
+    {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1775577454",
+        "price": "¥99.50",
+        "discount": "-75%",
         "rank": 7
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "猎杀：对决 1896",
-        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/594650/37141786f337b23a16876e66834e6309387685fb/capsule_231x87_alt_assets_24.jpg?t=1776351717",
-        "price": "¥57.60",
-        "discount": "-55%",
-        "rank": 9
-    },
-    {
         "title": "边缘世界 RimWorld",
         "link": "https://store.steampowered.com/app/294100/_RimWorld/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/294100/a805ac5e3ceb54a2d7d3e1c1049907f1ef8bbb89/capsule_231x87.jpg?t=1776194377",
         "price": "¥102.40",
         "discount": "-20%",
+        "rank": 9
+    },
+    {
+        "title": "猎杀：对决 1896",
+        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/594650/37141786f337b23a16876e66834e6309387685fb/capsule_231x87_alt_assets_24.jpg?t=1776351717",
+        "price": "¥57.60",
+        "discount": "-55%",
         "rank": 10
     }
 ]
