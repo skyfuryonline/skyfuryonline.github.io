@@ -1,0 +1,11 @@
+[
+    {
+        "title": "Start vibe coding in AI Studio with your Google AI subscription.",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/google-one-ai-studio/",
+        "date": "2026-04-20",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-04-20/Start vibe coding in AI Studio with your Google AI subscription.",
+        "image_files": [],
+        "summary": "摘要：谷歌AI Studio为Pro和Ultra订阅用户推出服务升级，核心是通过提升使用额度与开放Nano Banana Pro及Gemini Pro模型，构建低成本、可预测的AI开发环境。该计划作为免费额度耗尽后的低门槛过渡方案，旨在帮助开发者快速将创意转化为可运行原型，并支持后续无缝切换至API进行生产级部署，大幅降低AI实验与产品落地的门槛。\n例子：开发者输入“制作一个待办事项网页”，AI Studio即可利用新额度瞬间生成完整代码并实时预览，验证效果后一键导出API密钥用于正式上线。\n关键字：Google AI Studio、氛围编程、快速原型、无缝部署、订阅权益"
+    }
+]

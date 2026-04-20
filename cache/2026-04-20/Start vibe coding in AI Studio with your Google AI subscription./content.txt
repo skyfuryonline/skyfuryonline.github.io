@@ -1,0 +1,26 @@
+Breadcrumb
+Innovation & AI
+Technology
+Developer tools
+By
+Seth Odoom
+|
+Product Manager, Google AI Studio
+Apr 20, 2026
+Start vibe coding in AI Studio with your Google AI subscription.
+Starting today, Google AI Pro and Ultra subscribers get increased usage limits in Google AI Studio. This update also includes access to Nano Banana Pro and Gemini Pro models, providing developers with more versatility right out of the gate. Subscribers can now move from an initial idea to a working application in minutes with predictable costs.
+For builders who have exhausted their free-tier limits, a Google AI plan now serves as a low-setup billing bridge. While pay-per-request API keys remain the standard for production-scale launches, these subscriber benefits offer an easy entry point to developers who would like to experiment and prototype more deeply with AI Studio. When you’re ready to launch, transitioning to an API setup is easily handled within AI Studio.
+These benefits are rolling out now to all AI Pro and Ultra subscribers. Sign in with your linked account to start building today.
+Sorry, your browser doesn't support embedded videos, but don't worry, you can
+download it
+and watch it with your favorite video player!
+POSTED IN:
+Developer tools
+Gemini
+Google One
+Related stories
+New ways to create personalized images in the Gemini app
+Nano Banana 2 now uses your personal context and Google Photos to create images that reflect your unique life.
+Prepay for the Gemini API to get more control over your spend
+6 easy ways to study for finals with Gemini
+6 ways Gemini can help you find your next home
