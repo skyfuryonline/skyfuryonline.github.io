@@ -1,0 +1,24 @@
+[
+    {
+        "title": "Join the new AI Agents Vibe Coding Course from Google and Kaggle",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-genai-intensive-course-vibe-coding-june-2026/",
+        "date": "2026-04-27",
+        "source": "GoogleDevBlogCrawler",
+        "cache_path": "cache/2026-04-27/Join the new AI Agents Vibe Coding Course from Google and Kaggle",
+        "image_files": [
+            "image_1.webp",
+            "image_2.webp",
+            "image_3.svg",
+            "image_4.svg",
+            "image_5.svg",
+            "image_6.svg",
+            "image_7.webp",
+            "image_8.webp",
+            "image_9.webp",
+            "image_10.webp",
+            "image_11.webp",
+            "image_12.webp"
+        ],
+        "summary": "摘要：谷歌与Kaggle将于2026年6月15日至19日推出免费AI智能体五日强化课程。核心推广“Vibe Coding”理念，即以自然语言替代传统代码作为主要编程接口。课程结合专家讲解、实操练习与毕业设计，系统教授如何连接外部工具与API，构建并部署可直接投入生产的高效能AI智能体。旨在大幅降低开发门槛，助力开发者快速将业务创意转化为稳健的自动化系统。\n例子：开发者只需输入“每日抓取股价，跌幅超5%自动发邮件预警”，系统即可自动解析意图、调用金融API与邮件服务，生成并运行该智能体，全程无需编写传统代码。\n关键字：AI智能体、Vibe编程、自然语言接口、API集成、生产级部署"
+    }
+]
