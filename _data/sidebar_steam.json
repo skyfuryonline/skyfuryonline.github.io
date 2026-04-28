@@ -1,11 +1,59 @@
 [
     {
+        "title": "梦幻魔法公主",
+        "link": "https://store.steampowered.com/app/3562120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3562120/84ca46a1bda70a28845f9e6d1139341c4c673279/capsule_231x87_schinese.jpg?t=1777348229",
+        "price": "¥38.40",
+        "discount": "-20%",
+        "rank": 1
+    },
+    {
+        "title": "代号三国：龙起",
+        "link": "https://store.steampowered.com/app/3412900/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3412900/be048c35e3813be79ddf957d87b46e852656b491/capsule_231x87_alt_assets_1_schinese.jpg?t=1777406620",
+        "price": "¥49.30",
+        "discount": "-15%",
+        "rank": 2
+    },
+    {
+        "title": "遥遥西土 Far Far West",
+        "link": "https://store.steampowered.com/app/3124540/_Far_Far_West/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3124540/3b8ab6746c359d2769841d14f618693f35dc8515/capsule_231x87_alt_assets_3_schinese.jpg?t=1777406197",
+        "price": "¥64.80",
+        "discount": "-10%",
+        "rank": 3
+    },
+    {
         "title": "赛博朋克 2077",
         "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
         "price": "¥104.30",
         "discount": "-65%",
-        "rank": 1
+        "rank": 4
+    },
+    {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1777414590",
+        "price": "¥74.40",
+        "discount": "-70%",
+        "rank": 5
+    },
+    {
+        "title": "Victoria 3",
+        "link": "https://store.steampowered.com/app/529340/Victoria_3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/529340/870f6f17d2a47756fc009d7232f1c5b56d445ea1/capsule_231x87_alt_assets_9_schinese.jpg?t=1777370399",
+        "price": "¥59.40",
+        "discount": "-70%",
+        "rank": 6
+    },
+    {
+        "title": "黎明杀机",
+        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/d23f7ac514d4d4ab370145e7e75513b5b5cfdf45/capsule_231x87_alt_assets_5.jpg?t=1777395345",
+        "price": "¥37.50",
+        "discount": "-60%",
+        "rank": 7
     },
     {
         "title": "双影奇境",
@@ -13,15 +61,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
         "price": "¥138.60",
         "discount": "-30%",
-        "rank": 2
-    },
-    {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1775577454",
-        "price": "¥74.40",
-        "discount": "-70%",
-        "rank": 3
+        "rank": 8
     },
     {
         "title": "极限竞速：地平线 5",
@@ -29,23 +69,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
         "price": "¥99.00",
         "discount": "-50%",
-        "rank": 4
-    },
-    {
-        "title": "女神异闻录5皇家版",
-        "link": "https://store.steampowered.com/app/1687950/5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1687950/9ac9b8764a208f40d271a9e7317f9ab2bf49acf2/capsule_231x87_schinese.jpg?t=1763530018",
-        "price": "¥53.60",
-        "discount": "-80%",
-        "rank": 5
-    },
-    {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
-        "price": "¥96.85",
-        "discount": "-35%",
-        "rank": 6
+        "rank": 9
     },
     {
         "title": "NBA 2K26",
@@ -53,30 +77,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1776196566",
         "price": "¥92.25",
         "discount": "-75%",
-        "rank": 7
-    },
-    {
-        "title": "Street Fighter 6",
-        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/7f4bcdebc8dc0d9c1e77d70fe2c6ed13a3ab2381/capsule_231x87_alt_assets_18.jpg?t=1776917924",
-        "price": "¥99.00",
-        "discount": "-50%",
-        "rank": 8
-    },
-    {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥98.56",
-        "discount": "-56%",
-        "rank": 9
-    },
-    {
-        "title": "黎明杀机",
-        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/80aa9887c96ca6866ae5aa8ff202f79cfbb48c6b/capsule_231x87_alt_assets_7.jpg?t=1773849399",
-        "price": "¥37.50",
-        "discount": "-60%",
         "rank": 10
     }
 ]
