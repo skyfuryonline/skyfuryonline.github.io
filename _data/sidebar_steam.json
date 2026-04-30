@@ -1,10 +1,10 @@
 [
     {
-        "title": "梦幻魔法公主",
-        "link": "https://store.steampowered.com/app/3562120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3562120/84ca46a1bda70a28845f9e6d1139341c4c673279/capsule_231x87_schinese.jpg?t=1777348229",
-        "price": "¥38.40",
-        "discount": "-20%",
+        "title": "魔法门之英雄无敌：上古纪元 Heroes of Might and Magic: Olden Era",
+        "link": "https://store.steampowered.com/app/3105440/_Heroes_of_Might_and_Magic_Olden_Era/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3105440/ae09054d628656b0375222c9c8c5deafee0cef88/capsule_231x87_schinese.jpg?t=1777582080",
+        "price": "¥111.75",
+        "discount": "-25%",
         "rank": 1
     },
     {
@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "黎明杀机",
-        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/d23f7ac514d4d4ab370145e7e75513b5b5cfdf45/capsule_231x87_alt_assets_5.jpg?t=1777395345",
-        "price": "¥37.50",
-        "discount": "-60%",
+        "title": "梦幻魔法公主",
+        "link": "https://store.steampowered.com/app/3562120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3562120/84ca46a1bda70a28845f9e6d1139341c4c673279/capsule_231x87_schinese.jpg?t=1777348229",
+        "price": "¥38.40",
+        "discount": "-20%",
         "rank": 4
     },
     {
-        "title": "极限竞速：地平线 5",
-        "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
-        "price": "¥99.00",
-        "discount": "-50%",
+        "title": "Twin Shot Deluxe",
+        "link": "https://store.steampowered.com/app/3618520/Twin_Shot_Deluxe/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3618520/b3fd705479eff47b42a4b782f1161cb058f25dfc/capsule_231x87.jpg?t=1777537916",
+        "price": "¥37.80",
+        "discount": "-10%",
         "rank": 5
     },
     {
@@ -48,28 +48,12 @@
         "rank": 6
     },
     {
-        "title": "Victoria 3",
-        "link": "https://store.steampowered.com/app/529340/Victoria_3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/529340/870f6f17d2a47756fc009d7232f1c5b56d445ea1/capsule_231x87_alt_assets_9_schinese.jpg?t=1777370399",
-        "price": "¥59.40",
-        "discount": "-70%",
-        "rank": 7
-    },
-    {
-        "title": "卡片魔王：只剩个头！",
-        "link": "https://store.steampowered.com/app/3720420/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3720420/6ed32c019e99ab14e473e1be785f3670dfe629e4/capsule_231x87_schinese.jpg?t=1777449326",
-        "price": "¥43.20",
-        "discount": "-10%",
-        "rank": 8
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/f65e6d5362253c14af2581da47e04093621dd92a/capsule_231x87_alt_assets_4.jpg?t=1776196566",
-        "price": "¥92.25",
+        "title": "Stellaris",
+        "link": "https://store.steampowered.com/app/281990/Stellaris/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/281990/a41fbf837417238359b4972ec96de4d241424292/capsule_231x87_alt_assets_11.jpg?t=1777568448",
+        "price": "¥42.00",
         "discount": "-75%",
-        "rank": 9
+        "rank": 7
     },
     {
         "title": "《赛博朋克 2077：往日之影》",
@@ -77,6 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
         "price": "¥96.85",
         "discount": "-35%",
+        "rank": 8
+    },
+    {
+        "title": "黎明杀机",
+        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/d23f7ac514d4d4ab370145e7e75513b5b5cfdf45/capsule_231x87_alt_assets_5.jpg?t=1777584780",
+        "price": "¥37.50",
+        "discount": "-60%",
+        "rank": 9
+    },
+    {
+        "title": "Victoria 3",
+        "link": "https://store.steampowered.com/app/529340/Victoria_3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/529340/2548bddf0367579796a96d92627de537d0d75866/capsule_231x87_alt_assets_4_schinese.jpg?t=1777568457",
+        "price": "¥59.40",
+        "discount": "-70%",
         "rank": 10
     }
 ]

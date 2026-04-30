@@ -16,12 +16,20 @@
         "rank": 2
     },
     {
-        "title": "给阿嬷的情书",
-        "link": "https://movie.douban.com/subject/37116446/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931851430.jpg",
+        "title": "门牙",
+        "link": "https://movie.douban.com/subject/37534660/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931657194.jpg",
         "score": "暂无评分",
         "region": "中国大陆",
         "rank": 3
+    },
+    {
+        "title": "寒战1994",
+        "link": "https://movie.douban.com/subject/36857924/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931924492.jpg",
+        "score": "暂无评分",
+        "region": "中国香港 中国大陆",
+        "rank": 4
     },
     {
         "title": "穿普拉达的女王2",
@@ -29,14 +37,6 @@
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930952195.jpg",
         "score": "暂无评分",
         "region": "美国",
-        "rank": 4
-    },
-    {
-        "title": "燃比娃",
-        "link": "https://movie.douban.com/subject/35516786/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931409497.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆",
         "rank": 5
     }
 ]
