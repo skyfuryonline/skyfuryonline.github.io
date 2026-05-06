@@ -1,11 +1,19 @@
 [
     {
+        "title": "给阿嬷的情书",
+        "link": "https://movie.douban.com/subject/37116446/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931851430.jpg",
+        "score": "9.0",
+        "region": "中国大陆",
+        "rank": 1
+    },
+    {
         "title": "消失的人",
         "link": "https://movie.douban.com/subject/36965301/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931601070.jpg",
-        "score": "7.7",
+        "score": "7.6",
         "region": "中国大陆",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "寒战1994",
@@ -13,14 +21,6 @@
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931924492.jpg",
         "score": "7.2",
         "region": "中国香港 中国大陆",
-        "rank": 2
-    },
-    {
-        "title": "给阿嬷的情书",
-        "link": "https://movie.douban.com/subject/37116446/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931851430.jpg",
-        "score": "9.0",
-        "region": "中国大陆",
         "rank": 3
     },
     {
