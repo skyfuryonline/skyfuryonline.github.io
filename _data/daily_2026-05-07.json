@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Find out how AlphaEvolve has gone from research to solving real-life problems.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates/",
+        "date": "2026-05-07",
+        "source": "GoogleDeepmindBlogCrawler",
+        "cache_path": "cache/2026-05-07/Find out how AlphaEvolve has gone from research to solving real-life problems.",
+        "image_files": [
+            "image_1.webp"
+        ],
+        "summary": "摘要：AlphaEvolve是一款基于Gemini的进化算法智能体，通过迭代搜索自动发现并优化复杂问题的解决方案。该技术已从实验室成功迈向实际应用，成为推动科学与商业进步的核心引擎。在科研端，它提升了DNA纠错、灾害预测及电网稳定性，并加速分子模拟与神经科学探索；在商业端，它优化了谷歌基础设施，并助力客户改进AI模型、加速药物研发及优化供应链与仓储。未来将持续扩展自进化算法以解决更多现实难题。\n例子：例如优化仓库布局时，传统需人工反复调试，而该智能体能像“自然选择”般自动生成数千种方案，快速迭代筛选出拣货路径最短、空间利用率最高的最优设计。\n关键字：AlphaEvolve、进化算法、自动优化、科学探索、商业落地"
+    }
+]

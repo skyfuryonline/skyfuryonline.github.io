@@ -11,9 +11,25 @@
         "title": "消失的人",
         "link": "https://movie.douban.com/subject/36965301/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931601070.jpg",
-        "score": "7.6",
+        "score": "7.5",
         "region": "中国大陆",
         "rank": 2
+    },
+    {
+        "title": "青铜葵花",
+        "link": "https://movie.douban.com/subject/36500314/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931382259.jpg",
+        "score": "暂无评分",
+        "region": "中国大陆",
+        "rank": 3
+    },
+    {
+        "title": "真人快打2",
+        "link": "https://movie.douban.com/subject/35754057/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931949823.jpg",
+        "score": "暂无评分",
+        "region": "美国",
+        "rank": 4
     },
     {
         "title": "寒战1994",
@@ -21,22 +37,6 @@
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931924492.jpg",
         "score": "7.2",
         "region": "中国香港 中国大陆",
-        "rank": 3
-    },
-    {
-        "title": "穿普拉达的女王2",
-        "link": "https://movie.douban.com/subject/36956594/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930952195.jpg",
-        "score": "6.6",
-        "region": "美国",
-        "rank": 4
-    },
-    {
-        "title": "10间敢死队",
-        "link": "https://movie.douban.com/subject/37379599/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931584782.jpg",
-        "score": "6.8",
-        "region": "中国大陆",
         "rank": 5
     }
 ]
