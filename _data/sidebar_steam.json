@@ -1,11 +1,19 @@
 [
     {
+        "title": "万物皆可蟹：动物进化 Roguelite | Everything is Crab",
+        "link": "https://store.steampowered.com/app/3526710/_Roguelite__Everything_is_Crab/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3526710/abeb70bc6fb6bcb8876450be418095fb4bedffce/capsule_231x87_schinese.jpg?t=1778230287",
+        "price": "¥34.20",
+        "discount": "-10%",
+        "rank": 1
+    },
+    {
         "title": "《暗黑破坏神® IV》",
         "link": "https://store.steampowered.com/app/2344520/_IV/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344520/498049ac91ea5e17aefa19c7e27ecdcc20e1ea67/capsule_231x87_alt_assets_11.jpg?t=1777501665",
         "price": "¥208.80",
         "discount": "-40%",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "魔法门之英雄无敌：上古纪元 Heroes of Might and Magic: Olden Era",
@@ -13,7 +21,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3105440/ae09054d628656b0375222c9c8c5deafee0cef88/capsule_231x87_schinese.jpg?t=1777899549",
         "price": "¥111.75",
         "discount": "-25%",
-        "rank": 2
+        "rank": 3
     },
     {
         "title": "博德之门3",
@@ -21,7 +29,23 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/3dd81008e9c385caf68152450c22353f6a8abec9/capsule_231x87.jpg?t=1777363040",
         "price": "¥223.50",
         "discount": "-25%",
-        "rank": 3
+        "rank": 4
+    },
+    {
+        "title": "Call of Duty®: Black Ops 7",
+        "link": "https://store.steampowered.com/app/3606480/Call_of_Duty_Black_Ops_7/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3606480/bbdbbfce8a336864a974ee49419dabb6ccce5793/capsule_231x87_schinese.jpg?t=1776875198",
+        "price": "¥191.40",
+        "discount": "-45%",
+        "rank": 5
+    },
+    {
+        "title": "UNCHARTED™: 盗贼传奇合辑",
+        "link": "https://store.steampowered.com/app/1659420/UNCHARTED/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1659420/capsule_231x87_schinese.jpg?t=1751913411",
+        "price": "¥113.85",
+        "discount": "-67%",
+        "rank": 6
     },
     {
         "title": "皓白初晓",
@@ -29,15 +53,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3110760/6d0608220ab5a84b3c7659756416e65e8811a33e/capsule_231x87.jpg?t=1778168918",
         "price": "¥79.05",
         "discount": "-15%",
-        "rank": 4
-    },
-    {
-        "title": "梦幻魔法公主",
-        "link": "https://store.steampowered.com/app/3562120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3562120/84ca46a1bda70a28845f9e6d1139341c4c673279/capsule_231x87_schinese.jpg?t=1777348229",
-        "price": "¥38.40",
-        "discount": "-20%",
-        "rank": 5
+        "rank": 7
     },
     {
         "title": "双点博物馆",
@@ -45,38 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2185060/1233b7178655fc903e7161a619dce451314d5569/capsule_231x87_schinese.jpg?t=1776953050",
         "price": "¥118.50",
         "discount": "-25%",
-        "rank": 6
-    },
-    {
-        "title": "大巴扎 The Bazaar",
-        "link": "https://store.steampowered.com/app/1617400/_The_Bazaar/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1617400/20eda1054049859918b886992ef02b10e801471c/capsule_231x87.jpg?t=1775066388",
-        "price": "¥38.00",
-        "discount": "-50%",
-        "rank": 7
-    },
-    {
-        "title": "遥遥西土 Far Far West",
-        "link": "https://store.steampowered.com/app/3124540/_Far_Far_West/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3124540/3b8ab6746c359d2769841d14f618693f35dc8515/capsule_231x87_alt_assets_3_schinese.jpg?t=1777478432",
-        "price": "¥64.80",
-        "discount": "-10%",
         "rank": 8
     },
     {
-        "title": "Cities: Skylines II 都市：天际线2",
-        "link": "https://store.steampowered.com/app/949230/Cities_Skylines_II_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/949230/2b264fcfffbdc89083c626e70d8e5f0b352672a9/capsule_231x87.jpg?t=1777568420",
-        "price": "¥138.60",
-        "discount": "-30%",
+        "title": "Call to Arms - Gates of Hell: Ostfront",
+        "link": "https://store.steampowered.com/app/400750/Call_to_Arms__Gates_of_Hell_Ostfront/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/400750/518ba193aa22508abb7271d972098bbbc4f9a8d4/capsule_231x87.jpg?t=1764717941",
+        "price": "¥32.00",
+        "discount": "-75%",
         "rank": 9
     },
     {
-        "title": "Stellaris",
-        "link": "https://store.steampowered.com/app/281990/Stellaris/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/281990/a41fbf837417238359b4972ec96de4d241424292/capsule_231x87_alt_assets_11.jpg?t=1777568448",
-        "price": "¥42.00",
-        "discount": "-75%",
+        "title": "梦幻魔法公主",
+        "link": "https://store.steampowered.com/app/3562120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3562120/84ca46a1bda70a28845f9e6d1139341c4c673279/capsule_231x87_schinese.jpg?t=1777348229",
+        "price": "¥38.40",
+        "discount": "-20%",
         "rank": 10
     }
 ]
