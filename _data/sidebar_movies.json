@@ -16,27 +16,27 @@
         "rank": 2
     },
     {
+        "title": "真人快打2",
+        "link": "https://movie.douban.com/subject/35754057/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932271729.jpg",
+        "score": "暂无评分",
+        "region": "美国",
+        "rank": 3
+    },
+    {
         "title": "寒战1994",
         "link": "https://movie.douban.com/subject/36857924/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931924492.jpg",
         "score": "7.2",
         "region": "中国香港 中国大陆",
-        "rank": 3
-    },
-    {
-        "title": "穿普拉达的女王2",
-        "link": "https://movie.douban.com/subject/36956594/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930952195.jpg",
-        "score": "6.6",
-        "region": "美国",
         "rank": 4
     },
     {
-        "title": "纵横四海",
-        "link": "https://movie.douban.com/subject/1295409/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931740648.jpg",
-        "score": "8.8",
-        "region": "中国香港",
+        "title": "青铜葵花",
+        "link": "https://movie.douban.com/subject/36500314/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931382259.jpg",
+        "score": "暂无评分",
+        "region": "中国大陆",
         "rank": 5
     }
 ]

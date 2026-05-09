@@ -1,18 +1,18 @@
 [
     {
-        "title": "万物皆可蟹：动物进化 Roguelite | Everything is Crab",
-        "link": "https://store.steampowered.com/app/3526710/_Roguelite__Everything_is_Crab/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3526710/abeb70bc6fb6bcb8876450be418095fb4bedffce/capsule_231x87_schinese.jpg?t=1778230287",
-        "price": "¥34.20",
-        "discount": "-10%",
-        "rank": 1
-    },
-    {
         "title": "《暗黑破坏神® IV》",
         "link": "https://store.steampowered.com/app/2344520/_IV/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344520/498049ac91ea5e17aefa19c7e27ecdcc20e1ea67/capsule_231x87_alt_assets_11.jpg?t=1777501665",
         "price": "¥208.80",
         "discount": "-40%",
+        "rank": 1
+    },
+    {
+        "title": "万物皆可蟹：动物进化 Roguelite | Everything is Crab",
+        "link": "https://store.steampowered.com/app/3526710/_Roguelite__Everything_is_Crab/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3526710/abeb70bc6fb6bcb8876450be418095fb4bedffce/capsule_231x87_schinese.jpg?t=1778230287",
+        "price": "¥34.20",
+        "discount": "-10%",
         "rank": 2
     },
     {
@@ -48,12 +48,20 @@
         "rank": 6
     },
     {
-        "title": "皓白初晓",
-        "link": "https://store.steampowered.com/app/3110760/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3110760/6d0608220ab5a84b3c7659756416e65e8811a33e/capsule_231x87.jpg?t=1778168918",
-        "price": "¥79.05",
-        "discount": "-15%",
+        "title": "梦幻魔法公主",
+        "link": "https://store.steampowered.com/app/3562120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3562120/84ca46a1bda70a28845f9e6d1139341c4c673279/capsule_231x87_schinese.jpg?t=1777348229",
+        "price": "¥38.40",
+        "discount": "-20%",
         "rank": 7
+    },
+    {
+        "title": "Mixtape",
+        "link": "https://store.steampowered.com/app/2582320/Mixtape/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2582320/49a74db3ec8f153734bf6480ad0e5cf2db29a240/capsule_231x87.jpg?t=1778291163",
+        "price": "¥61.20",
+        "discount": "-10%",
+        "rank": 8
     },
     {
         "title": "双点博物馆",
@@ -61,22 +69,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2185060/1233b7178655fc903e7161a619dce451314d5569/capsule_231x87_schinese.jpg?t=1776953050",
         "price": "¥118.50",
         "discount": "-25%",
-        "rank": 8
-    },
-    {
-        "title": "Call to Arms - Gates of Hell: Ostfront",
-        "link": "https://store.steampowered.com/app/400750/Call_to_Arms__Gates_of_Hell_Ostfront/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/400750/518ba193aa22508abb7271d972098bbbc4f9a8d4/capsule_231x87.jpg?t=1764717941",
-        "price": "¥32.00",
-        "discount": "-75%",
         "rank": 9
     },
     {
-        "title": "梦幻魔法公主",
-        "link": "https://store.steampowered.com/app/3562120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3562120/84ca46a1bda70a28845f9e6d1139341c4c673279/capsule_231x87_schinese.jpg?t=1777348229",
-        "price": "¥38.40",
-        "discount": "-20%",
+        "title": "遥遥西土 Far Far West",
+        "link": "https://store.steampowered.com/app/3124540/_Far_Far_West/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3124540/3b8ab6746c359d2769841d14f618693f35dc8515/capsule_231x87_alt_assets_3_schinese.jpg?t=1778234595",
+        "price": "¥64.80",
+        "discount": "-10%",
         "rank": 10
     }
 ]
