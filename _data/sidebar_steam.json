@@ -1,35 +1,19 @@
 [
     {
-        "title": "Stardew Valley",
-        "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
-        "price": "¥24.00",
-        "discount": "-50%",
-        "rank": 1
-    },
-    {
         "title": "NBA 2K26",
         "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/8496e0023f3b24c9bf87e1459cb9651f5a7a6732/capsule_231x87_alt_assets_5.jpg?t=1778857348",
         "price": "¥41.72",
         "discount": "-86%",
+        "rank": 1
+    },
+    {
+        "title": "Stardew Valley",
+        "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
+        "price": "¥24.00",
+        "discount": "-50%",
         "rank": 2
-    },
-    {
-        "title": "Subnautica - 深海迷航",
-        "link": "https://store.steampowered.com/app/264710/Subnautica/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1777456112",
-        "price": "¥37.25",
-        "discount": "-75%",
-        "rank": 3
-    },
-    {
-        "title": "今古群侠传",
-        "link": "https://store.steampowered.com/app/3313720/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3313720/c1aee942ca11df01d859894226c44a5c52424a22/capsule_231x87_schinese.jpg?t=1778812686",
-        "price": "¥57.80",
-        "discount": "-15%",
-        "rank": 4
     },
     {
         "title": "SiNiSistar 2",
@@ -37,7 +21,15 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4466620/eba9adccccb566c72b998cfe15ae3008eaa00ff7/capsule_231x87.jpg?t=1778889257",
         "price": "¥47.20",
         "discount": "-20%",
-        "rank": 5
+        "rank": 3
+    },
+    {
+        "title": "Subnautica - 深海迷航",
+        "link": "https://store.steampowered.com/app/264710/Subnautica/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1777456112",
+        "price": "¥37.25",
+        "discount": "-75%",
+        "rank": 4
     },
     {
         "title": "Red Dead Redemption 2",
@@ -45,7 +37,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
-        "rank": 6
+        "rank": 5
     },
     {
         "title": "《暗黑破坏神® IV》",
@@ -53,7 +45,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2344520/498049ac91ea5e17aefa19c7e27ecdcc20e1ea67/capsule_231x87_alt_assets_11.jpg?t=1777501665",
         "price": "¥208.80",
         "discount": "-40%",
-        "rank": 7
+        "rank": 6
     },
     {
         "title": "深海迷航：冰点之下",
@@ -61,6 +53,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/848450/capsule_231x87.jpg?t=1777456254",
         "price": "¥37.25",
         "discount": "-75%",
+        "rank": 7
+    },
+    {
+        "title": "今古群侠传",
+        "link": "https://store.steampowered.com/app/3313720/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3313720/c1aee942ca11df01d859894226c44a5c52424a22/capsule_231x87_schinese.jpg?t=1778812686",
+        "price": "¥57.80",
+        "discount": "-15%",
         "rank": 8
     },
     {
@@ -72,11 +72,11 @@
         "rank": 9
     },
     {
-        "title": "Euro Truck Simulator 2",
-        "link": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/da84d11d3ddd817e0cca299608b469a854d75ba5/capsule_231x87.jpg?t=1773641450",
-        "price": "¥22.00",
-        "discount": "-75%",
+        "title": "天国：拯救2",
+        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
+        "price": "¥149.00",
+        "discount": "-50%",
         "rank": 10
     }
 ]
