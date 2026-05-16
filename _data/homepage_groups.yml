@@ -15,13 +15,6 @@
     - "2025-12-14-generative-agents-replication-and-analysis.md"
     - "2025-12-20-opencompass-vlmevalkit-evaluation.md"
 
-- group_name: "labuladong算法小抄"
-  url: "/groups/labuladong-algorithm"
-  group_image: "/img/cover_algorithm.webp"
-  group_description: "记录labuladong算法小抄刷题"
-  posts:
-    - "2025-11-11-labuladong-binary-tree-intro.md"
-
 - group_name: "博客开发指南"
   url: "/groups/blog-development"
   group_image: "/img/cover-zaji.png"
