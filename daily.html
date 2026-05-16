@@ -424,62 +424,84 @@ http_headers:
         flex-basis: calc(33.333% - 7px);
     }
 }
-/* ---------------- Pixel Office ---------------- */
-.px-card {
-    background: linear-gradient(145deg, #141720 0%, #1c212e 100%);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 16px;
-    padding: 20px 24px 18px;
-    width: 100%;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-}
-.px-header {
+/* ---------------- Coming Soon ---------------- */
+.coming-soon-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
-    padding: 0 2px;
-}
-.px-title {
-    font-family: 'Courier New', monospace;
-    font-size: 0.7em;
-    color: #6a7a88;
-    letter-spacing: 3px;
-    font-weight: 600;
-}
-.px-status {
-    font-family: 'Courier New', monospace;
-    font-size: 0.55em;
-    color: #3a4a58;
-    letter-spacing: 1px;
-}
-.px-canvas-wrap {
+    min-height: 400px;
+    width: 100%;
     position: relative;
-    width: 100%;
-    aspect-ratio: 576 / 432;
-    background: #2a2118;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.04);
-    overflow: hidden;
+    z-index: 10;
 }
-.px-canvas-wrap canvas {
-    display: block;
+.coming-soon-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.5);
+    max-width: 480px;
     width: 100%;
-    height: 100%;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+    transition: transform 0.3s ease;
 }
-.px-footer {
+.coming-soon-card:hover {
+    transform: translateY(-4px);
+}
+.coming-soon-icon {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+.coming-soon-title {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+.coming-soon-subtitle {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin: 0 0 30px 0;
+    font-weight: 300;
+}
+.coming-soon-decoration {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 8px;
-    padding: 0 2px;
+    justify-content: center;
+    gap: 8px;
 }
-.px-date {
-    font-family: 'Courier New', monospace;
-    font-size: 0.5em;
-    color: #3a4a58;
-    letter-spacing: 1px;
+.coming-soon-decoration span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #bdc3c7;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+.coming-soon-decoration span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.coming-soon-decoration span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+}
+@media (max-width: 767px) {
+    .coming-soon-card {
+        padding: 40px 20px;
+    }
+    .coming-soon-title {
+        font-size: 1.3em;
+    }
 }
 </style>
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
@@ -522,17 +544,15 @@ http_headers:
     {% endif %}
 {% endif %}
 
-<!-- 像素办公室 -->
-<div class="px-card">
-  <div class="px-header">
-    <span class="px-title">◈ PIXEL OFFICE</span>
-    <span class="px-status" id="pxStatus">● LIVE</span>
-  </div>
-  <div class="px-canvas-wrap">
-    <canvas id="pxCanvas" width="576" height="432"></canvas>
-  </div>
-  <div class="px-footer">
-    <span class="px-date" id="pxDate"></span>
+<!-- Coming Soon 占位 -->
+<div class="coming-soon-section">
+  <div class="coming-soon-card">
+    <div class="coming-soon-icon">🚀</div>
+    <h2 class="coming-soon-title">更多精彩即将上线</h2>
+    <p class="coming-soon-subtitle">Coming Soon</p>
+    <div class="coming-soon-decoration">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </div>
 <!-- Bootstrap Modal -->
@@ -749,332 +769,6 @@ http_headers:
         });
       });
     });
-    // -------- 像素办公室 (v5) 猫娘电脑桌 --------
-    (function(){
-      var cvs=document.getElementById('pxCanvas');
-      if(!cvs)return;
-      var ctx=cvs.getContext('2d');
-      var W=576,H=432;
-      document.getElementById('pxDate').textContent=new Date().toISOString().slice(0,10);
-
-      var monOn=false, blink=0, blinkT=100, lastClick=0;
-      var typing=true, typingP=0;
-
-      // ---- Background ----
-      function bg(){
-        ctx.fillStyle='#c8b898';ctx.fillRect(0,0,W,168);
-        ctx.fillStyle='#d4c4a8';ctx.fillRect(0,8,W,160);
-        ctx.fillStyle='rgba(180,150,120,0.12)';ctx.fillRect(0,0,W,3);
-        ctx.fillStyle='#5a4a3a';ctx.fillRect(0,168,W,8);
-        ctx.fillStyle='#4a3a2a';ctx.fillRect(4,170,W-8,4);
-        for(var f=0;f<H-176;f+=12){
-          var col=['#5a4a38','#554536','#504232','#5d4d3b','#584838','#524434'][f/12%6];
-          ctx.fillStyle=col;ctx.fillRect(0,176+f,W,12);
-        }
-        // warm window light
-        ctx.fillStyle='rgba(200,220,255,0.04)';ctx.fillRect(380,20,140,130);
-      }
-
-      // ---- Wall decor ----
-      function decor(){
-        // window
-        ctx.fillStyle='#5a4a3a';ctx.fillRect(394,28,108,112);
-        ctx.fillStyle='#6a5a4a';ctx.fillRect(398,32,100,104);
-        ctx.fillStyle='#5a8aaa';ctx.fillRect(402,36,92,64);
-        ctx.fillStyle='#7aaa6a';ctx.fillRect(402,100,92,28);
-        ctx.fillStyle='rgba(255,255,255,0.3)';ctx.fillRect(412,42,24,6);
-        ctx.fillStyle='rgba(255,255,255,0.25)';ctx.fillRect(442,50,18,5);
-        ctx.fillStyle='rgba(255,255,255,0.2)';ctx.fillRect(425,56,14,4);
-        ctx.fillStyle='#5a4a3a';ctx.fillRect(448,36,4,96);
-        ctx.fillStyle='#5a4a3a';ctx.fillRect(402,78,92,4);
-        // poster
-        ctx.fillStyle='#6a3a4a';ctx.fillRect(50,36,32,46);
-        ctx.fillStyle='#7a4a5a';ctx.fillRect(54,40,24,38);
-        ctx.fillStyle='#e06c75';ctx.fillRect(58,46,16,16);
-        ctx.fillStyle='#4a3a2a';ctx.fillRect(48,34,36,3);
-        ctx.fillStyle='#4a3a2a';ctx.fillRect(48,82,36,3);
-        // clock
-        ctx.fillStyle='#4a3a2a';ctx.fillRect(112,36,2,6);
-        ctx.fillStyle='#2a2a2a';ctx.beginPath();ctx.arc(113,46,7,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle='#ddd';ctx.beginPath();ctx.arc(113,46,5,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle='#222';ctx.fillRect(112,42,2,3);
-      }
-
-      // ---- Desk ----
-      function desk(){
-        ctx.fillStyle='#5a4a3a';ctx.fillRect(40,270,60,80); // left leg
-        ctx.fillStyle='#5a4a3a';ctx.fillRect(370,270,60,80); // right leg visible
-        ctx.fillStyle='#6a5a4a';ctx.fillRect(30,264,W-60,8);
-        ctx.fillStyle='#7a6a5a';ctx.fillRect(34,265,W-68,4);
-        ctx.fillStyle='#5a4a3a';ctx.fillRect(36,272,W-72,8);
-        ctx.fillStyle='#4a3a2a';ctx.fillRect(40,280,W-80,70);
-        // wood grain
-        ctx.fillStyle='rgba(0,0,0,0.04)';ctx.fillRect(40,294,W-80,2);
-        ctx.fillStyle='rgba(0,0,0,0.04)';ctx.fillRect(40,316,W-80,2);
-        ctx.fillStyle='rgba(255,255,255,0.02)';ctx.fillRect(40,308,W-80,2);
-      }
-
-      // ---- Keyboard ----
-      function keyboard(){
-        // keyboard base
-        ctx.fillStyle='#2a2a32';ctx.fillRect(210,274,140,10);
-        ctx.fillStyle='#222';ctx.fillRect(214,275,132,7);
-        // keys
-        for(var k=0;k<12;k++){
-          ctx.fillStyle='#333';ctx.fillRect(216+k*10,276,8,3);
-          ctx.fillRect(216+k*10,279,8,3);
-        }
-      }
-
-      // ---- Monitor ----
-      function monitor(){
-        // stand
-        ctx.fillStyle='#222';ctx.fillRect(250,260,20,6);
-        ctx.fillStyle='#333';ctx.fillRect(254,252,12,10);
-        // screen frame
-        ctx.fillStyle='#2a2a3a';ctx.fillRect(220,152,80,100);
-        ctx.fillStyle='#1a1a2a';ctx.fillRect(224,156,72,92);
-        if(monOn){
-          ctx.fillStyle='#0a1a2a';ctx.fillRect(226,158,68,88);
-          ctx.fillStyle='rgba(40,80,160,0.2)';ctx.fillRect(226,158,68,88);
-          var t=Date.now()/800;
-          ctx.fillStyle='rgba(100,200,100,0.35)';ctx.fillRect(230,164,40+Math.sin(t)*8|0,2);
-          ctx.fillStyle='rgba(100,200,100,0.25)';ctx.fillRect(230,170,28+Math.sin(t+1)*6|0,2);
-          ctx.fillStyle='rgba(200,200,100,0.2)';ctx.fillRect(230,176,50+Math.sin(t+2)*10|0,2);
-          ctx.fillStyle='rgba(100,200,200,0.15)';ctx.fillRect(230,182,20+Math.sin(t+3)*4|0,2);
-          ctx.fillStyle='rgba(100,200,100,0.25)';ctx.fillRect(230,188,36+Math.sin(t+4)*7|0,2);
-          ctx.fillStyle='rgba(200,200,100,0.15)';ctx.fillRect(230,194,56+Math.sin(t+5)*9|0,2);
-          ctx.fillStyle='rgba(100,200,100,0.2)';ctx.fillRect(230,200,24+Math.sin(t+6)*5|0,2);
-          if(Math.floor(Date.now()/400)%2) ctx.fillStyle='rgba(100,200,100,0.6)';else ctx.fillStyle='rgba(100,200,100,0)';
-          ctx.fillRect(286,200,2,8);
-          ctx.fillStyle='rgba(60,120,200,0.05)';ctx.fillRect(214,148,92,108);
-        }else{
-          ctx.fillStyle='#0a0a12';ctx.fillRect(226,158,68,88);
-        }
-        ctx.fillStyle='rgba(255,255,255,0.03)';ctx.fillRect(222,154,76,2);
-        ctx.fillStyle=monOn?'#3a8a5a':'#3a3a3a';ctx.fillRect(256,148,8,4);
-        ctx.fillStyle=monOn?'#3a8a5a':'#5a3a3a';ctx.fillRect(294,256,4,2);
-        // screen glow on wall
-        if(monOn) ctx.fillStyle='rgba(60,120,200,0.03)';else ctx.fillStyle='rgba(0,0,0,0)';
-        ctx.fillRect(200,80,120,70);
-      }
-
-      // ---- Cat girl (large front-facing) ----
-      function catGirl(){
-        var cx=176; // center x
-
-        // ---- HAIR BACK ----
-        ctx.fillStyle='#8a6aaa';
-        ctx.fillRect(cx-42,152,20,110); // left hair
-        ctx.fillRect(cx+22,152,20,110); // right hair
-        ctx.fillRect(cx-38,156,16,100);
-        ctx.fillRect(cx+22,156,16,100);
-
-        // ---- TAIL ----
-        var tw=Math.sin(Date.now()/600)*4;
-        ctx.fillStyle='#9a7aba';
-        ctx.fillRect(cx-48+tw|0,260,10,30);
-        ctx.fillRect(cx-44+tw|0,245,6,20);
-        ctx.fillRect(cx-40+tw|0,235,4,14);
-        // tail tip
-        ctx.fillStyle='#ba9ada';ctx.fillRect(cx-42+tw|0,260,6,6);
-
-        // ---- TORSO (shirt) ----
-        ctx.fillStyle='#e6d4e0'; // cream sweater
-        ctx.fillRect(cx-28,148,56,72);
-        ctx.fillStyle='#d6c4d0';ctx.fillRect(cx-24,150,48,68);
-        ctx.fillStyle='rgba(0,0,0,0.05)';ctx.fillRect(cx-8,154,16,30);
-        // collar
-        ctx.fillStyle='#3a2a4a';ctx.fillRect(cx-14,148,28,6);
-        ctx.fillStyle='#5a4a6a';ctx.fillRect(cx-10,150,20,4);
-        // bow
-        ctx.fillStyle='#c84a6a';ctx.fillRect(cx-8,152,16,6);
-        ctx.fillStyle='#d85a7a';ctx.fillRect(cx-6,154,12,4);
-        // bow tails
-        ctx.fillStyle='#c84a6a';ctx.fillRect(cx-14,158,6,8);
-        ctx.fillStyle='#c84a6a';ctx.fillRect(cx+8,158,6,8);
-
-        // ---- ARMS reaching to keyboard ----
-        // left arm
-        ctx.fillStyle='#f0c8a0';
-        ctx.fillRect(cx-42,158,14,30); // upper
-        ctx.fillRect(cx-48,188,20,30); // forearm
-        // left sleeve
-        ctx.fillStyle='#e6d4e0';ctx.fillRect(cx-40,158,12,18);
-        ctx.fillStyle='#d6c4d0';ctx.fillRect(cx-38,160,8,16);
-        // right arm
-        ctx.fillStyle='#f0c8a0';
-        ctx.fillRect(cx+28,158,14,30);
-        ctx.fillRect(cx+28,188,20,30);
-        // right sleeve
-        ctx.fillStyle='#e6d4e0';ctx.fillRect(cx+28,158,12,18);
-        ctx.fillStyle='#d6c4d0';ctx.fillRect(cx+30,160,8,16);
-
-        // ---- HANDS on keyboard (typing animation) ----
-        var tp=Math.sin(typingP)*2;
-        ctx.fillStyle='#f0c8a0';
-        ctx.fillRect(cx-34,216+tp|0,14,12);
-        ctx.fillRect(cx+20,216-tp|0,14,12);
-        ctx.fillStyle='#e8b890';
-        ctx.fillRect(cx-32,218+tp|0,4,6);
-        ctx.fillRect(cx-26,218+tp|0,4,6);
-        ctx.fillRect(cx+22,218-tp|0,4,6);
-        ctx.fillRect(cx+28,218-tp|0,4,6);
-
-        // ---- HEAD ----
-        // ear placement
-        var ears=8;
-        // left ear
-        ctx.fillStyle='#f0c8a0';ctx.fillRect(cx-ears-18,78,16,16);
-        ctx.fillStyle='#e8b890';ctx.fillRect(cx-ears-16,80,12,12);
-        ctx.fillStyle='#f0c8a0';ctx.fillRect(cx-ears-22,86,6,10);
-        ctx.fillStyle='#f0c8a0';ctx.fillRect(cx-ears-24,90,4,8);
-        // right ear
-        ctx.fillStyle='#f0c8a0';ctx.fillRect(cx+ears+2,78,16,16);
-        ctx.fillStyle='#e8b890';ctx.fillRect(cx+ears+4,80,12,12);
-        ctx.fillStyle='#f0c8a0';ctx.fillRect(cx+ears+16,86,6,10);
-        ctx.fillStyle='#f0c8a0';ctx.fillRect(cx+ears+20,90,4,8);
-        // inner ear (pink)
-        ctx.fillStyle='#e8a0a0';ctx.fillRect(cx-ears-16,82,8,8);
-        ctx.fillStyle='#e8a0a0';ctx.fillRect(cx+ears+8,82,8,8);
-        // ear tufts
-        ctx.fillStyle='#8a6aaa';ctx.fillRect(cx-ears-24,88,4,3);
-        ctx.fillStyle='#8a6aaa';ctx.fillRect(cx+ears+20,88,4,3);
-
-        // face base
-        ctx.fillStyle='#f0c8a0';
-        ctx.fillRect(cx-26,96,52,54);
-        ctx.fillRect(cx-30,100,60,46);
-        ctx.fillRect(cx-28,94,56,10);
-        // chin
-        ctx.fillStyle='#e8b890';ctx.fillRect(cx-18,140,36,6);
-        ctx.fillStyle='#f0c8a0';ctx.fillRect(cx-14,144,28,4);
-
-        // ---- BANGS ----
-        ctx.fillStyle='#8a6aaa';
-        ctx.fillRect(cx-30,92,60,10);
-        ctx.fillRect(cx-34,98,68,8);
-        ctx.fillRect(cx-36,104,72,6);
-        // side hair framing face
-        ctx.fillRect(cx-36,100,8,44);
-        ctx.fillRect(cx+28,100,8,44);
-        ctx.fillRect(cx-32,96,6,30);
-        ctx.fillRect(cx+26,96,6,30);
-        // long bangs
-        ctx.fillStyle='#9a7aba';ctx.fillRect(cx-18,98,8,16);
-        ctx.fillStyle='#9a7aba';ctx.fillRect(cx+10,98,8,16);
-        ctx.fillStyle='#8a6aaa';ctx.fillRect(cx-6,100,12,20);
-        // highlight
-        ctx.fillStyle='#aa8aca';ctx.fillRect(cx-20,94,16,5);
-        ctx.fillStyle='#aa8aca';ctx.fillRect(cx+4,94,16,5);
-
-        // ---- FACE ----
-        // eyes
-        if(blink>0){
-          ctx.fillStyle='#f0c8a0';
-          ctx.fillRect(cx-18,114,14,4);
-          ctx.fillRect(cx+4,114,14,4);
-        }else{
-          // left eye (looking right toward monitor)
-          ctx.fillStyle='#fff';ctx.fillRect(cx-20,112,16,12);
-          ctx.fillStyle='#3a2a1a';ctx.fillRect(cx-14,114,8,8);
-          ctx.fillStyle='#5a4a3a';ctx.fillRect(cx-12,116,4,4);
-          ctx.fillStyle='#fff';ctx.fillRect(cx-10,112,4,4);
-          ctx.fillStyle='#fff';ctx.fillRect(cx-8,114,2,2);
-          // right eye (looking right toward monitor)
-          ctx.fillStyle='#fff';ctx.fillRect(cx+4,112,16,12);
-          ctx.fillStyle='#3a2a1a';ctx.fillRect(cx+10,114,8,8);
-          ctx.fillStyle='#5a4a3a';ctx.fillRect(cx+12,116,4,4);
-          ctx.fillStyle='#fff';ctx.fillRect(cx+14,112,4,4);
-          ctx.fillStyle='#fff';ctx.fillRect(cx+14,114,2,2);
-        }
-        // eyebrows
-        ctx.fillStyle='#8a6aaa';ctx.fillRect(cx-22,108,18,3);
-        ctx.fillStyle='#8a6aaa';ctx.fillRect(cx+4,108,18,3);
-        // blush
-        ctx.fillStyle='rgba(200,100,120,0.2)';ctx.fillRect(cx-30,124,12,8);
-        ctx.fillStyle='rgba(200,100,120,0.2)';ctx.fillRect(cx+18,124,12,8);
-        // nose
-        ctx.fillStyle='#d08070';ctx.fillRect(cx-2,126,4,3);
-        // mouth
-        ctx.fillStyle='#c07060';ctx.fillRect(cx-8,132,16,4);
-        ctx.fillStyle='#d08070';ctx.fillRect(cx-6,133,12,2);
-        if(typing){
-          ctx.fillStyle='#e09080';ctx.fillRect(cx-4,134,8,2); // smile when typing
-        }
-      }
-
-      // ---- Items on desk ----
-      function deskItems(){
-        // mug
-        ctx.fillStyle='#d4af37';ctx.fillRect(86,244,14,12);
-        ctx.fillStyle='#e8c84a';ctx.fillRect(88,246,10,8);
-        ctx.fillStyle='#3a2a1a';ctx.fillRect(84,248,4,6);
-        var st=Date.now()/500;
-        ctx.fillStyle='rgba(255,255,255,0.08)';ctx.fillRect(90+Math.sin(st)*1.5|0,238,5,4);
-        ctx.fillStyle='rgba(255,255,255,0.05)';ctx.fillRect(92+Math.sin(st+1)*1.5|0,232,5,4);
-        // plant
-        ctx.fillStyle='#6a4a3a';ctx.fillRect(44,258,28,22);
-        ctx.fillStyle='#7a5a4a';ctx.fillRect(48,262,20,14);
-        ctx.fillStyle='#3a2a1a';ctx.fillRect(48,256,20,4);
-        ctx.fillStyle='#4a6a3a';ctx.fillRect(54,238,6,20);
-        ctx.fillStyle='#5a8a4a';ctx.fillRect(44,244,14,10);
-        ctx.fillStyle='#5a8a4a';ctx.fillRect(56,240,14,10);
-        ctx.fillStyle='#6a9a5a';ctx.fillRect(50,232,16,10);
-        // highlight
-        ctx.fillStyle='rgba(255,255,255,0.04)';ctx.fillRect(54,236,4,14);
-        // mouse
-        ctx.fillStyle='#2a2a32';ctx.fillRect(370,276,12,8);
-        ctx.fillStyle='#333';ctx.fillRect(372,278,8,4);
-        ctx.fillStyle='#444';ctx.fillRect(376,274,2,4);
-        // paper stack
-        ctx.fillStyle='#ddd';ctx.fillRect(120,250,12,8);
-        ctx.fillStyle='#eee';ctx.fillRect(122,249,8,6);
-        ctx.fillStyle='#ddd';ctx.fillRect(120,248,8,4);
-        // status indicator
-        ctx.fillStyle='rgba(255,255,255,0.12)';ctx.fillRect(W-72,8,64,16);
-        ctx.fillStyle=monOn?'#3a8a5a':'#5a3a3a';
-        ctx.font='9px "Courier New",monospace';
-        ctx.fillText(monOn?'■ MON ON':'■ MON OFF',W-68,19);
-        if(Date.now()-lastClick<2500){
-          var a=1-(Date.now()-lastClick)/2500;
-          ctx.fillStyle='rgba(255,200,100,'+(a*0.5)+')';
-          ctx.fillText(monOn?'ON!':'OFF!',W-110,19);
-        }
-      }
-
-      // ---- Blink ----
-      function updateBlink(){
-        blinkT--;
-        if(blinkT<=0){blink=4+Math.random()*5|0;blinkT=80+Math.random()*160|0;}
-        else if(blink>0)blink--;
-      }
-
-      function render(){
-        bg();
-        decor();
-        desk();
-        catGirl();
-        monitor();
-        keyboard();
-        deskItems();
-      }
-
-      cvs.addEventListener('click',function(e){
-        var r=cvs.getBoundingClientRect();
-        var mx=(e.clientX-r.left)/r.width*W;
-        var my=(e.clientY-r.top)/r.height*H;
-        if(mx>220&&mx<300&&my>152&&my<252) {monOn=!monOn;lastClick=Date.now();}
-      });
-
-      function loop(){
-        updateBlink();
-        typingP+=0.04;
-        render();
-        requestAnimationFrame(loop);
-      }
-      loop();
-    })();
     // -------- 时钟与倒计时 --------
 function updateClock() {
   const clock = document.getElementById("clock");
