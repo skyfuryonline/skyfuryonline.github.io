@@ -754,351 +754,377 @@ http_headers:
       var canvas = document.getElementById('pxCanvas');
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
-      var T = 32, COLS = 20, ROWS = 12;
-      var W = T * COLS, H = T * ROWS;
+      var T = 32, COLS = 20, ROWS = 12, W = T*COLS, H = T*ROWS;
 
       document.getElementById('pxDate').textContent = new Date().toISOString().slice(0,10);
 
-      // ---- Map (0=floor, 1=wall) ----
+      // ---- Map ----
       var floor = [];
-      for (var r = 0; r < ROWS; r++) {
-        floor[r] = [];
-        for (var c = 0; c < COLS; c++)
-          floor[r][c] = (r === 0 || r === ROWS-1 || c === 0 || c === COLS-1) ? 1 : 0;
-      }
+      for (var r=0; r<ROWS; r++) { floor[r]=[];
+        for (var c=0; c<COLS; c++) floor[r][c]=(r===0||r===ROWS-1||c===0||c===COLS-1)?1:0; }
 
-      // ---- Furniture ----
-      var furn = [];
-      function addFurn(type, c, r) { furn.push({type:type, c:c, r:r}); }
+      // ---- Furniture & state ----
+      var furn = [], env = {steam:0, meetingGlow:0};
+      function addF(type,c,r) { furn.push({type:type,c:c,r:r}); }
 
-      // 3 rows of desks, cols at 3,9,15
-      [2, 5, 8].forEach(function(row) {
-        [3, 9, 15].forEach(function(col) {
-          addFurn('desk', col, row);
-        });
+      [2,5,8].forEach(function(row) {
+        [3,9,15].forEach(function(col) { addF('desk',col,row); });
       });
-      // coffee station (right side)
-      addFurn('coffee', 16, 6);
-      addFurn('coffee', 17, 6);
-      // meeting table (center, 4×2 tiles)
-      for (var mr = 8; mr <= 9; mr++)
-        for (var mc = 8; mc <= 11; mc++) addFurn('meeting', mc, mr);
-      // plants
-      addFurn('plant', 10, 11);
-      addFurn('plant', 2, 11);
-      addFurn('plant', 17, 2);
+      addF('coffee',16,6); addF('coffee',17,6);
+      for (var mr=8; mr<=9; mr++) for (var mc=8; mc<=11; mc++) addF('meeting',mc,mr);
+      addF('plant',10,11); addF('plant',2,11); addF('plant',17,2);
 
       // ---- Characters ----
-      // Each char: name, shirt, pants, shoes, skin, hair, hair2 (accent)
-      var charConfigs = [
-        {name:'A', shirt:'#e06c75',pants:'#3a3a4a',shoes:'#222',skin:'#f0c8a0',hair:'#8a3a3a',hair2:'#6a2a2a'},
-        {name:'B', shirt:'#61afef',pants:'#3a4a5a',shoes:'#222',skin:'#f0c8a0',hair:'#3a3a5a',hair2:'#2a2a4a'},
-        {name:'C', shirt:'#98c379',pants:'#3a4a3a',shoes:'#222',skin:'#e8c098',hair:'#5a4a3a',hair2:'#4a3a2a'},
-        {name:'D', shirt:'#d19a66',pants:'#4a3a2a',shoes:'#333',skin:'#f0c8a0',hair:'#2a2a2a',hair2:'#1a1a1a'},
-        {name:'E', shirt:'#c678dd',pants:'#4a3a5a',shoes:'#222',skin:'#e8c098',hair:'#6a3a6a',hair2:'#4a2a4a'},
-        {name:'F', shirt:'#56b6c2',pants:'#2a4a4a',shoes:'#222',skin:'#f0c8a0',hair:'#4a5a3a',hair2:'#3a4a2a'},
-        {name:'G', shirt:'#e5c07b',pants:'#3a3a2a',shoes:'#333',skin:'#e8c098',hair:'#6a4a2a',hair2:'#5a3a1a'},
-        {name:'H', shirt:'#7ec8a0',pants:'#2a3a3a',shoes:'#222',skin:'#f0c8a0',hair:'#3a4a4a',hair2:'#2a3a3a'},
+      var cDefs = [
+        {s:'#e06c75',p:'#3a3a4a',k:'#222',sk:'#f0c8a0',h:'#8a3a3a',h2:'#6a2a2a',eyes:'#3a2a1a'},
+        {s:'#61afef',p:'#3a4a5a',k:'#222',sk:'#f0c8a0',h:'#3a3a5a',h2:'#2a2a4a',eyes:'#2a2a3a'},
+        {s:'#98c379',p:'#3a4a3a',k:'#222',sk:'#e8c098',h:'#5a4a3a',h2:'#4a3a2a',eyes:'#2a1a1a'},
+        {s:'#d19a66',p:'#4a3a2a',k:'#333',sk:'#f0c8a0',h:'#2a2a2a',h2:'#1a1a1a',eyes:'#1a1a1a'},
+        {s:'#c678dd',p:'#4a3a5a',k:'#222',sk:'#e8c098',h:'#6a3a6a',h2:'#4a2a4a',eyes:'#2a1a2a'},
+        {s:'#56b6c2',p:'#2a4a4a',k:'#222',sk:'#f0c8a0',h:'#4a5a3a',h2:'#3a4a2a',eyes:'#1a2a2a'},
+        {s:'#e5c07b',p:'#3a3a2a',k:'#333',sk:'#e8c098',h:'#6a4a2a',h2:'#5a3a1a',eyes:'#2a1a0a'},
+        {s:'#7ec8a0',p:'#2a3a3a',k:'#222',sk:'#f0c8a0',h:'#3a4a4a',h2:'#2a3a3a',eyes:'#1a2a2a'},
       ];
-      var chars = [];
-      var spawns = [[3,3],[9,3],[15,3],[3,6],[9,6],[15,6],[5,10],[14,10]];
-      charConfigs.forEach(function(cfg, i) {
-        var s = spawns[i] || [3+ i*4, 3+ i*2];
-        chars.push({
-          cfg: cfg, c: s[0], r: s[1],
-          px: s[0]*T + T/2, py: s[1]*T + T/2,
-          targetX: s[0]*T + T/2, targetY: s[1]*T + T/2,
-          state: 'WORK', timer: 80 + Math.floor(Math.random()*120),
-          frame: Math.random(), facing: 1, dir: 0
-        });
+      var chars=[], spawns=[[3,3],[9,3],[15,3],[3,6],[9,6],[15,6],[5,10],[14,10]];
+      cDefs.forEach(function(cfg,i){
+        var s=spawns[i];
+        chars.push({cfg:cfg, px:s[0]*T+T/2, py:s[1]*T+T/2,
+          tx:s[0]*T+T/2, ty:s[1]*T+T/2, state:'WORK', timer:60+Math.random()*100|0,
+          frame:Math.random(), dir:0, blink:0, blinkT:60+Math.random()*120|0,
+          typing:0, holdCup:false });
       });
+      var desks=furn.filter(function(f){return f.type==='desk';});
+
+      function freeDesk(me) {
+        var busy={}; chars.forEach(function(c){if(c!==me&&c.state==='WORK')
+          busy[c.tx+':'+c.ty]=1; });
+        var f=desks.filter(function(d){return !busy[d.c*T+T/2+':'+d.r*T+T/2];});
+        return f.length?f[Math.random()*f.length|0]:desks[Math.random()*desks.length|0];
+      }
+      function walkPt() {
+        for(var t=0;t<60;t++){var c=2+(Math.random()*(COLS-4)|0),r=2+(Math.random()*(ROWS-4)|0);
+          if(floor[r][c]) continue; var ok=true;
+          furn.forEach(function(f){if(f.c===c&&f.r===r)ok=false;});
+          if(ok) return {x:c*T+T/2,y:r*T+T/2};}
+        return null;
+      }
 
       // ---- AI ----
-      var desks = furn.filter(function(f){return f.type==='desk';});
-      var meetingSpots = furn.filter(function(f){return f.type==='meeting';});
+      function updateAI() {
+        chars.forEach(function(ch){
+          ch.blinkT--; if(ch.blinkT<=0){ch.blink=5+Math.random()*3|0;ch.blinkT=80+Math.random()*160|0;}
+          else if(ch.blink>0) ch.blink--;
 
-      function findFreeDesk(me) {
-        var used = chars.filter(function(c){return c!==me && c.state==='WORK';});
-        var free = desks.filter(function(d){
-          return !used.some(function(c){return Math.abs(c.targetX-(d.c*T+T/2))<2 && Math.abs(c.targetY-(d.r*T+T/2))<2;});
-        });
-        if (free.length===0) free = desks;
-        return free[Math.floor(Math.random()*free.length)];
-      }
+          var dx=ch.tx-ch.px, dy=ch.ty-ch.py;
+          var dist=Math.abs(dx)+Math.abs(dy);
+          if(dist>3){
+            var sp=1.0;
+            if(Math.abs(dx)>Math.abs(dy)){ch.px+=Math.sign(dx)*sp;ch.dir=dx>0?1:3;}
+            else{ch.py+=Math.sign(dy)*sp;ch.dir=dy>0?2:0;}
+            ch.frame+=0.06; ch.typing=0; return;
+          }
+          ch.px=ch.tx; ch.py=ch.ty;
+          if(ch.state==='WORK'){ch.typing=1;ch.holdCup=false;}
+          else if(ch.state==='BREAK'){ch.typing=0;ch.holdCup=true;}
 
-      function pickWalkDest(me) {
-        for (var t=0;t<50;t++) {
-          var c=2+Math.floor(Math.random()*(COLS-4)), r=2+Math.floor(Math.random()*(ROWS-4));
-          if (floor[r][c]===1) continue;
-          var ok=true;
-          furn.forEach(function(f){if(f.c===c && f.r===r) ok=false;});
-          if (!ok) continue;
-          return {x:c*T+T/2, y:r*T+T/2};
-        }
-        return {x:me.targetX, y:me.targetY};
-      }
-
-      function updateChars() {
-        chars.forEach(function(ch) {
           ch.timer--;
-          if (ch.timer > 0) return;
-
-          // movement
-          var dx = ch.targetX - ch.px, dy = ch.targetY - ch.py;
-          var dist = Math.abs(dx) + Math.abs(dy);
-
-          if (dist > 3) {
-            var speed = 0.8;
-            if (Math.abs(dx) > Math.abs(dy)) {
-              ch.px += Math.sign(dx) * speed;
-              ch.facing = dx > 0 ? 1 : -1;
-              ch.dir = dx > 0 ? 1 : 3;
-            } else {
-              ch.py += Math.sign(dy) * speed;
-              ch.facing = dy > 0 ? 1 : -1;
-              ch.dir = dy > 0 ? 2 : 0;
-            }
-            ch.frame += 0.05;
-            return;
-          }
-          ch.px = ch.targetX; ch.py = ch.targetY;
-
-          // decide next
-          var roll = Math.random();
-          if (ch.state === 'WORK') {
-            if (roll < 0.2) {
-              // coffee break
-              ch.targetX = 17*T + 12; ch.targetY = 6*T + 16;
-              ch.state = 'BREAK'; ch.timer = 60 + Math.floor(Math.random()*80);
-            } else if (roll < 0.35) {
-              // wander
-              var d = pickWalkDest(ch);
-              ch.targetX = d.x; ch.targetY = d.y;
-              ch.state = 'WALK'; ch.timer = 20;
-            } else {
-              ch.timer = 80 + Math.floor(Math.random()*200);
-            }
-          } else if (ch.state === 'BREAK') {
-            var dk = findFreeDesk(ch);
-            ch.targetX = dk.c*T+T/2; ch.targetY = dk.r*T+T/2;
-            ch.state = 'WORK'; ch.timer = 150 + Math.floor(Math.random()*200);
+          if(ch.timer>0) return;
+          var roll=Math.random();
+          if(ch.state==='WORK'){
+            if(roll<0.2){ch.tx=17*T+12;ch.ty=6*T+16;ch.state='BREAK';ch.timer=50+Math.random()*60|0;}
+            else if(roll<0.3){var p=walkPt();if(p){ch.tx=p.x;ch.ty=p.y;ch.state='WALK';ch.timer=20;}
+              else ch.timer=80+Math.random()*120|0;}
+            else ch.timer=60+Math.random()*200|0;
           } else {
-            var dk2 = findFreeDesk(ch);
-            ch.targetX = dk2.c*T+T/2; ch.targetY = dk2.r*T+T/2;
-            ch.state = 'WORK'; ch.timer = 150 + Math.floor(Math.random()*200);
+            var d=freeDesk(ch); ch.tx=d.c*T+T/2; ch.ty=d.r*T+T/2;
+            ch.state='WORK'; ch.timer=120+Math.random()*180|0;
           }
         });
+        // env feedback
+        env.steam=chars.some(function(c){return c.state==='BREAK';})?1:0;
+        var atMeeting=chars.filter(function(c){return c.state==='WALK'&&c.px>7*T&&c.px<13*T&&c.py>7*T&&c.py<10*T;}).length;
+        env.meetingGlow=atMeeting>0?0.6:0;
       }
 
-      // ---- Drawing ----
-      function drawFloor() {
-        for (var r=0; r<ROWS; r++) {
-          for (var c=0; c<COLS; c++) {
-            var x=c*T, y=r*T;
-            if (floor[r][c]===1) {
-              ctx.fillStyle='#2a2a32'; ctx.fillRect(x,y,T,T);
-              ctx.fillStyle='#32323c'; ctx.fillRect(x+1,y+1,T-2,T-2);
-              ctx.fillStyle='#282830'; ctx.fillRect(x+3,y+3,T-6,T-6);
-            } else {
-              var base=(r+c)%2===0?'#32281e':'#2e241b';
-              ctx.fillStyle=base; ctx.fillRect(x,y,T,T);
-            }
+      // ---- Draw helpers ----
+      function pxRect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x,y,w,h);}
+      function pxPset(x,y,c){ctx.fillStyle=c;ctx.fillRect(x,y,1,1);}
+
+      // ---- Draw Floor ----
+      function drawFloor(){
+        for(var r=0;r<ROWS;r++) for(var c=0;c<COLS;c++){
+          var x=c*T,y=r*T;
+          if(floor[r][c]===1){
+            pxRect(x,y,T,T,'#2a2a32');pxRect(x+1,y+1,T-2,T-2,'#32323c');
+            pxRect(x+3,y+3,T-6,T-6,'#282830');
+          } else {
+            pxRect(x,y,T,T,(r+c)%2===0?'#32281e':'#2e241b');
           }
         }
+        // carpet zones
+        pxRect(8*T+3,7*T+3,5*T-6,3*T-6,'rgba(40,30,50,0.3)');
+        pxRect(16*T+2,6*T+2,2*T-4,2*T-4,'rgba(30,40,50,0.2)');
       }
 
-      function drawDesk(cx, cy) {
-        var x=cx*T, y=cy*T;
-        // desk top
-        ctx.fillStyle='#5a4a3a'; ctx.fillRect(x+1,y+1,T-2,T-8);
-        ctx.fillStyle='#6a5a4a'; ctx.fillRect(x+2,y+2,T-4,4);
-        ctx.fillStyle='#4a3a2a'; ctx.fillRect(x+2,y+6,T-4,2);
-        // monitor base
-        ctx.fillStyle='#2a2a3a'; ctx.fillRect(x+8,y-2,16,2);
-        // monitor screen
-        ctx.fillStyle='#1a1a2a'; ctx.fillRect(x+9,y-10,14,10);
-        ctx.fillStyle='#3a5a8a'; ctx.fillRect(x+10,y-9,12,6);
-        // monitor glow band
-        ctx.fillStyle='rgba(60,120,200,0.08)'; ctx.fillRect(x+10,y-9,12,1);
+      // ---- Draw Desk ----
+      function drawDesk(cx,cy){
+        var x=cx*T,y=cy*T,monGlow=0.08;
+        chars.forEach(function(c){if(c.state==='WORK'&&Math.abs(c.tx-(cx*T+T/2))<2&&Math.abs(c.ty-(cy*T+T/2))<2)monGlow=0.25;});
+        // desk body
+        pxRect(x+1,y+1,T-2,T-6,'#5a4a3a'); pxRect(x+2,y+2,T-4,3,'#6a5a4a');
+        pxRect(x+2,y+5,T-4,2,'#4a3a2a');
+        // monitor stand
+        pxRect(x+11,y-2,10,2,'#2a2a3a');
+        // monitor
+        pxRect(x+9,y-12,14,12,'#1a1a2a');
+        pxRect(x+10,y-11,12,8,'rgba(30,60,100,'+monGlow+')');
+        // code lines on screen when active
+        if(monGlow>0.15){
+          pxRect(x+11,y-10,8,1,'rgba(100,200,100,'+monGlow*2+')');
+          pxRect(x+11,y-8,6,1,'rgba(100,200,100,'+monGlow*1.5+')');
+          pxRect(x+11,y-6,10,1,'rgba(200,200,100,'+monGlow+')');
+          // cursor blink
+          if(Math.floor(Date.now()/500)%2) pxRect(x+20,cy*T-10,1,1,'rgba(100,200,100,0.8)');
+        }
+        pxRect(x+10,y-1,12,1,'rgba(60,120,200,'+(monGlow*0.5)+')');
         // keyboard
-        ctx.fillStyle='#2a2a32'; ctx.fillRect(x+10,y+4,8,3);
+        pxRect(x+10,y+2,10,3,'#2a2a32');
         // coffee mug
-        ctx.fillStyle='#d4af37'; ctx.fillRect(x+3,y-6,4,4);
-        ctx.fillStyle='#e8c84a'; ctx.fillRect(x+4,y-5,2,2);
+        pxRect(x+3,y-7,4,4,'#d4af37'); pxRect(x+4,y-6,2,2,'#e8c84a');
+        // paper stack
+        pxRect(x+2,y-2,4,3,'#ddd'); pxRect(x+3,y-3,3,2,'#eee');
       }
 
-      function drawMeeting(cx, cy) {
-        var x=cx*T, y=cy*T;
-        // table top
-        ctx.fillStyle='#3a3a4a'; ctx.fillRect(x+1,y+1,T-2,T-2);
-        ctx.fillStyle='#4a4a5a'; ctx.fillRect(x+3,y+3,T-6,T-6);
-        // surface highlight
-        ctx.fillStyle='rgba(255,255,255,0.04)'; ctx.fillRect(x+4,y+4,T-8,3);
-        // center item (laptop/projector)
-        ctx.fillStyle='#2a2a3a'; ctx.fillRect(x+10,y+6,12,8);
-        ctx.fillStyle='#3a5a8a'; ctx.fillRect(x+11,y+7,10,4);
+      // ---- Draw Meeting ----
+      function drawMeeting(cx,cy){
+        var x=cx*T,y=cy*T,glow=env.meetingGlow;
+        pxRect(x+1,y+1,T-2,T-2,'#3a3a4a'); pxRect(x+3,y+3,T-6,T-6,'#4a4a5a');
+        pxRect(x+5,y+5,T-10,2,'rgba(255,255,255,0.04)');
+        // projector
+        pxRect(x+8,y+6,16,8,'#2a2a3a');
+        pxRect(x+9,y+7,14,5,'rgba(40,80,120,'+(0.15+glow*0.5)+')');
+        if(glow>0.1){
+          pxRect(x+10,y+8,4,1,'rgba(200,200,100,0.4)');
+          pxRect(x+10,y+10,5,1,'rgba(100,200,200,0.3)');
+        }
       }
 
-      function drawCoffee(cx, cy) {
-        var x=cx*T, y=cy*T;
-        // machine body
-        ctx.fillStyle='#3a3a4a'; ctx.fillRect(x+2,y+4,T-4,T-8);
-        ctx.fillStyle='#4a4a5a'; ctx.fillRect(x+4,y+6,T-8,T-8);
-        // machine top
-        ctx.fillStyle='#5a5a6a'; ctx.fillRect(x+6,y+2,T-12,4);
+      // ---- Draw Coffee ----
+      function drawCoffee(cx,cy){
+        var x=cx*T,y=cy*T,active=env.steam;
+        // counter
+        pxRect(x+1,y-2,T-2,2,'#3a3a44');
+        // machine
+        pxRect(x+4,y+4,T-8,T-10,'#3a3a4a'); pxRect(x+6,y+6,T-12,T-12,'#4a4a5a');
+        pxRect(x+8,y+2,T-16,4,'#5a5a6a');
         // display
-        ctx.fillStyle='#1a3a2a'; ctx.fillRect(x+8,y+8,6,4);
-        ctx.fillStyle='#3a8a5a'; ctx.fillRect(x+9,y+9,4,2);
+        pxRect(x+10,y+8,6,4,'#1a3a2a');
+        if(active) pxRect(x+11,y+9,4,2,'rgba(60,200,100,0.8)');
+        else pxRect(x+11,y+9,4,2,'rgba(40,60,40,0.5)');
         // drip tray
-        ctx.fillStyle='#2a2a32'; ctx.fillRect(x+4,y+T-6,T-8,3);
-        // cup
-        ctx.fillStyle='#ddd'; ctx.fillRect(x+6,y+T-8,5,4);
-        ctx.fillStyle='#eee'; ctx.fillRect(x+7,y+T-7,3,2);
-        // steam
-        ctx.fillStyle='rgba(255,255,255,0.08)'; ctx.fillRect(x+7,y-2,3,2);
+        pxRect(x+6,y+T-8,T-12,3,'#2a2a32');
+        // cup (appears when active)
+        if(active){
+          pxRect(x+10,y+T-12,6,5,'#ddd'); pxRect(x+11,y+T-11,4,3,'#eee');
+          // steam particles
+          var st=Date.now()/300;
+          pxRect(x+11+Math.sin(st)*2,y-4,2,2,'rgba(255,255,255,0.12)');
+          pxRect(x+13+Math.sin(st+1)*2,y-7,2,2,'rgba(255,255,255,0.08)');
+          pxRect(x+12+Math.sin(st+2)*2,y-10,2,2,'rgba(255,255,255,0.05)');
+        } else {
+          pxRect(x+10,y+T-12,6,5,'#666');
+        }
       }
 
-      function drawPlant(cx, cy) {
-        var x=cx*T, y=cy*T;
-        // pot
-        ctx.fillStyle='#5a3a2a'; ctx.fillRect(x+8,y+16,16,12);
-        ctx.fillStyle='#6a4a3a'; ctx.fillRect(x+10,y+18,12,8);
-        // soil
-        ctx.fillStyle='#3a2a1a'; ctx.fillRect(x+10,y+16,12,3);
-        // stem
-        ctx.fillStyle='#3a5a2a'; ctx.fillRect(x+14,y+6,4,12);
-        // leaves
-        ctx.fillStyle='#4a7a3a'; ctx.fillRect(x+6,y+8,8,6);
-        ctx.fillRect(x+18,y+8,8,6);
-        ctx.fillStyle='#5a8a4a'; ctx.fillRect(x+10,y+4,12,8);
-        ctx.fillStyle='#6a9a5a'; ctx.fillRect(x+12,y+2,8,6);
-        // highlight
-        ctx.fillStyle='rgba(255,255,255,0.06)'; ctx.fillRect(x+13,y+3,2,6);
+      // ---- Draw Plant ----
+      function drawPlant(cx,cy){
+        var x=cx*T,y=cy*T;
+        pxRect(x+8,y+16,16,12,'#5a3a2a'); pxRect(x+10,y+18,12,8,'#6a4a3a');
+        pxRect(x+10,y+16,12,3,'#3a2a1a');
+        pxRect(x+14,y+6,4,12,'#3a5a2a');
+        pxRect(x+6,y+8,8,6,'#4a7a3a'); pxRect(x+18,y+8,8,6,'#4a7a3a');
+        pxRect(x+10,y+4,12,8,'#5a8a4a'); pxRect(x+12,y+2,8,6,'#6a9a5a');
+        pxRect(x+13,y+3,2,6,'rgba(255,255,255,0.06)');
       }
 
-      function drawFurniture() {
-        furn.forEach(function(f) {
-          if (f.type==='desk') drawDesk(f.c, f.r);
-          else if (f.type==='meeting') drawMeeting(f.c, f.r);
-          else if (f.type==='coffee') drawCoffee(f.c, f.r);
-          else if (f.type==='plant') drawPlant(f.c, f.r);
+      function drawFurniture(){
+        furn.forEach(function(f){
+          if(f.type==='desk') drawDesk(f.c,f.r);
+          else if(f.type==='meeting') drawMeeting(f.c,f.r);
+          else if(f.type==='coffee') drawCoffee(f.c,f.r);
+          else if(f.type==='plant') drawPlant(f.c,f.r);
+        });
+        // ceiling lights
+        [5,10,15].forEach(function(lc){
+          pxRect(lc*T-2,1*T,4,2,'rgba(255,200,100,0.06)');
+          pxRect(lc*T-1,1*T+2,2,6,'rgba(255,200,100,0.03)');
         });
       }
 
-      function drawChar(ch) {
-        var px = Math.round(ch.px), py = Math.round(ch.py);
-        var isWalking = Math.abs(ch.targetX-ch.px)>1 || Math.abs(ch.targetY-ch.py)>1;
-        var walkCycle = Math.sin(ch.frame * Math.PI * 2);
-        var bob = isWalking ? Math.sin(ch.frame * Math.PI * 4) * 1.0 : 0;
-        var legSwing = isWalking ? walkCycle * 2.5 : 0;
-        var armSwing = isWalking ? walkCycle * 1.5 : 0;
-        var cfg = ch.cfg;
+      // ---- Draw Character (pixel-level detail) ----
+      function drawChar(ch){
+        var px=Math.round(ch.px), py=Math.round(ch.py);
+        var walk=Math.abs(ch.tx-ch.px)>1||Math.abs(ch.ty-ch.py)>1;
+        var wc=Math.sin(ch.frame*Math.PI*2), bob=walk?Math.sin(ch.frame*Math.PI*4)*0.8:0;
+        var ls=walk?wc*2.5:0, as=walk?wc*1.5:0;
+        var c=ch.cfg; py+=bob;
 
+        var baseX=px,baseY=py; // feet bottom
         // shadow
-        ctx.fillStyle = 'rgba(0,0,0,0.15)';
-        ctx.beginPath();
-        ctx.ellipse(px, py + 10, 10, 4, 0, 0, Math.PI*2);
-        ctx.fill();
+        ctx.fillStyle='rgba(0,0,0,0.15)';
+        ctx.beginPath(); ctx.ellipse(baseX,baseY+10,11,4,0,0,Math.PI*2); ctx.fill();
 
-        // shoes
-        ctx.fillStyle = cfg.shoes;
-        ctx.fillRect(px-8, py+7-legSwing*0.3, 7, 3);
-        ctx.fillRect(px+1, py+7+legSwing*0.3, 7, 3);
+        // -- LEGS & SHOES (bottom layer) --
+        // left leg
+        pxRect(baseX-7,baseY+1-ls*0.3,5,6,c.p);
+        pxRect(baseX-8,baseY+7-ls*0.3,6,2,c.k);
+        pxRect(baseX-7,baseY+8-ls*0.3,4,1,'#333');
+        // right leg
+        pxRect(baseX+2,baseY+1+ls*0.3,5,6,c.p);
+        pxRect(baseX+2,baseY+7+ls*0.3,6,2,c.k);
+        pxRect(baseX+3,baseY+8+ls*0.3,4,1,'#333');
+        // belt
+        pxRect(baseX-8,baseY+1,16,2,'#222');
+        if(ch.dir===0) {pxRect(baseX-1,baseY+1,2,2,'#d4af37');} // belt buckle
 
-        // pants/legs
-        ctx.fillStyle = cfg.pants;
-        ctx.fillRect(px-7, py+2-legSwing*0.3, 6, 6);
-        ctx.fillRect(px+1, py+2+legSwing*0.3, 6, 6);
-        ctx.fillStyle = '#222'; // belt
-        ctx.fillRect(px-8, py+1, 16, 2);
-
-        // body/torso
-        ctx.fillStyle = cfg.shirt;
-        ctx.fillRect(px-9, py-8, 18, 12);
+        // -- BODY --
+        pxRect(baseX-9,baseY-8,18,10,c.s);
         // collar
-        ctx.fillStyle = '#222';
-        ctx.fillRect(px-2, py-8, 4, 3);
+        pxRect(baseX-3,baseY-8,6,3,c.s);
+        pxRect(baseX-4,baseY-7,8,2,'#222');
+        pxRect(baseX-2,baseY-8,4,1,'#eee');
+        // pocket
+        pxRect(baseX+2,baseY-5,4,4,'rgba(0,0,0,0.15)');
+        pxRect(baseX+3,baseY-4,2,2,'rgba(0,0,0,0.1)');
 
-        // arms
-        ctx.fillStyle = cfg.skin;
-        ctx.fillRect(px-12, py-7+armSwing*0.3, 4, 8);
-        ctx.fillRect(px+8, py-7-armSwing*0.3, 4, 8);
-        // sleeves
-        ctx.fillStyle = cfg.shirt;
-        ctx.fillRect(px-11, py-7+armSwing*0.3, 3, 4);
-        ctx.fillRect(px+8, py-7-armSwing*0.3, 3, 4);
+        // -- ARMS --
+        var armY=baseY-7+as;
+        // left arm
+        pxRect(baseX-12,armY,4,7,c.sk);
+        pxRect(baseX-12,armY,4,3,c.s);
+        pxRect(baseX-13,armY+6,3,2,c.sk);
+        // right arm
+        pxRect(baseX+8,baseY-7-as,4,7,c.sk);
+        pxRect(baseX+8,baseY-7-as,4,3,c.s);
+        pxRect(baseX+10,baseY-as,3,2,c.sk);
+        // hands
+        pxRect(baseX-12,armY+7,3,1,c.sk);
+        pxRect(baseX+9,baseY-as+6,3,1,c.sk);
 
-        // head shadow
-        ctx.fillStyle = 'rgba(0,0,0,0.1)';
-        ctx.fillRect(px-7, py-16+bob, 14, 3);
-
-        // head
-        ctx.fillStyle = cfg.skin;
-        ctx.fillRect(px-7, py-16+bob, 14, 8);
-        ctx.fillRect(px-8, py-15+bob, 16, 6);
-
-        // hair base
-        ctx.fillStyle = cfg.hair;
-        ctx.fillRect(px-8, py-18+bob, 16, 5);
-        ctx.fillRect(px-6, py-19+bob, 12, 3);
-        ctx.fillRect(px-7, py-17+bob, 3, 4);
-        ctx.fillRect(px+4, py-17+bob, 3, 4);
-
-        // hair accent
-        ctx.fillStyle = cfg.hair2;
-        ctx.fillRect(px-3, py-19+bob, 6, 2);
-
-        // eyes
-        ctx.fillStyle = '#222';
-        if (ch.dir === 0) { // facing down
-          ctx.fillRect(px-4, py-14+bob, 3, 3);
-          ctx.fillRect(px+1, py-14+bob, 3, 3);
-          // eye shine
-          ctx.fillStyle = '#fff'; ctx.fillRect(px-3, py-13+bob, 1, 1);
-          ctx.fillStyle = '#fff'; ctx.fillRect(px+2, py-13+bob, 1, 1);
-        } else if (ch.dir === 1) { // facing right
-          ctx.fillRect(px+1, py-14+bob, 3, 3);
-          ctx.fillRect(px+5, py-13+bob, 2, 2);
-        } else if (ch.dir === 3) { // facing left
-          ctx.fillRect(px-4, py-14+bob, 3, 3);
-          ctx.fillRect(px-7, py-13+bob, 2, 2);
-        } else { // facing up
-          ctx.fillRect(px-3, py-14+bob, 2, 2);
-          ctx.fillRect(px+1, py-14+bob, 2, 2);
+        // typing animation (hands move when working)
+        if(ch.typing && !walk){
+          var tp=Math.sin(Date.now()/400)*2;
+          pxRect(baseX-13,baseY-2+tp*0.3,3,2,c.sk);
+          pxRect(baseX+10,baseY-2-tp*0.3,3,2,c.sk);
         }
 
-        // mouth
-        ctx.fillStyle = '#c07060';
-        if (ch.dir === 0) ctx.fillRect(px-1, py-11+bob, 2, 1);
+        // -- HEAD --
+        // head base
+        pxRect(baseX-7,baseY-17,14,10,c.sk);
+        // chin
+        pxRect(baseX-6,baseY-8,12,1,c.sk);
+        // cheeks (slight blush)
+        pxRect(baseX-7,baseY-13,2,2,'rgba(200,100,100,0.15)');
+        pxRect(baseX+5,baseY-13,2,2,'rgba(200,100,100,0.15)');
+
+        // -- HAIR --
+        // main hair
+        pxRect(baseX-8,baseY-19,16,6,c.h);
+        pxRect(baseX-6,baseY-20,12,3,c.h);
+        // top volume
+        pxRect(baseX-7,baseY-21,14,3,c.h);
+        pxRect(baseX-5,baseY-22,10,2,c.h);
+        pxRect(baseX-4,baseY-23,8,1,c.h);
+        // hair sides
+        pxRect(baseX-9,baseY-18,2,5,c.h);
+        pxRect(baseX+7,baseY-18,2,5,c.h);
+        // hair highlight
+        pxRect(baseX-4,baseY-21,8,2,c.h2);
+        pxRect(baseX-3,baseY-22,6,1,c.h2);
+        // fringe/bangs
+        pxRect(baseX-5,baseY-18,2,3,c.h);
+        pxRect(baseX+3,baseY-18,2,3,c.h);
+        if(ch.dir===0){
+          pxRect(baseX-4,baseY-18,2,3,c.h);
+          pxRect(baseX+2,baseY-18,2,3,c.h);
+          // center part
+          pxRect(baseX-1,baseY-19,2,2,c.h2);
+        }
+
+        // -- FACE --
+        if(ch.dir===0||ch.dir===2){
+          // eyes
+          if(ch.blink>0){
+            pxRect(baseX-4,baseY-14,3,1,c.sk);
+            pxRect(baseX+1,baseY-14,3,1,c.sk);
+          } else {
+            // left eye
+            pxRect(baseX-4,baseY-14,4,3,'#fff');
+            pxRect(baseX-3,baseY-13,2,2,c.eyes);
+            pxRect(baseX-3,baseY-14,1,1,'#fff');
+            // right eye
+            pxRect(baseX,baseY-14,4,3,'#fff');
+            pxRect(baseX+1,baseY-13,2,2,c.eyes);
+            pxRect(baseX+1,baseY-14,1,1,'#fff');
+          }
+          // eyebrows
+          pxRect(baseX-5,baseY-17,5,1,c.h);
+          pxRect(baseX,baseY-17,5,1,c.h);
+          // mouth
+          if(ch.state==='BREAK') {
+            pxRect(baseX-2,baseY-9,4,2,'#c07060');
+            pxRect(baseX-1,baseY-9,2,1,'#d08070');
+          } else if(ch.typing){
+            pxRect(baseX-2,baseY-9,2,1,'#d07060');
+          } else {
+            pxRect(baseX-1,baseY-9,2,1,'#c07060');
+          }
+        } else if(ch.dir===1){
+          // right-facing: left eye visible
+          if(!ch.blink){pxRect(baseX+1,baseY-14,3,3,'#fff');pxRect(baseX+2,baseY-13,2,2,c.eyes);
+            pxRect(baseX+2,baseY-14,1,1,'#fff');}
+          else pxRect(baseX+2,baseY-14,2,1,c.sk);
+          pxRect(baseX+1,baseY-17,4,1,c.h);
+        } else {
+          if(!ch.blink){pxRect(baseX-4,baseY-14,3,3,'#fff');pxRect(baseX-4,baseY-13,2,2,c.eyes);
+            pxRect(baseX-3,baseY-14,1,1,'#fff');}
+          else pxRect(baseX-4,baseY-14,2,1,c.sk);
+          pxRect(baseX-5,baseY-17,4,1,c.h);
+        }
+
+        // glasses for some characters
+        if(ch.cfg===cDefs[4]||ch.cfg===cDefs[7]){
+          pxRect(baseX-6,baseY-15,7,4,'rgba(200,200,200,0.3)');
+          pxRect(baseX-1,baseY-15,7,4,'rgba(200,200,200,0.3)');
+          pxRect(baseX-6,baseY-14,7,2,'rgba(200,200,200,0.2)');
+          pxRect(baseX-1,baseY-14,7,2,'rgba(200,200,200,0.2)');
+          pxRect(baseX+1,baseY-14,2,4,'rgba(200,200,200,0.15)');
+        }
       }
 
-      function drawChars() { chars.forEach(drawChar); }
+      function drawChars(){chars.forEach(drawChar);}
 
-      // ---- Message bubble ----
-      function drawBubbles() {
-        chars.forEach(function(ch) {
-          if (ch.state !== 'BREAK') return;
-          var px = Math.round(ch.px), py = Math.round(ch.py);
-          // tiny coffee icon above head
-          ctx.fillStyle = 'rgba(0,0,0,0.4)';
-          ctx.fillRect(px-4, py-26, 8, 5);
-          ctx.fillStyle = '#d4af37';
-          ctx.fillRect(px-3, py-25, 6, 3);
+      // ---- Interaction markers ----
+      function drawMarkers(){
+        chars.forEach(function(ch){
+          if(ch.state==='BREAK'){
+            var px=Math.round(ch.px), py=Math.round(ch.py);
+            // heart
+            var h=Math.sin(Date.now()/400)*1+2;
+            pxRect(px-4,py-28,3,3,'rgba(200,60,60,0.6)');
+            pxRect(px+1,py-28,3,3,'rgba(200,60,60,0.6)');
+            pxRect(px-2,py-27,4,3,'rgba(200,60,60,0.6)');
+            pxRect(px-1,py-26,2,2,'rgba(200,60,60,0.4)');
+          }
         });
       }
 
-      function render() {
-        drawFloor();
-        drawFurniture();
-        drawChars();
-        drawBubbles();
+      function render(){
+        drawFloor(); drawFurniture(); drawChars(); drawMarkers();
       }
 
-      var tick = 0;
-      function loop() {
-        tick++;
-        if (tick % 3 === 0) updateChars();
-        render();
+      function loop(){
+        updateAI(); render();
         requestAnimationFrame(loop);
       }
       loop();
