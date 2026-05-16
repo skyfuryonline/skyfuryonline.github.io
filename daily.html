@@ -424,53 +424,43 @@ http_headers:
         flex-basis: calc(33.333% - 7px);
     }
 }
-/* ---------------- Rhodes Island Pixel Art ---------------- */
-.ri-card {
-    background: linear-gradient(145deg, #14182b 0%, #1a1f35 100%);
-    border: 1px solid rgba(212, 175, 55, 0.25);
+/* ---------------- Pixel Office ---------------- */
+.px-card {
+    background: linear-gradient(145deg, #1a1c23 0%, #22252e 100%);
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: 16px;
-    padding: 24px;
+    padding: 20px;
     margin: 0 auto;
-    max-width: 540px;
+    max-width: 560px;
     width: 100%;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(212,175,55,0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
-.ri-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent);
-}
-.ri-header {
+.px-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     padding: 0 4px;
 }
-.ri-logo {
+.px-title {
     font-family: 'Courier New', monospace;
-    font-size: 0.7em;
-    color: #d4af37;
-    letter-spacing: 3px;
-    font-weight: 600;
-    opacity: 0.8;
+    font-size: 0.65em;
+    color: #8a9aa8;
+    letter-spacing: 2px;
+    font-weight: 500;
 }
-.ri-record {
+.px-status {
     font-family: 'Courier New', monospace;
-    font-size: 0.6em;
-    color: #667;
+    font-size: 0.55em;
+    color: #5a6a78;
     letter-spacing: 1px;
 }
-.ri-canvas-wrap {
+.px-canvas-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
-    max-height: 340px;
-    background: rgba(0,0,0,0.35);
+    aspect-ratio: 480 / 288;
+    max-height: 320px;
+    background: #2a2118;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.04);
     overflow: hidden;
@@ -478,53 +468,30 @@ http_headers:
     align-items: center;
     justify-content: center;
 }
-.ri-canvas-wrap canvas {
+.px-canvas-wrap canvas {
     display: block;
     width: 100%;
     height: 100%;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
-.ri-footer {
+.px-footer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
+    justify-content: flex-end;
+    margin-top: 10px;
     padding: 0 4px;
-    min-height: 24px;
 }
-.ri-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-.ri-tag {
+.px-date {
     font-family: 'Courier New', monospace;
-    font-size: 0.55em;
-    padding: 2px 8px;
-    border: 1px solid rgba(212,175,55,0.2);
-    border-radius: 3px;
-    color: rgba(212,175,55,0.7);
-    background: rgba(212,175,55,0.06);
+    font-size: 0.5em;
+    color: #4a5a68;
     letter-spacing: 1px;
-}
-.ri-date {
-    font-family: 'Courier New', monospace;
-    font-size: 0.55em;
-    color: #556;
-    letter-spacing: 1px;
-    white-space: nowrap;
 }
 @media (max-width: 767px) {
-    .ri-card {
-        padding: 16px;
+    .px-card {
+        padding: 12px;
     }
-    .ri-logo {
-        font-size: 0.6em;
-    }
-    .ri-record {
-        font-size: 0.5em;
-    }
+    .px-title { font-size: 0.55em; }
 }
 </style>
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
@@ -567,18 +534,17 @@ http_headers:
     {% endif %}
 {% endif %}
 
-<!-- 罗德岛每日像素 -->
-<div class="ri-card">
-  <div class="ri-header">
-    <span class="ri-logo">■□ RHODES ISLAND</span>
-    <span class="ri-record" id="riRecord">记录 #--</span>
+<!-- 像素办公室 -->
+<div class="px-card">
+  <div class="px-header">
+    <span class="px-title">◈ PIXEL OFFICE</span>
+    <span class="px-status" id="pxStatus">● LIVE</span>
   </div>
-  <div class="ri-canvas-wrap">
-    <canvas id="riCanvas" width="240" height="240"></canvas>
+  <div class="px-canvas-wrap">
+    <canvas id="pxCanvas" width="480" height="288"></canvas>
   </div>
-  <div class="ri-footer">
-    <div class="ri-tags" id="riTags"></div>
-    <span class="ri-date" id="riDate"></span>
+  <div class="px-footer">
+    <span class="px-date" id="pxDate"></span>
   </div>
 </div>
 <!-- Bootstrap Modal -->
@@ -795,186 +761,242 @@ http_headers:
         });
       });
     });
-    // -------- 罗德岛每日像素 --------
-    function mulberry32(a) {
-      return function() {
-        a |= 0; a = a + 0x6D2B79F5 | 0;
-        var t = Math.imul(a ^ a >>> 15, 1 | a);
-        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-        return ((t ^ t >>> 14) >>> 0) / 4294967296;
-      };
-    }
-    function drawRhodesPixel() {
-      var now = new Date();
-      var y = now.getFullYear();
-      var m = String(now.getMonth()+1).padStart(2,'0');
-      var d = String(now.getDate()).padStart(2,'0');
-      var seed = parseInt(y + m + d);
-      var rng = mulberry32(seed);
-      var canvas = document.getElementById('riCanvas');
+    // -------- 像素办公室 --------
+    (function() {
+      var canvas = document.getElementById('pxCanvas');
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
-      var size = 24;
-      var cell = canvas.width / size;
-      var themeIdx = Math.floor(seed % 4);
-      var themes = ['TACTICAL GRID', 'ORIGINIUM', 'RI EMBLEM', 'TERRAIN'];
-      var tags = ['SYMMETRY', 'γ'];
-      var palette;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#0a0c17';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      function pick() { return Math.floor(rng() * 256) | 0; }
-      function chance(p) { return rng() < p; }
-      function setPx(x, y, color) {
-        if (x < 0 || x >= size || y < 0 || y >= size) return;
-        ctx.fillStyle = color;
-        ctx.fillRect(x * cell, y * cell, cell, cell);
-      }
-      function drawSym(x, y, color) {
-        setPx(x, y, color);
-        setPx(size - 1 - x, y, color);
-      }
-      // --- Theme 0: Tactical Grid ---
-      if (themeIdx === 0) {
-        palette = ['#1a2a4a','#2a4a6a','#3a6a8a','#4a8aaa','#6aaa6a','#8acc8a'];
-        tags = ['TACTICAL GRID', 'DEPLOY'];
-        // grid lines
-        for (var i = 0; i < size; i++) {
-          for (var j = 0; j < size; j++) {
-            if (i % 4 === 0 || j % 4 === 0) {
-              if (chance(0.3)) setPx(i, j, 'rgba(74,138,170,0.15)');
-            }
-          }
-        }
-        // deploy tiles (symmetrical)
-        for (var t = 0; t < 8; t++) {
-          var x = Math.floor(rng() * 10) + 2;
-          var y = Math.floor(rng() * size);
-          var c = palette[Math.floor(rng() * palette.length)];
-          drawSym(x, y, c);
-          // highlight edge
-          if (chance(0.5)) drawSym(x, y-1, 'rgba(212,175,55,0.3)');
-        }
-        // center structure
-        for (var cy = 8; cy < 16; cy++) {
-          for (var cx = 8; cx < 16; cx++) {
-            if (Math.abs(cx-11.5) + Math.abs(cy-11.5) < 4) {
-              setPx(cx, cy, 'rgba(212,175,55,0.12)');
-            }
-          }
+      var T = 16, COLS = 30, ROWS = 18;
+      var W = T * COLS, H = T * ROWS;
+
+      document.getElementById('pxDate').textContent = new Date().toISOString().slice(0,10);
+
+      // ---- Map ----
+      var map = [];
+      for (var r = 0; r < ROWS; r++) {
+        map[r] = [];
+        for (var c = 0; c < COLS; c++) {
+          if (r === 0 || r === ROWS-1 || c === 0 || c === COLS-1) map[r][c] = 1;
+          else map[r][c] = 0;
         }
       }
-      // --- Theme 1: Originium Crystal ---
-      else if (themeIdx === 1) {
-        palette = ['#2a0a3a','#4a1a5a','#6a2a7a','#8a3a6a','#aa4a5a','#cc5a4a','#ee6a3a'];
-        tags = ['ORIGINIUM', 'CRYSTAL'];
-        // crystal growth from bottom-center
-        var cx = size/2 | 0;
-        for (var layer = 0; layer < 10; layer++) {
-          var baseY = size - 2 - layer;
-          var spread = Math.floor(layer * 0.6) + 1;
-          for (var dx = -spread; dx <= spread; dx++) {
-            if (chance(0.6)) {
-              var px = cx + dx;
-              var py = baseY - Math.floor(Math.abs(dx) * 0.5) + Math.floor(rng() * 2);
-              var ci = Math.min(Math.floor(layer * 0.7), palette.length-1);
-              drawSym(px, py, palette[ci]);
-              // glow
-              if (chance(0.2)) setPx(px, py-1, 'rgba(238,106,58,0.15)');
-            }
-          }
+      // 0=floor, 1=wall, 2=desk, 3=chair, 4=coffee, 5=plant, 6=meeting
+      var desks = []; var chairs = [];
+      // 4 rows of desks
+      var deskRows = [3, 7, 11, 15];
+      deskRows.forEach(function(row) {
+        for (var ci = 3; ci < 27; ci += 6) {
+          map[row][ci] = 2; desks.push({c:ci, r:row});
+          map[row+1][ci] = 3; chairs.push({c:ci, r:row+1});
         }
-        // crystal highlights
-        for (var h = 0; h < 5; h++) {
-          var hx = Math.floor(rng() * size);
-          var hy = Math.floor(rng() * (size-4)) + 2;
-          if (chance(0.4)) drawSym(hx, hy, '#ffcc00');
-        }
-      }
-      // --- Theme 2: RI Emblem ---
-      else if (themeIdx === 2) {
-        palette = ['#1a1a2e','#d4af37','#2a3a5a','#4a6a8a','#6a8aaa'];
-        tags = ['RHODES ISLAND', 'EMBLEM'];
-        // center emblem - shield shape
-        var cx = size/2 | 0;
-        for (var r = 0; r < 6; r++) {
-          var radius = r * 1.8;
-          for (var ang = 0; ang < 360; ang += 6) {
-            var rad = ang * Math.PI / 180;
-            var px = Math.round(cx + Math.cos(rad) * radius);
-            var py = Math.round(size/2 + Math.sin(rad) * radius * 0.7);
-            if (chance(0.5)) {
-              var ci = Math.floor((ang/360) * palette.length) % palette.length;
-              drawSym(px, py, palette[ci]);
-            }
-          }
-        }
-        // wing shapes left/right
-        for (var w = 0; w < 5; w++) {
-          var wy = Math.floor(rng() * 10) + 3;
-          var wx = Math.floor(rng() * 4) + 1;
-          for (var dx = 0; dx < 3; dx++) {
-            var color = chance(0.3) ? '#d4af37' : '#4a6a8a';
-            drawSym(wx+dx, wy+dx, color);
-          }
-        }
-        // center diamond
-        for (var dy = 0; dy < 5; dy++) {
-          for (var dx = -dy; dx <= dy; dx++) {
-            if (chance(0.7)) {
-              drawSym(cx+dx, size/2-2+dy, 'rgba(212,175,55,0.8)');
-            }
-          }
-        }
-      }
-      // --- Theme 3: Terrain Etching ---
-      else {
-        palette = ['#1a3a2a','#2a5a3a','#3a7a4a','#5a9a5a','#7aba7a','#9ada9a','#bafa9a'];
-        tags = ['TERRAIN', 'CONTOUR'];
-        // noise-based terrain layers
-        for (var row = 0; row < size; row++) {
-          var baseNoise = Math.sin(row * 0.3 + seed * 0.1) * 0.5 + 0.5;
-          for (var col = 0; col < size/2; col++) {
-            var noise = (Math.sin(col * 0.4 + row * 0.2 + seed) * 0.3 +
-                         Math.cos(col * 0.15 - row * 0.25 + seed * 0.5) * 0.3 +
-                         baseNoise * 0.4);
-            var elevation = noise;
-            var ci = Math.min(Math.floor(elevation * palette.length), palette.length-1);
-            var px = col;
-            var py = row;
-            if (elevation > 0.3) {
-              drawSym(px, py, palette[ci]);
-            }
-          }
-        }
-        // contour lines
-        for (var cl = 0; cl < 4; cl++) {
-          var level = 0.3 + cl * 0.18;
-          for (var row2 = 0; row2 < size; row2++) {
-            for (var col2 = 0; col2 < size/2; col2++) {
-              var n = (Math.sin(col2 * 0.4 + row2 * 0.2 + seed) * 0.3 +
-                       Math.cos(col2 * 0.15 - row2 * 0.25 + seed * 0.5) * 0.3 +
-                       Math.sin(row2 * 0.3 + seed * 0.1) * 0.4);
-              if (Math.abs(n - level) < 0.03 && chance(0.5)) {
-                drawSym(col2, row2, 'rgba(212,175,55,0.2)');
-              }
-            }
-          }
-        }
-      }
-      // --- update UI ---
-      document.getElementById('riRecord').textContent = '记录 #' + (seed % 1000).toString().padStart(3,'0');
-      document.getElementById('riDate').textContent = y + '-' + m + '-' + d;
-      var tagsContainer = document.getElementById('riTags');
-      tagsContainer.innerHTML = '';
-      tags.forEach(function(t) {
-        var el = document.createElement('span');
-        el.className = 'ri-tag';
-        el.textContent = t;
-        tagsContainer.appendChild(el);
       });
-    }
-    drawRhodesPixel();
+      // coffee station
+      map[5][25] = 4; map[5][26] = 4; map[6][25] = 4; map[6][26] = 4;
+      // meeting table
+      for (var mr = 12; mr < 15; mr++)
+        for (var mc = 10; mc < 16; mc++) map[mr][mc] = 6;
+      // plants
+      map[4][2] = 5; map[4][27] = 5; map[14][2] = 5; map[14][27] = 5;
+      // extra plants near coffee
+      map[4][24] = 5; map[14][24] = 5;
+
+      // ---- Characters ----
+      var chars = [
+        { name:'A', color:'#e06c75', c:4, r:5 },
+        { name:'B', color:'#61afef', c:10, r:5 },
+        { name:'C', color:'#98c379', c:16, r:5 },
+        { name:'D', color:'#d19a66', c:22, r:5 },
+        { name:'E', color:'#c678dd', c:6, r:9 },
+        { name:'F', color:'#56b6c2', c:18, r:9 },
+      ];
+      chars.forEach(function(ch) {
+        ch.px = ch.c * T + 4; ch.py = ch.r * T + 4;
+        ch.targetC = ch.c; ch.targetR = ch.r;
+        ch.state = 'WORK'; ch.timer = 60 + Math.floor(Math.random()*60);
+        ch.facing = 0; ch.walkFrame = 0; ch.dir = 0;
+      });
+
+      function tileCenter(t) { return t * T + T/2; }
+
+      function pickTile(exclude) {
+        var tries = 0;
+        while (tries++ < 200) {
+          var c = 2 + Math.floor(Math.random() * (COLS-4));
+          var r = 2 + Math.floor(Math.random() * (ROWS-4));
+          if (map[r][c] !== 0) continue;
+          var occupied = chars.some(function(ch) { return Math.abs(ch.c-c)+Math.abs(ch.r-r) < 3; });
+          if (occupied) continue;
+          return {c:c, r:r};
+        }
+        return {c:14, r:9};
+      }
+
+      function pickWorkDesk(me) {
+        var available = desks.filter(function(d) {
+          return !chars.some(function(ch) { return ch !== me && ch.targetC === d.c && ch.targetR === d.r; });
+        });
+        if (available.length === 0) available = desks;
+        return available[Math.floor(Math.random() * available.length)];
+      }
+
+      function updateChars() {
+        chars.forEach(function(ch) {
+          ch.timer--;
+          if (ch.timer > 0) return;
+
+          var dx = ch.targetC * T + 4 - ch.px;
+          var dy = ch.targetR * T + 4 - ch.py;
+          var dist = Math.abs(dx) + Math.abs(dy);
+
+          if (dist > 2) {
+            var speed = 0.6;
+            if (Math.abs(dx) > Math.abs(dy)) {
+              ch.px += Math.sign(dx) * speed;
+              ch.facing = dx > 0 ? 1 : -1;
+            } else {
+              ch.py += Math.sign(dy) * speed;
+              ch.facing = dy > 0 ? 1 : -1;
+            }
+            ch.walkFrame = (ch.walkFrame + 0.03) % 1;
+            return;
+          }
+
+          ch.px = ch.targetC * T + 4;
+          ch.py = ch.targetR * T + 4;
+
+          // decide next action
+          var roll = Math.random();
+          if (ch.state === 'WORK') {
+            if (roll < 0.3) {
+              // go to coffee
+              ch.targetC = 25; ch.targetR = 5;
+              ch.state = 'BREAK'; ch.timer = 80 + Math.floor(Math.random()*80);
+            } else if (roll < 0.45) {
+              // wander
+              var p = pickTile(ch);
+              ch.targetC = p.c; ch.targetR = p.r;
+              ch.state = 'WALK'; ch.timer = 20 + Math.floor(Math.random()*30);
+            } else {
+              // stay working
+              ch.timer = 80 + Math.floor(Math.random()*120);
+            }
+          } else if (ch.state === 'BREAK') {
+            // go back to work
+            var d = pickWorkDesk(ch);
+            ch.targetC = d.c; ch.targetR = d.r;
+            ch.state = 'WORK'; ch.timer = 120 + Math.floor(Math.random()*180);
+          } else {
+            // WALK -> pick new work
+            var d2 = pickWorkDesk(ch);
+            ch.targetC = d2.c; ch.targetR = d2.r;
+            ch.state = 'WORK'; ch.timer = 100 + Math.floor(Math.random()*200);
+          }
+        });
+      }
+
+      // ---- Drawing ----
+      function drawFloor() {
+        for (var r = 0; r < ROWS; r++) {
+          for (var c = 0; c < COLS; c++) {
+            var x = c * T, y = r * T;
+            if (map[r][c] === 1) {
+              ctx.fillStyle = '#3a3a42';
+              ctx.fillRect(x, y, T, T);
+              ctx.fillStyle = '#44444e';
+              ctx.fillRect(x+1, y+1, T-2, T-2);
+            } else {
+              var shade = ((r+c) % 2 === 0) ? '#32281e' : '#2e241b';
+              ctx.fillStyle = shade;
+              ctx.fillRect(x, y, T, T);
+            }
+          }
+        }
+      }
+
+      function drawFurniture() {
+        // desks
+        desks.forEach(function(d) {
+          var x = d.c * T, y = d.r * T;
+          ctx.fillStyle = '#5a4a3a'; ctx.fillRect(x+1, y+2, T-2, T-4);
+          ctx.fillStyle = '#6a5a4a'; ctx.fillRect(x+2, y+3, T-4, 4);
+          // monitor
+          ctx.fillStyle = '#2a2a3a'; ctx.fillRect(x+5, y-1, 6, 5);
+          ctx.fillStyle = '#4a6a8a'; ctx.fillRect(x+6, y, 4, 3);
+        });
+        // chairs
+        chairs.forEach(function(chr) {
+          var x = chr.c * T, y = chr.r * T;
+          ctx.fillStyle = '#4a3a2a'; ctx.fillRect(x+3, y+3, 10, 6);
+          ctx.fillStyle = '#5a4a3a'; ctx.fillRect(x+4, y+4, 8, 4);
+        });
+        // coffee station
+        ctx.fillStyle = '#3a3a4a'; ctx.fillRect(25*T, 5*T, T*2, T*2-2);
+        ctx.fillStyle = '#5a5a6a'; ctx.fillRect(25*T+2, 5*T+2, T*2-4, T*2-6);
+        // coffee cups
+        ctx.fillStyle = '#eee'; ctx.fillRect(25*T+3, 5*T+5, 4, 3);
+        ctx.fillStyle = '#ddd'; ctx.fillRect(26*T+9, 5*T+5, 4, 3);
+        ctx.fillStyle = '#8a6a3a'; ctx.fillRect(25*T+10, 6*T+2, 8, 5);
+        // meeting table
+        for (var mr = 12; mr < 15; mr++) {
+          for (var mc = 10; mc < 16; mc++) {
+            ctx.fillStyle = '#4a4a5a'; ctx.fillRect(mc*T+1, mr*T+1, T-2, T-2);
+            ctx.fillStyle = '#5a5a6a'; ctx.fillRect(mc*T+2, mr*T+2, T-4, T-4);
+          }
+        }
+        // plants
+        var plantPos = [[4,2],[4,27],[14,2],[14,27],[4,24],[14,24]];
+        plantPos.forEach(function(pp) {
+          var x = pp[1]*T, y = pp[0]*T;
+          ctx.fillStyle = '#3a4a2a'; ctx.fillRect(x+3, y+6, 10, 8);
+          ctx.fillStyle = '#4a6a3a'; ctx.fillRect(x+5, y+4, 6, 6);
+          ctx.fillStyle = '#5a8a4a'; ctx.fillRect(x+6, y+2, 4, 4);
+        });
+      }
+
+      function drawChars() {
+        chars.forEach(function(ch) {
+          var px = Math.round(ch.px), py = Math.round(ch.py);
+          var isWalking = Math.abs(ch.targetC*T+4 - ch.px) > 1 || Math.abs(ch.targetR*T+4 - ch.py) > 1;
+          var bob = isWalking ? Math.sin(ch.walkFrame * Math.PI * 2) * 1.5 : 0;
+          var headY = py - 4 + bob;
+          // shadow
+          ctx.fillStyle = 'rgba(0,0,0,0.2)'; ctx.fillRect(px-3, py+1, 6, 2);
+          // body
+          ctx.fillStyle = ch.color; ctx.fillRect(px-3, headY+3, 6, 5);
+          // head
+          ctx.fillStyle = '#e8c8a0'; ctx.fillRect(px-2, headY, 4, 4);
+          // hair/hat accent
+          ctx.fillStyle = ch.color; ctx.fillRect(px-2, headY-1, 4, 2);
+          // legs
+          var legOff = isWalking ? Math.sin(ch.walkFrame * Math.PI * 2) * 2 : 0;
+          ctx.fillStyle = '#2a2a32';
+          ctx.fillRect(px-3, headY+7, 2, 3 - legOff*0.3);
+          ctx.fillRect(px+1, headY+7, 2, 3 + legOff*0.3);
+          // direction indicator (tiny eye dot)
+          if (ch.facing > 0) {
+            ctx.fillStyle = '#222'; ctx.fillRect(px+1, headY+1, 2, 1);
+          } else {
+            ctx.fillStyle = '#222'; ctx.fillRect(px-3, headY+1, 2, 1);
+          }
+        });
+      }
+
+      function render() {
+        drawFloor();
+        drawFurniture();
+        drawChars();
+      }
+
+      // loop
+      var tick = 0;
+      function loop() {
+        tick++;
+        if (tick % 4 === 0) updateChars();
+        render();
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
     // -------- 时钟与倒计时 --------
 function updateClock() {
   const clock = document.getElementById("clock");
