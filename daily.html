@@ -424,16 +424,86 @@ http_headers:
         flex-basis: calc(33.333% - 7px);
     }
 }
+/* ---------------- Coming Soon Section ---------------- */
+.coming-soon-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+.coming-soon-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.5);
+    max-width: 480px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+.coming-soon-card:hover {
+    transform: translateY(-4px);
+}
+.coming-soon-icon {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+.coming-soon-title {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+.coming-soon-subtitle {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin: 0 0 30px 0;
+    font-weight: 300;
+}
+.coming-soon-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.coming-soon-decoration span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #bdc3c7;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+.coming-soon-decoration span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.coming-soon-decoration span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+}
+@media (max-width: 767px) {
+    .coming-soon-card {
+        padding: 40px 20px;
+    }
+    .coming-soon-title {
+        font-size: 1.3em;
+    }
+}
 </style>
-<!-- Daily 内容 -->
-{% assign daily_file_names = "" | split: "" %}
-{% for file in site.data %}
-    {% if file[0] contains "daily_" %}
-        {% assign daily_file_names = daily_file_names | push: file[0] %}
-    {% endif %}
-{% endfor %}
-{% assign daily_file_names = daily_file_names | sort | reverse %}
-
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
 {% assign gh_intel = site.data.github_intelligence %}
 {% if gh_intel and gh_intel.size > 0 %}
@@ -474,53 +544,17 @@ http_headers:
     {% endif %}
 {% endif %}
 
-{% if daily_file_names.size > 0 %}
-    {% for file_name in daily_file_names %}
-        {% assign file_date_str = file_name | remove: "daily_" %}
-        {% assign articles = site.data[file_name] %}
-        <h2 class="date-header">{{ file_date_str }}</h2>
-        <div class="daily-container">
-            {% if articles.size > 0 %}
-                {% for article in articles %}
-                    <div class="feed-item daily-article-card {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}github-intelligence-card{% endif %}"
-                         data-title="{{ article.title | escape }}"
-                         data-summary="{{ article.summary | escape }}"
-                         data-link="{{ article.link }}"
-                         data-cache-path="{{ article.cache_path }}"
-                         data-images='{{ article.image_files | join: "," }}'>
-                        <div class="feed-image">
-                            {% if article.image_files and article.image_files.size > 0 %}
-                                <img src="{{ site.baseurl }}/{{ article.cache_path }}/{{ article.image_files[0] }}" alt="Cover">
-                            {% else %}
-                                <div class="feed-placeholder"><i class="fa fa-newspaper-o" aria-hidden="true"></i></div>
-                            {% endif %}
-                        </div>
-                        <div class="feed-content">
-                            {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}
-                                <div class="trend-radar-badge"><i class="fa fa-code-fork"></i> GitHub 开源情报</div>
-                            {% endif %}
-                            <h3 class="feed-title">{{ article.title }}</h3>
-                            <p class="feed-meta">Source: {{ article.source }} &nbsp;|&nbsp; {{ article.date | date: "%Y-%m-%d" }}</p>
-                            <p class="feed-summary">
-                                {% if article.source == 'TrendRadar' or article.source == 'GitHubIntelligence' %}
-                                    {{ article.summary | strip_html | truncate: 300 }}
-                                {% else %}
-                                    {{ article.summary | strip_html | truncate: 150 }}
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p class="text-center" style="width: 100%;">No articles found for this day.</p>
-            {% endif %}
-        </div>
-    {% endfor %}
-{% else %}
-    <div class="daily-container">
-        <p class="text-center" style="width: 100%; margin-top: 50px;">No daily information available yet.</p>
+<!-- Coming Soon 占位 -->
+<div class="coming-soon-section">
+  <div class="coming-soon-card">
+    <div class="coming-soon-icon">✨</div>
+    <h2 class="coming-soon-title">更多精彩即将上线</h2>
+    <p class="coming-soon-subtitle">Coming Soon</p>
+    <div class="coming-soon-decoration">
+      <span></span><span></span><span></span>
     </div>
-{% endif %}
+  </div>
+</div>
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="summaryModal" tabindex="-1" role="dialog" aria-labelledby="summaryModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -685,55 +719,37 @@ http_headers:
         }
     </style>
     <script>
-    // -------- Daily Modal Logic --------
+    // -------- GitHub Intelligence Modal Logic --------
     document.addEventListener('DOMContentLoaded', function () {
       var cards = document.querySelectorAll('.daily-article-card');
-      var modalEl = document.getElementById('summaryModal'); // DOM element
-      var modalJq = $('#summaryModal'); // jQuery object for Bootstrap 3
-      var modalContent = modalEl.querySelector('.modal-content');
+      var modalJq = $('#summaryModal');
+      var modalContent = document.getElementById('summaryModal').querySelector('.modal-content');
       var modalTitle = document.getElementById('summaryModalLabel');
       var modalSummary = document.getElementById('modalSummaryContent');
       var modalGallery = document.getElementById('modalImageGallery');
       var modalReadMoreBtn = document.getElementById('modalReadMoreBtn');
-    
+
+      modalReadMoreBtn.style.display = 'none';
+
       cards.forEach(function (card) {
         card.addEventListener('click', function () {
           var title = this.getAttribute('data-title');
-          var summary = this.getAttribute('data-summary'); // This is raw text or Markdown
-          var link = this.getAttribute('data-link');
+          var summary = this.getAttribute('data-summary');
           var cachePath = this.getAttribute('data-cache-path');
           var images = this.getAttribute('data-images').split(',').filter(Boolean);
-          var isGitHubIntelligence = link.startsWith('trend-radar://') || link.startsWith('github-intelligence://');
-    
+
           modalTitle.textContent = title;
-          
-          // --- Content Rendering ---
-          // Use marked.parse to render Markdown if available, otherwise plain text
-          if (typeof marked !== 'undefined' && (isGitHubIntelligence || summary.includes('##') || summary.includes('**'))) {
-              modalSummary.innerHTML = marked.parse(summary);
-              modalSummary.className = 'markdown-body'; // Apply markdown styles
+
+          if (typeof marked !== 'undefined') {
+            modalSummary.innerHTML = marked.parse(summary);
+            modalSummary.className = 'markdown-body';
           } else {
-              modalSummary.textContent = summary;
-              modalSummary.className = '';
+            modalSummary.textContent = summary;
+            modalSummary.className = '';
           }
-    
-          // --- Theme & Button Logic ---
-          if (isGitHubIntelligence) {
-              modalContent.classList.add('trend-radar-theme');
-              // REMOVE the button completely from DOM flow to avoid layout issues, or use display: none
-              // Using display: none is standard for toggling visibility
-              modalReadMoreBtn.style.display = 'none'; 
-              
-              // Double check visibility in case of CSS overrides
-              modalReadMoreBtn.setAttribute('hidden', 'true');
-          } else {
-              modalContent.classList.remove('trend-radar-theme');
-              modalReadMoreBtn.style.display = 'inline-block';
-              modalReadMoreBtn.removeAttribute('hidden');
-              modalReadMoreBtn.href = link;
-          }
-    
-          // --- Image Gallery ---
+
+          modalContent.classList.add('trend-radar-theme');
+
           modalGallery.innerHTML = '';
           if (images.length > 0) {
             images.forEach(function(imageFile) {
@@ -748,7 +764,7 @@ http_headers:
           } else {
             modalGallery.style.display = 'none';
           }
-    
+
           modalJq.modal('show');
         });
       });
