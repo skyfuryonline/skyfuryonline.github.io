@@ -16,27 +16,27 @@
         "rank": 2
     },
     {
-        "title": "错过了，遗憾吗？",
-        "link": "https://movie.douban.com/subject/36117834/?from=playing_poster",
-        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2932202711.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆",
-        "rank": 3
-    },
-    {
-        "title": "爱情城事",
-        "link": "https://movie.douban.com/subject/36539561/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2932378813.jpg",
-        "score": "5.7",
-        "region": "中国台湾",
-        "rank": 4
-    },
-    {
         "title": "绵羊侦探团",
         "link": "https://movie.douban.com/subject/36918069/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931958860.jpg",
         "score": "暂无评分",
         "region": "爱尔兰 英国 德国 美国",
+        "rank": 3
+    },
+    {
+        "title": "消失的人",
+        "link": "https://movie.douban.com/subject/36965301/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931601069.jpg",
+        "score": "7.4",
+        "region": "中国大陆",
+        "rank": 4
+    },
+    {
+        "title": "大白鲨",
+        "link": "https://movie.douban.com/subject/1294941/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2932006122.jpg",
+        "score": "7.8",
+        "region": "美国",
         "rank": 5
     }
 ]

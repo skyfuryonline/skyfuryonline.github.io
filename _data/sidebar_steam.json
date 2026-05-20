@@ -1,82 +1,82 @@
 [
     {
+        "title": "方舟: 生存飞升",
+        "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
+        "price": "¥62.00",
+        "discount": "-75%",
+        "rank": 1
+    },
+    {
         "title": "Stardew Valley",
         "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
         "price": "¥24.00",
         "discount": "-50%",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "Subnautica - 深海迷航",
         "link": "https://store.steampowered.com/app/264710/Subnautica/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1777456112",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1777456112",
         "price": "¥37.25",
         "discount": "-75%",
-        "rank": 2
+        "rank": 3
     },
     {
         "title": "NBA 2K26",
         "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/8496e0023f3b24c9bf87e1459cb9651f5a7a6732/capsule_231x87_alt_assets_5.jpg?t=1778857348",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/8496e0023f3b24c9bf87e1459cb9651f5a7a6732/capsule_231x87_alt_assets_5.jpg?t=1778857348",
         "price": "¥41.72",
         "discount": "-86%",
-        "rank": 3
+        "rank": 4
     },
     {
         "title": "Red Dead Redemption 2",
         "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
-        "rank": 4
+        "rank": 5
     },
     {
         "title": "SiNiSistar 2",
         "link": "https://store.steampowered.com/app/4466620/SiNiSistar_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4466620/eba9adccccb566c72b998cfe15ae3008eaa00ff7/capsule_231x87.jpg?t=1778889257",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4466620/eba9adccccb566c72b998cfe15ae3008eaa00ff7/capsule_231x87.jpg?t=1778889257",
         "price": "¥47.20",
         "discount": "-20%",
-        "rank": 5
+        "rank": 6
+    },
+    {
+        "title": "席德·梅尔的文明VII",
+        "link": "https://store.steampowered.com/app/1295660/VII/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1295660/43d4b8220a9163a4ec411bb684759421ea193a1e/capsule_231x87_alt_assets_5_schinese.jpg?t=1779206416",
+        "price": "¥178.80",
+        "discount": "-40%",
+        "rank": 7
     },
     {
         "title": "Devil May Cry 5",
         "link": "https://store.steampowered.com/app/601150/Devil_May_Cry_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/601150/capsule_231x87.jpg?t=1768869803",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601150/capsule_231x87.jpg?t=1768869803",
         "price": "¥22.20",
         "discount": "-85%",
-        "rank": 6
+        "rank": 8
     },
     {
         "title": "深海迷航：冰点之下",
         "link": "https://store.steampowered.com/app/848450/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/848450/capsule_231x87.jpg?t=1777456254",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/848450/capsule_231x87.jpg?t=1777456254",
         "price": "¥37.25",
-        "discount": "-75%",
-        "rank": 7
-    },
-    {
-        "title": "Darkest Dungeon® II",
-        "link": "https://store.steampowered.com/app/1940340/Darkest_Dungeon_II/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1940340/88bce465a7e3df7d1974f7669ec44b7b07a1e031/capsule_231x87.jpg?t=1759351183",
-        "price": "¥34.50",
-        "discount": "-75%",
-        "rank": 8
-    },
-    {
-        "title": "Euro Truck Simulator 2",
-        "link": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/227300/da84d11d3ddd817e0cca299608b469a854d75ba5/capsule_231x87.jpg?t=1773641450",
-        "price": "¥22.00",
         "discount": "-75%",
         "rank": 9
     },
     {
-        "title": "PEAK",
-        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
-        "price": "¥20.46",
-        "discount": "-38%",
+        "title": "ARK: Bob's Tall Tales",
+        "link": "https://store.steampowered.com/app/2881150/ARK_Bobs_Tall_Tales/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2881150/d1282b9f18cc86e6a8f97630622a46ccb3b4a435/capsule_231x87.jpg?t=1765684569",
+        "price": "¥71.28",
+        "discount": "-67%",
         "rank": 10
     }
 ]
