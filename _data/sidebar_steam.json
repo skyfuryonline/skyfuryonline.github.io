@@ -1,10 +1,10 @@
 [
     {
-        "title": "全面战争：战锤3",
-        "link": "https://store.steampowered.com/app/1142710/3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1779441058",
-        "price": "¥44.70",
-        "discount": "-85%",
+        "title": "Subnautica - 深海迷航",
+        "link": "https://store.steampowered.com/app/264710/Subnautica/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1777456112",
+        "price": "¥37.25",
+        "discount": "-75%",
         "rank": 1
     },
     {
@@ -16,27 +16,27 @@
         "rank": 2
     },
     {
-        "title": "Warhammer 40,000: 星际战士2",
-        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/6fe9be2bf605cdfc3a19d354ffd20a6a48ba4bf8/capsule_231x87_alt_assets_12_schinese.jpg?t=1779454963",
-        "price": "¥74.70",
-        "discount": "-70%",
-        "rank": 3
-    },
-    {
-        "title": "Subnautica - 深海迷航",
-        "link": "https://store.steampowered.com/app/264710/Subnautica/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87_schinese.jpg?t=1777456112",
-        "price": "¥37.25",
-        "discount": "-75%",
-        "rank": 4
-    },
-    {
         "title": "Red Dead Redemption 2",
         "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
+        "rank": 3
+    },
+    {
+        "title": "全面战争：战锤3",
+        "link": "https://store.steampowered.com/app/1142710/3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1779441058",
+        "price": "¥44.70",
+        "discount": "-85%",
+        "rank": 4
+    },
+    {
+        "title": "Warhammer 40,000: 星际战士2",
+        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/6fe9be2bf605cdfc3a19d354ffd20a6a48ba4bf8/capsule_231x87_alt_assets_12_schinese.jpg?t=1779454963",
+        "price": "¥74.70",
+        "discount": "-70%",
         "rank": 5
     },
     {
@@ -56,27 +56,27 @@
         "rank": 7
     },
     {
-        "title": "Warhammer 40,000: Dawn of War IV",
-        "link": "https://store.steampowered.com/app/2272360/Warhammer_40000_Dawn_of_War_IV/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2272360/757cc62c08893629266bade6bedf395d25dc008f/capsule_231x87_alt_assets_0.jpg?t=1779383431",
-        "price": "¥232.20",
-        "discount": "-10%",
-        "rank": 8
-    },
-    {
-        "title": "Warhammer 40,000: Mechanicus II",
-        "link": "https://store.steampowered.com/app/2532480/Warhammer_40000_Mechanicus_II/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2532480/a8f39ab4f0c8c79496bd16e6101f6014290395c0/capsule_231x87.jpg?t=1779444541",
-        "price": "¥179.10",
-        "discount": "-10%",
-        "rank": 9
-    },
-    {
         "title": "Devil May Cry 5",
         "link": "https://store.steampowered.com/app/601150/Devil_May_Cry_5/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601150/capsule_231x87.jpg?t=1768869803",
         "price": "¥22.20",
         "discount": "-85%",
+        "rank": 8
+    },
+    {
+        "title": "PEAK",
+        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
+        "price": "¥20.46",
+        "discount": "-38%",
+        "rank": 9
+    },
+    {
+        "title": "SiNiSistar 2",
+        "link": "https://store.steampowered.com/app/4466620/SiNiSistar_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4466620/eba9adccccb566c72b998cfe15ae3008eaa00ff7/capsule_231x87.jpg?t=1778889257",
+        "price": "¥47.20",
+        "discount": "-20%",
         "rank": 10
     }
 ]
