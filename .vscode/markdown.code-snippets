@@ -21,7 +21,7 @@
   },
   "New Gwy Log Entry": {
     "scope": "markdown",
-    "prefix": ["!gwy"],
+    "prefix": ["!log", "log"],
     "body": [
       "---",
       "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
