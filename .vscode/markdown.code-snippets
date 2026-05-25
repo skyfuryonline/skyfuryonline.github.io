@@ -18,5 +18,22 @@
       "$0"
     ],
     "description": "Generate Front Matter for a new Jekyll blog post"
+  },
+  "New Gwy Log Entry": {
+    "scope": "markdown",
+    "prefix": ["!gwy"],
+    "body": [
+      "---",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "subjects:",
+      "  - name: \"${1:科目}\"",
+      "    hours: ${2:0}",
+      "tags: []",
+      "title: \"${3:学习}\"",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Generate Front Matter for a new Gwy log entry"
   }
 }

@@ -12,6 +12,7 @@ nav-order: 1
         {% endfor %}
     ];
 
+    {% comment %}将 "HH:MM" 转为十进制小时，兼容旧数字格式{% endcomment %}
     const rawLogs = [
         {% for log in site.gwy_logs %}
         {
@@ -20,7 +21,16 @@ nav-order: 1
             subjects: [
                 {% if log.subjects %}
                     {% for sub in log.subjects %}
-                    { name: "{{ sub.name }}", hours: {{ sub.hours }} },
+                        {% assign raw_h = sub.hours %}
+                        {% if raw_h contains ":" %}
+                            {% assign parts = raw_h | split: ":" %}
+                            {% assign hh = parts[0] | plus: 0 %}
+                            {% assign mm = parts[1] | plus: 0 %}
+                            {% assign hours_decimal = hh | plus: mm | divided_by: 60.0 %}
+                        {% else %}
+                            {% assign hours_decimal = raw_h | default: 0 %}
+                        {% endif %}
+                    { name: "{{ sub.name }}", hours: {{ hours_decimal }} },
                     {% endfor %}
                 {% else %}
                     {% if log.tags %}
@@ -169,7 +179,16 @@ nav-order: 1
       {% assign total_hours = 0 %}
       {% if entry.subjects %}
         {% for sub in entry.subjects %}
-          {% assign total_hours = total_hours | plus: sub.hours %}
+          {% assign raw_h = sub.hours %}
+          {% if raw_h contains ":" %}
+            {% assign parts = raw_h | split: ":" %}
+            {% assign hh = parts[0] | plus: 0 %}
+            {% assign mm = parts[1] | plus: 0 %}
+            {% assign sub_hours_d = hh | plus: mm | divided_by: 60.0 %}
+          {% else %}
+            {% assign sub_hours_d = raw_h | default: 0 %}
+          {% endif %}
+          {% assign total_hours = total_hours | plus: sub_hours_d %}
         {% endfor %}
       {% else %}
         {% assign total_hours = entry.study_hours | default: 0 %}
@@ -193,9 +212,18 @@ nav-order: 1
                 <div class="timeline-meta">
                     {% if entry.subjects and total_hours > 0 %}
                         {% for sub in entry.subjects %}
-                           {% if sub.hours > 0 %}
+                          {% assign raw_h = sub.hours %}
+                          {% if raw_h contains ":" %}
+                            {% assign parts = raw_h | split: ":" %}
+                            {% assign hh = parts[0] | plus: 0 %}
+                            {% assign mm = parts[1] | plus: 0 %}
+                            {% assign sub_hours_d = hh | plus: mm | divided_by: 60.0 %}
+                          {% else %}
+                            {% assign sub_hours_d = raw_h | default: 0 %}
+                          {% endif %}
+                           {% if sub_hours_d > 0 %}
                             <span style="margin-right: 10px; background: #e2e8f0; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 1rem; font-weight: bold;">
-                                {{ sub.name }}: {{ sub.hours }}h
+                                {{ sub.name }}: {{ sub_hours_d }}h
                             </span>
                            {% endif %}
                         {% endfor %}

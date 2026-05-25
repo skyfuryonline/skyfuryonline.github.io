@@ -32,6 +32,20 @@ base_url = os.environ.get("OPENAI_API_BASE")
 from openai import OpenAI
 client = OpenAI(api_key=api_key, base_url=base_url)
 
+def parse_hours(value):
+    """将 "HH:MM" 字符串转为十进制小时数，兼容旧格式的数字"""
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, str):
+        value = value.strip()
+        m = re.match(r'^(\d+):(\d+)$', value)
+        if m:
+            return int(m.group(1)) + int(m.group(2)) / 60.0
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return 0.0
+
 # --- 1. 数据收集 ---
 def get_week_data(start_of_week, end_of_week):
     """收集指定周的学习数据和日记内容（通用函数）"""
@@ -66,7 +80,7 @@ def get_week_data(start_of_week, end_of_week):
                 log_hours = 0
                 if post.get('subjects'):
                     for subject in post.get('subjects'):
-                        hours = subject.get('hours', 0)
+                        hours = parse_hours(subject.get('hours', 0))
                         if hours > 0:
                             log_hours += hours
                             subject_name = subject.get('name', '未知')
