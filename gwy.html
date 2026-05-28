@@ -26,7 +26,8 @@ nav-order: 1
                             {% assign parts = raw_h | split: ":" %}
                             {% assign hh = parts[0] | plus: 0 %}
                             {% assign mm = parts[1] | plus: 0 %}
-                            {% assign hours_decimal = hh | plus: mm | divided_by: 60.0 %}
+                            {% assign mm_decimal = mm | divided_by: 60.0 %}
+                            {% assign hours_decimal = hh | plus: mm_decimal %}
                         {% else %}
                             {% assign hours_decimal = raw_h | default: 0 %}
                         {% endif %}
@@ -184,7 +185,8 @@ nav-order: 1
             {% assign parts = raw_h | split: ":" %}
             {% assign hh = parts[0] | plus: 0 %}
             {% assign mm = parts[1] | plus: 0 %}
-            {% assign sub_hours_d = hh | plus: mm | divided_by: 60.0 %}
+            {% assign mm_decimal = mm | divided_by: 60.0 %}
+            {% assign sub_hours_d = hh | plus: mm_decimal %}
           {% else %}
             {% assign sub_hours_d = raw_h | default: 0 %}
           {% endif %}
@@ -217,7 +219,8 @@ nav-order: 1
                             {% assign parts = raw_h | split: ":" %}
                             {% assign hh = parts[0] | plus: 0 %}
                             {% assign mm = parts[1] | plus: 0 %}
-                            {% assign sub_hours_d = hh | plus: mm | divided_by: 60.0 %}
+                            {% assign mm_decimal = mm | divided_by: 60.0 %}
+                            {% assign sub_hours_d = hh | plus: mm_decimal %}
                           {% else %}
                             {% assign sub_hours_d = raw_h | default: 0 %}
                           {% endif %}
