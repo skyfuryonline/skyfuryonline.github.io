@@ -1,34 +1,34 @@
 [
     {
+        "title": "罗马拓荒录",
+        "link": "https://store.steampowered.com/app/1805320/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1805320/f2350a24324843d1db335368aab7a639638f3b24/capsule_231x87_schinese.jpg?t=1779978440",
+        "price": "¥43.20",
+        "discount": "-10%",
+        "rank": 1
+    },
+    {
         "title": "Grand Theft Auto V 增强版",
         "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥74.50",
         "discount": "-50%",
-        "rank": 1
-    },
-    {
-        "title": "罗马拓荒录",
-        "link": "https://store.steampowered.com/app/1805320/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1805320/f2350a24324843d1db335368aab7a639638f3b24/capsule_231x87_schinese.jpg?t=1779796425",
-        "price": "¥43.20",
-        "discount": "-10%",
         "rank": 2
-    },
-    {
-        "title": "The Outlast Trials",
-        "link": "https://store.steampowered.com/app/1304930/The_Outlast_Trials/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/0006315ae2565f31c7675488766cccbc79fc34a8/capsule_231x87_alt_assets_2.jpg?t=1779221190",
-        "price": "¥40.80",
-        "discount": "-70%",
-        "rank": 3
     },
     {
         "title": "墨境",
         "link": "https://store.steampowered.com/app/2597080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1779883730",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1779935844",
         "price": "¥64.80",
         "discount": "-10%",
+        "rank": 3
+    },
+    {
+        "title": "天国：拯救2",
+        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
+        "price": "¥114.00",
+        "discount": "-50%",
         "rank": 4
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "全面战争：战锤3",
-        "link": "https://store.steampowered.com/app/1142710/3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1779441058",
-        "price": "¥44.70",
-        "discount": "-85%",
-        "rank": 9
-    },
-    {
         "title": "方舟: 生存飞升",
         "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
         "price": "¥62.00",
         "discount": "-75%",
+        "rank": 9
+    },
+    {
+        "title": "万词破 - 单词女友",
+        "link": "https://store.steampowered.com/app/1981560/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1981560/96aa5c4984787e29e17768f2bda3173a19d6e97e/capsule_231x87.jpg?t=1779969566",
+        "price": "¥49.30",
+        "discount": "-15%",
         "rank": 10
     }
 ]
