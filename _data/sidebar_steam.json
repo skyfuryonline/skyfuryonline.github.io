@@ -18,7 +18,7 @@
     {
         "title": "墨境",
         "link": "https://store.steampowered.com/app/2597080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1779935844",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1780102784",
         "price": "¥64.80",
         "discount": "-10%",
         "rank": 3
@@ -32,12 +32,20 @@
         "rank": 4
     },
     {
+        "title": "平行人生 Paralives",
+        "link": "https://store.steampowered.com/app/1118520/_Paralives/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1118520/13d15d732cf142a4546bf749ef587e5e6e6acd64/capsule_231x87.jpg?t=1779721278",
+        "price": "¥122.40",
+        "discount": "-10%",
+        "rank": 5
+    },
+    {
         "title": "刺客信条：影",
         "link": "https://store.steampowered.com/app/3159330/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3159330/5960b68c44465f7ad8fd75b9dbb277d0cac23479/capsule_231x87_schinese.jpg?t=1775589420",
         "price": "¥149.00",
         "discount": "-50%",
-        "rank": 5
+        "rank": 6
     },
     {
         "title": "Warhammer 40,000: 星际战士2",
@@ -45,23 +53,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/6fe9be2bf605cdfc3a19d354ffd20a6a48ba4bf8/capsule_231x87_alt_assets_12_schinese.jpg?t=1779872742",
         "price": "¥74.70",
         "discount": "-70%",
-        "rank": 6
-    },
-    {
-        "title": "平行人生 Paralives",
-        "link": "https://store.steampowered.com/app/1118520/_Paralives/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1118520/13d15d732cf142a4546bf749ef587e5e6e6acd64/capsule_231x87.jpg?t=1779721278",
-        "price": "¥122.40",
-        "discount": "-10%",
         "rank": 7
-    },
-    {
-        "title": "天国：拯救2",
-        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
-        "price": "¥114.00",
-        "discount": "-50%",
-        "rank": 8
     },
     {
         "title": "方舟: 生存飞升",
@@ -69,14 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
         "price": "¥62.00",
         "discount": "-75%",
+        "rank": 8
+    },
+    {
+        "title": "Escape the Backrooms",
+        "link": "https://store.steampowered.com/app/1943950/Escape_the_Backrooms/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1943950/28626087167f428b92a79d4c319e19707fe22dae/capsule_231x87.jpg?t=1780069889",
+        "price": "¥29.60",
+        "discount": "-20%",
         "rank": 9
     },
     {
-        "title": "鲁特里一家死了（The Roottrees are Dead）",
-        "link": "https://store.steampowered.com/app/2754380/The_Roottrees_are_Dead/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2754380/f9ae0234199532998d547adc1234027d8ecdc36d/capsule_231x87_schinese.jpg?t=1778766790",
-        "price": "¥60.80",
-        "discount": "-20%",
+        "title": "天国：拯救2",
+        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
+        "price": "¥114.00",
+        "discount": "-50%",
         "rank": 10
     }
 ]
