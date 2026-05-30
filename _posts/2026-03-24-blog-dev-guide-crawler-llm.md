@@ -5,11 +5,15 @@ subtitle: "探索 Daily 页面背后的大模型自动摘要引擎"
 date: 2026-03-24 10:00:03 +0800
 author: "LH"
 group: blog-development
-catalog: true
 tags:
-  - Crawler
-  - LLM
-  - Python
+  - "LLM"
+  - "自动化"
+keywords:
+  - "Crawler"
+  - "Python"
+  - "资讯爬虫"
+  - "摘要生成"
+catalog: true
 ---
 
 如果你访问过博客的 `Daily` 页面，你会发现那里总有最新鲜的技术资讯。这都归功于我们在 `crawlers/` 目录下编写的一套自动化爬虫与 LLM 摘要引擎。

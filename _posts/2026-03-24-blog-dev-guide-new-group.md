@@ -5,11 +5,13 @@ subtitle: "不用写 HTML，教你一分钟在首页增加新专栏"
 date: 2026-03-24 10:00:05 +0800
 author: "LH"
 group: blog-development
-catalog: true
 tags:
-  - Jekyll
-  - Liquid
-  - Data-Driven
+  - "Jekyll"
+keywords:
+  - "Liquid"
+  - "Data-Driven"
+  - "分组页面"
+catalog: true
 ---
 
 博客运营一段时间后，你一定会有拓展新领域的需求。比如你原来只写技术，现在想增加一个叫“音乐分享”的新专栏。

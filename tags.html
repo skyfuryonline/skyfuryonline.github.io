@@ -2,281 +2,489 @@
 layout: default
 title: "TAGS"
 nav-order: 3
-description: "Keep hungry, keep foolish"
+description: "把文章、专栏和标签整理成一张可探索的知识地图"
 header-img: "img/tag-bg.png"
 ---
 
 <style>
-/* ── Apple-style Tags Index ── */
+/* ── Curated Tags Atlas ── */
 
-.tags-hub {
-    padding: 24px 0 48px;
+.tags-atlas {
+    padding: 34px 0 56px;
+    color: #1f2937;
 }
 
-/* ── Stats row ── */
-
-.stats-row {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 40px;
+.atlas-hero {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    padding: 30px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 12% 15%, rgba(0, 113, 227, 0.14), transparent 32%),
+        radial-gradient(circle at 88% 0%, rgba(112, 44, 249, 0.12), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f7f9ff 48%, #f6fbff 100%);
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
 }
 
-.stat-item {
-    flex: 1;
-    text-align: center;
+.atlas-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.atlas-kicker::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #2563eb;
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.12);
+}
+
+.atlas-title {
+    margin: 0 0 10px;
+    max-width: 780px;
+    font-size: 32px;
+    font-weight: 750;
+    line-height: 1.22;
+    letter-spacing: -0.04em;
+    color: #111827;
+}
+
+.atlas-description {
+    margin: 0;
+    max-width: 760px;
+    color: #5b6472;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.atlas-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.stat-card {
+    padding: 18px 18px 16px;
+    border: 1px solid rgba(15, 23, 42, 0.07);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.76);
+    backdrop-filter: blur(12px);
 }
 
 .stat-num {
-    font-size: 36px;
-    font-weight: 700;
-    color: #1d1d1f;
-    letter-spacing: -0.02em;
+    display: block;
+    color: #0f172a;
+    font-size: 30px;
+    font-weight: 760;
     line-height: 1;
+    letter-spacing: -0.04em;
 }
 
 .stat-label {
     display: block;
-    margin-top: 6px;
+    margin-top: 8px;
+    color: #6b7280;
     font-size: 13px;
-    color: #86868b;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-/* ── Filter section ── */
+.atlas-panel {
+    margin-bottom: 34px;
+    padding: 22px;
+    border: 1px solid #e8edf5;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 16px 44px rgba(15, 23, 42, 0.055);
+}
 
-.filter-section {
-    margin-bottom: 36px;
+.panel-topline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.panel-heading {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 730;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+.panel-note {
+    margin: 4px 0 0;
+    color: #7b8494;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .search-row {
-    margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 18px;
 }
 
 .search-row input {
     width: 100%;
-    height: 44px;
-    border: none;
-    border-radius: 10px;
-    background: #f5f5f7;
-    padding: 0 16px;
+    min-height: 48px;
+    border: 1px solid #dce4ef;
+    border-radius: 16px;
+    background: #f8fafc;
+    padding: 0 16px 0 44px;
+    color: #111827;
     font-size: 15px;
-    color: #1d1d1f;
     outline: none;
+    transition: border 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     box-sizing: border-box;
 }
 
+.search-row::before {
+    content: "⌕";
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-53%);
+    color: #8b95a5;
+    font-size: 22px;
+    z-index: 1;
+}
+
 .search-row input::placeholder {
-    color: #aeaeb2;
+    color: #9ca3af;
 }
 
 .search-row input:focus {
-    background: #eeeef0;
-    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+    border-color: rgba(37, 99, 235, 0.42);
+    background: #ffffff;
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.10);
 }
-
-/* ── Chip list ── */
 
 .chip-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 9px;
+}
+
+.tag-chip,
+.tag-pill,
+.clear-filter-btn {
+    font-family: inherit;
 }
 
 .tag-chip {
     display: inline-flex;
     align-items: center;
-    height: 32px;
-    padding: 0 12px;
-    border: none;
-    border-radius: 6px;
-    background: #f5f5f7;
-    color: #1d1d1f;
+    min-height: 34px;
+    padding: 0 13px;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #334155;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 650;
     cursor: pointer;
-    transition: background 0.15s ease;
-    gap: 6px;
+    transition: transform 0.16s ease, border 0.16s ease, background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+    gap: 7px;
 }
 
 .tag-chip:hover {
-    background: #e8e8ed;
+    border-color: rgba(37, 99, 235, 0.35);
+    color: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.08);
 }
 
 .tag-chip.is-active {
-    background: #1d1d1f;
+    border-color: #1d4ed8;
+    background: #1d4ed8;
     color: #ffffff;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
 }
 
 .chip-count {
-    color: #86868b;
-    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 750;
 }
 
 .tag-chip.is-active .chip-count {
-    color: #a1a1a6;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
 }
-
-/* ── Result bar ── */
 
 .result-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 28px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #e5e5ea;
-}
-
-.result-summary {
+    gap: 16px;
+    margin: 6px 0 24px;
+    padding: 14px 0 0;
+    color: #6b7280;
     font-size: 14px;
-    color: #86868b;
 }
 
-.clear-filter-btn {
-    height: 28px;
-    padding: 0 12px;
-    border: none;
-    border-radius: 6px;
-    background: #f5f5f7;
-    color: #1d1d1f;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s ease;
-}
-
-.clear-filter-btn:hover {
-    background: #e8e8ed;
+.result-summary strong {
+    color: #111827;
 }
 
 .active-filter {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .active-filter-label {
+    color: #8b95a5;
     font-size: 13px;
-    color: #86868b;
 }
 
-/* ── Post card ── */
+.clear-filter-btn {
+    min-height: 30px;
+    padding: 0 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.clear-filter-btn:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+
+.group-section {
+    margin-top: 30px;
+}
+
+.group-section:first-of-type {
+    margin-top: 0;
+}
+
+.group-header {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 14px;
+    padding: 12px 0;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #eef2f7;
+}
+
+.group-title-wrap {
+    min-width: 0;
+}
+
+.group-title {
+    margin: 0;
+    color: #111827;
+    font-size: 22px;
+    font-weight: 760;
+    letter-spacing: -0.035em;
+}
+
+.group-description {
+    margin: 4px 0 0;
+    color: #7b8494;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.group-link {
+    flex: 0 0 auto;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.group-link:hover {
+    color: #1d4ed8;
+    text-decoration: none;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
 
 .post-card {
-    padding: 28px 0;
-    border-bottom: 1px solid #f0f0f3;
-    transition: opacity 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 214px;
+    padding: 22px;
+    border: 1px solid #e8edf5;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    box-shadow: 0 14px 38px rgba(15, 23, 42, 0.055);
+    transition: transform 0.18s ease, border 0.18s ease, box-shadow 0.18s ease;
 }
 
-.post-card:first-child {
-    padding-top: 0;
-}
-
-.post-card:last-child {
-    border-bottom: none;
+.post-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(37, 99, 235, 0.24);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.09);
 }
 
 .post-card-title {
-    margin: 0 0 6px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.3;
+    margin: 0 0 8px;
+    font-size: 19px;
+    font-weight: 730;
+    line-height: 1.38;
+    letter-spacing: -0.025em;
 }
 
 .post-card-title a {
-    color: #1d1d1f;
+    color: #111827;
     text-decoration: none;
 }
 
 .post-card-title a:hover {
-    color: #0071e3;
+    color: #1d4ed8;
+    text-decoration: none;
 }
 
 .post-card-subtitle {
-    margin: 0 0 10px;
-    font-size: 15px;
-    color: #6e6e73;
-    line-height: 1.5;
+    margin: 0 0 12px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.55;
 }
 
 .post-meta-line {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
-    font-size: 13px;
-    color: #86868b;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 650;
 }
 
 .meta-sep {
-    color: #c7c7cc;
+    color: #cbd5e1;
 }
 
 .group-badge {
     display: inline-flex;
-    height: 22px;
-    padding: 0 8px;
-    border-radius: 4px;
-    background: #f5f5f7;
-    color: #1d1d1f;
-    font-size: 12px;
-    font-weight: 500;
-    text-decoration: none;
     align-items: center;
+    min-height: 22px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .group-badge:hover {
-    background: #e8e8ed;
-    color: #1d1d1f;
+    background: #dbeafe;
+    color: #1d4ed8;
     text-decoration: none;
 }
 
 .post-excerpt {
-    margin: 0 0 14px;
-    font-size: 15px;
-    color: #6e6e73;
-    line-height: 1.7;
+    margin: 0 0 16px;
+    color: #5b6472;
+    font-size: 14px;
+    line-height: 1.75;
 }
 
-.post-tag-row {
+.post-card-footer {
+    margin-top: auto;
+}
+
+.post-tag-row,
+.keyword-row {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
 }
 
+.keyword-row {
+    margin-top: 8px;
+}
+
 .tag-pill {
-    height: 24px;
-    padding: 0 8px;
-    border: none;
-    border-radius: 4px;
-    background: #f5f5f7;
-    color: #6e6e73;
+    display: inline-flex;
+    align-items: center;
+    min-height: 25px;
+    padding: 0 9px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: #2563eb;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
 .tag-pill:hover {
-    background: #1d1d1f;
+    background: #1d4ed8;
     color: #ffffff;
 }
 
-/* ── Empty state ── */
+.keyword-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 23px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 650;
+}
 
 .empty-state {
     display: none;
+    margin-top: 24px;
+    padding: 54px 24px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 24px;
     text-align: center;
-    padding: 60px 0;
-    color: #86868b;
+    background: #f8fafc;
+    color: #7b8494;
 }
 
 .empty-state h3 {
     margin: 0 0 8px;
-    font-size: 17px;
-    font-weight: 600;
-    color: #1d1d1f;
+    color: #111827;
+    font-size: 18px;
+    font-weight: 720;
 }
 
 .empty-state p {
@@ -284,26 +492,38 @@ header-img: "img/tag-bg.png"
     font-size: 14px;
 }
 
-/* ── Mobile ── */
+@media (max-width: 991px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media (max-width: 767px) {
-    .stats-row {
-        gap: 12px;
-        margin-bottom: 28px;
+    .tags-atlas {
+        padding-top: 22px;
     }
-    .stat-num {
-        font-size: 28px;
+    .atlas-hero,
+    .atlas-panel {
+        border-radius: 20px;
+        padding: 20px;
     }
-    .post-card {
-        padding: 20px 0;
+    .atlas-title {
+        font-size: 25px;
     }
-    .post-card-title {
-        font-size: 19px;
+    .atlas-stats {
+        grid-template-columns: 1fr;
     }
-    .result-bar {
+    .panel-topline,
+    .result-bar,
+    .group-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+    }
+    .group-header {
+        position: static;
+    }
+    .post-card {
+        padding: 18px;
     }
 }
 </style>
@@ -322,120 +542,204 @@ header-img: "img/tag-bg.png"
     </div>
 </header>
 
-<div class="container tags-hub">
+<div class="container tags-atlas">
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
-            <!-- Stats -->
-            <div class="stats-row">
-                <div class="stat-item">
-                    <span class="stat-num">{{ site.posts.size }}</span>
-                    <span class="stat-label">篇文章</span>
+            <section class="atlas-hero" aria-label="Tags overview">
+                <div class="atlas-kicker">Knowledge Atlas</div>
+                <h2 class="atlas-title">用少量主标签建立入口，用专栏保持内容脉络。</h2>
+                <p class="atlas-description">这里不再把所有关键词都摊成一面墙。顶部只保留可复用的主标签，长尾术语进入文章关键词与搜索索引；下面按专栏组织文章，方便从主题线索进入阅读。</p>
+                <div class="atlas-stats">
+                    <div class="stat-card">
+                        <span class="stat-num">{{ site.posts.size }}</span>
+                        <span class="stat-label">篇文章</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">{{ site.tags.size }}</span>
+                        <span class="stat-label">个主标签</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">{{ site.data.homepage_groups.size }}</span>
+                        <span class="stat-label">个专栏</span>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-num">{{ site.tags.size }}</span>
-                    <span class="stat-label">个标签</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-num">{{ site.groups.size }}</span>
-                    <span class="stat-label">个专栏</span>
-                </div>
-            </div>
+            </section>
 
-            <!-- Filter -->
-            <div class="filter-section">
+            <section class="atlas-panel" aria-label="Search and filters">
+                <div class="panel-topline">
+                    <div>
+                        <h2 class="panel-heading">筛选与搜索</h2>
+                        <p class="panel-note">点击主标签缩小范围；搜索框同时匹配标题、摘要、专栏、主标签和文章关键词。</p>
+                    </div>
+                </div>
                 <div class="search-row">
-                    <input id="tag-search-input" type="search" placeholder="搜索标题、摘要或标签...">
+                    <input id="tag-search-input" type="search" placeholder="搜索 LLM、Jekyll、OpenCompass、Tailscale...">
                 </div>
                 <div class="chip-list" id="tag-filter-list">
-                    <button type="button" class="tag-chip is-active" data-tag="" data-slug="all">
+                    <button type="button" class="tag-chip is-active" data-tag="">
                         全部
                         <span class="chip-count">{{ site.posts.size }}</span>
                     </button>
                     {% assign sorted_tags = site.tags | sort %}
                     {% for tag in sorted_tags %}
-                    <button type="button" class="tag-chip" data-tag="{{ tag[0] | escape }}" data-slug="{{ tag[0] | slugify }}">
+                    <button type="button" class="tag-chip" data-tag="{{ tag[0] | escape }}">
                         {{ tag[0] }}
                         <span class="chip-count">{{ tag[1].size }}</span>
                     </button>
                     {% endfor %}
                 </div>
-            </div>
+            </section>
 
-            <!-- Result bar -->
             <div class="result-bar">
                 <span class="result-summary" id="results-summary"></span>
                 <div class="active-filter" id="active-filter" style="display:none;">
-                    <span class="active-filter-label">当前筛选：</span>
+                    <span class="active-filter-label">当前范围：</span>
                     <button type="button" class="tag-pill" id="active-filter-pill"></button>
                     <button type="button" class="clear-filter-btn" id="clear-filter-btn">清除</button>
                 </div>
             </div>
 
-            <!-- Posts -->
             <div id="posts-index">
-                {% for post in site.posts %}
-                    {% assign post_group_name = '' %}
-                    {% assign post_group_url = '' %}
-                    {% if post.group %}
-                        {% assign post_group_name = post.group %}
-                        {% assign post_group_url = '/groups/' | append: post.group %}
-                        {% for group_page in site.groups %}
-                            {% assign group_slug = group_page.url | replace: '/groups/', '' | replace: '/', '' %}
-                            {% if group_slug == post.group %}
-                                {% assign post_group_name = group_page.title %}
-                                {% assign post_group_url = group_page.url %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-
-                    {% capture search_blob %}
-                        {{ post.title }}
-                        {{ post.subtitle }}
-                        {{ post.excerpt | strip_html | strip_newlines }}
-                        {{ post_group_name }}
-                        {% if post.tags %}{{ post.tags | join: ' ' }}{% endif %}
-                    {% endcapture %}
-
-                    <article class="post-card js-post-card"
-                        data-search="{{ search_blob | strip_html | strip_newlines | downcase | escape }}"
-                        data-tags="{% if post.tags %}{{ post.tags | join: '||' | downcase | escape }}{% endif %}">
-                        <h2 class="post-card-title">
-                            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                        </h2>
-
-                        {% if post.subtitle %}
-                        <p class="post-card-subtitle">{{ post.subtitle }}</p>
-                        {% endif %}
-
-                        <div class="post-meta-line">
-                            <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-                            {% if post_group_name != '' %}
-                            <span class="meta-sep">•</span>
-                            {% if post_group_url != '' %}
-                            <a class="group-badge" href="{{ post_group_url | prepend: site.baseurl }}">{{ post_group_name }}</a>
-                            {% else %}
-                            <span class="group-badge">{{ post_group_name }}</span>
-                            {% endif %}
-                            {% endif %}
+                {% for group in site.data.homepage_groups %}
+                <section class="group-section js-group-section" data-group-name="{{ group.group_name | escape }}">
+                    <div class="group-header">
+                        <div class="group-title-wrap">
+                            <h2 class="group-title">{{ group.group_name }}</h2>
+                            <p class="group-description">{{ group.group_description }}</p>
                         </div>
-
-                        <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}</p>
-
-                        {% if post.tags and post.tags.size > 0 %}
-                        <div class="post-tag-row">
-                            {% for tag in post.tags %}
-                            <button type="button" class="tag-pill js-inline-tag" data-tag="{{ tag | escape }}">{{ tag }}</button>
+                        <a class="group-link" href="{{ group.url | prepend: site.baseurl }}">进入专栏 →</a>
+                    </div>
+                    <div class="post-grid">
+                        {% for post_filename in group.posts %}
+                            {% for post in site.posts %}
+                                {% assign post_name_from_path = post.path | split: '/' | last %}
+                                {% if post_name_from_path == post_filename %}
+                                    {% capture search_blob %}
+                                        {{ post.title }}
+                                        {{ post.subtitle }}
+                                        {{ post.excerpt | strip_html | strip_newlines }}
+                                        {{ group.group_name }}
+                                        {{ group.group_description }}
+                                        {% if post.tags %}{{ post.tags | join: ' ' }}{% endif %}
+                                        {% if post.keywords %}{{ post.keywords | join: ' ' }}{% endif %}
+                                    {% endcapture %}
+                                    <article class="post-card js-post-card"
+                                        data-search="{{ search_blob | strip_html | strip_newlines | downcase | escape }}"
+                                        data-tags="{% if post.tags %}{{ post.tags | join: '||' | downcase | escape }}{% endif %}">
+                                        <h3 class="post-card-title">
+                                            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                                        </h3>
+                                        {% if post.subtitle %}
+                                        <p class="post-card-subtitle">{{ post.subtitle }}</p>
+                                        {% endif %}
+                                        <div class="post-meta-line">
+                                            <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+                                            <span class="meta-sep">•</span>
+                                            <a class="group-badge" href="{{ group.url | prepend: site.baseurl }}">{{ group.group_name }}</a>
+                                        </div>
+                                        <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 132 }}</p>
+                                        <div class="post-card-footer">
+                                            {% if post.tags and post.tags.size > 0 %}
+                                            <div class="post-tag-row">
+                                                {% for tag in post.tags %}
+                                                <button type="button" class="tag-pill js-inline-tag" data-tag="{{ tag | escape }}">{{ tag }}</button>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            {% if post.keywords and post.keywords.size > 0 %}
+                                            <div class="keyword-row" aria-label="keywords">
+                                                {% for keyword in post.keywords limit:4 %}
+                                                <span class="keyword-pill">{{ keyword }}</span>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </article>
+                                {% endif %}
                             {% endfor %}
-                        </div>
-                        {% endif %}
-                    </article>
+                        {% endfor %}
+                    </div>
+                </section>
                 {% endfor %}
+
+                {% assign grouped_post_names = '' %}
+                {% for group in site.data.homepage_groups %}
+                    {% for post_filename in group.posts %}
+                        {% capture grouped_post_names %}{{ grouped_post_names }}||{{ post_filename }}{% endcapture %}
+                    {% endfor %}
+                {% endfor %}
+
+                {% assign has_ungrouped_posts = false %}
+                {% for post in site.posts %}
+                    {% assign post_name_from_path = post.path | split: '/' | last %}
+                    {% unless grouped_post_names contains post_name_from_path %}
+                        {% assign has_ungrouped_posts = true %}
+                    {% endunless %}
+                {% endfor %}
+
+                {% if has_ungrouped_posts %}
+                <section class="group-section js-group-section" data-group-name="站点维护">
+                    <div class="group-header">
+                        <div class="group-title-wrap">
+                            <h2 class="group-title">站点维护</h2>
+                            <p class="group-description">未挂入首页专栏、但对博客维护仍有参考价值的文章。</p>
+                        </div>
+                    </div>
+                    <div class="post-grid">
+                        {% for post in site.posts %}
+                            {% assign post_name_from_path = post.path | split: '/' | last %}
+                            {% unless grouped_post_names contains post_name_from_path %}
+                                {% capture search_blob %}
+                                    {{ post.title }}
+                                    {{ post.subtitle }}
+                                    {{ post.excerpt | strip_html | strip_newlines }}
+                                    站点维护
+                                    {% if post.tags %}{{ post.tags | join: ' ' }}{% endif %}
+                                    {% if post.keywords %}{{ post.keywords | join: ' ' }}{% endif %}
+                                {% endcapture %}
+                                <article class="post-card js-post-card"
+                                    data-search="{{ search_blob | strip_html | strip_newlines | downcase | escape }}"
+                                    data-tags="{% if post.tags %}{{ post.tags | join: '||' | downcase | escape }}{% endif %}">
+                                    <h3 class="post-card-title">
+                                        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                                    </h3>
+                                    {% if post.subtitle %}
+                                    <p class="post-card-subtitle">{{ post.subtitle }}</p>
+                                    {% endif %}
+                                    <div class="post-meta-line">
+                                        <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+                                        <span class="meta-sep">•</span>
+                                        <span class="group-badge">站点维护</span>
+                                    </div>
+                                    <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 132 }}</p>
+                                    <div class="post-card-footer">
+                                        {% if post.tags and post.tags.size > 0 %}
+                                        <div class="post-tag-row">
+                                            {% for tag in post.tags %}
+                                            <button type="button" class="tag-pill js-inline-tag" data-tag="{{ tag | escape }}">{{ tag }}</button>
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                        {% if post.keywords and post.keywords.size > 0 %}
+                                        <div class="keyword-row" aria-label="keywords">
+                                            {% for keyword in post.keywords limit:4 %}
+                                            <span class="keyword-pill">{{ keyword }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </article>
+                            {% endunless %}
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
             </div>
 
             <section class="empty-state" id="empty-state">
                 <h3>没有匹配的文章</h3>
-                <p>试试清空搜索词，或者换一个标签。</p>
+                <p>试试清空搜索词，或者换一个主标签。</p>
             </section>
         </div>
     </div>
@@ -447,6 +751,7 @@ header-img: "img/tag-bg.png"
     var chipList = document.getElementById('tag-filter-list');
     var chips = chipList ? Array.prototype.slice.call(chipList.querySelectorAll('.tag-chip')) : [];
     var cards = Array.prototype.slice.call(document.querySelectorAll('.js-post-card'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.js-group-section'));
     var inlineTags = Array.prototype.slice.call(document.querySelectorAll('.js-inline-tag'));
     var resultsSummary = document.getElementById('results-summary');
     var clearButton = document.getElementById('clear-filter-btn');
@@ -463,29 +768,27 @@ header-img: "img/tag-bg.png"
         var normalizedTag = normalize(tagName);
         chips.forEach(function (chip) {
             var chipTag = normalize(chip.getAttribute('data-tag'));
-            if (chipTag === normalizedTag) {
-                chip.classList.add('is-active');
-            } else {
-                chip.classList.remove('is-active');
-            }
+            chip.classList.toggle('is-active', chipTag === normalizedTag);
         });
     }
 
     function updateHash() {
-        var slug = 'all';
-        for (var i = 0; i < chips.length; i += 1) {
-            if (normalize(chips[i].getAttribute('data-tag')) === normalize(activeTag)) {
-                slug = chips[i].getAttribute('data-slug') || 'all';
-                break;
-            }
-        }
-        if (!slug || slug === 'all') {
+        if (!activeTag) {
             if (window.history && window.history.replaceState) {
                 window.history.replaceState(null, '', window.location.pathname);
             }
-        } else {
-            window.location.hash = slug;
+            return;
         }
+        window.location.hash = encodeURIComponent(activeTag);
+    }
+
+    function updateSectionVisibility() {
+        sections.forEach(function (section) {
+            var visibleCards = Array.prototype.slice.call(section.querySelectorAll('.js-post-card')).filter(function (card) {
+                return card.style.display !== 'none';
+            });
+            section.style.display = visibleCards.length ? '' : 'none';
+        });
     }
 
     function applyFilters() {
@@ -506,11 +809,13 @@ header-img: "img/tag-bg.png"
             }
         });
 
+        updateSectionVisibility();
+
         if (resultsSummary) {
             if (visibleCount === cards.length && !activeTag && !searchTerm) {
-                resultsSummary.textContent = '共 ' + cards.length + ' 篇文章';
+                resultsSummary.innerHTML = '共 <strong>' + cards.length + '</strong> 篇文章，按专栏分区展示';
             } else {
-                resultsSummary.textContent = visibleCount + ' / ' + cards.length + ' 篇';
+                resultsSummary.innerHTML = '显示 <strong>' + visibleCount + '</strong> / ' + cards.length + ' 篇';
             }
         }
 
@@ -563,18 +868,15 @@ header-img: "img/tag-bg.png"
         activateTag('', false);
     });
 
-    searchInput.addEventListener('input', function () {
-        applyFilters();
-    });
+    searchInput.addEventListener('input', applyFilters);
 
     if (window.location.hash) {
-        var initialSlug = window.location.hash.replace('#', '');
-        for (var i = 0; i < chips.length; i += 1) {
-            if (chips[i].getAttribute('data-slug') === initialSlug) {
-                activeTag = chips[i].getAttribute('data-tag') || '';
-                break;
+        var initialTag = decodeURIComponent(window.location.hash.replace('#', ''));
+        chips.forEach(function (chip) {
+            if (normalize(chip.getAttribute('data-tag')) === normalize(initialTag)) {
+                activeTag = chip.getAttribute('data-tag') || '';
             }
-        }
+        });
     }
 
     setActiveChip(activeTag);

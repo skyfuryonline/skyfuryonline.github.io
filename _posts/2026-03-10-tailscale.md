@@ -4,7 +4,14 @@ title: "TailScale"
 date: 2026-03-10
 author: "LH"
 catalog: true
-tags: [tailscale]
+tags:
+  - "Workflow"
+keywords:
+  - "Tailscale"
+  - "tailscale"
+  - "内网穿透"
+  - "WireGuard"
+  - "远程访问"
 group: vision
 ---
 

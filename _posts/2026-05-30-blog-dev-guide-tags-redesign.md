@@ -5,11 +5,15 @@ subtitle: "把杂乱的标签页，改造成一个可筛选、可搜索、每篇
 date: 2026-05-30 21:30:58 +0800
 author: "LH"
 group: blog-development
-catalog: true
 tags:
-  - Jekyll
-  - Liquid
-  - Workflow
+  - "Jekyll"
+  - "Workflow"
+keywords:
+  - "Liquid"
+  - "标签页"
+  - "信息架构"
+  - "页面重构"
+catalog: true
 ---
 
 `/tags/` 往往是博客里最容易被忽视、却又最容易失控的一个页面。

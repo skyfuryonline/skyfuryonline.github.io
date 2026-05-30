@@ -3,7 +3,15 @@ layout: post
 title: "让我们从GSM8K开始：分布式训练笔记系列"
 date: 2025-11-10
 author: "LH"
-tags: [LLM, GSM8K, RL, accelerate, deepspeed]
+tags:
+  - "LLM"
+  - "训练"
+keywords:
+  - "GSM8K"
+  - "RL"
+  - "accelerate"
+  - "deepspeed"
+  - "分布式训练"
 group: llm
 ---
 

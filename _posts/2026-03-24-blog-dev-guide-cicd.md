@@ -5,11 +5,13 @@ subtitle: "解密网站背后的自动化构建与发布流水线"
 date: 2026-03-24 10:00:02 +0800
 author: "LH"
 group: blog-development
-catalog: true
 tags:
-  - GitHub Actions
-  - CI/CD
-  - 自动化
+  - "自动化"
+keywords:
+  - "GitHub Actions"
+  - "CI/CD"
+  - "部署流水线"
+catalog: true
 ---
 
 作为现代化的技术博客，我们不再依赖手动在本地跑命令生成页面，而是将这一切都交给了 **GitHub Actions**。
