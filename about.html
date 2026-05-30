@@ -7,76 +7,336 @@ header-img: "img/about-bg.png"
 ---
 
 <style>
-.about-container {
+.about-page {
+    --about-bg: #f5f5f7;
+    --about-card: #ffffff;
+    --about-ink: #1d1d1f;
+    --about-muted: rgba(29, 29, 31, 0.68);
+    --about-faint: rgba(29, 29, 31, 0.48);
+    --about-line: rgba(29, 29, 31, 0.10);
+    --about-blue: #0071e3;
+    --about-blue-soft: rgba(0, 113, 227, 0.10);
+    margin: 0 -15px 0;
+    padding: 52px 15px 70px;
+    background:
+        radial-gradient(circle at 18% 8%, rgba(0, 113, 227, 0.10), transparent 32%),
+        linear-gradient(180deg, #fbfbfd 0%, var(--about-bg) 42%, #ffffff 100%);
+    color: var(--about-ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+.about-shell {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.about-hero {
+    display: grid;
+    grid-template-columns: 0.9fr 1.5fr;
+    gap: 34px;
+    align-items: stretch;
+    margin-bottom: 24px;
+}
+
+.about-identity,
+.about-intro,
+.about-section {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid var(--about-line);
+    border-radius: 24px;
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.075);
+    backdrop-filter: blur(18px);
+}
+
+.about-identity {
+    padding: 28px;
+    text-align: center;
+}
+
+.about-badges {
     display: flex;
-    flex-direction: column; /* Default for mobile: stack top to bottom */
+    justify-content: center;
     align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
-.badge-container {
+.about-badge {
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    object-fit: cover;
+    background: #fff;
+    border: 1px solid var(--about-line);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+}
+
+.about-name {
+    margin: 0 0 8px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.about-role {
+    margin: 0;
+    color: var(--about-muted);
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.about-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: var(--about-blue-soft);
+    color: #0057b8;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.about-status::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34c759;
+    box-shadow: 0 0 0 5px rgba(52, 199, 89, 0.14);
+}
+
+.about-intro {
+    position: relative;
+    overflow: hidden;
+    padding: 34px;
+}
+
+.about-kicker {
+    display: inline-flex;
+    margin-bottom: 16px;
+    color: var(--about-blue);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.about-title {
+    margin: 0 0 18px;
+    max-width: 650px;
+    color: var(--about-ink);
+    font-size: 42px;
+    font-weight: 720;
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+}
+
+.about-lede {
+    margin: 0;
+    max-width: 650px;
+    color: var(--about-muted);
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.about-fact {
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid var(--about-line);
+}
+
+.about-fact strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--about-ink);
+    font-size: 15px;
+}
+
+.about-fact span {
+    color: var(--about-muted);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.about-section {
+    margin-top: 16px;
+    padding: 28px 30px;
+}
+
+.about-section h2 {
+    margin: 0 0 16px;
+    color: var(--about-ink);
+    font-size: 24px;
+    font-weight: 720;
+    letter-spacing: -0.025em;
+}
+
+.about-section p {
+    margin: 0 0 14px;
+    color: var(--about-muted);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.about-section p:last-child {
+    margin-bottom: 0;
+}
+
+.about-link-row {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.about-link {
+    display: inline-flex;
     align-items: center;
-    margin-bottom: 30px;
+    min-height: 38px;
+    padding: 0 15px;
+    border-radius: 999px;
+    background: var(--about-blue);
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
-.badge-container img {
-    width: 100px; /* Or your desired size */
-    height: auto;
-    border-radius: 50%; /* Make them circular */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
+.about-link.secondary {
+    background: #1d1d1f;
 }
 
-/* On medium screens and up, go to side-by-side layout */
-@media (min-width: 992px) { /* Corresponds to Bootstrap's `md` breakpoint */
-    .about-container {
-        flex-direction: row; /* Side-by-side */
-        align-items: flex-start; /* Align to the top */
-        justify-content: center;
+.about-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0, 113, 227, 0.22);
+}
+
+.about-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.about-list li {
+    padding: 14px 15px;
+    border-radius: 16px;
+    background: #f5f5f7;
+    color: var(--about-muted);
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.about-list strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--about-ink);
+}
+
+@media (max-width: 991px) {
+    .about-page {
+        margin: 0;
+        padding-top: 34px;
     }
-    .badge-container {
-        order: 1; /* Left column */
-        margin-right: 60px; /* Space between badges and text */
-        margin-bottom: 0;
-        margin-top: 20px; /* Align with the top of the text */
+    .about-hero,
+    .about-grid,
+    .about-list {
+        grid-template-columns: 1fr;
     }
-    .post-container {
-        order: 2; /* Right column */
-        max-width: 600px; /* Constrain text width */
+    .about-title {
+        font-size: 34px;
     }
 }
 
+@media (max-width: 520px) {
+    .about-identity,
+    .about-intro,
+    .about-section {
+        border-radius: 20px;
+        padding: 22px;
+    }
+    .about-title {
+        font-size: 29px;
+    }
+    .about-badge {
+        width: 74px;
+        height: 74px;
+    }
+}
 </style>
 
-<div class="about-container">
-    <div class="badge-container">
-            <img src="{{ site.baseurl }}/img/hnu-badge.png" alt="HNU Badge">
-            <img src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="YNU Badge">    </div>
+<div class="about-page">
+    <div class="about-shell">
+        <section class="about-hero" aria-label="个人简介">
+            <aside class="about-identity">
+                <div class="about-badges">
+                    <img class="about-badge" src="{{ site.baseurl }}/img/hnu-badge.png" alt="湖南大学校徽">
+                    <img class="about-badge" src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="云南大学校徽">
+                </div>
+                <h2 class="about-name">李昊</h2>
+                <p class="about-role">skyfuryonline<br>计算机科学与技术 · NLP 研究生</p>
+                <div class="about-status">热爱技术，分享生活</div>
+            </aside>
 
-    <!-- Chinese Version -->
-    <div class="zh post-container">
+            <div class="about-intro">
+                <div class="about-kicker">About me</div>
+                <h1 class="about-title">在代码、研究与日常之间，持续整理自己的问题意识。</h1>
+                <p class="about-lede">Hey，我毕业于湖南大学计算机科学与技术专业，目前在云南大学攻读研究生。这个博客记录技术实践、科研训练、工具流和生活观察，也作为我长期维护知识结构的一块小天地。</p>
+            </div>
+        </section>
 
-        <!--copied from markdown -->
-        <blockquote><p>热爱技术，分享生活。</p></blockquote>
+        <section class="about-grid" aria-label="快速信息">
+            <div class="about-fact">
+                <strong>研究方向</strong>
+                <span>NLP、LLM、Agent、模型训练与工程化实践。</span>
+            </div>
+            <div class="about-fact">
+                <strong>日常兴趣</strong>
+                <span>编程、乒乓球、散步、长跑，以及把零散经验写成可复用笔记。</span>
+            </div>
+            <div class="about-fact">
+                <strong>博客定位</strong>
+                <span>基于 GitHub Pages 与 Jekyll，记录代码与生活。</span>
+            </div>
+        </section>
 
-        <p>Hey，我毕业于湖南大学计算机科学与技术专业。目前是云南大学研究生。</p>
+        <section class="about-section">
+            <h2>我在这里写什么</h2>
+            <p>这里不会只放“完成品”。我更希望保留从问题出现、方案试错到最后复盘的过程：例如一次模型训练的配置取舍、一个 Agent 工作流的坑、一次博客页面的改版，或者备考与生活节奏中的小观察。</p>
+            <p>如果你也对这些主题感兴趣，欢迎交流。很多文章都是边用边改，后续也会持续更新。</p>
+        </section>
 
-        <p>如有问题，欢迎多多交流。</p>
+        <section class="about-section">
+            <h2>当前关注</h2>
+            <ul class="about-list">
+                <li><strong>LLM 工程</strong>微调、评测、推理服务与自动化数据处理。</li>
+                <li><strong>Agent 工作流</strong>把重复任务沉淀为可维护的工具、脚本和流程。</li>
+                <li><strong>科研写作</strong>问题驱动的论文叙事、实验验证与可复现记录。</li>
+                <li><strong>个人系统</strong>博客、知识库、备考计划与日常节奏管理。</li>
+            </ul>
+        </section>
 
-        <p>热爱编程，热爱乒乓球、散步和长跑。</p>
-
-        <p>这是我的利用 <a href="https://pages.github.com/">GitHub Pages</a> 与 <a href="http://jekyll.com.cn/">Jekyll</a> 搭建的 个人博客。你可以在GitHub上找到我 <a href="https://github.com/skyfuryonline">👉GitHub·skyfuryonline</a>。如果有什么问题，欢迎提出探讨~</p>
-
-        <p></p>
-        
-        <h5>社交链接</h5>
-
-        <ul>
-            <li><a href="https://github.com/skyfuryonline">GitHub</a></li>
-        </ul>
+        <section class="about-section">
+            <h2>社交链接</h2>
+            <p>如有问题，欢迎提出探讨。</p>
+            <div class="about-link-row">
+                <a class="about-link" href="https://github.com/skyfuryonline" target="_blank" rel="noopener noreferrer">GitHub · skyfuryonline</a>
+                <a class="about-link secondary" href="{{ site.baseurl }}/tags/">浏览文章标签</a>
+            </div>
+        </section>
     </div>
 </div>
-
-<!-- English Version and Language Handler remains the same, so it's omitted for brevity -->
-<!-- ... -->

@@ -7,7 +7,12 @@ header-img: "img/tag-bg.png"
 ---
 
 <style>
-/* ── Editorial Tags Index ── */
+.tags-page-shell {
+    background:
+        linear-gradient(180deg, rgba(247, 243, 234, 0.86) 0%, rgba(255, 253, 248, 0.98) 360px),
+        #fffdf8;
+    margin-top: 0;
+}
 
 .tags-atlas {
     --paper: #fffdf8;
@@ -584,7 +589,8 @@ header-img: "img/tag-bg.png"
     </div>
 </header>
 
-<div class="container tags-atlas">
+<div class="tags-page-shell">
+    <div class="container tags-atlas">
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
@@ -785,6 +791,7 @@ header-img: "img/tag-bg.png"
             </section>
         </div>
     </div>
+</div>
 </div>
 
 <script>
