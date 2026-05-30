@@ -7,226 +7,148 @@ header-img: "img/about-bg.png"
 ---
 
 <style>
+/* --------------------------------------------------
+   About page — keep it simple, blend into the blog
+   -------------------------------------------------- */
 .about-page {
-    --about-paper: #fffdf8;
-    --about-paper-soft: #f7f1e7;
-    --about-ink: #23201d;
-    --about-muted: #71685f;
-    --about-faint: #9a9085;
-    --about-line: rgba(64, 55, 45, 0.14);
-    --about-accent: #8a5a2b;
-    --about-accent-soft: rgba(138, 90, 43, 0.10);
-    --about-green: #3f6f5f;
-    margin: 0 -15px 0;
-    padding: 46px 15px 72px;
-    color: var(--about-ink);
-    background:
-        radial-gradient(circle at 88% 8%, rgba(138, 90, 43, 0.08), transparent 260px),
-        linear-gradient(180deg, #fffdf8 0%, #f8f3ea 100%);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-}
-
-.about-shell {
-    max-width: 920px;
+    max-width: 750px;
     margin: 0 auto;
+    padding: 10px 0 60px;
+    color: #404040;
+    font-size: 16px;
+    line-height: 1.85;
 }
 
-.about-note {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 42px;
-    align-items: start;
-    padding: 44px 0 34px;
-    border-top: 1px solid var(--about-line);
-}
-
-.about-note:first-child {
-    border-top: 0;
-    padding-top: 12px;
-}
-
+/* ---------- profile row ---------- */
 .about-profile {
-    position: sticky;
-    top: 88px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 34px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #eee;
 }
 
 .about-badges {
     display: flex;
-    gap: 10px;
-    margin-bottom: 22px;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 .about-badge {
-    width: 54px;
-    height: 54px;
-    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     object-fit: cover;
+    border: 1px solid #e8e8e8;
     background: #fff;
-    border: 1px solid var(--about-line);
 }
 
-.about-name {
-    margin: 0 0 8px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-}
-
-.about-role {
-    margin: 0 0 16px;
-    color: var(--about-muted);
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.about-small-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--about-accent) !important;
-    font-size: 14px;
-    text-decoration: none !important;
-    border-bottom: 1px solid rgba(138, 90, 43, 0.26);
-}
-
-.about-small-link:hover {
-    color: #5f3b18 !important;
-    border-bottom-color: currentColor;
-}
-
-.about-kicker {
-    margin: 0 0 14px;
-    color: var(--about-faint);
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.about-title {
-    margin: 0 0 18px;
-    max-width: 640px;
-    color: var(--about-ink);
-    font-size: 26px;
-    font-weight: 500;
-    letter-spacing: -0.015em;
+.about-profile-text {
     line-height: 1.55;
 }
 
-.about-lede,
-.about-section p {
-    margin: 0 0 15px;
-    color: var(--about-muted);
-    font-size: 16px;
-    line-height: 1.95;
+.about-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #404040;
 }
 
-.about-lede:last-child,
+.about-tagline {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: #888;
+}
+
+/* ---------- sections ---------- */
+.about-section {
+    margin-bottom: 36px;
+}
+
+.about-section h2 {
+    margin: 0 0 14px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #404040;
+}
+
+.about-section p {
+    margin: 0 0 14px;
+}
+
 .about-section p:last-child {
     margin-bottom: 0;
 }
 
-.about-section {
-    max-width: 690px;
-}
-
-.about-section h2 {
-    margin: 0 0 16px;
-    color: var(--about-ink);
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-}
-
-.about-section h2::before {
-    content: "";
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    margin-right: 10px;
-    border-radius: 50%;
-    background: var(--about-accent);
-    vertical-align: 2px;
-}
-
+/* ---------- topic list ---------- */
 .about-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 18px;
     margin: 0;
     padding: 0;
     list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
 }
 
 .about-list li {
-    padding: 14px 0 14px 16px;
-    border-left: 2px solid rgba(138, 90, 43, 0.22);
-    color: var(--about-muted);
+    padding: 10px 0;
     font-size: 14px;
-    line-height: 1.75;
+    color: #666;
+    line-height: 1.7;
 }
 
 .about-list strong {
     display: block;
-    margin-bottom: 3px;
-    color: var(--about-ink);
+    color: #404040;
     font-weight: 600;
+    margin-bottom: 2px;
 }
 
+/* ---------- tags ---------- */
 .about-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
+    gap: 7px;
+    margin-top: 12px;
 }
 
 .about-tag {
-    padding: 5px 10px;
-    border: 1px solid rgba(138, 90, 43, 0.22);
-    border-radius: 999px;
-    color: var(--about-muted);
-    background: rgba(255, 253, 248, 0.66);
+    padding: 4px 10px;
     font-size: 13px;
+    color: #337ab7;
+    background: rgba(51, 122, 183, 0.07);
+    border: 1px solid rgba(51, 122, 183, 0.18);
+    border-radius: 999px;
 }
 
+/* ---------- links ---------- */
 .about-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 18px;
-    margin-top: 18px;
+    gap: 12px 20px;
+    margin-top: 10px;
 }
 
 .about-link {
-    color: var(--about-accent) !important;
+    color: #337ab7 !important;
     font-size: 15px;
-    text-decoration: none !important;
-    border-bottom: 1px solid rgba(138, 90, 43, 0.28);
 }
 
 .about-link:hover {
-    color: #5f3b18 !important;
-    border-bottom-color: currentColor;
+    color: #0085a1 !important;
 }
 
+/* ---------- last-updated ---------- */
 .about-date {
     display: inline-block;
     margin-top: 18px;
-    color: var(--about-faint);
     font-size: 13px;
+    color: #aaa;
 }
 
+/* ---------- responsive ---------- */
 @media (max-width: 991px) {
-    .about-page {
-        margin: 0;
-        padding-top: 36px;
-    }
-    .about-note {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-    .about-profile {
-        position: static;
-    }
     .about-list {
         grid-template-columns: 1fr;
     }
@@ -234,89 +156,63 @@ header-img: "img/about-bg.png"
 
 @media (max-width: 520px) {
     .about-page {
-        padding-bottom: 54px;
-    }
-    .about-note {
-        padding: 32px 0 28px;
-    }
-    .about-title {
-        font-size: 22px;
-        line-height: 1.65;
-    }
-    .about-lede,
-    .about-section p {
         font-size: 15px;
+    }
+    .about-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
     }
 }
 </style>
 
 <div class="about-page">
-    <div class="about-shell">
-        <section class="about-note" aria-label="个人简介">
-            <aside class="about-profile">
-                <div class="about-badges">
-                    <img class="about-badge" src="{{ site.baseurl }}/img/hnu-badge.png" alt="湖南大学校徽">
-                    <img class="about-badge" src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="云南大学校徽">
-                </div>
-                <h2 class="about-name">skyfuryonline</h2>
-                <p class="about-role">NLP / LLM / Agent<br>写代码，也写一点生活。</p>
-                <a class="about-small-link" href="https://github.com/skyfuryonline" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </aside>
 
-            <div class="about-section">
-                <p class="about-kicker">About</p>
-                <h1 class="about-title">这里先当作一个比较随意的自留地：放代码、实验记录、工具折腾，也放一些不太成体系的日常想法。</h1>
-                <p class="about-lede">我不太想把这个页面写成正式简历。博客里的文章也大多不是“最终答案”，更像是把某段时间遇到的问题、踩过的坑、后来觉得有用的做法留一份记录。</p>
-                <p class="about-lede">如果某篇文章刚好帮你少走了一点弯路，那它就算完成任务了。</p>
-            </div>
-        </section>
-
-        <section class="about-note" aria-label="博客内容">
-            <aside class="about-profile">
-                <p class="about-kicker">Writing</p>
-            </aside>
-            <div class="about-section">
-                <h2>会写些什么</h2>
-                <p>主要还是围绕计算机相关的东西：模型训练、推理部署、评测、数据处理、Agent 工作流，以及一些为了省事写出来的小脚本。</p>
-                <p>偶尔也会记录博客维护、知识库整理、运动和生活节奏。技术之外的内容会更随手一些，不追求完整，只保留当时真实有用的部分。</p>
-                <div class="about-tags" aria-label="常见主题">
-                    <span class="about-tag">NLP / LLM</span>
-                    <span class="about-tag">Agent</span>
-                    <span class="about-tag">工程实践</span>
-                    <span class="about-tag">科研写作</span>
-                    <span class="about-tag">个人工具流</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="about-note" aria-label="当前关注">
-            <aside class="about-profile">
-                <p class="about-kicker">Now</p>
-            </aside>
-            <div class="about-section">
-                <h2>现在比较关心的事</h2>
-                <ul class="about-list">
-                    <li><strong>LLM 工程</strong>微调、评测、推理服务，以及把实验流程做得更可复现。</li>
-                    <li><strong>Agent 工作流</strong>把重复任务拆成工具、脚本和可维护的流程，而不是每次从头来。</li>
-                    <li><strong>科研写作</strong>从问题出发组织叙事，尽量让实验和结论都站得住。</li>
-                    <li><strong>个人系统</strong>博客、知识库、自动化和日常安排，能少消耗一点注意力就好。</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="about-note" aria-label="联系与链接">
-            <aside class="about-profile">
-                <p class="about-kicker">Links</p>
-            </aside>
-            <div class="about-section">
-                <h2>可以从这里开始</h2>
-                <p>如果你对某篇文章里的内容有疑问，或者只是想交流类似的折腾，欢迎通过 GitHub 找到我。</p>
-                <div class="about-links">
-                    <a class="about-link" href="https://github.com/skyfuryonline" target="_blank" rel="noopener noreferrer">GitHub · skyfuryonline</a>
-                    <a class="about-link" href="{{ site.baseurl }}/tags/">浏览文章标签</a>
-                </div>
-                <span class="about-date">Last updated: 2026-05</span>
-            </div>
-        </section>
+    <div class="about-profile">
+        <div class="about-badges">
+            <img class="about-badge" src="{{ site.baseurl }}/img/hnu-badge.png" alt="湖南大学校徽">
+            <img class="about-badge" src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="云南大学校徽">
+        </div>
+        <div class="about-profile-text">
+            <span class="about-name">skyfuryonline</span>
+            <p class="about-tagline">NLP / LLM / Agent · 写代码，也写一点生活。</p>
+        </div>
     </div>
+
+    <div class="about-section">
+        <p>这个博客主要放代码实验、工具折腾和偶尔的日常记录。文章大多不是"最终答案"，更像是把某段时间遇到的问题和后来觉得有用的做法留一份存档。如果碰巧帮你少走了一点弯路，那就算完成任务了。</p>
+    </div>
+
+    <div class="about-section">
+        <h2>会写些什么</h2>
+        <p>主要还是模型训练、推理部署、评测、数据处理、Agent 工作流，以及一些为了省事写的小脚本。偶尔也会记录博客维护、知识库整理和日常节奏。技术之外的内容更随手，不追求完整，只保留真实有用的部分。</p>
+        <div class="about-tags">
+            <span class="about-tag">NLP / LLM</span>
+            <span class="about-tag">Agent</span>
+            <span class="about-tag">工程实践</span>
+            <span class="about-tag">科研写作</span>
+            <span class="about-tag">个人工具流</span>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h2>现在关心的事</h2>
+        <ul class="about-list">
+            <li><strong>LLM 工程</strong>微调、评测、推理服务，让实验流程更可复现。</li>
+            <li><strong>Agent 工作流</strong>把重复任务拆成工具和脚本，不每次从头来。</li>
+            <li><strong>科研写作</strong>从问题出发组织叙事，实验和结论尽量站得住。</li>
+            <li><strong>个人系统</strong>博客、知识库、自动化，能少消耗一点注意力就好。</li>
+        </ul>
+    </div>
+
+    <div class="about-section">
+        <h2>可以从这里开始</h2>
+        <p>如果对某篇文章有疑问，或者想交流类似的折腾，欢迎通过 GitHub 找到我。</p>
+        <div class="about-links">
+            <a class="about-link" href="https://github.com/skyfuryonline" target="_blank" rel="noopener noreferrer">GitHub · skyfuryonline</a>
+            <a class="about-link" href="{{ site.baseurl }}/tags/">浏览文章标签</a>
+        </div>
+        <span class="about-date">Last updated: 2026-05</span>
+    </div>
+
 </div>
