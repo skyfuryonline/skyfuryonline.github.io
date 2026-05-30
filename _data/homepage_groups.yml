@@ -20,6 +20,7 @@
   group_image: "/img/cover-zaji.png"
   group_description: "记录个人博客搭建的过程"
   posts:
+    - "2026-05-30-blog-dev-guide-tags-redesign.md"
     - "2026-03-24-blog-dev-guide-architecture.md"
     - "2026-03-24-blog-dev-guide-cicd.md"
     - "2026-03-24-blog-dev-guide-crawler-llm.md"
