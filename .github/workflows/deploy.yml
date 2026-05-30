@@ -49,13 +49,19 @@ jobs:
       - name: Move private content into main
         run: |
           # Use rsync for robust directory merging
-          mkdir -p main/_gwy_logs main/_gwy_reports main/img/gwy main/_data
+          mkdir -p main/_gwy_logs main/_gwy_reports main/img/gwy main/_data main/daily-html
           rsync -av private-source/_gwy_logs/ main/_gwy_logs/
           rsync -av private-source/_gwy_reports/ main/_gwy_reports/
           rsync -av private-source/gwy/ main/img/gwy/
+          if [ -d private-source/daily-html ]; then
+            rsync -av --delete private-source/daily-html/ main/daily-html/
+          fi
           # Copy the new sources file from the root of the private repo
           if [ -f private-source/gwy_sources.yml ]; then
             cp private-source/gwy_sources.yml main/_data/gwy_sources.yml
+          fi
+          if [ -f private-source/daily-html/index.json ]; then
+            cp private-source/daily-html/index.json main/_data/daily_html_reports.json
           fi
       
       - name: Setup Python 🐍

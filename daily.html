@@ -1200,11 +1200,28 @@ http_headers:
       <span class="pixel-news-subtitle">click item → source · esc/× → back</span>
       <span class="pixel-news-close" title="点击返回">✕</span>
     </div>
+    {% assign html_reports = site.data.daily_html_reports %}
     <div class="pixel-news-hint">
-      读取 <code>_data/daily_news.yml/json</code> 的新闻条目；没有数据时只显示信息源入口。
+      {% if html_reports and html_reports.size > 0 %}
+        最新 HTML 报告：<a class="news-source" href="{{ site.baseurl }}/{{ html_reports[0].path }}" target="_blank" rel="noopener noreferrer">{{ html_reports[0].title }}</a>
+      {% else %}
+        读取 <code>_data/daily_news.yml/json</code> 或 <code>daily-html/index.json</code>；没有数据时只显示信息源入口。
+      {% endif %}
     </div>
     <div class="pixel-news-body">
-      {% if daily_news and daily_news.size > 0 %}
+      {% if html_reports and html_reports.size > 0 %}
+        {% for report in html_reports limit:6 %}
+          <div class="news-item {% if forloop.first %}hot{% endif %}" data-link="{{ site.baseurl }}/{{ report.path }}">
+            <span class="news-tag">{% if forloop.first %}🔥 {% endif %}{{ report.type | default: "HTML" }}</span>
+            <div class="news-headline">{{ report.title }}</div>
+            {% if report.summary %}<div class="news-summary">{{ report.summary | strip_html | truncate: 120 }}</div>{% endif %}
+            <div class="news-meta">
+              <a class="news-source" href="{{ site.baseurl }}/{{ report.path }}" target="_blank" rel="noopener noreferrer">打开 HTML 报告</a>
+              {% if report.date %} · {{ report.date }}{% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% elsif daily_news and daily_news.size > 0 %}
         {% for item in daily_news limit:18 %}
           {% assign item_title = item.title | default: item.headline | default: item.name %}
           {% assign item_url = item.url | default: item.link | default: item.source_url %}
