@@ -436,16 +436,6 @@ http_headers:
     padding: 20px 0 35px;
     cursor: pointer;
 }
-.coming-soon-section.news-open {
-    width: 96vw;
-    max-width: 1100px;
-    margin-left: calc(50% - 48vw);
-}
-@media (min-width: 1146px) {
-    .coming-soon-section.news-open {
-        margin-left: calc(50% - 550px);
-    }
-}
 .pixel-office-card {
     --pixel-bg: #1f2a44;
     --pixel-wall: #28385f;
@@ -844,11 +834,10 @@ http_headers:
 
 /* ---------------- Pixel News Card (toggle) ---------------- */
 .coming-soon-section.news-open {
-    align-items: flex-start;
+    align-items: center;
 }
 .pixel-news-card {
-    width: 100%;
-    max-width: none;
+    width: min(100%, 760px);
     position: relative;
     background: #f7efe1;
     border: 4px solid #172033;
@@ -856,11 +845,11 @@ http_headers:
     padding: 12px;
     font-family: "Courier New", "SFMono-Regular", Consolas, monospace;
     image-rendering: pixelated;
-    animation: pixelNewsZoom 0.32s ease;
+    animation: pixelNewsReveal 0.34s cubic-bezier(.2,.8,.2,1);
 }
-@keyframes pixelNewsZoom {
-    from { opacity: 0; transform: scale(0.94); }
-    to   { opacity: 1; transform: scale(1); }
+@keyframes pixelNewsReveal {
+    from { opacity: 0; transform: translateY(10px) scale(0.985); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .pixel-news-subtitle {
     font-size: 11px;
@@ -907,17 +896,18 @@ http_headers:
 .pixel-news-body {
     border: 4px solid #172033;
     border-top: 0;
-    min-height: 420px;
-    max-height: min(72vh, 760px);
+    height: 420px;
+    max-height: 62vh;
     overflow-y: auto;
-    padding: 14px;
-    background: #1a2338;
+    padding: 12px 14px 14px;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(102,194,255,0.10), transparent 32%),
+      linear-gradient(180deg, #1a2338 0%, #121a2b 100%);
     scrollbar-width: thin;
     scrollbar-color: #3d4f78 #1a2338;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 10px;
-    align-content: start;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 .pixel-news-body::-webkit-scrollbar {
     width: 6px;
@@ -930,36 +920,43 @@ http_headers:
     border-radius: 3px;
 }
 .news-item {
-    padding: 12px 13px;
+    padding: 10px 12px;
     border: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.025);
+    border-left: 3px solid rgba(102,194,255,0.28);
+    background: rgba(255,255,255,0.028);
     cursor: pointer;
     transition: background 0.2s, transform 0.2s, border-color 0.2s;
-    min-height: 116px;
-    display: flex;
-    flex-direction: column;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "tag title"
+      "meta meta";
+    column-gap: 10px;
+    row-gap: 4px;
+    align-items: start;
 }
 .news-item:last-child {
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .news-item:hover {
     background: rgba(255,255,255,0.06);
-    border-color: rgba(102,194,255,0.25);
-    transform: translateY(-2px);
+    border-color: rgba(102,194,255,0.32);
+    border-left-color: #66c2ff;
+    transform: translateX(2px);
 }
 .news-item.hot {
-    background: rgba(255,93,93,0.10);
-    border-left: 4px solid #ff5d5d;
+    background: linear-gradient(90deg, rgba(255,93,93,0.16), rgba(255,255,255,0.03));
+    border-left: 3px solid #ff5d5d;
 }
 .news-summary {
+    grid-column: 1 / -1;
     color: #b9c7dc;
     font-size: 12px;
     line-height: 1.55;
-    margin: 5px 0 8px;
-    flex: 1;
+    margin: 2px 0 4px;
 }
 .news-empty {
-    grid-column: 1 / -1;
     color: #c9d7ee;
     line-height: 1.7;
     padding: 18px;
@@ -979,6 +976,7 @@ http_headers:
     text-decoration: none;
 }
 .news-tag {
+    grid-area: tag;
     display: inline-block;
     font-size: 10px;
     font-weight: 700;
@@ -993,6 +991,7 @@ http_headers:
     background: #ff5d5d;
 }
 .news-headline {
+    grid-area: title;
     font-size: 14px;
     font-weight: 600;
     color: #e8edf5;
@@ -1004,6 +1003,7 @@ http_headers:
     font-size: 15px;
 }
 .news-meta {
+    grid-area: meta;
     font-size: 11px;
     color: #8a9bb5;
     letter-spacing: 0.5px;
@@ -1096,21 +1096,19 @@ http_headers:
         font-size: 11px;
         padding: 0 8px;
     }
-    .coming-soon-section.news-open {
-        width: calc(100vw - 28px);
-        margin-left: calc(50% - 50vw + 14px);
-    }
     .pixel-news-card {
         width: 100%;
     }
+    .pixel-news-subtitle {
+        display: none;
+    }
     .pixel-news-body {
-        min-height: 340px;
-        max-height: 68vh;
+        height: 360px;
+        max-height: 62vh;
         padding: 8px 10px;
-        display: block;
     }
     .news-item {
-        min-height: 0;
+        display: block;
         margin-bottom: 8px;
     }
     .news-headline {
@@ -1203,7 +1201,7 @@ http_headers:
       <span class="pixel-news-close" title="点击返回">✕</span>
     </div>
     <div class="pixel-news-hint">
-      这里会优先读取 blog-source / data 分支同步到 <code>_data/daily_news.yml</code> 或 <code>_data/daily_news.json</code> 的新闻条目；没有数据时显示信息源入口，避免把占位新闻当成真实新闻。
+      读取 <code>_data/daily_news.yml/json</code> 的新闻条目；没有数据时只显示信息源入口。
     </div>
     <div class="pixel-news-body">
       {% if daily_news and daily_news.size > 0 %}
