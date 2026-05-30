@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Toggle Test</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px;
+  font-family: "Courier New", "SFMono-Regular", Consolas, monospace;
+}
+
+/* ---------------- Pixel Office Coming Soon ---------------- */
+.coming-soon-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    z-index: 10;
+    padding: 20px 0 35px;
+    cursor: pointer;
+}
+.pixel-office-card {
+    --pixel-bg: #1f2a44;
+    --pixel-wall: #28385f;
+    --pixel-window: #90d7ff;
+    --pixel-window-dark: #4e88b8;
+    --pixel-floor: #73513b;
+    --pixel-floor-dark: #533827;
+    --pixel-line: #172033;
+    --pixel-glow: #ffe8a6;
+    width: min(100%, 760px);
+    background: #f7efe1;
+    border: 4px solid var(--pixel-line);
+    border-radius: 0;
+    box-shadow: 8px 8px 0 rgba(23, 32, 51, 0.18), 0 18px 35px rgba(0,0,0,0.08);
+    padding: 12px;
+    image-rendering: pixelated;
+}
+.pixel-office-toolbar {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #2f3f68;
+    border: 4px solid var(--pixel-line);
+    border-bottom: 0;
+    color: #fff4d6;
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.pixel-office-lights { display: flex; gap: 6px; }
+.pixel-office-lights i {
+    width: 10px; height: 10px; display: block;
+    background: #ff5d5d;
+    box-shadow: inset -2px -2px 0 rgba(0,0,0,.22);
+}
+.pixel-office-lights i:nth-child(2) { background: #ffd166; }
+.pixel-office-lights i:nth-child(3) { background: #50d890; }
+.pixel-office-scene {
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+    border: 4px solid var(--pixel-line);
+    background:
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(0deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(180deg, #263b68 0%, var(--pixel-wall) 68%, var(--pixel-floor) 68%, var(--pixel-floor) 100%);
+}
+.pixel-office-scene::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 32%;
+    background:
+        repeating-linear-gradient(90deg, transparent 0 38px, rgba(23,32,51,.22) 38px 42px),
+        repeating-linear-gradient(0deg, transparent 0 22px, rgba(83,56,39,.65) 22px 26px);
+    pointer-events: none;
+}
+.pixel-window {
+    position: absolute; top: 36px; left: 42px; width: 190px; height: 124px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.32), transparent 40%),
+        linear-gradient(135deg, var(--pixel-window) 0 48%, var(--pixel-window-dark) 49% 100%);
+    border: 5px solid var(--pixel-line);
+    box-shadow: inset 0 -10px 0 rgba(23,32,51,.15), 7px 7px 0 rgba(23,32,51,.16);
+}
+.pixel-window::before,
+.pixel-window::after {
+    content: ""; position: absolute; background: var(--pixel-line);
+}
+.pixel-window::before { left: 50%; top: 0; width: 5px; height: 100%; transform: translateX(-50%); }
+.pixel-window::after { left: 0; top: 50%; width: 100%; height: 5px; transform: translateY(-50%); }
+.pixel-skyline {
+    position: absolute; left: 12px; right: 12px; bottom: 0; height: 38px;
+    background:
+      linear-gradient(#35527e,#35527e) 0 14px / 26px 24px no-repeat,
+      linear-gradient(#2d446b,#2d446b) 38px 2px / 34px 36px no-repeat,
+      linear-gradient(#3e5d8d,#3e5d8d) 86px 20px / 30px 18px no-repeat,
+      linear-gradient(#314a74,#314a74) 128px 8px / 36px 30px no-repeat;
+    opacity: .9;
+}
+.pixel-clock {
+    position: absolute; top: 43px; right: 62px; width: 62px; height: 62px;
+    background: #fff4d6; border: 5px solid var(--pixel-line);
+    box-shadow: 5px 5px 0 rgba(23,32,51,.16);
+}
+.pixel-clock::before {
+    content: ""; position: absolute; left: 28px; top: 12px; width: 5px; height: 22px;
+    background: var(--pixel-line); transform-origin: bottom center;
+    animation: pixelTick 12s steps(12) infinite;
+}
+.pixel-clock::after {
+    content: ""; position: absolute; left: 29px; top: 28px; width: 18px; height: 5px;
+    background: var(--pixel-line);
+}
+.pixel-desk {
+    position: absolute; left: 50%; bottom: 60px; width: 430px; height: 72px;
+    transform: translateX(-50%);
+    background: #9d6b43; border: 5px solid var(--pixel-line);
+    box-shadow: inset 0 -14px 0 #6c452d, 8px 8px 0 rgba(23,32,51,.16);
+    z-index: 4;
+}
+.pixel-desk::before,
+.pixel-desk::after {
+    content: ""; position: absolute; bottom: -70px; width: 34px; height: 70px;
+    background: #6c452d; border: 5px solid var(--pixel-line); border-top: 0;
+}
+.pixel-desk::before { left: 34px; }
+.pixel-desk::after { right: 34px; }
+.pixel-monitor {
+    position: absolute; left: 50%; bottom: 132px; width: 220px; height: 132px;
+    transform: translateX(-50%);
+    background: #20283f; border: 6px solid var(--pixel-line);
+    box-shadow: 7px 7px 0 rgba(23,32,51,.18); z-index: 5;
+}
+.pixel-monitor::before {
+    content: ""; position: absolute; left: 14px; right: 14px; top: 14px; bottom: 24px;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.09) 1px, transparent 1px) 0 0 / 12px 12px,
+      linear-gradient(0deg, rgba(255,255,255,.08) 1px, transparent 1px) 0 0 / 12px 12px,
+      #10182a;
+    border: 4px solid #0b1020;
+    box-shadow: 0 0 0 4px rgba(144,215,255,.1), inset 0 0 18px rgba(80,216,144,.18);
+}
+.pixel-monitor::after {
+    content: "COMING SOON"; position: absolute; left: 30px; top: 44px;
+    color: #50d890; font-size: 18px; font-weight: 800; letter-spacing: 2px;
+    text-shadow: 2px 0 0 rgba(80,216,144,.25);
+    animation: pixelBlink 1.6s steps(2) infinite;
+}
+.pixel-monitor-stand {
+    position: absolute; left: 50%; bottom: 100px; width: 70px; height: 36px;
+    transform: translateX(-50%);
+    background: #20283f; border: 5px solid var(--pixel-line); z-index: 4;
+}
+.pixel-keyboard {
+    position: absolute; left: 50%; bottom: 104px; width: 190px; height: 26px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(90deg, #edf2f4 0 12px, #cbd5e1 12px 16px);
+    border: 4px solid var(--pixel-line); z-index: 6;
+}
+.pixel-mug {
+    position: absolute; left: calc(50% + 150px); bottom: 120px; width: 38px; height: 44px;
+    background: #ff6b6b; border: 5px solid var(--pixel-line);
+    box-shadow: inset -8px 0 0 rgba(0,0,0,.16); z-index: 6;
+}
+.pixel-mug::before {
+    content: ""; position: absolute; right: -20px; top: 10px; width: 16px; height: 18px;
+    border: 5px solid var(--pixel-line); border-left: 0;
+}
+.pixel-mug::after {
+    content: ""; position: absolute; left: 6px; top: -22px; width: 5px; height: 18px;
+    background: rgba(255,255,255,.72);
+    box-shadow: 12px -5px 0 rgba(255,255,255,.48);
+    animation: pixelSteam 2.4s steps(4) infinite;
+}
+.pixel-plant {
+    position: absolute; left: calc(50% - 214px); bottom: 120px; width: 46px; height: 40px;
+    background: #d98245; border: 5px solid var(--pixel-line); z-index: 6;
+}
+.pixel-plant::before {
+    content: ""; position: absolute; left: -12px; bottom: 34px; width: 68px; height: 58px;
+    background:
+      linear-gradient(#50d890,#50d890) 18px 6px / 14px 42px no-repeat,
+      linear-gradient(#36a36f,#36a36f) 34px 18px / 14px 34px no-repeat,
+      linear-gradient(#50d890,#50d890) 2px 22px / 18px 14px no-repeat,
+      linear-gradient(#36a36f,#36a36f) 48px 4px / 18px 16px no-repeat;
+    animation: pixelPlant 3s steps(3) infinite;
+}
+.pixel-lamp {
+    position: absolute; right: 190px; bottom: 134px; width: 76px; height: 118px; z-index: 5;
+}
+.pixel-lamp::before {
+    content: ""; position: absolute; left: 32px; bottom: 0; width: 8px; height: 84px;
+    background: var(--pixel-line);
+}
+.pixel-lamp::after {
+    content: ""; position: absolute; left: 8px; top: 0; width: 58px; height: 34px;
+    background: #ffd166; border: 5px solid var(--pixel-line);
+    box-shadow: 0 0 0 8px rgba(255,209,102,.12), 0 0 30px rgba(255,209,102,.3);
+    animation: pixelLamp 2s steps(2) infinite;
+}
+.pixel-cat {
+    position: absolute; left: calc(50% + 228px); bottom: 54px; width: 74px; height: 42px;
+    background: #2d2a32; border: 5px solid var(--pixel-line); z-index: 5;
+}
+.pixel-cat::before {
+    content: ""; position: absolute; left: 8px; top: -30px; width: 42px; height: 32px;
+    background:
+      linear-gradient(135deg, transparent 0 48%, #2d2a32 49%) 0 -15px / 20px 20px no-repeat,
+      linear-gradient(225deg, transparent 0 48%, #2d2a32 49%) 22px -15px / 20px 20px no-repeat,
+      #2d2a32;
+    border: 5px solid var(--pixel-line); border-bottom: 0;
+}
+.pixel-cat::after {
+    content: ""; position: absolute; right: -26px; top: 0; width: 28px; height: 10px;
+    background: #2d2a32; border: 5px solid var(--pixel-line);
+    animation: pixelTail 1.8s steps(3) infinite;
+}
+.pixel-office-copy {
+    position: absolute; left: 28px; right: 28px; bottom: 18px;
+    display: flex; align-items: end; justify-content: space-between; gap: 18px;
+    color: #fff4d6; z-index: 7; pointer-events: none;
+}
+.pixel-office-copy p {
+    margin: 8px 0 0; color: #c9d7ee; font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+}
+.pixel-progress {
+    min-width: 180px; color: #fff4d6; font-size: 12px; font-weight: 700; text-align: right;
+}
+.pixel-progress-bar {
+    display: block; height: 16px; margin-top: 8px; background: #10182a;
+    border: 4px solid var(--pixel-line);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.06);
+}
+.pixel-progress-bar i {
+    display: block; width: 68%; height: 100%;
+    background: repeating-linear-gradient(90deg, #50d890 0 12px, #36a36f 12px 16px);
+    animation: pixelLoading 2.8s steps(6) infinite alternate;
+}
+@keyframes pixelBlink { 0%, 70% { opacity: 1; } 71%, 100% { opacity: .45; } }
+@keyframes pixelTick { to { transform: rotate(360deg); } }
+@keyframes pixelSteam { 0% { transform: translateY(6px); opacity: .15; } 50% { opacity: .75; } 100% { transform: translateY(-8px); opacity: 0; } }
+@keyframes pixelPlant { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(2px); } }
+@keyframes pixelLamp { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.13); } }
+@keyframes pixelTail { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pixelLoading { from { width: 48%; } to { width: 82%; } }
+
+/* ---------------- Pixel News Card (toggle) ---------------- */
+.pixel-news-card {
+    width: min(100%, 760px);
+    background: #f7efe1;
+    border: 4px solid #172033;
+    box-shadow: 8px 8px 0 rgba(23, 32, 51, 0.18), 0 18px 35px rgba(0,0,0,0.08);
+    padding: 12px;
+    image-rendering: pixelated;
+    animation: pixelFadeIn 0.4s ease;
+}
+@keyframes pixelFadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.pixel-news-toolbar {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #2f3f68;
+    border: 4px solid #172033;
+    border-bottom: 0;
+    color: #fff4d6;
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.pixel-news-close {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0 4px;
+    color: #ff5d5d;
+    transition: color 0.2s;
+}
+.pixel-news-close:hover {
+    color: #ff8a8a;
+}
+.pixel-news-body {
+    border: 4px solid #172033;
+    border-top: 0;
+    min-height: 360px;
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 10px 14px;
+    background: #1a2338;
+    scrollbar-width: thin;
+    scrollbar-color: #3d4f78 #1a2338;
+}
+.pixel-news-body::-webkit-scrollbar { width: 6px; }
+.pixel-news-body::-webkit-scrollbar-track { background: #1a2338; }
+.pixel-news-body::-webkit-scrollbar-thumb { background: #3d4f78; border-radius: 3px; }
+.news-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.news-item:last-child { border-bottom: none; }
+.news-item:hover { background: rgba(255,255,255,0.04); }
+.news-item.hot {
+    background: rgba(255,93,93,0.08);
+    border-left: 3px solid #ff5d5d;
+    margin: 0 -12px 0 -3px;
+    padding-left: 12px;
+}
+.news-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+    color: #fff;
+    background: #3d4f78;
+    text-transform: uppercase;
+}
+.news-item.hot .news-tag { background: #ff5d5d; }
+.news-headline {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e8edf5;
+    line-height: 1.5;
+    margin-bottom: 2px;
+}
+.news-item.hot .news-headline { color: #fff; font-size: 15px; }
+.news-meta {
+    font-size: 11px;
+    color: #8a9bb5;
+    letter-spacing: 0.5px;
+}
+
+/* Hint text */
+.click-hint {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #7f8c8d;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div style="width:100%; display:flex; flex-direction:column; align-items:center;">
+  <div class="coming-soon-section" id="pixelToggleArea">
+    <div class="pixel-office-card">
+      <div class="pixel-office-toolbar">
+        <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span>LH DAILY LAB</span>
+        <span>v0.2</span>
+      </div>
+      <div class="pixel-office-scene">
+        <div class="pixel-window" aria-hidden="true"><div class="pixel-skyline"></div></div>
+        <div class="pixel-clock" aria-hidden="true"></div>
+        <div class="pixel-lamp" aria-hidden="true"></div>
+        <div class="pixel-monitor" aria-hidden="true"></div>
+        <div class="pixel-monitor-stand" aria-hidden="true"></div>
+        <div class="pixel-desk" aria-hidden="true"></div>
+        <div class="pixel-keyboard" aria-hidden="true"></div>
+        <div class="pixel-plant" aria-hidden="true"></div>
+        <div class="pixel-mug" aria-hidden="true"></div>
+        <div class="pixel-cat" aria-hidden="true"></div>
+        <div class="pixel-office-copy">
+          <div>
+            <p>Articles, tools and daily signals are compiling...</p>
+          </div>
+          <div class="pixel-progress" aria-label="内容建设进度">
+            BUILDING
+            <span class="pixel-progress-bar"><i></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 点击切换：新闻内容（默认隐藏） -->
+    <div class="pixel-news-card" id="pixelNewsCard" style="display:none;">
+      <div class="pixel-news-toolbar">
+        <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span>📰 LH DAILY NEWS</span>
+        <span class="pixel-news-close" title="点击返回">✕</span>
+      </div>
+      <div class="pixel-news-body">
+        <div class="news-item hot">
+          <span class="news-tag">🔥 头条</span>
+          <div class="news-headline">习近平主持召开中央政治局会议 分析研究当前经济形势</div>
+          <div class="news-meta">新华社 · 18分钟前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">国际</span>
+          <div class="news-headline">G7领导人峰会发表联合声明 聚焦人工智能监管框架</div>
+          <div class="news-meta">Reuters · 2小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">科技</span>
+          <div class="news-headline">OpenAI 发布 GPT-5 预览版 推理能力大幅提升</div>
+          <div class="news-meta">The Verge · 3小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">国际</span>
+          <div class="news-headline">Fed Holds Interest Rates Steady at 4.50%, Signals Cut Later This Year</div>
+          <div class="news-meta">Bloomberg · 4小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">国内</span>
+          <div class="news-headline">嫦娥七号探测器成功发射 开启月球南极探测新征程</div>
+          <div class="news-meta">央视新闻 · 5小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">科技</span>
+          <div class="news-headline">Google DeepMind 发布全新蛋白质预测模型 AlphaFold 4</div>
+          <div class="news-meta">TechCrunch · 6小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">国际</span>
+          <div class="news-headline">EU Digital Markets Act Forces Apple to Open iMessage to Rivals</div>
+          <div class="news-meta">Financial Times · 7小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">国内</span>
+          <div class="news-headline">长三角一体化发展取得新突破 跨省通办事项新增60项</div>
+          <div class="news-meta">人民日报 · 8小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">科技</span>
+          <div class="news-headline">Anthropic 发布 Claude 5 上下文窗口扩展至200万token</div>
+          <div class="news-meta">Wired · 9小时前</div>
+        </div>
+        <div class="news-item">
+          <span class="news-tag">国际</span>
+          <div class="news-headline">Tesla Robotaxi Service Launches in San Francisco, Phoenix</div>
+          <div class="news-meta">CNBC · 10小时前</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="click-hint" id="clickHint">▸ 点击切换 / 点击 ✕ 返回 ◂</div>
+</div>
+
+<script>
+(function() {
+  var area = document.getElementById('pixelToggleArea');
+  var pixelCard = area.querySelector('.pixel-office-card');
+  var newsCard = document.getElementById('pixelNewsCard');
+  var closeBtn = document.querySelector('.pixel-news-close');
+
+  function showNews(e) {
+    if (e) e.stopPropagation();
+    if (newsCard.style.display !== 'none') return;
+    pixelCard.style.display = 'none';
+    newsCard.style.display = '';
+  }
+
+  function showPixel(e) {
+    if (e) e.stopPropagation();
+    if (pixelCard.style.display !== 'none') return;
+    newsCard.style.display = 'none';
+    pixelCard.style.display = '';
+  }
+
+  area.addEventListener('click', showNews);
+  if (closeBtn) closeBtn.addEventListener('click', showPixel);
+})();
+</script>
+</body>
+</html>
