@@ -2,69 +2,94 @@
 layout: default
 title: "TAGS"
 nav-order: 3
-description: "把文章、专栏和标签整理成一张可探索的知识地图"
+description: "在主题、标签与文章之间快速定位"
 header-img: "img/tag-bg.png"
 ---
 
 <style>
-/* ── Curated Tags Atlas ── */
+/* ── Editorial Tags Index ── */
 
 .tags-atlas {
-    padding: 34px 0 56px;
-    color: #1f2937;
+    --paper: #fffdf8;
+    --paper-soft: #f7f3ea;
+    --paper-card: #ffffff;
+    --ink: #27221d;
+    --muted: #716a61;
+    --faint: #9a9287;
+    --line: rgba(70, 55, 36, 0.14);
+    --line-strong: rgba(70, 55, 36, 0.22);
+    --accent: #8a5a2b;
+    --accent-dark: #5f3c1d;
+    --accent-soft: #f4eadc;
+    --blue: #2f6f9f;
+    padding: 34px 0 58px;
+    color: var(--ink);
+    background:
+        linear-gradient(180deg, rgba(247, 243, 234, 0.72) 0%, rgba(255, 253, 248, 0) 320px);
 }
 
 .atlas-hero {
     position: relative;
     overflow: hidden;
-    margin-bottom: 30px;
-    padding: 30px;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 28px;
+    margin-bottom: 28px;
+    padding: 34px 34px 28px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
     background:
-        radial-gradient(circle at 12% 15%, rgba(0, 113, 227, 0.14), transparent 32%),
-        radial-gradient(circle at 88% 0%, rgba(112, 44, 249, 0.12), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #f7f9ff 48%, #f6fbff 100%);
-    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+        linear-gradient(90deg, rgba(138, 90, 43, 0.06) 0 1px, transparent 1px) 0 0 / 28px 28px,
+        linear-gradient(180deg, rgba(138, 90, 43, 0.05) 0 1px, transparent 1px) 0 0 / 28px 28px,
+        var(--paper);
+    box-shadow: 0 18px 42px rgba(70, 55, 36, 0.08);
+}
+
+.atlas-hero::after {
+    content: "";
+    position: absolute;
+    right: -82px;
+    top: -92px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(138, 90, 43, 0.16);
+    background: radial-gradient(circle, rgba(138, 90, 43, 0.11), transparent 62%);
 }
 
 .atlas-kicker {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-    color: #2563eb;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: var(--accent-dark);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
 }
 
 .atlas-kicker::before {
     content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: #2563eb;
-    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.12);
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
 }
 
 .atlas-title {
     margin: 0 0 10px;
-    max-width: 780px;
-    font-size: 32px;
-    font-weight: 750;
+    max-width: 760px;
+    font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+    font-size: 34px;
+    font-weight: 700;
     line-height: 1.22;
-    letter-spacing: -0.04em;
-    color: #111827;
+    letter-spacing: -0.02em;
+    color: var(--ink);
 }
 
 .atlas-description {
     margin: 0;
-    max-width: 760px;
-    color: #5b6472;
+    max-width: 720px;
+    color: var(--muted);
     font-size: 16px;
-    line-height: 1.75;
+    line-height: 1.85;
 }
 
 .atlas-stats {
@@ -75,37 +100,36 @@ header-img: "img/tag-bg.png"
 }
 
 .stat-card {
-    padding: 18px 18px 16px;
-    border: 1px solid rgba(15, 23, 42, 0.07);
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.76);
-    backdrop-filter: blur(12px);
+    padding: 17px 18px 15px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.72);
 }
 
 .stat-num {
     display: block;
-    color: #0f172a;
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
     font-size: 30px;
-    font-weight: 760;
+    font-weight: 700;
     line-height: 1;
-    letter-spacing: -0.04em;
 }
 
 .stat-label {
     display: block;
     margin-top: 8px;
-    color: #6b7280;
+    color: var(--muted);
     font-size: 13px;
     font-weight: 600;
 }
 
 .atlas-panel {
-    margin-bottom: 34px;
+    margin-bottom: 32px;
     padding: 22px;
-    border: 1px solid #e8edf5;
-    border-radius: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
     background: #ffffff;
-    box-shadow: 0 16px 44px rgba(15, 23, 42, 0.055);
+    box-shadow: 0 12px 28px rgba(70, 55, 36, 0.055);
 }
 
 .panel-topline {
@@ -113,37 +137,37 @@ header-img: "img/tag-bg.png"
     align-items: flex-start;
     justify-content: space-between;
     gap: 18px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .panel-heading {
     margin: 0;
     font-size: 17px;
-    font-weight: 730;
-    color: #111827;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
 }
 
 .panel-note {
-    margin: 4px 0 0;
-    color: #7b8494;
+    margin: 5px 0 0;
+    color: var(--muted);
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .search-row {
     position: relative;
-    margin-bottom: 18px;
+    margin-bottom: 17px;
 }
 
 .search-row input {
     width: 100%;
     min-height: 48px;
-    border: 1px solid #dce4ef;
-    border-radius: 16px;
-    background: #f8fafc;
-    padding: 0 16px 0 44px;
-    color: #111827;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: #fffdf8;
+    padding: 0 16px 0 42px;
+    color: var(--ink);
     font-size: 15px;
     outline: none;
     transition: border 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
@@ -153,22 +177,22 @@ header-img: "img/tag-bg.png"
 .search-row::before {
     content: "⌕";
     position: absolute;
-    left: 17px;
+    left: 16px;
     top: 50%;
     transform: translateY(-53%);
-    color: #8b95a5;
-    font-size: 22px;
+    color: var(--faint);
+    font-size: 21px;
     z-index: 1;
 }
 
 .search-row input::placeholder {
-    color: #9ca3af;
+    color: var(--faint);
 }
 
 .search-row input:focus {
-    border-color: rgba(37, 99, 235, 0.42);
+    border-color: rgba(138, 90, 43, 0.48);
     background: #ffffff;
-    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.10);
+    box-shadow: 0 0 0 5px rgba(138, 90, 43, 0.10);
 }
 
 .chip-list {
@@ -188,10 +212,10 @@ header-img: "img/tag-bg.png"
     align-items: center;
     min-height: 34px;
     padding: 0 13px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--line);
     border-radius: 999px;
-    background: #ffffff;
-    color: #334155;
+    background: #fffdf8;
+    color: #51483f;
     font-size: 13px;
     font-weight: 650;
     cursor: pointer;
@@ -200,17 +224,17 @@ header-img: "img/tag-bg.png"
 }
 
 .tag-chip:hover {
-    border-color: rgba(37, 99, 235, 0.35);
-    color: #1d4ed8;
+    border-color: rgba(138, 90, 43, 0.38);
+    color: var(--accent-dark);
     transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.08);
+    box-shadow: 0 8px 18px rgba(70, 55, 36, 0.07);
 }
 
 .tag-chip.is-active {
-    border-color: #1d4ed8;
-    background: #1d4ed8;
+    border-color: var(--accent-dark);
+    background: var(--accent-dark);
     color: #ffffff;
-    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+    box-shadow: 0 10px 24px rgba(95, 60, 29, 0.20);
 }
 
 .chip-count {
@@ -221,14 +245,14 @@ header-img: "img/tag-bg.png"
     height: 20px;
     padding: 0 6px;
     border-radius: 999px;
-    background: #eff6ff;
-    color: #2563eb;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
     font-size: 11px;
     font-weight: 750;
 }
 
 .tag-chip.is-active .chip-count {
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.17);
     color: #ffffff;
 }
 
@@ -237,14 +261,14 @@ header-img: "img/tag-bg.png"
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin: 6px 0 24px;
-    padding: 14px 0 0;
-    color: #6b7280;
+    margin: 4px 0 24px;
+    padding: 12px 0 0;
+    color: var(--muted);
     font-size: 14px;
 }
 
 .result-summary strong {
-    color: #111827;
+    color: var(--ink);
 }
 
 .active-filter {
@@ -255,29 +279,29 @@ header-img: "img/tag-bg.png"
 }
 
 .active-filter-label {
-    color: #8b95a5;
+    color: var(--faint);
     font-size: 13px;
 }
 
 .clear-filter-btn {
     min-height: 30px;
     padding: 0 12px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--line);
     border-radius: 999px;
-    background: #ffffff;
-    color: #475569;
+    background: #fffdf8;
+    color: var(--muted);
     font-size: 13px;
     font-weight: 650;
     cursor: pointer;
 }
 
 .clear-filter-btn:hover {
-    border-color: #cbd5e1;
-    background: #f8fafc;
+    border-color: var(--line-strong);
+    background: var(--paper-soft);
 }
 
 .group-section {
-    margin-top: 30px;
+    margin-top: 34px;
 }
 
 .group-section:first-of-type {
@@ -289,14 +313,14 @@ header-img: "img/tag-bg.png"
     top: 0;
     z-index: 3;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 18px;
     margin-bottom: 14px;
-    padding: 12px 0;
-    background: rgba(255, 255, 255, 0.88);
+    padding: 14px 0 12px;
+    background: rgba(255, 253, 248, 0.90);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid #eef2f7;
+    border-bottom: 1px solid var(--line);
 }
 
 .group-title-wrap {
@@ -305,29 +329,30 @@ header-img: "img/tag-bg.png"
 
 .group-title {
     margin: 0;
-    color: #111827;
-    font-size: 22px;
-    font-weight: 760;
-    letter-spacing: -0.035em;
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
 }
 
 .group-description {
-    margin: 4px 0 0;
-    color: #7b8494;
+    margin: 5px 0 0;
+    color: var(--muted);
     font-size: 13px;
     line-height: 1.55;
 }
 
 .group-link {
     flex: 0 0 auto;
-    color: #2563eb;
+    color: var(--accent-dark);
     font-size: 13px;
     font-weight: 700;
     text-decoration: none;
 }
 
 .group-link:hover {
-    color: #1d4ed8;
+    color: var(--blue);
     text-decoration: none;
 }
 
@@ -341,44 +366,61 @@ header-img: "img/tag-bg.png"
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 214px;
+    min-height: 210px;
     padding: 22px;
-    border: 1px solid #e8edf5;
-    border-radius: 22px;
-    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
-    box-shadow: 0 14px 38px rgba(15, 23, 42, 0.055);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(70, 55, 36, 0.052);
     transition: transform 0.18s ease, border 0.18s ease, box-shadow 0.18s ease;
 }
 
+.post-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18px;
+    bottom: 18px;
+    width: 3px;
+    border-radius: 0 4px 4px 0;
+    background: rgba(138, 90, 43, 0.22);
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
+
 .post-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(37, 99, 235, 0.24);
-    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.09);
+    transform: translateY(-2px);
+    border-color: rgba(138, 90, 43, 0.28);
+    box-shadow: 0 18px 42px rgba(70, 55, 36, 0.085);
+}
+
+.post-card:hover::before {
+    opacity: 1;
 }
 
 .post-card-title {
     margin: 0 0 8px;
     font-size: 19px;
-    font-weight: 730;
-    line-height: 1.38;
-    letter-spacing: -0.025em;
+    font-weight: 720;
+    line-height: 1.42;
+    letter-spacing: -0.015em;
 }
 
 .post-card-title a {
-    color: #111827;
+    color: var(--ink);
     text-decoration: none;
 }
 
 .post-card-title a:hover {
-    color: #1d4ed8;
+    color: var(--blue);
     text-decoration: none;
 }
 
 .post-card-subtitle {
     margin: 0 0 12px;
-    color: #64748b;
+    color: var(--muted);
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.6;
 }
 
 .post-meta-line {
@@ -387,13 +429,13 @@ header-img: "img/tag-bg.png"
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 12px;
-    color: #94a3b8;
+    color: var(--faint);
     font-size: 12px;
     font-weight: 650;
 }
 
 .meta-sep {
-    color: #cbd5e1;
+    color: rgba(70, 55, 36, 0.25);
 }
 
 .group-badge {
@@ -402,24 +444,24 @@ header-img: "img/tag-bg.png"
     min-height: 22px;
     padding: 0 8px;
     border-radius: 999px;
-    background: #eef6ff;
-    color: #2563eb;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
 }
 
 .group-badge:hover {
-    background: #dbeafe;
-    color: #1d4ed8;
+    background: #ead8c0;
+    color: var(--accent-dark);
     text-decoration: none;
 }
 
 .post-excerpt {
     margin: 0 0 16px;
-    color: #5b6472;
+    color: var(--muted);
     font-size: 14px;
-    line-height: 1.75;
+    line-height: 1.78;
 }
 
 .post-card-footer {
@@ -444,8 +486,8 @@ header-img: "img/tag-bg.png"
     padding: 0 9px;
     border: 1px solid transparent;
     border-radius: 999px;
-    background: #eef6ff;
-    color: #2563eb;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
@@ -453,7 +495,7 @@ header-img: "img/tag-bg.png"
 }
 
 .tag-pill:hover {
-    background: #1d4ed8;
+    background: var(--accent-dark);
     color: #ffffff;
 }
 
@@ -463,8 +505,8 @@ header-img: "img/tag-bg.png"
     min-height: 23px;
     padding: 0 8px;
     border-radius: 999px;
-    background: #f1f5f9;
-    color: #64748b;
+    background: #f5f1ea;
+    color: #7f7569;
     font-size: 11px;
     font-weight: 650;
 }
@@ -473,16 +515,16 @@ header-img: "img/tag-bg.png"
     display: none;
     margin-top: 24px;
     padding: 54px 24px;
-    border: 1px dashed #cbd5e1;
-    border-radius: 24px;
+    border: 1px dashed var(--line-strong);
+    border-radius: 18px;
     text-align: center;
-    background: #f8fafc;
-    color: #7b8494;
+    background: #fffdf8;
+    color: var(--muted);
 }
 
 .empty-state h3 {
     margin: 0 0 8px;
-    color: #111827;
+    color: var(--ink);
     font-size: 18px;
     font-weight: 720;
 }
@@ -504,11 +546,11 @@ header-img: "img/tag-bg.png"
     }
     .atlas-hero,
     .atlas-panel {
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 20px;
     }
     .atlas-title {
-        font-size: 25px;
+        font-size: 26px;
     }
     .atlas-stats {
         grid-template-columns: 1fr;
@@ -547,9 +589,9 @@ header-img: "img/tag-bg.png"
         <div class="col-lg-10 col-lg-offset-1 col-md-12">
 
             <section class="atlas-hero" aria-label="Tags overview">
-                <div class="atlas-kicker">Knowledge Atlas</div>
-                <h2 class="atlas-title">用少量主标签建立入口，用专栏保持内容脉络。</h2>
-                <p class="atlas-description">这里不再把所有关键词都摊成一面墙。顶部只保留可复用的主标签，长尾术语进入文章关键词与搜索索引；下面按专栏组织文章，方便从主题线索进入阅读。</p>
+                <div class="atlas-kicker">Index</div>
+                <h2 class="atlas-title">从标签进入主题，从主题回到文章。</h2>
+                <p class="atlas-description">这里收拢了博客中的主要写作线索：大模型训练、Agent 实践、Jekyll 博客维护，以及日常工具流。你可以按标签筛选，也可以直接在专栏中浏览。</p>
                 <div class="atlas-stats">
                     <div class="stat-card">
                         <span class="stat-num">{{ site.posts.size }}</span>
@@ -569,8 +611,8 @@ header-img: "img/tag-bg.png"
             <section class="atlas-panel" aria-label="Search and filters">
                 <div class="panel-topline">
                     <div>
-                        <h2 class="panel-heading">筛选与搜索</h2>
-                        <p class="panel-note">点击主标签缩小范围；搜索框同时匹配标题、摘要、专栏、主标签和文章关键词。</p>
+                        <h2 class="panel-heading">快速定位</h2>
+                        <p class="panel-note">输入关键词，或选择一个主标签。搜索会同时匹配标题、摘要、专栏名和文章关键词。</p>
                     </div>
                 </div>
                 <div class="search-row">
@@ -683,7 +725,7 @@ header-img: "img/tag-bg.png"
                     <div class="group-header">
                         <div class="group-title-wrap">
                             <h2 class="group-title">站点维护</h2>
-                            <p class="group-description">未挂入首页专栏、但对博客维护仍有参考价值的文章。</p>
+                            <p class="group-description">关于发布流程、图片管理与博客维护的零散记录。</p>
                         </div>
                     </div>
                     <div class="post-grid">
@@ -813,7 +855,7 @@ header-img: "img/tag-bg.png"
 
         if (resultsSummary) {
             if (visibleCount === cards.length && !activeTag && !searchTerm) {
-                resultsSummary.innerHTML = '共 <strong>' + cards.length + '</strong> 篇文章，按专栏分区展示';
+                resultsSummary.innerHTML = '共 <strong>' + cards.length + '</strong> 篇文章';
             } else {
                 resultsSummary.innerHTML = '显示 <strong>' + visibleCount + '</strong> / ' + cards.length + ' 篇';
             }
