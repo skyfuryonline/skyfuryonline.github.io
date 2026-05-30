@@ -128,10 +128,24 @@ http_headers:
   background: #0077cc;
   color: #fff;
 }
-/* 媒体查询调整：移动设备上使用更大的top值以匹配移动padding（约130px + 内容） */
-@media (max-width: 767px) {
+/* 桌面窄屏/平板/手机端隐藏固定分栏，避免覆盖中间主内容。
+   固定分栏只在足够宽的桌面视口展示；小屏内容优先。 */
+@media (max-width: 1320px) {
+  #sidebar,
+  #right-sidebar {
+    display: none;
+  }
+}
+
+/* 介于 1321px-1500px 的桌面窄屏保留左栏，但收窄并降低存在感；右栏隐藏。 */
+@media (min-width: 1321px) and (max-width: 1500px) {
   #sidebar {
-    top: 230px; /* 移动设备：内边距130px + 内容约80px + 20px间距 */
+    left: 16px;
+    width: 200px;
+    padding: 16px 12px;
+  }
+  #right-sidebar {
+    display: none;
   }
 }
 /* ---------------- Right Sidebar Styles ---------------- */
@@ -242,8 +256,8 @@ http_headers:
   color: #66c0f4;
   font-weight: bold;
 }
-/* 防止在平板/手机端遮挡中间主内容，小屏幕时隐藏右侧栏 */
-@media (max-width: 1200px) {
+/* 右栏更早隐藏；1321px-1500px 的规则会覆盖/补充这里的行为。 */
+@media (max-width: 1500px) {
   #right-sidebar {
     display: none;
   }
