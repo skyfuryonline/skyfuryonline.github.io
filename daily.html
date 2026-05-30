@@ -833,19 +833,41 @@ http_headers:
 @keyframes pixelLoading { from { width: 48%; } to { width: 82%; } }
 
 /* ---------------- Pixel News Card (toggle) ---------------- */
+.coming-soon-section.news-open {
+    align-items: flex-start;
+}
 .pixel-news-card {
-    width: min(100%, 760px);
+    width: min(96vw, 1100px);
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     background: #f7efe1;
     border: 4px solid #172033;
     box-shadow: 8px 8px 0 rgba(23, 32, 51, 0.18), 0 18px 35px rgba(0,0,0,0.08);
     padding: 12px;
     font-family: "Courier New", "SFMono-Regular", Consolas, monospace;
     image-rendering: pixelated;
-    animation: pixelFadeIn 0.4s ease;
+    animation: pixelNewsZoom 0.32s ease;
 }
-@keyframes pixelFadeIn {
-    from { opacity: 0; transform: scale(0.96); }
-    to   { opacity: 1; transform: scale(1); }
+@keyframes pixelNewsZoom {
+    from { opacity: 0; transform: translateX(-50%) scale(0.94); }
+    to   { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+.pixel-news-subtitle {
+    font-size: 11px;
+    color: #c9d7ee;
+    letter-spacing: 0.8px;
+    text-transform: none;
+    white-space: nowrap;
+}
+.pixel-news-hint {
+    padding: 8px 12px;
+    color: #9fb2d0;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    line-height: 1.5;
 }
 .pixel-news-toolbar {
     height: 30px;
@@ -877,13 +899,17 @@ http_headers:
 .pixel-news-body {
     border: 4px solid #172033;
     border-top: 0;
-    min-height: 360px;
-    max-height: 420px;
+    min-height: 420px;
+    max-height: min(72vh, 760px);
     overflow-y: auto;
-    padding: 10px 14px;
+    padding: 14px;
     background: #1a2338;
     scrollbar-width: thin;
     scrollbar-color: #3d4f78 #1a2338;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 10px;
+    align-content: start;
 }
 .pixel-news-body::-webkit-scrollbar {
     width: 6px;
@@ -896,22 +922,53 @@ http_headers:
     border-radius: 3px;
 }
 .news-item {
-    padding: 10px 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 12px 13px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.025);
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    min-height: 116px;
+    display: flex;
+    flex-direction: column;
 }
 .news-item:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .news-item:hover {
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(102,194,255,0.25);
+    transform: translateY(-2px);
 }
 .news-item.hot {
-    background: rgba(255,93,93,0.08);
-    border-left: 3px solid #ff5d5d;
-    margin: 0 -12px 0 -3px;
-    padding-left: 12px;
+    background: rgba(255,93,93,0.10);
+    border-left: 4px solid #ff5d5d;
+}
+.news-summary {
+    color: #b9c7dc;
+    font-size: 12px;
+    line-height: 1.55;
+    margin: 5px 0 8px;
+    flex: 1;
+}
+.news-empty {
+    grid-column: 1 / -1;
+    color: #c9d7ee;
+    line-height: 1.7;
+    padding: 18px;
+    border: 1px dashed rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.03);
+}
+.news-source-list {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.news-source-list a {
+    color: #66c2ff;
+    border: 1px solid rgba(102,194,255,0.25);
+    padding: 4px 8px;
+    text-decoration: none;
 }
 .news-tag {
     display: inline-block;
@@ -1031,10 +1088,20 @@ http_headers:
         font-size: 11px;
         padding: 0 8px;
     }
+    .pixel-news-card {
+        width: calc(100vw - 28px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .pixel-news-body {
         min-height: 340px;
-        max-height: 360px;
+        max-height: 68vh;
         padding: 8px 10px;
+        display: block;
+    }
+    .news-item {
+        min-height: 0;
+        margin-bottom: 8px;
     }
     .news-headline {
         font-size: 12px;
@@ -1117,62 +1184,51 @@ http_headers:
   </div>
   <!-- 点击切换：新闻内容（默认隐藏） -->
   <div class="pixel-news-card" id="pixelNewsCard" style="display:none;">
+    {% assign daily_news = site.data.daily_news %}
+    {% unless daily_news %}{% assign daily_news = site.data.news %}{% endunless %}
     <div class="pixel-news-toolbar">
       <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
       <span>📰 LH DAILY NEWS</span>
+      <span class="pixel-news-subtitle">click item → source · esc/× → back</span>
       <span class="pixel-news-close" title="点击返回">✕</span>
     </div>
+    <div class="pixel-news-hint">
+      这里会优先读取 blog-source / data 分支同步到 <code>_data/daily_news.yml</code> 或 <code>_data/daily_news.json</code> 的新闻条目；没有数据时显示信息源入口，避免把占位新闻当成真实新闻。
+    </div>
     <div class="pixel-news-body">
-      <div class="news-item hot" data-link="https://www.xinhuanet.com/politics/20260529/xxx.shtml">
-        <span class="news-tag">🔥 头条</span>
-        <div class="news-headline">习近平主持召开中央政治局会议 分析研究当前经济形势</div>
-        <div class="news-meta"><a class="news-source" href="https://www.xinhuanet.com" target="_blank">新华社</a> · 18分钟前</div>
-      </div>
-      <div class="news-item" data-link="https://www.reuters.com/world/g7-ai-regulation-2026/">
-        <span class="news-tag">国际</span>
-        <div class="news-headline">G7领导人峰会发表联合声明 聚焦人工智能监管框架</div>
-        <div class="news-meta"><a class="news-source" href="https://www.reuters.com" target="_blank">Reuters</a> · 2小时前</div>
-      </div>
-      <div class="news-item" data-link="https://www.theverge.com/openai-gpt5-preview">
-        <span class="news-tag">科技</span>
-        <div class="news-headline">OpenAI 发布 GPT-5 预览版 推理能力大幅提升</div>
-        <div class="news-meta"><a class="news-source" href="https://www.theverge.com" target="_blank">The Verge</a> · 3小时前</div>
-      </div>
-      <div class="news-item" data-link="https://www.bloomberg.com/news/2026-fed-rate-decision">
-        <span class="news-tag">国际</span>
-        <div class="news-headline">Fed Holds Interest Rates Steady at 4.50%, Signals Cut Later This Year</div>
-        <div class="news-meta"><a class="news-source" href="https://www.bloomberg.com" target="_blank">Bloomberg</a> · 4小时前</div>
-      </div>
-      <div class="news-item" data-link="https://www.cctv.com/2026/05/29/change7-launch">
-        <span class="news-tag">国内</span>
-        <div class="news-headline">嫦娥七号探测器成功发射 开启月球南极探测新征程</div>
-        <div class="news-meta"><a class="news-source" href="https://www.cctv.com" target="_blank">央视新闻</a> · 5小时前</div>
-      </div>
-      <div class="news-item" data-link="https://techcrunch.com/2026/deepmind-alphafold-4">
-        <span class="news-tag">科技</span>
-        <div class="news-headline">Google DeepMind 发布全新蛋白质预测模型 AlphaFold 4</div>
-        <div class="news-meta"><a class="news-source" href="https://techcrunch.com" target="_blank">TechCrunch</a> · 6小时前</div>
-      </div>
-      <div class="news-item" data-link="https://www.ft.com/content/eu-dma-apple-imessage">
-        <span class="news-tag">国际</span>
-        <div class="news-headline">EU Digital Markets Act Forces Apple to Open iMessage to Rivals</div>
-        <div class="news-meta"><a class="news-source" href="https://www.ft.com" target="_blank">Financial Times</a> · 7小时前</div>
-      </div>
-      <div class="news-item" data-link="https://www.people.com.cn/2026/05/29/yangtze-river-delta">
-        <span class="news-tag">国内</span>
-        <div class="news-headline">长三角一体化发展取得新突破 跨省通办事项新增60项</div>
-        <div class="news-meta"><a class="news-source" href="https://www.people.com.cn" target="_blank">人民日报</a> · 8小时前</div>
-      </div>
-      <div class="news-item" data-link="https://www.wired.com/story/anthropic-claude-5-context/">
-        <span class="news-tag">科技</span>
-        <div class="news-headline">Anthropic 发布 Claude 5 上下文窗口扩展至200万token</div>
-        <div class="news-meta"><a class="news-source" href="https://www.wired.com" target="_blank">Wired</a> · 9小时前</div>
-      </div>
-      <div class="news-item" data-link="https://www.cnbc.com/2026/tesla-robotaxi-launch">
-        <span class="news-tag">国际</span>
-        <div class="news-headline">Tesla Robotaxi Service Launches in San Francisco, Phoenix</div>
-        <div class="news-meta"><a class="news-source" href="https://www.cnbc.com" target="_blank">CNBC</a> · 10小时前</div>
-      </div>
+      {% if daily_news and daily_news.size > 0 %}
+        {% for item in daily_news limit:18 %}
+          {% assign item_title = item.title | default: item.headline | default: item.name %}
+          {% assign item_url = item.url | default: item.link | default: item.source_url %}
+          {% assign item_tag = item.tag | default: item.category | default: item.section | default: "NEWS" %}
+          {% assign item_source = item.source | default: item.media | default: item.publisher | default: "Source" %}
+          {% assign item_time = item.time | default: item.published_at | default: item.date %}
+          <div class="news-item {% if forloop.first %}hot{% endif %}" data-link="{{ item_url | escape }}">
+            <span class="news-tag">{% if forloop.first %}🔥 {% endif %}{{ item_tag }}</span>
+            <div class="news-headline">{{ item_title }}</div>
+            {% if item.summary or item.description %}
+              <div class="news-summary">{{ item.summary | default: item.description | strip_html | truncate: 120 }}</div>
+            {% endif %}
+            <div class="news-meta">
+              {% if item_url %}<a class="news-source" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">{{ item_source }}</a>{% else %}{{ item_source }}{% endif %}
+              {% if item_time %} · {{ item_time }}{% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="news-empty">
+          <strong>等待今日新闻数据接入。</strong><br>
+          当前页面没有检测到 <code>site.data.daily_news</code>。建议在 <code>blog-source</code> 中生成扁平数组格式的 <code>daily_news.yml/json</code>，字段可用：<code>title</code>、<code>summary</code>、<code>url</code>、<code>source</code>、<code>category</code>、<code>published_at</code>。
+          <div class="news-source-list">
+            <a href="https://www.reuters.com/" target="_blank" rel="noopener noreferrer">Reuters</a>
+            <a href="https://apnews.com/" target="_blank" rel="noopener noreferrer">AP</a>
+            <a href="https://www.xinhuanet.com/" target="_blank" rel="noopener noreferrer">新华社</a>
+            <a href="https://www.people.com.cn/" target="_blank" rel="noopener noreferrer">人民网</a>
+            <a href="https://www.theverge.com/" target="_blank" rel="noopener noreferrer">The Verge</a>
+            <a href="https://techcrunch.com/" target="_blank" rel="noopener noreferrer">TechCrunch</a>
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -1418,15 +1474,20 @@ updateCountdown();
 // -------- 像素办公室 / 新闻内容 点击切换 --------
 (function() {
   var area = document.getElementById('pixelToggleArea');
+  if (!area) return;
   var pixelCard = area.querySelector('.pixel-office-card');
   var newsCard = document.getElementById('pixelNewsCard');
   var closeBtn = document.querySelector('.pixel-news-close');
+
+  if (!pixelCard || !newsCard) return;
 
   function showNews(e) {
     if (e) e.stopPropagation();
     if (newsCard.style.display !== 'none') return;
     pixelCard.style.display = 'none';
     newsCard.style.display = '';
+    area.classList.add('news-open');
+    newsCard.setAttribute('aria-expanded', 'true');
   }
 
   function showPixel(e) {
@@ -1434,18 +1495,23 @@ updateCountdown();
     if (pixelCard.style.display !== 'none') return;
     newsCard.style.display = 'none';
     pixelCard.style.display = '';
+    area.classList.remove('news-open');
+    newsCard.setAttribute('aria-expanded', 'false');
   }
 
   area.addEventListener('click', showNews);
   if (closeBtn) closeBtn.addEventListener('click', showPixel);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') showPixel(e);
+  });
 
-  // 新闻项点击打开来源链接
+  // 新闻项点击打开来源链接；内部来源链接保持原生行为。
   newsCard.querySelectorAll('.news-item').forEach(function(item) {
     var link = item.getAttribute('data-link');
     if (!link) return;
     item.addEventListener('click', function(e) {
-      if (e.target.closest('.news-source, .news-close, .pixel-office-lights')) return;
-      window.open(link, '_blank');
+      if (e.target.closest('.news-source, .pixel-news-close, .pixel-office-lights')) return;
+      window.open(link, '_blank', 'noopener');
     });
   });
 })();
