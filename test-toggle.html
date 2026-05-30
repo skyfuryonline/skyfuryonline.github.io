@@ -351,6 +351,15 @@ body {
     color: #8a9bb5;
     letter-spacing: 0.5px;
 }
+.news-source {
+    color: #66c2ff;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(102,194,255,0.3);
+    transition: border-color 0.2s;
+}
+.news-source:hover {
+    border-bottom-color: #66c2ff;
+}
 
 /* Hint text */
 .click-hint {
@@ -402,55 +411,55 @@ body {
         <span class="pixel-news-close" title="点击返回">✕</span>
       </div>
       <div class="pixel-news-body">
-        <div class="news-item hot">
+        <div class="news-item hot" data-link="https://www.xinhuanet.com/politics/20260529/xxx.shtml">
           <span class="news-tag">🔥 头条</span>
           <div class="news-headline">习近平主持召开中央政治局会议 分析研究当前经济形势</div>
-          <div class="news-meta">新华社 · 18分钟前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.xinhuanet.com" target="_blank">新华社</a> · 18分钟前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.reuters.com/world/g7-ai-regulation-2026/">
           <span class="news-tag">国际</span>
           <div class="news-headline">G7领导人峰会发表联合声明 聚焦人工智能监管框架</div>
-          <div class="news-meta">Reuters · 2小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.reuters.com" target="_blank">Reuters</a> · 2小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.theverge.com/openai-gpt5-preview">
           <span class="news-tag">科技</span>
           <div class="news-headline">OpenAI 发布 GPT-5 预览版 推理能力大幅提升</div>
-          <div class="news-meta">The Verge · 3小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.theverge.com" target="_blank">The Verge</a> · 3小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.bloomberg.com/news/2026-fed-rate-decision">
           <span class="news-tag">国际</span>
           <div class="news-headline">Fed Holds Interest Rates Steady at 4.50%, Signals Cut Later This Year</div>
-          <div class="news-meta">Bloomberg · 4小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.bloomberg.com" target="_blank">Bloomberg</a> · 4小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.cctv.com/2026/05/29/change7-launch">
           <span class="news-tag">国内</span>
           <div class="news-headline">嫦娥七号探测器成功发射 开启月球南极探测新征程</div>
-          <div class="news-meta">央视新闻 · 5小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.cctv.com" target="_blank">央视新闻</a> · 5小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://techcrunch.com/2026/deepmind-alphafold-4">
           <span class="news-tag">科技</span>
           <div class="news-headline">Google DeepMind 发布全新蛋白质预测模型 AlphaFold 4</div>
-          <div class="news-meta">TechCrunch · 6小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://techcrunch.com" target="_blank">TechCrunch</a> · 6小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.ft.com/content/eu-dma-apple-imessage">
           <span class="news-tag">国际</span>
           <div class="news-headline">EU Digital Markets Act Forces Apple to Open iMessage to Rivals</div>
-          <div class="news-meta">Financial Times · 7小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.ft.com" target="_blank">Financial Times</a> · 7小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.people.com.cn/2026/05/29/yangtze-river-delta">
           <span class="news-tag">国内</span>
           <div class="news-headline">长三角一体化发展取得新突破 跨省通办事项新增60项</div>
-          <div class="news-meta">人民日报 · 8小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.people.com.cn" target="_blank">人民日报</a> · 8小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.wired.com/story/anthropic-claude-5-context/">
           <span class="news-tag">科技</span>
           <div class="news-headline">Anthropic 发布 Claude 5 上下文窗口扩展至200万token</div>
-          <div class="news-meta">Wired · 9小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.wired.com" target="_blank">Wired</a> · 9小时前</div>
         </div>
-        <div class="news-item">
+        <div class="news-item" data-link="https://www.cnbc.com/2026/tesla-robotaxi-launch">
           <span class="news-tag">国际</span>
           <div class="news-headline">Tesla Robotaxi Service Launches in San Francisco, Phoenix</div>
-          <div class="news-meta">CNBC · 10小时前</div>
+          <div class="news-meta"><a class="news-source" href="https://www.cnbc.com" target="_blank">CNBC</a> · 10小时前</div>
         </div>
       </div>
     </div>
@@ -481,6 +490,16 @@ body {
 
   area.addEventListener('click', showNews);
   if (closeBtn) closeBtn.addEventListener('click', showPixel);
+
+  // 新闻项点击打开来源链接
+  newsCard.querySelectorAll('.news-item').forEach(function(item) {
+    var link = item.getAttribute('data-link');
+    if (!link) return;
+    item.addEventListener('click', function(e) {
+      if (e.target.closest('.news-source, .news-close, .pixel-office-lights')) return;
+      window.open(link, '_blank');
+    });
+  });
 })();
 </script>
 </body>
