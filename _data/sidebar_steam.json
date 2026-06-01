@@ -16,35 +16,35 @@
         "rank": 2
     },
     {
-        "title": "墨境",
-        "link": "https://store.steampowered.com/app/2597080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1780102784",
-        "price": "¥64.80",
-        "discount": "-10%",
-        "rank": 3
-    },
-    {
-        "title": "Warhammer 40,000: 星际战士2",
-        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/6fe9be2bf605cdfc3a19d354ffd20a6a48ba4bf8/capsule_231x87_alt_assets_12_schinese.jpg?t=1779872742",
-        "price": "¥74.70",
-        "discount": "-70%",
-        "rank": 4
-    },
-    {
-        "title": "Ready or Not",
-        "link": "https://store.steampowered.com/app/1144200/Ready_or_Not/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144200/b30c23f2ed6bb199a0ee33ef8e78ab25bcc1b050/capsule_231x87_alt_assets_0.jpg?t=1779907126",
-        "price": "¥79.50",
-        "discount": "-50%",
-        "rank": 5
-    },
-    {
         "title": "方舟: 生存飞升",
         "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
         "price": "¥62.00",
         "discount": "-75%",
+        "rank": 3
+    },
+    {
+        "title": "Warhammer 40,000: 星际战士2",
+        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/6fe9be2bf605cdfc3a19d354ffd20a6a48ba4bf8/capsule_231x87_alt_assets_12_schinese.jpg?t=1780329761",
+        "price": "¥74.70",
+        "discount": "-70%",
+        "rank": 4
+    },
+    {
+        "title": "墨境",
+        "link": "https://store.steampowered.com/app/2597080/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1780102784",
+        "price": "¥64.80",
+        "discount": "-10%",
+        "rank": 5
+    },
+    {
+        "title": "Ready or Not",
+        "link": "https://store.steampowered.com/app/1144200/Ready_or_Not/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144200/capsule_231x87.jpg?t=1779907126",
+        "price": "¥79.50",
+        "discount": "-50%",
         "rank": 6
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "平行人生 Paralives",
-        "link": "https://store.steampowered.com/app/1118520/_Paralives/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1118520/13d15d732cf142a4546bf749ef587e5e6e6acd64/capsule_231x87.jpg?t=1779721278",
-        "price": "¥122.40",
-        "discount": "-10%",
-        "rank": 9
-    },
-    {
         "title": "Escape the Backrooms",
         "link": "https://store.steampowered.com/app/1943950/Escape_the_Backrooms/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1943950/28626087167f428b92a79d4c319e19707fe22dae/capsule_231x87.jpg?t=1780069889",
         "price": "¥29.60",
         "discount": "-20%",
+        "rank": 9
+    },
+    {
+        "title": "Palworld / 幻兽帕鲁",
+        "link": "https://store.steampowered.com/app/1623730/Palworld/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1623730/c5806289105932d9729d1ccba4bd5fc6158078af/capsule_231x87_schinese.jpg?t=1779864445",
+        "price": "¥81.00",
+        "discount": "-25%",
         "rank": 10
     }
 ]
