@@ -8,18 +8,18 @@
         "rank": 1
     },
     {
-        "title": "家弑服务",
-        "link": "https://movie.douban.com/subject/36367195/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932673659.jpg",
-        "score": "7.1",
-        "region": "美国",
-        "rank": 2
-    },
-    {
         "title": "记忆碎片",
         "link": "https://movie.douban.com/subject/1304447/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931989223.jpg",
         "score": "8.7",
+        "region": "美国",
+        "rank": 2
+    },
+    {
+        "title": "家弑服务",
+        "link": "https://movie.douban.com/subject/36367195/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932673659.jpg",
+        "score": "7.1",
         "region": "美国",
         "rank": 3
     },
@@ -27,7 +27,7 @@
         "title": "钟馗",
         "link": "https://movie.douban.com/subject/30226070/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2932618233.jpg",
-        "score": "暂无评分",
+        "score": "5.9",
         "region": "中国大陆",
         "rank": 4
     },
