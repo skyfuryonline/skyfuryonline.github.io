@@ -48,19 +48,19 @@
         "rank": 6
     },
     {
-        "title": "Outer Wilds",
-        "link": "https://store.steampowered.com/app/753640/Outer_Wilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/753640/c3b501a7177b6c902c69565366d4c5f4b82f23fe/capsule_231x87.jpg?t=1779137571",
-        "price": "¥47.50",
-        "discount": "-50%",
-        "rank": 7
-    },
-    {
         "title": "《恶意不息》",
         "link": "https://store.steampowered.com/app/1371980/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1371980/9d2efe7754b0843dddbf7c495fe55ccc69e99b6c/capsule_231x87.jpg?t=1780442295",
         "price": "¥97.30",
         "discount": "-30%",
+        "rank": 7
+    },
+    {
+        "title": "Outer Wilds",
+        "link": "https://store.steampowered.com/app/753640/Outer_Wilds/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/753640/c3b501a7177b6c902c69565366d4c5f4b82f23fe/capsule_231x87.jpg?t=1779137571",
+        "price": "¥47.50",
+        "discount": "-50%",
         "rank": 8
     },
     {
