@@ -1,34 +1,34 @@
 [
     {
-        "title": "罗马拓荒录",
-        "link": "https://store.steampowered.com/app/1805320/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1805320/f2350a24324843d1db335368aab7a639638f3b24/capsule_231x87_schinese.jpg?t=1780410235",
-        "price": "¥43.20",
-        "discount": "-10%",
-        "rank": 1
-    },
-    {
         "title": "Grand Theft Auto V 增强版",
         "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
         "price": "¥74.50",
         "discount": "-50%",
+        "rank": 1
+    },
+    {
+        "title": "Street Fighter 6",
+        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1779953790",
+        "price": "¥99.00",
+        "discount": "-50%",
         "rank": 2
     },
     {
-        "title": "Ready or Not",
-        "link": "https://store.steampowered.com/app/1144200/Ready_or_Not/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144200/capsule_231x87.jpg?t=1779907126",
-        "price": "¥79.50",
-        "discount": "-50%",
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1780593271",
+        "price": "¥79.60",
+        "discount": "-80%",
         "rank": 3
     },
     {
-        "title": "《恶意不息》",
-        "link": "https://store.steampowered.com/app/1371980/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1371980/9d2efe7754b0843dddbf7c495fe55ccc69e99b6c/capsule_231x87.jpg?t=1780442295",
-        "price": "¥97.30",
-        "discount": "-30%",
+        "title": "罗马拓荒录",
+        "link": "https://store.steampowered.com/app/1805320/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1805320/f2350a24324843d1db335368aab7a639638f3b24/capsule_231x87_schinese.jpg?t=1780586314",
+        "price": "¥43.20",
+        "discount": "-10%",
         "rank": 4
     },
     {
@@ -48,35 +48,35 @@
         "rank": 6
     },
     {
-        "title": "墨境",
-        "link": "https://store.steampowered.com/app/2597080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1780102784",
-        "price": "¥64.80",
-        "discount": "-10%",
-        "rank": 7
-    },
-    {
-        "title": "刺客信条：影",
-        "link": "https://store.steampowered.com/app/3159330/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3159330/5960b68c44465f7ad8fd75b9dbb277d0cac23479/capsule_231x87_schinese.jpg?t=1775589420",
-        "price": "¥149.00",
-        "discount": "-50%",
-        "rank": 8
-    },
-    {
         "title": "Outer Wilds",
         "link": "https://store.steampowered.com/app/753640/Outer_Wilds/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/753640/c3b501a7177b6c902c69565366d4c5f4b82f23fe/capsule_231x87.jpg?t=1779137571",
         "price": "¥47.50",
         "discount": "-50%",
+        "rank": 7
+    },
+    {
+        "title": "《恶意不息》",
+        "link": "https://store.steampowered.com/app/1371980/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1371980/9d2efe7754b0843dddbf7c495fe55ccc69e99b6c/capsule_231x87.jpg?t=1780442295",
+        "price": "¥97.30",
+        "discount": "-30%",
+        "rank": 8
+    },
+    {
+        "title": "Resident Evil Requiem",
+        "link": "https://store.steampowered.com/app/3764200/Resident_Evil_Requiem/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1779840172",
+        "price": "¥278.40",
+        "discount": "-20%",
         "rank": 9
     },
     {
-        "title": "冰汽时代",
-        "link": "https://store.steampowered.com/app/323190/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/323190/45bfdc7f6b60b2acab44cc96c488f938219c42fd/capsule_231x87.jpg?t=1775495730",
-        "price": "¥10.80",
-        "discount": "-90%",
+        "title": "墨境",
+        "link": "https://store.steampowered.com/app/2597080/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1780102784",
+        "price": "¥64.80",
+        "discount": "-10%",
         "rank": 10
     }
 ]
