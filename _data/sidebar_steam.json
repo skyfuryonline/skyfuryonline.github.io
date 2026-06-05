@@ -1,67 +1,11 @@
 [
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
-        "price": "¥74.50",
-        "discount": "-50%",
+        "title": "Resident Evil 4",
+        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
+        "price": "¥49.50",
+        "discount": "-75%",
         "rank": 1
-    },
-    {
-        "title": "Street Fighter 6",
-        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1779953790",
-        "price": "¥99.00",
-        "discount": "-50%",
-        "rank": 2
-    },
-    {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1780593271",
-        "price": "¥79.60",
-        "discount": "-80%",
-        "rank": 3
-    },
-    {
-        "title": "罗马拓荒录",
-        "link": "https://store.steampowered.com/app/1805320/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1805320/f2350a24324843d1db335368aab7a639638f3b24/capsule_231x87_schinese.jpg?t=1780586314",
-        "price": "¥43.20",
-        "discount": "-10%",
-        "rank": 4
-    },
-    {
-        "title": "天国：拯救2",
-        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
-        "price": "¥114.00",
-        "discount": "-50%",
-        "rank": 5
-    },
-    {
-        "title": "Escape the Backrooms",
-        "link": "https://store.steampowered.com/app/1943950/Escape_the_Backrooms/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1943950/28626087167f428b92a79d4c319e19707fe22dae/capsule_231x87.jpg?t=1780394865",
-        "price": "¥29.60",
-        "discount": "-20%",
-        "rank": 6
-    },
-    {
-        "title": "《恶意不息》",
-        "link": "https://store.steampowered.com/app/1371980/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1371980/9d2efe7754b0843dddbf7c495fe55ccc69e99b6c/capsule_231x87.jpg?t=1780442295",
-        "price": "¥97.30",
-        "discount": "-30%",
-        "rank": 7
-    },
-    {
-        "title": "Outer Wilds",
-        "link": "https://store.steampowered.com/app/753640/Outer_Wilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/753640/c3b501a7177b6c902c69565366d4c5f4b82f23fe/capsule_231x87.jpg?t=1779137571",
-        "price": "¥47.50",
-        "discount": "-50%",
-        "rank": 8
     },
     {
         "title": "Resident Evil Requiem",
@@ -69,14 +13,70 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1779840172",
         "price": "¥278.40",
         "discount": "-20%",
+        "rank": 2
+    },
+    {
+        "title": "Street Fighter 6",
+        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1779953790",
+        "price": "¥99.00",
+        "discount": "-50%",
+        "rank": 3
+    },
+    {
+        "title": "Sons Of The Forest",
+        "link": "https://store.steampowered.com/app/1326470/Sons_Of_The_Forest/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1326470/capsule_231x87.jpg?t=1708624856",
+        "price": "¥32.40",
+        "discount": "-70%",
+        "rank": 4
+    },
+    {
+        "title": "Monster Hunter Wilds",
+        "link": "https://store.steampowered.com/app/2246340/Monster_Hunter_Wilds/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1780446081",
+        "price": "¥146.16",
+        "discount": "-58%",
+        "rank": 5
+    },
+    {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1765479644",
+        "price": "¥74.50",
+        "discount": "-50%",
+        "rank": 6
+    },
+    {
+        "title": "魔女：终末旅途",
+        "link": "https://store.steampowered.com/app/3709430/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3709430/1a8606a6b475df5ce0e14690e43f65b3c3e37311/capsule_231x87_schinese.jpg?t=1780650467",
+        "price": "¥28.80",
+        "discount": "-20%",
+        "rank": 7
+    },
+    {
+        "title": "Monster Hunter: World",
+        "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
+        "price": "¥38.48",
+        "discount": "-74%",
+        "rank": 8
+    },
+    {
+        "title": "MONSTER HUNTER RISE",
+        "link": "https://store.steampowered.com/app/1446780/MONSTER_HUNTER_RISE/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1446780/capsule_231x87.jpg?t=1768870444",
+        "price": "¥39.60",
+        "discount": "-80%",
         "rank": 9
     },
     {
-        "title": "墨境",
-        "link": "https://store.steampowered.com/app/2597080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2597080/7e82166a07b0def74cfa58d41fd0f2bec482c608/capsule_231x87_schinese.jpg?t=1780102784",
-        "price": "¥64.80",
-        "discount": "-10%",
+        "title": "Resident Evil 2",
+        "link": "https://store.steampowered.com/app/883710/Resident_Evil_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/883710/capsule_231x87_schinese.jpg?t=1779433152",
+        "price": "¥39.60",
+        "discount": "-80%",
         "rank": 10
     }
 ]

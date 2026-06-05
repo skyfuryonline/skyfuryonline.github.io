@@ -16,26 +16,26 @@
         "rank": 2
     },
     {
-        "title": "宇宙巨人：希曼崛起",
-        "link": "https://movie.douban.com/subject/1951286/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2932404714.jpg",
+        "title": "诺曼底72小时",
+        "link": "https://movie.douban.com/subject/36916000/?from=playing_poster",
+        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2932334501.jpg",
         "score": "暂无评分",
-        "region": "美国",
+        "region": "英国 法国 美国",
         "rank": 3
-    },
-    {
-        "title": "危险动物",
-        "link": "https://movie.douban.com/subject/36883048/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2932984283.jpg",
-        "score": "6.2",
-        "region": "澳大利亚 美国 加拿大",
-        "rank": 4
     },
     {
         "title": "家弑服务",
         "link": "https://movie.douban.com/subject/36367195/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932673659.jpg",
         "score": "7.1",
+        "region": "美国",
+        "rank": 4
+    },
+    {
+        "title": "星球大战：曼达洛人与古古",
+        "link": "https://movie.douban.com/subject/36723035/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931769584.jpg",
+        "score": "7.4",
         "region": "美国",
         "rank": 5
     }
