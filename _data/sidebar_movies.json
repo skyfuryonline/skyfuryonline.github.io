@@ -1,11 +1,19 @@
 [
     {
+        "title": "宇宙巨人：希曼崛起",
+        "link": "https://movie.douban.com/subject/1951286/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2932404714.jpg",
+        "score": "6.0",
+        "region": "美国",
+        "rank": 1
+    },
+    {
         "title": "记忆碎片",
         "link": "https://movie.douban.com/subject/1304447/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931989223.jpg",
         "score": "8.7",
         "region": "美国",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "给阿嬷的情书",
@@ -13,29 +21,21 @@
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931851430.jpg",
         "score": "9.2",
         "region": "中国大陆",
-        "rank": 2
+        "rank": 3
     },
     {
-        "title": "诺曼底72小时",
-        "link": "https://movie.douban.com/subject/36916000/?from=playing_poster",
-        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2932334501.jpg",
-        "score": "暂无评分",
-        "region": "英国 法国 美国",
-        "rank": 3
+        "title": "一个男人和一个女人",
+        "link": "https://movie.douban.com/subject/36311696/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2932071585.jpg",
+        "score": "7.0",
+        "region": "中国大陆 中国香港",
+        "rank": 4
     },
     {
         "title": "家弑服务",
         "link": "https://movie.douban.com/subject/36367195/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932673659.jpg",
         "score": "7.1",
-        "region": "美国",
-        "rank": 4
-    },
-    {
-        "title": "星球大战：曼达洛人与古古",
-        "link": "https://movie.douban.com/subject/36723035/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931769584.jpg",
-        "score": "7.4",
         "region": "美国",
         "rank": 5
     }
