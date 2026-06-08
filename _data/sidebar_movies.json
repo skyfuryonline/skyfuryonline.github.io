@@ -8,18 +8,18 @@
         "rank": 1
     },
     {
-        "title": "宇宙巨人：希曼崛起",
-        "link": "https://movie.douban.com/subject/1951286/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2932404714.jpg",
-        "score": "5.9",
-        "region": "美国",
-        "rank": 2
-    },
-    {
         "title": "记忆碎片",
         "link": "https://movie.douban.com/subject/1304447/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931989223.jpg",
         "score": "8.7",
+        "region": "美国",
+        "rank": 2
+    },
+    {
+        "title": "宇宙巨人：希曼崛起",
+        "link": "https://movie.douban.com/subject/1951286/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2932404714.jpg",
+        "score": "5.8",
         "region": "美国",
         "rank": 3
     },
@@ -35,7 +35,7 @@
         "title": "一个男人和一个女人",
         "link": "https://movie.douban.com/subject/36311696/?from=playing_poster",
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2932071585.jpg",
-        "score": "7.0",
+        "score": "6.8",
         "region": "中国大陆 中国香港",
         "rank": 5
     }
