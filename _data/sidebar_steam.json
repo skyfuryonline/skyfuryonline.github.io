@@ -1,19 +1,35 @@
 [
     {
-        "title": "Resident Evil 4",
-        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
-        "price": "¥49.50",
-        "discount": "-75%",
+        "title": "女王的游戏：盛世天下 女帝篇",
+        "link": "https://store.steampowered.com/app/4148240/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4148240/001d014bc20017e8c270888fcf3cedfeea89db68/capsule_231x87_schinese.jpg?t=1781010952",
+        "price": "¥59.20",
+        "discount": "-20%",
         "rank": 1
     },
     {
         "title": "Street Fighter 6",
         "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1780893757",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1780982579",
         "price": "¥99.00",
         "discount": "-50%",
         "rank": 2
+    },
+    {
+        "title": "Resident Evil 4",
+        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
+        "price": "¥49.50",
+        "discount": "-75%",
+        "rank": 3
+    },
+    {
+        "title": "猎杀：对决 1896",
+        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/594650/078c88d470cfe352b33a97e64d61ca81b961ceaa/capsule_231x87_alt_assets_25.jpg?t=1781011253",
+        "price": "¥51.20",
+        "discount": "-60%",
+        "rank": 4
     },
     {
         "title": "极限竞速：地平线 5",
@@ -21,7 +37,7 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
         "price": "¥99.00",
         "discount": "-50%",
-        "rank": 3
+        "rank": 5
     },
     {
         "title": "Sons Of The Forest",
@@ -29,15 +45,7 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1326470/capsule_231x87.jpg?t=1708624856",
         "price": "¥32.40",
         "discount": "-70%",
-        "rank": 4
-    },
-    {
-        "title": "Monster Hunter Wilds",
-        "link": "https://store.steampowered.com/app/2246340/Monster_Hunter_Wilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1780446081",
-        "price": "¥146.16",
-        "discount": "-58%",
-        "rank": 5
+        "rank": 6
     },
     {
         "title": "Resident Evil Requiem",
@@ -45,7 +53,15 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1779840172",
         "price": "¥278.40",
         "discount": "-20%",
-        "rank": 6
+        "rank": 7
+    },
+    {
+        "title": "Monster Hunter Wilds",
+        "link": "https://store.steampowered.com/app/2246340/Monster_Hunter_Wilds/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1780446081",
+        "price": "¥146.16",
+        "discount": "-58%",
+        "rank": 8
     },
     {
         "title": "Cuphead",
@@ -53,7 +69,7 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/268910/capsule_231x87.jpg?t=1709068852",
         "price": "¥40.80",
         "discount": "-40%",
-        "rank": 7
+        "rank": 9
     },
     {
         "title": "Monster Hunter: World",
@@ -61,22 +77,6 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
         "price": "¥38.48",
         "discount": "-74%",
-        "rank": 8
-    },
-    {
-        "title": "MONSTER HUNTER RISE",
-        "link": "https://store.steampowered.com/app/1446780/MONSTER_HUNTER_RISE/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1446780/capsule_231x87.jpg?t=1768870444",
-        "price": "¥39.60",
-        "discount": "-80%",
-        "rank": 9
-    },
-    {
-        "title": "Palworld / 幻兽帕鲁",
-        "link": "https://store.steampowered.com/app/1623730/Palworld/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1623730/c5806289105932d9729d1ccba4bd5fc6158078af/capsule_231x87_schinese.jpg?t=1780702171",
-        "price": "¥81.00",
-        "discount": "-25%",
         "rank": 10
     }
 ]
