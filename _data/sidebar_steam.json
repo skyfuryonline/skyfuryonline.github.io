@@ -2,79 +2,79 @@
     {
         "title": "女王的游戏：盛世天下 女帝篇",
         "link": "https://store.steampowered.com/app/4148240/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4148240/001d014bc20017e8c270888fcf3cedfeea89db68/capsule_231x87_schinese.jpg?t=1781010952",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4148240/001d014bc20017e8c270888fcf3cedfeea89db68/capsule_231x87_schinese.jpg?t=1781010952",
         "price": "¥59.20",
         "discount": "-20%",
         "rank": 1
     },
     {
-        "title": "Street Fighter 6",
-        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1780982579",
-        "price": "¥99.00",
-        "discount": "-50%",
+        "title": "命运2：反叛",
+        "link": "https://store.steampowered.com/app/3186540/2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3186540/52272358f8ccd1ee84ee4eda4c1fe2c2f7dfef22/capsule_231x87_schinese.jpg?t=1781025513",
+        "price": "¥47.70",
+        "discount": "-70%",
         "rank": 2
     },
     {
-        "title": "Resident Evil 4",
-        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
-        "price": "¥49.50",
-        "discount": "-75%",
+        "title": "命运2：宿命边缘",
+        "link": "https://store.steampowered.com/app/3186490/2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3186490/252ca609d1526a7f08d9fca663ada35ccf66c2c3/capsule_231x87_schinese.jpg?t=1781025459",
+        "price": "¥31.80",
+        "discount": "-80%",
         "rank": 3
-    },
-    {
-        "title": "猎杀：对决 1896",
-        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/594650/078c88d470cfe352b33a97e64d61ca81b961ceaa/capsule_231x87_alt_assets_25.jpg?t=1781011253",
-        "price": "¥51.20",
-        "discount": "-60%",
-        "rank": 4
     },
     {
         "title": "极限竞速：地平线 5",
         "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
         "price": "¥99.00",
         "discount": "-50%",
+        "rank": 4
+    },
+    {
+        "title": "Resident Evil 4",
+        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
+        "price": "¥49.50",
+        "discount": "-75%",
         "rank": 5
     },
     {
         "title": "Sons Of The Forest",
         "link": "https://store.steampowered.com/app/1326470/Sons_Of_The_Forest/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1326470/capsule_231x87.jpg?t=1708624856",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1326470/capsule_231x87.jpg?t=1708624856",
         "price": "¥32.40",
         "discount": "-70%",
         "rank": 6
     },
     {
-        "title": "Resident Evil Requiem",
-        "link": "https://store.steampowered.com/app/3764200/Resident_Evil_Requiem/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1779840172",
-        "price": "¥278.40",
-        "discount": "-20%",
+        "title": "Street Fighter 6",
+        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1780982579",
+        "price": "¥99.00",
+        "discount": "-50%",
         "rank": 7
     },
     {
         "title": "Monster Hunter Wilds",
         "link": "https://store.steampowered.com/app/2246340/Monster_Hunter_Wilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1780446081",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2246340/970508d58e4f11f6f9ff3e2921b7eec558a50af8/capsule_231x87.jpg?t=1781071959",
         "price": "¥146.16",
         "discount": "-58%",
         "rank": 8
     },
     {
-        "title": "Cuphead",
-        "link": "https://store.steampowered.com/app/268910/Cuphead/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/268910/capsule_231x87.jpg?t=1709068852",
-        "price": "¥40.80",
-        "discount": "-40%",
+        "title": "猎杀：对决 1896",
+        "link": "https://store.steampowered.com/app/594650/_1896/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/594650/078c88d470cfe352b33a97e64d61ca81b961ceaa/capsule_231x87_alt_assets_25.jpg?t=1781112961",
+        "price": "¥51.20",
+        "discount": "-60%",
         "rank": 9
     },
     {
         "title": "Monster Hunter: World",
         "link": "https://store.steampowered.com/app/582010/Monster_Hunter_World/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/capsule_231x87.jpg?t=1773328926",
         "price": "¥38.48",
         "discount": "-74%",
         "rank": 10
