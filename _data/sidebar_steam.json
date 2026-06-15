@@ -56,19 +56,19 @@
         "rank": 7
     },
     {
-        "title": "缺氧",
-        "link": "https://store.steampowered.com/app/457140/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/457140/capsule_231x87_schinese.jpg?t=1781198471",
-        "price": "¥17.40",
-        "discount": "-70%",
-        "rank": 8
-    },
-    {
         "title": "EA SPORTS FC™ 26",
         "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1781025991",
         "price": "¥23.60",
         "discount": "-80%",
+        "rank": 8
+    },
+    {
+        "title": "缺氧",
+        "link": "https://store.steampowered.com/app/457140/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/457140/capsule_231x87_schinese.jpg?t=1781198471",
+        "price": "¥17.40",
+        "discount": "-70%",
         "rank": 9
     },
     {
