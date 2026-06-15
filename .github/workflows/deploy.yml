@@ -51,7 +51,7 @@ jobs:
           # Use rsync for robust directory merging
           mkdir -p main/_gwy_logs main/_gwy_reports main/img/gwy main/_data main/daily-html
           rsync -av private-source/_gwy_logs/ main/_gwy_logs/
-          rsync -av private-source/_gwy_reports/ main/_gwy_reports/
+          # rsync -av private-source/_gwy_reports/ main/_gwy_reports/  # 已禁用：周报月报功能太鸡肋
           rsync -av private-source/gwy/ main/img/gwy/
           if [ -d private-source/daily-html ]; then
             rsync -av --delete private-source/daily-html/ main/daily-html/

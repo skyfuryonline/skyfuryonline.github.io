@@ -25,5 +25,6 @@ def main():
     generate_and_save_monthly_report(current_month_str)
     print("月度报告生成流程结束。")
 
-if __name__ == "__main__":
-    main()
+# 已禁用（周报月报功能太鸡肋，用注释保留以备后用）
+# if __name__ == "__main__":
+#     main()

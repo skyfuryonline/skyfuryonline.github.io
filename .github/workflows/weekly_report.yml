@@ -1,21 +1,20 @@
-name: Generate Weekly Gwy Report
+name: Generate Weekly Gwy Report (DISABLED)
 
 on:
-  schedule:
-    - cron: '0 20 * * 0' # Runs at 20:00 UTC on Sunday (04:00 Beijing Time on Monday)
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   generate_report:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master branch
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PRIVATE_REPO_TOKEN }} # Use PAT to get push access later
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -33,9 +32,7 @@ jobs:
       - name: Make private content available for script
         run: |
           mv private-source/_gwy_logs ./_gwy_logs
-          # Also move reports, in case future logic needs to read them
           mv private-source/_gwy_reports ./_gwy_reports
-          # No need to move img for this script, as it only reads text
           
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -48,19 +45,13 @@ jobs:
         
       - name: Commit and push report to blog-source
         run: |
-          # Clone the private repo's main branch
           git clone --branch main https://x-access-token:${{ secrets.PRIVATE_REPO_TOKEN }}@github.com/skyfuryonline/blog-source.git source-repo
-          
-          # Copy the newly generated report(s) into the clone
-          # Ensure the _gwy_reports directory exists
           mkdir -p source-repo/_gwy_reports
           cp -r _gwy_reports/. source-repo/_gwy_reports/
-          
           cd source-repo
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add _gwy_reports/
-          
           if ! git diff --staged --quiet; then
             git commit -m "docs(gwy): Generate weekly report"
             git push

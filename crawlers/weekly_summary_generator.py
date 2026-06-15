@@ -389,77 +389,77 @@ def save_report(summary, report_start_date):
     
     print(f"\n✅ 周报已保存到: {filepath}")
 
-# --- 主函数 ---
-if __name__ == "__main__":
-    # 确保目录存在
-    if not os.path.exists(REPORT_DIR):
-        os.makedirs(REPORT_DIR)
-
-    # 1. 确定时间基准
-    beijing_tz = timedelta(hours=8)
-    today = datetime.now() + beijing_tz
-    start_of_this_week = today - timedelta(days=today.weekday())
-    start_of_last_week = start_of_this_week - timedelta(days=7) # 目标周报的起始日（上周一）
-    
-    report_week_data = get_last_week_data()
-    
-    if report_week_data["total_hours"] > 0:
-        # 获取用于数值对比的上上周数据
-        comparison_week_data = get_week_before_last_data()
-        
-        # 2. 计算所处的月份和上个月
-        report_month_str = start_of_last_week.strftime('%Y-%m')
-        prev_month_date = start_of_last_week.replace(day=1) - timedelta(days=1)
-        prev_month_str = prev_month_date.strftime('%Y-%m')
-        
-        # 3. 处理“长期记忆” (上个月的月报)
-        last_month_report_content = ""
-        monthly_report_path = os.path.join(REPORT_DIR, f"month-of-{prev_month_str}.md")
-        
-        if os.path.exists(monthly_report_path):
-            with open(monthly_report_path, 'r', encoding='utf-8') as f:
-                last_month_report_content = frontmatter.load(f).content
-        else:
-            # 修复：只对 2026-03 及以后的月份触发月报兜底，避免复活早期没有正确跑通的废弃月报
-            if prev_month_str >= "2026-03":
-                print(f"检测到上个月 ({prev_month_str}) 未按时生成月度报告，作为兜底机制现在尝试自动补发...")
-                last_month_report_content = generate_and_save_monthly_report(prev_month_str)
-            else:
-                print(f"检测到上个月 ({prev_month_str}) 报告不存在，但属于早期数据，跳过自动补发以避免复活旧错误。")
-            
-        # 4. 处理“中期连贯记忆” (本月内，处于当前目标周之前的周报)
-        current_month_reports_concat = ""
-        current_month_reports = get_reports_by_month(report_month_str)
-        target_date_str = start_of_last_week.strftime('%Y-%m-%d')
-        
-        last_week_soul_questions = "" # 提取上周灵魂拷问
-        
-        # 为了找上周灵魂拷问，我们需要所有已生成的周报（包括可能跨月的“上周”）
-        # 简单处理：我们看看上周对应日期的报告文件是否存在
-        start_of_week_before_last = start_of_last_week - timedelta(days=7)
-        last_week_report_filename = f"week-of-{start_of_week_before_last.strftime('%Y-%m-%d')}.md"
-        last_week_report_filepath = os.path.join(REPORT_DIR, last_week_report_filename)
-        if os.path.exists(last_week_report_filepath):
-            with open(last_week_report_filepath, 'r', encoding='utf-8') as f:
-                last_week_content = frontmatter.load(f).content
-                last_week_soul_questions = extract_soul_questions(last_week_content)
-
-        for r in current_month_reports:
-            # 只提取在本周报之前生成的周报
-            if r['date_str'] < target_date_str:
-                core_content = extract_core_sections(r['content'])
-                current_month_reports_concat += f"\n- {r['date_str']} 周报状态摘要:\n{core_content}\n"
-        
-        # 5. 组装终极 Prompt 并生成周报
-        llm_prompt = create_prompt(
-            this_week_data=report_week_data, 
-            last_week_data=comparison_week_data, 
-            last_month_report=last_month_report_content, 
-            current_month_reports=current_month_reports_concat,
-            last_week_soul_questions=last_week_soul_questions
-        )
-        
-        report_content = get_llm_summary(llm_prompt)
-        save_report(report_content, start_of_last_week)
-    else:
-        print("上周没有学习记录，跳过周报生成。")
+# --- 主函数 (已禁用：周报功能太鸡肋，用注释保留以备后用) ---
+# if __name__ == "__main__":
+#     # 确保目录存在
+#     if not os.path.exists(REPORT_DIR):
+#         os.makedirs(REPORT_DIR)
+# 
+#     # 1. 确定时间基准
+#     beijing_tz = timedelta(hours=8)
+#     today = datetime.now() + beijing_tz
+#     start_of_this_week = today - timedelta(days=today.weekday())
+#     start_of_last_week = start_of_this_week - timedelta(days=7) # 目标周报的起始日（上周一）
+#     
+#     report_week_data = get_last_week_data()
+#     
+#     if report_week_data["total_hours"] > 0:
+#         # 获取用于数值对比的上上周数据
+#         comparison_week_data = get_week_before_last_data()
+#         
+#         # 2. 计算所处的月份和上个月
+#         report_month_str = start_of_last_week.strftime('%Y-%m')
+#         prev_month_date = start_of_last_week.replace(day=1) - timedelta(days=1)
+#         prev_month_str = prev_month_date.strftime('%Y-%m')
+#         
+#         # 3. 处理"长期记忆" (上个月的月报)
+#         last_month_report_content = ""
+#         monthly_report_path = os.path.join(REPORT_DIR, f"month-of-{prev_month_str}.md")
+#         
+#         if os.path.exists(monthly_report_path):
+#             with open(monthly_report_path, 'r', encoding='utf-8') as f:
+#                 last_month_report_content = frontmatter.load(f).content
+#         else:
+#             # 修复：只对 2026-03 及以后的月份触发月报兜底，避免复活早期没有正确跑通的废弃月报
+#             if prev_month_str >= "2026-03":
+#                 print(f"检测到上个月 ({prev_month_str}) 未按时生成月度报告，作为兜底机制现在尝试自动补发...")
+#                 last_month_report_content = generate_and_save_monthly_report(prev_month_str)
+#             else:
+#                 print(f"检测到上个月 ({prev_month_str}) 报告不存在，但属于早期数据，跳过自动补发以避免复活旧错误。")
+#             
+#         # 4. 处理"中期连贯记忆" (本月内，处于当前目标周之前的周报)
+#         current_month_reports_concat = ""
+#         current_month_reports = get_reports_by_month(report_month_str)
+#         target_date_str = start_of_last_week.strftime('%Y-%m-%d')
+#         
+#         last_week_soul_questions = "" # 提取上周灵魂拷问
+#         
+#         # 为了找上周灵魂拷问，我们需要所有已生成的周报（包括可能跨月的"上周"）
+#         # 简单处理：我们看看上周对应日期的报告文件是否存在
+#         start_of_week_before_last = start_of_last_week - timedelta(days=7)
+#         last_week_report_filename = f"week-of-{start_of_week_before_last.strftime('%Y-%m-%d')}.md"
+#         last_week_report_filepath = os.path.join(REPORT_DIR, last_week_report_filename)
+#         if os.path.exists(last_week_report_filepath):
+#             with open(last_week_report_filepath, 'r', encoding='utf-8') as f:
+#                 last_week_content = frontmatter.load(f).content
+#                 last_week_soul_questions = extract_soul_questions(last_week_content)
+# 
+#         for r in current_month_reports:
+#             # 只提取在本周报之前生成的周报
+#             if r['date_str'] < target_date_str:
+#                 core_content = extract_core_sections(r['content'])
+#                 current_month_reports_concat += f"\n- {r['date_str']} 周报状态摘要:\n{core_content}\n"
+#         
+#         # 5. 组装终极 Prompt 并生成周报
+#         llm_prompt = create_prompt(
+#             this_week_data=report_week_data, 
+#             last_week_data=comparison_week_data, 
+#             last_month_report=last_month_report_content, 
+#             current_month_reports=current_month_reports_concat,
+#             last_week_soul_questions=last_week_soul_questions
+#         )
+#         
+#         report_content = get_llm_summary(llm_prompt)
+#         save_report(report_content, start_of_last_week)
+#     else:
+#         print("上周没有学习记录，跳过周报生成。")
