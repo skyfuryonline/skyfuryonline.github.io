@@ -39,8 +39,8 @@ jobs:
         
       - name: Generate Weekly Report
         env:
-          OPENAI_API_KEY: ${{ secrets.LLM_API_KEY }}
-          OPENAI_API_BASE: ${{ secrets.LLM_API_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_API_BASE_URL: ${{ secrets.LLM_API_BASE_URL }}
         run: python crawlers/weekly_summary_generator.py
         
       - name: Commit and push report to blog-source

@@ -10,7 +10,8 @@ LOG_DIR = "_gwy_logs"
 REPORT_DIR = "_gwy_reports"
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), 'config.json')
 
-# 从配置中读取 LLM 模型
+# 从 config.json 的 llm_profiles.learning_coach 读取模型和 system prompt
+# 如需切换模型，只需修改 config.json 中的 model 字段即可全局生效
 COACH_MODEL = "qwen3.6-plus-2026-04-02"
 COACH_SYSTEM_PROMPT = "你是一位专业的学习分析与激励教练。"
 try:
@@ -21,14 +22,13 @@ try:
             COACH_MODEL = coach_profile.get("model")
         if coach_profile.get("prompt"):
             COACH_SYSTEM_PROMPT = coach_profile.get("prompt")
+        print(f"LLM config loaded: model={COACH_MODEL}")
 except Exception as e:
     print(f"Warning: Failed to load LLM config from {CONFIG_FILE}, using defaults. Error: {e}")
 
-# 注意：在 GitHub Actions 中，我们需要配置 OPENAI_API_KEY 等环境变量
-# 从环境变量读取
-
-api_key = os.environ.get("OPENAI_API_KEY")
-base_url = os.environ.get("OPENAI_API_BASE")
+# 环境变量统一使用 LLM_API_KEY / LLM_API_BASE_URL（与 llm/summarizer.py 保持一致）
+api_key = os.environ.get("LLM_API_KEY")
+base_url = os.environ.get("LLM_API_BASE_URL")
 from openai import OpenAI
 client = OpenAI(api_key=api_key, base_url=base_url)
 
