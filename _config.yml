@@ -36,6 +36,13 @@ collections:
   gwy_reports:
     output: true
 
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      catalog: true
+
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
@@ -101,7 +108,7 @@ featured-condition-size: 1              # 相同标签数量大于这个数，�
 
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
-service-worker: true
+service-worker: false
 
 
 

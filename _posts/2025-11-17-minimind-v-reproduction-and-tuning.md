@@ -3,8 +3,15 @@ layout: post
 title: "Minimind-v复现及调优"
 date: 2025-11-17
 author: "LH"
-tags: [LLM, Minimind, 复现, 预训练, 后训练]
 group: nlp-workshop
+tags:
+  - "LLM"
+  - "复现"
+keywords:
+  - "Minimind"
+  - "预训练"
+  - "后训练"
+  - "调优"
 catalog: true
 ---
 

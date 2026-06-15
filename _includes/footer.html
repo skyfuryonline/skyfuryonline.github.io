@@ -125,6 +125,27 @@
             .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
     }
 </script>
+{% else %}
+<script type="text/javascript">
+    // Keep this cleanup while migrating away from the old PWA cache.
+    // It removes previously registered service workers and their cached HTML pages.
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            registrations.forEach(function(registration) {
+                registration.unregister();
+            });
+        });
+    }
+    if (window.caches) {
+        caches.keys().then(function(cacheNames) {
+            cacheNames.forEach(function(cacheName) {
+                if (cacheName.indexOf('skyfury-blog-cache') === 0) {
+                    caches.delete(cacheName);
+                }
+            });
+        });
+    }
+</script>
 {% endif %}
 
 
@@ -226,15 +247,21 @@
 <script type="text/javascript">
     function generateCatalog (selector) {
         var P = $('div.post-container'),a,n,t,l,i,c;
-        a = P.find('h1,h2,h3,h4,h5,h6');
+        a = P.find('h1,h2,h3');
         a.each(function () {
             n = $(this).prop('tagName').toLowerCase();
             i = "#"+$(this).prop('id');
             t = $(this).text();
+            if (!$(this).prop('id') || !t) {
+                return;
+            }
             c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
             l = $('<li class="'+n+'_nav"></li>').append(c);
             $(selector).append(l);
         });
+        if ($(selector).children().length === 0) {
+            $('.catalog-container').hide();
+        }
         return true;    
     }
 

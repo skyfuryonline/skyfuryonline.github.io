@@ -5,10 +5,13 @@ subtitle: "用自定义 Snippets 告别繁琐的 Front Matter"
 date: 2026-03-24 10:00:04 +0800
 author: "LH"
 group: blog-development
-catalog: true
 tags:
-  - Workflow
-  - VS Code
+  - "Workflow"
+keywords:
+  - "VS Code"
+  - "发文流程"
+  - "Snippets"
+catalog: true
 ---
 
 对于写博客来说，最大的阻力往往是每次都要手敲那一段复杂的头部信息（Front Matter）。为了让你更专注于内容创作，本仓库深度定制了 **VS Code** 的工作流。

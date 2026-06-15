@@ -5,10 +5,13 @@ subtitle: "从 0 认识本博客的文件结构与页面构成"
 date: 2026-03-24 10:00:01 +0800
 author: "LH"
 group: blog-development
-catalog: true
 tags:
-  - Jekyll
-  - Architecture
+  - "Jekyll"
+keywords:
+  - "Architecture"
+  - "博客结构"
+  - "页面布局"
+catalog: true
 ---
 
 欢迎来到本博客的开发指南系列！这套指南将带你深入了解我们是如何构建和维护这个现代化静态博客的。首篇文章，我们先来剖析项目的整体结构以及最重要的几个公共页面。

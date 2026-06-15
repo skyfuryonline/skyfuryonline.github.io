@@ -3,7 +3,15 @@ layout: post
 title: "使用unsloth对encoder-only模型进行微调并实现多卡训练"
 date: 2025-11-11
 author: "LH"
-tags: [LLM, Unsloth, 深度学习, SFT, encoder-only, 分布式训练]
+tags:
+  - "LLM"
+  - "训练"
+keywords:
+  - "Unsloth"
+  - "SFT"
+  - "encoder-only"
+  - "分布式训练"
+  - "深度学习"
 group: llm
 ---
 

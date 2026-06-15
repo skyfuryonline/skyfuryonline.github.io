@@ -7,76 +7,212 @@ header-img: "img/about-bg.png"
 ---
 
 <style>
-.about-container {
+/* --------------------------------------------------
+   About page — keep it simple, blend into the blog
+   -------------------------------------------------- */
+.about-page {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 10px 0 60px;
+    color: #404040;
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+/* ---------- profile row ---------- */
+.about-profile {
     display: flex;
-    flex-direction: column; /* Default for mobile: stack top to bottom */
     align-items: center;
+    gap: 18px;
+    margin-bottom: 34px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #eee;
 }
 
-.badge-container {
+.about-badges {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
-.badge-container img {
-    width: 100px; /* Or your desired size */
-    height: auto;
-    border-radius: 50%; /* Make them circular */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
+.about-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #e8e8e8;
+    background: #fff;
 }
 
-/* On medium screens and up, go to side-by-side layout */
-@media (min-width: 992px) { /* Corresponds to Bootstrap's `md` breakpoint */
-    .about-container {
-        flex-direction: row; /* Side-by-side */
-        align-items: flex-start; /* Align to the top */
-        justify-content: center;
-    }
-    .badge-container {
-        order: 1; /* Left column */
-        margin-right: 60px; /* Space between badges and text */
-        margin-bottom: 0;
-        margin-top: 20px; /* Align with the top of the text */
-    }
-    .post-container {
-        order: 2; /* Right column */
-        max-width: 600px; /* Constrain text width */
+.about-profile-text {
+    line-height: 1.55;
+}
+
+.about-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #404040;
+}
+
+.about-tagline {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: #888;
+}
+
+/* ---------- sections ---------- */
+.about-section {
+    margin-bottom: 36px;
+}
+
+.about-section h2 {
+    margin: 0 0 14px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #404040;
+}
+
+.about-section p {
+    margin: 0 0 14px;
+}
+
+.about-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- topic list ---------- */
+.about-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+}
+
+.about-list li {
+    padding: 10px 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+}
+
+.about-list strong {
+    display: block;
+    color: #404040;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+/* ---------- tags ---------- */
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.about-tag {
+    padding: 4px 10px;
+    font-size: 13px;
+    color: #337ab7;
+    background: rgba(51, 122, 183, 0.07);
+    border: 1px solid rgba(51, 122, 183, 0.18);
+    border-radius: 999px;
+}
+
+/* ---------- links ---------- */
+.about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin-top: 10px;
+}
+
+.about-link {
+    color: #337ab7 !important;
+    font-size: 15px;
+}
+
+.about-link:hover {
+    color: #0085a1 !important;
+}
+
+/* ---------- last-updated ---------- */
+.about-date {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 991px) {
+    .about-list {
+        grid-template-columns: 1fr;
     }
 }
 
+@media (max-width: 520px) {
+    .about-page {
+        font-size: 15px;
+    }
+    .about-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+}
 </style>
 
-<div class="about-container">
-    <div class="badge-container">
-            <img src="{{ site.baseurl }}/img/hnu-badge.png" alt="HNU Badge">
-            <img src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="YNU Badge">    </div>
+<div class="about-page">
 
-    <!-- Chinese Version -->
-    <div class="zh post-container">
+    <div class="about-profile">
+        <div class="about-badges">
+            <img class="about-badge" src="{{ site.baseurl }}/img/hnu-badge.png" alt="湖南大学校徽">
+            <img class="about-badge" src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="云南大学校徽">
+        </div>
+        <div class="about-profile-text">
+            <span class="about-name">skyfuryonline</span>
+            <p class="about-tagline">NLP / LLM / Agent · 写代码，也写一点生活。</p>
+        </div>
+    </div>
 
-        <!--copied from markdown -->
-        <blockquote><p>热爱技术，分享生活。</p></blockquote>
+    <div class="about-section">
+        <p>这个博客主要放代码实验、工具折腾和偶尔的日常记录。文章大多不是"最终答案"，更像是把某段时间遇到的问题和后来觉得有用的做法留一份存档。如果碰巧帮你少走了一点弯路，那就算完成任务了。</p>
+    </div>
 
-        <p>Hey，我毕业于湖南大学计算机科学与技术专业。目前是云南大学研究生。</p>
+    <div class="about-section">
+        <h2>会写些什么</h2>
+        <p>主要还是模型训练、推理部署、评测、数据处理、Agent 工作流，以及一些为了省事写的小脚本。偶尔也会记录博客维护、知识库整理和日常节奏。技术之外的内容更随手，不追求完整，只保留真实有用的部分。</p>
+        <div class="about-tags">
+            <span class="about-tag">NLP / LLM</span>
+            <span class="about-tag">Agent</span>
+            <span class="about-tag">工程实践</span>
+            <span class="about-tag">科研写作</span>
+            <span class="about-tag">个人工具流</span>
+        </div>
+    </div>
 
-        <p>如有问题，欢迎多多交流。</p>
-
-        <p>热爱编程，热爱乒乓球、散步和长跑。</p>
-
-        <p>这是我的利用 <a href="https://pages.github.com/">GitHub Pages</a> 与 <a href="http://jekyll.com.cn/">Jekyll</a> 搭建的 个人博客。你可以在GitHub上找到我 <a href="https://github.com/skyfuryonline">👉GitHub·skyfuryonline</a>。如果有什么问题，欢迎提出探讨~</p>
-
-        <p></p>
-        
-        <h5>社交链接</h5>
-
-        <ul>
-            <li><a href="https://github.com/skyfuryonline">GitHub</a></li>
+    <div class="about-section">
+        <h2>现在关心的事</h2>
+        <ul class="about-list">
+            <li><strong>LLM 工程</strong>微调、评测、推理服务，让实验流程更可复现。</li>
+            <li><strong>Agent 工作流</strong>把重复任务拆成工具和脚本，不每次从头来。</li>
+            <li><strong>科研写作</strong>从问题出发组织叙事，实验和结论尽量站得住。</li>
+            <li><strong>个人系统</strong>博客、知识库、自动化，能少消耗一点注意力就好。</li>
         </ul>
     </div>
-</div>
 
-<!-- English Version and Language Handler remains the same, so it's omitted for brevity -->
-<!-- ... -->
+    <div class="about-section">
+        <h2>可以从这里开始</h2>
+        <p>如果对某篇文章有疑问，或者想交流类似的折腾，欢迎通过 GitHub 找到我。</p>
+        <div class="about-links">
+            <a class="about-link" href="https://github.com/skyfuryonline" target="_blank" rel="noopener noreferrer">GitHub · skyfuryonline</a>
+            <a class="about-link" href="{{ site.baseurl }}/tags/">浏览文章标签</a>
+        </div>
+        <span class="about-date">Last updated: 2026-05</span>
+    </div>
+
+</div>
