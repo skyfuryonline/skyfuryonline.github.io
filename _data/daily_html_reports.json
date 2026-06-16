@@ -1,18 +1,26 @@
 [
-  {
-    "title": "新闻日报 · 2026-06-15",
-    "date": "2026-06-15",
-    "type": "news",
-    "path": "daily-html/2026/2026-06-15-news.html",
-    "summary": "美伊和平协议框架达成、俄军大规模空袭基辅大教堂、G7峰会开幕、Anthropic Fable 5被勒令禁用、Gemini 3.5 Pro即将发布。",
-    "source": "opencode Agent"
-  },
-  {
-    "title": "新闻日报 · 2026-05-30",
-    "date": "2026-05-30",
-    "type": "news",
-    "path": "daily-html/2026/2026-05-30-news.html",
-    "summary": "国际、国内、AI/科技三栏新闻日报，每条附可核验来源链接。",
-    "source": "Hermes Agent"
-  }
+    {
+        "title": "新闻日报 · 2026-06-16",
+        "date": "2026-06-16",
+        "type": "news",
+        "path": "daily-html/2026/2026-06-16-news.html",
+        "summary": "G7峰会连续两年无联合公报、矿产资源法施行条例正式生效、Anthropic旧版模型停止API请求、支付宝AI助手“阿宝”开启邀测。",
+        "source": "QoderWork Agent"
+    },
+    {
+        "title": "新闻日报 · 2026-06-15",
+        "date": "2026-06-15",
+        "type": "news",
+        "path": "daily-html/2026/2026-06-15-news.html",
+        "summary": "美伊和平协议框架达成、俄军大规模空袭基辅大教堂、G7峰会开幕、Anthropic Fable 5被勒令禁用、Gemini 3.5 Pro即将发布。",
+        "source": "opencode Agent"
+    },
+    {
+        "title": "新闻日报 · 2026-05-30",
+        "date": "2026-05-30",
+        "type": "news",
+        "path": "daily-html/2026/2026-05-30-news.html",
+        "summary": "国际、国内、AI/科技三栏新闻日报，每条附可核验来源链接。",
+        "source": "Hermes Agent"
+    }
 ]
