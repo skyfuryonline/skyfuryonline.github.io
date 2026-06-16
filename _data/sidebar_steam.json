@@ -1,19 +1,11 @@
 [
     {
-        "title": "MECCHA CHAMELEON",
-        "link": "https://store.steampowered.com/app/4704690/MECCHA_CHAMELEON/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4704690/18d14b8bd834e30a6a25df5ccd7f0a6e644f1577/capsule_231x87.jpg?t=1781108224",
-        "price": "¥20.80",
-        "discount": "-20%",
-        "rank": 1
-    },
-    {
         "title": "女王的游戏：盛世天下 女帝篇",
         "link": "https://store.steampowered.com/app/4148240/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4148240/001d014bc20017e8c270888fcf3cedfeea89db68/capsule_231x87_schinese.jpg?t=1781165139",
         "price": "¥59.20",
         "discount": "-20%",
-        "rank": 2
+        "rank": 1
     },
     {
         "title": "双影奇境",
@@ -21,7 +13,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
         "price": "¥128.70",
         "discount": "-35%",
-        "rank": 3
+        "rank": 2
     },
     {
         "title": "饥荒联机版",
@@ -29,15 +21,15 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/955559ffa99aff6a7d14a7a3ef33849b3d5b9ab0/capsule_231x87_alt_assets_50_schinese.jpg?t=1781363712",
         "price": "¥4.80",
         "discount": "-90%",
-        "rank": 4
+        "rank": 3
     },
     {
-        "title": "极限竞速：地平线 5",
-        "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
-        "price": "¥99.00",
-        "discount": "-50%",
-        "rank": 5
+        "title": "黎明杀机",
+        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1781638389",
+        "price": "¥37.50",
+        "discount": "-60%",
+        "rank": 4
     },
     {
         "title": "潜水员戴夫 DAVE THE DIVER",
@@ -45,7 +37,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1868140/cfdc3d184fb5f3cbf9fff9b25bb1bce6f1baf673/capsule_231x87.jpg?t=1781198537",
         "price": "¥40.00",
         "discount": "-50%",
-        "rank": 6
+        "rank": 5
     },
     {
         "title": "Resident Evil 4",
@@ -53,15 +45,15 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
         "price": "¥49.50",
         "discount": "-75%",
-        "rank": 7
+        "rank": 6
     },
     {
-        "title": "Street Fighter 6",
-        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1781583348",
-        "price": "¥99.00",
-        "discount": "-50%",
-        "rank": 8
+        "title": "Overcooked! 2",
+        "link": "https://store.steampowered.com/app/728880/Overcooked_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/728880/capsule_231x87.jpg?t=1780480581",
+        "price": "¥24.50",
+        "discount": "-75%",
+        "rank": 7
     },
     {
         "title": "Stellaris",
@@ -69,14 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/281990/feeda09c6bc30d5254be67b071def0b3c0f019c6/capsule_231x87_alt_assets_12_schinese.jpg?t=1781528310",
         "price": "¥59.40",
         "discount": "-70%",
+        "rank": 8
+    },
+    {
+        "title": "Street Fighter 6",
+        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1781583348",
+        "price": "¥99.00",
+        "discount": "-50%",
         "rank": 9
     },
     {
-        "title": "缺氧",
-        "link": "https://store.steampowered.com/app/457140/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/457140/capsule_231x87_schinese.jpg?t=1781198471",
-        "price": "¥17.40",
-        "discount": "-70%",
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/8496e0023f3b24c9bf87e1459cb9651f5a7a6732/capsule_231x87_alt_assets_5.jpg?t=1778857348",
+        "price": "¥73.80",
+        "discount": "-80%",
         "rank": 10
     }
 ]
