@@ -3,7 +3,7 @@
         "title": "火遮眼",
         "link": "https://movie.douban.com/subject/36877245/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932757540.jpg",
-        "score": "8.1",
+        "score": "8.0",
         "region": "中国香港 中国大陆",
         "rank": 1
     },
@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "记忆碎片",
-        "link": "https://movie.douban.com/subject/1304447/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931989223.jpg",
-        "score": "8.7",
-        "region": "美国",
-        "rank": 4
-    },
-    {
         "title": "给阿嬷的情书",
         "link": "https://movie.douban.com/subject/37116446/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931851430.jpg",
         "score": "9.2",
         "region": "中国大陆",
+        "rank": 4
+    },
+    {
+        "title": "记忆碎片",
+        "link": "https://movie.douban.com/subject/1304447/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931989223.jpg",
+        "score": "8.7",
+        "region": "美国",
         "rank": 5
     }
 ]
