@@ -56,20 +56,12 @@
         "rank": 7
     },
     {
-        "title": "Stellaris",
-        "link": "https://store.steampowered.com/app/281990/Stellaris/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/281990/feeda09c6bc30d5254be67b071def0b3c0f019c6/capsule_231x87_alt_assets_12_schinese.jpg?t=1781528310",
-        "price": "¥59.40",
-        "discount": "-70%",
-        "rank": 8
-    },
-    {
         "title": "Street Fighter 6",
         "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1781583348",
         "price": "¥99.00",
         "discount": "-50%",
-        "rank": 9
+        "rank": 8
     },
     {
         "title": "NBA 2K26",
@@ -77,6 +69,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/8496e0023f3b24c9bf87e1459cb9651f5a7a6732/capsule_231x87_alt_assets_5.jpg?t=1778857348",
         "price": "¥73.80",
         "discount": "-80%",
+        "rank": 9
+    },
+    {
+        "title": "Stellaris",
+        "link": "https://store.steampowered.com/app/281990/Stellaris/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/281990/feeda09c6bc30d5254be67b071def0b3c0f019c6/capsule_231x87_alt_assets_12_schinese.jpg?t=1781528310",
+        "price": "¥59.40",
+        "discount": "-70%",
         "rank": 10
     }
 ]
