@@ -915,7 +915,10 @@ http_headers:
       radial-gradient(circle at 12% 0%, rgba(102,194,255,0.10), transparent 32%),
       linear-gradient(180deg, #1a2338 0%, #121a2b 100%);
     min-height: 360px;
-    padding-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #3d4f78 #1a2338;
@@ -926,8 +929,8 @@ http_headers:
 
 /* ---- News Detail Card (primary view) ---- */
 .pixel-news-detail {
-    margin: 12px 14px 0;
-    padding: 16px;
+    margin: 0 16px;
+    padding: 20px;
     background: linear-gradient(135deg, rgba(102,194,255,0.08), rgba(255,255,255,0.03));
     border: 1px solid rgba(102,194,255,0.18);
     border-left: 4px solid #66c2ff;
@@ -967,8 +970,7 @@ http_headers:
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 14px;
-    margin-top: 8px;
+    padding: 14px 16px 0;
     overflow-x: auto;
     scrollbar-width: none;
 }
@@ -1031,7 +1033,7 @@ http_headers:
 
 /* ---- Calendar Panel ---- */
 .news-calendar-panel {
-    margin: 0 14px 14px;
+    margin: 10px 16px 16px;
     display: none;
     animation: pixelNewsReveal 0.25s ease;
 }
