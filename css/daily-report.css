@@ -5,11 +5,11 @@
 
 /* ---- Reset & Base ---- */
 :root {
-  --bg: #faf8f4;
+  --bg: #eee9e0;
   --card: #ffffff;
   --text: #1a1a1a;
   --muted: #6b7280;
-  --line: #e5e2dc;
+  --line: #d6d0c4;
   --blue: #2563eb;
   --red: #dc2626;
   --purple: #7c3aed;
@@ -118,11 +118,11 @@ section.ai .section-title:before    { background: var(--purple) !important; }
 /* ---- Cards ---- */
 .item {
   background: var(--card) !important;
-  border: 1px solid var(--line) !important;
+  border: 1px solid #ccc7bb !important;
   border-radius: 14px !important;
   padding: 20px !important;
   min-height: 200px !important;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.06) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08) !important;
   transition: box-shadow 0.2s, transform 0.2s !important;
   display: flex !important;
   flex-direction: column !important;
@@ -185,8 +185,8 @@ h3 {
   font-size: 19px !important;
   line-height: 1.35 !important;
   margin: 10px 0 8px !important;
-  color: var(--text) !important;
-  font-weight: 700 !important;
+  color: #000 !important;
+  font-weight: 900 !important;
 }
 
 /* ---- Summary ---- */
