@@ -1,0 +1,233 @@
+/* ============================================================
+   Daily Report Override — warm editorial style
+   Replaces the default dark AI-themed design with a clean,
+   newspaper-inspired reading experience.
+   ============================================================ */
+
+/* ---- Reset & Base ---- */
+:root {
+  --bg: #faf8f4;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --line: #e5e2dc;
+  --blue: #2563eb;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --green: #047857;
+  --accent: #b45309;
+}
+
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, "Times New Roman", serif !important;
+  line-height: 1.75 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 820px !important;
+  padding: 32px 20px 48px !important;
+}
+
+/* ---- Hero ---- */
+.hero {
+  background: none !important;
+  border: none !important;
+  border-bottom: 3px double var(--line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 0 20px !important;
+  margin-bottom: 8px !important;
+}
+
+.kicker {
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
+  font-weight: 400 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.hero h1 {
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text) !important;
+  margin: 6px 0 8px !important;
+}
+
+.hero p {
+  color: var(--muted) !important;
+  font-size: 14px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+/* ---- TOC Pills ---- */
+.toc {
+  gap: 6px !important;
+  margin: 14px 0 0 !important;
+}
+
+.toc a {
+  background: none !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 4px !important;
+  color: var(--text) !important;
+  padding: 4px 12px !important;
+  font-size: 13px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  transition: border-color 0.15s !important;
+}
+
+.toc a:hover {
+  border-color: var(--text) !important;
+}
+
+/* ---- Sections ---- */
+section {
+  margin-top: 28px !important;
+}
+
+.section-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+  margin: 0 0 12px !important;
+  padding-bottom: 6px !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+.section-title:before {
+  width: 3px !important;
+  height: 18px !important;
+  border-radius: 0 !important;
+  background: var(--blue) !important;
+}
+
+section.china .section-title:before { background: var(--red) !important; }
+section.ai .section-title:before    { background: var(--purple) !important; }
+
+/* ---- Grid ---- */
+.grid {
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+}
+
+/* ---- Cards ---- */
+.item {
+  background: none !important;
+  border: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 16px 0 !important;
+  min-height: auto !important;
+  box-shadow: none !important;
+}
+
+.item.hot {
+  border-left: none !important;
+  border-bottom: 2px solid var(--accent) !important;
+}
+
+/* ---- Tags ---- */
+.tag {
+  background: none !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 3px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 1px 7px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.hot .tag {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+
+section.china .tag {
+  background: none !important;
+  color: var(--muted) !important;
+  border-color: var(--line) !important;
+}
+
+section.china .hot .tag {
+  background: var(--red) !important;
+  color: #fff !important;
+  border-color: var(--red) !important;
+}
+
+section.ai .tag {
+  background: none !important;
+  color: var(--muted) !important;
+  border-color: var(--line) !important;
+}
+
+section.ai .hot .tag {
+  background: var(--purple) !important;
+  color: #fff !important;
+  border-color: var(--purple) !important;
+}
+
+/* ---- Headlines ---- */
+h3 {
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  margin: 8px 0 6px !important;
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+
+/* ---- Summary ---- */
+.summary {
+  color: #374151 !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  margin: 0 0 8px !important;
+}
+
+/* ---- Meta ---- */
+.meta {
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.meta a {
+  color: var(--blue) !important;
+  border-bottom: none !important;
+}
+
+.meta a:hover {
+  border-bottom: 1px solid var(--blue) !important;
+}
+
+/* ---- Footer ---- */
+.footer {
+  margin-top: 36px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid var(--line) !important;
+  color: #9ca3af !important;
+  font-size: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 640px) {
+  .wrap {
+    padding: 20px 16px 36px !important;
+  }
+  .hero h1 {
+    font-size: 22px !important;
+  }
+  h3 {
+    font-size: 15px !important;
+  }
+  .summary {
+    font-size: 13px !important;
+  }
+}
