@@ -34,7 +34,7 @@
     {
         "title": "黎明杀机",
         "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1781794833",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1781793413",
         "price": "¥37.50",
         "discount": "-60%",
         "rank": 5
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "Scroll Of Taiwu - 促织化影",
-        "link": "https://store.steampowered.com/app/4528730/Scroll_Of_Taiwu/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4528730/7a9ab6870bd46e16551b803a30fb33801da7ccc2/capsule_231x87_schinese.jpg?t=1781771339",
-        "price": "¥22.40",
-        "discount": "-20%",
-        "rank": 9
-    },
-    {
         "title": "Overcooked! 2",
         "link": "https://store.steampowered.com/app/728880/Overcooked_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/728880/capsule_231x87.jpg?t=1780480581",
         "price": "¥24.50",
         "discount": "-75%",
+        "rank": 9
+    },
+    {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1781720918",
+        "price": "¥23.60",
+        "discount": "-80%",
         "rank": 10
     }
 ]
