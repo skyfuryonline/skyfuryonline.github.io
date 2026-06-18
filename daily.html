@@ -853,7 +853,7 @@ http_headers:
 .pixel-news-card {
     width: min(100%, 760px);
     position: relative;
-    background: #f7efe1;
+    background: #1a2338;
     border: 4px solid #172033;
     box-shadow: 8px 8px 0 rgba(23, 32, 51, 0.18), 0 18px 35px rgba(0,0,0,0.08);
     padding: 12px;
@@ -907,129 +907,225 @@ http_headers:
 .pixel-news-close:hover {
     color: #ff8a8a;
 }
-.pixel-news-body {
-    border: 4px solid #172033;
-    border-top: 0;
-    height: 420px;
-    max-height: 62vh;
-    overflow-y: auto;
-    padding: 12px 14px 14px;
-    background:
-      radial-gradient(circle at 12% 0%, rgba(102,194,255,0.10), transparent 32%),
-      linear-gradient(180deg, #1a2338 0%, #121a2b 100%);
-    scrollbar-width: thin;
-    scrollbar-color: #3d4f78 #1a2338;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+
+/* ---- News Detail Card (primary view) ---- */
+.pixel-news-detail {
+    margin: 12px 14px 0;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(102,194,255,0.08), rgba(255,255,255,0.03));
+    border: 1px solid rgba(102,194,255,0.18);
+    border-left: 4px solid #66c2ff;
+    animation: pixelNewsReveal 0.3s ease;
 }
-.pixel-news-body::-webkit-scrollbar {
-    width: 6px;
-}
-.pixel-news-body::-webkit-scrollbar-track {
-    background: #1a2338;
-}
-.pixel-news-body::-webkit-scrollbar-thumb {
-    background: #3d4f78;
-    border-radius: 3px;
-}
-.news-item {
-    padding: 10px 12px;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-left: 3px solid rgba(102,194,255,0.28);
-    background: rgba(255,255,255,0.028);
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s, border-color 0.2s;
-    min-height: 0;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "tag title"
-      "meta meta";
-    column-gap: 10px;
-    row-gap: 4px;
-    align-items: start;
-}
-.news-item:last-child {
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.news-item:hover {
-    background: rgba(255,255,255,0.06);
-    border-color: rgba(102,194,255,0.32);
-    border-left-color: #66c2ff;
-    transform: translateX(2px);
-}
-.news-item.hot {
-    background: linear-gradient(90deg, rgba(255,93,93,0.16), rgba(255,255,255,0.03));
-    border-left: 3px solid #ff5d5d;
-}
-.news-summary {
-    grid-column: 1 / -1;
-    color: #b9c7dc;
-    font-size: 12px;
-    line-height: 1.55;
-    margin: 2px 0 4px;
-}
-.news-empty {
-    color: #c9d7ee;
-    line-height: 1.7;
-    padding: 18px;
-    border: 1px dashed rgba(255,255,255,0.18);
-    background: rgba(255,255,255,0.03);
-}
-.news-source-list {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.news-source-list a {
-    color: #66c2ff;
-    border: 1px solid rgba(102,194,255,0.25);
-    padding: 4px 8px;
-    text-decoration: none;
-}
-.news-tag {
-    grid-area: tag;
+.pixel-news-detail .detail-tag {
     display: inline-block;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 1px;
     padding: 2px 8px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     color: #fff;
-    background: #3d4f78;
+    background: #ff5d5d;
     text-transform: uppercase;
 }
-.news-item.hot .news-tag {
-    background: #ff5d5d;
-}
-.news-headline {
-    grid-area: title;
-    font-size: 14px;
-    font-weight: 600;
-    color: #e8edf5;
-    line-height: 1.5;
-    margin-bottom: 2px;
-}
-.news-item.hot .news-headline {
+.pixel-news-detail .detail-title {
+    font-size: 16px;
+    font-weight: 700;
     color: #fff;
-    font-size: 15px;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
-.news-meta {
-    grid-area: meta;
+.pixel-news-detail .detail-summary {
+    color: #b9c7dc;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+.pixel-news-detail .detail-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.pixel-news-detail .detail-actions a {
+    color: #66c2ff;
+    font-size: 12px;
+    text-decoration: none;
+    border: 1px solid rgba(102,194,255,0.3);
+    padding: 4px 12px;
+    transition: background 0.2s, color 0.2s;
+}
+.pixel-news-detail .detail-actions a:hover {
+    background: #66c2ff;
+    color: #1a2338;
+}
+.pixel-news-detail .detail-meta {
+    color: #8a9bb5;
+    font-size: 11px;
+}
+
+/* ---- Date Strip ---- */
+.news-date-strip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.news-date-strip::-webkit-scrollbar { display: none; }
+.news-date-strip .date-label {
+    font-size: 10px;
+    color: #8a9bb5;
+    white-space: nowrap;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+.news-date-strip .date-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 8px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.03);
+    transition: all 0.15s;
+    flex-shrink: 0;
+    min-width: 40px;
+}
+.news-date-strip .date-cell:hover {
+    background: rgba(102,194,255,0.12);
+    border-color: rgba(102,194,255,0.3);
+}
+.news-date-strip .date-cell.active {
+    background: rgba(102,194,255,0.18);
+    border-color: #66c2ff;
+}
+.news-date-strip .date-cell .d-num {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8edf5;
+    line-height: 1;
+}
+.news-date-strip .date-cell .d-weekday {
+    font-size: 9px;
+    color: #8a9bb5;
+    margin-top: 2px;
+}
+.news-date-strip .date-cell.active .d-num { color: #66c2ff; }
+.news-date-strip .date-cell.active .d-weekday { color: #66c2ff; }
+.news-date-strip .cal-toggle {
     font-size: 11px;
     color: #8a9bb5;
-    letter-spacing: 0.5px;
+    cursor: pointer;
+    padding: 5px 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    transition: all 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
-.news-source {
+.news-date-strip .cal-toggle:hover {
     color: #66c2ff;
-    text-decoration: none;
-    border-bottom: 1px dotted rgba(102,194,255,0.3);
-    transition: border-color 0.2s;
+    border-color: rgba(102,194,255,0.3);
 }
-.news-source:hover {
-    border-bottom-color: #66c2ff;
+
+/* ---- Calendar Panel ---- */
+.news-calendar-panel {
+    margin: 0 14px 14px;
+    display: none;
+    animation: pixelNewsReveal 0.25s ease;
+}
+.news-calendar-panel.open { display: block; }
+.news-calendar-panel .cal-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px;
+}
+.news-calendar-panel .cal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.news-calendar-panel .cal-nav button {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #8a9bb5;
+    font-size: 14px;
+    padding: 2px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s, border-color 0.15s;
+}
+.news-calendar-panel .cal-nav button:hover {
+    color: #66c2ff;
+    border-color: rgba(102,194,255,0.3);
+}
+.news-calendar-panel .cal-month-label {
+    color: #e8edf5;
+    font-size: 13px;
+    font-weight: 600;
+}
+.news-calendar-panel .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    text-align: center;
+}
+.news-calendar-panel .cal-hd {
+    font-size: 10px;
+    color: #8a9bb5;
+    padding: 4px 0;
+}
+.news-calendar-panel .cal-day {
+    font-size: 12px;
+    color: #555;
+    padding: 6px 0;
+    cursor: default;
+    position: relative;
+    transition: all 0.15s;
+}
+.news-calendar-panel .cal-day.empty { color: #333; }
+.news-calendar-panel .cal-day.has-report {
+    color: #e8edf5;
+    cursor: pointer;
+    font-weight: 600;
+}
+.news-calendar-panel .cal-day.has-report:hover {
+    background: rgba(102,194,255,0.15);
+    color: #66c2ff;
+}
+.news-calendar-panel .cal-day.has-report::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: #66c2ff;
+    border-radius: 50%;
+    margin: 2px auto 0;
+}
+.news-calendar-panel .cal-day.active {
+    background: rgba(102,194,255,0.22);
+    color: #66c2ff;
+}
+.news-calendar-panel .cal-day.today:not(.has-report) {
+    color: #8a9bb5;
+    font-weight: 600;
+}
+.news-calendar-panel .cal-day.today {
+    outline: 1px solid rgba(102,194,255,0.3);
+    outline-offset: -1px;
+}
+
+/* ---- News empty state ---- */
+.news-empty-state {
+    padding: 30px 14px;
+    text-align: center;
+    color: #8a9bb5;
+    font-size: 13px;
+    line-height: 1.7;
 }
 
 @media (max-width: 767px) {
@@ -1116,20 +1212,33 @@ http_headers:
     .pixel-news-subtitle {
         display: none;
     }
-    .pixel-news-body {
-        height: 360px;
-        max-height: 62vh;
-        padding: 8px 10px;
+    .pixel-news-detail {
+        margin: 8px 8px 0;
+        padding: 12px;
     }
-    .news-item {
-        display: block;
-        margin-bottom: 8px;
+    .pixel-news-detail .detail-title {
+        font-size: 14px;
     }
-    .news-headline {
+    .pixel-news-detail .detail-summary {
         font-size: 12px;
     }
-    .news-item.hot .news-headline {
-        font-size: 13px;
+    .news-date-strip {
+        padding: 8px;
+        gap: 4px;
+    }
+    .news-date-strip .date-cell {
+        padding: 4px 6px;
+        min-width: 34px;
+    }
+    .news-calendar-panel {
+        margin: 0 8px 8px;
+    }
+    .news-calendar-panel .cal-card {
+        padding: 8px;
+    }
+    .news-calendar-panel .cal-day {
+        font-size: 11px;
+        padding: 4px 0;
     }
 }
 </style>
@@ -1206,69 +1315,15 @@ http_headers:
   </div>
   <!-- 点击切换：新闻内容（默认隐藏） -->
   <div class="pixel-news-card" id="pixelNewsCard" style="display:none;">
-    {% assign daily_news = site.data.daily_news %}
-    {% unless daily_news %}{% assign daily_news = site.data.news %}{% endunless %}
     <div class="pixel-news-toolbar">
       <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
       <span>📰 LH DAILY NEWS</span>
       <span class="pixel-news-subtitle">click item → source · esc/× → back</span>
       <span class="pixel-news-close" title="点击返回">✕</span>
     </div>
-    {% assign html_reports = site.data.daily_html_reports %}
-    <div class="pixel-news-hint">
-      {% if html_reports and html_reports.size > 0 %}
-        最新 HTML 报告：<a class="news-source" href="{{ site.baseurl }}/{{ html_reports[0].path }}" target="_blank" rel="noopener noreferrer">{{ html_reports[0].title }}</a>
-      {% else %}
-        读取 <code>_data/daily_news.yml/json</code> 或 <code>daily-html/index.json</code>；没有数据时只显示信息源入口。
-      {% endif %}
-    </div>
-    <div class="pixel-news-body">
-      {% if html_reports and html_reports.size > 0 %}
-        {% for report in html_reports limit:6 %}
-          <div class="news-item {% if forloop.first %}hot{% endif %}" data-link="{{ site.baseurl }}/{{ report.path }}">
-            <span class="news-tag">{% if forloop.first %}🔥 {% endif %}{{ report.type | default: "HTML" }}</span>
-            <div class="news-headline">{{ report.title }}</div>
-            {% if report.summary %}<div class="news-summary">{{ report.summary | strip_html | truncate: 120 }}</div>{% endif %}
-            <div class="news-meta">
-              <a class="news-source" href="{{ site.baseurl }}/{{ report.path }}" target="_blank" rel="noopener noreferrer">打开 HTML 报告</a>
-              {% if report.date %} · {{ report.date }}{% endif %}
-            </div>
-          </div>
-        {% endfor %}
-      {% elsif daily_news and daily_news.size > 0 %}
-        {% for item in daily_news limit:18 %}
-          {% assign item_title = item.title | default: item.headline | default: item.name %}
-          {% assign item_url = item.url | default: item.link | default: item.source_url %}
-          {% assign item_tag = item.tag | default: item.category | default: item.section | default: "NEWS" %}
-          {% assign item_source = item.source | default: item.media | default: item.publisher | default: "Source" %}
-          {% assign item_time = item.time | default: item.published_at | default: item.date %}
-          <div class="news-item {% if forloop.first %}hot{% endif %}" data-link="{{ item_url | escape }}">
-            <span class="news-tag">{% if forloop.first %}🔥 {% endif %}{{ item_tag }}</span>
-            <div class="news-headline">{{ item_title }}</div>
-            {% if item.summary or item.description %}
-              <div class="news-summary">{{ item.summary | default: item.description | strip_html | truncate: 120 }}</div>
-            {% endif %}
-            <div class="news-meta">
-              {% if item_url %}<a class="news-source" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">{{ item_source }}</a>{% else %}{{ item_source }}{% endif %}
-              {% if item_time %} · {{ item_time }}{% endif %}
-            </div>
-          </div>
-        {% endfor %}
-      {% else %}
-        <div class="news-empty">
-          <strong>等待今日新闻数据接入。</strong><br>
-          当前页面没有检测到 <code>site.data.daily_news</code>。建议在 <code>blog-source</code> 中生成扁平数组格式的 <code>daily_news.yml/json</code>，字段可用：<code>title</code>、<code>summary</code>、<code>url</code>、<code>source</code>、<code>category</code>、<code>published_at</code>。
-          <div class="news-source-list">
-            <a href="https://www.reuters.com/" target="_blank" rel="noopener noreferrer">Reuters</a>
-            <a href="https://apnews.com/" target="_blank" rel="noopener noreferrer">AP</a>
-            <a href="https://www.xinhuanet.com/" target="_blank" rel="noopener noreferrer">新华社</a>
-            <a href="https://www.people.com.cn/" target="_blank" rel="noopener noreferrer">人民网</a>
-            <a href="https://www.theverge.com/" target="_blank" rel="noopener noreferrer">The Verge</a>
-            <a href="https://techcrunch.com/" target="_blank" rel="noopener noreferrer">TechCrunch</a>
-          </div>
-        </div>
-      {% endif %}
-    </div>
+    <div id="newsDetail" class="pixel-news-detail"></div>
+    <div id="newsDateStrip" class="news-date-strip"></div>
+    <div id="newsCalendarPanel" class="news-calendar-panel"></div>
   </div>
 </div>
 <!-- Bootstrap Modal -->
@@ -1510,6 +1565,133 @@ setInterval(updateCountdown, 3600000);
 updateClock();
 updateCountdown();
 
+// -------- News Data (injected from Jekyll) --------
+var DAILY_REPORTS = {{ site.data.daily_html_reports | jsonify | default: '[]' }};
+var reportMap = {};
+DAILY_REPORTS.forEach(function(r) { reportMap[r.date] = r; });
+
+function renderDetail(report) {
+  var el = document.getElementById('newsDetail');
+  if (!el || !report) return;
+  var baseUrl = '{{ site.baseurl }}';
+  var isFirst = DAILY_REPORTS.length > 0 && DAILY_REPORTS[0].date === report.date;
+  var dp = report.date.split('-');
+  var dateStr = dp[0] + '-' + dp[1] + '-' + dp[2];
+  el.innerHTML =
+    '<span class="detail-tag">' + (isFirst ? '🔥 NEWS' : (report.type || 'NEWS')) + '</span>' +
+    '<div class="detail-title">' + report.title + '</div>' +
+    (report.summary ? '<div class="detail-summary">' + report.summary + '</div>' : '') +
+    '<div class="detail-actions">' +
+      '<a href="' + baseUrl + '/' + report.path + '" target="_blank" rel="noopener">打开 HTML 报告</a>' +
+      '<span class="detail-meta">' + dateStr + (report.source ? ' · ' + report.source : '') + '</span>' +
+    '</div>';
+}
+
+function renderDateStrip(activeDate) {
+  var el = document.getElementById('newsDateStrip');
+  if (!el || DAILY_REPORTS.length === 0) return;
+  var weekdays = ['日','一','二','三','四','五','六'];
+  var html = '<span class="date-label">近期</span>';
+  var count = Math.min(DAILY_REPORTS.length, 7);
+  for (var i = 0; i < count; i++) {
+    var r = DAILY_REPORTS[i];
+    var dp = r.date.split('-');
+    var num = parseInt(dp[2]);
+    var wd = weekdays[new Date(r.date + 'T00:00:00').getDay()];
+    html += '<div class="date-cell' + (r.date === activeDate ? ' active' : '') + '" data-date="' + r.date + '">' +
+      '<span class="d-num">' + num + '</span><span class="d-weekday">' + wd + '</span></div>';
+  }
+  html += '<span class="cal-toggle" id="calToggle">更多 ▸</span>';
+  el.innerHTML = html;
+
+  el.querySelectorAll('.date-cell').forEach(function(cell) {
+    cell.addEventListener('click', function() {
+      var date = this.dataset.date;
+      renderDetail(reportMap[date]);
+      el.querySelectorAll('.date-cell').forEach(function(c) { c.classList.remove('active'); });
+      this.classList.add('active');
+      renderCalendar(new Date(date + 'T00:00:00'), date);
+    });
+  });
+
+  document.getElementById('calToggle').addEventListener('click', function() {
+    var panel = document.getElementById('newsCalendarPanel');
+    var isOpen = panel.classList.contains('open');
+    if (isOpen) {
+      panel.classList.remove('open');
+      this.textContent = '更多 ▸';
+    } else {
+      panel.classList.add('open');
+      this.textContent = '收起 ▾';
+      if (!panel.innerHTML.trim()) {
+        renderCalendar(new Date(DAILY_REPORTS[0].date + 'T00:00:00'), activeDate);
+      }
+    }
+  });
+}
+
+function renderCalendar(viewDate, activeDate) {
+  var panel = document.getElementById('newsCalendarPanel');
+  if (!panel) return;
+  var year = viewDate.getFullYear();
+  var month = viewDate.getMonth();
+  var weekdays = ['一','二','三','四','五','六','日'];
+  var firstDay = new Date(year, month, 1);
+  var startWeekday = (firstDay.getDay() + 6) % 7;
+  var daysInMonth = new Date(year, month + 1, 0).getDate();
+  var today = new Date().toISOString().slice(0, 10);
+
+  var html = '<div class="cal-card">' +
+    '<div class="cal-nav">' +
+      '<button id="calPrev">◀</button>' +
+      '<span class="cal-month-label">' + year + '年' + (month + 1) + '月</span>' +
+      '<button id="calNext">▶</button>' +
+    '</div>' +
+    '<div class="cal-grid">';
+
+  weekdays.forEach(function(w) { html += '<div class="cal-hd">' + w + '</div>'; });
+
+  for (var i = 0; i < startWeekday; i++) html += '<div class="cal-day empty"></div>';
+
+  for (var d = 1; d <= daysInMonth; d++) {
+    var dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+    var hasReport = !!reportMap[dateStr];
+    var isActive = dateStr === activeDate;
+    var isToday = dateStr === today;
+    var cls = 'cal-day';
+    if (hasReport) cls += ' has-report';
+    if (isActive) cls += ' active';
+    if (isToday) cls += ' today';
+    html += '<div class="' + cls + '"' + (hasReport ? ' data-date="' + dateStr + '"' : '') + '>' + d + '</div>';
+  }
+
+  html += '</div></div>';
+  panel.innerHTML = html;
+
+  var calViewDate = new Date(year, month, 1);
+  document.getElementById('calPrev').addEventListener('click', function() {
+    calViewDate.setMonth(calViewDate.getMonth() - 1);
+    renderCalendar(calViewDate, activeDate);
+  });
+  document.getElementById('calNext').addEventListener('click', function() {
+    calViewDate.setMonth(calViewDate.getMonth() + 1);
+    renderCalendar(calViewDate, activeDate);
+  });
+
+  panel.querySelectorAll('.cal-day.has-report').forEach(function(day) {
+    day.addEventListener('click', function() {
+      var date = this.dataset.date;
+      renderDetail(reportMap[date]);
+      var strip = document.getElementById('newsDateStrip');
+      strip.querySelectorAll('.date-cell').forEach(function(c) {
+        c.classList.toggle('active', c.dataset.date === date);
+      });
+      panel.querySelectorAll('.cal-day').forEach(function(c) { c.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+}
+
 // -------- 像素办公室 / 新闻内容 点击切换 --------
 (function() {
   var area = document.getElementById('pixelToggleArea');
@@ -1520,6 +1702,8 @@ updateCountdown();
 
   if (!pixelCard || !newsCard) return;
 
+  var rendered = false;
+
   function showNews(e) {
     if (e) e.stopPropagation();
     if (newsCard.style.display !== 'none') return;
@@ -1527,6 +1711,17 @@ updateCountdown();
     newsCard.style.display = '';
     area.classList.add('news-open');
     newsCard.setAttribute('aria-expanded', 'true');
+
+    if (!rendered && DAILY_REPORTS.length > 0) {
+      rendered = true;
+      var latest = DAILY_REPORTS[0];
+      renderDetail(latest);
+      renderDateStrip(latest.date);
+    } else if (!rendered) {
+      rendered = true;
+      document.getElementById('newsDetail').innerHTML =
+        '<div class="news-empty-state">等待今日新闻数据接入。<br>数据来源：daily-html/index.json</div>';
+    }
   }
 
   function showPixel(e) {
@@ -1542,16 +1737,6 @@ updateCountdown();
   if (closeBtn) closeBtn.addEventListener('click', showPixel);
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') showPixel(e);
-  });
-
-  // 新闻项点击打开来源链接；内部来源链接保持原生行为。
-  newsCard.querySelectorAll('.news-item').forEach(function(item) {
-    var link = item.getAttribute('data-link');
-    if (!link) return;
-    item.addEventListener('click', function(e) {
-      if (e.target.closest('.news-source, .pixel-news-close, .pixel-office-lights')) return;
-      window.open(link, '_blank', 'noopener');
-    });
   });
 })();
 </script>
