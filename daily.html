@@ -941,24 +941,6 @@ http_headers:
     line-height: 1.7;
     margin-bottom: 14px;
 }
-.pixel-news-detail .detail-actions {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.pixel-news-detail .detail-actions a {
-    color: #66c2ff;
-    font-size: 12px;
-    text-decoration: none;
-    border: 1px solid rgba(102,194,255,0.3);
-    padding: 4px 12px;
-    transition: background 0.2s, color 0.2s;
-}
-.pixel-news-detail .detail-actions a:hover {
-    background: #66c2ff;
-    color: #1a2338;
-}
 .pixel-news-detail .detail-meta {
     color: #8a9bb5;
     font-size: 11px;
@@ -1577,14 +1559,14 @@ function renderDetail(report) {
   var isFirst = DAILY_REPORTS.length > 0 && DAILY_REPORTS[0].date === report.date;
   var dp = report.date.split('-');
   var dateStr = dp[0] + '-' + dp[1] + '-' + dp[2];
+  var reportUrl = baseUrl + '/' + report.path;
+  el.style.cursor = 'pointer';
+  el.onclick = function() { window.open(reportUrl, '_blank', 'noopener'); };
   el.innerHTML =
     '<span class="detail-tag">' + (isFirst ? '🔥 NEWS' : (report.type || 'NEWS')) + '</span>' +
     '<div class="detail-title">' + report.title + '</div>' +
     (report.summary ? '<div class="detail-summary">' + report.summary + '</div>' : '') +
-    '<div class="detail-actions">' +
-      '<a href="' + baseUrl + '/' + report.path + '" target="_blank" rel="noopener">打开 HTML 报告</a>' +
-      '<span class="detail-meta">' + dateStr + (report.source ? ' · ' + report.source : '') + '</span>' +
-    '</div>';
+    '<div class="detail-meta">' + dateStr + (report.source ? ' · ' + report.source : '') + '</div>';
 }
 
 function renderDateStrip(activeDate) {
