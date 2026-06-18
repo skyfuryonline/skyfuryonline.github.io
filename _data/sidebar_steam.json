@@ -56,19 +56,19 @@
         "rank": 7
     },
     {
-        "title": "Resident Evil 4",
-        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
-        "price": "¥49.50",
-        "discount": "-75%",
-        "rank": 8
-    },
-    {
         "title": "潜水员戴夫 - 丛林 Content Pack",
         "link": "https://store.steampowered.com/app/4394810/___Content_Pack/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4394810/d1a19a04498220a22ee1b98cda89a316645b3b06/capsule_231x87.jpg?t=1781200442",
         "price": "¥35.10",
         "discount": "-10%",
+        "rank": 8
+    },
+    {
+        "title": "Resident Evil 4",
+        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
+        "price": "¥49.50",
+        "discount": "-75%",
         "rank": 9
     },
     {
