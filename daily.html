@@ -1281,32 +1281,33 @@ http_headers:
     }
 }
 
-/* ---- Dual Panel (News + GWY side-by-side) ---- */
-.dual-panel-row {
+/* ---- Daily Sections (News + GWY stacked in one card) ---- */
+.daily-section {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+.daily-section:first-child {
+    margin-top: 0;
+}
+.daily-section-header {
     display: flex;
-    gap: 12px;
-    width: 100%;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
-.dual-panel-row .pixel-news-card {
-    flex: 1;
-    min-width: 0;
-    width: auto !important;
-    max-width: none;
-    margin: 0;
+.section-icon {
+    font-size: 14px;
 }
-.dual-panel-row .pixel-news-card:only-child,
-.dual-panel-row .pixel-news-card[style*="display: none"] + .pixel-news-card,
-.dual-panel-row .pixel-news-card:first-child:last-child {
-    flex: 1;
-    max-width: 100%;
-}
-@media (max-width: 767px) {
-    .dual-panel-row {
-        flex-direction: column;
-    }
-    .dual-panel-row .pixel-news-card {
-        width: 100% !important;
-    }
+.section-label {
+    color: #8899bb;
 }
 </style>
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
@@ -1380,37 +1381,26 @@ http_headers:
       </div>
     </div>
   </div>
-  <!-- 点击切换：新闻内容（默认隐藏） -->
-  <div id="dualPanel" style="display:none;">
-    <div class="dual-panel-row">
-      <div class="pixel-news-card" id="pixelNewsCard">
-        <div class="pixel-news-toolbar">
-          <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
-          <span>📰 LH DAILY NEWS</span>
-          <span class="pixel-news-subtitle">click item → source · esc/× → back</span>
-        </div>
-        <div class="pixel-news-scene">
-          <div id="newsInfoBar" class="news-info-bar"></div>
-          <div id="newsDetail" class="pixel-news-detail"></div>
-          <div id="newsDateStrip" class="news-date-strip"></div>
-          <div id="newsCalendarPanel" class="news-calendar-panel"></div>
-        </div>
-      </div>
-      <div class="pixel-news-card" id="pixelGwyCard" style="display:none;">
-        <div class="pixel-news-toolbar">
-          <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
-          <span>📋 GWY DAILY</span>
-          <span class="pixel-news-subtitle">click → open report</span>
-        </div>
-        <div class="pixel-news-scene">
-          <div id="gwyInfoBar" class="news-info-bar"></div>
-          <div id="gwyDetail" class="pixel-news-detail"></div>
-          <div id="gwyDateStrip" class="news-date-strip"></div>
-        </div>
-      </div>
+  <!-- 点击切换：日报内容（默认隐藏） -->
+  <div class="pixel-news-card" id="pixelNewsCard" style="display:none;">
+    <div class="pixel-news-toolbar">
+      <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+      <span>📰 LH DAILY</span>
+      <span class="pixel-news-subtitle">click → open · esc/× → back</span>
+      <span class="pixel-news-close" title="点击返回">✕</span>
     </div>
-    <div style="text-align:center;margin-top:8px;">
-      <span class="pixel-news-close" title="点击返回" style="display:inline-block;cursor:pointer;">✕ 返回</span>
+    <div class="pixel-news-scene">
+      <div id="newsInfoBar" class="news-info-bar"></div>
+      <div class="daily-section" id="newsSection">
+        <div class="daily-section-header"><span class="section-icon">📰</span><span class="section-label">新闻日报</span></div>
+        <div id="newsDetail" class="pixel-news-detail"></div>
+      </div>
+      <div class="daily-section" id="gwySection" style="display:none;">
+        <div class="daily-section-header"><span class="section-icon">📋</span><span class="section-label">公考日报</span></div>
+        <div id="gwyDetail" class="pixel-news-detail"></div>
+      </div>
+      <div id="newsDateStrip" class="news-date-strip"></div>
+      <div id="newsCalendarPanel" class="news-calendar-panel"></div>
     </div>
   </div>
 </div>
@@ -1857,42 +1847,29 @@ function renderCalendar(viewDate, activeDate) {
   });
 }
 
-// -------- 像素办公室 / 双面板 点击切换 --------
+// -------- 像素办公室 / 日报内容 点击切换 --------
 (function() {
   var area = document.getElementById('pixelToggleArea');
   if (!area) return;
   var pixelCard = area.querySelector('.pixel-office-card');
-  var dualPanel = document.getElementById('dualPanel');
   var newsCard = document.getElementById('pixelNewsCard');
-  var gwyCard = document.getElementById('pixelGwyCard');
   var closeBtn = area.querySelector('.pixel-news-close');
 
-  if (!pixelCard || !dualPanel) return;
+  if (!pixelCard || !newsCard) return;
 
   var newsRendered = false;
   var gwyRendered = false;
 
-  function showPanels(e) {
+  function showNews(e) {
     if (e) e.stopPropagation();
-    if (dualPanel.style.display !== 'none') return;
+    if (newsCard.style.display !== 'none') return;
     pixelCard.style.display = 'none';
-    dualPanel.style.display = '';
+    newsCard.style.display = '';
     area.classList.add('news-open');
+    newsCard.setAttribute('aria-expanded', 'true');
 
-    // Show/hide cards based on data availability
+    // Render news section
     var hasNews = DAILY_REPORTS.length > 0;
-    var hasGwy = GWY_REPORTS.length > 0;
-
-    newsCard.style.display = hasNews ? '' : 'none';
-    gwyCard.style.display = hasGwy ? '' : 'none';
-
-    // If only one panel has data, make it full width
-    if (hasNews && !hasGwy) {
-      newsCard.style.flex = '1';
-    } else if (hasGwy && !hasNews) {
-      gwyCard.style.flex = '1';
-    }
-
     if (!newsRendered && hasNews) {
       newsRendered = true;
       renderInfoBar();
@@ -1904,29 +1881,32 @@ function renderCalendar(viewDate, activeDate) {
       document.getElementById('newsDetail').innerHTML =
         '<div class="news-empty-state">等待今日新闻数据接入。</div>';
     }
+    document.getElementById('newsSection').style.display = hasNews ? '' : 'none';
 
+    // Render GWY section
+    var hasGwy = GWY_REPORTS.length > 0;
     if (!gwyRendered && hasGwy) {
       gwyRendered = true;
-      renderGwyInfoBar();
       var latestGwy = GWY_REPORTS[0];
       renderGwyDetail(latestGwy);
-      renderGwyDateStrip(latestGwy.date);
     } else if (!gwyRendered) {
       gwyRendered = true;
       document.getElementById('gwyDetail').innerHTML =
         '<div class="news-empty-state">等待公考日报数据接入。</div>';
     }
+    document.getElementById('gwySection').style.display = hasGwy ? '' : 'none';
   }
 
   function showPixel(e) {
     if (e) e.stopPropagation();
     if (pixelCard.style.display !== 'none') return;
-    dualPanel.style.display = 'none';
+    newsCard.style.display = 'none';
     pixelCard.style.display = '';
     area.classList.remove('news-open');
+    newsCard.setAttribute('aria-expanded', 'false');
   }
 
-  area.addEventListener('click', showPanels);
+  area.addEventListener('click', showNews);
   if (closeBtn) closeBtn.addEventListener('click', showPixel);
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') showPixel(e);
