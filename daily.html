@@ -914,7 +914,15 @@ http_headers:
     background:
       radial-gradient(circle at 12% 0%, rgba(102,194,255,0.10), transparent 32%),
       linear-gradient(180deg, #1a2338 0%, #121a2b 100%);
+    min-height: 360px;
+    padding-bottom: 14px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #3d4f78 #1a2338;
 }
+.pixel-news-scene::-webkit-scrollbar { width: 6px; }
+.pixel-news-scene::-webkit-scrollbar-track { background: #1a2338; }
+.pixel-news-scene::-webkit-scrollbar-thumb { background: #3d4f78; border-radius: 3px; }
 
 /* ---- News Detail Card (primary view) ---- */
 .pixel-news-detail {
@@ -1132,6 +1140,9 @@ http_headers:
         padding: 0 8px;
     }
     .pixel-office-scene {
+        min-height: 340px;
+    }
+    .pixel-news-scene {
         min-height: 340px;
     }
     .pixel-window {
