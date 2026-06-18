@@ -120,9 +120,9 @@ section.ai .section-title:before    { background: var(--purple) !important; }
   background: var(--card) !important;
   border: 1px solid var(--line) !important;
   border-radius: 14px !important;
-  padding: 18px !important;
+  padding: 20px !important;
   min-height: 200px !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.04) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.06) !important;
   transition: box-shadow 0.2s, transform 0.2s !important;
   display: flex !important;
   flex-direction: column !important;
@@ -182,19 +182,19 @@ section.ai .hot .tag {
 
 /* ---- Headlines ---- */
 h3 {
-  font-size: 16px !important;
-  line-height: 1.4 !important;
-  margin: 10px 0 6px !important;
+  font-size: 19px !important;
+  line-height: 1.35 !important;
+  margin: 10px 0 8px !important;
   color: var(--text) !important;
   font-weight: 700 !important;
 }
 
 /* ---- Summary ---- */
 .summary {
-  color: #374151 !important;
-  font-size: 14px !important;
+  color: #1f2937 !important;
+  font-size: 14.5px !important;
   line-height: 1.7 !important;
-  margin: 0 0 8px !important;
+  margin: 0 0 10px !important;
   flex: 1 !important;
 }
 
