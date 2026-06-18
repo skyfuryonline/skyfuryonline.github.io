@@ -56,12 +56,18 @@ jobs:
           if [ -d private-source/daily-html ]; then
             rsync -av --delete private-source/daily-html/ main/daily-html/
           fi
+          if [ -d private-source/gwy-daily ]; then
+            rsync -av --delete private-source/gwy-daily/ main/gwy-daily/
+          fi
           # Copy the new sources file from the root of the private repo
           if [ -f private-source/gwy_sources.yml ]; then
             cp private-source/gwy_sources.yml main/_data/gwy_sources.yml
           fi
           if [ -f private-source/daily-html/index.json ]; then
             cp private-source/daily-html/index.json main/_data/daily_html_reports.json
+          fi
+          if [ -f private-source/gwy-daily/index.json ]; then
+            cp private-source/gwy-daily/index.json main/_data/gwy_daily_reports.json
           fi
       
       - name: Setup Python 🐍

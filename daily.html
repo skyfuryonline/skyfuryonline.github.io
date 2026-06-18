@@ -1280,6 +1280,34 @@ http_headers:
         padding: 4px 0;
     }
 }
+
+/* ---- Dual Panel (News + GWY side-by-side) ---- */
+.dual-panel-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+.dual-panel-row .pixel-news-card {
+    flex: 1;
+    min-width: 0;
+    width: auto !important;
+    max-width: none;
+    margin: 0;
+}
+.dual-panel-row .pixel-news-card:only-child,
+.dual-panel-row .pixel-news-card[style*="display: none"] + .pixel-news-card,
+.dual-panel-row .pixel-news-card:first-child:last-child {
+    flex: 1;
+    max-width: 100%;
+}
+@media (max-width: 767px) {
+    .dual-panel-row {
+        flex-direction: column;
+    }
+    .dual-panel-row .pixel-news-card {
+        width: 100% !important;
+    }
+}
 </style>
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
 {% assign gh_intel = site.data.github_intelligence %}
@@ -1353,18 +1381,36 @@ http_headers:
     </div>
   </div>
   <!-- 点击切换：新闻内容（默认隐藏） -->
-  <div class="pixel-news-card" id="pixelNewsCard" style="display:none;">
-    <div class="pixel-news-toolbar">
-      <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
-      <span>📰 LH DAILY NEWS</span>
-      <span class="pixel-news-subtitle">click item → source · esc/× → back</span>
-      <span class="pixel-news-close" title="点击返回">✕</span>
+  <div id="dualPanel" style="display:none;">
+    <div class="dual-panel-row">
+      <div class="pixel-news-card" id="pixelNewsCard">
+        <div class="pixel-news-toolbar">
+          <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>📰 LH DAILY NEWS</span>
+          <span class="pixel-news-subtitle">click item → source · esc/× → back</span>
+        </div>
+        <div class="pixel-news-scene">
+          <div id="newsInfoBar" class="news-info-bar"></div>
+          <div id="newsDetail" class="pixel-news-detail"></div>
+          <div id="newsDateStrip" class="news-date-strip"></div>
+          <div id="newsCalendarPanel" class="news-calendar-panel"></div>
+        </div>
+      </div>
+      <div class="pixel-news-card" id="pixelGwyCard" style="display:none;">
+        <div class="pixel-news-toolbar">
+          <div class="pixel-office-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>📋 GWY DAILY</span>
+          <span class="pixel-news-subtitle">click → open report</span>
+        </div>
+        <div class="pixel-news-scene">
+          <div id="gwyInfoBar" class="news-info-bar"></div>
+          <div id="gwyDetail" class="pixel-news-detail"></div>
+          <div id="gwyDateStrip" class="news-date-strip"></div>
+        </div>
+      </div>
     </div>
-    <div class="pixel-news-scene">
-      <div id="newsInfoBar" class="news-info-bar"></div>
-      <div id="newsDetail" class="pixel-news-detail"></div>
-      <div id="newsDateStrip" class="news-date-strip"></div>
-      <div id="newsCalendarPanel" class="news-calendar-panel"></div>
+    <div style="text-align:center;margin-top:8px;">
+      <span class="pixel-news-close" title="点击返回" style="display:inline-block;cursor:pointer;">✕ 返回</span>
     </div>
   </div>
 </div>
@@ -1612,6 +1658,68 @@ var DAILY_REPORTS = {{ site.data.daily_html_reports | jsonify | default: '[]' }}
 var reportMap = {};
 DAILY_REPORTS.forEach(function(r) { reportMap[r.date] = r; });
 
+// -------- GWY Data (injected from Jekyll) --------
+var GWY_REPORTS = {{ site.data.gwy_daily_reports | jsonify | default: '[]' }};
+var gwyMap = {};
+GWY_REPORTS.forEach(function(r) { gwyMap[r.date] = r; });
+
+function renderGwyInfoBar() {
+  var el = document.getElementById('gwyInfoBar');
+  if (!el) return;
+  var now = new Date();
+  var weekdays = ['日','一','二','三','四','五','六'];
+  var y = now.getFullYear();
+  var m = now.getMonth() + 1;
+  var d = now.getDate();
+  var wd = weekdays[now.getDay()];
+  el.innerHTML =
+    '<span class="bar-label">📋 公考日报</span>' +
+    '<span class="bar-date">' + y + '年' + m + '月' + d + '日 周' + wd + '</span>';
+}
+
+function renderGwyDetail(report) {
+  var el = document.getElementById('gwyDetail');
+  if (!el || !report) return;
+  var baseUrl = '{{ site.baseurl }}';
+  var dp = report.date.split('-');
+  var dateStr = dp[0] + '-' + dp[1] + '-' + dp[2];
+  var reportUrl = baseUrl + '/' + report.path;
+  el.style.cursor = 'pointer';
+  el.onclick = function() { window.open(reportUrl, '_blank', 'noopener'); };
+  el.innerHTML =
+    '<span class="detail-tag" style="background:#f59e0b;">📋 GWY</span>' +
+    '<div class="detail-title">' + report.title + '</div>' +
+    (report.summary ? '<div class="detail-summary">' + report.summary + '</div>' : '') +
+    '<div class="detail-meta">' + dateStr + (report.source ? ' · ' + report.source : '') + '</div>' +
+    '<div class="detail-hint">点击打开报告 →</div>';
+}
+
+function renderGwyDateStrip(activeDate) {
+  var el = document.getElementById('gwyDateStrip');
+  if (!el || GWY_REPORTS.length === 0) return;
+  var weekdays = ['日','一','二','三','四','五','六'];
+  var html = '<span class="date-label">近期</span>';
+  var count = Math.min(GWY_REPORTS.length, 7);
+  for (var i = 0; i < count; i++) {
+    var r = GWY_REPORTS[i];
+    var dp = r.date.split('-');
+    var num = parseInt(dp[2]);
+    var wd = weekdays[new Date(r.date + 'T00:00:00').getDay()];
+    html += '<div class="date-cell' + (r.date === activeDate ? ' active' : '') + '" data-date="' + r.date + '">' +
+      '<span class="d-num">' + num + '</span><span class="d-weekday">' + wd + '</span></div>';
+  }
+  el.innerHTML = html;
+
+  el.querySelectorAll('.date-cell').forEach(function(cell) {
+    cell.addEventListener('click', function() {
+      var date = this.dataset.date;
+      renderGwyDetail(gwyMap[date]);
+      el.querySelectorAll('.date-cell').forEach(function(c) { c.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+}
+
 function renderInfoBar() {
   var el = document.getElementById('newsInfoBar');
   if (!el) return;
@@ -1749,49 +1857,76 @@ function renderCalendar(viewDate, activeDate) {
   });
 }
 
-// -------- 像素办公室 / 新闻内容 点击切换 --------
+// -------- 像素办公室 / 双面板 点击切换 --------
 (function() {
   var area = document.getElementById('pixelToggleArea');
   if (!area) return;
   var pixelCard = area.querySelector('.pixel-office-card');
+  var dualPanel = document.getElementById('dualPanel');
   var newsCard = document.getElementById('pixelNewsCard');
-  var closeBtn = document.querySelector('.pixel-news-close');
+  var gwyCard = document.getElementById('pixelGwyCard');
+  var closeBtn = area.querySelector('.pixel-news-close');
 
-  if (!pixelCard || !newsCard) return;
+  if (!pixelCard || !dualPanel) return;
 
-  var rendered = false;
+  var newsRendered = false;
+  var gwyRendered = false;
 
-  function showNews(e) {
+  function showPanels(e) {
     if (e) e.stopPropagation();
-    if (newsCard.style.display !== 'none') return;
+    if (dualPanel.style.display !== 'none') return;
     pixelCard.style.display = 'none';
-    newsCard.style.display = '';
+    dualPanel.style.display = '';
     area.classList.add('news-open');
-    newsCard.setAttribute('aria-expanded', 'true');
 
-    if (!rendered && DAILY_REPORTS.length > 0) {
-      rendered = true;
+    // Show/hide cards based on data availability
+    var hasNews = DAILY_REPORTS.length > 0;
+    var hasGwy = GWY_REPORTS.length > 0;
+
+    newsCard.style.display = hasNews ? '' : 'none';
+    gwyCard.style.display = hasGwy ? '' : 'none';
+
+    // If only one panel has data, make it full width
+    if (hasNews && !hasGwy) {
+      newsCard.style.flex = '1';
+    } else if (hasGwy && !hasNews) {
+      gwyCard.style.flex = '1';
+    }
+
+    if (!newsRendered && hasNews) {
+      newsRendered = true;
       renderInfoBar();
       var latest = DAILY_REPORTS[0];
       renderDetail(latest);
       renderDateStrip(latest.date);
-    } else if (!rendered) {
-      rendered = true;
+    } else if (!newsRendered) {
+      newsRendered = true;
       document.getElementById('newsDetail').innerHTML =
-        '<div class="news-empty-state">等待今日新闻数据接入。<br>数据来源：daily-html/index.json</div>';
+        '<div class="news-empty-state">等待今日新闻数据接入。</div>';
+    }
+
+    if (!gwyRendered && hasGwy) {
+      gwyRendered = true;
+      renderGwyInfoBar();
+      var latestGwy = GWY_REPORTS[0];
+      renderGwyDetail(latestGwy);
+      renderGwyDateStrip(latestGwy.date);
+    } else if (!gwyRendered) {
+      gwyRendered = true;
+      document.getElementById('gwyDetail').innerHTML =
+        '<div class="news-empty-state">等待公考日报数据接入。</div>';
     }
   }
 
   function showPixel(e) {
     if (e) e.stopPropagation();
     if (pixelCard.style.display !== 'none') return;
-    newsCard.style.display = 'none';
+    dualPanel.style.display = 'none';
     pixelCard.style.display = '';
     area.classList.remove('news-open');
-    newsCard.setAttribute('aria-expanded', 'false');
   }
 
-  area.addEventListener('click', showNews);
+  area.addEventListener('click', showPanels);
   if (closeBtn) closeBtn.addEventListener('click', showPixel);
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') showPixel(e);
