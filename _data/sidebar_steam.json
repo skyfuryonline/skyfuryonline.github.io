@@ -1,59 +1,11 @@
 [
     {
-        "title": "潜水员戴夫 DAVE THE DIVER",
-        "link": "https://store.steampowered.com/app/1868140/_DAVE_THE_DIVER/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1868140/2700557c554cf9b99223022373b1c92bafdf5e77/capsule_231x87_alt_assets_2.jpg?t=1781777209",
-        "price": "¥40.00",
-        "discount": "-50%",
-        "rank": 1
-    },
-    {
-        "title": "女王的游戏：盛世天下 女帝篇",
-        "link": "https://store.steampowered.com/app/4148240/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4148240/001d014bc20017e8c270888fcf3cedfeea89db68/capsule_231x87_schinese.jpg?t=1781677683",
-        "price": "¥59.20",
-        "discount": "-20%",
-        "rank": 2
-    },
-    {
-        "title": "太吾绘卷：天幕心帷",
-        "link": "https://store.steampowered.com/app/838350/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/838350/ef55069ca08e75f9d31ee9849a4dd0d9b2356f24/capsule_231x87_schinese.jpg?t=1781692191",
-        "price": "¥86.40",
-        "discount": "-20%",
-        "rank": 3
-    },
-    {
         "title": "赛博朋克 2077",
         "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
         "price": "¥89.40",
         "discount": "-70%",
-        "rank": 4
-    },
-    {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥128.70",
-        "discount": "-35%",
-        "rank": 5
-    },
-    {
-        "title": "饥荒联机版",
-        "link": "https://store.steampowered.com/app/322330/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/955559ffa99aff6a7d14a7a3ef33849b3d5b9ab0/capsule_231x87_alt_assets_50_schinese.jpg?t=1781363712",
-        "price": "¥4.80",
-        "discount": "-90%",
-        "rank": 6
-    },
-    {
-        "title": "黎明杀机",
-        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1781795618",
-        "price": "¥37.50",
-        "discount": "-60%",
-        "rank": 7
+        "rank": 1
     },
     {
         "title": "《赛博朋克 2077：往日之影》",
@@ -61,22 +13,70 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
         "price": "¥89.40",
         "discount": "-40%",
+        "rank": 2
+    },
+    {
+        "title": "潜水员戴夫 DAVE THE DIVER",
+        "link": "https://store.steampowered.com/app/1868140/_DAVE_THE_DIVER/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1868140/2700557c554cf9b99223022373b1c92bafdf5e77/capsule_231x87_alt_assets_2.jpg?t=1781777209",
+        "price": "¥40.00",
+        "discount": "-50%",
+        "rank": 3
+    },
+    {
+        "title": "女王的游戏：盛世天下 女帝篇",
+        "link": "https://store.steampowered.com/app/4148240/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4148240/001d014bc20017e8c270888fcf3cedfeea89db68/capsule_231x87_schinese.jpg?t=1781677683",
+        "price": "¥59.20",
+        "discount": "-20%",
+        "rank": 4
+    },
+    {
+        "title": "太吾绘卷：天幕心帷",
+        "link": "https://store.steampowered.com/app/838350/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/838350/ef55069ca08e75f9d31ee9849a4dd0d9b2356f24/capsule_231x87_schinese.jpg?t=1781692191",
+        "price": "¥86.40",
+        "discount": "-20%",
+        "rank": 5
+    },
+    {
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥128.70",
+        "discount": "-35%",
+        "rank": 6
+    },
+    {
+        "title": "饥荒联机版",
+        "link": "https://store.steampowered.com/app/322330/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/955559ffa99aff6a7d14a7a3ef33849b3d5b9ab0/capsule_231x87_alt_assets_50_schinese.jpg?t=1781363712",
+        "price": "¥4.80",
+        "discount": "-90%",
+        "rank": 7
+    },
+    {
+        "title": "黎明杀机",
+        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1781795618",
+        "price": "¥37.50",
+        "discount": "-60%",
         "rank": 8
     },
     {
-        "title": "Scroll Of Taiwu - 促织化影",
-        "link": "https://store.steampowered.com/app/4528730/Scroll_Of_Taiwu/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4528730/7a9ab6870bd46e16551b803a30fb33801da7ccc2/capsule_231x87_schinese.jpg?t=1781771339",
-        "price": "¥22.40",
-        "discount": "-20%",
+        "title": "巫师 3：狂猎",
+        "link": "https://store.steampowered.com/app/292030/_3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/292030/f4f498773d733528e4a9920d82c499dfc14560d9/capsule_231x87_schinese.jpg?t=1768303991",
+        "price": "¥14.90",
+        "discount": "-90%",
         "rank": 9
     },
     {
-        "title": "Overcooked! 2",
-        "link": "https://store.steampowered.com/app/728880/Overcooked_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/728880/capsule_231x87.jpg?t=1780480581",
-        "price": "¥24.50",
-        "discount": "-75%",
+        "title": "双人成行",
+        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
+        "price": "¥59.40",
+        "discount": "-70%",
         "rank": 10
     }
 ]
