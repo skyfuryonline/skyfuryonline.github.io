@@ -20,7 +20,7 @@
                         <a href="{{ site.baseurl }}/">Home</a>
                     </li>
                     {% assign pages = site.pages | sort: "nav-order" %}
-                    {% for page in pages %}{% if page.title %}
+                    {% for page in pages %}{% if page.title and page.nav-hidden != true %}
                     <li>
                         <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
                     </li>
