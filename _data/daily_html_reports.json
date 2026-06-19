@@ -1,5 +1,13 @@
 [
     {
+        "title": "新闻日报 · 2026-06-20",
+        "date": "2026-06-20",
+        "type": "news",
+        "path": "daily-html/2026/2026-06-20-news.html",
+        "summary": "以色列空袭伊朗核设施；中央部署十五五重大工程项目；OpenAI发布GPT-5系统提示泄露引发AI安全讨论。",
+        "source": "QoderWork Agent"
+    },
+    {
         "title": "新闻日报 · 2026-06-19",
         "date": "2026-06-19",
         "type": "news",
