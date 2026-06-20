@@ -1,7 +1,10 @@
 {
   "New Jekyll Post": {
     "scope": "markdown",
-    "prefix": ["!post", "fm"],
+    "prefix": [
+      "!post",
+      "fm"
+    ],
     "body": [
       "---",
       "layout: post",
@@ -10,7 +13,7 @@
       "author: \"LH\"",
       "catalog: true",
       "tags: [${2:tag1, tag2}]",
-      "group: ${3|vision,llm,nlp-workshop,labuladong-algorithm,blog-development|}",
+      "group: ${3|vision,llm,nlp-workshop,labuladong-algorithm,blog-development,bowen|}",
       "---",
       "",
       "## 引言",
@@ -21,7 +24,10 @@
   },
   "New Gwy Log Entry": {
     "scope": "markdown",
-    "prefix": ["!log", "log"],
+    "prefix": [
+      "!log",
+      "log"
+    ],
     "body": [
       "---",
       "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",

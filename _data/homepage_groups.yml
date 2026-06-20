@@ -35,3 +35,10 @@
     - "2026-03-03-OpenClaw.md"
     - "2026-03-10-tailscale.md"
     - "2026-04-27-Hermes.md"
+
+- group_name: "博闻"
+  url: "/groups/bowen"
+  group_image: "/img/cover-bowen.svg"
+  group_description: "博闻广识——来自视频、文章、课程的学习笔记与知识收录"
+  posts:
+    - "2026-06-20-bowen-template-guide.md"

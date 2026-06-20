@@ -1,0 +1,165 @@
+/* =============================================
+   Bowen (博闻) Post Styles
+   Unified visual system for the Bowen group.
+   Include in each post:
+   <link rel="stylesheet" href="/css/bowen.css">
+   ============================================= */
+
+:root {
+    --bowen-primary: #B45309;
+    --bowen-primary-light: #F59E0B;
+    --bowen-bg: #FFFBEB;
+    --bowen-bg-soft: #FEF3C7;
+    --bowen-border: #FDE68A;
+    --bowen-text: #92400E;
+    --bowen-text-light: #D97706;
+    --bowen-accent: #1E3A5F;
+}
+
+/* ---- Source Info Card ---- */
+.bowen-source {
+    position: relative;
+    margin: 0 0 2.5em;
+    padding: 22px 26px;
+    background: var(--bowen-bg);
+    border-left: 4px solid var(--bowen-primary);
+    border-radius: 0 12px 12px 0;
+    font-size: 15px;
+    line-height: 1.8;
+}
+.bowen-source-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--bowen-primary);
+    margin-bottom: 8px;
+}
+.bowen-source-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bowen-text);
+    margin: 4px 0 10px;
+}
+.bowen-source-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    color: #6B7280;
+    font-size: 13.5px;
+}
+.bowen-source-meta span::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--bowen-primary-light);
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.bowen-source-meta a {
+    color: var(--bowen-text-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}
+.bowen-source-meta a:hover { color: var(--bowen-primary); }
+
+/* ---- Highlight Box ---- */
+.bowen-highlight {
+    margin: 2em 0;
+    padding: 20px 24px;
+    background: var(--bowen-bg);
+    border-left: 4px solid var(--bowen-primary-light);
+    border-radius: 0 12px 12px 0;
+}
+.bowen-highlight strong {
+    display: block;
+    color: var(--bowen-primary);
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.bowen-highlight p { margin: 8px 0; color: var(--bowen-text); line-height: 1.8; }
+.bowen-highlight ul, .bowen-highlight ol { margin: 8px 0; padding-left: 1.5em; color: var(--bowen-text); }
+.bowen-highlight li { margin-bottom: 4px; }
+
+/* ---- Keyword Pill ---- */
+.bowen-kw {
+    display: inline-block;
+    padding: 2px 11px;
+    background: var(--bowen-bg-soft);
+    color: var(--bowen-primary);
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* ---- Vocabulary Grid ---- */
+.bowen-vocab {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 1.5em 0 2em;
+}
+.bowen-vocab-item {
+    padding: 14px 18px;
+    background: #fff;
+    border: 1px solid var(--bowen-border);
+    border-radius: 10px;
+    transition: box-shadow 0.2s;
+}
+.bowen-vocab-item:hover { box-shadow: 0 4px 12px rgba(180,83,9,0.08); }
+.bowen-vocab-word { display: block; font-weight: 700; color: var(--bowen-accent); font-size: 16px; margin-bottom: 4px; }
+.bowen-vocab-phonetic { display: block; color: #9CA3AF; font-size: 13px; font-style: italic; margin-bottom: 4px; }
+.bowen-vocab-mean { display: block; color: #4B5563; font-size: 14px; line-height: 1.5; }
+
+/* ---- Section Intro ---- */
+.bowen-intro {
+    font-size: 17px;
+    color: #374151;
+    line-height: 1.9;
+    margin-bottom: 1.5em;
+    padding-left: 16px;
+    border-left: 3px solid var(--bowen-border);
+}
+
+/* ---- Divider ---- */
+.bowen-divider {
+    border: none;
+    border-top: 1px dashed var(--bowen-border);
+    margin: 2.5em 0;
+}
+
+/* ---- Numbered Insight Cards ---- */
+.bowen-insight {
+    display: flex;
+    gap: 16px;
+    margin: 1.5em 0;
+    padding: 18px 22px;
+    background: #fff;
+    border: 1px solid var(--bowen-border);
+    border-radius: 12px;
+}
+.bowen-insight-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--bowen-primary), var(--bowen-primary-light));
+    color: #fff; font-weight: 800; font-size: 15px; border-radius: 50%;
+}
+.bowen-insight-body { flex: 1; }
+.bowen-insight-body strong { display: block; color: var(--bowen-text); font-size: 15px; margin-bottom: 4px; }
+.bowen-insight-body p { margin: 0; color: #4B5563; font-size: 14.5px; line-height: 1.75; }
+
+/* ---- Responsive ---- */
+@media (max-width: 767px) {
+    .bowen-source { padding: 16px 18px; }
+    .bowen-source-meta { flex-direction: column; gap: 4px; }
+    .bowen-vocab { grid-template-columns: 1fr; }
+    .bowen-highlight { padding: 16px 18px; }
+    .bowen-insight { padding: 14px 16px; gap: 12px; }
+}

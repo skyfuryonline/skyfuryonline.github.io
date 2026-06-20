@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 680" width="1600" height="680">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="rgba(245,158,11,0.22)"/>
+      <stop offset="100%" stop-color="rgba(245,158,11,0)"/>
+    </linearGradient>
+    <linearGradient id="pageL" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fffbeb"/>
+    </linearGradient>
+    <linearGradient id="pageR" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </linearGradient>
+    <filter id="glowF">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="680" fill="url(#bg)"/>
+
+  <!-- subtle dot grid -->
+  <g fill="#f59e0b" opacity="0.04">
+    <g id="dotrow">
+      <circle cx="80" r="1.8"/><circle cx="160" r="1.8"/><circle cx="240" r="1.8"/><circle cx="320" r="1.8"/><circle cx="400" r="1.8"/><circle cx="480" r="1.8"/><circle cx="560" r="1.8"/><circle cx="640" r="1.8"/><circle cx="720" r="1.8"/><circle cx="800" r="1.8"/><circle cx="880" r="1.8"/><circle cx="960" r="1.8"/><circle cx="1040" r="1.8"/><circle cx="1120" r="1.8"/><circle cx="1200" r="1.8"/><circle cx="1280" r="1.8"/><circle cx="1360" r="1.8"/><circle cx="1440" r="1.8"/><circle cx="1520" r="1.8"/>
+    </g>
+    <use href="#dotrow" y="85"/><use href="#dotrow" y="170"/><use href="#dotrow" y="255"/><use href="#dotrow" y="340"/><use href="#dotrow" y="425"/><use href="#dotrow" y="510"/><use href="#dotrow" y="595"/>
+  </g>
+
+  <!-- ambient glow -->
+  <ellipse cx="800" cy="400" rx="300" ry="160" fill="url(#glow)" opacity="0.45"/>
+
+  <!-- open book -->
+  <path d="M685 260 Q685 250 695 250 L795 250 L795 495 Q740 486 695 482 Q685 481 685 472Z" fill="url(#pageL)" opacity="0.88"/>
+  <path d="M805 250 L905 250 Q915 250 915 260 L915 472 Q915 481 905 482 Q860 486 805 495Z" fill="url(#pageR)" opacity="0.88"/>
+  <line x1="800" y1="248" x2="800" y2="497" stroke="#92400e" stroke-width="2.5" opacity="0.5"/>
+  <!-- page lines -->
+  <g stroke="#d4a373" stroke-width="0.7" opacity="0.25">
+    <line x1="705" y1="285" x2="780" y2="285"/><line x1="705" y1="305" x2="775" y2="305"/><line x1="705" y1="325" x2="770" y2="325"/><line x1="705" y1="345" x2="778" y2="345"/><line x1="705" y1="365" x2="768" y2="365"/><line x1="705" y1="385" x2="775" y2="385"/><line x1="705" y1="405" x2="772" y2="405"/><line x1="705" y1="425" x2="765" y2="425"/><line x1="705" y1="445" x2="770" y2="445"/><line x1="705" y1="465" x2="758" y2="465"/>
+    <line x1="820" y1="285" x2="900" y2="285"/><line x1="820" y1="305" x2="895" y2="305"/><line x1="820" y1="325" x2="905" y2="325"/><line x1="820" y1="345" x2="898" y2="345"/><line x1="820" y1="365" x2="890" y2="365"/><line x1="820" y1="385" x2="900" y2="385"/><line x1="820" y1="405" x2="893" y2="405"/><line x1="820" y1="425" x2="888" y2="425"/><line x1="820" y1="445" x2="895" y2="445"/><line x1="820" y1="465" x2="882" y2="465"/>
+  </g>
+
+  <!-- floating elements -->
+  <!-- lightbulb -->
+  <g transform="translate(660,160)" filter="url(#glowF)">
+    <circle r="18" fill="#f59e0b" opacity="0.12"/>
+    <path d="M-7 0Q-7-13 0-17Q7-13 7 0Q7 5 4 9L-4 9Q-7 5-7 0" fill="none" stroke="#f59e0b" stroke-width="1.8"/>
+    <line x1="-3" y1="9" x2="-3" y2="13" stroke="#f59e0b" stroke-width="1.3"/>
+    <line x1="3" y1="9" x2="3" y2="13" stroke="#f59e0b" stroke-width="1.3"/>
+    <line x1="-2" y1="13" x2="2" y2="13" stroke="#f59e0b" stroke-width="1.3"/>
+    <line x1="0" y1="-21" x2="0" y2="-27" stroke="#f59e0b" stroke-width="1.3" opacity="0.5"/>
+    <line x1="14" y1="-14" x2="19" y2="-19" stroke="#f59e0b" stroke-width="1.3" opacity="0.5"/>
+    <line x1="-14" y1="-14" x2="-19" y2="-19" stroke="#f59e0b" stroke-width="1.3" opacity="0.5"/>
+  </g>
+
+  <!-- globe -->
+  <g transform="translate(940,155)">
+    <circle r="22" fill="none" stroke="#64748b" stroke-width="1.4"/>
+    <ellipse rx="22" ry="8" fill="none" stroke="#64748b" stroke-width="0.7"/>
+    <ellipse rx="8" ry="22" fill="none" stroke="#64748b" stroke-width="0.7"/>
+    <line x1="-22" y1="0" x2="22" y2="0" stroke="#64748b" stroke-width="0.5"/>
+    <path d="M-6-10Q-2-12 2-8Q6-6 4-2Q0-4-6-10" fill="#4ade80" opacity="0.35"/>
+    <path d="M8 4Q12 2 14 6Q12 10 8 8Q6 6 8 4" fill="#4ade80" opacity="0.35"/>
+    <line y1="22" y2="30" stroke="#64748b" stroke-width="1.4"/>
+    <line x1="-8" y1="30" x2="8" y2="30" stroke="#64748b" stroke-width="1.4"/>
+  </g>
+
+  <!-- pi -->
+  <text x="575" y="325" font-family="Georgia,serif" font-size="38" fill="#f59e0b" opacity="0.65">π</text>
+  <!-- sigma -->
+  <text x="1000" y="350" font-family="Georgia,serif" font-size="32" fill="#64748b" opacity="0.45">Σ</text>
+  <!-- integral -->
+  <text x="1100" y="310" font-family="Georgia,serif" font-size="36" fill="#94a3b8" opacity="0.3">∫</text>
+
+  <!-- music notes -->
+  <g transform="translate(1050,220)" opacity="0.45">
+    <circle r="4.5" fill="#94a3b8"/><line x1="4.5" y1="0" x2="4.5" y2="-26" stroke="#94a3b8" stroke-width="1.8"/>
+    <circle cx="18" cy="3" r="4.5" fill="#94a3b8"/><line x1="22.5" y1="3" x2="22.5" y2="-23" stroke="#94a3b8" stroke-width="1.8"/>
+    <line x1="4.5" y1="-26" x2="22.5" y2="-23" stroke="#94a3b8" stroke-width="2.2"/>
+  </g>
+
+  <!-- atom -->
+  <g transform="translate(730,130)" opacity="0.35">
+    <circle r="3.5" fill="#f59e0b"/>
+    <ellipse rx="22" ry="9" fill="none" stroke="#f59e0b" stroke-width="0.9" transform="rotate(-30)"/>
+    <ellipse rx="22" ry="9" fill="none" stroke="#f59e0b" stroke-width="0.9" transform="rotate(30)"/>
+    <ellipse rx="22" ry="9" fill="none" stroke="#f59e0b" stroke-width="0.9" transform="rotate(90)"/>
+  </g>
+
+  <!-- DNA hint -->
+  <g transform="translate(540,430)" opacity="0.3">
+    <path d="M0 0Q10-10 0-20Q-10-30 0-40" fill="none" stroke="#94a3b8" stroke-width="1.3"/>
+    <path d="M12 0Q2-10 12-20Q22-30 12-40" fill="none" stroke="#94a3b8" stroke-width="1.3"/>
+    <line x1="2" y1="-10" x2="10" y2="-10" stroke="#94a3b8" stroke-width="0.9"/>
+    <line x1="2" y1="-30" x2="10" y2="-30" stroke="#94a3b8" stroke-width="0.9"/>
+  </g>
+
+  <!-- compass -->
+  <g transform="translate(1080,440)" opacity="0.3">
+    <circle r="16" fill="none" stroke="#94a3b8" stroke-width="1.3"/>
+    <line y1="-12" y2="12" stroke="#94a3b8" stroke-width="0.8"/>
+    <line x1="-12" x2="12" stroke="#94a3b8" stroke-width="0.8"/>
+    <polygon points="0,-10 2.5,-2 -2.5,-2" fill="#f59e0b" opacity="0.7"/>
+    <polygon points="0,10 2.5,2 -2.5,2" fill="#64748b" opacity="0.5"/>
+  </g>
+
+  <!-- scattered stars -->
+  <g fill="#f59e0b" opacity="0.25">
+    <circle cx="460" cy="180" r="2.2"/><circle cx="1150" cy="160" r="1.8"/><circle cx="350" cy="380" r="1.6"/><circle cx="1250" cy="350" r="2.2"/><circle cx="500" cy="520" r="1.8"/><circle cx="1100" cy="540" r="1.4"/><circle cx="300" cy="260" r="1.4"/><circle cx="1320" cy="240" r="1.8"/>
+  </g>
+
+  <!-- small crosses -->
+  <g stroke="#64748b" stroke-width="0.9" opacity="0.18">
+    <line x1="420" y1="490" x2="420" y2="500"/><line x1="415" y1="495" x2="425" y2="495"/>
+    <line x1="1200" y1="490" x2="1200" y2="500"/><line x1="1195" y1="495" x2="1205" y2="495"/>
+    <line x1="620" y1="560" x2="620" y2="570"/><line x1="615" y1="565" x2="625" y2="565"/>
+  </g>
+
+  <!-- knowledge network curves -->
+  <g stroke="#f59e0b" stroke-width="0.5" fill="none" opacity="0.1">
+    <path d="M660 160Q700 200 730 130"/>
+    <path d="M940 155Q1000 180 1050 220"/>
+    <path d="M575 325Q600 370 540 430"/>
+    <path d="M1000 350Q1040 380 1080 440"/>
+  </g>
+
+  <!-- typography -->
+  <text x="100" y="105" font-family="Georgia,'Noto Serif SC',serif" font-weight="700" font-size="62" fill="#f59e0b" letter-spacing="6" opacity="0.9">博 闻</text>
+  <text x="100" y="140" font-family="'SF Mono','JetBrains Mono',monospace" font-size="14" fill="#94a3b8" letter-spacing="2" opacity="0.55">BOWEN / BROAD LEARNING</text>
+
+  <!-- bottom -->
+  <text x="100" y="625" font-family="'SF Mono','JetBrains Mono',monospace" font-size="12" fill="#64748b" opacity="0.35" letter-spacing="1">// NOTES FROM VIDEOS, ARTICLES &amp; COURSES</text>
+  <text x="1430" y="625" font-family="'SF Mono','JetBrains Mono',monospace" font-size="12" fill="#f59e0b" opacity="0.25" letter-spacing="1">vol.01</text>
+</svg>
