@@ -289,12 +289,10 @@ layout: default
                         </div>
 
                         {% if post_total > 0 %}
+                        {% assign group_posts = site.posts | where_exp: "post", "current_group.posts contains post.path | split: '/' | last" | sort: "date" | reverse %}
                         <ol class="group-post-list">
-                            {% for post_filename in current_group.posts %}
+                            {% for post in group_posts %}
                                 {% assign post_index = forloop.index %}
-                                {% for post in site.posts %}
-                                    {% assign post_name_from_path = post.path | split: '/' | last %}
-                                    {% if post_name_from_path == post_filename %}
                                         <li class="group-post-item">
                                             <span class="group-post-index">{{ post_index }}</span>
                                             <a class="group-post-card" href="{{ post.url | prepend: site.baseurl }}">
@@ -321,8 +319,6 @@ layout: default
                                                 {% endif %}
                                             </a>
                                         </li>
-                                    {% endif %}
-                                {% endfor %}
                             {% endfor %}
                         </ol>
                         {% else %}
