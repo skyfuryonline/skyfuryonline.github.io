@@ -1,0 +1,165 @@
+/* =============================================
+   Jzxm (芥子须弥) Post Styles
+   Unified visual system for the Jzxm group.
+   Include in each post:
+   <link rel="stylesheet" href="/css/jzxm.css">
+   ============================================= */
+
+:root {
+    --jzxm-primary: #B45309;
+    --jzxm-primary-light: #F59E0B;
+    --jzxm-bg: #FFFBEB;
+    --jzxm-bg-soft: #FEF3C7;
+    --jzxm-border: #FDE68A;
+    --jzxm-text: #92400E;
+    --jzxm-text-light: #D97706;
+    --jzxm-accent: #1E3A5F;
+}
+
+/* ---- Source Info Card ---- */
+.jzxm-source {
+    position: relative;
+    margin: 0 0 2.5em;
+    padding: 22px 26px;
+    background: var(--jzxm-bg);
+    border-left: 4px solid var(--jzxm-primary);
+    border-radius: 0 12px 12px 0;
+    font-size: 15px;
+    line-height: 1.8;
+}
+.jzxm-source-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--jzxm-primary);
+    margin-bottom: 8px;
+}
+.jzxm-source-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--jzxm-text);
+    margin: 4px 0 10px;
+}
+.jzxm-source-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    color: #6B7280;
+    font-size: 13.5px;
+}
+.jzxm-source-meta span::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--jzxm-primary-light);
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.jzxm-source-meta a {
+    color: var(--jzxm-text-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}
+.jzxm-source-meta a:hover { color: var(--jzxm-primary); }
+
+/* ---- Highlight Box ---- */
+.jzxm-highlight {
+    margin: 2em 0;
+    padding: 20px 24px;
+    background: var(--jzxm-bg);
+    border-left: 4px solid var(--jzxm-primary-light);
+    border-radius: 0 12px 12px 0;
+}
+.jzxm-highlight strong {
+    display: block;
+    color: var(--jzxm-primary);
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.jzxm-highlight p { margin: 8px 0; color: var(--jzxm-text); line-height: 1.8; }
+.jzxm-highlight ul, .jzxm-highlight ol { margin: 8px 0; padding-left: 1.5em; color: var(--jzxm-text); }
+.jzxm-highlight li { margin-bottom: 4px; }
+
+/* ---- Keyword Pill ---- */
+.jzxm-kw {
+    display: inline-block;
+    padding: 2px 11px;
+    background: var(--jzxm-bg-soft);
+    color: var(--jzxm-primary);
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* ---- Vocabulary Grid ---- */
+.jzxm-vocab {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 1.5em 0 2em;
+}
+.jzxm-vocab-item {
+    padding: 14px 18px;
+    background: #fff;
+    border: 1px solid var(--jzxm-border);
+    border-radius: 10px;
+    transition: box-shadow 0.2s;
+}
+.jzxm-vocab-item:hover { box-shadow: 0 4px 12px rgba(180,83,9,0.08); }
+.jzxm-vocab-word { display: block; font-weight: 700; color: var(--jzxm-accent); font-size: 16px; margin-bottom: 4px; }
+.jzxm-vocab-phonetic { display: block; color: #9CA3AF; font-size: 13px; font-style: italic; margin-bottom: 4px; }
+.jzxm-vocab-mean { display: block; color: #4B5563; font-size: 14px; line-height: 1.5; }
+
+/* ---- Section Intro ---- */
+.jzxm-intro {
+    font-size: 17px;
+    color: #374151;
+    line-height: 1.9;
+    margin-bottom: 1.5em;
+    padding-left: 16px;
+    border-left: 3px solid var(--jzxm-border);
+}
+
+/* ---- Divider ---- */
+.jzxm-divider {
+    border: none;
+    border-top: 1px dashed var(--jzxm-border);
+    margin: 2.5em 0;
+}
+
+/* ---- Numbered Insight Cards ---- */
+.jzxm-insight {
+    display: flex;
+    gap: 16px;
+    margin: 1.5em 0;
+    padding: 18px 22px;
+    background: #fff;
+    border: 1px solid var(--jzxm-border);
+    border-radius: 12px;
+}
+.jzxm-insight-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--jzxm-primary), var(--jzxm-primary-light));
+    color: #fff; font-weight: 800; font-size: 15px; border-radius: 50%;
+}
+.jzxm-insight-body { flex: 1; }
+.jzxm-insight-body strong { display: block; color: var(--jzxm-text); font-size: 15px; margin-bottom: 4px; }
+.jzxm-insight-body p { margin: 0; color: #4B5563; font-size: 14.5px; line-height: 1.75; }
+
+/* ---- Responsive ---- */
+@media (max-width: 767px) {
+    .jzxm-source { padding: 16px 18px; }
+    .jzxm-source-meta { flex-direction: column; gap: 4px; }
+    .jzxm-vocab { grid-template-columns: 1fr; }
+    .jzxm-highlight { padding: 16px 18px; }
+    .jzxm-insight { padding: 14px 16px; gap: 12px; }
+}

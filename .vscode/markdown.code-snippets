@@ -13,7 +13,7 @@
       "author: \"LH\"",
       "catalog: true",
       "tags: [${2:tag1, tag2}]",
-      "group: ${3|vision,llm,nlp-workshop,labuladong-algorithm,blog-development,bowen|}",
+      "group: ${3|vision,llm,nlp-workshop,labuladong-algorithm,blog-development,jzxm|}",
       "---",
       "",
       "## 引言",
