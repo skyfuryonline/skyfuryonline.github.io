@@ -1,35 +1,11 @@
 [
     {
-        "title": "火遮眼",
-        "link": "https://movie.douban.com/subject/36877245/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932757540.jpg",
-        "score": "8.0",
-        "region": "中国香港 中国大陆",
-        "rank": 1
-    },
-    {
-        "title": "诺曼底72小时",
-        "link": "https://movie.douban.com/subject/36916000/?from=playing_poster",
-        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2932334501.jpg",
-        "score": "8.2",
-        "region": "英国 法国 美国",
-        "rank": 2
-    },
-    {
         "title": "抓特务",
         "link": "https://movie.douban.com/subject/36812879/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933198762.jpg",
         "score": "7.5",
         "region": "中国大陆",
-        "rank": 3
-    },
-    {
-        "title": "揭秘日",
-        "link": "https://movie.douban.com/subject/36860212/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933170423.jpg",
-        "score": "6.5",
-        "region": "美国 加拿大 新西兰 日本",
-        "rank": 4
+        "rank": 1
     },
     {
         "title": "玩具总动员5",
@@ -37,6 +13,30 @@
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933391462.jpg",
         "score": "8.0",
         "region": "美国",
+        "rank": 2
+    },
+    {
+        "title": "火遮眼",
+        "link": "https://movie.douban.com/subject/36877245/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932757540.jpg",
+        "score": "8.0",
+        "region": "中国香港 中国大陆",
+        "rank": 3
+    },
+    {
+        "title": "我看见两朵一样的云",
+        "link": "https://movie.douban.com/subject/35211447/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933087672.jpg",
+        "score": "暂无评分",
+        "region": "中国大陆",
+        "rank": 4
+    },
+    {
+        "title": "诺曼底72小时",
+        "link": "https://movie.douban.com/subject/36916000/?from=playing_poster",
+        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2932334501.jpg",
+        "score": "8.2",
+        "region": "英国 法国 美国",
         "rank": 5
     }
 ]

@@ -32,12 +32,20 @@
         "rank": 4
     },
     {
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥128.70",
+        "discount": "-35%",
+        "rank": 5
+    },
+    {
         "title": "巫师 3：狂猎",
         "link": "https://store.steampowered.com/app/292030/_3/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/f4f498773d733528e4a9920d82c499dfc14560d9/capsule_231x87_schinese.jpg?t=1768303991",
         "price": "¥14.90",
         "discount": "-90%",
-        "rank": 5
+        "rank": 6
     },
     {
         "title": "太吾绘卷：天幕心帷",
@@ -45,23 +53,7 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/838350/ef55069ca08e75f9d31ee9849a4dd0d9b2356f24/capsule_231x87_schinese.jpg?t=1781692191",
         "price": "¥86.40",
         "discount": "-20%",
-        "rank": 6
-    },
-    {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥128.70",
-        "discount": "-35%",
         "rank": 7
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/8496e0023f3b24c9bf87e1459cb9651f5a7a6732/capsule_231x87_alt_assets_5.jpg?t=1778857348",
-        "price": "¥73.80",
-        "discount": "-80%",
-        "rank": 8
     },
     {
         "title": "饥荒联机版",
@@ -69,6 +61,14 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/322330/955559ffa99aff6a7d14a7a3ef33849b3d5b9ab0/capsule_231x87_alt_assets_50_schinese.jpg?t=1781363712",
         "price": "¥4.80",
         "discount": "-90%",
+        "rank": 8
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/8496e0023f3b24c9bf87e1459cb9651f5a7a6732/capsule_231x87_alt_assets_5.jpg?t=1778857348",
+        "price": "¥73.80",
+        "discount": "-80%",
         "rank": 9
     },
     {
