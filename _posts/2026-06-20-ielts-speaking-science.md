@@ -99,6 +99,7 @@ group: bowen
   <div class="bowen-source-meta">
     <span>UP主: 小艾英语说</span>
     <span>时长: 0:27</span>
+    <span><a href="/2026/06/20/ielts-speaking-outer-space/">查看本站文章</a></span>
     <span><a href="https://www.bilibili.com/video/BV14iJH6oEv2" target="_blank">B站链接</a></span>
   </div>
 </div>
