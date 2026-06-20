@@ -40,19 +40,19 @@
         "rank": 5
     },
     {
-        "title": "太吾绘卷：天幕心帷",
-        "link": "https://store.steampowered.com/app/838350/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/838350/ef55069ca08e75f9d31ee9849a4dd0d9b2356f24/capsule_231x87_schinese.jpg?t=1781692191",
-        "price": "¥86.40",
-        "discount": "-20%",
-        "rank": 6
-    },
-    {
         "title": "巫师 3：狂猎",
         "link": "https://store.steampowered.com/app/292030/_3/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/292030/f4f498773d733528e4a9920d82c499dfc14560d9/capsule_231x87_schinese.jpg?t=1768303991",
         "price": "¥14.90",
         "discount": "-90%",
+        "rank": 6
+    },
+    {
+        "title": "太吾绘卷：天幕心帷",
+        "link": "https://store.steampowered.com/app/838350/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/838350/ef55069ca08e75f9d31ee9849a4dd0d9b2356f24/capsule_231x87_schinese.jpg?t=1781692191",
+        "price": "¥86.40",
+        "discount": "-20%",
         "rank": 7
     },
     {
