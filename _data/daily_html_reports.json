@@ -1,5 +1,13 @@
 [
     {
+        "title": "新闻日报 · 2026-06-22",
+        "date": "2026-06-22",
+        "type": "news",
+        "path": "daily-html/2026/2026-06-22-news.html",
+        "summary": "美伊停火协议签署但以色列轰炸黎巴嫩；国务院发布十五五就业优先战略；Anthropic Claude Fable 5发布、微信AI助手内测。",
+        "source": "QoderWork Agent"
+    },
+    {
         "title": "新闻日报 · 2026-06-21",
         "date": "2026-06-21",
         "type": "news",
