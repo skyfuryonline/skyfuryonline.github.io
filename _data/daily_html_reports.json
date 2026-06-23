@@ -1,5 +1,13 @@
 [
     {
+        "title": "新闻日报 · 2026-06-23",
+        "date": "2026-06-23",
+        "type": "news",
+        "path": "daily-html/2026/2026-06-23-news.html",
+        "summary": "伊朗终止美伊四方谈判；金融法草案首次提请全国人大常委会审议；GPT-5.6即将发布、智谱开源GLM-5.2。",
+        "source": "QoderWork Agent"
+    },
+    {
         "title": "新闻日报 · 2026-06-22",
         "date": "2026-06-22",
         "type": "news",
