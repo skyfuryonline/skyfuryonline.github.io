@@ -155,7 +155,7 @@ Sweller 等（2011, 2019）系统总结了 CLT 衍生出的教学效应——每
 <div class="jzxm-highlight">
   <strong>核心要点</strong>
   <ul>
-    <li>CLT 不是单一理论，而是一组可预<digest>续</digest>证的教学效应集合</li>
+    <li>CLT 不是单一理论，而是一组可预测、可验证的教学效应集合</li>
     <li>所有效应的核心机制：通过降低外在负载或优化内在负载来释放工作记忆资源</li>
     <li>专家反转效应是 CLT 中最常被忽视但最重要的边界条件</li>
   </ul>
