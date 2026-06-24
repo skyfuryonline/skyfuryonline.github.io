@@ -40,12 +40,20 @@
         "rank": 5
     },
     {
+        "title": "RuneScape: Dragonwilds 符文世界：龙之荒野",
+        "link": "https://store.steampowered.com/app/1374490/RuneScape_Dragonwilds/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1374490/02f2be287ba6b343aa95aa6fb6bfb1166c70fb9e/capsule_231x87_alt_assets_2_schinese.jpg?t=1782209165",
+        "price": "¥82.60",
+        "discount": "-30%",
+        "rank": 6
+    },
+    {
         "title": "黎明杀机",
         "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1782245493",
         "price": "¥37.50",
         "discount": "-60%",
-        "rank": 6
+        "rank": 7
     },
     {
         "title": "巫师 3：狂猎",
@@ -53,7 +61,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/292030/f4f498773d733528e4a9920d82c499dfc14560d9/capsule_231x87_schinese.jpg?t=1768303991",
         "price": "¥14.90",
         "discount": "-90%",
-        "rank": 7
+        "rank": 8
     },
     {
         "title": "双人成行",
@@ -61,22 +69,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
         "price": "¥59.40",
         "discount": "-70%",
-        "rank": 8
-    },
-    {
-        "title": "RuneScape: Dragonwilds 符文世界：龙之荒野",
-        "link": "https://store.steampowered.com/app/1374490/RuneScape_Dragonwilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1374490/02f2be287ba6b343aa95aa6fb6bfb1166c70fb9e/capsule_231x87_alt_assets_2_schinese.jpg?t=1782209165",
-        "price": "¥82.60",
-        "discount": "-30%",
         "rank": 9
     },
     {
-        "title": "SAND: Raiders of Sophie",
-        "link": "https://store.steampowered.com/app/1431300/SAND_Raiders_of_Sophie/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1431300/0b13e08fe57ae627ff10041d391db052be49557d/capsule_231x87.jpg?t=1782165837",
-        "price": "¥71.10",
-        "discount": "-21%",
+        "title": "Overcooked! 2",
+        "link": "https://store.steampowered.com/app/728880/Overcooked_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/728880/capsule_231x87.jpg?t=1780480581",
+        "price": "¥24.50",
+        "discount": "-75%",
         "rank": 10
     }
 ]
