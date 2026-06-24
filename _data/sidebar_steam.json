@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "饥荒联机版",
-        "link": "https://store.steampowered.com/app/322330/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/955559ffa99aff6a7d14a7a3ef33849b3d5b9ab0/capsule_231x87_alt_assets_50_schinese.jpg?t=1781363712",
-        "price": "¥4.80",
-        "discount": "-90%",
-        "rank": 4
-    },
-    {
         "title": "RuneScape: Dragonwilds 符文世界：龙之荒野",
         "link": "https://store.steampowered.com/app/1374490/RuneScape_Dragonwilds/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1374490/02f2be287ba6b343aa95aa6fb6bfb1166c70fb9e/capsule_231x87_alt_assets_2_schinese.jpg?t=1782209165",
         "price": "¥82.60",
         "discount": "-30%",
+        "rank": 4
+    },
+    {
+        "title": "饥荒联机版",
+        "link": "https://store.steampowered.com/app/322330/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/955559ffa99aff6a7d14a7a3ef33849b3d5b9ab0/capsule_231x87_alt_assets_50_schinese.jpg?t=1781363712",
+        "price": "¥4.80",
+        "discount": "-90%",
         "rank": 5
     },
     {
