@@ -34,9 +34,7 @@ group: jzxm
   <div class="jzxm-source-label">文章来源</div>
   <div class="jzxm-source-title">高效学习方法综合研究报告</div>
   <div class="jzxm-source-meta">
-    <span>调研工具: Deep-Research-Skills / 5 agent 并行</span>
     <span>综合整理: LH</span>
-    <span><a href="https://github.com/Weizhena/Deep-Research-skills" target="_blank">Deep-Research-Skills 仓库</a></span>
   </div>
 </div>
 
@@ -45,6 +43,8 @@ group: jzxm
 </p>
 
 ## 总览：10 种策略速览
+
+效果量（Effect Size）是衡量干预效果大小的标准化指标：d/g=0.2（小）、0.5（中）、0.8+（大）。以下数据均来自已发表的元分析研究。
 
 | 策略 | 效果量范围 | 实施难度 | 最佳适用 |
 |:--|:--:|:--:|:--|
@@ -362,7 +362,7 @@ group: jzxm
 <div class="jzxm-insight">
   <span class="jzxm-insight-num">4</span>
   <div class="jzxm-insight-body">
-    <strong>Deep-Research-Skills 工具的首次实战验证</strong>
-    <p>本文全部研究数据由 Deep-Research-Skills 的 5 个 agent 并行调研产出（用时约 10 分钟）。每个 JSON 文件包含提出者谱系、关键研究（含元分析效果量）、操作步骤、工具和常见误区。数据质量通过了交叉验证——与已知研究结论一致且包含 2024-2026 年的最新发表。这是"AI 辅助人类深度调研"的一次有效实践。</p>
+    <strong>这些策略不是 "选一个最好的"，而是 "按阶段组合使用"</strong>
+    <p>每一策略都有其最佳适用阶段和场景。接触新知识时用双重编码和认知负载理论，初步掌握后用费曼技巧和主动回忆，长期巩固靠间隔重复和睡眠，深度应用靠交错练习和项目制学习，技能专精靠刻意练习。最高效的学习者不是只用一种策略——他们在不同阶段切换不同的策略。</p>
   </div>
 </div>
