@@ -212,6 +212,82 @@ layout: default
     text-align: center;
 }
 
+/* ---- Subcategory Collapsible ---- */
+.group-subcategory {
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 133, 161, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+}
+
+.group-subcategory[open] {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+.group-subcategory-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 22px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--group-ink);
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    transition: background 0.2s;
+}
+
+.group-subcategory-title::-webkit-details-marker {
+    display: none;
+}
+
+.group-subcategory-title::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--group-blue);
+    border-bottom: 2px solid var(--group-blue);
+    transform: rotate(-45deg);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+
+.group-subcategory[open] > .group-subcategory-title::before {
+    transform: rotate(45deg);
+}
+
+.group-subcategory-title:hover {
+    background: rgba(0, 133, 161, 0.04);
+}
+
+.group-subcategory-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 7px;
+    border-radius: 999px;
+    background: var(--group-blue);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.group-subcategory .group-post-list {
+    margin: 0;
+    padding: 4px 0 12px;
+}
+
+.group-subcategory .group-post-list:before {
+    top: 10px;
+    bottom: 10px;
+}
+
 @media (max-width: 767px) {
     .group-page {
         padding-top: 36px;
@@ -257,6 +333,15 @@ layout: default
     .group-tags {
         padding-right: 0;
     }
+
+    .group-subcategory-title {
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+
+    .group-subcategory {
+        border-radius: 10px;
+    }
 }
 </style>
 
@@ -284,11 +369,62 @@ layout: default
                 <div class="group-shell">
                     {% if current_group %}
                         {% assign post_total = current_group.posts | size %}
+                        {% assign has_subcats = current_group.subcategories | size %}
+
+                        {% if post_total > 0 %}
+
+                        {% if has_subcats > 0 %}
+                        <!-- Subcategory collapsible view -->
+                        {% for subcat in current_group.subcategories %}
+                        <details class="group-subcategory">
+                            <summary class="group-subcategory-title">
+                                <span>{{ subcat.name }}</span>
+                                <span class="group-subcategory-count">{{ subcat.posts | size }}</span>
+                            </summary>
+                            <ol class="group-post-list">
+                                {% for post_filename in subcat.posts %}
+                                    {% assign post_index = forloop.index %}
+                                    {% for post in site.posts %}
+                                        {% assign post_name_from_path = post.path | split: '/' | last %}
+                                        {% if post_name_from_path == post_filename %}
+                                        <li class="group-post-item">
+                                            <span class="group-post-index">{{ post_index }}</span>
+                                            <a class="group-post-card" href="{{ post.url | prepend: site.baseurl }}">
+                                                <h3 class="group-post-title">{{ post.title }}</h3>
+                                                {% if post.subtitle %}
+                                                <p class="group-post-subtitle">{{ post.subtitle }}</p>
+                                                {% endif %}
+                                                <div class="group-post-meta">
+                                                    <span class="group-meta-chip">{{ post.date | date: "%Y-%m-%d" }}</span>
+                                                    {% if post.tags and post.tags.size > 0 %}
+                                                    <span class="group-meta-chip">{{ post.tags.size }} 个标签</span>
+                                                    {% endif %}
+                                                    {% if post.keywords and post.keywords.size > 0 %}
+                                                    <span class="group-meta-chip">{{ post.keywords.size }} 个关键词</span>
+                                                    {% endif %}
+                                                </div>
+                                                <p class="group-post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 138 }}</p>
+                                                {% if post.tags and post.tags.size > 0 %}
+                                                <div class="group-tags" aria-label="文章标签">
+                                                    {% for tag in post.tags limit:5 %}
+                                                    <span class="group-tag">{{ tag }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                {% endif %}
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </ol>
+                        </details>
+                        {% endfor %}
+
+                        {% else %}
+                        <!-- Flat list view (no subcategories) -->
                         <div class="group-toolbar">
                             <h2>文章列表</h2>
                         </div>
-
-                        {% if post_total > 0 %}
                         <ol class="group-post-list">
                             {% for post_filename in current_group.posts %}
                                 {% assign post_index = forloop.index %}
@@ -325,6 +461,8 @@ layout: default
                                 {% endfor %}
                             {% endfor %}
                         </ol>
+                        {% endif %}
+
                         {% else %}
                         <div class="group-empty">这个专栏还没有配置文章。</div>
                         {% endif %}

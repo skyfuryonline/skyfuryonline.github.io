@@ -59,3 +59,31 @@
     - "2026-06-24-cognitive-load-theory.md"
     - "2026-06-24-learning-techniques-science.md"
     - "2026-06-24-ielts-speaking-movie-night.md"
+  subcategories:
+    - name: "英语学习"
+      posts:
+        - "2026-06-20-chinese-internet-slang-in-english.md"
+        - "2026-06-20-ielts-speaking-science.md"
+        - "2026-06-20-hurtful-english-words.md"
+        - "2026-06-20-british-english-insults.md"
+        - "2026-06-20-ielts-speaking-outer-space.md"
+        - "2026-06-24-ielts-speaking-movie-night.md"
+    - name: "职业与生涯"
+      posts:
+        - "2026-06-22-us-phd-experience.md"
+        - "2026-06-22-grad-research-jobs.md"
+        - "2026-06-22-state-sector-careers.md"
+        - "2026-06-22-gov-career-paths.md"
+        - "2026-06-22-bad-job-success.md"
+    - name: "心理学与认知科学"
+      posts:
+        - "2026-06-23-hawk-dove-game.md"
+        - "2026-06-24-yerkes-dodson-law.md"
+        - "2026-06-24-cognitive-load-theory.md"
+        - "2026-06-24-learning-techniques-science.md"
+    - name: "学术技能"
+      posts:
+        - "2026-06-21-thesis-writing-tips.md"
+    - name: "思辨与社会"
+      posts:
+        - "2026-06-22-luoxiang-debate.md"
