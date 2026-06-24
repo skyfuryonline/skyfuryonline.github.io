@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "脑子被雅思PUA了：电影之夜"
-subtitle: "IELTS备考后遗症——一句"I want something light"被说成了一段小作文"
+subtitle: "IELTS备考后遗症——一句'I want something light'被说成了一段小作文"
 date: 2026-06-24
+permalink: /2026/06/24/ielts-speaking-movie-night/
 author: "LH"
 catalog: true
 tags:
