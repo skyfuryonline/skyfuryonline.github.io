@@ -50,7 +50,7 @@ group: jzxm
 ## 来源信息卡片
 
 <div class="jzxm-source">
-  <div class="jzxm-source-label">📺 视频来源</div>
+  <div class="jzxm-source-label">视频来源</div>
   <div class="jzxm-source-title">视频标题 / 文章标题</div>
   <div class="jzxm-source-meta">
     <span>UP主 / 作者名称</span>
@@ -59,7 +59,7 @@ group: jzxm
   </div>
 </div>
 
-> `label` 可根据来源类型替换：📺 视频来源、📖 文章来源、🎓 课程来源
+> `label` 可根据来源类型替换：视频来源、文章来源、课程来源
 
 <hr class="jzxm-divider">
 
@@ -100,7 +100,7 @@ HTML: `<span class="jzxm-kw">关键词</span>`
 ## 要点高亮框
 
 <div class="jzxm-highlight">
-  <strong>💡 核心要点</strong>
+  <strong>核心要点</strong>
   <p>需要重点掌握的内容：</p>
   <ul>
     <li>第一个要点——简明扼要</li>
@@ -109,7 +109,7 @@ HTML: `<span class="jzxm-kw">关键词</span>`
   </ul>
 </div>
 
-> 标题文字可自定义：💡 核心要点、🔑 关键结论、📝 学习笔记、⚠️ 易错点
+> 标题文字可自定义：核心要点、关键结论、学习笔记、易错点
 
 <hr class="jzxm-divider">
 
