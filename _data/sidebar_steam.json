@@ -1,35 +1,19 @@
 [
     {
-        "title": "赛博朋克 2077",
-        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
-        "price": "¥89.40",
-        "discount": "-70%",
-        "rank": 1
-    },
-    {
         "title": "《使命召唤®：现代战争® II 2022》",
         "link": "https://store.steampowered.com/app/3595230/_II_2022/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3595230/054c163a183d9958c4d9eb9a08517ee2b4992ff3/capsule_231x87.jpg?t=1778886532",
         "price": "¥44.60",
         "discount": "-90%",
-        "rank": 2
+        "rank": 1
     },
     {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
+        "title": "赛博朋克 2077",
+        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1769690377",
         "price": "¥89.40",
-        "discount": "-40%",
-        "rank": 3
-    },
-    {
-        "title": "黎明杀机",
-        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1782395976",
-        "price": "¥37.50",
-        "discount": "-60%",
-        "rank": 4
+        "discount": "-70%",
+        "rank": 2
     },
     {
         "title": "Grand Theft Auto V 增强版",
@@ -37,7 +21,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
         "price": "¥74.50",
         "discount": "-50%",
-        "rank": 5
+        "rank": 3
     },
     {
         "title": "Red Dead Redemption 2",
@@ -45,38 +29,54 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
+        "rank": 4
+    },
+    {
+        "title": "《赛博朋克 2077：往日之影》",
+        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
+        "price": "¥89.40",
+        "discount": "-40%",
+        "rank": 5
+    },
+    {
+        "title": "Stardew Valley",
+        "link": "https://store.steampowered.com/app/413150/Stardew_Valley/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_231x87.jpg?t=1754692865",
+        "price": "¥28.80",
+        "discount": "-40%",
         "rank": 6
     },
     {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥128.70",
-        "discount": "-35%",
+        "title": "Watch_Dogs® 2",
+        "link": "https://store.steampowered.com/app/447040/Watch_Dogs_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/447040/capsule_231x87.jpg?t=1751986887",
+        "price": "¥14.90",
+        "discount": "-95%",
         "rank": 7
     },
     {
-        "title": "EA SPORTS FC™ 26",
-        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1781720918",
-        "price": "¥23.60",
-        "discount": "-80%",
+        "title": "黎明杀机",
+        "link": "https://store.steampowered.com/app/381210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/738c546b967d2c340c918fb33bb503d7c794c530/capsule_231x87_alt_assets_8.jpg?t=1782395976",
+        "price": "¥37.50",
+        "discount": "-60%",
         "rank": 8
     },
     {
-        "title": "RuneScape: Dragonwilds 符文世界：龙之荒野",
-        "link": "https://store.steampowered.com/app/1374490/RuneScape_Dragonwilds/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1374490/02f2be287ba6b343aa95aa6fb6bfb1166c70fb9e/capsule_231x87_alt_assets_2_schinese.jpg?t=1782209165",
-        "price": "¥82.60",
-        "discount": "-30%",
+        "title": "剑星",
+        "link": "https://store.steampowered.com/app/3489700/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3489700/75914656cad450124a18fef914c5a5f4866ffb67/capsule_231x87.jpg?t=1776466244",
+        "price": "¥179.56",
+        "discount": "-33%",
         "rank": 9
     },
     {
-        "title": "潜水员戴夫 DAVE THE DIVER",
-        "link": "https://store.steampowered.com/app/1868140/_DAVE_THE_DIVER/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1868140/e44159a6624c2ebc8d679a859756c004427400a9/capsule_231x87_alt_assets_2.jpg?t=1782191386",
-        "price": "¥40.00",
-        "discount": "-50%",
+        "title": "博德之门3",
+        "link": "https://store.steampowered.com/app/1086940/3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/3dd81008e9c385caf68152450c22353f6a8abec9/capsule_231x87.jpg?t=1777363040",
+        "price": "¥223.50",
+        "discount": "-25%",
         "rank": 10
     }
 ]
