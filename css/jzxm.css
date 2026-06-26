@@ -155,11 +155,28 @@
 .jzxm-insight-body strong { display: block; color: var(--jzxm-text); font-size: 15px; margin-bottom: 4px; }
 .jzxm-insight-body p { margin: 0; color: #4B5563; font-size: 14.5px; line-height: 1.75; }
 
+/* ---- Supplement Box (editorial background context) ---- */
+.jzxm-supplement {
+    margin: 2em 0;
+    padding: 20px 24px;
+    background: #F0F9FF;
+    border-left: 4px solid #3B82F6;
+    border-radius: 0 12px 12px 0;
+}
+.jzxm-supplement strong {
+    display: block;
+    color: #1E40AF;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.jzxm-supplement p { margin: 8px 0; color: #1E3A5F; line-height: 1.8; }
+
 /* ---- Responsive ---- */
 @media (max-width: 767px) {
     .jzxm-source { padding: 16px 18px; }
     .jzxm-source-meta { flex-direction: column; gap: 4px; }
     .jzxm-vocab { grid-template-columns: 1fr; }
     .jzxm-highlight { padding: 16px 18px; }
+    .jzxm-supplement { padding: 16px 18px; }
     .jzxm-insight { padding: 14px 16px; gap: 12px; }
 }
