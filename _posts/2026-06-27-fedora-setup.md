@@ -17,11 +17,13 @@ group: vision
 
 ## 引言
 
-最近给笔记本装了 Fedora 44 Workstation，打算把日常开发环境从 Windows 迁移过来。选 Fedora 的理由很简单：dnf 包管理够现代，GNOME 体验最正宗，而且不像 Arch 那样需要花大量时间从零搭积木。
+最近给笔记本装了 Fedora 44 Workstation，打算把日常开发环境从 Windows 迁移过来。选 Fedora 的理由很简单：dnf 包管理很方便，而且不像 Arch 那样需要花大量时间从零搭积木。
 
-不过"开箱即用"只是理想状态。实际配置过程中踩了不少坑——输入法、触控板滚动速度、桌面图标，这些在 Windows 下从来不用操心的东西，到了 Linux 桌面每一个都得手动调教。
+不过"开箱即用"只是理想状态。实际配置过程中踩了不少坑——输入法、触控板滚动速度、桌面图标，这些在 Windows 下不用操心的东西，到了 Linux 桌面每一个都得手动调教。
 
 本文记录这次 Fedora GNOME 桌面初始化过程中遇到的问题、原因和处理方法，方便以后重装或排查时复用。
+
+![fedora-workstation](/img/vision/fedora-setup/cover.jpg)
 
 ## 系统环境
 
@@ -161,8 +163,6 @@ gsettings set org.gnome.desktop.peripherals.touchpad speed 0.0
 ```text
 MSFT0001:02 06CB:7F28 Touchpad
 ```
-
-![fedora-workstation](/img/vision/fedora-setup/cover.jpg)
 
 ### libinput-config：解决滚动过快
 
