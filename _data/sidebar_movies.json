@@ -24,19 +24,19 @@
         "rank": 3
     },
     {
-        "title": "爸爸",
-        "link": "https://movie.douban.com/subject/36315000/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933354037.jpg",
-        "score": "7.6",
-        "region": "中国香港",
-        "rank": 4
-    },
-    {
         "title": "玩具总动员5",
         "link": "https://movie.douban.com/subject/36238849/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933391462.jpg",
         "score": "8.1",
         "region": "美国",
+        "rank": 4
+    },
+    {
+        "title": "爸爸",
+        "link": "https://movie.douban.com/subject/36315000/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933354037.jpg",
+        "score": "7.6",
+        "region": "中国香港",
         "rank": 5
     }
 ]
