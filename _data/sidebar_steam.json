@@ -32,19 +32,19 @@
         "rank": 4
     },
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
-        "price": "¥74.50",
-        "discount": "-50%",
-        "rank": 5
-    },
-    {
         "title": "Watch_Dogs® 2",
         "link": "https://store.steampowered.com/app/447040/Watch_Dogs_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/447040/capsule_231x87.jpg?t=1751986887",
         "price": "¥14.90",
         "discount": "-95%",
+        "rank": 5
+    },
+    {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
+        "price": "¥74.50",
+        "discount": "-50%",
         "rank": 6
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥128.70",
-        "discount": "-35%",
-        "rank": 9
-    },
-    {
         "title": "剑星",
         "link": "https://store.steampowered.com/app/3489700/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3489700/75914656cad450124a18fef914c5a5f4866ffb67/capsule_231x87.jpg?t=1776466244",
         "price": "¥179.56",
         "discount": "-33%",
+        "rank": 9
+    },
+    {
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥128.70",
+        "discount": "-35%",
         "rank": 10
     }
 ]
