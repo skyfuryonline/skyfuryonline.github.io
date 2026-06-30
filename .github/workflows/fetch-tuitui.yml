@@ -1,0 +1,60 @@
+name: Fetch 花生十三每日图推
+
+on:
+  schedule:
+    # 每天 15:00 CST 和 21:00 CST 各运行一次
+    - cron: '0 7,13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master 🛎️
+        uses: actions/checkout@v4
+        with:
+          path: main
+
+      - name: Checkout data branch 📦
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+
+      - name: Sync existing data into main
+        run: |
+          mkdir -p main/_data main/cache
+          rsync -av data/_data/ main/_data/ 2>/dev/null || true
+          rsync -av data/cache/ main/cache/ 2>/dev/null || true
+
+      - name: Setup Python 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Run tuitui crawler 🕷️
+        working-directory: ./main
+        run: python crawlers/fetch_tuitui.py
+
+      - name: Commit data to data branch 💾
+        run: |
+          mkdir -p data/_data data/cache
+          rsync -av main/_data/tuitui.json data/_data/tuitui.json 2>/dev/null || true
+          rsync -av main/cache/tuitui/ data/cache/tuitui/ 2>/dev/null || true
+          rsync -av main/cache/tuitui_state.json data/cache/tuitui_state.json 2>/dev/null || true
+          cd data
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: update tuitui data"
+            git push
+          else
+            echo "No changes."
+          fi

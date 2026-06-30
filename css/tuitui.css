@@ -1,0 +1,156 @@
+/* === 每日图推类比 === */
+
+.tuitui-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 15px 40px;
+}
+
+/* 日期卡片 */
+.tuitui-day {
+  margin-bottom: 2.5em;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.tuitui-day-header {
+  background: #f7f7f7;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tuitui-date {
+  color: #333;
+}
+
+.tuitui-count {
+  font-size: 12px;
+  color: #999;
+  font-weight: normal;
+}
+
+/* 模块标题 */
+.tuitui-section {
+  padding: 0 16px;
+}
+
+.tuitui-section-title {
+  font-size: 14px;
+  color: #888;
+  border-bottom: 1px dashed #ddd;
+  padding: 12px 0 6px;
+  margin: 0;
+}
+
+/* 题目 */
+.tuitui-question {
+  margin: 1em 0;
+}
+
+.tuitui-q-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 0.4em;
+}
+
+.tuitui-q-img {
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+.tuitui-q-img img {
+  max-width: 100%;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+/* 答案折叠 */
+.tuitui-answer {
+  margin-top: 0.5em;
+  border-top: 1px dashed #e0e0e0;
+  padding-top: 0;
+}
+
+.tuitui-answer-toggle {
+  cursor: pointer;
+  color: #999;
+  font-size: 13px;
+  padding: 8px 0;
+  user-select: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tuitui-answer-toggle:hover {
+  color: #555;
+}
+
+.tuitui-toggle-icon {
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.2s;
+  width: 12px;
+  text-align: center;
+}
+
+.tuitui-answer-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+  padding: 0;
+}
+
+.tuitui-answer-body.open {
+  max-height: 800px;
+  padding: 8px 0 12px;
+}
+
+.tuitui-ref {
+  color: #c0392b;
+  margin: 0 0 6px;
+}
+
+.tuitui-exp {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.tuitui-exp strong {
+  color: #555;
+}
+
+/* 空状态 */
+.tuitui-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #aaa;
+  font-size: 15px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .tuitui-container {
+    padding: 0 10px 30px;
+  }
+  .tuitui-section {
+    padding: 0 12px;
+  }
+  .tuitui-day-header {
+    padding: 8px 12px;
+  }
+}

@@ -1,0 +1,120 @@
+---
+layout: page
+title: "每日图推类比"
+subtitle: "花生十三每日练习 · 点击查看答案"
+header-img: "img/404-bg.jpg"
+permalink: /tuitui/
+catalog: false
+sidebar: true
+---
+
+<link rel="stylesheet" href="/css/tuitui.css">
+
+<div class="tuitui-container">
+  {% if site.data.tuitui %}
+    {% for day in site.data.tuitui %}
+    <div class="tuitui-day">
+      <div class="tuitui-day-header">
+        <span class="tuitui-date">{{ day.date }}</span>
+        <span class="tuitui-count">{{ day.questions | size }} 题</span>
+      </div>
+
+      <!-- 图推 -->
+      {% assign tuitui_qs = day.questions | where: "section", "图推" %}
+      {% if tuitui_qs.size > 0 %}
+      <div class="tuitui-section">
+        <h3 class="tuitui-section-title">图推模块</h3>
+        {% for q in tuitui_qs %}
+        <div class="tuitui-question">
+          {% if q.q_text != "" %}
+          <p class="tuitui-q-text">{{ q.q_text }}</p>
+          {% endif %}
+
+          <div class="tuitui-q-img">
+            <img src="/cache/tuitui/{{ day.date }}/{{ q.img }}"
+                 alt="图推第{{ q.num }}题" loading="lazy">
+          </div>
+
+          <div class="tuitui-answer">
+            <div class="tuitui-answer-toggle" onclick="toggleAnswer(this)">
+              <span class="tuitui-toggle-icon">&#9654;</span>
+              <span>点击查看答案</span>
+            </div>
+            <div class="tuitui-answer-body">
+              {% if q.ref_answer != "" %}
+              <p class="tuitui-ref">
+                <strong>参考答案：</strong>{{ q.ref_answer }}
+              </p>
+              {% endif %}
+              {% if q.explanation != "" %}
+              <div class="tuitui-exp">
+                <strong>实战解析：</strong>{{ q.explanation }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- 类比 -->
+      {% assign leibi_qs = day.questions | where: "section", "类比" %}
+      {% if leibi_qs.size > 0 %}
+      <div class="tuitui-section">
+        <h3 class="tuitui-section-title">类比模块</h3>
+        {% for q in leibi_qs %}
+        <div class="tuitui-question">
+          {% if q.q_text != "" %}
+          <p class="tuitui-q-text">{{ q.q_text }}</p>
+          {% endif %}
+
+          <div class="tuitui-q-img">
+            <img src="/cache/tuitui/{{ day.date }}/{{ q.img }}"
+                 alt="类比第{{ q.num }}题" loading="lazy">
+          </div>
+
+          <div class="tuitui-answer">
+            <div class="tuitui-answer-toggle" onclick="toggleAnswer(this)">
+              <span class="tuitui-toggle-icon">&#9654;</span>
+              <span>点击查看答案</span>
+            </div>
+            <div class="tuitui-answer-body">
+              {% if q.ref_answer != "" %}
+              <p class="tuitui-ref">
+                <strong>参考答案：</strong>{{ q.ref_answer }}
+              </p>
+              {% endif %}
+              {% if q.explanation != "" %}
+              <div class="tuitui-exp">
+                <strong>实战解析：</strong>{{ q.explanation }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="tuitui-empty">
+      <p>暂无数据，等待下次构建时抓取。</p>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+function toggleAnswer(el) {
+  var body = el.nextElementSibling;
+  var icon = el.querySelector('.tuitui-toggle-icon');
+  if (body.classList.contains('open')) {
+    body.classList.remove('open');
+    icon.innerHTML = '&#9654;';
+  } else {
+    body.classList.add('open');
+    icon.innerHTML = '&#9660;';
+  }
+}
+</script>
