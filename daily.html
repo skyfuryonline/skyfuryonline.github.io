@@ -1399,6 +1399,10 @@ http_headers:
         <div class="daily-section-header"><span class="section-icon">📋</span><span class="section-label">公考日报</span></div>
         <div id="gwyDetail" class="pixel-news-detail"></div>
       </div>
+      <div class="daily-section" id="tuituiSection" style="display:none;">
+        <div class="daily-section-header"><span class="section-icon">🧩</span><span class="section-label">图推类比</span></div>
+        <div id="tuituiDetail" class="pixel-news-detail"></div>
+      </div>
       <div id="newsDateStrip" class="news-date-strip"></div>
       <div id="newsCalendarPanel" class="news-calendar-panel"></div>
     </div>
@@ -1424,6 +1428,188 @@ http_headers:
     </div>
   </div>
 </div>
+<!-- Tuitui Modal (Bright Study Theme) -->
+<div class="modal fade" id="tuituiModal" tabindex="-1" role="dialog" aria-labelledby="tuituiModalLabel">
+  <div class="modal-dialog modal-lg tuitui-modal-dialog" role="document">
+    <div class="modal-content tuitui-modal-content">
+      <div class="modal-header tuitui-modal-header">
+        <button type="button" class="close tuitui-modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title tuitui-modal-title" id="tuituiModalLabel">每日图推类比</h4>
+        <div class="tuitui-modal-date" id="tuituiModalDate"></div>
+      </div>
+      <div class="modal-body tuitui-modal-body" id="tuituiModalBody">
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+/* ---- Tuitui Modal: Bright Study Theme ---- */
+.tuitui-modal-dialog { max-width: 780px; }
+.tuitui-modal-content {
+  background: #fdf8f0;
+  border: 2px solid #d4c5a9;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+}
+.tuitui-modal-header {
+  background: linear-gradient(135deg, #f5e6c8 0%, #fdf8f0 100%);
+  border-bottom: 2px solid #e8d5b7;
+  border-radius: 12px 12px 0 0;
+  padding: 20px 24px 16px;
+  position: relative;
+}
+.tuitui-modal-title {
+  color: #5a3e1b;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 0;
+}
+.tuitui-modal-date {
+  color: #8b7355;
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+.tuitui-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 24px;
+  color: #8b7355;
+  opacity: 0.7;
+}
+.tuitui-modal-close:hover { opacity: 1; color: #5a3e1b; }
+.tuitui-modal-body {
+  padding: 0;
+  max-height: 75vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d4c5a9 #fdf8f0;
+}
+.tuitui-modal-body::-webkit-scrollbar { width: 6px; }
+.tuitui-modal-body::-webkit-scrollbar-track { background: #fdf8f0; }
+.tuitui-modal-body::-webkit-scrollbar-thumb { background: #d4c5a9; border-radius: 3px; }
+
+/* Section dividers */
+.tuitui-section-group {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e8d5b7;
+}
+.tuitui-section-group:last-child { border-bottom: none; }
+.tuitui-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed #d4c5a9;
+}
+.tuitui-section-heading .badge {
+  display: inline-block;
+  background: #5a3e1b;
+  color: #fdf8f0;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.tuitui-section-heading .badge.leibi { background: #7b5ea7; }
+.tuitui-section-heading h4 {
+  color: #5a3e1b;
+  font-size: 1.05em;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Individual question */
+.tuitui-q-block {
+  margin-bottom: 20px;
+  background: #fff;
+  border: 1px solid #e8d5b7;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.tuitui-q-block:last-child { margin-bottom: 0; }
+.tuitui-q-header {
+  padding: 8px 16px;
+  background: #faf4ea;
+  border-bottom: 1px solid #e8d5b7;
+  font-size: 13px;
+  color: #8b7355;
+  font-weight: 600;
+}
+.tuitui-q-text {
+  padding: 12px 16px 4px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+}
+.tuitui-q-img {
+  text-align: center;
+  padding: 8px 16px 12px;
+}
+.tuitui-q-img img {
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid #e0d5c3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.tuitui-q-toggle {
+  padding: 10px 16px;
+  border-top: 1px dashed #e0d5c3;
+  cursor: pointer;
+  color: #8b7355;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  transition: color 0.2s, background 0.2s;
+}
+.tuitui-q-toggle:hover {
+  color: #5a3e1b;
+  background: #faf4ea;
+}
+.tuitui-q-toggle .arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.tuitui-q-toggle .arrow.open { transform: rotate(90deg); }
+.tuitui-q-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+}
+.tuitui-q-answer.open {
+  max-height: 600px;
+  padding: 10px 16px 14px;
+}
+.tuitui-q-answer .ref {
+  color: #c0392b;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.tuitui-q-answer .exp {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Empty state */
+.tuitui-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #8b7355;
+  font-size: 14px;
+}
+</style>
     <!-- Markdown Parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -1653,6 +1839,11 @@ var GWY_REPORTS = {{ site.data.gwy_daily_reports | jsonify | default: '[]' }};
 var gwyMap = {};
 GWY_REPORTS.forEach(function(r) { gwyMap[r.date] = r; });
 
+// -------- Tuitui Data (injected from Jekyll) --------
+var TUITUI_DATA = {{ site.data.tuitui | jsonify | default: '[]' }};
+var tuituiMap = {};
+TUITUI_DATA.forEach(function(d) { tuituiMap[d.date] = d; });
+
 function renderGwyInfoBar() {
   var el = document.getElementById('gwyInfoBar');
   if (!el) return;
@@ -1708,6 +1899,90 @@ function renderGwyDateStrip(activeDate) {
       this.classList.add('active');
     });
   });
+}
+
+// -------- Tuitui rendering --------
+function renderTuituiDetail(entry) {
+  var el = document.getElementById('tuituiDetail');
+  if (!el || !entry) return;
+  var qCount = entry.questions ? entry.questions.length : 0;
+  var tuCount = entry.questions ? entry.questions.filter(function(q){return q.section==='图推'}).length : 0;
+  var lbCount = entry.questions ? entry.questions.filter(function(q){return q.section==='类比'}).length : 0;
+  el.style.cursor = 'pointer';
+  el.onclick = function() { openTuituiModal(entry.date); };
+  el.innerHTML =
+    '<span class="detail-tag" style="background:#7b5ea7;">🧩 图推</span>' +
+    '<div class="detail-title">每日图推类比 · ' + entry.date + '</div>' +
+    '<div class="detail-summary">今日共 ' + qCount + ' 题 — 图形推理 ' + tuCount + ' 题，类比推理 ' + lbCount + ' 题。点击查看答案与解析。</div>' +
+    '<div class="detail-hint">点击打开做题 →</div>';
+}
+
+function openTuituiModal(date) {
+  var entry = tuituiMap[date];
+  if (!entry) return;
+  var body = document.getElementById('tuituiModalBody');
+  var dateEl = document.getElementById('tuituiModalDate');
+  dateEl.textContent = entry.date + (entry.pub_time ? ' · ' + entry.pub_time.split(' ')[1] : '');
+
+  var html = '';
+  var sections = [
+    { key: '图推', label: '图形推理', badgeClass: '' },
+    { key: '类比', label: '类比推理', badgeClass: ' leibi' }
+  ];
+
+  sections.forEach(function(sec) {
+    var qs = entry.questions.filter(function(q){ return q.section === sec.key; });
+    if (qs.length === 0) return;
+    html += '<div class="tuitui-section-group">';
+    html += '<div class="tuitui-section-heading">';
+    html += '<span class="badge' + sec.badgeClass + '">' + sec.key + '</span>';
+    html += '<h4>' + sec.label + ' · ' + qs.length + ' 题</h4>';
+    html += '</div>';
+
+    qs.forEach(function(q, idx) {
+      html += '<div class="tuitui-q-block">';
+      html += '<div class="tuitui-q-header">第 ' + q.num + ' 题</div>';
+      if (q.q_text && q.q_text.trim() !== '') {
+        html += '<div class="tuitui-q-text">' + q.q_text.replace(/\n/g, '<br>') + '</div>';
+      }
+      if (q.img) {
+        html += '<div class="tuitui-q-img"><img src="/cache/tuitui/' + entry.date + '/' + q.img + '" alt="' + sec.key + '第' + q.num + '题" loading="lazy"></div>';
+      }
+      html += '<div class="tuitui-q-toggle" onclick="toggleTuituiAnswer(this)">';
+      html += '<span class="arrow">&#9654;</span> 点击查看答案';
+      html += '</div>';
+      html += '<div class="tuitui-q-answer">';
+      if (q.ref_answer) {
+        html += '<div class="ref">参考答案：' + q.ref_answer + '</div>';
+      }
+      if (q.explanation) {
+        html += '<div class="exp"><strong>解析：</strong>' + q.explanation + '</div>';
+      }
+      html += '</div>';
+      html += '</div>';
+    });
+
+    html += '</div>';
+  });
+
+  if (!html) {
+    html = '<div class="tuitui-empty">当日暂无图推类比数据。</div>';
+  }
+
+  body.innerHTML = html;
+  $('#tuituiModal').modal('show');
+}
+
+function toggleTuituiAnswer(el) {
+  var answer = el.nextElementSibling;
+  var arrow = el.querySelector('.arrow');
+  if (answer.classList.contains('open')) {
+    answer.classList.remove('open');
+    arrow.classList.remove('open');
+  } else {
+    answer.classList.add('open');
+    arrow.classList.add('open');
+  }
 }
 
 function renderInfoBar() {
@@ -1859,6 +2134,7 @@ function renderCalendar(viewDate, activeDate) {
 
   var newsRendered = false;
   var gwyRendered = false;
+  var tuituiRendered = false;
 
   function showNews(e) {
     if (e) e.stopPropagation();
@@ -1895,6 +2171,18 @@ function renderCalendar(viewDate, activeDate) {
         '<div class="news-empty-state">等待公考日报数据接入。</div>';
     }
     document.getElementById('gwySection').style.display = hasGwy ? '' : 'none';
+
+    // Render Tuitui section
+    var hasTuitui = TUITUI_DATA.length > 0;
+    if (!tuituiRendered && hasTuitui) {
+      tuituiRendered = true;
+      renderTuituiDetail(TUITUI_DATA[0]);
+    } else if (!tuituiRendered) {
+      tuituiRendered = true;
+      document.getElementById('tuituiDetail').innerHTML =
+        '<div class="news-empty-state">等待图推类比数据接入。</div>';
+    }
+    document.getElementById('tuituiSection').style.display = hasTuitui ? '' : 'none';
   }
 
   function showPixel(e) {
