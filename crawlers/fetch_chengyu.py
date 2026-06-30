@@ -215,9 +215,10 @@ def main():
 
         day_img_dir = os.path.join(str(IMG_DIR), date_str)
         downloaded = []
-        if images:
-            print(f"\n[3/3] 下载图片到 cache/chengyu/{date_str}/")
-            downloaded = download_images(images, day_img_dir, date_str)
+        # 图片为公众号广告，不下载
+        # if images:
+            print("  (跳过图片下载)")
+            # downloaded = download_images(images, day_img_dir, date_str)
 
         entry = {
             "date": date_str,
