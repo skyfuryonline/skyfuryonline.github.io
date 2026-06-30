@@ -1,4 +1,4 @@
-name: Fetch 花生十三每日图推
+name: Fetch 花生十三每日练习
 
 on:
   schedule:
@@ -42,18 +42,25 @@ jobs:
         working-directory: ./main
         run: python crawlers/fetch_tuitui.py
 
+      - name: Run chengyu crawler 📖
+        working-directory: ./main
+        run: python crawlers/fetch_chengyu.py
+
       - name: Commit data to data branch 💾
         run: |
           mkdir -p data/_data data/cache
           rsync -av main/_data/tuitui.json data/_data/tuitui.json 2>/dev/null || true
           rsync -av main/cache/tuitui/ data/cache/tuitui/ 2>/dev/null || true
           rsync -av main/cache/tuitui_state.json data/cache/tuitui_state.json 2>/dev/null || true
+          rsync -av main/_data/chengyu.json data/_data/chengyu.json 2>/dev/null || true
+          rsync -av main/cache/chengyu/ data/cache/chengyu/ 2>/dev/null || true
+          rsync -av main/cache/chengyu_state.json data/cache/chengyu_state.json 2>/dev/null || true
           cd data
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
           if ! git diff --staged --quiet; then
-            git commit -m "chore: update tuitui data"
+            git commit -m "chore: update tuitui and chengyu data"
             git push
           else
             echo "No changes."
