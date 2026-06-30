@@ -16,20 +16,12 @@
         "rank": 2
     },
     {
-        "title": "魔方小姐",
-        "link": "https://movie.douban.com/subject/36808520/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2933654136.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆 中国香港",
-        "rank": 3
-    },
-    {
         "title": "抓特务",
         "link": "https://movie.douban.com/subject/36812879/?from=playing_poster",
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2933198755.jpg",
         "score": "7.4",
         "region": "中国大陆",
-        "rank": 4
+        "rank": 3
     },
     {
         "title": "超级少女",
@@ -37,6 +29,14 @@
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2932426049.jpg",
         "score": "5.5",
         "region": "美国",
+        "rank": 4
+    },
+    {
+        "title": "爸爸",
+        "link": "https://movie.douban.com/subject/36315000/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933354037.jpg",
+        "score": "7.6",
+        "region": "中国香港",
         "rank": 5
     }
 ]
