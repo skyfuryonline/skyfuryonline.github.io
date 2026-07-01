@@ -2215,17 +2215,32 @@ function renderDetail(report) {
 
 function renderDateStrip(activeDate) {
   var el = document.getElementById('newsDateStrip');
-  if (!el || DAILY_REPORTS.length === 0) return;
+  if (!el) return;
+
+  // Build unified date list from ALL sources
+  var dateSet = {};
+  DAILY_REPORTS.forEach(function(r) { dateSet[r.date] = true; });
+  GWY_REPORTS.forEach(function(r) { dateSet[r.date] = true; });
+  TUITUI_DATA.forEach(function(d) { dateSet[d.date] = true; });
+  CHENGYU_DATA.forEach(function(d) { dateSet[d.date] = true; });
+
+  var allDates = Object.keys(dateSet).sort().reverse();
+  if (allDates.length === 0) return;
+
   var weekdays = ['日','一','二','三','四','五','六'];
   var html = '<span class="date-label">近期</span>';
-  var count = Math.min(DAILY_REPORTS.length, 7);
+  var count = Math.min(allDates.length, 10);
   for (var i = 0; i < count; i++) {
-    var r = DAILY_REPORTS[i];
-    var dp = r.date.split('-');
+    var date = allDates[i];
+    var dp = date.split('-');
     var num = parseInt(dp[2]);
-    var wd = weekdays[new Date(r.date + 'T00:00:00').getDay()];
-    html += '<div class="date-cell' + (r.date === activeDate ? ' active' : '') + '" data-date="' + r.date + '">' +
-      '<span class="d-num">' + num + '</span><span class="d-weekday">' + wd + '</span></div>';
+    var month = parseInt(dp[1]);
+    var wd = weekdays[new Date(date + 'T00:00:00').getDay()];
+    // Show month prefix when month changes or for first item
+    var showMonth = (i === 0) || (allDates[i-1] && allDates[i-1].split('-')[1] !== dp[1]);
+    var label = showMonth ? month + '/' + num : num;
+    html += '<div class="date-cell' + (date === activeDate ? ' active' : '') + '" data-date="' + date + '">' +
+      '<span class="d-num">' + label + '</span><span class="d-weekday">' + wd + '</span></div>';
   }
   html += '<span class="cal-toggle" id="calToggle">更多 ▸</span>';
   el.innerHTML = html;
@@ -2233,7 +2248,7 @@ function renderDateStrip(activeDate) {
   el.querySelectorAll('.date-cell').forEach(function(cell) {
     cell.addEventListener('click', function() {
       var date = this.dataset.date;
-      renderDetail(reportMap[date]);
+      selectDate(date);
       el.querySelectorAll('.date-cell').forEach(function(c) { c.classList.remove('active'); });
       this.classList.add('active');
       renderCalendar(new Date(date + 'T00:00:00'), date);
@@ -2250,10 +2265,57 @@ function renderDateStrip(activeDate) {
       panel.classList.add('open');
       this.textContent = '收起 ▾';
       if (!panel.innerHTML.trim()) {
-        renderCalendar(new Date(DAILY_REPORTS[0].date + 'T00:00:00'), activeDate);
+        renderCalendar(new Date(allDates[0] + 'T00:00:00'), activeDate);
       }
     }
   });
+}
+
+// Select a date: update ALL sections based on available data
+function selectDate(date) {
+  // News
+  var newsEl = document.getElementById('newsSection');
+  if (reportMap[date]) {
+    renderDetail(reportMap[date]);
+    newsEl.style.display = '';
+  } else {
+    document.getElementById('newsDetail').innerHTML =
+      '<div class="news-empty-state">当日无新闻日报。</div>';
+    newsEl.style.display = '';
+  }
+
+  // GWY
+  var gwyEl = document.getElementById('gwySection');
+  if (gwyMap[date]) {
+    renderGwyDetail(gwyMap[date]);
+    gwyEl.style.display = '';
+  } else {
+    document.getElementById('gwyDetail').innerHTML =
+      '<div class="news-empty-state">当日无公考日报。</div>';
+    gwyEl.style.display = '';
+  }
+
+  // Tuitui
+  var tuituiEl = document.getElementById('tuituiSection');
+  if (tuituiMap[date]) {
+    renderTuituiDetail(tuituiMap[date]);
+    tuituiEl.style.display = '';
+  } else {
+    document.getElementById('tuituiDetail').innerHTML =
+      '<div class="news-empty-state">当日无图推类比。</div>';
+    tuituiEl.style.display = '';
+  }
+
+  // Chengyu
+  var chengyuEl = document.getElementById('chengyuSection');
+  if (chengyuMap[date]) {
+    renderChengyuDetail(chengyuMap[date]);
+    chengyuEl.style.display = '';
+  } else {
+    document.getElementById('chengyuDetail').innerHTML =
+      '<div class="news-empty-state">当日无成语积累。</div>';
+    chengyuEl.style.display = '';
+  }
 }
 
 function renderCalendar(viewDate, activeDate) {
@@ -2266,6 +2328,13 @@ function renderCalendar(viewDate, activeDate) {
   var startWeekday = (firstDay.getDay() + 6) % 7;
   var daysInMonth = new Date(year, month + 1, 0).getDate();
   var today = new Date().toISOString().slice(0, 10);
+
+  // Unified date set for calendar dots
+  var anyDateSet = {};
+  DAILY_REPORTS.forEach(function(r) { anyDateSet[r.date] = true; });
+  GWY_REPORTS.forEach(function(r) { anyDateSet[r.date] = true; });
+  TUITUI_DATA.forEach(function(d) { anyDateSet[d.date] = true; });
+  CHENGYU_DATA.forEach(function(d) { anyDateSet[d.date] = true; });
 
   var html = '<div class="cal-card">' +
     '<div class="cal-nav">' +
@@ -2281,14 +2350,14 @@ function renderCalendar(viewDate, activeDate) {
 
   for (var d = 1; d <= daysInMonth; d++) {
     var dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
-    var hasReport = !!reportMap[dateStr];
+    var hasAny = !!anyDateSet[dateStr];
     var isActive = dateStr === activeDate;
     var isToday = dateStr === today;
     var cls = 'cal-day';
-    if (hasReport) cls += ' has-report';
+    if (hasAny) cls += ' has-report';
     if (isActive) cls += ' active';
     if (isToday) cls += ' today';
-    html += '<div class="' + cls + '"' + (hasReport ? ' data-date="' + dateStr + '"' : '') + '>' + d + '</div>';
+    html += '<div class="' + cls + '"' + (hasAny ? ' data-date="' + dateStr + '"' : '') + '>' + d + '</div>';
   }
 
   html += '</div></div>';
@@ -2307,7 +2376,7 @@ function renderCalendar(viewDate, activeDate) {
   panel.querySelectorAll('.cal-day.has-report').forEach(function(day) {
     day.addEventListener('click', function() {
       var date = this.dataset.date;
-      renderDetail(reportMap[date]);
+      selectDate(date);
       var strip = document.getElementById('newsDateStrip');
       strip.querySelectorAll('.date-cell').forEach(function(c) {
         c.classList.toggle('active', c.dataset.date === date);
@@ -2328,10 +2397,7 @@ function renderCalendar(viewDate, activeDate) {
 
   if (!pixelCard || !newsCard) return;
 
-  var newsRendered = false;
-  var gwyRendered = false;
-  var tuituiRendered = false;
-  var chengyuRendered = false;
+  var initialized = false;
 
   function showNews(e) {
     if (e) e.stopPropagation();
@@ -2341,57 +2407,26 @@ function renderCalendar(viewDate, activeDate) {
     area.classList.add('news-open');
     newsCard.setAttribute('aria-expanded', 'true');
 
-    // Render news section
-    var hasNews = DAILY_REPORTS.length > 0;
-    if (!newsRendered && hasNews) {
-      newsRendered = true;
+    if (!initialized) {
+      initialized = true;
       renderInfoBar();
-      var latest = DAILY_REPORTS[0];
-      renderDetail(latest);
-      renderDateStrip(latest.date);
-    } else if (!newsRendered) {
-      newsRendered = true;
-      document.getElementById('newsDetail').innerHTML =
-        '<div class="news-empty-state">等待今日新闻数据接入。</div>';
-    }
-    document.getElementById('newsSection').style.display = hasNews ? '' : 'none';
 
-    // Render GWY section
-    var hasGwy = GWY_REPORTS.length > 0;
-    if (!gwyRendered && hasGwy) {
-      gwyRendered = true;
-      var latestGwy = GWY_REPORTS[0];
-      renderGwyDetail(latestGwy);
-    } else if (!gwyRendered) {
-      gwyRendered = true;
-      document.getElementById('gwyDetail').innerHTML =
-        '<div class="news-empty-state">等待公考日报数据接入。</div>';
-    }
-    document.getElementById('gwySection').style.display = hasGwy ? '' : 'none';
+      // Find the latest date across ALL sources
+      var allDates = [];
+      DAILY_REPORTS.forEach(function(r) { allDates.push(r.date); });
+      GWY_REPORTS.forEach(function(r) { allDates.push(r.date); });
+      TUITUI_DATA.forEach(function(d) { allDates.push(d.date); });
+      CHENGYU_DATA.forEach(function(d) { allDates.push(d.date); });
+      allDates.sort().reverse();
 
-    // Render Tuitui section
-    var hasTuitui = TUITUI_DATA.length > 0;
-    if (!tuituiRendered && hasTuitui) {
-      tuituiRendered = true;
-      renderTuituiDetail(TUITUI_DATA[0]);
-    } else if (!tuituiRendered) {
-      tuituiRendered = true;
-      document.getElementById('tuituiDetail').innerHTML =
-        '<div class="news-empty-state">等待图推类比数据接入。</div>';
+      if (allDates.length > 0) {
+        selectDate(allDates[0]);
+        renderDateStrip(allDates[0]);
+      } else {
+        document.getElementById('newsDetail').innerHTML =
+          '<div class="news-empty-state">等待数据接入。</div>';
+      }
     }
-    document.getElementById('tuituiSection').style.display = hasTuitui ? '' : 'none';
-
-    // Render Chengyu section
-    var hasChengyu = CHENGYU_DATA.length > 0;
-    if (!chengyuRendered && hasChengyu) {
-      chengyuRendered = true;
-      renderChengyuDetail(CHENGYU_DATA[0]);
-    } else if (!chengyuRendered) {
-      chengyuRendered = true;
-      document.getElementById('chengyuDetail').innerHTML =
-        '<div class="news-empty-state">等待成语积累数据接入。</div>';
-    }
-    document.getElementById('chengyuSection').style.display = hasChengyu ? '' : 'none';
   }
 
   function showPixel(e) {
