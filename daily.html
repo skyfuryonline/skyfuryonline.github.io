@@ -1403,10 +1403,6 @@ http_headers:
         <div class="daily-section-header"><span class="section-icon">🧩</span><span class="section-label">图推类比</span></div>
         <div id="tuituiDetail" class="pixel-news-detail"></div>
       </div>
-      <div class="daily-section" id="chengyuSection" style="display:none;">
-        <div class="daily-section-header"><span class="section-icon">📖</span><span class="section-label">成语积累</span></div>
-        <div id="chengyuDetail" class="pixel-news-detail"></div>
-      </div>
       <div id="newsDateStrip" class="news-date-strip"></div>
       <div id="newsCalendarPanel" class="news-calendar-panel"></div>
     </div>
@@ -1608,140 +1604,6 @@ http_headers:
 
 /* Empty state */
 .tuitui-empty {
-  text-align: center;
-  padding: 40px 20px;
-  color: #8b7355;
-  font-size: 14px;
-}
-</style>
-<!-- Chengyu Modal (Warm Study Theme) -->
-<div class="modal fade" id="chengyuModal" tabindex="-1" role="dialog" aria-labelledby="chengyuModalLabel">
-  <div class="modal-dialog modal-lg chengyu-modal-dialog" role="document">
-    <div class="modal-content chengyu-modal-content">
-      <div class="modal-header chengyu-modal-header">
-        <button type="button" class="close chengyu-modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title chengyu-modal-title" id="chengyuModalLabel">成语积累</h4>
-        <div class="chengyu-modal-meta" id="chengyuModalMeta"></div>
-      </div>
-      <div class="modal-body chengyu-modal-body" id="chengyuModalBody">
-      </div>
-    </div>
-  </div>
-</div>
-<style>
-/* ---- Chengyu Modal: Warm Study Theme ---- */
-.chengyu-modal-dialog { max-width: 720px; }
-.chengyu-modal-content {
-  background: #fefcf7;
-  border: 2px solid #c9b896;
-  border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
-}
-.chengyu-modal-header {
-  background: linear-gradient(135deg, #f0e4cc 0%, #fefcf7 100%);
-  border-bottom: 2px solid #ddd0b5;
-  border-radius: 12px 12px 0 0;
-  padding: 20px 24px 16px;
-  position: relative;
-}
-.chengyu-modal-title {
-  color: #4a3520;
-  font-size: 1.4em;
-  font-weight: 700;
-  margin: 0;
-}
-.chengyu-modal-meta {
-  color: #8b7355;
-  font-size: 0.85em;
-  margin-top: 4px;
-}
-.chengyu-modal-close {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 24px;
-  color: #8b7355;
-  opacity: 0.7;
-}
-.chengyu-modal-close:hover { opacity: 1; color: #4a3520; }
-.chengyu-modal-body {
-  padding: 24px;
-  max-height: 75vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #c9b896 #fefcf7;
-}
-.chengyu-modal-body::-webkit-scrollbar { width: 6px; }
-.chengyu-modal-body::-webkit-scrollbar-track { background: #fefcf7; }
-.chengyu-modal-body::-webkit-scrollbar-thumb { background: #c9b896; border-radius: 3px; }
-
-/* Idiom cards */
-.chengyu-card {
-  background: #fff;
-  border: 1px solid #e0d5c3;
-  border-radius: 8px;
-  padding: 16px 20px;
-  margin-bottom: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  transition: box-shadow 0.2s;
-}
-.chengyu-card:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
-.chengyu-card:last-child { margin-bottom: 0; }
-.chengyu-card .cy-num {
-  display: inline-block;
-  background: #4a3520;
-  color: #fefcf7;
-  font-size: 11px;
-  font-weight: 700;
-  width: 22px;
-  height: 22px;
-  line-height: 22px;
-  text-align: center;
-  border-radius: 50%;
-  margin-right: 10px;
-  flex-shrink: 0;
-}
-.chengyu-card .cy-idiom {
-  font-size: 1.15em;
-  font-weight: 700;
-  color: #4a3520;
-  letter-spacing: 2px;
-}
-.chengyu-card .cy-def {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #555;
-  line-height: 1.8;
-  padding-left: 32px;
-}
-
-/* Images section */
-.chengyu-images {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 2px dashed #ddd0b5;
-}
-.chengyu-images h5 {
-  color: #8b7355;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.chengyu-img-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-}
-.chengyu-img-grid img {
-  width: 100%;
-  border-radius: 6px;
-  border: 1px solid #e0d5c3;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
-
-/* Empty state */
-.chengyu-empty {
   text-align: center;
   padding: 40px 20px;
   color: #8b7355;
@@ -1982,10 +1844,6 @@ var TUITUI_DATA = {{ site.data.tuitui | jsonify | default: '[]' }};
 var tuituiMap = {};
 TUITUI_DATA.forEach(function(d) { tuituiMap[d.date] = d; });
 
-// -------- Chengyu Data (injected from Jekyll) --------
-var CHENGYU_DATA = {{ site.data.chengyu | jsonify | default: '[]' }};
-var chengyuMap = {};
-CHENGYU_DATA.forEach(function(d) { chengyuMap[d.date] = d; });
 
 function renderGwyInfoBar() {
   var el = document.getElementById('gwyInfoBar');
@@ -2128,59 +1986,6 @@ function toggleTuituiAnswer(el) {
   }
 }
 
-// -------- Chengyu rendering --------
-function renderChengyuDetail(entry) {
-  var el = document.getElementById('chengyuDetail');
-  if (!el || !entry) return;
-  var idiomCount = entry.idioms ? entry.idioms.length : 0;
-  var imgCount = entry.images ? entry.images.length : 0;
-  el.style.cursor = 'pointer';
-  el.onclick = function() { openChengyuModal(entry.date); };
-  el.innerHTML =
-    '<span class="detail-tag" style="background:#8b5e3c;">📖 成语</span>' +
-    '<div class="detail-title">' + entry.title + '</div>' +
-    '<div class="detail-summary">第 ' + entry.period + ' 期 · 共 ' + idiomCount + ' 个成语' + (imgCount > 0 ? '，附 ' + imgCount + ' 张图片' : '') + '。</div>' +
-    '<div class="detail-hint">点击查看详情 →</div>';
-}
-
-function openChengyuModal(date) {
-  var entry = chengyuMap[date];
-  if (!entry) return;
-  var body = document.getElementById('chengyuModalBody');
-  var meta = document.getElementById('chengyuModalMeta');
-  meta.textContent = entry.date + (entry.period ? ' · 第 ' + entry.period + ' 期' : '');
-
-  var html = '';
-  if (entry.idioms && entry.idioms.length > 0) {
-    entry.idioms.forEach(function(item) {
-      html += '<div class="chengyu-card">';
-      html += '<div style="display:flex;align-items:center;">';
-      html += '<span class="cy-num">' + item.num + '</span>';
-      html += '<span class="cy-idiom">' + item.idiom + '</span>';
-      html += '</div>';
-      html += '<div class="cy-def">' + item.definition + '</div>';
-      html += '</div>';
-    });
-  }
-
-  if (entry.images && entry.images.length > 0) {
-    html += '<div class="chengyu-images">';
-    html += '<h5>附图</h5>';
-    html += '<div class="chengyu-img-grid">';
-    entry.images.forEach(function(img) {
-      html += '<img src="/cache/chengyu/' + entry.date + '/' + img + '" alt="成语配图" loading="lazy">';
-    });
-    html += '</div></div>';
-  }
-
-  if (!html) {
-    html = '<div class="chengyu-empty">当日暂无成语积累数据。</div>';
-  }
-
-  body.innerHTML = html;
-  $('#chengyuModal').modal('show');
-}
-
 function renderInfoBar() {
   var el = document.getElementById('newsInfoBar');
   if (!el) return;
@@ -2222,7 +2027,6 @@ function renderDateStrip(activeDate) {
   DAILY_REPORTS.forEach(function(r) { dateSet[r.date] = true; });
   GWY_REPORTS.forEach(function(r) { dateSet[r.date] = true; });
   TUITUI_DATA.forEach(function(d) { dateSet[d.date] = true; });
-  CHENGYU_DATA.forEach(function(d) { dateSet[d.date] = true; });
 
   var allDates = Object.keys(dateSet).sort().reverse();
   if (allDates.length === 0) return;
@@ -2305,17 +2109,6 @@ function selectDate(date) {
       '<div class="news-empty-state">当日无图推类比。</div>';
     tuituiEl.style.display = '';
   }
-
-  // Chengyu
-  var chengyuEl = document.getElementById('chengyuSection');
-  if (chengyuMap[date]) {
-    renderChengyuDetail(chengyuMap[date]);
-    chengyuEl.style.display = '';
-  } else {
-    document.getElementById('chengyuDetail').innerHTML =
-      '<div class="news-empty-state">当日无成语积累。</div>';
-    chengyuEl.style.display = '';
-  }
 }
 
 function renderCalendar(viewDate, activeDate) {
@@ -2334,7 +2127,6 @@ function renderCalendar(viewDate, activeDate) {
   DAILY_REPORTS.forEach(function(r) { anyDateSet[r.date] = true; });
   GWY_REPORTS.forEach(function(r) { anyDateSet[r.date] = true; });
   TUITUI_DATA.forEach(function(d) { anyDateSet[d.date] = true; });
-  CHENGYU_DATA.forEach(function(d) { anyDateSet[d.date] = true; });
 
   var html = '<div class="cal-card">' +
     '<div class="cal-nav">' +
@@ -2416,7 +2208,6 @@ function renderCalendar(viewDate, activeDate) {
       DAILY_REPORTS.forEach(function(r) { allDates.push(r.date); });
       GWY_REPORTS.forEach(function(r) { allDates.push(r.date); });
       TUITUI_DATA.forEach(function(d) { allDates.push(d.date); });
-      CHENGYU_DATA.forEach(function(d) { allDates.push(d.date); });
       allDates.sort().reverse();
 
       if (allDates.length > 0) {
