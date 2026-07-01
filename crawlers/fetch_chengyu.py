@@ -216,9 +216,7 @@ def main():
         day_img_dir = os.path.join(str(IMG_DIR), date_str)
         downloaded = []
         # 图片为公众号广告，不下载
-        # if images:
-            print("  (跳过图片下载)")
-            # downloaded = download_images(images, day_img_dir, date_str)
+        print("  (跳过图片下载)")
 
         entry = {
             "date": date_str,
