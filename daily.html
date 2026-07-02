@@ -2181,7 +2181,8 @@ function selectDate(date) {
     document.getElementById('tuituiDetail').innerHTML =
       '<div class="news-empty-state">当日无图推类比。</div>';
     tuituiEl.style.display = '';
-  
+  }
+
   // Chengyu
   var chengyuEl = document.getElementById('chengyuSection');
   if (chengyuMap[date]) {
@@ -2192,7 +2193,6 @@ function selectDate(date) {
       '<div class="news-empty-state">当日无成语积累。</div>';
     chengyuEl.style.display = '';
   }
-}
 }
 
 function renderCalendar(viewDate, activeDate) {
