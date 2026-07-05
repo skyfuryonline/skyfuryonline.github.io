@@ -16,11 +16,11 @@
         "rank": 2
     },
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
-        "price": "¥74.50",
-        "discount": "-50%",
+        "title": "《赛博朋克 2077：往日之影》",
+        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
+        "price": "¥89.40",
+        "discount": "-40%",
         "rank": 3
     },
     {
@@ -32,28 +32,12 @@
         "rank": 4
     },
     {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
-        "price": "¥89.40",
-        "discount": "-40%",
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
+        "price": "¥74.50",
+        "discount": "-50%",
         "rank": 5
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/a3525b0c4590861bf02bd36129ff0d510e2f85d6/capsule_231x87_alt_assets_6.jpg?t=1782486648",
-        "price": "¥41.72",
-        "discount": "-86%",
-        "rank": 6
-    },
-    {
-        "title": "方舟: 生存飞升",
-        "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
-        "price": "¥62.00",
-        "discount": "-75%",
-        "rank": 7
     },
     {
         "title": "Watch_Dogs® 2",
@@ -61,7 +45,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/447040/capsule_231x87.jpg?t=1751986887",
         "price": "¥14.90",
         "discount": "-95%",
-        "rank": 8
+        "rank": 6
     },
     {
         "title": "Red Dead Redemption 2",
@@ -69,7 +53,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
-        "rank": 9
+        "rank": 7
     },
     {
         "title": "双影奇境",
@@ -77,6 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
         "price": "¥128.70",
         "discount": "-35%",
+        "rank": 8
+    },
+    {
+        "title": "极限竞速：地平线 5",
+        "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
+        "price": "¥99.00",
+        "discount": "-50%",
+        "rank": 9
+    },
+    {
+        "title": "动物园之星",
+        "link": "https://store.steampowered.com/app/703080/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/703080/capsule_231x87.jpg?t=1765896213",
+        "price": "¥9.00",
+        "discount": "-95%",
         "rank": 10
     }
 ]
