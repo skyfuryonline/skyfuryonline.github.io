@@ -8,19 +8,19 @@
         "rank": 1
     },
     {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
+        "price": "¥74.50",
+        "discount": "-50%",
+        "rank": 2
+    },
+    {
         "title": "《使命召唤®：现代战争® II 2022》",
         "link": "https://store.steampowered.com/app/3595230/_II_2022/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3595230/054c163a183d9958c4d9eb9a08517ee2b4992ff3/capsule_231x87.jpg?t=1778886532",
         "price": "¥44.60",
         "discount": "-90%",
-        "rank": 2
-    },
-    {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
-        "price": "¥89.40",
-        "discount": "-40%",
         "rank": 3
     },
     {
@@ -32,11 +32,11 @@
         "rank": 4
     },
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
-        "price": "¥74.50",
-        "discount": "-50%",
+        "title": "《赛博朋克 2077：往日之影》",
+        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1768305060",
+        "price": "¥89.40",
+        "discount": "-40%",
         "rank": 5
     },
     {
@@ -72,11 +72,11 @@
         "rank": 9
     },
     {
-        "title": "动物园之星",
-        "link": "https://store.steampowered.com/app/703080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/703080/capsule_231x87.jpg?t=1765896213",
-        "price": "¥9.00",
-        "discount": "-95%",
+        "title": "Wallpaper Engine：壁纸引擎",
+        "link": "https://store.steampowered.com/app/431960/Wallpaper_Engine/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431960/capsule_231x87_schinese.jpg?t=1779452230",
+        "price": "¥18.32",
+        "discount": "-20%",
         "rank": 10
     }
 ]
