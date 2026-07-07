@@ -11,17 +11,9 @@
         "title": "后室",
         "link": "https://movie.douban.com/subject/36235977/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933327977.jpg",
-        "score": "6.7",
+        "score": "6.8",
         "region": "美国 加拿大",
         "rank": 2
-    },
-    {
-        "title": "小黄人与大怪兽",
-        "link": "https://movie.douban.com/subject/36962219/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2933539994.jpg",
-        "score": "6.8",
-        "region": "美国",
-        "rank": 3
     },
     {
         "title": "四渡",
@@ -29,6 +21,14 @@
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931635664.jpg",
         "score": "暂无评分",
         "region": "中国大陆",
+        "rank": 3
+    },
+    {
+        "title": "小黄人与大怪兽",
+        "link": "https://movie.douban.com/subject/36962219/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2933539994.jpg",
+        "score": "6.8",
+        "region": "美国",
         "rank": 4
     },
     {
