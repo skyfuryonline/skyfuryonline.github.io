@@ -19,6 +19,7 @@ keywords:
   - "辩证法"
   - "雅典"
 group: jzxm
+subcategory: "思辨与社会"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

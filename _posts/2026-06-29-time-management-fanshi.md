@@ -15,6 +15,7 @@ keywords:
   - "泛式"
   - "拖延症"
 group: jzxm
+subcategory: "效率与方法"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

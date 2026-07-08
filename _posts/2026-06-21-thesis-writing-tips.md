@@ -16,6 +16,7 @@ keywords:
   - "文献阅读"
   - "学术语言"
 group: jzxm
+subcategory: "学术技能"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

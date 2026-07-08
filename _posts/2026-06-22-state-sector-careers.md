@@ -20,6 +20,7 @@ keywords:
   - "军队文职"
   - "三支一扶"
 group: jzxm
+subcategory: "职业与生涯"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

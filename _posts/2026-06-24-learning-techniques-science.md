@@ -26,6 +26,7 @@ keywords:
   - "Dual Coding"
   - "Project-Based Learning"
 group: jzxm
+subcategory: "心理学与认知科学"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

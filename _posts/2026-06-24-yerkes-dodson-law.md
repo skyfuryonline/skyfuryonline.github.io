@@ -18,6 +18,7 @@ keywords:
   - "Flow State"
   - "Stress-Performance"
 group: jzxm
+subcategory: "心理学与认知科学"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

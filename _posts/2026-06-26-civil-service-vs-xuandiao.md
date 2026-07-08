@@ -19,6 +19,7 @@ keywords:
   - "普通选调"
   - "人才引进"
 group: jzxm
+subcategory: "职业与生涯"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

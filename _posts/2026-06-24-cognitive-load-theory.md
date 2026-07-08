@@ -21,6 +21,7 @@ keywords:
   - "注意力残留"
   - "决策疲劳"
 group: jzxm
+subcategory: "心理学与认知科学"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

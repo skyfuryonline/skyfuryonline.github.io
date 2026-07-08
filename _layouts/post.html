@@ -61,6 +61,34 @@ Find the group background image for the current post.
 
                 <hr style="visibility: hidden;">
 
+                {% if page.group == "jzxm" and page.subcategory %}
+                {% assign sc_posts = site.posts | where: "subcategory", page.subcategory %}
+                {% assign sc_count = sc_posts | size %}
+                {% assign sc_idx = -1 %}
+                {% for p in sc_posts %}{% if p.url == page.url %}{% assign sc_idx = forloop.index0 %}{% break %}{% endif %}{% endfor %}
+                {% assign sc_prev_idx = sc_idx | minus: 1 %}
+                {% assign sc_next_idx = sc_idx | plus: 1 %}
+                <ul class="pager">
+                    {% if sc_idx > 0 %}
+                    {% assign sc_prev = sc_posts[sc_prev_idx] %}
+                    <li class="previous">
+                        <a href="{{ sc_prev.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{sc_prev.title}}">
+                        Previous<br>
+                        <span>{{sc_prev.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if sc_idx >= 0 and sc_next_idx < sc_count %}
+                    {% assign sc_next = sc_posts[sc_next_idx] %}
+                    <li class="next">
+                        <a href="{{ sc_next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{sc_next.title}}">
+                        Next<br>
+                        <span>{{sc_next.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% else %}
                 <ul class="pager">
                     {% if page.previous.url %}
                     <li class="previous">
@@ -79,6 +107,7 @@ Find the group background image for the current post.
                     </li>
                     {% endif %}
                 </ul>
+                {% endif %}
 
 
                 <!--Gitalk评论start  -->

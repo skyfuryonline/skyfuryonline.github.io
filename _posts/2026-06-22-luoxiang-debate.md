@@ -15,6 +15,7 @@ keywords:
   - "辩论"
   - "罗翔"
 group: jzxm
+subcategory: "思辨与社会"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

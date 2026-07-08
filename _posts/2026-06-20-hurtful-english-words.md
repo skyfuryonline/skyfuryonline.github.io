@@ -13,6 +13,7 @@ keywords:
   - "slang"
   - "口语"
 group: jzxm
+subcategory: "英语学习"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

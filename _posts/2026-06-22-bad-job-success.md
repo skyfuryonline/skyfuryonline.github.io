@@ -14,6 +14,7 @@ keywords:
   - 童年条件反射
   - 自我设限
 group: jzxm
+subcategory: "职业与生涯"
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">
