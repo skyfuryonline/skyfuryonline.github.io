@@ -18,6 +18,7 @@ keywords:
   - "高贵的谎言"
 group: jzxm
 subcategory: "思辨与社会"
+subcat_order: 3
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

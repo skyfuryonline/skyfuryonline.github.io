@@ -27,6 +27,7 @@ keywords:
   - "Project-Based Learning"
 group: jzxm
 subcategory: "心理学与认知科学"
+subcat_order: 3
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

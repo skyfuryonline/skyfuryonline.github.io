@@ -62,7 +62,7 @@ Find the group background image for the current post.
                 <hr style="visibility: hidden;">
 
                 {% if page.group == "jzxm" and page.subcategory %}
-                {% assign sc_posts = site.posts | where: "subcategory", page.subcategory %}
+                {% assign sc_posts = site.posts | where: "subcategory", page.subcategory | sort: "subcat_order" %}
                 {% assign sc_count = sc_posts | size %}
                 {% assign sc_idx = -1 %}
                 {% for p in sc_posts %}{% if p.url == page.url %}{% assign sc_idx = forloop.index0 %}{% break %}{% endif %}{% endfor %}

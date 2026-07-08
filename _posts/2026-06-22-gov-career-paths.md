@@ -21,6 +21,7 @@ keywords:
   - "省考"
 group: jzxm
 subcategory: "职业与生涯"
+subcat_order: 3
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

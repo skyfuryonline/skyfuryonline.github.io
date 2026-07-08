@@ -22,6 +22,7 @@ keywords:
   - "决策疲劳"
 group: jzxm
 subcategory: "心理学与认知科学"
+subcat_order: 2
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

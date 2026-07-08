@@ -18,6 +18,7 @@ keywords:
   - "罗翔"
 group: jzxm
 subcategory: "思辨与社会"
+subcat_order: 10
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

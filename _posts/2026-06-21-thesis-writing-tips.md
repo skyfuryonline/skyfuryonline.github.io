@@ -17,6 +17,7 @@ keywords:
   - "学术语言"
 group: jzxm
 subcategory: "学术技能"
+subcat_order: 0
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

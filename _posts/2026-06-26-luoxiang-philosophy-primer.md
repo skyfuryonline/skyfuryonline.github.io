@@ -20,6 +20,7 @@ keywords:
   - "雅典"
 group: jzxm
 subcategory: "思辨与社会"
+subcat_order: 12
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">
