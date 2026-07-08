@@ -8,11 +8,11 @@
         "rank": 1
     },
     {
-        "title": "《使命召唤®：现代战争® II 2022》",
-        "link": "https://store.steampowered.com/app/3595230/_II_2022/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3595230/054c163a183d9958c4d9eb9a08517ee2b4992ff3/capsule_231x87.jpg?t=1778886532",
-        "price": "¥44.60",
-        "discount": "-90%",
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
+        "price": "¥74.50",
+        "discount": "-50%",
         "rank": 2
     },
     {
@@ -24,11 +24,11 @@
         "rank": 3
     },
     {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
-        "price": "¥74.50",
-        "discount": "-50%",
+        "title": "Red Dead Redemption 2",
+        "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
+        "price": "¥69.75",
+        "discount": "-75%",
         "rank": 4
     },
     {
@@ -40,36 +40,28 @@
         "rank": 5
     },
     {
+        "title": "《使命召唤®：现代战争® II 2022》",
+        "link": "https://store.steampowered.com/app/3595230/_II_2022/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3595230/054c163a183d9958c4d9eb9a08517ee2b4992ff3/capsule_231x87.jpg?t=1778886532",
+        "price": "¥44.60",
+        "discount": "-90%",
+        "rank": 6
+    },
+    {
+        "title": "造化仙缘",
+        "link": "https://store.steampowered.com/app/2377930/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2377930/108f7d823417e4a112fadd9a40364ea1e139a7d6/capsule_231x87_schinese.jpg?t=1783536331",
+        "price": "¥43.20",
+        "discount": "-10%",
+        "rank": 7
+    },
+    {
         "title": "Watch_Dogs® 2",
         "link": "https://store.steampowered.com/app/447040/Watch_Dogs_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/447040/capsule_231x87.jpg?t=1751986887",
         "price": "¥14.90",
         "discount": "-95%",
-        "rank": 6
-    },
-    {
-        "title": "Red Dead Redemption 2",
-        "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
-        "price": "¥69.75",
-        "discount": "-75%",
-        "rank": 7
-    },
-    {
-        "title": "极限竞速：地平线 5",
-        "link": "https://store.steampowered.com/app/1551360/_5/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/capsule_231x87.jpg?t=1746471508",
-        "price": "¥99.00",
-        "discount": "-50%",
         "rank": 8
-    },
-    {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥128.70",
-        "discount": "-35%",
-        "rank": 9
     },
     {
         "title": "Palworld / 幻兽帕鲁",
@@ -77,6 +69,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1623730/c5806289105932d9729d1ccba4bd5fc6158078af/capsule_231x87_schinese.jpg?t=1782406665",
         "price": "¥75.60",
         "discount": "-30%",
+        "rank": 9
+    },
+    {
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥128.70",
+        "discount": "-35%",
         "rank": 10
     }
 ]
