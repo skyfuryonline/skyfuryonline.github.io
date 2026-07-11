@@ -8,19 +8,19 @@
         "rank": 1
     },
     {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/a3525b0c4590861bf02bd36129ff0d510e2f85d6/capsule_231x87_alt_assets_6.jpg?t=1782486648",
-        "price": "¥41.72",
-        "discount": "-86%",
-        "rank": 2
-    },
-    {
         "title": "Red Dead Redemption 2",
         "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
+        "rank": 2
+    },
+    {
+        "title": "动物园之星",
+        "link": "https://store.steampowered.com/app/703080/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/703080/capsule_231x87.jpg?t=1765896213",
+        "price": "¥9.00",
+        "discount": "-95%",
         "rank": 3
     },
     {
@@ -32,11 +32,11 @@
         "rank": 4
     },
     {
-        "title": "动物园之星",
-        "link": "https://store.steampowered.com/app/703080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/703080/capsule_231x87.jpg?t=1765896213",
-        "price": "¥9.00",
-        "discount": "-95%",
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/a3525b0c4590861bf02bd36129ff0d510e2f85d6/capsule_231x87_alt_assets_6.jpg?t=1782486648",
+        "price": "¥41.72",
+        "discount": "-86%",
         "rank": 5
     },
     {
@@ -56,19 +56,19 @@
         "rank": 7
     },
     {
-        "title": "猫咪邮政",
-        "link": "https://store.steampowered.com/app/4380490/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4380490/076b9397f1912fb819c17225ba25969490010c63/capsule_231x87_schinese.jpg?t=1783683473",
-        "price": "¥33.77",
-        "discount": "-48%",
-        "rank": 8
-    },
-    {
         "title": "造化仙缘",
         "link": "https://store.steampowered.com/app/2377930/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2377930/108f7d823417e4a112fadd9a40364ea1e139a7d6/capsule_231x87_schinese.jpg?t=1783694608",
         "price": "¥43.20",
         "discount": "-10%",
+        "rank": 8
+    },
+    {
+        "title": "方舟: 生存飞升",
+        "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
+        "price": "¥62.00",
+        "discount": "-75%",
         "rank": 9
     },
     {
