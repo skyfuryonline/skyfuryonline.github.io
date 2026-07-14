@@ -8,28 +8,20 @@
         "rank": 1
     },
     {
+        "title": "Grand Theft Auto V 增强版",
+        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
+        "price": "¥74.50",
+        "discount": "-50%",
+        "rank": 2
+    },
+    {
         "title": "Red Dead Redemption 2",
         "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
         "price": "¥69.75",
         "discount": "-75%",
-        "rank": 2
-    },
-    {
-        "title": "Grand Theft Auto V 增强版",
-        "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
-        "price": "¥98.56",
-        "discount": "-56%",
         "rank": 3
-    },
-    {
-        "title": "动物园之星",
-        "link": "https://store.steampowered.com/app/703080/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/703080/capsule_231x87.jpg?t=1765896213",
-        "price": "¥9.00",
-        "discount": "-95%",
-        "rank": 4
     },
     {
         "title": "Watch_Dogs® 2",
@@ -37,39 +29,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/447040/capsule_231x87.jpg?t=1751986887",
         "price": "¥14.90",
         "discount": "-95%",
-        "rank": 5
-    },
-    {
-        "title": "NBA 2K26",
-        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/a3525b0c4590861bf02bd36129ff0d510e2f85d6/capsule_231x87_alt_assets_6.jpg?t=1782486648",
-        "price": "¥41.72",
-        "discount": "-86%",
-        "rank": 6
-    },
-    {
-        "title": "天国：拯救2",
-        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
-        "price": "¥91.20",
-        "discount": "-60%",
-        "rank": 7
-    },
-    {
-        "title": "方舟: 生存飞升",
-        "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
-        "price": "¥62.00",
-        "discount": "-75%",
-        "rank": 8
-    },
-    {
-        "title": "Euro Truck Simulator 2",
-        "link": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/da84d11d3ddd817e0cca299608b469a854d75ba5/capsule_231x87.jpg?t=1782839042",
-        "price": "¥22.00",
-        "discount": "-75%",
-        "rank": 9
+        "rank": 4
     },
     {
         "title": "Escape from Tarkov",
@@ -77,6 +37,46 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3932890/2c6e1e35562ccc39bb34436d2ea1064710691d9d/capsule_231x87.jpg?t=1783942603",
         "price": "¥149.99",
         "discount": "-25%",
+        "rank": 5
+    },
+    {
+        "title": "加利宅邸悬案",
+        "link": "https://store.steampowered.com/app/3641000/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3641000/8f3d9bf747413982bc6c1552ef1ef1fb77088df8/capsule_231x87_schinese.jpg?t=1784037785",
+        "price": "¥68.40",
+        "discount": "-10%",
+        "rank": 6
+    },
+    {
+        "title": "刺客信条：影",
+        "link": "https://store.steampowered.com/app/3159330/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3159330/5960b68c44465f7ad8fd75b9dbb277d0cac23479/capsule_231x87_schinese.jpg?t=1775589420",
+        "price": "¥134.10",
+        "discount": "-55%",
+        "rank": 7
+    },
+    {
+        "title": "NBA 2K26",
+        "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/a3525b0c4590861bf02bd36129ff0d510e2f85d6/capsule_231x87_alt_assets_6.jpg?t=1782486648",
+        "price": "¥41.72",
+        "discount": "-86%",
+        "rank": 8
+    },
+    {
+        "title": "天国：拯救2",
+        "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
+        "price": "¥91.20",
+        "discount": "-60%",
+        "rank": 9
+    },
+    {
+        "title": "Esports Manager 2026",
+        "link": "https://store.steampowered.com/app/2749950/Esports_Manager_2026/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2749950/1e05116d9031560ec431c68aa354957f2c601ed5/capsule_231x87.jpg?t=1784067117",
+        "price": "¥54.40",
+        "discount": "-20%",
         "rank": 10
     }
 ]
