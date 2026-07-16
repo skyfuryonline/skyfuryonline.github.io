@@ -16,27 +16,27 @@
         "rank": 2
     },
     {
+        "title": "恐怖游轮",
+        "link": "https://movie.douban.com/subject/3011051/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933909877.jpg",
+        "score": "8.5",
+        "region": "英国 澳大利亚",
+        "rank": 3
+    },
+    {
+        "title": "想你了",
+        "link": "https://movie.douban.com/subject/37021936/?from=playing_poster",
+        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2933938761.jpg",
+        "score": "暂无评分",
+        "region": "中国大陆",
+        "rank": 4
+    },
+    {
         "title": "后室",
         "link": "https://movie.douban.com/subject/36235977/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933327977.jpg",
         "score": "6.8",
         "region": "美国 加拿大",
-        "rank": 3
-    },
-    {
-        "title": "特立独行",
-        "link": "https://movie.douban.com/subject/36953973/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933638302.jpg",
-        "score": "6.6",
-        "region": "中国大陆",
-        "rank": 4
-    },
-    {
-        "title": "四渡",
-        "link": "https://movie.douban.com/subject/37191746/?from=playing_poster",
-        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931635664.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆",
         "rank": 5
     }
 ]
