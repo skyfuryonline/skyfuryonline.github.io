@@ -41,6 +41,7 @@
   url: "/groups/jzxm"
   group_image: "/img/cover-jzxm.svg"
   group_description: "芥子纳须弥——来自视频、文章、课程的学习笔记与知识收录"
+  hidden: true
   posts:
     - "2026-06-20-jzxm-template-guide.md"
     - "2026-06-20-chinese-internet-slang-in-english.md"

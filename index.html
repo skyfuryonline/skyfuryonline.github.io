@@ -300,6 +300,7 @@ body {
     
     <div class="terminal-container">
         {% for group in site.data.homepage_groups %}
+        {% unless group.hidden %}
         <a href="{{ group.url | prepend: site.baseurl }}" class="terminal-card">
             <div class="terminal-header">
                 <div class="terminal-bg" style="background-image: url('{{ site.baseurl }}{{ group.group_image }}')"></div>
@@ -317,6 +318,7 @@ body {
                 <span>ID: {{ forloop.index | prepend: '0x' }}</span>
             </div>
         </a>
+        {% endunless %}
         {% endfor %}
     </div>
 </div>

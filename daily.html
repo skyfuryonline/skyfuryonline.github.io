@@ -846,6 +846,176 @@ http_headers:
 @keyframes pixelTail { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes pixelLoading { from { width: 48%; } to { width: 82%; } }
 
+/* ---- Easter Egg: Pixel Plant Trigger ---- */
+.pixel-plant {
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+.pixel-plant:hover {
+    filter: brightness(1.3) drop-shadow(0 0 12px rgba(255, 209, 102, 0.7));
+}
+
+/* ---- JZXM Terminal Overlay ---- */
+#jzxm-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #0b0c10;
+    z-index: 99999;
+    overflow-y: auto;
+    animation: jzxmFadeIn 0.3s ease;
+}
+@keyframes jzxmFadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+}
+#jzxm-overlay::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+        linear-gradient(rgba(31,40,51,0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,40,51,0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+.jzxm-terminal {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 0 20px 60px;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+}
+.jzxm-term-header {
+    border-bottom: 1px solid rgba(102,252,241,0.15);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+}
+.jzxm-term-prompt {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+.jzxm-term-prompt .g { color: #4caf50; font-weight: bold; }
+.jzxm-term-prompt .w { color: #fff; margin: 0 4px; }
+.jzxm-term-prompt .b { color: #2196f3; font-weight: bold; }
+.jzxm-term-prompt .y { color: #ffeb3b; }
+.jzxm-term-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+}
+.jzxm-term-title::before {
+    content: ">_ ";
+    color: #4caf50;
+    animation: blink 1.2s step-end infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.jzxm-term-desc {
+    color: #8a9bb5;
+    font-size: 0.85rem;
+    margin: 0;
+}
+.jzxm-term-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    color: #666;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 100000;
+    transition: color 0.2s;
+    font-family: sans-serif;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+.jzxm-term-close:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+.jzxm-cat {
+    margin-bottom: 28px;
+}
+.jzxm-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.jzxm-cat-badge {
+    display: inline-block;
+    background: rgba(102,252,241,0.1);
+    color: #66fcf1;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border: 1px solid rgba(102,252,241,0.2);
+    letter-spacing: 1px;
+}
+.jzxm-cat-count {
+    color: #555;
+    font-size: 12px;
+}
+.jzxm-items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.jzxm-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.02);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.jzxm-item:hover {
+    background: rgba(102,252,241,0.06);
+    border-color: rgba(102,252,241,0.15);
+    transform: translateX(4px);
+}
+.jzxm-idx {
+    color: #4caf50;
+    font-size: 12px;
+    flex-shrink: 0;
+    min-width: 28px;
+}
+.jzxm-name {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    flex: 1;
+    line-height: 1.4;
+}
+.jzxm-item:hover .jzxm-name { color: #fff; }
+.jzxm-date {
+    color: #555;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+.jzxm-footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: #444;
+    font-size: 12px;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .jzxm-terminal { margin: 20px auto; padding: 0 12px 40px; }
+    .jzxm-term-title { font-size: 1.5rem; }
+    .jzxm-item { flex-wrap: wrap; gap: 4px 12px; }
+    .jzxm-date { font-size: 10px; }
+}
+
 /* ---------------- Pixel News Card (toggle) ---------------- */
 .coming-soon-section.news-open {
     align-items: center;
@@ -1310,6 +1480,23 @@ http_headers:
     color: #8899bb;
 }
 </style>
+
+<!-- Hidden Terminal Overlay (Easter Egg) -->
+<div id="jzxm-overlay">
+  <div class="jzxm-term-close" id="jzxm-close" title="ESC">×</div>
+  <div class="jzxm-terminal">
+    <div class="jzxm-term-header">
+      <div class="jzxm-term-prompt">
+        <span class="g">root</span><span class="w">@</span><span class="b">jarvis</span>:<span class="y">~/groups</span>$
+      </div>
+      <h1 class="jzxm-term-title">芥子须弥</h1>
+      <p class="jzxm-term-desc">// 芥子纳须弥——来自视频、文章、课程的学习笔记与知识收录</p>
+    </div>
+    <div id="jzxm-content"></div>
+    <div class="jzxm-footer">vol.81 · BOWEN / BROAD LEARNING</div>
+  </div>
+</div>
+
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
 {% assign gh_intel = site.data.github_intelligence %}
 {% if gh_intel and gh_intel.size > 0 %}
@@ -2320,5 +2507,89 @@ function renderCalendar(viewDate, activeDate) {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') showPixel(e);
   });
+})();
+
+// -------- Easter Egg: Pixel Plant → JZXM Terminal --------
+(function() {
+  var plant = document.querySelector('.pixel-plant');
+  var overlay = document.getElementById('jzxm-overlay');
+  var closeBtn = document.getElementById('jzxm-close');
+  if (!plant || !overlay) return;
+
+  var clickTimes = [];
+  plant.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var now = Date.now();
+    clickTimes.push(now);
+    clickTimes = clickTimes.filter(function(t) { return now - t < 2000; });
+    if (clickTimes.length >= 3) {
+      clickTimes = [];
+      overlay.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  function closeOverlay() {
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  closeBtn.addEventListener('click', closeOverlay);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.style.display === 'block') closeOverlay();
+  });
+
+  // Inject jzxm post data (only rendered for the hidden group)
+  {% for group in site.data.homepage_groups %}
+  {% if group.hidden %}
+  var jzxmData = [
+    {% for subcat in group.subcategories %}
+    {
+      name: {{ subcat.name | jsonify }},
+      posts: [
+        {% for filename in subcat.posts %}
+        {% for post in site.posts %}
+        {% assign pf = post.path | split: '/' | last %}
+        {% if pf == filename %}
+        {
+          title: {{ post.title | jsonify }},
+          date: '{{ post.date | date: "%Y-%m-%d" }}',
+          url: '{{ post.url | prepend: site.baseurl }}'
+        },
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      ]
+    },
+    {% endfor %}
+  ];
+
+  var content = document.getElementById('jzxm-content');
+  var globalIdx = 1;
+  jzxmData.forEach(function(cat) {
+    if (cat.posts.length === 0) return;
+    var catEl = document.createElement('div');
+    catEl.className = 'jzxm-cat';
+    var hdr = document.createElement('div');
+    hdr.className = 'jzxm-cat-header';
+    hdr.innerHTML = '<span class="jzxm-cat-badge">' + cat.name + '</span><span class="jzxm-cat-count">' + cat.posts.length + ' posts</span>';
+    catEl.appendChild(hdr);
+    var items = document.createElement('div');
+    items.className = 'jzxm-items';
+    cat.posts.forEach(function(p) {
+      var a = document.createElement('a');
+      a.className = 'jzxm-item';
+      a.href = p.url;
+      a.innerHTML =
+        '<span class="jzxm-idx">[' + String(globalIdx).padStart(2, '0') + ']</span>' +
+        '<span class="jzxm-name">' + p.title + '</span>' +
+        '<span class="jzxm-date">' + p.date + '</span>';
+      items.appendChild(a);
+      globalIdx++;
+    });
+    catEl.appendChild(items);
+    content.appendChild(catEl);
+  });
+  {% endif %}
+  {% endfor %}
 })();
 </script>
