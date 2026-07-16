@@ -3,7 +3,7 @@
         "title": "功夫女足",
         "link": "https://movie.douban.com/subject/36452545/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933860063.jpg",
-        "score": "6.6",
+        "score": "6.5",
         "region": "中国香港 中国大陆",
         "rank": 1
     },
@@ -16,19 +16,19 @@
         "rank": 2
     },
     {
-        "title": "特立独行",
-        "link": "https://movie.douban.com/subject/36953973/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933638302.jpg",
-        "score": "6.6",
-        "region": "中国大陆",
-        "rank": 3
-    },
-    {
         "title": "后室",
         "link": "https://movie.douban.com/subject/36235977/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933327977.jpg",
         "score": "6.8",
         "region": "美国 加拿大",
+        "rank": 3
+    },
+    {
+        "title": "特立独行",
+        "link": "https://movie.douban.com/subject/36953973/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933638302.jpg",
+        "score": "6.6",
+        "region": "中国大陆",
         "rank": 4
     },
     {
