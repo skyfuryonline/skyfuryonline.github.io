@@ -882,20 +882,20 @@ http_headers:
 .jzxm-terminal {
     position: relative;
     z-index: 1;
-    max-width: 860px;
-    margin: 40px auto;
-    padding: 0 20px 60px;
+    max-width: 960px;
+    margin: 50px auto;
+    padding: 0 30px 60px;
     font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
 }
 .jzxm-term-header {
     border-bottom: 1px solid rgba(102,252,241,0.15);
-    padding-bottom: 24px;
-    margin-bottom: 32px;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
 }
 .jzxm-term-prompt {
     color: #a0a0a0;
-    font-size: 1.05rem;
-    margin-bottom: 12px;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
 }
 .jzxm-term-prompt .g { color: #4caf50; font-weight: bold; }
 .jzxm-term-prompt .w { color: #fff; margin: 0 4px; }
@@ -903,9 +903,9 @@ http_headers:
 .jzxm-term-prompt .y { color: #ffeb3b; }
 .jzxm-term-title {
     color: #fff;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     font-weight: 700;
-    margin: 0 0 10px;
+    margin: 0 0 14px;
     letter-spacing: -0.5px;
 }
 .jzxm-term-title::before {
@@ -916,7 +916,7 @@ http_headers:
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 .jzxm-term-desc {
     color: #8a9bb5;
-    font-size: 1rem;
+    font-size: 1.25rem;
     margin: 0;
 }
 .jzxm-term-close {
@@ -924,13 +924,13 @@ http_headers:
     top: 20px;
     right: 24px;
     color: #666;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     z-index: 100000;
     transition: color 0.2s;
     font-family: sans-serif;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -939,40 +939,40 @@ http_headers:
 }
 .jzxm-term-close:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
 .jzxm-cat {
-    margin-bottom: 28px;
+    margin-bottom: 36px;
 }
 .jzxm-cat-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    padding-bottom: 8px;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .jzxm-cat-badge {
     display: inline-block;
     background: rgba(102,252,241,0.1);
     color: #66fcf1;
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 700;
-    padding: 4px 12px;
+    padding: 5px 16px;
     border: 1px solid rgba(102,252,241,0.2);
     letter-spacing: 1px;
 }
 .jzxm-cat-count {
     color: #555;
-    font-size: 13px;
+    font-size: 15px;
 }
 .jzxm-items {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 .jzxm-item {
     display: flex;
     align-items: baseline;
-    gap: 12px;
-    padding: 10px 14px;
+    gap: 16px;
+    padding: 14px 18px;
     border: 1px solid rgba(255,255,255,0.04);
     background: rgba(255,255,255,0.02);
     text-decoration: none;
@@ -985,36 +985,36 @@ http_headers:
 }
 .jzxm-idx {
     color: #4caf50;
-    font-size: 14px;
+    font-size: 17px;
     flex-shrink: 0;
-    min-width: 32px;
+    min-width: 40px;
 }
 .jzxm-name {
     color: #e0e0e0;
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     flex: 1;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 .jzxm-item:hover .jzxm-name { color: #fff; }
 .jzxm-date {
     color: #555;
-    font-size: 13px;
+    font-size: 15px;
     flex-shrink: 0;
 }
 .jzxm-footer {
-    margin-top: 40px;
-    padding-top: 16px;
+    margin-top: 48px;
+    padding-top: 20px;
     border-top: 1px solid rgba(255,255,255,0.06);
     color: #444;
-    font-size: 13px;
+    font-size: 15px;
     text-align: center;
 }
 @media (max-width: 768px) {
-    .jzxm-terminal { margin: 20px auto; padding: 0 12px 40px; }
-    .jzxm-term-title { font-size: 1.8rem; }
-    .jzxm-name { font-size: 1rem; }
-    .jzxm-item { flex-wrap: wrap; gap: 4px 12px; }
-    .jzxm-date { font-size: 12px; }
+    .jzxm-terminal { margin: 20px auto; padding: 0 16px 40px; }
+    .jzxm-term-title { font-size: 2.2rem; }
+    .jzxm-name { font-size: 1.15rem; }
+    .jzxm-item { flex-wrap: wrap; gap: 6px 16px; padding: 10px 14px; }
+    .jzxm-date { font-size: 13px; }
 }
 
 /* ---------------- Pixel News Card (toggle) ---------------- */
