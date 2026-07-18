@@ -32,20 +32,12 @@
         "rank": 4
     },
     {
-        "title": "The Outlast Trials",
-        "link": "https://store.steampowered.com/app/1304930/The_Outlast_Trials/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/115ccc74cf2a3951184659a5f953c8db1a48e499/capsule_231x87_alt_assets_3.jpg?t=1784123708",
-        "price": "¥40.80",
-        "discount": "-70%",
-        "rank": 5
-    },
-    {
         "title": "Escape from Tarkov",
         "link": "https://store.steampowered.com/app/3932890/Escape_from_Tarkov/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3932890/2c6e1e35562ccc39bb34436d2ea1064710691d9d/capsule_231x87.jpg?t=1783942603",
         "price": "¥149.99",
         "discount": "-25%",
-        "rank": 6
+        "rank": 5
     },
     {
         "title": "刺客信条：影",
@@ -53,7 +45,23 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3159330/5960b68c44465f7ad8fd75b9dbb277d0cac23479/capsule_231x87_schinese.jpg?t=1775589420",
         "price": "¥134.10",
         "discount": "-55%",
+        "rank": 6
+    },
+    {
+        "title": "The Outlast Trials",
+        "link": "https://store.steampowered.com/app/1304930/The_Outlast_Trials/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/115ccc74cf2a3951184659a5f953c8db1a48e499/capsule_231x87_alt_assets_3.jpg?t=1784123708",
+        "price": "¥40.80",
+        "discount": "-70%",
         "rank": 7
+    },
+    {
+        "title": "EA SPORTS FC™ 26",
+        "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1783095306",
+        "price": "¥79.60",
+        "discount": "-80%",
+        "rank": 8
     },
     {
         "title": "致病本源",
@@ -61,7 +69,7 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3808690/07953eb1df85aa742cba538158470b9cc946899c/capsule_231x87_schinese.jpg?t=1784222200",
         "price": "¥31.99",
         "discount": "-20%",
-        "rank": 8
+        "rank": 9
     },
     {
         "title": "Warhammer 40,000: 星际战士2",
@@ -69,14 +77,6 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2183900/capsule_231x87_schinese.jpg?t=1780329761",
         "price": "¥74.70",
         "discount": "-70%",
-        "rank": 9
-    },
-    {
-        "title": "加利宅邸悬案",
-        "link": "https://store.steampowered.com/app/3641000/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3641000/8f3d9bf747413982bc6c1552ef1ef1fb77088df8/capsule_231x87_schinese.jpg?t=1784213715",
-        "price": "¥68.40",
-        "discount": "-10%",
         "rank": 10
     }
 ]
