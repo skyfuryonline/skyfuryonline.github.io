@@ -2,7 +2,7 @@
     {
         "title": "Palworld / 幻兽帕鲁",
         "link": "https://store.steampowered.com/app/1623730/Palworld/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1623730/c496ac7460dbe337bec923d54de7f83bfe320249/capsule_231x87_schinese.jpg?t=1784620170",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1623730/c496ac7460dbe337bec923d54de7f83bfe320249/capsule_231x87_schinese.jpg?t=1784620170",
         "price": "¥75.60",
         "discount": "-30%",
         "rank": 1
@@ -10,73 +10,73 @@
     {
         "title": "Grand Theft Auto V 增强版",
         "link": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
         "price": "¥74.50",
         "discount": "-50%",
         "rank": 2
     },
     {
-        "title": "Red Dead Redemption 2",
-        "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
-        "price": "¥69.75",
-        "discount": "-75%",
+        "title": "Street Fighter 6",
+        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1782095044",
+        "price": "¥99.00",
+        "discount": "-50%",
         "rank": 3
     },
     {
-        "title": "Street Fighter 6",
-        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1782095044",
-        "price": "¥99.00",
-        "discount": "-50%",
+        "title": "Red Dead Redemption 2",
+        "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_231x87.jpg?t=1759502961",
+        "price": "¥69.75",
+        "discount": "-75%",
         "rank": 4
     },
     {
-        "title": "The Outlast Trials",
-        "link": "https://store.steampowered.com/app/1304930/The_Outlast_Trials/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/115ccc74cf2a3951184659a5f953c8db1a48e499/capsule_231x87_alt_assets_3.jpg?t=1784123708",
-        "price": "¥40.80",
-        "discount": "-70%",
+        "title": "Resident Evil 4",
+        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
+        "price": "¥49.50",
+        "discount": "-75%",
         "rank": 5
     },
     {
         "title": "NBA 2K26",
         "link": "https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3472040/a3525b0c4590861bf02bd36129ff0d510e2f85d6/capsule_231x87_alt_assets_6.jpg?t=1782486648",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/a3525b0c4590861bf02bd36129ff0d510e2f85d6/capsule_231x87_alt_assets_6.jpg?t=1782486648",
         "price": "¥41.72",
         "discount": "-86%",
         "rank": 6
     },
     {
-        "title": "Resident Evil 4",
-        "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
-        "price": "¥49.50",
-        "discount": "-75%",
-        "rank": 7
-    },
-    {
         "title": "EA SPORTS FC™ 26",
         "link": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1783095306",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/b1345663febf4f26fe4744115e8e459da3e9ee2c/capsule_231x87.jpg?t=1783095306",
         "price": "¥79.60",
         "discount": "-80%",
-        "rank": 8
+        "rank": 7
     },
     {
         "title": "Resident Evil Requiem",
         "link": "https://store.steampowered.com/app/3764200/Resident_Evil_Requiem/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1779840172",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1779840172",
         "price": "¥278.40",
         "discount": "-20%",
-        "rank": 9
+        "rank": 8
     },
     {
         "title": "方舟: 生存飞升",
         "link": "https://store.steampowered.com/app/2399830/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2399830/dce348bb9faef2c1973d04aa8a87bff18e29699b/capsule_231x87.jpg?t=1779293241",
         "price": "¥62.00",
         "discount": "-75%",
+        "rank": 9
+    },
+    {
+        "title": "Train Sim World® 6",
+        "link": "https://store.steampowered.com/app/3656800/Train_Sim_World_6/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3656800/794d6718d0ceb29fdd3bcafad34a52a902b9b139/capsule_231x87.jpg?t=1784646153",
+        "price": "¥33.60",
+        "discount": "-80%",
         "rank": 10
     }
 ]
