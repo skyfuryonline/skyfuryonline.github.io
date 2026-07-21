@@ -82,6 +82,7 @@
     - "2026-07-16-yangming-xinxue.md"
     - "2026-07-18-vocabulary-is-world.md"
     - "2026-07-20-fixation-paradox.md"
+    - "2026-07-21-wang-yangming.md"
   subcategories:
     - name: "英语学习"
       posts:
@@ -133,3 +134,6 @@
     - name: "效率与方法"
       posts:
         - "2026-06-29-time-management-fanshi.md"
+    - name: "人物志"
+      posts:
+        - "2026-07-21-wang-yangming.md"
