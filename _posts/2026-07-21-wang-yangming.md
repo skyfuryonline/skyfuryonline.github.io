@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "王阳明：在事上磨出来的圣人"
-subtitle: "一个不务正业的少年，如何被命运反复磨打，最终磨出了照亮五百年的光"
+title: "王阳明：此心光明"
+subtitle: "一个不务正业的少年，如何被命运反复磨打，磨出了照亮五百年的光"
 date: 2026-07-21
 author: "LH"
 catalog: true
