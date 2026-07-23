@@ -16,26 +16,26 @@
         "rank": 2
     },
     {
+        "title": "痴迷",
+        "link": "https://movie.douban.com/subject/37450627/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2934049524.jpg",
+        "score": "7.7",
+        "region": "美国",
+        "rank": 3
+    },
+    {
         "title": "恐怖游轮",
         "link": "https://movie.douban.com/subject/3011051/?from=playing_poster",
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2933909877.jpg",
         "score": "8.5",
         "region": "英国 澳大利亚",
-        "rank": 3
+        "rank": 4
     },
     {
         "title": "三国第一部：争洛阳",
         "link": "https://movie.douban.com/subject/36752981/?from=playing_poster",
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931601084.jpg",
         "score": "8.1",
-        "region": "中国大陆",
-        "rank": 4
-    },
-    {
-        "title": "想你了",
-        "link": "https://movie.douban.com/subject/37021936/?from=playing_poster",
-        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2933938761.jpg",
-        "score": "暂无评分",
         "region": "中国大陆",
         "rank": 5
     }
