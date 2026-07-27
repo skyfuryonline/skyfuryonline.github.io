@@ -26,7 +26,7 @@
     {
         "title": "MECCHA CHAMELEON",
         "link": "https://store.steampowered.com/app/4704690/MECCHA_CHAMELEON/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4704690/18d14b8bd834e30a6a25df5ccd7f0a6e644f1577/capsule_231x87.jpg?t=1782561846",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4704690/18d14b8bd834e30a6a25df5ccd7f0a6e644f1577/capsule_231x87.jpg?t=1785107783",
         "price": "¥22.10",
         "discount": "-15%",
         "rank": 4
@@ -40,12 +40,20 @@
         "rank": 5
     },
     {
-        "title": "逸剑风云决",
-        "link": "https://store.steampowered.com/app/1876890/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1876890/86b333f68d9930a948d09d24cb0caad4966dca45/capsule_231x87_schinese.jpg?t=1774667199",
-        "price": "¥54.60",
-        "discount": "-30%",
+        "title": "METAL GEAR SOLID Δ: SNAKE EATER",
+        "link": "https://store.steampowered.com/app/2417610/METAL_GEAR_SOLID_D_SNAKE_EATER/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2417610/fcf468fafa62aa13ac11f1ad2f84cab740eac6af/capsule_231x87.jpg?t=1762249119",
+        "price": "¥87.20",
+        "discount": "-60%",
         "rank": 6
+    },
+    {
+        "title": "赛博朋克 2077",
+        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1784714077",
+        "price": "¥89.40",
+        "discount": "-70%",
+        "rank": 7
     },
     {
         "title": "Resident Evil 4",
@@ -53,30 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_231x87.jpg?t=1772502922",
         "price": "¥49.50",
         "discount": "-75%",
-        "rank": 7
+        "rank": 8
     },
     {
         "title": "奶茶店模拟器 - 重生之我在冰堡甜城当店长",
         "link": "https://store.steampowered.com/app/3683770/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3683770/514aca8b0d2996a37da8a3f5adef017c22441320/capsule_231x87_schinese.jpg?t=1784893308",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3683770/514aca8b0d2996a37da8a3f5adef017c22441320/capsule_231x87_schinese.jpg?t=1785157914",
         "price": "¥33.80",
         "discount": "-35%",
-        "rank": 8
-    },
-    {
-        "title": "Grim Dawn - Fangs of Asterkarn",
-        "link": "https://store.steampowered.com/app/2699230/Grim_Dawn__Fangs_of_Asterkarn/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2699230/1716b16db59426d6a251fc5597b5da35f07d2ccd/capsule_231x87.jpg?t=1784815303",
-        "price": "¥65.70",
-        "discount": "-10%",
         "rank": 9
     },
     {
-        "title": "侠影录",
-        "link": "https://store.steampowered.com/app/3863760/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3863760/f86c1fb91ec88299a675abbbd0b63d1be923d4e2/capsule_231x87.jpg?t=1784879730",
-        "price": "¥52.20",
-        "discount": "-10%",
+        "title": "逸剑风云决",
+        "link": "https://store.steampowered.com/app/1876890/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1876890/86b333f68d9930a948d09d24cb0caad4966dca45/capsule_231x87_schinese.jpg?t=1774667199",
+        "price": "¥54.60",
+        "discount": "-30%",
         "rank": 10
     }
 ]
