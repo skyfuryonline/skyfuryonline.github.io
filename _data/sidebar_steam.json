@@ -8,11 +8,11 @@
         "rank": 1
     },
     {
-        "title": "午夜轮班",
-        "link": "https://store.steampowered.com/app/3722330/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3722330/deebd8e46df94eec662904b6def078a65153d905/capsule_231x87_schinese.jpg?t=1784981268",
-        "price": "¥34.20",
-        "discount": "-10%",
+        "title": "《赛博朋克 2077：往日之影》",
+        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1784713876",
+        "price": "¥89.40",
+        "discount": "-40%",
         "rank": 2
     },
     {
@@ -24,20 +24,12 @@
         "rank": 3
     },
     {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1784713876",
-        "price": "¥89.40",
-        "discount": "-40%",
-        "rank": 4
-    },
-    {
         "title": "Street Fighter 6",
         "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1782095044",
         "price": "¥99.00",
         "discount": "-50%",
-        "rank": 5
+        "rank": 4
     },
     {
         "title": "MECCHA CHAMELEON",
@@ -45,14 +37,22 @@
         "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4704690/18d14b8bd834e30a6a25df5ccd7f0a6e644f1577/capsule_231x87.jpg?t=1785107783",
         "price": "¥22.10",
         "discount": "-15%",
+        "rank": 5
+    },
+    {
+        "title": "极限国度",
+        "link": "https://store.steampowered.com/app/2290180/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2290180/194ec62181eb1f629171301a05654f3ee72c87a8/capsule_231x87_schinese.jpg?t=1782492474",
+        "price": "¥16.80",
+        "discount": "-90%",
         "rank": 6
     },
     {
-        "title": "Warhammer 40,000: 星际战士2",
-        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2183900/0eac95d7e77dd3a8999d289e86ea901629a6374a/capsule_231x87_alt_assets_13_schinese.jpg?t=1785248228",
-        "price": "¥74.70",
-        "discount": "-70%",
+        "title": "《英雄连3：最终防线》Company of Heroes 3: Final Stand",
+        "link": "https://store.steampowered.com/app/4836540/3Company_of_Heroes_3_Final_Stand/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4836540/e085d995f11e334e20fde4a0091bb7f2a7f53e5d/capsule_231x87.jpg?t=1785352046",
+        "price": "¥91.80",
+        "discount": "-10%",
         "rank": 7
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "奶茶店模拟器 - 重生之我在冰堡甜城当店长",
-        "link": "https://store.steampowered.com/app/3683770/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3683770/514aca8b0d2996a37da8a3f5adef017c22441320/capsule_231x87_schinese.jpg?t=1785229416",
-        "price": "¥33.80",
-        "discount": "-35%",
+        "title": "Warhammer 40,000: 星际战士2",
+        "link": "https://store.steampowered.com/app/2183900/Warhammer_40000_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2183900/0eac95d7e77dd3a8999d289e86ea901629a6374a/capsule_231x87_alt_assets_13_schinese.jpg?t=1785341124",
+        "price": "¥74.70",
+        "discount": "-70%",
         "rank": 9
     },
     {
-        "title": "极限国度",
-        "link": "https://store.steampowered.com/app/2290180/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2290180/194ec62181eb1f629171301a05654f3ee72c87a8/capsule_231x87_schinese.jpg?t=1782492474",
-        "price": "¥16.80",
-        "discount": "-90%",
+        "title": "奶茶店模拟器 - 重生之我在冰堡甜城当店长",
+        "link": "https://store.steampowered.com/app/3683770/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3683770/514aca8b0d2996a37da8a3f5adef017c22441320/capsule_231x87_schinese.jpg?t=1785312394",
+        "price": "¥33.80",
+        "discount": "-35%",
         "rank": 10
     }
 ]
