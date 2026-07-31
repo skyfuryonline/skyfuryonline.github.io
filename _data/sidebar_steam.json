@@ -1,10 +1,10 @@
 [
     {
-        "title": "雾影猎人",
-        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/d7a8e09892a7c115054e452d6a50e89cc4bcf5b9/capsule_231x87_schinese.jpg?t=1785434347",
-        "price": "¥79.20",
-        "discount": "-10%",
+        "title": "博德之门3",
+        "link": "https://store.steampowered.com/app/1086940/3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/3dd81008e9c385caf68152450c22353f6a8abec9/capsule_231x87.jpg?t=1777363040",
+        "price": "¥208.60",
+        "discount": "-30%",
         "rank": 1
     },
     {
@@ -16,12 +16,28 @@
         "rank": 2
     },
     {
-        "title": "博德之门3",
-        "link": "https://store.steampowered.com/app/1086940/3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/3dd81008e9c385caf68152450c22353f6a8abec9/capsule_231x87.jpg?t=1777363040",
-        "price": "¥208.60",
-        "discount": "-30%",
+        "title": "Marvel's Spider-Man 2",
+        "link": "https://store.steampowered.com/app/2651280/Marvels_SpiderMan_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2651280/379bd114fe5c23850555d1eb67fa8ac996bf702b/capsule_231x87.jpg?t=1763569811",
+        "price": "¥266.66",
+        "discount": "-33%",
         "rank": 3
+    },
+    {
+        "title": "雾影猎人",
+        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785472771",
+        "price": "¥79.20",
+        "discount": "-10%",
+        "rank": 4
+    },
+    {
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥128.70",
+        "discount": "-35%",
+        "rank": 5
     },
     {
         "title": "歧路旅人 II",
@@ -29,7 +45,31 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1971650/capsule_231x87.jpg?t=1781762559",
         "price": "¥79.20",
         "discount": "-60%",
-        "rank": 4
+        "rank": 6
+    },
+    {
+        "title": "纵横秘湾 Corsair Cove",
+        "link": "https://store.steampowered.com/app/1368140/_Corsair_Cove/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1368140/4585276d48765af91cad1023f0cb0640b858a360/capsule_231x87_schinese.jpg?t=1785513998",
+        "price": "¥111.75",
+        "discount": "-25%",
+        "rank": 7
+    },
+    {
+        "title": "双人成行",
+        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
+        "price": "¥59.40",
+        "discount": "-70%",
+        "rank": 8
+    },
+    {
+        "title": "多少兄弟？",
+        "link": "https://store.steampowered.com/app/3934270/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3934270/d37fc97204d40eeb6104026dd1570cf3e63ee04e/capsule_231x87_schinese.jpg?t=1785428583",
+        "price": "¥35.10",
+        "discount": "-35%",
+        "rank": 9
     },
     {
         "title": "歧路旅人",
@@ -37,46 +77,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/921570/capsule_231x87.jpg?t=1781762506",
         "price": "¥59.40",
         "discount": "-70%",
-        "rank": 5
-    },
-    {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1784713876",
-        "price": "¥89.40",
-        "discount": "-40%",
-        "rank": 6
-    },
-    {
-        "title": "《英雄连3：最终防线》Company of Heroes 3: Final Stand",
-        "link": "https://store.steampowered.com/app/4836540/3Company_of_Heroes_3_Final_Stand/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4836540/e085d995f11e334e20fde4a0091bb7f2a7f53e5d/capsule_231x87.jpg?t=1785430049",
-        "price": "¥91.80",
-        "discount": "-10%",
-        "rank": 7
-    },
-    {
-        "title": "风暴怕死队",
-        "link": "https://store.steampowered.com/app/3561220/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3561220/df76def9dc6236e712bf6c9af04988016e3fd3cd/capsule_231x87_schinese.jpg?t=1785399370",
-        "price": "¥61.20",
-        "discount": "-10%",
-        "rank": 8
-    },
-    {
-        "title": "Street Fighter 6",
-        "link": "https://store.steampowered.com/app/1364780/Street_Fighter_6/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1782095044",
-        "price": "¥99.00",
-        "discount": "-50%",
-        "rank": 9
-    },
-    {
-        "title": "雾影猎人-升级为豪华版",
-        "link": "https://store.steampowered.com/app/4572310/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4572310/2a51db0cb3f054473225312303df953fb6bf69ab/capsule_231x87.jpg?t=1785401855",
-        "price": "¥45.00",
-        "discount": "-10%",
         "rank": 10
     }
 ]
