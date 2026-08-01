@@ -16,18 +16,18 @@
         "rank": 2
     },
     {
-        "title": "年会不能停！2",
-        "link": "https://movie.douban.com/subject/36850814/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934399898.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆",
-        "rank": 3
-    },
-    {
         "title": "八仙！",
         "link": "https://movie.douban.com/subject/36882191/?from=playing_poster",
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2934074566.jpg",
         "score": "8.2",
+        "region": "中国大陆",
+        "rank": 3
+    },
+    {
+        "title": "年会不能停！2",
+        "link": "https://movie.douban.com/subject/36850814/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2934583425.jpg",
+        "score": "7.0",
         "region": "中国大陆",
         "rank": 4
     },
