@@ -8,19 +8,19 @@
         "rank": 1
     },
     {
-        "title": "Marvel's Spider-Man 2",
-        "link": "https://store.steampowered.com/app/2651280/Marvels_SpiderMan_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2651280/379bd114fe5c23850555d1eb67fa8ac996bf702b/capsule_231x87.jpg?t=1763569811",
-        "price": "¥266.66",
-        "discount": "-33%",
-        "rank": 2
-    },
-    {
         "title": "赛博朋克 2077",
         "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1784714077",
         "price": "¥89.40",
         "discount": "-70%",
+        "rank": 2
+    },
+    {
+        "title": "Marvel's Spider-Man 2",
+        "link": "https://store.steampowered.com/app/2651280/Marvels_SpiderMan_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2651280/379bd114fe5c23850555d1eb67fa8ac996bf702b/capsule_231x87.jpg?t=1763569811",
+        "price": "¥266.66",
+        "discount": "-33%",
         "rank": 3
     },
     {
@@ -40,19 +40,19 @@
         "rank": 5
     },
     {
-        "title": "纵横秘湾 Corsair Cove",
-        "link": "https://store.steampowered.com/app/1368140/_Corsair_Cove/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1368140/4585276d48765af91cad1023f0cb0640b858a360/capsule_231x87_schinese.jpg?t=1785527747",
-        "price": "¥111.75",
-        "discount": "-25%",
-        "rank": 6
-    },
-    {
         "title": "雾影猎人",
         "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785673983",
         "price": "¥79.20",
         "discount": "-10%",
+        "rank": 6
+    },
+    {
+        "title": "纵横秘湾 Corsair Cove",
+        "link": "https://store.steampowered.com/app/1368140/_Corsair_Cove/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1368140/4585276d48765af91cad1023f0cb0640b858a360/capsule_231x87_schinese.jpg?t=1785527747",
+        "price": "¥111.75",
+        "discount": "-25%",
         "rank": 7
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "双人成行",
-        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
-        "price": "¥59.40",
-        "discount": "-70%",
-        "rank": 9
-    },
-    {
         "title": "《赛博朋克 2077：往日之影》",
         "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1784713876",
         "price": "¥89.40",
         "discount": "-40%",
+        "rank": 9
+    },
+    {
+        "title": "双人成行",
+        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
+        "price": "¥59.40",
+        "discount": "-70%",
         "rank": 10
     }
 ]
