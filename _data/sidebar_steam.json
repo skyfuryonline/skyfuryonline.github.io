@@ -1,19 +1,11 @@
 [
     {
-        "title": "赛博朋克 2077",
-        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1784714077",
-        "price": "¥89.40",
-        "discount": "-70%",
+        "title": "机械狂欢",
+        "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785684305",
+        "price": "¥28.05",
+        "discount": "-15%",
         "rank": 1
-    },
-    {
-        "title": "博德之门3",
-        "link": "https://store.steampowered.com/app/1086940/3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/3dd81008e9c385caf68152450c22353f6a8abec9/capsule_231x87.jpg?t=1777363040",
-        "price": "¥208.60",
-        "discount": "-30%",
-        "rank": 2
     },
     {
         "title": "Marvel's Spider-Man 2",
@@ -21,55 +13,23 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2651280/379bd114fe5c23850555d1eb67fa8ac996bf702b/capsule_231x87.jpg?t=1763569811",
         "price": "¥266.66",
         "discount": "-33%",
+        "rank": 2
+    },
+    {
+        "title": "赛博朋克 2077",
+        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1784714077",
+        "price": "¥89.40",
+        "discount": "-70%",
         "rank": 3
     },
     {
-        "title": "纵横秘湾 Corsair Cove",
-        "link": "https://store.steampowered.com/app/1368140/_Corsair_Cove/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1368140/4585276d48765af91cad1023f0cb0640b858a360/capsule_231x87_schinese.jpg?t=1785527747",
-        "price": "¥111.75",
-        "discount": "-25%",
+        "title": "博德之门3",
+        "link": "https://store.steampowered.com/app/1086940/3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/3dd81008e9c385caf68152450c22353f6a8abec9/capsule_231x87.jpg?t=1777363040",
+        "price": "¥208.60",
+        "discount": "-30%",
         "rank": 4
-    },
-    {
-        "title": "雾影猎人",
-        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785584605",
-        "price": "¥79.20",
-        "discount": "-10%",
-        "rank": 5
-    },
-    {
-        "title": "双影奇境",
-        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
-        "price": "¥128.70",
-        "discount": "-35%",
-        "rank": 6
-    },
-    {
-        "title": "歧路旅人 II",
-        "link": "https://store.steampowered.com/app/1971650/_II/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1971650/capsule_231x87.jpg?t=1781762559",
-        "price": "¥79.20",
-        "discount": "-60%",
-        "rank": 7
-    },
-    {
-        "title": "双人成行",
-        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
-        "price": "¥59.40",
-        "discount": "-70%",
-        "rank": 8
-    },
-    {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1784713876",
-        "price": "¥89.40",
-        "discount": "-40%",
-        "rank": 9
     },
     {
         "title": "Street Fighter 6",
@@ -77,6 +37,46 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/f7f38ca38076c9bdf010672bb7b071d66625d401/capsule_231x87_alt_assets_19.jpg?t=1782095044",
         "price": "¥99.00",
         "discount": "-50%",
+        "rank": 5
+    },
+    {
+        "title": "纵横秘湾 Corsair Cove",
+        "link": "https://store.steampowered.com/app/1368140/_Corsair_Cove/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1368140/4585276d48765af91cad1023f0cb0640b858a360/capsule_231x87_schinese.jpg?t=1785527747",
+        "price": "¥111.75",
+        "discount": "-25%",
+        "rank": 6
+    },
+    {
+        "title": "雾影猎人",
+        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785673983",
+        "price": "¥79.20",
+        "discount": "-10%",
+        "rank": 7
+    },
+    {
+        "title": "双影奇境",
+        "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
+        "price": "¥128.70",
+        "discount": "-35%",
+        "rank": 8
+    },
+    {
+        "title": "双人成行",
+        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
+        "price": "¥59.40",
+        "discount": "-70%",
+        "rank": 9
+    },
+    {
+        "title": "《赛博朋克 2077：往日之影》",
+        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1784713876",
+        "price": "¥89.40",
+        "discount": "-40%",
         "rank": 10
     }
 ]
