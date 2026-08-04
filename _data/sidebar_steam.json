@@ -1,18 +1,18 @@
 [
     {
-        "title": "机械狂欢",
-        "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785746697",
-        "price": "¥28.05",
-        "discount": "-15%",
-        "rank": 1
-    },
-    {
         "title": "赛博朋克 2077",
         "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1784714077",
         "price": "¥89.40",
         "discount": "-70%",
+        "rank": 1
+    },
+    {
+        "title": "机械狂欢",
+        "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785746697",
+        "price": "¥28.05",
+        "discount": "-15%",
         "rank": 2
     },
     {
@@ -40,12 +40,20 @@
         "rank": 5
     },
     {
+        "title": "雾影猎人",
+        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785673983",
+        "price": "¥79.20",
+        "discount": "-10%",
+        "rank": 6
+    },
+    {
         "title": "双影奇境",
         "link": "https://store.steampowered.com/app/2001120/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
         "price": "¥128.70",
         "discount": "-35%",
-        "rank": 6
+        "rank": 7
     },
     {
         "title": "双人成行",
@@ -53,30 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
         "price": "¥59.40",
         "discount": "-70%",
-        "rank": 7
-    },
-    {
-        "title": "雾影猎人",
-        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785673983",
-        "price": "¥79.20",
-        "discount": "-10%",
         "rank": 8
     },
     {
-        "title": "Escape the Backrooms",
-        "link": "https://store.steampowered.com/app/1943950/Escape_the_Backrooms/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1943950/28626087167f428b92a79d4c319e19707fe22dae/capsule_231x87.jpg?t=1784563663",
-        "price": "¥29.60",
-        "discount": "-20%",
+        "title": "纵横秘湾 Corsair Cove",
+        "link": "https://store.steampowered.com/app/1368140/_Corsair_Cove/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1368140/4585276d48765af91cad1023f0cb0640b858a360/capsule_231x87_schinese.jpg?t=1785860713",
+        "price": "¥111.75",
+        "discount": "-25%",
         "rank": 9
     },
     {
-        "title": "Big Walk",
-        "link": "https://store.steampowered.com/app/1478500/Big_Walk/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785848401",
-        "price": "¥58.50",
-        "discount": "-25%",
+        "title": "赛菲莉娅",
+        "link": "https://store.steampowered.com/app/2436940/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2436940/983f8cf364c273262a9667872be5955baee9ed9f/capsule_231x87_alt_assets_0.jpg?t=1785481238",
+        "price": "¥34.80",
+        "discount": "-40%",
         "rank": 10
     }
 ]
