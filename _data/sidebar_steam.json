@@ -48,12 +48,20 @@
         "rank": 6
     },
     {
+        "title": "幽灵行动：断点",
+        "link": "https://store.steampowered.com/app/2231380/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2231380/c3198d3208113c6ea52ff68f2ccda869a3716f94/capsule_231x87.jpg?t=1786026109",
+        "price": "¥14.90",
+        "discount": "-95%",
+        "rank": 7
+    },
+    {
         "title": "雾影猎人",
         "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785673983",
         "price": "¥79.20",
         "discount": "-10%",
-        "rank": 7
+        "rank": 8
     },
     {
         "title": "双人成行",
@@ -61,7 +69,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
         "price": "¥59.40",
         "discount": "-70%",
-        "rank": 8
+        "rank": 9
     },
     {
         "title": "Ready or Not",
@@ -69,14 +77,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144200/2f6ca7ad511531beb421122efb376141f068ebbb/capsule_231x87.jpg?t=1781703931",
         "price": "¥79.50",
         "discount": "-50%",
-        "rank": 9
-    },
-    {
-        "title": "多洛可小镇",
-        "link": "https://store.steampowered.com/app/2285550/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2285550/696c2412858cd85a51f0aeda6ff8ccfcfedad5a2/capsule_231x87_alt_assets_1_schinese.jpg?t=1786012433",
-        "price": "¥46.40",
-        "discount": "-20%",
         "rank": 10
     }
 ]
