@@ -1,19 +1,11 @@
 [
     {
-        "title": "机械狂欢",
-        "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785909320",
-        "price": "¥28.05",
-        "discount": "-15%",
-        "rank": 1
-    },
-    {
         "title": "赛博朋克 2077",
         "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1784714077",
         "price": "¥89.40",
         "discount": "-70%",
-        "rank": 2
+        "rank": 1
     },
     {
         "title": "Big Walk",
@@ -21,6 +13,14 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
         "price": "¥58.50",
         "discount": "-25%",
+        "rank": 2
+    },
+    {
+        "title": "机械狂欢",
+        "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785909320",
+        "price": "¥28.05",
+        "discount": "-15%",
         "rank": 3
     },
     {
@@ -56,19 +56,19 @@
         "rank": 7
     },
     {
-        "title": "PEAK",
-        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
-        "price": "¥16.50",
-        "discount": "-50%",
-        "rank": 8
-    },
-    {
         "title": "双人成行",
         "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
         "price": "¥59.40",
         "discount": "-70%",
+        "rank": 8
+    },
+    {
+        "title": "PEAK",
+        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
+        "price": "¥16.50",
+        "discount": "-50%",
         "rank": 9
     },
     {
