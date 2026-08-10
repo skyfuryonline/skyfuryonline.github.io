@@ -1,10 +1,10 @@
 [
     {
-        "title": "赛博朋克 2077",
-        "link": "https://store.steampowered.com/app/1091500/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_231x87_schinese.jpg?t=1784714077",
-        "price": "¥89.40",
-        "discount": "-70%",
+        "title": "机械狂欢",
+        "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785909320",
+        "price": "¥28.05",
+        "discount": "-15%",
         "rank": 1
     },
     {
@@ -16,28 +16,12 @@
         "rank": 2
     },
     {
-        "title": "机械狂欢",
-        "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785909320",
-        "price": "¥28.05",
-        "discount": "-15%",
-        "rank": 3
-    },
-    {
-        "title": "《赛博朋克 2077：往日之影》",
-        "link": "https://store.steampowered.com/app/2138330/_2077/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138330/81d31c2f205f707d6767d0a87fe363e8c33dd525/capsule_231x87_schinese.jpg?t=1784713876",
-        "price": "¥89.40",
-        "discount": "-40%",
-        "rank": 4
-    },
-    {
         "title": "幽灵行动：荒野",
         "link": "https://store.steampowered.com/app/460930/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/460930/57fedc6516a4db5b02db3d8e8a2d27754d72202b/capsule_231x87_alt_assets_0_schinese.jpg?t=1786116240",
         "price": "¥10.40",
         "discount": "-95%",
-        "rank": 5
+        "rank": 3
     },
     {
         "title": "双影奇境",
@@ -45,6 +29,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/1988bcdc421d71cbe4c8c07940967e7a0cd752be/capsule_231x87.jpg?t=1763484567",
         "price": "¥128.70",
         "discount": "-35%",
+        "rank": 4
+    },
+    {
+        "title": "双人成行",
+        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
+        "price": "¥59.40",
+        "discount": "-70%",
+        "rank": 5
+    },
+    {
+        "title": "PEAK",
+        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
+        "price": "¥16.50",
+        "discount": "-50%",
         "rank": 6
     },
     {
@@ -56,27 +56,27 @@
         "rank": 7
     },
     {
-        "title": "双人成行",
-        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
-        "price": "¥59.40",
-        "discount": "-70%",
+        "title": "Escape the Backrooms",
+        "link": "https://store.steampowered.com/app/1943950/Escape_the_Backrooms/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1943950/28626087167f428b92a79d4c319e19707fe22dae/capsule_231x87.jpg?t=1784563663",
+        "price": "¥29.60",
+        "discount": "-20%",
         "rank": 8
-    },
-    {
-        "title": "PEAK",
-        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
-        "price": "¥16.50",
-        "discount": "-50%",
-        "rank": 9
     },
     {
         "title": "铁巢重炮",
         "link": "https://store.steampowered.com/app/2950790/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2950790/3157fc6bf9982830758d1cd27a13cc039eccdd7c/capsule_231x87_schinese.jpg?t=1786028313",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2950790/3157fc6bf9982830758d1cd27a13cc039eccdd7c/capsule_231x87_schinese.jpg?t=1786366652",
         "price": "¥44.25",
         "discount": "-25%",
+        "rank": 9
+    },
+    {
+        "title": "雾影猎人",
+        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785673983",
+        "price": "¥79.20",
+        "discount": "-10%",
         "rank": 10
     }
 ]
