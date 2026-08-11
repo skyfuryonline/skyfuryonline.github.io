@@ -1,11 +1,19 @@
 [
     {
+        "title": "黑神话：悟空",
+        "link": "https://store.steampowered.com/app/2358720/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2358720/801e841a7975fc29967e30cf799084f4b2987b77/capsule_231x87_schinese.jpg?t=1760601605",
+        "price": "¥187.60",
+        "discount": "-30%",
+        "rank": 1
+    },
+    {
         "title": "机械狂欢",
         "link": "https://store.steampowered.com/app/4108000/_/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4108000/1c8a28e66f7ffd53eef8241dac0075c85b6b8631/capsule_231x87_schinese.jpg?t=1785909320",
         "price": "¥28.05",
         "discount": "-15%",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "Big Walk",
@@ -13,14 +21,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
         "price": "¥58.50",
         "discount": "-25%",
-        "rank": 2
-    },
-    {
-        "title": "幽灵行动：荒野",
-        "link": "https://store.steampowered.com/app/460930/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/460930/57fedc6516a4db5b02db3d8e8a2d27754d72202b/capsule_231x87_alt_assets_0_schinese.jpg?t=1786116240",
-        "price": "¥10.40",
-        "discount": "-95%",
         "rank": 3
     },
     {
@@ -32,20 +32,36 @@
         "rank": 4
     },
     {
-        "title": "双人成行",
-        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
-        "price": "¥59.40",
-        "discount": "-70%",
+        "title": "幽灵行动：荒野",
+        "link": "https://store.steampowered.com/app/460930/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/460930/57fedc6516a4db5b02db3d8e8a2d27754d72202b/capsule_231x87_alt_assets_0_schinese.jpg?t=1786116240",
+        "price": "¥10.40",
+        "discount": "-95%",
         "rank": 5
     },
     {
         "title": "PEAK",
         "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/1844964d7a353e50eb3cc979ea922729d8c1b0ad/capsule_231x87.jpg?t=1775581133",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/e8f91974f9a7469500fe1aed44a62c9467d328c9/capsule_231x87_alt_assets_3.jpg?t=1786470571",
         "price": "¥16.50",
         "discount": "-50%",
         "rank": 6
+    },
+    {
+        "title": "双人成行",
+        "link": "https://store.steampowered.com/app/1426210/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_231x87.jpg?t=1777395376",
+        "price": "¥59.40",
+        "discount": "-70%",
+        "rank": 7
+    },
+    {
+        "title": "《使命召唤®：现代战争® III 2023》",
+        "link": "https://store.steampowered.com/app/3595270/_III_2023/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3595270/05b8f73493348dfa9b6662dc13a6740929ea195b/capsule_231x87.jpg?t=1778886604",
+        "price": "¥74.50",
+        "discount": "-75%",
+        "rank": 8
     },
     {
         "title": "幽灵行动：断点",
@@ -53,29 +69,13 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2231380/c3198d3208113c6ea52ff68f2ccda869a3716f94/capsule_231x87.jpg?t=1786026109",
         "price": "¥14.90",
         "discount": "-95%",
-        "rank": 7
-    },
-    {
-        "title": "Escape the Backrooms",
-        "link": "https://store.steampowered.com/app/1943950/Escape_the_Backrooms/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1943950/28626087167f428b92a79d4c319e19707fe22dae/capsule_231x87.jpg?t=1784563663",
-        "price": "¥29.60",
-        "discount": "-20%",
-        "rank": 8
-    },
-    {
-        "title": "铁巢重炮",
-        "link": "https://store.steampowered.com/app/2950790/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2950790/3157fc6bf9982830758d1cd27a13cc039eccdd7c/capsule_231x87_schinese.jpg?t=1786366652",
-        "price": "¥44.25",
-        "discount": "-25%",
         "rank": 9
     },
     {
-        "title": "雾影猎人",
-        "link": "https://store.steampowered.com/app/3282300/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282300/7fc9740610e28c14cbebe6f2e973e3851b7aa21b/capsule_231x87_schinese.jpg?t=1785673983",
-        "price": "¥79.20",
+        "title": "梦境回响",
+        "link": "https://store.steampowered.com/app/3226060/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3226060/682b50e24c9597d9cdcd1598ab524a0bbb30bb79/capsule_231x87_schinese.jpg?t=1786410129",
+        "price": "¥37.80",
         "discount": "-10%",
         "rank": 10
     }
