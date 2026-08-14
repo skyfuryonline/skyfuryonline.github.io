@@ -16,20 +16,12 @@
         "rank": 2
     },
     {
-        "title": "逃出绝命街",
-        "link": "https://movie.douban.com/subject/36318703/?from=playing_poster",
-        "image_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2934546481.jpg",
-        "score": "暂无评分",
-        "region": "美国",
-        "rank": 3
-    },
-    {
         "title": "去你的岛",
         "link": "https://movie.douban.com/subject/35275131/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934742318.jpg",
         "score": "7.9",
         "region": "中国大陆",
-        "rank": 4
+        "rank": 3
     },
     {
         "title": "蜘蛛侠：崭新之日",
@@ -37,6 +29,14 @@
         "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2934276912.jpg",
         "score": "7.8",
         "region": "美国 加拿大 英国 德国",
+        "rank": 4
+    },
+    {
+        "title": "八仙！",
+        "link": "https://movie.douban.com/subject/36882191/?from=playing_poster",
+        "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2934074566.jpg",
+        "score": "8.2",
+        "region": "中国大陆",
         "rank": 5
     }
 ]

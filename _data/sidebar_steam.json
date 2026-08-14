@@ -18,7 +18,7 @@
     {
         "title": "Servant of the Lake",
         "link": "https://store.steampowered.com/app/3636770/Servant_of_the_Lake/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3636770/c7258556e7065e6031ac6bb9bd8c255bdfd64f56/capsule_231x87.jpg?t=1786622239",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3636770/c7258556e7065e6031ac6bb9bd8c255bdfd64f56/capsule_231x87.jpg?t=1786724638",
         "price": "¥24.75",
         "discount": "-25%",
         "rank": 3
@@ -32,26 +32,26 @@
         "rank": 4
     },
     {
-        "title": "Big Walk",
-        "link": "https://store.steampowered.com/app/1478500/Big_Walk/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
-        "price": "¥58.50",
-        "discount": "-25%",
-        "rank": 5
-    },
-    {
         "title": "PEAK",
         "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/e8f91974f9a7469500fe1aed44a62c9467d328c9/capsule_231x87_alt_assets_3.jpg?t=1786470571",
         "price": "¥16.50",
         "discount": "-50%",
-        "rank": 6
+        "rank": 5
     },
     {
         "title": "HELLDIVERS™ 2",
         "link": "https://store.steampowered.com/app/553850/HELLDIVERS_2/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/553850/0c2cc5fd31661f00aa661283137d1535af318c49/capsule_231x87_schinese.jpg?t=1786525389",
         "price": "¥148.50",
+        "discount": "-25%",
+        "rank": 6
+    },
+    {
+        "title": "Big Walk",
+        "link": "https://store.steampowered.com/app/1478500/Big_Walk/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
+        "price": "¥58.50",
         "discount": "-25%",
         "rank": 7
     },
