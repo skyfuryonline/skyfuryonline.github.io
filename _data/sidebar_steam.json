@@ -16,12 +16,20 @@
         "rank": 2
     },
     {
+        "title": "Big Walk",
+        "link": "https://store.steampowered.com/app/1478500/Big_Walk/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
+        "price": "¥58.50",
+        "discount": "-25%",
+        "rank": 3
+    },
+    {
         "title": "Servant of the Lake",
         "link": "https://store.steampowered.com/app/3636770/Servant_of_the_Lake/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3636770/c7258556e7065e6031ac6bb9bd8c255bdfd64f56/capsule_231x87.jpg?t=1786724638",
         "price": "¥24.75",
         "discount": "-25%",
-        "rank": 3
+        "rank": 4
     },
     {
         "title": "全面战争：战锤3",
@@ -29,7 +37,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1786634522",
         "price": "¥44.70",
         "discount": "-85%",
-        "rank": 4
+        "rank": 5
     },
     {
         "title": "PEAK",
@@ -37,7 +45,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/e8f91974f9a7469500fe1aed44a62c9467d328c9/capsule_231x87_alt_assets_3.jpg?t=1786470571",
         "price": "¥16.50",
         "discount": "-50%",
-        "rank": 5
+        "rank": 6
     },
     {
         "title": "HELLDIVERS™ 2",
@@ -45,23 +53,7 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/553850/0c2cc5fd31661f00aa661283137d1535af318c49/capsule_231x87_schinese.jpg?t=1786525389",
         "price": "¥148.50",
         "discount": "-25%",
-        "rank": 6
-    },
-    {
-        "title": "Big Walk",
-        "link": "https://store.steampowered.com/app/1478500/Big_Walk/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
-        "price": "¥58.50",
-        "discount": "-25%",
         "rank": 7
-    },
-    {
-        "title": "不心动才有鬼",
-        "link": "https://store.steampowered.com/app/4855450/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4855450/14b1d9c9a92ddeb373074886d42fa188d17a3562/capsule_231x87_schinese.jpg?t=1786671930",
-        "price": "¥35.10",
-        "discount": "-10%",
-        "rank": 8
     },
     {
         "title": "生存日志",
@@ -69,14 +61,22 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4164790/5a5817a52ff2ef56806534ffbd73f3ff2ad947d2/capsule_231x87_schinese.jpg?t=1786539085",
         "price": "¥39.10",
         "discount": "-15%",
+        "rank": 8
+    },
+    {
+        "title": "不心动才有鬼",
+        "link": "https://store.steampowered.com/app/4855450/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4855450/14b1d9c9a92ddeb373074886d42fa188d17a3562/capsule_231x87_schinese.jpg?t=1786791346",
+        "price": "¥35.10",
+        "discount": "-10%",
         "rank": 9
     },
     {
-        "title": "嗜血印 Bloody Spell",
-        "link": "https://store.steampowered.com/app/992300/_Bloody_Spell/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/992300/capsule_231x87_schinese.jpg?t=1785999284",
-        "price": "¥7.90",
-        "discount": "-90%",
+        "title": "幽灵行动：荒野",
+        "link": "https://store.steampowered.com/app/460930/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/460930/57fedc6516a4db5b02db3d8e8a2d27754d72202b/capsule_231x87_alt_assets_0_schinese.jpg?t=1786116240",
+        "price": "¥10.40",
+        "discount": "-95%",
         "rank": 10
     }
 ]
