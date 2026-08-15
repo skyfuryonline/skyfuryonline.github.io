@@ -2,7 +2,7 @@
     {
         "title": "黑神话：悟空",
         "link": "https://store.steampowered.com/app/2358720/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2358720/801e841a7975fc29967e30cf799084f4b2987b77/capsule_231x87_schinese.jpg?t=1760601605",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/801e841a7975fc29967e30cf799084f4b2987b77/capsule_231x87_schinese.jpg?t=1760601605",
         "price": "¥187.60",
         "discount": "-30%",
         "rank": 1
@@ -10,7 +10,7 @@
     {
         "title": "《使命召唤®：现代战争® III 2023》",
         "link": "https://store.steampowered.com/app/3595270/_III_2023/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3595270/05b8f73493348dfa9b6662dc13a6740929ea195b/capsule_231x87.jpg?t=1778886604",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3595270/05b8f73493348dfa9b6662dc13a6740929ea195b/capsule_231x87.jpg?t=1778886604",
         "price": "¥74.50",
         "discount": "-75%",
         "rank": 2
@@ -18,7 +18,7 @@
     {
         "title": "Big Walk",
         "link": "https://store.steampowered.com/app/1478500/Big_Walk/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1478500/44da9fb07ebe477387355d7fce29560b55125cce/capsule_231x87.jpg?t=1785911674",
         "price": "¥58.50",
         "discount": "-25%",
         "rank": 3
@@ -26,7 +26,7 @@
     {
         "title": "Servant of the Lake",
         "link": "https://store.steampowered.com/app/3636770/Servant_of_the_Lake/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3636770/c7258556e7065e6031ac6bb9bd8c255bdfd64f56/capsule_231x87.jpg?t=1786724638",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3636770/c7258556e7065e6031ac6bb9bd8c255bdfd64f56/capsule_231x87.jpg?t=1786724638",
         "price": "¥24.75",
         "discount": "-25%",
         "rank": 4
@@ -34,31 +34,31 @@
     {
         "title": "全面战争：战锤3",
         "link": "https://store.steampowered.com/app/1142710/3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1786634522",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1786634522",
         "price": "¥44.70",
         "discount": "-85%",
         "rank": 5
     },
     {
-        "title": "PEAK",
-        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/e8f91974f9a7469500fe1aed44a62c9467d328c9/capsule_231x87_alt_assets_3.jpg?t=1786470571",
-        "price": "¥16.50",
-        "discount": "-50%",
+        "title": "HELLDIVERS™ 2",
+        "link": "https://store.steampowered.com/app/553850/HELLDIVERS_2/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/0c2cc5fd31661f00aa661283137d1535af318c49/capsule_231x87_schinese.jpg?t=1786525389",
+        "price": "¥148.50",
+        "discount": "-25%",
         "rank": 6
     },
     {
-        "title": "HELLDIVERS™ 2",
-        "link": "https://store.steampowered.com/app/553850/HELLDIVERS_2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/553850/0c2cc5fd31661f00aa661283137d1535af318c49/capsule_231x87_schinese.jpg?t=1786525389",
-        "price": "¥148.50",
-        "discount": "-25%",
+        "title": "PEAK",
+        "link": "https://store.steampowered.com/app/3527290/PEAK/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/e8f91974f9a7469500fe1aed44a62c9467d328c9/capsule_231x87_alt_assets_3.jpg?t=1786470571",
+        "price": "¥16.50",
+        "discount": "-50%",
         "rank": 7
     },
     {
         "title": "生存日志",
         "link": "https://store.steampowered.com/app/4164790/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4164790/5a5817a52ff2ef56806534ffbd73f3ff2ad947d2/capsule_231x87_schinese.jpg?t=1786539085",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4164790/5a5817a52ff2ef56806534ffbd73f3ff2ad947d2/capsule_231x87_schinese.jpg?t=1786539085",
         "price": "¥39.10",
         "discount": "-15%",
         "rank": 8
@@ -66,17 +66,17 @@
     {
         "title": "不心动才有鬼",
         "link": "https://store.steampowered.com/app/4855450/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4855450/14b1d9c9a92ddeb373074886d42fa188d17a3562/capsule_231x87_schinese.jpg?t=1786791346",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4855450/14b1d9c9a92ddeb373074886d42fa188d17a3562/capsule_231x87_schinese.jpg?t=1786791346",
         "price": "¥35.10",
         "discount": "-10%",
         "rank": 9
     },
     {
-        "title": "幽灵行动：荒野",
-        "link": "https://store.steampowered.com/app/460930/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/460930/57fedc6516a4db5b02db3d8e8a2d27754d72202b/capsule_231x87_alt_assets_0_schinese.jpg?t=1786116240",
-        "price": "¥10.40",
-        "discount": "-95%",
+        "title": "咩咩启示录",
+        "link": "https://store.steampowered.com/app/1313140/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1313140/ae3c95685945c3bb02f9b6a577edb4cc98f79edf/capsule_231x87_schinese.jpg?t=1786554901",
+        "price": "¥47.20",
+        "discount": "-60%",
         "rank": 10
     }
 ]
