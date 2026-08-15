@@ -99,6 +99,8 @@
     - "2026-08-14-german-philosophy-history.md"
     - "2026-08-15-german-literature-history.md"
     - "2026-08-14-zeng-guofan.md"
+    - "2026-08-15-tim-luoyonghao-interview.md"
+    - "2026-08-15-delegate-without-rework.md"
   subcategories:
     - name: "英语学习"
       posts:
@@ -162,6 +164,7 @@
       posts:
         - "2026-06-29-time-management-fanshi.md"
         - "2026-08-07-time-power-map.md"
+        - "2026-08-15-delegate-without-rework.md"
     - name: "人物志"
       posts:
         - "2026-07-21-wang-yangming.md"
@@ -169,3 +172,6 @@
         - "2026-08-01-su-dongpo.md"
         - "2026-08-03-murakami-haruki.md"
         - "2026-08-14-zeng-guofan.md"
+    - name: "访谈录"
+      posts:
+        - "2026-08-15-tim-luoyonghao-interview.md"
