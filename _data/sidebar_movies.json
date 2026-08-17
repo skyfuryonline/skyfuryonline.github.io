@@ -1,11 +1,19 @@
 [
     {
+        "title": "牛来",
+        "link": "https://movie.douban.com/subject/38581618/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934945600.jpg",
+        "score": "暂无评分",
+        "region": "中国大陆",
+        "rank": 1
+    },
+    {
         "title": "欢迎来龙餐馆",
         "link": "https://movie.douban.com/subject/35811064/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934698009.jpg",
-        "score": "8.5",
+        "score": "8.6",
         "region": "中国大陆",
-        "rank": 1
+        "rank": 2
     },
     {
         "title": "奥德赛",
@@ -13,14 +21,6 @@
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2933569626.jpg",
         "score": "8.4",
         "region": "美国 英国",
-        "rank": 2
-    },
-    {
-        "title": "牛来",
-        "link": "https://movie.douban.com/subject/38581618/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934945600.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆",
         "rank": 3
     },
     {
@@ -32,11 +32,11 @@
         "rank": 4
     },
     {
-        "title": "去你的岛",
-        "link": "https://movie.douban.com/subject/35275131/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934742318.jpg",
-        "score": "7.9",
-        "region": "中国大陆",
+        "title": "蜘蛛侠：崭新之日",
+        "link": "https://movie.douban.com/subject/36246195/?from=playing_poster",
+        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2934276912.jpg",
+        "score": "7.8",
+        "region": "美国 加拿大 英国 德国",
         "rank": 5
     }
 ]
