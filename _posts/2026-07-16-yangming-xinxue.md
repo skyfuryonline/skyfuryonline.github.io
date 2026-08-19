@@ -21,7 +21,7 @@ keywords:
   - 良知良能
 group: jzxm
 subcategory: "心理学与认知科学"
-subcat_order: 5
+subcat_order: 6
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

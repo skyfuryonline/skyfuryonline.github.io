@@ -28,7 +28,7 @@ keywords:
   - "Cognitive Load Theory"
 group: jzxm
 subcategory: "心理学与认知科学"
-subcat_order: 8
+subcat_order: 7
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">

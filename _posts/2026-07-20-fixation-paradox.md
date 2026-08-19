@@ -19,7 +19,7 @@ keywords:
   - "letting go"
 group: jzxm
 subcategory: "心理学与认知科学"
-subcat_order: 9
+subcat_order: 8
 ---
 
 <link rel="stylesheet" href="/css/jzxm.css">
