@@ -32,12 +32,20 @@
         "rank": 4
     },
     {
+        "title": "STEINS;GATE RE:BOOT",
+        "link": "https://store.steampowered.com/app/4012810/STEINSGATE_REBOOT/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4012810/66cd3882f3926e2d0e88c598fde47213517e9a70/capsule_231x87_schinese.jpg?t=1787147797",
+        "price": "¥178.20",
+        "discount": "-10%",
+        "rank": 5
+    },
+    {
         "title": "Zombie Army 4: Dead War",
         "link": "https://store.steampowered.com/app/694280/Zombie_Army_4_Dead_War/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/694280/capsule_231x87.jpg?t=1786965015",
         "price": "¥8.40",
         "discount": "-95%",
-        "rank": 5
+        "rank": 6
     },
     {
         "title": "Darkest Dungeon®",
@@ -45,14 +53,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/262060/capsule_231x87.jpg?t=1787073267",
         "price": "¥13.20",
         "discount": "-85%",
-        "rank": 6
-    },
-    {
-        "title": "STEINS;GATE RE:BOOT",
-        "link": "https://store.steampowered.com/app/4012810/STEINSGATE_REBOOT/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4012810/66cd3882f3926e2d0e88c598fde47213517e9a70/capsule_231x87_schinese.jpg?t=1786070044",
-        "price": "¥178.20",
-        "discount": "-10%",
         "rank": 7
     },
     {
