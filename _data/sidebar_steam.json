@@ -32,12 +32,20 @@
         "rank": 4
     },
     {
+        "title": "Darkest Dungeon®",
+        "link": "https://store.steampowered.com/app/262060/Darkest_Dungeon/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/262060/capsule_231x87.jpg?t=1787073267",
+        "price": "¥13.20",
+        "discount": "-85%",
+        "rank": 5
+    },
+    {
         "title": "STEINS;GATE RE:BOOT",
         "link": "https://store.steampowered.com/app/4012810/STEINSGATE_REBOOT/?snr=1_7_7_2300_150_1",
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4012810/66cd3882f3926e2d0e88c598fde47213517e9a70/capsule_231x87_schinese.jpg?t=1787147797",
         "price": "¥178.20",
         "discount": "-10%",
-        "rank": 5
+        "rank": 6
     },
     {
         "title": "Zombie Army 4: Dead War",
@@ -45,14 +53,6 @@
         "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/694280/capsule_231x87.jpg?t=1786965015",
         "price": "¥8.40",
         "discount": "-95%",
-        "rank": 6
-    },
-    {
-        "title": "Darkest Dungeon®",
-        "link": "https://store.steampowered.com/app/262060/Darkest_Dungeon/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/262060/capsule_231x87.jpg?t=1787073267",
-        "price": "¥13.20",
-        "discount": "-85%",
         "rank": 7
     },
     {
@@ -64,19 +64,19 @@
         "rank": 8
     },
     {
-        "title": "Servant of the Lake",
-        "link": "https://store.steampowered.com/app/3636770/Servant_of_the_Lake/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3636770/c7258556e7065e6031ac6bb9bd8c255bdfd64f56/capsule_231x87.jpg?t=1786888533",
-        "price": "¥24.75",
+        "title": "鲁特里一家死了（The Roottrees are Dead）",
+        "link": "https://store.steampowered.com/app/2754380/The_Roottrees_are_Dead/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2754380/f9ae0234199532998d547adc1234027d8ecdc36d/capsule_231x87_schinese.jpg?t=1778766790",
+        "price": "¥57.00",
         "discount": "-25%",
         "rank": 9
     },
     {
-        "title": "Minecraft Dungeons",
-        "link": "https://store.steampowered.com/app/1672970/Minecraft_Dungeons/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1672970/capsule_231x87.jpg?t=1787063807",
-        "price": "¥72.00",
-        "discount": "-50%",
+        "title": "Microsoft Flight Simulator 2024",
+        "link": "https://store.steampowered.com/app/2537590/Microsoft_Flight_Simulator_2024/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2537590/c992a0851b2714fdeaa65469ba5e7b8e60c06a96/capsule_231x87.jpg?t=1780854662",
+        "price": "¥243.60",
+        "discount": "-30%",
         "rank": 10
     }
 ]
