@@ -2,7 +2,7 @@
     {
         "title": "黑神话：悟空",
         "link": "https://store.steampowered.com/app/2358720/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2358720/801e841a7975fc29967e30cf799084f4b2987b77/capsule_231x87_schinese.jpg?t=1760601605",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/801e841a7975fc29967e30cf799084f4b2987b77/capsule_231x87_schinese.jpg?t=1760601605",
         "price": "¥187.60",
         "discount": "-30%",
         "rank": 1
@@ -10,7 +10,7 @@
     {
         "title": "天国：拯救2",
         "link": "https://store.steampowered.com/app/1771300/2/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1771300/93e28946c46f09d761bbfab1e17e8c1c4a8323a0/capsule_231x87.jpg?t=1777975568",
         "price": "¥91.20",
         "discount": "-60%",
         "rank": 2
@@ -18,65 +18,65 @@
     {
         "title": "《使命召唤®：现代战争® III 2023》",
         "link": "https://store.steampowered.com/app/3595270/_III_2023/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3595270/05b8f73493348dfa9b6662dc13a6740929ea195b/capsule_231x87.jpg?t=1778886604",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3595270/05b8f73493348dfa9b6662dc13a6740929ea195b/capsule_231x87.jpg?t=1778886604",
         "price": "¥74.50",
         "discount": "-75%",
         "rank": 3
     },
     {
-        "title": "生存日志",
-        "link": "https://store.steampowered.com/app/4164790/_/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4164790/5a5817a52ff2ef56806534ffbd73f3ff2ad947d2/capsule_231x87_schinese.jpg?t=1786539085",
-        "price": "¥39.10",
-        "discount": "-15%",
+        "title": "绍宋: 还我河山",
+        "link": "https://store.steampowered.com/app/4292950/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4292950/f28bc20a58175ed3e167b6a1b6e17d341e2e9bef/capsule_231x87.jpg?t=1787190806",
+        "price": "¥47.20",
+        "discount": "-20%",
         "rank": 4
     },
     {
-        "title": "Darkest Dungeon®",
-        "link": "https://store.steampowered.com/app/262060/Darkest_Dungeon/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/262060/capsule_231x87.jpg?t=1787073267",
-        "price": "¥13.20",
-        "discount": "-85%",
+        "title": "生存日志",
+        "link": "https://store.steampowered.com/app/4164790/_/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4164790/5a5817a52ff2ef56806534ffbd73f3ff2ad947d2/capsule_231x87_schinese.jpg?t=1786539085",
+        "price": "¥39.10",
+        "discount": "-15%",
         "rank": 5
-    },
-    {
-        "title": "STEINS;GATE RE:BOOT",
-        "link": "https://store.steampowered.com/app/4012810/STEINSGATE_REBOOT/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4012810/66cd3882f3926e2d0e88c598fde47213517e9a70/capsule_231x87_schinese.jpg?t=1787147797",
-        "price": "¥178.20",
-        "discount": "-10%",
-        "rank": 6
     },
     {
         "title": "Zombie Army 4: Dead War",
         "link": "https://store.steampowered.com/app/694280/Zombie_Army_4_Dead_War/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/694280/capsule_231x87.jpg?t=1786965015",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/694280/capsule_231x87.jpg?t=1786965015",
         "price": "¥8.40",
         "discount": "-95%",
+        "rank": 6
+    },
+    {
+        "title": "STEINS;GATE RE:BOOT",
+        "link": "https://store.steampowered.com/app/4012810/STEINSGATE_REBOOT/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4012810/66cd3882f3926e2d0e88c598fde47213517e9a70/capsule_231x87_schinese.jpg?t=1787191495",
+        "price": "¥178.20",
+        "discount": "-10%",
         "rank": 7
     },
     {
-        "title": "全面战争：战锤3",
-        "link": "https://store.steampowered.com/app/1142710/3/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1786634522",
-        "price": "¥44.70",
+        "title": "Darkest Dungeon®",
+        "link": "https://store.steampowered.com/app/262060/Darkest_Dungeon/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/262060/capsule_231x87.jpg?t=1787073267",
+        "price": "¥13.20",
         "discount": "-85%",
         "rank": 8
     },
     {
-        "title": "鲁特里一家死了（The Roottrees are Dead）",
-        "link": "https://store.steampowered.com/app/2754380/The_Roottrees_are_Dead/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2754380/f9ae0234199532998d547adc1234027d8ecdc36d/capsule_231x87_schinese.jpg?t=1778766790",
-        "price": "¥57.00",
-        "discount": "-25%",
+        "title": "全面战争：战锤3",
+        "link": "https://store.steampowered.com/app/1142710/3/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1142710/capsule_231x87.jpg?t=1786634522",
+        "price": "¥44.70",
+        "discount": "-85%",
         "rank": 9
     },
     {
-        "title": "Microsoft Flight Simulator 2024",
-        "link": "https://store.steampowered.com/app/2537590/Microsoft_Flight_Simulator_2024/?snr=1_7_7_2300_150_1",
-        "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2537590/c992a0851b2714fdeaa65469ba5e7b8e60c06a96/capsule_231x87.jpg?t=1780854662",
-        "price": "¥243.60",
-        "discount": "-30%",
+        "title": "Minecraft Dungeons",
+        "link": "https://store.steampowered.com/app/1672970/Minecraft_Dungeons/?snr=1_7_7_2300_150_1",
+        "image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1672970/capsule_231x87.jpg?t=1787063807",
+        "price": "¥72.00",
+        "discount": "-50%",
         "rank": 10
     }
 ]

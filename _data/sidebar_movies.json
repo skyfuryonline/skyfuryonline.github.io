@@ -8,12 +8,20 @@
         "rank": 1
     },
     {
+        "title": "空枪",
+        "link": "https://movie.douban.com/subject/37508847/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934946788.jpg",
+        "score": "7.1",
+        "region": "中国大陆 中国香港",
+        "rank": 2
+    },
+    {
         "title": "欢迎来龙餐馆",
         "link": "https://movie.douban.com/subject/35811064/?from=playing_poster",
         "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934698009.jpg",
         "score": "8.6",
         "region": "中国大陆",
-        "rank": 2
+        "rank": 3
     },
     {
         "title": "奥德赛",
@@ -21,22 +29,14 @@
         "image_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2933569626.jpg",
         "score": "8.5",
         "region": "美国 加拿大 冰岛 新西兰 摩洛哥",
-        "rank": 3
-    },
-    {
-        "title": "空枪",
-        "link": "https://movie.douban.com/subject/37508847/?from=playing_poster",
-        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934946788.jpg",
-        "score": "暂无评分",
-        "region": "中国大陆 中国香港",
         "rank": 4
     },
     {
-        "title": "蜘蛛侠：崭新之日",
-        "link": "https://movie.douban.com/subject/36246195/?from=playing_poster",
-        "image_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2934276912.jpg",
-        "score": "7.8",
-        "region": "美国 加拿大 英国 德国",
+        "title": "机器人总动员",
+        "link": "https://movie.douban.com/subject/2131459/?from=playing_poster",
+        "image_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2934742160.jpg",
+        "score": "9.3",
+        "region": "美国",
         "rank": 5
     }
 ]
