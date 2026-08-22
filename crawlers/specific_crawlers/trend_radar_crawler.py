@@ -65,7 +65,11 @@ class TrendRadarCrawler(BaseCrawler):
             return []
 
         print(f"Generating GitHub Intelligence Report for week of {monday_date}...")
-        
+
+        # Items without an official description are kept out of the LLM input
+        # and rendered as one-liners by the crawler itself.
+        self.no_desc_items = []
+
         aggregated_text = f"# GitHub 开源情报简报 ({self._get_beijing_time_str()})\n\n"
 
         if self.keywords:
@@ -77,7 +81,7 @@ class TrendRadarCrawler(BaseCrawler):
             print(f"  - Mode: Trending (No keywords configured)")
             aggregated_text += "> 来源：GitHub Trending (Weekly)\n\n"
             aggregated_text += self._fetch_github_trending()
-            
+
         # Summarize using LLM
         summary_result = "⚠️ AI 摘要生成失败，请检查 LLM 配置或 API 额度。"
         if self.llm_model and self.llm_prompt:
@@ -90,6 +94,16 @@ class TrendRadarCrawler(BaseCrawler):
             except Exception as e:
                 print(f"  - LLM Summarization failed: {e}")
                 return []
+
+        # Deterministic one-liners for projects lacking a description
+        if self.no_desc_items:
+            summary_result += "\n\n## 其余项目（官方暂无描述）\n\n"
+            seen = set()
+            for it in self.no_desc_items:
+                if it['name'] in seen:
+                    continue
+                seen.add(it['name'])
+                summary_result += f"- **[{it['name']}]({it['link']})** (★{it['stars']}) — {it['lang']}\n"
         
         # We wrap it in a list so it stays compatible with Jekyll's assignment
         return [{
@@ -123,14 +137,21 @@ class TrendRadarCrawler(BaseCrawler):
                     text += "  - 未找到相关项目。\n"
                 for i, item in enumerate(items, 1):
                     name = item.get('full_name', 'Unknown')
-                    desc = item.get('description', '暂无描述')
+                    desc = (item.get('description') or '').strip()
                     html_url = item.get('html_url', '')
                     stars = item.get('stargazers_count', 0)
-                    lang = item.get('language', 'Unknown')
+                    lang = item.get('language') or 'Unknown'
                     updated_at = item.get('updated_at', '')[:10] # YYYY-MM-DD
-                    
+                    topics = ', '.join((item.get('topics') or [])[:6])
+
+                    if not desc:
+                        self.no_desc_items.append({'name': name, 'link': html_url, 'stars': stars, 'lang': lang})
+                        continue
+
                     text += f"{i}. **[{name}]({html_url})** (★{stars})\n"
                     text += f"   - 语言: {lang} | 更新: {updated_at}\n"
+                    if topics:
+                        text += f"   - 话题: {topics}\n"
                     text += f"   - 简介: {desc}\n\n"
             else:
                 text += f"  - API请求失败: {resp.status_code}\n"
@@ -159,8 +180,8 @@ class TrendRadarCrawler(BaseCrawler):
                     link = "https://github.com" + h2.find('a')['href'] if h2 and h2.find('a') else ''
                     
                     p_desc = article.find('p', class_='col-9 color-fg-muted my-1 pr-4')
-                    desc = p_desc.text.strip() if p_desc else '暂无描述'
-                    
+                    desc = p_desc.text.strip() if p_desc else ''
+
                     # Stats
                     stats_div = article.find('div', class_='f6 color-fg-muted mt-2')
                     lang = "Unknown"
@@ -168,10 +189,14 @@ class TrendRadarCrawler(BaseCrawler):
                     if stats_div:
                         lang_span = stats_div.find('span', itemprop='programmingLanguage')
                         if lang_span: lang = lang_span.text.strip()
-                        
+
                         # Stars is usually the first link with svg star
                         star_link = stats_div.find('a', href=lambda x: x and x.endswith('/stargazers'))
                         if star_link: stars = star_link.text.strip()
+
+                    if not desc:
+                        self.no_desc_items.append({'name': repo_name, 'link': link, 'stars': stars, 'lang': lang})
+                        continue
 
                     text += f"{i}. **[{repo_name}]({link})** (★{stars})\n"
                     text += f"   - 语言: {lang}\n"
