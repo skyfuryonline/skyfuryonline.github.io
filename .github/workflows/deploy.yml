@@ -108,18 +108,6 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Inject Gitalk secret 🔑
-        working-directory: ./main
-        env:
-          GITALK_CLIENT_SECRET: ${{ secrets.GITALK_CLIENT_SECRET }}
-        run: |
-          if [ -n "$GITALK_CLIENT_SECRET" ]; then
-            sed -i "s|__GITALK_CLIENT_SECRET__|$GITALK_CLIENT_SECRET|" _config.yml
-          else
-            echo "::warning::GITALK_CLIENT_SECRET 未配置，本次构建评论功能不可用"
-            sed -i "s|__GITALK_CLIENT_SECRET__||" _config.yml
-          fi
-
       - name: Build the site 🏗️
         working-directory: ./main
         run: bundle exec jekyll build

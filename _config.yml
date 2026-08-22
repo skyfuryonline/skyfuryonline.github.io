@@ -20,7 +20,7 @@ sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in bot
 future: true
 
 # SNS settings
-RSS: true
+RSS: false
 # weibo_username:     qiubaiying
 github_username:    skyfuryonline
 #twitter_username:   qiubaiying
@@ -49,7 +49,7 @@ defaults:
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
 paginate: 10
-exclude: ["README.md", "vendor/"]
+exclude: ["README.md", "vendor/", "feed.xml"]
 include: ["cache"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -79,9 +79,9 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: true    #是否开启Gitalk评论
-  clientID: Ov23liHDXJlaNLuoMFuN                            #生成的clientID
-  clientSecret: __GITALK_CLIENT_SECRET__    #占位符，CI 构建时由 GITALK_CLIENT_SECRET 仓库 secret 注入
+  enable: false    #Gitalk 评论（从未有人使用，已关闭；重新开启需恢复 clientSecret 并在 CI 注入）
+  clientID: Ov23liHDXJlaNLuoMFuN
+  # clientSecret 已移除，不入库
   repo: skyfuryonline.github.io    #仓库名称
   owner: skyfuryonline    #github用户名
   admin: skyfuryonline

@@ -22,7 +22,9 @@
     <meta name="twitter:image" content="{{ site.header-img | prepend: site.baseurl | prepend: site.url }}">
 
     <!-- RSS -->
+    {% if site.RSS %}
     <link rel="alternate" type="application/rss+xml" title="{{ site.SEOTitle }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
+    {% endif %}
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
