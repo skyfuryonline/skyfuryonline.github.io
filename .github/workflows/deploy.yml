@@ -26,25 +26,19 @@ jobs:
         with:
           path: main
 
-      - name: Checkout data branch (data) 📦
-        uses: actions/checkout@v4
-        with:
-          ref: data
-          path: data
-
-      - name: Checkout Gwy Logs & Reports (private) 📚
+      - name: Checkout private source repo (data & private content) 📚
         uses: actions/checkout@v4
         with:
           repository: skyfuryonline/blog-source
           ref: main
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
-          path: private-source # Checkout to a temporary directory
-      
-      - name: Move data into main directory
+          path: private-source
+
+      - name: Sync data from blog-source into main directory
         run: |
           mkdir -p main/_data main/cache
-          rsync -av data/_data/ main/_data/
-          rsync -av data/cache/ main/cache/
+          rsync -av private-source/_data/ main/_data/
+          rsync -av private-source/cache/ main/cache/
 
       - name: Move private content into main
         run: |
@@ -87,15 +81,15 @@ jobs:
           LLM_API_BASE_URL: ${{ secrets.LLM_API_BASE_URL }}
         run: python crawlers/main.py
 
-      - name: Commit and push data to data branch 💾
+      - name: Commit and push data back to blog-source 💾
         if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          rsync -av --delete --exclude='homepage_groups.yml' --exclude='gwy_sources.yml' --exclude='.gitkeep' main/_data/ data/_data/
-          rsync -av --delete --exclude='.gitkeep' main/cache/ data/cache/
-          cd data
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -A
+          rsync -av --delete --exclude='homepage_groups.yml' --exclude='gwy_sources.yml' --exclude='.gitkeep' main/_data/ private-source/_data/
+          rsync -av --delete --exclude='.gitkeep' main/cache/ private-source/cache/
+          cd private-source
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add _data cache
           if ! git diff --staged --quiet; then
             git commit -m "chore: Update daily data and cache"
             git push
@@ -113,6 +107,18 @@ jobs:
       - name: Setup Pages 📃
         id: pages
         uses: actions/configure-pages@v5
+
+      - name: Inject Gitalk secret 🔑
+        working-directory: ./main
+        env:
+          GITALK_CLIENT_SECRET: ${{ secrets.GITALK_CLIENT_SECRET }}
+        run: |
+          if [ -n "$GITALK_CLIENT_SECRET" ]; then
+            sed -i "s|__GITALK_CLIENT_SECRET__|$GITALK_CLIENT_SECRET|" _config.yml
+          else
+            echo "::warning::GITALK_CLIENT_SECRET 未配置，本次构建评论功能不可用"
+            sed -i "s|__GITALK_CLIENT_SECRET__||" _config.yml
+          fi
 
       - name: Build the site 🏗️
         working-directory: ./main

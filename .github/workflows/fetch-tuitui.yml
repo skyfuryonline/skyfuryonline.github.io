@@ -18,17 +18,19 @@ jobs:
         with:
           path: main
 
-      - name: Checkout data branch 📦
+      - name: Checkout blog-source (data) 📚
         uses: actions/checkout@v4
         with:
-          ref: data
-          path: data
+          repository: skyfuryonline/blog-source
+          ref: main
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: private-source
 
       - name: Sync existing data into main
         run: |
           mkdir -p main/_data main/cache
-          rsync -av data/_data/ main/_data/ 2>/dev/null || true
-          rsync -av data/cache/ main/cache/ 2>/dev/null || true
+          rsync -av private-source/_data/ main/_data/ 2>/dev/null || true
+          rsync -av private-source/cache/ main/cache/ 2>/dev/null || true
 
       - name: Setup Python 🐍
         uses: actions/setup-python@v5
@@ -46,18 +48,18 @@ jobs:
         working-directory: ./main
         run: python crawlers/fetch_chengyu.py
 
-      - name: Commit data to data branch 💾
+      - name: Commit data to blog-source 💾
         run: |
-          mkdir -p data/_data data/cache
-          rsync -av main/_data/tuitui.json data/_data/tuitui.json 2>/dev/null || true
-          rsync -av main/cache/tuitui/ data/cache/tuitui/ 2>/dev/null || true
-          rsync -av main/cache/tuitui_state.json data/cache/tuitui_state.json 2>/dev/null || true
-          rsync -av main/_data/chengyu.json data/_data/chengyu.json 2>/dev/null || true
-          rsync -av main/cache/chengyu_state.json data/cache/chengyu_state.json 2>/dev/null || true
-          cd data
+          mkdir -p private-source/_data private-source/cache
+          rsync -av main/_data/tuitui.json private-source/_data/tuitui.json 2>/dev/null || true
+          rsync -av main/cache/tuitui/ private-source/cache/tuitui/ 2>/dev/null || true
+          rsync -av main/cache/tuitui_state.json private-source/cache/tuitui_state.json 2>/dev/null || true
+          rsync -av main/_data/chengyu.json private-source/_data/chengyu.json 2>/dev/null || true
+          rsync -av main/cache/chengyu_state.json private-source/cache/chengyu_state.json 2>/dev/null || true
+          cd private-source
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -A
+          git add _data cache
           if ! git diff --staged --quiet; then
             git commit -m "chore: update tuitui and chengyu data"
             git push
