@@ -26,9 +26,6 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.SEOTitle }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
     {% endif %}
 
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
-
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/img/favicon.svg">
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
@@ -82,9 +79,4 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
-    <!-- Service Worker -->
-    {% if site.service-worker %}
-    <link rel="manifest" href="{{ '/pwa/manifest.json' | prepend: site.baseurl }}">
-    <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
-    {% endif %}
 </head>
