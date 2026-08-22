@@ -83,23 +83,23 @@ python start.py --name sim-test --start "20250213-09:30" --step 10 --stride 10
 ## 结果展示：
 
 **vLLM配置结果如下（首次启动需要下载模型）：**
-![vLLM](/img/nlp-workshop/generative-agents-analysis/vLLM-boot.png)
+![vLLM](/img/nlp-workshop/generative-agents-analysis/vLLM-boot.jpg)
 
 **再次启动时速度会显著加快：**
-![vLLM](/img/nlp-workshop/generative-agents-analysis/vLLM-reboot.png)
+![vLLM](/img/nlp-workshop/generative-agents-analysis/vLLM-reboot.jpg)
 
 **启动项目情况如下（同理启动时需要经过embedding，需要等待一定时间）：**
-![process-0](/img/nlp-workshop/generative-agents-analysis/process-0.png)
+![process-0](/img/nlp-workshop/generative-agents-analysis/process-0.jpg)
 
-![process-1](/img/nlp-workshop/generative-agents-analysis/process-1.png)
+![process-1](/img/nlp-workshop/generative-agents-analysis/process-1.jpg)
 
 **结束时的总结输出：**
 ![final](/img/nlp-workshop/generative-agents-analysis/final.png)
 
 **使用replay回顾过程：**
-![replay-1](/img/nlp-workshop/generative-agents-analysis/replay-1.png)
+![replay-1](/img/nlp-workshop/generative-agents-analysis/replay-1.jpg)
 
-![replay-2](/img/nlp-workshop/generative-agents-analysis/replay-2.png)
+![replay-2](/img/nlp-workshop/generative-agents-analysis/replay-2.jpg)
 
 ---
 

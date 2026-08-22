@@ -2,7 +2,7 @@
 
 本项目是一个高度定制化的 Jekyll 静态博客，核心特色是深度集成了 **Python 自动化工作流** 和 **基于 LLM 的内容爬虫聚合系统**。
 
-![页面展示](img/screenshot.png)
+![页面展示](img/screenshot.jpg)
 
 ## 核心页面与项目构造
 

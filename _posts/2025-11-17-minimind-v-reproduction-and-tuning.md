@@ -17,7 +17,7 @@ catalog: true
 
 ## 引言
 
-![logo](/img/nlp-workshop/minimind/logo.png)
+![logo](/img/nlp-workshop/minimind/logo.jpg)
 
 [Minimind-v项目链接](https://github.com/jingyaogong/minimind-v)
 
