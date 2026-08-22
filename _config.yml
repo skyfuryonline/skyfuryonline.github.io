@@ -1,7 +1,7 @@
 # Site settings
 title: LH的博客
 SEOTitle: LH的博客 | 代码与生活
-header-img: img/home-bg.png
+header-img: img/home-bg.jpg
 email: skyfurynowonline@icloud.com
 description: "一个NLP研究生的博客，记录代码、学习和生活点滴。"
 
@@ -15,12 +15,12 @@ github_repo: "https://github.com/skyfuryonline/skyfuryonline.github.io.git" # yo
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "NLP研究生，热爱技术，分享生活。"
-sidebar-avatar: /img/avatar.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 future: true
 
 # SNS settings
-RSS: false
+RSS: true
 # weibo_username:     qiubaiying
 github_username:    skyfuryonline
 #twitter_username:   qiubaiying
@@ -42,6 +42,8 @@ defaults:
       type: "posts"
     values:
       catalog: true
+      layout: post
+      author: "LH"
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
@@ -55,7 +57,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-plugins: [jekyll-paginate]
+plugins: [jekyll-paginate, jekyll-sitemap]
 
 
 
@@ -79,7 +81,7 @@ kramdown:
 gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: Ov23liHDXJlaNLuoMFuN                            #生成的clientID
-  clientSecret: 14fb586099f91737db1f18654fa3e6c331989c36    #生成的clientSecret
+  clientSecret: __GITALK_CLIENT_SECRET__    #占位符，CI 构建时由 GITALK_CLIENT_SECRET 仓库 secret 注入
   repo: skyfuryonline.github.io    #仓库名称
   owner: skyfuryonline    #github用户名
   admin: skyfuryonline
