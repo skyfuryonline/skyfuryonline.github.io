@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skyfuryonline.github.io/sitemap.xml
