@@ -61,33 +61,39 @@ Find the group background image for the current post.
 
                 <hr style="visibility: hidden;">
 
-                {% if page.group == "jzxm" and page.subcategory %}
-                {% assign sc_posts = site.posts | where: "subcategory", page.subcategory | sort: "subcat_order" %}
-                {% assign sc_count = sc_posts | size %}
-                {% assign sc_idx = -1 %}
-                {% for p in sc_posts %}{% if p.url == page.url %}{% assign sc_idx = forloop.index0 %}{% break %}{% endif %}{% endfor %}
+                {% comment %} Prev/next navigation: within subcategory (by subcat_order),
+                then within group (by date, circular), else site-wide {% endcomment %}
+                {% if page.subcategory %}
+                {% assign nav_posts = site.posts | where: "subcategory", page.subcategory | sort: "subcat_order" %}
+                {% elsif page.group %}
+                {% assign nav_posts = site.posts | where: "group", page.group | sort: "date" %}
+                {% endif %}
+                {% if nav_posts and nav_posts.size > 1 %}
+                {% assign nav_count = nav_posts | size %}
+                {% assign nav_idx = -1 %}
+                {% for p in nav_posts %}{% if p.url == page.url %}{% assign nav_idx = forloop.index0 %}{% break %}{% endif %}{% endfor %}
                 <ul class="pager">
-                    {% if sc_idx > 0 %}
-                    {% assign sc_prev_idx = sc_idx | minus: 1 %}
+                    {% if nav_idx > 0 %}
+                    {% assign nav_prev_idx = nav_idx | minus: 1 %}
                     {% else %}
-                    {% assign sc_prev_idx = sc_count | minus: 1 %}
+                    {% assign nav_prev_idx = nav_count | minus: 1 %}
                     {% endif %}
-                    {% assign sc_prev = sc_posts[sc_prev_idx] %}
+                    {% assign nav_prev = nav_posts[nav_prev_idx] %}
                     <li class="previous">
-                        <a href="{{ sc_prev.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{sc_prev.title}}">
+                        <a href="{{ nav_prev.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{nav_prev.title}}">
                         Previous<br>
-                        <span>{{sc_prev.title}}</span>
+                        <span>{{nav_prev.title}}</span>
                         </a>
                     </li>
-                    {% assign sc_next_idx = sc_idx | plus: 1 %}
-                    {% if sc_next_idx >= sc_count %}
-                    {% assign sc_next_idx = 0 %}
+                    {% assign nav_next_idx = nav_idx | plus: 1 %}
+                    {% if nav_next_idx >= nav_count %}
+                    {% assign nav_next_idx = 0 %}
                     {% endif %}
-                    {% assign sc_next = sc_posts[sc_next_idx] %}
+                    {% assign nav_next = nav_posts[nav_next_idx] %}
                     <li class="next">
-                        <a href="{{ sc_next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{sc_next.title}}">
+                        <a href="{{ nav_next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{nav_next.title}}">
                         Next<br>
-                        <span>{{sc_next.title}}</span>
+                        <span>{{nav_next.title}}</span>
                         </a>
                     </li>
                 </ul>
