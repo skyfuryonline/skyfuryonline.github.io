@@ -57,7 +57,7 @@ Find the group background image for the current post.
                 col-md-10 col-md-offset-1
                 post-container">
 
-				{{ content }}
+                {{ content | replace: '<img ', '<img loading="lazy" decoding="async" ' }}
 
                 <hr style="visibility: hidden;">
 
