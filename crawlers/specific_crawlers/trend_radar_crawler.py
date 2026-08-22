@@ -69,6 +69,7 @@ class TrendRadarCrawler(BaseCrawler):
         # Items without an official description are kept out of the LLM input
         # and rendered as one-liners by the crawler itself.
         self.no_desc_items = []
+        self.described_count = 0
 
         aggregated_text = f"# GitHub 开源情报简报 ({self._get_beijing_time_str()})\n\n"
 
@@ -82,9 +83,13 @@ class TrendRadarCrawler(BaseCrawler):
             aggregated_text += "> 来源：GitHub Trending (Weekly)\n\n"
             aggregated_text += self._fetch_github_trending()
 
-        # Summarize using LLM
+        # Summarize using LLM; skip it entirely when no described project made
+        # it into the input, otherwise the model invents fake repos.
         summary_result = "⚠️ AI 摘要生成失败，请检查 LLM 配置或 API 额度。"
-        if self.llm_model and self.llm_prompt:
+        if self.described_count == 0:
+            print("  - No described projects found; skipping LLM to avoid hallucination.")
+            summary_result = "本周抓取到的项目均无官方简介，以下为完整清单。"
+        elif self.llm_model and self.llm_prompt:
             print(f"  - Summarizing GitHub data using LLM...")
             try:
                 summary_result = await get_summary(aggregated_text, self.llm_model, self.llm_prompt)
@@ -148,6 +153,7 @@ class TrendRadarCrawler(BaseCrawler):
                         self.no_desc_items.append({'name': name, 'link': html_url, 'stars': stars, 'lang': lang})
                         continue
 
+                    self.described_count += 1
                     text += f"{i}. **[{name}]({html_url})** (★{stars})\n"
                     text += f"   - 语言: {lang} | 更新: {updated_at}\n"
                     if topics:
@@ -179,8 +185,12 @@ class TrendRadarCrawler(BaseCrawler):
                     repo_name = h2.text.strip().replace(' ', '').replace('\n', '') if h2 else 'Unknown'
                     link = "https://github.com" + h2.find('a')['href'] if h2 and h2.find('a') else ''
                     
-                    p_desc = article.find('p', class_='col-9 color-fg-muted my-1 pr-4')
-                    desc = p_desc.text.strip() if p_desc else ''
+                    # GitHub keeps changing the trending markup; try known
+                    # classes first, then fall back to the only <p> in the row.
+                    p_desc = (article.find('p', class_='col-9')
+                              or article.find('p', class_='color-fg-muted')
+                              or article.find('p'))
+                    desc = p_desc.get_text(strip=True) if p_desc else ''
 
                     # Stats
                     stats_div = article.find('div', class_='f6 color-fg-muted mt-2')
@@ -198,6 +208,7 @@ class TrendRadarCrawler(BaseCrawler):
                         self.no_desc_items.append({'name': repo_name, 'link': link, 'stars': stars, 'lang': lang})
                         continue
 
+                    self.described_count += 1
                     text += f"{i}. **[{repo_name}]({link})** (★{stars})\n"
                     text += f"   - 语言: {lang}\n"
                     text += f"   - 简介: {desc}\n\n"
