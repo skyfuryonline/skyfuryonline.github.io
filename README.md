@@ -17,10 +17,11 @@
 
 **目录结构：**
 - `_data/`: 驱动首页卡片展示、每日爬虫聚合的数据源。
-- `_posts/`: 所有撰写的 Markdown 博客文章。
 - `crawlers/`: Python 自动化爬虫脚本集。
 - `.vscode/`: 包含快捷输入指令 `markdown.code-snippets`，提升写博客的效率。
 - `.github/workflows/deploy.yml`: 自动化部署编排。
+
+> **内容与代码分离**：博客文章（`_posts/`）、文章配图、爬虫数据与个人笔记存放在私有仓库 `blog-source` 中，构建时由 CI 自动合并；本仓库仅包含主题代码与公开资源。
 
 ## LLM 资讯爬虫与 Daily 页面
 
@@ -43,7 +44,7 @@
 
 ### 1. 新建一篇博客
 我们通过 VS Code 的 snippets 大幅简化了发文流程。
-- 在 `_posts/` 目录下新建一个形如 `YYYY-MM-DD-your-title.md` 的文件。
+- 在（blog-source 私有仓库的）`_posts/` 目录下新建一个形如 `YYYY-MM-DD-your-title.md` 的文件。
 - 输入 **`!post`** 并按 `Tab` 键。系统将自动补全所有的 Jekyll Front Matter（头部信息），包括自动填写当天日期。
 - 利用 `Tab` 可以在标题、标签之间快速跳转，完成基本设置。
 - **注意关联**：在 `_data/homepage_groups.yml` 找到对应的分类，将这篇文件的名字填入其 `posts` 列表中，文章就能在主页上显示了。
