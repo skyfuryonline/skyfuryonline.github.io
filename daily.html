@@ -9,84 +9,54 @@ http_headers:
   "Pragma": "no-cache"
   "Expires": "0"
 ---
-<!-- 左侧信息栏 -->
-<div id="sidebar">
-  <div class="section">
-    <h3>🕒 当前时间</h3>
-    <div id="clock">--:--:--</div>
-  </div>
-  <div class="section">
-    <h3>📅 倒计时</h3>
-    <div id="countdown">加载中...</div>
-  </div>
-  <div class="section" id="quick-links">
-    <h3>🔗 常用链接</h3>
-    <a href="https://huggingface.co/papers/trending" target="_blank">Hugging Face Trending</a>
-    <a href="https://github.com/ruanyf/weekly" target="_blank">GitHub weekly</a>
-    <a href="https://aibrews.substack.com/archive" target="_blank">AI Brews</a>
-    <a href="https://research.google/blog" target="_blank">Google Blog</a>
-    <a href="https://openai.com/research/index" target="_blank">OpenAI</a>
-    <a href="https://medium.com/google-developer-experts" target="_blank">Medium</a>
-    <a href="https://aiengineering.academy/" target="_blank">aiengineering</a>
-    <a href="https://theworktimes.com/" target="_blank">theworktimes</a>
-    <a href="https://github.com/feed" target="_blank">GitHub Feed</a>
-    <a href="https://www.zhihu.com/" target="_blank">zhihu</a>
-    <a href="https://bailian.console.aliyun.com/?tab=model#/model-market/all" target="_blank">阿里百炼</a>
-    <a href="https://ai.paratera.com/#/overview" target="_blank">并行智算云</a>
-  </div>
-</div>
-
-<!-- 右侧信息栏 -->
-<div id="right-sidebar">
-  <div class="section" id="movies-section">
-    <h3>🎬 热门影视</h3>
-    {% if site.data.sidebar_movies %}
-      <div class="snapshot-list">
-        {% for movie in site.data.sidebar_movies limit:5 %}
-          <a href="{{ movie.link }}" target="_blank" class="snapshot-item">
-            <div class="snapshot-info">
-              <div class="snapshot-title" title="{{ movie.title }}">{{ movie.title }}</div>
-              <div class="snapshot-meta">
-                <span class="score">⭐ {{ movie.score }}</span>
-                <span class="region" style="color: #7f8c8d; margin-left: 8px;">{{ movie.region }}</span>
-              </div>
-            </div>
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
-  <div class="section" id="steam-section">
-    <h3>🎮 Steam 特惠</h3>
-    {% if site.data.sidebar_steam %}
-      <div class="snapshot-list">
-        {% for game in site.data.sidebar_steam limit:8 %}
-          <a href="{{ game.link }}" target="_blank" class="snapshot-item">
-            <img src="{{ game.image_url }}" alt="{{ game.title }}" class="steam-img" loading="lazy">
-            <div class="snapshot-info">
-              <div class="snapshot-title" title="{{ game.title }}">{{ game.title }}</div>
-              <div class="snapshot-meta">
-                <span class="discount">{{ game.discount }}</span>
-                <span class="price">{{ game.price }}</span>
-              </div>
-            </div>
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
-</div>
 
 <style>
+/* ---------------- Layout Grid ---------------- */
+.daily-layout {
+  position: relative;
+  width: min(1520px, calc(100vw - 48px));
+  margin: 24px 50% 0;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: start;
+}
+.daily-main {
+  min-width: 0;
+}
+.daily-status-strip {
+  position: sticky;
+  top: 12px;
+  z-index: 900;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  margin-bottom: 22px;
+  font-size: 14px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+.daily-status-strip #clock {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.daily-status-strip .strip-dot {
+  color: #b8b8b8;
+}
+
 /* ---------------- Sidebar Styles ---------------- */
 #sidebar {
-  position: fixed;
-  top: 260px; /* 调整以适应头部高度（桌面版内边距110px + 内容约110px + 20px间距） */
-  bottom: 40px; /* 距离页面底部40px */
-  left: 30px;
-  width: 240px;
-  max-height: calc(100vh - 260px); /* 限制最大高度，留出更多顶部空间 */
-  overflow: auto; /* 如果内容过多，添加滚动条 */
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow: auto;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -95,7 +65,7 @@ http_headers:
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1000;
+  z-index: 100;
 }
 #sidebar h3 {
   font-size: 1.1em;
@@ -130,32 +100,29 @@ http_headers:
 }
 /* 桌面窄屏/平板/手机端隐藏固定分栏，避免覆盖中间主内容。
    固定分栏只在足够宽的桌面视口展示；小屏内容优先。 */
-@media (max-width: 1320px) {
+/* 窄屏：三栏折叠为单列，侧栏落到资讯流之后（不再直接消失） */
+@media (max-width: 1500px) {
+  .daily-layout {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    margin: 16px 0 0;
+    transform: none;
+  }
+  .daily-main { order: 0; }
+  #sidebar { order: 1; }
+  #right-sidebar { order: 2; }
   #sidebar,
   #right-sidebar {
-    display: none;
-  }
-}
-
-/* 介于 1321px-1500px 的桌面窄屏保留左栏，但收窄并降低存在感；右栏隐藏。 */
-@media (min-width: 1321px) and (max-width: 1500px) {
-  #sidebar {
-    left: 16px;
-    width: 200px;
-    padding: 16px 12px;
-  }
-  #right-sidebar {
-    display: none;
+    position: static;
+    max-height: none;
+    overflow: visible;
   }
 }
 /* ---------------- Right Sidebar Styles ---------------- */
 #right-sidebar {
-  position: fixed;
-  top: 260px;
-  bottom: 40px;
-  right: 30px;
-  width: 280px;
-  max-height: calc(100vh - 260px);
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
   overflow: auto;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -165,7 +132,7 @@ http_headers:
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1000;
+  z-index: 100;
 }
 #right-sidebar::-webkit-scrollbar {
   width: 4px;
@@ -255,12 +222,6 @@ http_headers:
 .price {
   color: #66c0f4;
   font-weight: bold;
-}
-/* 右栏更早隐藏；1321px-1500px 的规则会覆盖/补充这里的行为。 */
-@media (max-width: 1500px) {
-  #right-sidebar {
-    display: none;
-  }
 }
 /* ---------------- TrendRadar/GitHubIntelligence Special Card ---------------- */
 .trend-radar-card, .github-intelligence-card {
@@ -1498,6 +1459,34 @@ http_headers:
   </div>
 </div>
 
+<div class="daily-layout">
+  <aside id="sidebar">
+    <div class="section" id="quick-links">
+      <h3>🔗 常用链接</h3>
+      <a href="https://huggingface.co/papers/trending" target="_blank">Hugging Face Trending</a>
+      <a href="https://github.com/ruanyf/weekly" target="_blank">GitHub weekly</a>
+      <a href="https://aibrews.substack.com/archive" target="_blank">AI Brews</a>
+      <a href="https://research.google/blog" target="_blank">Google Blog</a>
+      <a href="https://openai.com/research/index" target="_blank">OpenAI</a>
+      <a href="https://medium.com/google-developers-experts" target="_blank">Medium</a>
+      <a href="https://aiengineering.academy/" target="_blank">aiengineering</a>
+      <a href="https://theworktimes.com/" target="_blank">theworktimes</a>
+      <a href="https://github.com/feed" target="_blank">GitHub Feed</a>
+      <a href="https://www.zhihu.com/" target="_blank">zhihu</a>
+      <a href="https://bailian.console.aliyun.com/?tab=model#/model-market/all" target="_blank">阿里百炼</a>
+      <a href="https://ai.paratera.com/#/overview" target="_blank">并行智算云</a>
+    </div>
+  </aside>
+
+  <div class="daily-main">
+    <div class="daily-status-strip">
+      <span id="status-date"></span>
+      <span class="strip-dot">·</span>
+      <span id="clock">--:--:--</span>
+      <span class="strip-dot">·</span>
+      <span id="countdown">加载中...</span>
+    </div>
+
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
 {% assign gh_intel = site.data.github_intelligence %}
 {% if gh_intel and gh_intel.size > 0 %}
@@ -1600,6 +1589,49 @@ http_headers:
     </div>
   </div>
 </div>
+  </div><!-- /.daily-main -->
+
+  <aside id="right-sidebar">
+    <div class="section" id="movies-section">
+      <h3>🎬 热门影视</h3>
+      {% if site.data.sidebar_movies %}
+        <div class="snapshot-list">
+          {% for movie in site.data.sidebar_movies limit:5 %}
+            <a href="{{ movie.link }}" target="_blank" class="snapshot-item">
+              <div class="snapshot-info">
+                <div class="snapshot-title" title="{{ movie.title }}">{{ movie.title }}</div>
+                <div class="snapshot-meta">
+                  <span class="score">⭐ {{ movie.score }}</span>
+                  <span class="region" style="color: #7f8c8d; margin-left: 8px;">{{ movie.region }}</span>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="section" id="steam-section">
+      <h3>🎮 Steam 特惠</h3>
+      {% if site.data.sidebar_steam %}
+        <div class="snapshot-list">
+          {% for game in site.data.sidebar_steam limit:8 %}
+            <a href="{{ game.link }}" target="_blank" class="snapshot-item">
+              <img src="{{ game.image_url }}" alt="{{ game.title }}" class="steam-img" loading="lazy">
+              <div class="snapshot-info">
+                <div class="snapshot-title" title="{{ game.title }}">{{ game.title }}</div>
+                <div class="snapshot-meta">
+                  <span class="discount">{{ game.discount }}</span>
+                  <span class="price">{{ game.price }}</span>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </aside>
+</div><!-- /.daily-layout -->
+
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="summaryModal" tabindex="-1" role="dialog" aria-labelledby="summaryModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -2028,8 +2060,12 @@ http_headers:
     // -------- 时钟与倒计时 --------
 function updateClock() {
   const clock = document.getElementById("clock");
-  if (!clock) return;
+  const statusDate = document.getElementById("status-date");
   const now = new Date();
+  if (statusDate) {
+    statusDate.textContent = now.toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', month: 'long', day: 'numeric', weekday: 'long' });
+  }
+  if (!clock) return;
   // 设置时区
   const options = { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', second: '2-digit' };
   clock.textContent = now.toLocaleTimeString('zh-CN', options);
