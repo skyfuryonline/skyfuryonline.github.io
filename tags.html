@@ -109,30 +109,62 @@ header-img: "img/tag-bg.png"
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-            <p class="tags-page-meta">{{ site.posts.size }} 篇文章 · {{ site.tags.size }} 个标签（只出现一次的标签直接指向文章）</p>
+            {% comment %} jzxm 分组为隐藏内容（彩蛋），不进入标签体系 {% endcomment %}
+            {% assign visible_posts = "" | split: "," %}
+            {% assign all_tags = "" | split: "," %}
+            {% for post in site.posts %}
+                {% if post.group != "jzxm" %}
+                    {% assign visible_posts = visible_posts | push: post %}
+                    {% for t in post.tags %}
+                        {% unless all_tags contains t %}
+                            {% assign all_tags = all_tags | push: t %}
+                        {% endunless %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            {% assign sorted_tags = all_tags | sort %}
 
-            {% assign sorted_tags = site.tags | sort %}
+            <p class="tags-page-meta">{{ visible_posts.size }} 篇文章 · {{ all_tags.size }} 个标签（只出现一次的标签直接指向文章）</p>
+
             <div class="tag-cloud">
-                {% assign idx = 0 %}
-                {% for tag in sorted_tags %}
-                    {% if tag[1].size > 1 %}
-                        {% assign idx = idx | plus: 1 %}
-                        <a href="#tag-{{ idx }}" style="font-size: {{ 13 | plus: tag[1].size }}px;">{{ tag[0] }} <small>{{ tag[1].size }}</small></a>
+                {% for tag_name in sorted_tags %}
+                    {% assign cnt = 0 %}
+                    {% for post in site.posts %}
+                        {% if post.group != "jzxm" and post.tags contains tag_name %}
+                            {% assign cnt = cnt | plus: 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if cnt > 1 %}
+                        <a href="#{{ tag_name | replace: ' ', '-' }}" style="font-size: {{ 13 | plus: cnt }}px;">{{ tag_name }} <small>{{ cnt }}</small></a>
                     {% else %}
-                        <a class="tag-single" href="{{ tag[1].first.url | prepend: site.baseurl }}">{{ tag[0] }}</a>
+                        {% for post in site.posts %}
+                            {% if post.group != "jzxm" and post.tags contains tag_name %}
+                                <a class="tag-single" href="{{ post.url | prepend: site.baseurl }}">{{ tag_name }}</a>
+                            {% endif %}
+                        {% endfor %}
                     {% endif %}
                 {% endfor %}
             </div>
 
-            {% assign idx = 0 %}
-            {% for tag in sorted_tags %}
-                {% if tag[1].size > 1 %}
-                    {% assign idx = idx | plus: 1 %}
-                    <details class="tag-section" id="tag-{{ idx }}">
-                        <summary>{{ tag[0] }}<span class="tag-count">{{ tag[1].size }} 篇</span></summary>
+            {% for tag_name in sorted_tags %}
+                {% assign cnt = 0 %}
+                {% for post in site.posts %}
+                    {% if post.group != "jzxm" and post.tags contains tag_name %}
+                        {% assign cnt = cnt | plus: 1 %}
+                    {% endif %}
+                {% endfor %}
+                {% if cnt > 1 %}
+                    <details class="tag-section" id="{{ tag_name | replace: ' ', '-' }}">
+                        <summary>{{ tag_name }}<span class="tag-count">{{ cnt }} 篇</span></summary>
                         <ul class="tag-post-list">
-                            {% assign sorted_posts = tag[1] | sort: "date" | reverse %}
-                            {% for post in sorted_posts %}
+                            {% assign matched_posts = "" | split: "," %}
+                            {% for post in site.posts %}
+                                {% if post.group != "jzxm" and post.tags contains tag_name %}
+                                    {% assign matched_posts = matched_posts | push: post %}
+                                {% endif %}
+                            {% endfor %}
+                            {% assign sorted_matched = matched_posts | sort: "date" | reverse %}
+                            {% for post in sorted_matched %}
                             <li>
                                 <span class="tag-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
                                 <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

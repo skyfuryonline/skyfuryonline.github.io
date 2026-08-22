@@ -6,6 +6,9 @@
     <meta name="description" content="{{ page.subtitle | default: site.description }}">
     <meta name="keywords"  content="{{ page.tags | join: ', ' | default: site.keyword }}">
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
+    {% if page.noindex %}
+    <meta name="robots" content="noindex, nofollow">
+    {% endif %}
 
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 

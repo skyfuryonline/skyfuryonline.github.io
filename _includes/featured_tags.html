@@ -1,0 +1,32 @@
+{% if site.featured-tags %}
+<section>
+    <hr class="hidden-sm hidden-xs">
+    <h5><a href="{{ '/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+    <div class="tags">
+        {% comment %} jzxm 为隐藏分组（彩蛋内容），不参与标签体系 {% endcomment %}
+        {% assign ft_tags = "" | split: "," %}
+        {% for post in site.posts %}
+            {% if post.group != "jzxm" %}
+                {% for t in post.tags %}
+                    {% unless ft_tags contains t %}
+                        {% assign ft_tags = ft_tags | push: t %}
+                    {% endunless %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        {% for tag_name in ft_tags %}
+            {% assign cnt = 0 %}
+            {% for post in site.posts %}
+                {% if post.group != "jzxm" and post.tags contains tag_name %}
+                    {% assign cnt = cnt | plus: 1 %}
+                {% endif %}
+            {% endfor %}
+            {% if cnt > site.featured-condition-size %}
+                <a href="{{ site.baseurl }}/tags/#{{ tag_name | replace: ' ', '-' }}" title="{{ tag_name }}" rel="{{ cnt }}">
+                    {{ tag_name }}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
