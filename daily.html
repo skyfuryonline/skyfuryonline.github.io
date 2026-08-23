@@ -95,24 +95,23 @@ http_headers:
   </div>
 </div>
 
-<!-- Ground Defense Force (easter egg: coffee mug triple-click) -->
+<!-- Coffee Arcade (easter egg: coffee mug triple-click opens the machine menu) -->
 <div id="game-overlay">
   <button class="game-close" id="game-close" title="ESC">✕</button>
   <div class="game-cabinet">
     <div class="game-marquee">
-      <span class="game-marquee-cn">地面保卫军</span>
-      <span class="game-marquee-en">GROUND DEFENSE FORCE</span>
+      <span class="game-marquee-cn">咖啡街机厅</span>
+      <span class="game-marquee-en">SKYFURY ARCADE</span>
     </div>
     <div class="game-screen">
       <canvas id="game-canvas" width="480" height="360"></canvas>
       <div class="game-scanlines" aria-hidden="true"></div>
     </div>
     <div class="game-panel">
-      <span class="game-key">←</span><span class="game-key">→</span><span class="game-label">移动</span>
-      <span class="game-key">SPACE</span><span class="game-label">射击</span>
-      <span class="game-key">R</span><span class="game-label">重开</span>
+      <span class="game-key">↑↓←→</span><span class="game-label">选择</span>
+      <span class="game-key">ENTER</span><span class="game-label">开始</span>
       <span class="game-key">ESC</span><span class="game-label">离开</span>
-      <span class="game-tip">机台秘技：接住从天而降的咖啡 ☕ 可获得 5 秒三连射</span>
+      <span class="game-tip">机台秘技：五台机器，各自记录你的最高分</span>
     </div>
   </div>
 </div>
@@ -317,5 +316,10 @@ CHENGYU_DATA.forEach(function(d) { chengyuMap[d.date] = d; });
   {% endfor %}
 </script>
     <script src="{{ '/js/daily.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ '/js/ground-defense.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/arcade.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/games/tank.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/games/breakout.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/games/flappy.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/games/drop100.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/games/pinball.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
 </script>
