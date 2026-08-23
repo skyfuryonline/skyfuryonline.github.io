@@ -12,7 +12,7 @@ ARCADE.register({
       wing: '#ff9f64', hud: '#8899bb', gold: '#ffd166', bug: '#e06c75'
     };
     var GROUND = H - 36;
-    var GAP0 = 130, GAPMIN = 98, SPACING = 175;
+    var GAP0 = 122, GAPMIN = 88, SPACING = 160;
 
     var bird, pipes, parts, groundX, bgBeans;
     var score, best, dead, started, frame, flapAnim;
@@ -29,7 +29,7 @@ ARCADE.register({
     function flap() {
       if (dead) return;
       started = true;
-      bird.vy = -5.4;
+      bird.vy = -5.6;
       flapAnim = 12;
       for (var i = 0; i < 3; i++)
         parts.push({ x: bird.x - 8, y: bird.y + 6, vx: -1 - Math.random(), vy: Math.random() * 1.2 - 0.4, life: 18, color: C.steam });
@@ -50,8 +50,8 @@ ARCADE.register({
       if (type === 'down' && !dead) flap();
     }
 
-    function gapSize() { return Math.max(GAPMIN, GAP0 - score * 1.2); }
-    function speed() { return 2.1 + Math.min(1.7, score * 0.045); }
+    function gapSize() { return Math.max(GAPMIN, GAP0 - score * 1.5); }
+    function speed() { return 2.3 + Math.min(2.1, score * 0.06); }
 
     function update() {
       frame++;
@@ -64,7 +64,7 @@ ARCADE.register({
 
       if (!started) { bird.y = H / 2 + Math.sin(frame / 22) * 8; }
       if (!dead && started) {
-        bird.vy += 0.3;
+        bird.vy += 0.32;
         bird.vy = Math.min(8, bird.vy);
         bird.y += bird.vy;
         bird.rot = Math.max(-0.5, Math.min(1.2, bird.vy / 9));
@@ -75,7 +75,7 @@ ARCADE.register({
           var top = 44 + Math.random() * (GROUND - g - 108);
           pipes.push({
             x: W + 30, top: top, baseTop: top, g: g, passed: false,
-            amp: score >= 12 ? Math.min(30, (score - 12) * 1.2) : 0, // 12 分后管道漂移
+            amp: score >= 8 ? Math.min(40, (score - 8) * 1.8) : 0, // 8 分后管道漂移
             phase: Math.random() * 6.28
           });
         }

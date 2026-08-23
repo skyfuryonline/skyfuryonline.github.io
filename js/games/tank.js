@@ -44,6 +44,10 @@ ARCADE.register({
       // 中央钢块
       map[8][11] = map[8][12] = STEEL;
       map[9][11] = map[9][12] = STEEL;
+      // 出生点强制清空（敌方上排三点 + 玩家点），避免坦克生成在砖里卡死
+      [1, 12, 22].forEach(function (c) { map[1][c] = EMPTY; map[2][c] = EMPTY; });
+      map[ROWS - 2][10] = EMPTY;
+
       // 基地（咖啡杯）+ 护砖
       map[ROWS - 3][11] = map[ROWS - 3][12] = BASE;
       map[ROWS - 4][10] = map[ROWS - 4][11] = map[ROWS - 4][12] = map[ROWS - 4][13] = BRICK;
