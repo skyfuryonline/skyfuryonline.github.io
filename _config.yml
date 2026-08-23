@@ -77,15 +77,7 @@ kramdown:
 # Disqus（https://disqus.com/）
 # disqus_username: qiubaiying
 
-# Gitalk
-gitalk:
-  enable: false    #Gitalk 评论（从未有人使用，已关闭；重新开启需恢复 clientSecret 并在 CI 注入）
-  clientID: Ov23liHDXJlaNLuoMFuN
-  # clientSecret 已移除，不入库
-  repo: skyfuryonline.github.io    #仓库名称
-  owner: skyfuryonline    #github用户名
-  admin: skyfuryonline
-  distractionFreeMode: true #是否启用类似FB的阴影遮罩
+# Gitalk 评论系统已移除（从未有真实评论）；如需评论建议 giscus（GitHub Discussions，无需 secret）
 
 
 # 统计
