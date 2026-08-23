@@ -1,0 +1,396 @@
+---
+permalink: /backroom/
+sitemap: false
+noindex: true
+---
+<!DOCTYPE html>
+<!--
+  暗室 BACKROOM —— 集成页占位版
+  未来计划：各展位（/1/ /2/ ...）为独立维护的页面；其数据一律放私有仓库 blog-source
+  （如 _data/backroom/*.yml），CI 构建时合并渲染——公开仓库永远不落数据（与 _posts/_data 同款纪律）。
+  展位渲染届时改为 Liquid 循环读取 blog-source 数据，占位卡自动被真实条目替换。
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>暗室 · BACKROOM</title>
+<style>
+:root {
+  --dk-room: #0c0a0d;          /* 暗房底色：暖黑 */
+  --dk-room-deep: #070609;
+  --dk-safe: #e8483b;          /* 安全灯红 */
+  --dk-safe-dim: rgba(232, 72, 59, .14);
+  --dk-paper: #ece5d3;         /* 相纸米白 */
+  --dk-paper-dk: #d8d0bc;
+  --dk-photo: #2a2630;         /* 未显影药膜面 */
+  --dk-ink: #4a4238;           /* 手写标签墨色 */
+  --dk-gold: #ffd166;
+  --dk-dim: #9a8a92;
+  --dk-font: "Courier New", Courier, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background:
+    radial-gradient(ellipse 900px 620px at 50% 12%, var(--dk-safe-dim), transparent 65%),
+    linear-gradient(180deg, var(--dk-room) 0%, var(--dk-room-deep) 100%);
+  background-color: var(--dk-room-deep);
+  min-height: 100vh;
+  font-family: var(--dk-font);
+  color: var(--dk-paper);
+  overflow-x: hidden;
+  position: relative;
+}
+/* 暗房颗粒感 + 暗角 */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background-image:
+    repeating-conic-gradient(rgba(255,255,255,.012) 0% 25%, transparent 0% 50%);
+  background-size: 5px 5px;
+  pointer-events: none;
+}
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse 125% 95% at 50% 38%, transparent 52%, rgba(4,2,3,.82) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 58px 24px 56px;
+}
+
+/* ---------- 安全灯 ---------- */
+.safelight {
+  width: 130px;
+  margin: 0 auto 6px;
+  text-align: center;
+  position: relative;
+}
+.safelight::before {                     /* 吊杆 */
+  content: "";
+  display: block;
+  width: 2px;
+  height: 24px;
+  margin: 0 auto;
+  background: #241d22;
+}
+.safelight-housing {                     /* 灯罩 */
+  width: 46px;
+  height: 20px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #3a3038, #241d22);
+  border-radius: 6px 6px 2px 2px;
+  position: relative;
+}
+.safelight-bulb {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: -4px auto 0;
+  background: var(--dk-safe);
+  border-radius: 50%;
+  box-shadow:
+    0 0 16px 4px rgba(232, 72, 59, .65),
+    0 0 80px 30px rgba(232, 72, 59, .18);
+  animation: safeflicker 11s infinite;
+}
+@keyframes safeflicker {
+  0%, 100% { opacity: 1; }
+  47% { opacity: 1; }
+  48% { opacity: .6; }
+  49% { opacity: 1; }
+  82% { opacity: 1; }
+  83% { opacity: .7; }
+  84% { opacity: 1; }
+}
+
+/* ---------- 头部 ---------- */
+header { text-align: center; margin-bottom: 48px; }
+h1 {
+  font-size: 46px;
+  letter-spacing: 20px;
+  text-indent: 20px;
+  color: #f5e9dc;
+  text-shadow: 0 0 28px rgba(232, 72, 59, .3);
+  margin-bottom: 10px;
+}
+.sub {
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--dk-dim);
+  margin-bottom: 18px;
+}
+.tagline {
+  font-size: 13px;
+  color: #b3a49e;
+  letter-spacing: 2px;
+}
+.tagline b { color: var(--dk-gold); font-weight: normal; }
+
+/* ---------- 晾绳 ---------- */
+.clothesline {
+  position: relative;
+  height: 2px;
+  margin: 0 -10px 0;
+  background: linear-gradient(90deg, transparent, #3d332c 6%, #4a3e35 50%, #3d332c 94%, transparent);
+}
+.clothesline::after {                   /* 绳的弧垂 */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 1px;
+  height: 16px;
+  background: radial-gradient(ellipse 60% 100% at 50% 0, transparent 68%, rgba(0,0,0,.25) 100%);
+  pointer-events: none;
+}
+
+/* ---------- 拍立得 ---------- */
+.lineup {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 34px;
+  padding-top: 4px;
+}
+.polaroid {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(178deg, var(--dk-paper), var(--dk-paper-dk));
+  padding: 12px 12px 0;
+  border-radius: 3px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.35) inset,
+    0 16px 34px rgba(0,0,0,.55),
+    0 2px 6px rgba(0,0,0,.4);
+  transition: transform .4s cubic-bezier(.2,.9,.3,1.2), box-shadow .4s;
+}
+.polaroid:nth-child(odd)  { transform: rotate(-2.2deg); }
+.polaroid:nth-child(even) { transform: rotate(1.8deg); }
+.polaroid:nth-child(3n)   { transform: rotate(2.8deg) translateY(6px); }
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.03);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.45) inset,
+    0 24px 48px rgba(0,0,0,.6),
+    0 0 34px rgba(232, 72, 59, .22);
+  z-index: 3;
+}
+/* 木夹 */
+.clip {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 12px;
+  height: 22px;
+  margin-left: -6px;
+  background: linear-gradient(180deg, #6b5a3e, #4a3d29);
+  border-radius: 3px 3px 1px 1px;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.4), 0 2px 3px rgba(0,0,0,.35);
+}
+.clip::before {
+  content: "";
+  position: absolute;
+  left: 1.5px; right: 1.5px;
+  top: 9px;
+  height: 1.5px;
+  background: rgba(0,0,0,.45);
+}
+
+/* 药膜面：未显影的照片 */
+.film {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background:
+    repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%),
+    linear-gradient(160deg, #322d38, #241f28 60%, #2c2731);
+  background-size: 4px 4px, auto;
+  overflow: hidden;
+}
+.film-stamp {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #5d5566;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+.film-stamp .no {
+  font-size: 22px;
+  color: var(--dk-gold);
+  opacity: .75;
+  text-shadow: 0 0 10px rgba(255, 209, 102, .18);
+}
+.film-stamp .dev {
+  font-size: 11px;
+  border: 1px dashed #544c5e;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+/* hover 时的"显影扫光" */
+.film::after {
+  content: "";
+  position: absolute;
+  left: -60%; top: 0;
+  width: 45%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(236, 229, 211, .16), transparent);
+  transform: skewX(-14deg);
+  opacity: 0;
+}
+.polaroid:hover .film::after {
+  opacity: 1;
+  animation: develop 1.6s ease-in-out infinite;
+}
+@keyframes develop {
+  0% { left: -60%; }
+  100% { left: 120%; }
+}
+
+/* 相纸下沿的手写标签区 */
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 4px 12px;
+  color: var(--dk-ink);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.caption .t { font-size: 13px; }
+.caption .d { font-size: 10px; opacity: .65; }
+
+/* ---------- 页脚 ---------- */
+footer {
+  margin-top: 66px;
+  text-align: center;
+  font-size: 12px;
+  color: #6e5f66;
+  letter-spacing: 2px;
+  line-height: 2.1;
+}
+footer .path {
+  color: #9a8a92;
+  border-bottom: 1px dotted #4a3e45;
+}
+
+/* ---------- 显影液浮尘 ---------- */
+.mote {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 210, 190, .3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+  animation: drift linear infinite;
+}
+@keyframes drift {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  12% { opacity: .6; }
+  88% { opacity: .4; }
+  100% { transform: translateY(-44vh) translateX(20px); opacity: 0; }
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 760px) {
+  .lineup { grid-template-columns: repeat(2, 1fr); gap: 34px 22px; }
+  h1 { font-size: 34px; letter-spacing: 13px; text-indent: 13px; }
+  .wrap { padding-top: 42px; }
+}
+@media (max-width: 480px) {
+  .lineup { grid-template-columns: 1fr; }
+  .polaroid { max-width: 290px; width: 100%; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="safelight">
+    <div class="safelight-housing"></div>
+    <span class="safelight-bulb"></span>
+  </div>
+  <header>
+    <h1>暗 室</h1>
+    <div class="sub">B A C K R O O M</div>
+    <p class="tagline">私人收集 · 暗房里晾着 <b>六张未显影的相片</b></p>
+  </header>
+
+  <div class="clothesline"></div>
+
+  <main class="lineup">
+    <a class="polaroid" href="/1/">
+      <span class="clip"></span>
+      <div class="film">
+        <div class="film-stamp"><span class="no">№1</span><span class="dev">未显影 · DEVELOPING</span></div>
+      </div>
+      <div class="caption"><span class="t">等一张相片</span><span class="d">/1/</span></div>
+    </a>
+    <a class="polaroid" href="/2/">
+      <span class="clip"></span>
+      <div class="film">
+        <div class="film-stamp"><span class="no">№2</span><span class="dev">未显影 · DEVELOPING</span></div>
+      </div>
+      <div class="caption"><span class="t">等一张相片</span><span class="d">/2/</span></div>
+    </a>
+    <a class="polaroid" href="/3/">
+      <span class="clip"></span>
+      <div class="film">
+        <div class="film-stamp"><span class="no">№3</span><span class="dev">未显影 · DEVELOPING</span></div>
+      </div>
+      <div class="caption"><span class="t">等一张相片</span><span class="d">/3/</span></div>
+    </a>
+    <a class="polaroid" href="/4/">
+      <span class="clip"></span>
+      <div class="film">
+        <div class="film-stamp"><span class="no">№4</span><span class="dev">未显影 · DEVELOPING</span></div>
+      </div>
+      <div class="caption"><span class="t">等一张相片</span><span class="d">/4/</span></div>
+    </a>
+    <a class="polaroid" href="/5/">
+      <span class="clip"></span>
+      <div class="film">
+        <div class="film-stamp"><span class="no">№5</span><span class="dev">未显影 · DEVELOPING</span></div>
+      </div>
+      <div class="caption"><span class="t">等一张相片</span><span class="d">/5/</span></div>
+    </a>
+    <a class="polaroid" href="/6/">
+      <span class="clip"></span>
+      <div class="film">
+        <div class="film-stamp"><span class="no">№6</span><span class="dev">未显影 · DEVELOPING</span></div>
+      </div>
+      <div class="caption"><span class="t">等一张相片</span><span class="d">/6/</span></div>
+    </a>
+  </main>
+
+  <footer>
+    入口藏在 <span class="path">daily 页 · 像素办公室的墙钟</span> 上 —— 三连击<br>
+    BACKROOM · EST. 2026 · 红灯常亮
+  </footer>
+</div>
+
+<script>
+// 显影液里的浮尘
+(function () {
+  for (var i = 0; i < 8; i++) {
+    var m = document.createElement('span');
+    m.className = 'mote';
+    m.style.left = (8 + Math.random() * 84) + '%';
+    m.style.top = (28 + Math.random() * 68) + '%';
+    m.style.animationDuration = (15 + Math.random() * 20) + 's';
+    m.style.animationDelay = (-Math.random() * 22) + 's';
+    document.body.appendChild(m);
+  }
+})();
+</script>
+</body>
+</html>

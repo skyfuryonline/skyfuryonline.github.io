@@ -1723,6 +1723,16 @@
             padding: 15px 25px;
         }
 
+/* ---------------- Backroom (wall clock easter egg) ---------------- */
+.pixel-clock {
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.pixel-clock:hover {
+    transform: translateY(-3px) rotate(3deg);
+    box-shadow: 5px 5px 0 rgba(0,0,0,.3), 0 0 18px rgba(255,209,102,.45);
+}
+
 /* ---------------- Ground Defense (coffee mug easter egg) ---------------- */
 .pixel-mug {
     cursor: pointer;
