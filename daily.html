@@ -97,14 +97,23 @@ http_headers:
 
 <!-- Ground Defense Force (easter egg: coffee mug triple-click) -->
 <div id="game-overlay">
-  <div class="game-close" id="game-close" title="ESC">×</div>
-  <div id="game-terminal">
-    <div class="game-term-header">
-      <div class="game-term-prompt"><span class="g">root</span>@<span class="b">jarvis</span>:<span class="y">~/games</span>$ ./ground-defense</div>
-      <h1 class="game-term-title">地面保卫军</h1>
-      <p class="game-term-desc">// 咖啡杯的约定——别让任何人踏上最后一段防线</p>
+  <button class="game-close" id="game-close" title="ESC">✕</button>
+  <div class="game-cabinet">
+    <div class="game-marquee">
+      <span class="game-marquee-cn">地面保卫军</span>
+      <span class="game-marquee-en">GROUND DEFENSE FORCE</span>
     </div>
-    <canvas id="game-canvas" width="480" height="360"></canvas>
+    <div class="game-screen">
+      <canvas id="game-canvas" width="480" height="360"></canvas>
+      <div class="game-scanlines" aria-hidden="true"></div>
+    </div>
+    <div class="game-panel">
+      <span class="game-key">←</span><span class="game-key">→</span><span class="game-label">移动</span>
+      <span class="game-key">SPACE</span><span class="game-label">射击</span>
+      <span class="game-key">R</span><span class="game-label">重开</span>
+      <span class="game-key">ESC</span><span class="game-label">离开</span>
+      <span class="game-tip">机台秘技：接住从天而降的咖啡 ☕ 可获得 5 秒三连射</span>
+    </div>
   </div>
 </div>
 

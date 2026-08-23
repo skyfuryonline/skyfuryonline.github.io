@@ -11,7 +11,7 @@
     bg: '#0d1420', ground: '#1f3d2b', groundTop: '#3fae5a',
     player: '#66fcf1', bullet: '#f5f7fa', hud: '#8899bb',
     bug: '#e06c75', dart: '#e5c07b', heavy: '#c678dd',
-    coffee: '#ff9f64', boom: '#f5f7fa'
+    coffee: '#ff9f64', boom: '#f5f7fa', gold: '#ffd166'
   };
 
   var state = 'title';
@@ -232,13 +232,16 @@
       ctx.fillStyle = 'rgba(6,10,16,.72)';
       ctx.fillRect(0, 0, W, H);
       ctx.font = 'bold 26px monospace';
-      ctx.fillStyle = C.player;
+      ctx.fillStyle = C.gold;
+      ctx.shadowColor = 'rgba(255,190,80,.8)';
+      ctx.shadowBlur = 12;
       ctx.fillText('地 面 保 卫 军', W / 2, H / 2 - 52);
+      ctx.shadowBlur = 0;
       ctx.font = '11px monospace';
       ctx.fillStyle = C.hud;
       ctx.fillText('GROUND DEFENSE FORCE', W / 2, H / 2 - 32);
       ctx.fillText('← → / A D 移动 · 空格 / 点击 射击', W / 2, H / 2 + 2);
-      ctx.fillText('别让敌人踏上地面 · 接住 ☔ 咖啡获得三连射', W / 2, H / 2 + 20);
+      ctx.fillText('别让敌人踏上地面 · 接住 ☕ 咖啡获得三连射', W / 2, H / 2 + 20);
       ctx.fillStyle = C.groundTop;
       ctx.fillText('— 点击或按空格开始 —', W / 2, H / 2 + 52);
     }
