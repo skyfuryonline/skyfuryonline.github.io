@@ -12,7 +12,7 @@ ARCADE.register({
       wing: '#ff9f64', hud: '#8899bb', gold: '#ffd166', bug: '#e06c75'
     };
     var GROUND = H - 36;
-    var GAP0 = 130, GAPMIN = 96, SPACING = 175;
+    var GAP0 = 130, GAPMIN = 98, SPACING = 175;
 
     var bird, pipes, parts, groundX, bgBeans;
     var score, best, dead, started, frame, flapAnim;
@@ -40,7 +40,7 @@ ARCADE.register({
     }
 
     api.panel([['SPACE/点击', '扇翅膀'], ['P', '暂停'], ['ESC', '片库']],
-      '机台秘技：穿过管道时贴着蒸汽飞，没有额外奖励，但很帅');
+      '机台秘技：越飞越快越窄，12 分后管道开始漂移——注意 HUD 上的速度倍率');
     function onKey(k, down) {
       if (down && (k === ' ' || k === 'ArrowUp' || k === 'w' || k === 'W')) {
         if (!dead) flap();
@@ -51,7 +51,7 @@ ARCADE.register({
     }
 
     function gapSize() { return Math.max(GAPMIN, GAP0 - score * 1.2); }
-    function speed() { return 2.1 + Math.min(1.3, score * 0.03); }
+    function speed() { return 2.1 + Math.min(1.7, score * 0.045); }
 
     function update() {
       frame++;
@@ -73,11 +73,19 @@ ARCADE.register({
         if (frame % Math.round(SPACING / speed() * 2.1) === 0 || (pipes.length === 0 && frame > 30)) {
           var g = gapSize();
           var top = 44 + Math.random() * (GROUND - g - 108);
-          pipes.push({ x: W + 30, top: top, g: g, passed: false });
+          pipes.push({
+            x: W + 30, top: top, baseTop: top, g: g, passed: false,
+            amp: score >= 12 ? Math.min(30, (score - 12) * 1.2) : 0, // 12 分后管道漂移
+            phase: Math.random() * 6.28
+          });
         }
         for (var p = pipes.length - 1; p >= 0; p--) {
           var pi = pipes[p];
           pi.x -= speed();
+          if (pi.amp > 0) {
+            pi.top = pi.baseTop + Math.sin(frame * 0.03 + pi.phase) * pi.amp;
+            pi.top = Math.max(24, Math.min(GROUND - pi.g - 24, pi.top));
+          }
           if (pi.x < -64) { pipes.splice(p, 1); continue; }
           if (!pi.passed && pi.x + 28 < bird.x) {
             pi.passed = true; score++;
@@ -179,6 +187,10 @@ ARCADE.register({
       ctx.strokeStyle = 'rgba(0,0,0,.5)'; ctx.lineWidth = 4;
       ctx.strokeText('' + score, W / 2, 44);
       ctx.fillText('' + score, W / 2, 44);
+      ctx.font = '10px monospace';
+      ctx.fillStyle = C.hud;
+      ctx.textAlign = 'left';
+      ctx.fillText('SPD ×' + (speed() / 2.1).toFixed(1), 10, 20);
       if (!started) {
         ctx.font = '11px monospace'; ctx.fillStyle = C.hud;
         ctx.fillText('SPACE / 点击 扇动翅膀', W / 2, H / 2 - 60);

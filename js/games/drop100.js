@@ -42,11 +42,15 @@ ARCADE.register({
     function reset() {
       floors = []; score = 0; dead = false; won = false;
       speed = 0.9; frame = 0; deadTimer = 0;
-      spawnY = H;
       man = { x: W / 2, y: H - 60, vy: 0, onGround: false };
-      // 初始楼层垫脚
-      var f = { y: H - 40, segs: [[0, W]], spike: null };
-      floors.push(f);
+      // 初始垫脚层：带缺口（否则第一层就无路可下，被天花板压死），且不放尖刺
+      var start = newFloor(H - 40);
+      start.spike = null;
+      floors.push(start);
+      // 预铺两层在屏幕下方，穿落首层后立刻有落脚点
+      floors.push(newFloor(H + 16));
+      floors.push(newFloor(H + 72));
+      spawnY = H + 40;
     }
 
     api.panel([['←→', '移动'], ['P', '暂停'], ['ESC', '片库']],
