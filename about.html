@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: "ABOUT"
 nav-order: 2
 description: "Hey, this is skyfuryonline."
@@ -8,211 +8,379 @@ header-img: "img/about-bg.jpg"
 
 <style>
 /* --------------------------------------------------
-   About page — keep it simple, blend into the blog
+   About — personal console (restrained HUD)
    -------------------------------------------------- */
-.about-page {
-    max-width: 750px;
+.hud-console {
+    --hud-bg: #0d1522;
+    --hud-panel: #121d31;
+    --hud-line: rgba(102, 252, 241, 0.16);
+    --hud-line-soft: rgba(102, 252, 241, 0.07);
+    --hud-cyan: #66fcf1;
+    --hud-gold: #ffd166;
+    --hud-text: #b6c2d9;
+    --hud-dim: #5b7a99;
     margin: 0 auto;
-    padding: 10px 0 60px;
-    color: #404040;
-    font-size: 16px;
+    padding: 34px 18px 64px;
+    max-width: 980px;
+    background:
+        linear-gradient(var(--hud-line-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--hud-line-soft) 1px, transparent 1px),
+        var(--hud-bg);
+    background-size: 36px 36px, 36px 36px, auto;
+    color: var(--hud-text);
+    font-size: 15px;
     line-height: 1.85;
 }
+.hud-console ::selection {
+    background: rgba(102, 252, 241, 0.25);
+}
 
-/* ---------- profile row ---------- */
-.about-profile {
+/* ---------- top status bar ---------- */
+.hud-topbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 26px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--hud-line);
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--hud-dim);
+    white-space: nowrap;
+    overflow: hidden;
+}
+.hud-topbar .hud-live::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--hud-cyan);
+    box-shadow: 0 0 8px rgba(102, 252, 241, 0.8);
+    vertical-align: 1px;
+}
+
+/* ---------- panel frame ---------- */
+.hud-panel {
+    position: relative;
+    padding: 24px 26px 26px;
+    background: rgba(18, 29, 49, 0.88);
+    border: 1px solid var(--hud-line);
+}
+.hud-panel::before,
+.hud-panel::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+}
+.hud-panel::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid var(--hud-cyan);
+    border-left: 2px solid var(--hud-cyan);
+}
+.hud-panel::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid var(--hud-cyan);
+    border-right: 2px solid var(--hud-cyan);
+}
+.hud-panel + .hud-panel {
+    margin-top: 22px;
+}
+.hud-label {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 34px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid #eee;
+    gap: 10px;
+    margin: 0 0 18px;
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    color: var(--hud-dim);
+}
+.hud-label::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--hud-gold);
+}
+.hud-label em {
+    font-style: normal;
+    color: var(--hud-cyan);
 }
 
-.about-badges {
+/* ---------- identity panel ---------- */
+.hud-id {
     display: flex;
-    gap: 8px;
-    flex-shrink: 0;
+    align-items: center;
+    gap: 30px;
 }
-
-.about-badge {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
+.hud-reactor {
+    position: relative;
+    flex-shrink: 0;
+    width: 116px;
+    height: 116px;
+}
+.hud-reactor img {
+    position: absolute;
+    inset: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    border-radius: 50%;
     object-fit: cover;
-    border: 1px solid #e8e8e8;
+}
+.hud-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg, rgba(102, 252, 241, 0.9) 40deg,
+        transparent 90deg, transparent 180deg,
+        rgba(255, 209, 102, 0.55) 220deg, transparent 260deg
+    );
+    -webkit-mask: radial-gradient(farthest-side,
+        transparent calc(100% - 3px), #000 calc(100% - 2px));
+    mask: radial-gradient(farthest-side,
+        transparent calc(100% - 3px), #000 calc(100% - 2px));
+    animation: hud-spin 26s linear infinite;
+}
+.hud-reactor::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 1px solid var(--hud-line);
+}
+@keyframes hud-spin {
+    to { transform: rotate(360deg); }
+}
+.hud-id-text {
+    min-width: 0;
+}
+.hud-name {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #e8eefb;
+}
+.hud-tagline {
+    margin: 0 0 14px;
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    font-size: 13px;
+    color: var(--hud-cyan);
+}
+.hud-insignia {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hud-insignia img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--hud-line);
     background: #fff;
 }
-
-.about-profile-text {
-    line-height: 1.55;
+.hud-insignia span {
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--hud-dim);
 }
 
-.about-name {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #404040;
-}
-
-.about-tagline {
-    margin: 2px 0 0;
-    font-size: 14px;
-    color: #888;
-}
-
-/* ---------- sections ---------- */
-.about-section {
-    margin-bottom: 36px;
-}
-
-.about-section h2 {
-    margin: 0 0 14px;
-    font-size: 17px;
-    font-weight: 600;
-    color: #404040;
-}
-
-.about-section p {
+/* ---------- text panel ---------- */
+.hud-panel p {
     margin: 0 0 14px;
 }
-
-.about-section p:last-child {
+.hud-panel p:last-child {
     margin-bottom: 0;
 }
-
-/* ---------- topic list ---------- */
-.about-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 24px;
+.hud-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+.hud-tag {
+    padding: 4px 12px;
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    font-size: 12px;
+    color: var(--hud-cyan);
+    border: 1px solid var(--hud-line);
+    background: rgba(102, 252, 241, 0.05);
 }
 
-.about-list li {
-    padding: 10px 0;
-    font-size: 14px;
-    color: #666;
-    line-height: 1.7;
+/* ---------- readout rows ---------- */
+.hud-row {
+    display: flex;
+    gap: 18px;
+    padding: 12px 2px;
+    border-bottom: 1px dashed var(--hud-line-soft);
 }
-
-.about-list strong {
+.hud-row:last-child {
+    border-bottom: none;
+    padding-bottom: 2px;
+}
+.hud-row-code {
+    flex-shrink: 0;
+    width: 34px;
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    font-size: 12px;
+    color: var(--hud-gold);
+    letter-spacing: 0.1em;
+    padding-top: 2px;
+}
+.hud-row-body strong {
     display: block;
-    color: #404040;
-    font-weight: 600;
     margin-bottom: 2px;
+    font-weight: 600;
+    color: #e8eefb;
+}
+.hud-row-body span {
+    font-size: 14px;
 }
 
-/* ---------- tags ---------- */
-.about-tags {
+/* ---------- comms ---------- */
+.hud-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 12px;
+    gap: 12px;
 }
-
-.about-tag {
-    padding: 4px 10px;
-    font-size: 13px;
-    color: #337ab7;
-    background: rgba(51, 122, 183, 0.07);
-    border: 1px solid rgba(51, 122, 183, 0.18);
-    border-radius: 999px;
-}
-
-/* ---------- links ---------- */
-.about-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    margin-top: 10px;
-}
-
-.about-link {
-    color: #337ab7 !important;
-    font-size: 15px;
-}
-
-.about-link:hover {
-    color: #0085a1 !important;
-}
-
-/* ---------- last-updated ---------- */
-.about-date {
+.hud-link {
     display: inline-block;
-    margin-top: 18px;
+    padding: 9px 18px;
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
     font-size: 13px;
-    color: #aaa;
+    color: var(--hud-cyan) !important;
+    text-decoration: none;
+    border: 1px solid var(--hud-line);
+    background: rgba(102, 252, 241, 0.04);
+    transition: background .15s, border-color .15s;
+}
+.hud-link:hover {
+    background: rgba(102, 252, 241, 0.12);
+    border-color: rgba(102, 252, 241, 0.45);
+}
+.hud-stamp {
+    display: block;
+    margin-top: 18px;
+    font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--hud-dim);
 }
 
-/* ---------- responsive ---------- */
-@media (max-width: 991px) {
-    .about-list {
-        grid-template-columns: 1fr;
-    }
+/* ---------- responsive / a11y ---------- */
+@media (max-width: 640px) {
+    .hud-console { padding: 22px 12px 48px; }
+    .hud-panel { padding: 18px 16px 20px; }
+    .hud-id { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hud-topbar { letter-spacing: 0.1em; }
+    .hud-topbar .hud-hide-sm { display: none; }
 }
-
-@media (max-width: 520px) {
-    .about-page {
-        font-size: 15px;
-    }
-    .about-profile {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-    }
+@media (prefers-reduced-motion: reduce) {
+    .hud-ring { animation: none; }
 }
 </style>
 
-<div class="about-page">
-
-    <div class="about-profile">
-        <div class="about-badges">
-            <img class="about-badge" src="{{ site.baseurl }}/img/hnu-badge.png" alt="湖南大学校徽">
-            <img class="about-badge" src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="云南大学校徽">
-        </div>
-        <div class="about-profile-text">
-            <span class="about-name">skyfuryonline</span>
-            <p class="about-tagline">NLP / LLM / Agent · 写代码，也写一点生活。</p>
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
         </div>
     </div>
+</header>
 
-    <div class="about-section">
+<div class="hud-console">
+
+    <div class="hud-topbar">
+        <span class="hud-live">CONSOLE ONLINE</span>
+        <span class="hud-hide-sm">MODULE: ABOUT // VER 3.0</span>
+        <span>OPR: LH</span>
+    </div>
+
+    <section class="hud-panel hud-id">
+        <div class="hud-reactor">
+            <div class="hud-ring" aria-hidden="true"></div>
+            <img src="{{ site.sidebar-avatar }}" alt="LH">
+        </div>
+        <div class="hud-id-text">
+            <h1 class="hud-name">skyfuryonline</h1>
+            <p class="hud-tagline">NLP / LLM / AGENT · 写代码，也写一点生活。</p>
+            <div class="hud-insignia">
+                <img src="{{ site.baseurl }}/img/hnu-badge.png" alt="湖南大学校徽">
+                <img src="{{ site.baseurl }}/img/ynu-badge.jpg" alt="云南大学校徽">
+                <span>INSIGNIA // HNU · YNU</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="hud-panel">
+        <h2 class="hud-label">PROFILE <em>// 01</em></h2>
         <p>这个博客主要放代码实验、工具折腾和偶尔的日常记录。文章大多不是"最终答案"，更像是把某段时间遇到的问题和后来觉得有用的做法留一份存档。如果碰巧帮你少走了一点弯路，那就算完成任务了。</p>
-    </div>
-
-    <div class="about-section">
-        <h2>会写些什么</h2>
-        <p>主要还是模型训练、推理部署、评测、数据处理、Agent 工作流，以及一些为了省事写的小脚本。偶尔也会记录博客维护、知识库整理和日常节奏。技术之外的内容更随手，不追求完整，只保留真实有用的部分。</p>
-        <div class="about-tags">
-            <span class="about-tag">NLP / LLM</span>
-            <span class="about-tag">Agent</span>
-            <span class="about-tag">工程实践</span>
-            <span class="about-tag">科研写作</span>
-            <span class="about-tag">个人工具流</span>
+        <p>主要涉及模型训练、推理部署、评测、数据处理、Agent 工作流，以及一些为了省事写的小脚本。偶尔也会记录博客维护、知识库整理和日常节奏。</p>
+        <div class="hud-tags">
+            <span class="hud-tag">NLP / LLM</span>
+            <span class="hud-tag">AGENT</span>
+            <span class="hud-tag">工程实践</span>
+            <span class="hud-tag">科研写作</span>
+            <span class="hud-tag">个人工具流</span>
         </div>
-    </div>
+    </section>
 
-    <div class="about-section">
-        <h2>现在关心的事</h2>
-        <ul class="about-list">
-            <li><strong>LLM 工程</strong>微调、评测、推理服务，让实验流程更可复现。</li>
-            <li><strong>Agent 工作流</strong>把重复任务拆成工具和脚本，不每次从头来。</li>
-            <li><strong>科研写作</strong>从问题出发组织叙事，实验和结论尽量站得住。</li>
-            <li><strong>个人系统</strong>博客、知识库、自动化，能少消耗一点注意力就好。</li>
-        </ul>
-    </div>
+    <section class="hud-panel">
+        <h2 class="hud-label">FOCUS <em>// 02</em></h2>
+        <div class="hud-row">
+            <span class="hud-row-code">01</span>
+            <div class="hud-row-body">
+                <strong>LLM 工程</strong>
+                <span>微调、评测、推理服务，让实验流程更可复现。</span>
+            </div>
+        </div>
+        <div class="hud-row">
+            <span class="hud-row-code">02</span>
+            <div class="hud-row-body">
+                <strong>Agent 工作流</strong>
+                <span>把重复任务拆成工具和脚本，不每次从头来。</span>
+            </div>
+        </div>
+        <div class="hud-row">
+            <span class="hud-row-code">03</span>
+            <div class="hud-row-body">
+                <strong>科研写作</strong>
+                <span>从问题出发组织叙事，实验和结论尽量站得住。</span>
+            </div>
+        </div>
+        <div class="hud-row">
+            <span class="hud-row-code">04</span>
+            <div class="hud-row-body">
+                <strong>个人系统</strong>
+                <span>博客、知识库、自动化，能少消耗一点注意力就好。</span>
+            </div>
+        </div>
+    </section>
 
-    <div class="about-section">
-        <h2>可以从这里开始</h2>
+    <section class="hud-panel">
+        <h2 class="hud-label">COMMS <em>// 03</em></h2>
         <p>如果对某篇文章有疑问，或者想交流类似的折腾，欢迎通过 GitHub 找到我。</p>
-        <div class="about-links">
-            <a class="about-link" href="https://github.com/skyfuryonline" target="_blank" rel="noopener noreferrer">GitHub · skyfuryonline</a>
-            <a class="about-link" href="{{ site.baseurl }}/tags/">浏览文章标签</a>
+        <div class="hud-links">
+            <a class="hud-link" href="https://github.com/skyfuryonline" target="_blank" rel="noopener noreferrer">GITHUB // SKYFURYONLINE</a>
+            <a class="hud-link" href="{{ site.baseurl }}/tags/">ARCHIVE // TAGS</a>
         </div>
-        <span class="about-date">Last updated: 2026-05</span>
-    </div>
+        <span class="hud-stamp">LAST UPDATED: 2026-08 · SYSTEM NOMINAL</span>
+    </section>
 
 </div>
