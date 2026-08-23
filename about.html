@@ -19,9 +19,18 @@ header-img: "img/about-bg.jpg"
     --hud-gold: #ffd166;
     --hud-text: #b6c2d9;
     --hud-dim: #5b7a99;
-    margin: 0 auto;
+    /* 全幅铺开，消除与页面两侧浅色背景的割裂 */
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    margin: 0;
+    transform: translateX(-50%);
     padding: 34px 18px 64px;
-    max-width: 980px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg,
+        rgba(102, 252, 241, 0.55), rgba(255, 209, 102, 0.35),
+        rgba(102, 252, 241, 0.15) 60%, transparent) 1;
     background:
         linear-gradient(var(--hud-line-soft) 1px, transparent 1px),
         linear-gradient(90deg, var(--hud-line-soft) 1px, transparent 1px),
@@ -30,6 +39,13 @@ header-img: "img/about-bg.jpg"
     color: var(--hud-text);
     font-size: 15px;
     line-height: 1.85;
+}
+body { overflow-x: hidden; }
+.hud-topbar,
+.hud-panel {
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .hud-console ::selection {
     background: rgba(102, 252, 241, 0.25);
