@@ -11,14 +11,14 @@ header-img: "img/about-bg.jpg"
    About — personal console (restrained HUD)
    -------------------------------------------------- */
 .hud-console {
-    --hud-bg: #191420;
-    --hud-panel: #211a2b;
-    --hud-line: rgba(245, 166, 35, 0.16);
-    --hud-line-soft: rgba(245, 166, 35, 0.07);
-    --hud-accent: #f5a623;
-    --hud-gold: #ff8a5c;
-    --hud-text: #d3c9d4;
-    --hud-dim: #918398;
+    --hud-bg: #0b0f16;
+    --hud-panel: #101620;
+    --hud-line: rgba(255, 255, 255, 0.16);
+    --hud-line-soft: rgba(255, 255, 255, 0.06);
+    --hud-accent: #ff5147;
+    --hud-gold: #ff6b9d;
+    --hud-text: #d6dde6;
+    --hud-dim: #7a8699;
     /* 全幅铺开，消除与页面两侧浅色背景的割裂 */
     position: relative;
     left: 50%;
@@ -29,8 +29,8 @@ header-img: "img/about-bg.jpg"
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
     border-image: linear-gradient(90deg,
-        rgba(245, 166, 35, 0.55), rgba(255, 107, 87, 0.35),
-        rgba(245, 166, 35, 0.15) 60%, transparent) 1;
+        rgba(255, 81, 71, 0.5), rgba(255, 255, 255, 0.22),
+        rgba(255, 107, 157, 0.18) 60%, transparent) 1;
     background:
         linear-gradient(var(--hud-line-soft) 1px, transparent 1px),
         linear-gradient(90deg, var(--hud-line-soft) 1px, transparent 1px),
@@ -48,7 +48,7 @@ body { overflow-x: hidden; }
     margin-right: auto;
 }
 .hud-console ::selection {
-    background: rgba(245, 166, 35, 0.25);
+    background: rgba(255, 81, 71, 0.3);
 }
 
 /* ---------- top status bar ---------- */
@@ -74,7 +74,7 @@ body { overflow-x: hidden; }
     margin-right: 8px;
     border-radius: 50%;
     background: var(--hud-accent);
-    box-shadow: 0 0 8px rgba(245, 166, 35, 0.8);
+    box-shadow: 0 0 8px rgba(255, 81, 71, 0.6);
     vertical-align: 1px;
 }
 
@@ -156,9 +156,9 @@ body { overflow-x: hidden; }
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
-        transparent 0deg, rgba(245, 166, 35, 0.9) 40deg,
+        transparent 0deg, rgba(255, 81, 71, 0.9) 40deg,
         transparent 90deg, transparent 180deg,
-        rgba(255, 107, 87, 0.55) 220deg, transparent 260deg
+        rgba(255, 255, 255, 0.55) 220deg, transparent 260deg
     );
     -webkit-mask: radial-gradient(farthest-side,
         transparent calc(100% - 3px), #000 calc(100% - 2px));
@@ -184,7 +184,7 @@ body { overflow-x: hidden; }
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.06em;
-    color: #f4ecf2;
+    color: #f4f7fb;
 }
 .hud-tagline {
     margin: 0 0 14px;
@@ -231,7 +231,7 @@ body { overflow-x: hidden; }
     font-size: 12px;
     color: var(--hud-accent);
     border: 1px solid var(--hud-line);
-    background: rgba(245, 166, 35, 0.05);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 /* ---------- readout rows ---------- */
@@ -258,7 +258,7 @@ body { overflow-x: hidden; }
     display: block;
     margin-bottom: 2px;
     font-weight: 600;
-    color: #f4ecf2;
+    color: #f4f7fb;
 }
 .hud-row-body span {
     font-size: 14px;
@@ -278,12 +278,12 @@ body { overflow-x: hidden; }
     color: var(--hud-accent) !important;
     text-decoration: none;
     border: 1px solid var(--hud-line);
-    background: rgba(245, 166, 35, 0.04);
+    background: rgba(255, 255, 255, 0.03);
     transition: background .15s, border-color .15s;
 }
 .hud-link:hover {
-    background: rgba(245, 166, 35, 0.12);
-    border-color: rgba(245, 166, 35, 0.45);
+    background: rgba(255, 81, 71, 0.10);
+    border-color: rgba(255, 81, 71, 0.55);
 }
 .hud-stamp {
     display: block;
