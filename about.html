@@ -11,14 +11,14 @@ header-img: "img/about-bg.jpg"
    About — personal console (restrained HUD)
    -------------------------------------------------- */
 .hud-console {
-    --hud-bg: #0d1522;
-    --hud-panel: #121d31;
-    --hud-line: rgba(102, 252, 241, 0.16);
-    --hud-line-soft: rgba(102, 252, 241, 0.07);
-    --hud-cyan: #66fcf1;
-    --hud-gold: #ffd166;
-    --hud-text: #b6c2d9;
-    --hud-dim: #5b7a99;
+    --hud-bg: #191420;
+    --hud-panel: #211a2b;
+    --hud-line: rgba(245, 166, 35, 0.16);
+    --hud-line-soft: rgba(245, 166, 35, 0.07);
+    --hud-accent: #f5a623;
+    --hud-gold: #ff8a5c;
+    --hud-text: #d3c9d4;
+    --hud-dim: #918398;
     /* 全幅铺开，消除与页面两侧浅色背景的割裂 */
     position: relative;
     left: 50%;
@@ -29,8 +29,8 @@ header-img: "img/about-bg.jpg"
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
     border-image: linear-gradient(90deg,
-        rgba(102, 252, 241, 0.55), rgba(255, 209, 102, 0.35),
-        rgba(102, 252, 241, 0.15) 60%, transparent) 1;
+        rgba(245, 166, 35, 0.55), rgba(255, 107, 87, 0.35),
+        rgba(245, 166, 35, 0.15) 60%, transparent) 1;
     background:
         linear-gradient(var(--hud-line-soft) 1px, transparent 1px),
         linear-gradient(90deg, var(--hud-line-soft) 1px, transparent 1px),
@@ -48,7 +48,7 @@ body { overflow-x: hidden; }
     margin-right: auto;
 }
 .hud-console ::selection {
-    background: rgba(102, 252, 241, 0.25);
+    background: rgba(245, 166, 35, 0.25);
 }
 
 /* ---------- top status bar ---------- */
@@ -73,8 +73,8 @@ body { overflow-x: hidden; }
     height: 7px;
     margin-right: 8px;
     border-radius: 50%;
-    background: var(--hud-cyan);
-    box-shadow: 0 0 8px rgba(102, 252, 241, 0.8);
+    background: var(--hud-accent);
+    box-shadow: 0 0 8px rgba(245, 166, 35, 0.8);
     vertical-align: 1px;
 }
 
@@ -96,14 +96,14 @@ body { overflow-x: hidden; }
 .hud-panel::before {
     top: -1px;
     left: -1px;
-    border-top: 2px solid var(--hud-cyan);
-    border-left: 2px solid var(--hud-cyan);
+    border-top: 2px solid var(--hud-accent);
+    border-left: 2px solid var(--hud-accent);
 }
 .hud-panel::after {
     bottom: -1px;
     right: -1px;
-    border-bottom: 2px solid var(--hud-cyan);
-    border-right: 2px solid var(--hud-cyan);
+    border-bottom: 2px solid var(--hud-accent);
+    border-right: 2px solid var(--hud-accent);
 }
 .hud-panel + .hud-panel {
     margin-top: 22px;
@@ -127,7 +127,7 @@ body { overflow-x: hidden; }
 }
 .hud-label em {
     font-style: normal;
-    color: var(--hud-cyan);
+    color: var(--hud-accent);
 }
 
 /* ---------- identity panel ---------- */
@@ -156,9 +156,9 @@ body { overflow-x: hidden; }
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
-        transparent 0deg, rgba(102, 252, 241, 0.9) 40deg,
+        transparent 0deg, rgba(245, 166, 35, 0.9) 40deg,
         transparent 90deg, transparent 180deg,
-        rgba(255, 209, 102, 0.55) 220deg, transparent 260deg
+        rgba(255, 107, 87, 0.55) 220deg, transparent 260deg
     );
     -webkit-mask: radial-gradient(farthest-side,
         transparent calc(100% - 3px), #000 calc(100% - 2px));
@@ -184,13 +184,13 @@ body { overflow-x: hidden; }
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.06em;
-    color: #e8eefb;
+    color: #f4ecf2;
 }
 .hud-tagline {
     margin: 0 0 14px;
     font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
     font-size: 13px;
-    color: var(--hud-cyan);
+    color: var(--hud-accent);
 }
 .hud-insignia {
     display: flex;
@@ -229,9 +229,9 @@ body { overflow-x: hidden; }
     padding: 4px 12px;
     font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
     font-size: 12px;
-    color: var(--hud-cyan);
+    color: var(--hud-accent);
     border: 1px solid var(--hud-line);
-    background: rgba(102, 252, 241, 0.05);
+    background: rgba(245, 166, 35, 0.05);
 }
 
 /* ---------- readout rows ---------- */
@@ -258,7 +258,7 @@ body { overflow-x: hidden; }
     display: block;
     margin-bottom: 2px;
     font-weight: 600;
-    color: #e8eefb;
+    color: #f4ecf2;
 }
 .hud-row-body span {
     font-size: 14px;
@@ -275,15 +275,15 @@ body { overflow-x: hidden; }
     padding: 9px 18px;
     font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
     font-size: 13px;
-    color: var(--hud-cyan) !important;
+    color: var(--hud-accent) !important;
     text-decoration: none;
     border: 1px solid var(--hud-line);
-    background: rgba(102, 252, 241, 0.04);
+    background: rgba(245, 166, 35, 0.04);
     transition: background .15s, border-color .15s;
 }
 .hud-link:hover {
-    background: rgba(102, 252, 241, 0.12);
-    border-color: rgba(102, 252, 241, 0.45);
+    background: rgba(245, 166, 35, 0.12);
+    border-color: rgba(245, 166, 35, 0.45);
 }
 .hud-stamp {
     display: block;
