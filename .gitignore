@@ -42,3 +42,4 @@ gha-creds-*.json
 cache/
 _data/daily_*.json
 __pycache__/
+.zcode/
