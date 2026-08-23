@@ -46,7 +46,7 @@ ARCADE.register({
       map[9][11] = map[9][12] = STEEL;
       // 出生点强制清空（敌方上排三点 + 玩家点），避免坦克生成在砖里卡死
       [1, 12, 22].forEach(function (c) { map[1][c] = EMPTY; map[2][c] = EMPTY; });
-      map[ROWS - 2][10] = EMPTY;
+      map[ROWS - 2][8] = EMPTY;
 
       // 基地（咖啡杯）+ 护砖
       map[ROWS - 3][11] = map[ROWS - 3][12] = BASE;
@@ -68,18 +68,19 @@ ARCADE.register({
 
     // ---------- 实体 ----------
     function spawnPlayer() {
-      player = { x: 10 * T, y: (ROWS - 2) * T, dir: 0, cooldown: 0, alive: true };
+      // 第 8 列格子中心（基地左侧隔两格），不再压到基地护砖
+      player = { x: 8 * T + 10, y: (ROWS - 2) * T + 10, dir: 0, cooldown: 0, alive: true };
       invuln = 100;
     }
     function spawnEnemy() {
       if (left <= 0) return;
       var spots = [1, COLS / 2, COLS - 2];
-      var sx = spots[(enemies.length + wave) % 3] * T;
+      var sx = spots[(enemies.length + wave) % 3] * T + 10;
       for (var i = 0; i < enemies.length; i++)
         if (Math.abs(enemies[i].x - sx) < T * 2 && enemies[i].y < T * 2) return;
       var r = Math.random(), type = r < 0.45 ? 0 : r < 0.75 ? 1 : r < 0.92 ? 2 : 3;
       enemies.push({
-        x: sx, y: T, dir: 2, type: type, hp: type === 2 ? 3 : 1,
+        x: sx, y: T + 10, dir: 2, type: type, hp: type === 2 ? 3 : 1,
         speed: [0.55, 1.1, 0.5, 0.7][type] + wave * 0.03,
         cooldown: 60 + Math.random() * 120, think: 0, spawnAnim: 40
       });
