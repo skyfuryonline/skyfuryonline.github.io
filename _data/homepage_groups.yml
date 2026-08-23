@@ -1,5 +1,5 @@
 - group_name: "模型及分布式训练笔记"
-  url: "/groups/llm"
+  url: "/groups/llm/"
   group_image: "/img/cover-llms.png"
   group_description: "LLMs在多卡服务器上的训练"
   posts:
@@ -7,7 +7,7 @@
     - "2025-11-11-distributed-training-with-unsloth.md"
 
 - group_name: "NLP工坊"
-  url: "/groups/nlp-workshop"
+  url: "/groups/nlp-workshop/"
   group_image: "/img/cover_nlp_workshop.jpg" 
   group_description: "NLP项目复现与实践"
   posts:
@@ -16,7 +16,7 @@
     - "2025-12-20-opencompass-vlmevalkit-evaluation.md"
 
 - group_name: "博客开发指南"
-  url: "/groups/blog-development"
+  url: "/groups/blog-development/"
   group_image: "/img/cover-zaji.png"
   group_description: "记录个人博客搭建的过程"
   posts:
@@ -28,7 +28,7 @@
     - "2026-03-24-blog-dev-guide-new-group.md"
 
 - group_name: "视野"
-  url: "/groups/vision"
+  url: "/groups/vision/"
   group_image: "/img/cover-vision.svg"
   group_description: "记录对新兴技术的发现、了解与粗略分析"
   posts: 
@@ -38,7 +38,7 @@
     - "2026-06-27-fedora-setup.md"
 
 - group_name: "芥子须弥"
-  url: "/groups/jzxm"
+  url: "/groups/jzxm/"
   group_image: "/img/cover-jzxm.svg"
   group_description: "芥子纳须弥——来自视频、文章、课程的学习笔记与知识收录"
   hidden: true
