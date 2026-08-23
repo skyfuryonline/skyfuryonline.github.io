@@ -95,6 +95,19 @@ http_headers:
   </div>
 </div>
 
+<!-- Ground Defense Force (easter egg: coffee mug triple-click) -->
+<div id="game-overlay">
+  <div class="game-close" id="game-close" title="ESC">×</div>
+  <div id="game-terminal">
+    <div class="game-term-header">
+      <div class="game-term-prompt"><span class="g">root</span>@<span class="b">jarvis</span>:<span class="y">~/games</span>$ ./ground-defense</div>
+      <h1 class="game-term-title">地面保卫军</h1>
+      <p class="game-term-desc">// 咖啡杯的约定——别让任何人踏上最后一段防线</p>
+    </div>
+    <canvas id="game-canvas" width="480" height="360"></canvas>
+  </div>
+</div>
+
 <!-- GitHub Intelligence Weekly Report (Pinned) -->
 {% assign gh_intel = site.data.github_intelligence %}
 {% if gh_intel and gh_intel.size > 0 %}
@@ -295,4 +308,5 @@ CHENGYU_DATA.forEach(function(d) { chengyuMap[d.date] = d; });
   {% endfor %}
 </script>
     <script src="{{ '/js/daily.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/ground-defense.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
 </script>
