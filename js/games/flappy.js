@@ -14,13 +14,13 @@ ARCADE.register({
     var GROUND = H - 36;
     var GAP0 = 122, GAPMIN = 88, SPACING = 160;
 
-    var bird, pipes, parts, groundX, bgBeans;
+    var bird, pipes, parts, groundX, bgBeans, lastPipeAt;
     var score, best, dead, started, frame, flapAnim;
 
     function reset() {
       bird = { x: 110, y: H / 2, vy: 0, rot: 0 };
       pipes = []; parts = [];
-      groundX = 0; frame = 0; flapAnim = 0;
+      groundX = 0; frame = 0; flapAnim = 0; lastPipeAt = 0;
       score = 0; dead = false; started = false;
       bgBeans = [];
       for (var i = 0; i < 8; i++)
@@ -40,7 +40,7 @@ ARCADE.register({
     }
 
     api.panel([['SPACE/点击', '扇翅膀'], ['P', '暂停'], ['ESC', '片库']],
-      '机台秘技：越飞越快越窄，12 分后管道开始漂移——注意 HUD 上的速度倍率');
+      '机台秘技：越飞越快越窄，8 分后管道开始漂移——注意 HUD 上的速度倍率');
     function onKey(k, down) {
       if (down && (k === ' ' || k === 'ArrowUp' || k === 'w' || k === 'W')) {
         if (!dead) flap();
@@ -70,7 +70,8 @@ ARCADE.register({
         bird.rot = Math.max(-0.5, Math.min(1.2, bird.vy / 9));
 
         // 管道
-        if (frame % Math.round(SPACING / speed() * 2.1) === 0 || (pipes.length === 0 && frame > 30)) {
+        if (frame - lastPipeAt >= Math.round(SPACING / speed() * 2.1) || (pipes.length === 0 && frame > 30)) {
+          lastPipeAt = frame;
           var g = gapSize();
           var top = 44 + Math.random() * (GROUND - g - 108);
           pipes.push({
