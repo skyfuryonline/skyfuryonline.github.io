@@ -312,7 +312,9 @@
     }
   });
   document.addEventListener('keyup', function (e) {
-    if (mode === 'game' && !paused && active && active.onKey) active.onKey(e.key, false);
+    // 暂停期间也要放行 keyup：否则按住方向键时按 P，松键会被吞掉，
+    // 恢复后 keys 状态卡在 true，坦克/小人不受控
+    if (mode === 'game' && active && active.onKey) active.onKey(e.key, false);
   });
 
   // 触屏 / 鼠标：坐标换算后交给当前状态处理

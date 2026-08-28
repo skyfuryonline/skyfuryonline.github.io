@@ -15,9 +15,9 @@ ARCADE.register({
     };
 
     var EMPTY = 0, BRICK = 1, STEEL = 2, BASE = 9;
-    var map = [];
+    var map = [], brickMask = [];
     var player, enemies, bullets, powerups, booms;
-    var score, lives, wave, left, spawnTimer, splash, banner, invuln, powerUntil;
+    var score, lives, wave, left, spawnTimer, splash, banner, invuln, powerUntil, spawnTurn;
     var keys = {};
 
     // ---------- 地图 ----------
@@ -52,13 +52,27 @@ ARCADE.register({
       map[ROWS - 3][11] = map[ROWS - 3][12] = BASE;
       map[ROWS - 4][10] = map[ROWS - 4][11] = map[ROWS - 4][12] = map[ROWS - 4][13] = BRICK;
       map[ROWS - 3][10] = map[ROWS - 3][13] = BRICK;
+
+      // 砖块 2×2 象限掩码（经典：子弹每次轰掉半块砖，两次打穿一格）
+      brickMask = [];
+      for (var my = 0; my < ROWS; my++) {
+        var mrow = [];
+        for (var mx = 0; mx < COLS; mx++) mrow.push(map[my][mx] === BRICK ? 15 : 0);
+        brickMask.push(mrow);
+      }
     }
 
     function solidAt(px, py) {
       var tx = Math.floor(px / T), ty = Math.floor(py / T);
       if (tx < 0 || ty < 0 || tx >= COLS || ty >= ROWS) return true;
       var v = map[ty][tx];
-      return v === BRICK || v === STEEL || v === BASE;
+      if (v === BRICK) {
+        var m = brickMask[ty][tx];
+        if (!m) return false;
+        var qx = (px - tx * T) < 10 ? 0 : 1, qy = (py - ty * T) < 10 ? 0 : 1;
+        return (m & (1 << (qy * 2 + qx))) !== 0;
+      }
+      return v === STEEL || v === BASE;
     }
     function hitsWall(x, y, w, h) {
       var l = x - w / 2, t = y - h / 2;
@@ -74,10 +88,17 @@ ARCADE.register({
     }
     function spawnEnemy() {
       if (left <= 0) return;
+      // 三个出生点轮换，被占（顶上有邻居）就顺延到下一个
       var spots = [1, COLS / 2, COLS - 2];
-      var sx = spots[(enemies.length + wave) % 3] * T + 10;
-      for (var i = 0; i < enemies.length; i++)
-        if (Math.abs(enemies[i].x - sx) < T * 2 && enemies[i].y < T * 2) return;
+      var sx = 0, free = false;
+      for (var s = 0; s < 3; s++) {
+        var cand = spots[(spawnTurn + s) % 3] * T + 10, ok = true;
+        for (var i = 0; i < enemies.length; i++)
+          if (Math.abs(enemies[i].x - cand) < T * 2 && enemies[i].y < T * 2) { ok = false; break; }
+        if (ok) { sx = cand; free = true; break; }
+      }
+      if (!free) return;
+      spawnTurn++;
       var r = Math.random(), type = r < 0.45 ? 0 : r < 0.75 ? 1 : r < 0.92 ? 2 : 3;
       enemies.push({
         x: sx, y: T + 10, dir: 2, type: type, hp: type === 2 ? 3 : 1,
@@ -96,7 +117,7 @@ ARCADE.register({
 
     // ---------- 输入 ----------
     api.panel([['←→↑↓', '驾驶'], ['SPACE', '开炮'], ['P', '暂停'], ['ESC', '片库']],
-      '机台秘技：击毁紫色重坦会掉 ☕ 咖啡之力，双管齐发 10 秒');
+      '机台秘技：紫色重坦必掉道具——☕ 双管炮 / 💣 全灭 / ⛨ 护盾；双管火力能轰开钢块');
     function onKey(k, down) {
       if (k === 'ArrowLeft' || k === 'a' || k === 'A') keys.left = down;
       if (k === 'ArrowRight' || k === 'd' || k === 'D') keys.right = down;
@@ -115,6 +136,21 @@ ARCADE.register({
       else nx = Math.round((t.x - 10) / 10) * 10 + 10;
       if (nx < 10 || nx > W - 10 || ny < 10 || ny > H - 10) return false;
       if (hitsWall(nx, ny, 16, 16)) return false;
+      // 坦克互撞：敌人之间互相阻挡；敌人可以撞进玩家（触发接触击毁）
+      var probe = { x: nx, y: ny };
+      if (t === player) {
+        for (var i = 0; i < enemies.length; i++) {
+          var o = enemies[i];
+          if (o.spawnAnim > 0) continue;
+          if (rectsHit(probe, o, 14)) return false;
+        }
+      } else {
+        for (var j = 0; j < enemies.length; j++) {
+          var o2 = enemies[j];
+          if (o2 === t || o2.spawnAnim > 0) continue;
+          if (rectsHit(probe, o2, 14)) return false;
+        }
+      }
       t.x = nx; t.y = ny;
       return true;
     }
@@ -140,11 +176,22 @@ ARCADE.register({
       var v = map[ty][tx];
       if (v === BASE && b.player !== undefined) { destroyBase(); return true; }
       if (v === BRICK) {
-        map[ty][tx] = EMPTY;
+        // 经典半砖破坏：横向弹轰掉命中侧的左/右半格，纵向弹轰掉上/下半格
+        var m = brickMask[ty][tx] || 0;
+        var lx = b.x - tx * T, ly = b.y - ty * T;
+        if (b.vx !== 0) m &= ~(3 << (lx < 10 ? 0 : 1));
+        else m &= ~(3 << ((ly < 10 ? 0 : 1) * 2));
+        brickMask[ty][tx] = m;
+        if (!m) map[ty][tx] = EMPTY;
         boom(b.x, b.y, 4, C.brickDark);
         return true;
       }
-      if (v === STEEL) { boom(b.x, b.y, 2, C.steelHi); return true; }
+      if (v === STEEL) {
+        // 经典满级火力才能轰开钢块
+        if (b.power) { map[ty][tx] = EMPTY; boom(b.x, b.y, 8, C.steelHi); }
+        else boom(b.x, b.y, 2, C.steelHi);
+        return true;
+      }
       return false;
     }
     function destroyBase() {
@@ -210,43 +257,47 @@ ARCADE.register({
         if (player.alive && invuln <= 0 && rectsHit(e, player, 14)) killPlayer();
       }
 
-      // 子弹
+      // 子弹：用 dead 标记，帧末统一清理（原实现在互消时误用
+      // splice(下标) 单参形式——它会从该下标删到数组末尾，随后
+      // 外层循环读到 undefined 抛异常，rAF 链断裂导致整机卡死）
       for (var b = bullets.length - 1; b >= 0; b--) {
         var bl = bullets[b];
+        if (bl.dead) continue;
         bl.x += bl.vx; bl.y += bl.vy;
-        if (bl.x < 0 || bl.y < 0 || bl.x > W || bl.y > H) { bullets.splice(b, 1); continue; }
-        if (bulletHitTile(bl)) { bullets.splice(b, 1); continue; }
-        var gone = false;
+        if (bl.x < 0 || bl.y < 0 || bl.x > W || bl.y > H) { bl.dead = true; continue; }
+        if (bulletHitTile(bl)) { bl.dead = true; continue; }
         // 子弹互消
-        for (var o = bullets.length - 1; o >= 0; o--) {
-          if (o !== b && bullets[o].player !== bl.player && rectsHit(bl, bullets[o], 4)) {
-            bullets.splice(Math.max(o, b)); bullets.splice(Math.min(o, b));
-            gone = true; break;
+        for (var o = 0; o < bullets.length; o++) {
+          var ob = bullets[o];
+          if (o !== b && !ob.dead && ob.player !== bl.player && rectsHit(bl, ob, 4)) {
+            bl.dead = true; ob.dead = true;
+            boom((bl.x + ob.x) / 2, (bl.y + ob.y) / 2, 3, '#fff');
+            break;
           }
         }
-        if (gone) continue;
+        if (bl.dead) continue;
         if (bl.player) {
           for (var j = enemies.length - 1; j >= 0; j--) {
             var en = enemies[j];
             if (en.spawnAnim > 0) continue;
             if (rectsHit(bl, en, 10)) {
-              bullets.splice(b, 1);
+              bl.dead = true;
               en.hp--;
               if (en.hp <= 0) {
                 score += [100, 200, 400, 300][en.type];
                 boom(en.x, en.y, 10, [C.e1, C.e2, C.e3, C.e4][en.type]);
-                if (en.type === 2) powerups.push({ x: en.x, y: en.y, t: 400 });
+                if (en.type === 2) powerups.push({ x: en.x, y: en.y, t: 400, kind: (Math.random() * 3) | 0 });
                 enemies.splice(j, 1);
               } else boom(bl.x, bl.y, 2, '#fff');
-              gone = true; break;
+              break;
             }
           }
         } else if (player.alive && invuln <= 0 && rectsHit(bl, player, 10)) {
-          bullets.splice(b, 1);
+          bl.dead = true;
           killPlayer();
         }
-        if (gone) continue;
       }
+      for (var c = bullets.length - 1; c >= 0; c--) if (bullets[c].dead) bullets.splice(c, 1);
 
       // 道具
       for (var p = powerups.length - 1; p >= 0; p--) {
@@ -255,20 +306,34 @@ ARCADE.register({
         if (pu.t <= 0) { powerups.splice(p, 1); continue; }
         if (player.alive && rectsHit(pu, player, 14)) {
           powerups.splice(p, 1);
-          powerUntil = performance.now() + 10000;
           boom(player.x, player.y, 8, C.gold);
+          if (pu.kind === 1) {
+            // 💣 全灭：场上所有敌人爆炸，各计 100 分
+            for (var k = enemies.length - 1; k >= 0; k--) {
+              boom(enemies[k].x, enemies[k].y, 8, [C.e1, C.e2, C.e3, C.e4][enemies[k].type]);
+              score += 100;
+            }
+            enemies.length = 0;
+          } else if (pu.kind === 2) {
+            invuln = 560; // ⛨ 护盾约 9 秒
+          } else {
+            powerUntil = performance.now() + 10000; // ☕ 双管炮
+          }
         }
       }
 
       updateBooms();
 
-      // 波次清空
+      // 波次清空：重建地图并把玩家送回出生点，
+      // 否则玩家可能正站在重建出来的钢块/砖里，钢块打不掉就是永久卡死
       if (left === 0 && enemies.length === 0 && respawnT === 0 && player.alive) {
         wave++;
         left = 5 + wave * 2;
         spawnTimer = 30;
         buildMap();
+        bullets = [];
         powerups = [];
+        spawnPlayer();
         banner = 90;
       }
       if (banner > 0) banner--;
@@ -326,10 +391,16 @@ ARCADE.register({
         for (var tx = 0; tx < COLS; tx++) {
           var v = map[ty][tx];
           if (v === BRICK) {
-            rect(tx * T, ty * T, T, T, C.brickDark);
-            for (var b = 0; b < 2; b++) {
-              rect(tx * T + 1, ty * T + 1 + b * 10, 18, 8, C.brick);
-              rect(tx * T + 1 + (b % 2 ? 9 : 0), ty * T + 1 + b * 10, 9, 8, C.brickDark);
+            // 按象限画半砖：被轰掉的部分露底色
+            var m = brickMask[ty][tx] || 0;
+            for (var q = 0; q < 4; q++) {
+              if (!(m & (1 << q))) continue;
+              var bx = tx * T + (q % 2) * 10, by = ty * T + (q >> 1) * 10;
+              rect(bx, by, 10, 10, C.brickDark);
+              rect(bx + 1, by + 1, 8, 4, C.brick);
+              rect(bx + 1, by + 5, 8, 4, C.brick);
+              rect(bx + 4, by + 1, 1, 4, C.brickDark);
+              rect(bx + 1, by + 5, 1, 4, C.brickDark);
             }
           } else if (v === STEEL) {
             rect(tx * T + 2, ty * T + 2, 16, 16, C.steel);
@@ -359,14 +430,27 @@ ARCADE.register({
       for (var bl = 0; bl < bullets.length; bl++)
         ctx.fillRect(Math.round(bullets[bl].x) - 1.5, Math.round(bullets[bl].y) - 1.5, 3, 3);
 
-      // 道具
+      // 道具（☕ 双管 / 💣 全灭 / ⛨ 护盾）
       for (var p = 0; p < powerups.length; p++) {
         var pu = powerups[p];
         if ((pu.t >> 3) % 2 === 0) {
-          rect(pu.x - 6, pu.y - 5, 12, 10, '#ff9f64');
-          rect(pu.x + 6, pu.y - 3, 3, 6, '#ff9f64');
-          rect(pu.x - 3, pu.y - 8, 2, 3, '#f5f7fa');
-          rect(pu.x + 1, pu.y - 9, 2, 3, '#f5f7fa');
+          if (pu.kind === 1) {
+            ctx.fillStyle = '#333c46';
+            ctx.beginPath(); ctx.arc(pu.x, pu.y + 2, 6, 0, 7); ctx.fill();
+            rect(pu.x - 1, pu.y - 8, 2, 5, C.gold);
+            rect(pu.x + 1, pu.y - 9, 2, 2, '#ff9f64');
+          } else if (pu.kind === 2) {
+            ctx.strokeStyle = '#7ec8ff'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(pu.x, pu.y + 1, 6, 0, 7); ctx.stroke();
+            ctx.fillStyle = '#7ec8ff';
+            rect(pu.x - 1, pu.y - 4, 2, 11, '#7ec8ff');
+            rect(pu.x - 5, pu.y, 10, 2, '#7ec8ff');
+          } else {
+            rect(pu.x - 6, pu.y - 5, 12, 10, '#ff9f64');
+            rect(pu.x + 6, pu.y - 3, 3, 6, '#ff9f64');
+            rect(pu.x - 3, pu.y - 8, 2, 3, '#f5f7fa');
+            rect(pu.x + 1, pu.y - 9, 2, 3, '#f5f7fa');
+          }
         }
       }
 
@@ -406,7 +490,7 @@ ARCADE.register({
     function reset() {
       score = 0; lives = 3; wave = 1;
       left = 5 + wave * 2; spawnTimer = 30;
-      powerUntil = 0; splash = 0; banner = 0; respawnT = 0;
+      powerUntil = 0; splash = 0; banner = 0; respawnT = 0; spawnTurn = 0;
       enemies = []; bullets = []; powerups = []; booms = [];
       buildMap();
       spawnPlayer();

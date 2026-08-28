@@ -13,7 +13,8 @@ ARCADE.register({
       player: '#ffd166', hud: '#8899bb',
       green: '#3fae5a', gold: '#ffd166',
       conv: '#2d7a8c', convHi: '#4db8cc',        // 跑步机
-      crumb: '#a8862f', crumbHi: '#d4b05e'       // 脆板
+      crumb: '#a8862f', crumbHi: '#d4b05e',      // 脆板
+      spring: '#3fae5a', springHi: '#8fe0a2'     // 弹簧板
     };
     var FH = 14;            // 楼层厚度
     var MAXF = 100;
@@ -33,12 +34,21 @@ ARCADE.register({
       else gx = 50 + Math.random() * (W - 100 - gap);
       var f = {
         y: y, segs: [[0, gx], [gx + gap, W - gx - gap]],
-        spike: null, type: 'normal', dir: 0, timer: -1
+        spike: null, spring: null, type: 'normal', dir: 0, timer: -1
       };
-      // 楼层类型：跑步机 22% / 脆板 12%
+      // 楼层类型：跑步机 20% / 脆板 12% / 弹簧板 12%
       var r = Math.random();
-      if (r < 0.22) { f.type = 'conveyor'; f.dir = Math.random() < 0.5 ? -1 : 1; }
-      else if (r < 0.34) f.type = 'crumble';
+      if (r < 0.20) { f.type = 'conveyor'; f.dir = Math.random() < 0.5 ? -1 : 1; }
+      else if (r < 0.32) f.type = 'crumble';
+      else if (r < 0.44) f.type = 'spring';
+      // 弹簧板：放在某一段的中部，两侧留落脚空间
+      if (f.type === 'spring') {
+        var side = f.segs[0][1] >= 60 ? 0 : (f.segs[1][1] >= 60 ? 1 : -1);
+        if (side >= 0) {
+          var segX = f.segs[side][0], segW = f.segs[side][1];
+          f.spring = [segX + 16 + Math.random() * Math.max(0, segW - 60), 28];
+        } else f.type = 'normal';
+      }
       // 尖刺只出现在普通层，且给两侧留出落脚空间
       if (f.type === 'normal' && Math.random() < 0.3) {
         var sw = 32;
@@ -65,7 +75,7 @@ ARCADE.register({
     }
 
     api.panel([['←→', '移动'], ['SPACE/↑', '跳跃(长按更高)'], ['P', '暂停'], ['ESC', '片库']],
-      '机台秘技：金色亮边就是出路；尖刺能跳过去；跑步机推人、脆板踩了就碎');
+      '机台秘技：金色亮边是出路；尖刺能跳过去；绿色弹簧板会把你弹上天花板——躲着走');
     function onKey(k, down) {
       if (k === 'ArrowLeft' || k === 'a' || k === 'A') keys.left = down;
       if (k === 'ArrowRight' || k === 'd' || k === 'D') keys.right = down;
@@ -113,8 +123,9 @@ ARCADE.register({
         return;
       }
 
-      // 加速与生成
-      speed = 0.9 + Math.min(4.2, score * 0.04);
+      // 加速与生成。速度上限 4.3 必须低于下落上限 4.4：
+      // 否则高分段地板上升比极限下落还快，站着只会被一路顶上天花板，100 层物理上不可达
+      speed = 0.9 + Math.min(3.4, score * 0.04);
       spawnY -= speed;
       while (spawnY <= H - FH) {
         floors.push(newFloor(H));
@@ -169,10 +180,20 @@ ARCADE.register({
         if (under.spike && man.x > under.spike[0] - 4 && man.x < under.spike[0] + under.spike[1] + 4) {
           dead = true; deadTimer = 0; shakeT = 10; return;
         }
-        man.onGround = true;
-        man.stand = under;
-        if (under.type === 'crumble' && under.timer < 0) under.timer = 42;
-        if (under.type === 'conveyor') man.x = clamp(man.x + under.dir * 1.1, 6, W - 6);
+        if (under.type === 'spring' && under.spring &&
+            man.x > under.spring[0] - 2 && man.x < under.spring[0] + under.spring[1] + 2) {
+          // 弹簧板：立刻弹起（长按跳跃键会弹得更高，小心天花板）
+          man.vy = -7.6;
+          man.onGround = false;
+          man.stand = null;
+          shakeT = 4;
+          boom(man.x, under.y - 3, 6, C.springHi, true);
+        } else {
+          man.onGround = true;
+          man.stand = under;
+          if (under.type === 'crumble' && under.timer < 0) under.timer = 42;
+          if (under.type === 'conveyor') man.x = clamp(man.x + under.dir * 1.1, 6, W - 6);
+        }
       } else {
         man.onGround = false;
         man.stand = null;
@@ -270,6 +291,19 @@ ARCADE.register({
             ctx.moveTo(sx + t, f.y - 2);
             ctx.lineTo(sx + t + 4, f.y - 7);
             ctx.lineTo(sx + t + 8, f.y - 2);
+            ctx.closePath(); ctx.fill();
+          }
+        }
+        if (f.spring) {
+          // 弹簧板：绿色垫子 + 向上箭头
+          var px0 = f.spring[0], pw = f.spring[1];
+          rect(px0, f.y - 3, pw, 3, C.spring);
+          ctx.fillStyle = C.springHi;
+          for (var t2 = 0; t2 < pw; t2 += 14) {
+            ctx.beginPath();
+            ctx.moveTo(px0 + t2 + 3, f.y - 4);
+            ctx.lineTo(px0 + t2 + 7, f.y - 10);
+            ctx.lineTo(px0 + t2 + 11, f.y - 4);
             ctx.closePath(); ctx.fill();
           }
         }
