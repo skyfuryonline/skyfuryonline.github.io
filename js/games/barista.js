@@ -85,7 +85,9 @@ ARCADE.register({
       zoneC = zoneBase;
       driftSeed = Math.random() * 6.28;
       needle = BARX; needleDir = 1;
-      state = 'sweep'; stateT = 0;
+      // 每单第一道工序停在起跑线：看清判定区再起针，起针前耐心不倒计时
+      state = phaseIdx === 0 ? 'ready' : 'sweep';
+      stateT = 0;
     }
 
     function needleSpeed() {
@@ -107,7 +109,9 @@ ARCADE.register({
     }
 
     function press() {
-      if (over || state !== 'sweep') return;
+      if (over) return;
+      if (state === 'ready') { state = 'sweep'; return; } // 起针这一下不作判定
+      if (state !== 'sweep') return;
       var d = Math.abs(needle - zoneC);
       if (d <= CORE) hit('perfect');
       else if (d <= zoneH) hit('good');
@@ -282,7 +286,7 @@ ARCADE.register({
       rect(BARX, BARY, BARW, BARH, C.bar);
       ctx.strokeStyle = C.barEdge; ctx.lineWidth = 1;
       ctx.strokeRect(BARX + 0.5, BARY + 0.5, BARW - 1, BARH - 1);
-      if (state === 'sweep' || state === 'resolve') {
+      if (state === 'sweep' || state === 'resolve' || state === 'ready') {
         // 判定区
         rect(zoneC - zoneH, BARY - 4, zoneH * 2, BARH + 8, C.zone);
         rect(zoneC - zoneH, BARY - 4, 2, BARH + 8, C.zoneHi);
@@ -346,8 +350,18 @@ ARCADE.register({
         ctx.fillText('手冲大师 ×2 · ' + Math.ceil((feverUntil - frame) / 60) + 's', W / 2, 80);
       }
 
-      // 新订单横幅
-      if (bannerT > 0) {
+      // 新订单横幅：ready 态固定显示在判定条下方（不挡判定区），可无限等
+      if (state === 'ready') {
+        ctx.fillStyle = 'rgba(6,10,16,.72)';
+        ctx.fillRect(0, 178, W, 44);
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 16px monospace';
+        ctx.fillStyle = C.gold;
+        ctx.fillText('新订单: ' + order.name + ' ☕', W / 2, 196);
+        ctx.font = '10px monospace';
+        ctx.fillStyle = (frame >> 4) % 2 ? C.text : C.hud;
+        ctx.fillText('SPACE / 点击 起针 · 按下前耐心不倒计时', W / 2, 212);
+      } else if (bannerT > 0) {
         ctx.globalAlpha = Math.min(1, bannerT / 12);
         ctx.fillStyle = 'rgba(6,10,16,.7)';
         ctx.fillRect(0, H / 2 - 40, W, 54);
