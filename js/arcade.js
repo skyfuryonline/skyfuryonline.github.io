@@ -159,6 +159,22 @@
       ctx.closePath(); ctx.fill();
       ctx.fillStyle = COL.hot;
       ctx.fillRect(s * 0.28, s * 0.78, s * 0.44, s * 0.1);
+    } else if (id === 'jokerbrew') {
+      // 咖啡杯 + 小丑帽
+      ctx.fillStyle = COL.hot;
+      ctx.fillRect(s * 0.24, s * 0.52, s * 0.52, s * 0.3);
+      ctx.fillRect(s * 0.78, s * 0.58, s * 0.1, s * 0.16);
+      ctx.fillStyle = COL.gold;
+      ctx.beginPath();
+      ctx.moveTo(s * 0.2, s * 0.52);
+      ctx.lineTo(s * 0.3, s * 0.16); ctx.lineTo(s * 0.42, s * 0.42);
+      ctx.lineTo(s * 0.52, s * 0.06); ctx.lineTo(s * 0.62, s * 0.42);
+      ctx.lineTo(s * 0.8, s * 0.18); ctx.lineTo(s * 0.8, s * 0.52);
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = COL.bug;
+      ctx.fillRect(s * 0.26, s * 0.12, s * 0.08, s * 0.08);
+      ctx.fillRect(s * 0.48, s * 0.02, s * 0.08, s * 0.08);
+      ctx.fillRect(s * 0.75, s * 0.14, s * 0.08, s * 0.08);
     } else {
       ctx.fillStyle = COL.gold;
       ctx.font = 'bold ' + (s * 0.7) + 'px monospace';
@@ -169,12 +185,13 @@
   }
 
   function menuLayout() {
-    // 5 卡片：上排 3 张，下排 2 张（居中）
+    // 上排 3 张，下排按剩余数量居中（5 台=2 张，6 台=3 张）
     var cw = 138, ch = 116, gx = 14, gy = 14;
     var topY = 74, botY = topY + ch + gy;
-    var pos = [];
+    var n2 = Math.max(1, games.length - 3);
     var row1 = (W - (cw * 3 + gx * 2)) / 2;
-    var row2 = (W - (cw * 2 + gx)) / 2;
+    var row2 = (W - (cw * n2 + gx * (n2 - 1))) / 2;
+    var pos = [];
     for (var i = 0; i < games.length; i++) {
       if (i < 3) pos.push({ x: row1 + i * (cw + gx), y: topY });
       else pos.push({ x: row2 + (i - 3) * (cw + gx), y: botY });
@@ -200,7 +217,7 @@
     ctx.shadowBlur = 0;
     ctx.font = '10px monospace';
     ctx.fillStyle = COL.dim;
-    ctx.fillText('SKYFURY ARCADE · FIVE MACHINES · INSERT COFFEE ☕', W / 2, 54);
+      ctx.fillText('SKYFURY ARCADE · ' + games.length + ' MACHINES · INSERT COFFEE ☕', W / 2, 54);
 
     var L = menuLayout();
     blink++;
