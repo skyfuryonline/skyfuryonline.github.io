@@ -60,6 +60,12 @@ var JOKERBREW_JOKERS = [
   { id: 'decaf', name: '低因咖啡', ch: '低', color: '#8899bb', price: 4, xIf: { keys: ['high'], v: 4 }, desc: '出高牌 ×4 倍率' }
 ];
 
+// 教学关的固定手牌：保证一对 7 + 两张大牌，便于演示选对子出牌
+var JOKERBREW_TUT_HAND = [
+  { r: 7, s: 0 }, { r: 7, s: 1 }, { r: 14, s: 2 }, { r: 13, s: 3 },
+  { r: 3, s: 0 }, { r: 9, s: 1 }, { r: 11, s: 2 }, { r: 4, s: 3 }
+];
+
 ARCADE.register({
   id: 'jokerbrew',
   cn: '小丑杯',
@@ -82,6 +88,9 @@ ARCADE.register({
     var BTN_PLAY = { x: 46, y: 336, w: 110, h: 18 };
     var BTN_DISC = { x: 166, y: 336, w: 110, h: 18 };
     var BTN_TABLE = { x: 10, y: 58, w: 76, h: 20 };
+    var MENU_TUT = { x: 118, y: 196, w: 116, h: 32 };
+    var MENU_DIRECT = { x: 246, y: 196, w: 116, h: 32 };
+    var TUT_SKIP = { x: 96, y: 112, w: 140, h: 16 };
     var JOKER_N = 5, JK_W = 44, JK_H = 40, JK_GAP = 6;
     var JK_X0 = W - 10 - JOKER_N * JK_W - (JOKER_N - 1) * JK_GAP; // 226
     var JK_Y = 52;
@@ -93,13 +102,26 @@ ARCADE.register({
     var ante, target, roundScore, hands, discards, lives, score, money;
     var jokers, shopOffers, shopReroll, tableOpen, tipIdx, tipT;
     var popups, parts, shakeT, bannerT, frame, over;
+    var scene, tut, menuSel, lastRes;
 
     api.panel([['←→+ENTER', '选牌'], ['SPACE', '出牌'], ['D', '弃牌'], ['P', '暂停']],
       '机台秘技：对子是前期主力；「咖啡因上头」滚到后期是核弹——小丑要买得早');
 
     function onKey(k, down) {
-      if (!down || over) return;
+      if (!down) return;
+      if (scene === 'menu') {
+        if (k === 'ArrowLeft' || k === 'ArrowRight' || k === 'ArrowUp' || k === 'ArrowDown') menuSel = 1 - menuSel;
+        else if (k === 'Enter') startRun(true);
+        else if (k === ' ') startRun(false);
+        return;
+      }
+      if (over) return;
       if (tableOpen) { tableOpen = false; return; }
+      if (tut) {
+        if (k === 's' || k === 'S') { endTutorial(); return; }
+        // 选牌步(2)等玩家选对子；出牌步(4)等真正出牌；其余步骤 ENTER/SPACE 推进
+        if (tut.step !== 2 && tut.step !== 4 && (k === 'Enter' || k === ' ')) { tutAdvance(); return; }
+      }
       if (phase === 'anim') { if (anim) anim.t = 999; return; }
       if (phase === 'won' || phase === 'lost') { phaseT = 1; return; }
       if (phase === 'shop') {
@@ -117,8 +139,17 @@ ARCADE.register({
     }
 
     function onPointer(type, x, y) {
-      if (type !== 'down' || over) return;
+      if (type !== 'down') return;
+      if (scene === 'menu') {
+        if (inRect(x, y, MENU_TUT.x, MENU_TUT.y, MENU_TUT.w, MENU_TUT.h)) startRun(true);
+        else if (inRect(x, y, MENU_DIRECT.x, MENU_DIRECT.y, MENU_DIRECT.w, MENU_DIRECT.h)) startRun(false);
+        return;
+      }
+      if (over) return;
       if (tableOpen) { tableOpen = false; return; }
+      if (tut && inRect(x, y, TUT_SKIP.x, TUT_SKIP.y, TUT_SKIP.w, TUT_SKIP.h)) { endTutorial(); return; }
+      if (tut && tut.step !== 2 && tut.step !== 4 &&
+          x >= 250 && x <= 390 && y >= 112 && y <= 130) { tutAdvance(); return; } // 「继续 ▸」
       if (phase === 'anim') { if (anim) anim.t = 999; return; }
       if (phase === 'won' || phase === 'lost') { phaseT = 1; return; }
       if (phase === 'shop') {
@@ -137,13 +168,18 @@ ARCADE.register({
       }
       if (phase !== 'play') return;
       if (inRect(x, y, BTN_TABLE.x, BTN_TABLE.y, BTN_TABLE.w, BTN_TABLE.h)) { tableOpen = true; return; }
+      var tutIdle = tut && tut.step !== 2 && tut.step !== 4; // 教学等待步：点牌/空地都当“继续”
       for (var c = 0; c < hand.length; c++) {
         var cy = sel[c] ? HAND_Y_SEL : HAND_Y;
         if (x >= HAND_X + c * (CARD_W + GAP) && x <= HAND_X + c * (CARD_W + GAP) + CARD_W &&
-            y >= cy && y <= cy + CARD_H) { toggleSel(c); return; }
+            y >= cy && y <= cy + CARD_H) {
+          if (tutIdle) { tutAdvance(); return; }
+          toggleSel(c); return;
+        }
       }
       if (inRect(x, y, BTN_PLAY.x, BTN_PLAY.y, BTN_PLAY.w, BTN_PLAY.h)) { play(); return; }
       if (inRect(x, y, BTN_DISC.x, BTN_DISC.y, BTN_DISC.w, BTN_DISC.h)) { doDiscard(); return; }
+      if (tutIdle) tutAdvance();
     }
     function inRect(x, y, rx, ry, rw, rh) { return x >= rx && x <= rx + rw && y >= ry && y <= ry + rh; }
 
@@ -162,6 +198,7 @@ ARCADE.register({
       deck = newDeck();
       hand = [];
       for (var i = 0; i < HAND_N; i++) hand.push(deck.pop());
+      if (tut) for (i = 0; i < HAND_N; i++) hand[i] = JOKERBREW_TUT_HAND[i]; // 教学关发固定牌，保证有对子
       sel = []; for (i = 0; i < HAND_N; i++) sel.push(false);
       cursor = 0;
       hands = 5; discards = 3;
@@ -173,12 +210,38 @@ ARCADE.register({
     }
 
     function reset() {
-      ante = 1; lives = 3; score = 0; money = 3;
+      score = 0; lives = 3; money = 3; ante = 1;
       jokers = []; shopOffers = [null, null]; shopReroll = 2;
       tableOpen = false; tipIdx = -1; tipT = 0;
       popups = []; parts = []; shakeT = 0; bannerT = 0;
       frame = 0; over = false;
+      tut = null; lastRes = null;
+      scene = 'menu';
+      var done = false;
+      try { done = !!localStorage.getItem('jokerbrew_tut'); } catch (e) {}
+      menuSel = done ? 1 : 0; // 教学完成过的玩家，默认光标停在直接开牌
+    }
+
+    function startRun(withTut) {
+      ante = 1; lives = 3; score = 0; money = 3;
+      jokers = []; shopOffers = [null, null]; shopReroll = 2;
+      tableOpen = false; tipIdx = -1; tipT = 0;
+      popups = []; parts = []; shakeT = 0; bannerT = 0;
+      over = false; lastRes = null;
+      tut = withTut ? { step: 0 } : null;
+      scene = 'game';
       newRound();
+    }
+
+    function tutAdvance() {
+      if (!tut) return;
+      tut.step++;
+      if (tut.step >= 8) endTutorial();
+    }
+    function endTutorial() {
+      tut = null;
+      try { localStorage.setItem('jokerbrew_tut', '1'); } catch (e) {}
+      pop(240, 150, '教学完成，祝好运 ☕', C.gold, true);
     }
 
     // ---------- 选择 / 出牌 / 弃牌 ----------
@@ -191,6 +254,16 @@ ARCADE.register({
       if (phase !== 'play') return;
       if (!sel[i] && selectedIdx().length >= 5) { pop(240, 240, '最多选 5 张', C.miss, false); return; }
       sel[i] = !sel[i];
+      // 教学选牌步：凑成对子（及以上）自动进入下一步
+      if (tut && tut.step === 2 && sel[i]) {
+        var idx = selectedIdx();
+        if (idx.length >= 2) {
+          var cards = [];
+          for (var j = 0; j < idx.length; j++) cards.push(hand[idx[j]]);
+          var dd = jokerbrewDetect(cards);
+          if (dd.key !== 'high') tutAdvance();
+        }
+      }
     }
 
     function resolveScore(cards, forPreview) {
@@ -224,20 +297,24 @@ ARCADE.register({
 
     function play() {
       if (phase !== 'play' || hands <= 0) return;
+      if (tut && tut.step !== 4) return; // 教学中只在出牌步允许出牌
       var idx = selectedIdx();
       if (!idx.length) return;
       var cards = [];
       for (var i = 0; i < idx.length; i++) cards.push(hand[idx[i]]);
       var r = resolveScore(cards, false);
+      lastRes = r;
       score += r.total;
       roundScore += r.total;
       hands--;
       anim = { idx: idx, cards: cards, d: r.d, chips: r.chips, mult: r.mult, total: r.total, t: 0, burst: false };
       phase = 'anim'; phaseT = 0;
+      if (tut && tut.step === 4) tut.step = 5; // 出牌后讲解结算
     }
 
     function doDiscard() {
       if (phase !== 'play' || discards <= 0) return;
+      if (tut) { pop(240, 250, '教学中不可弃牌', C.miss, false); return; }
       var idx = selectedIdx();
       if (!idx.length) return;
       var flag = [];
@@ -359,6 +436,7 @@ ARCADE.register({
         if (popups[p].life <= 0) popups.splice(p, 1);
       }
       if (over) return;
+      if (scene === 'menu') return;
 
       if (phase === 'anim') {
         anim.t++;
@@ -619,6 +697,7 @@ ARCADE.register({
       for (var d = 0; d < 26; d++) {
         rect((d * 173 + 21) % W, 52 + (d * 89) % 290, 2, 2, C.feltDot);
       }
+      if (scene === 'menu') { drawMenu(); ctx.restore(); return; }
       drawTop();
       drawJokerRow();
       drawStage();
@@ -663,7 +742,70 @@ ARCADE.register({
 
       if (phase === 'shop') drawShop();
       if (tableOpen) drawPaytable();
+      if (tut) drawTutorial();
       ctx.restore();
+    }
+
+    // ---------- 模式选择 / 教学关 ----------
+    var TUT_LINES = [
+      ['欢迎来到小丑杯 ☕', '每关要打出目标分；出牌得分 = 筹码 × 倍率', '按 ENTER 开始教学'],
+      ['下方是你的 8 张手牌', '←→ 移动光标，ENTER 或点击 选/取消选牌'],
+      ['点选两张 7，组成【对子】', '（跟着金框走就行）'],
+      ['上方已显示预览：牌型 + 筹码 × 倍率 ≈ 分数', '牌型越强数字越大——这就是整个得分引擎'],
+      ['按 SPACE 或点击【出牌】！', '看结算：筹码先滚，倍率再翻'],
+      [function () {
+        if (!lastRes) return '刚才那手牌的得分见上方数字';
+        return '拆解：' + lastRes.d.label + ' 基础' + lastRes.d.chips + ' + 牌面 = ' + lastRes.chips + ' × ' + lastRes.mult + ' = ' + lastRes.total;
+      }, '小丑牌就是在这些加数和乘数上做文章'],
+      ['右上角是目标分，打够就过关', '每轮 5 次出牌 · 3 次弃牌（教学中已锁定）'],
+      ['过关后进商店，买小丑滚雪球！', '教学完成 ✔ 祝你好运']
+    ];
+
+    function drawMenu() {
+      txt(240, 86, '小 丑 杯', 34, C.gold, 'center', true);
+      txt(240, 112, 'JOKER BREW · 扑克肉鸽迷你版', 11, C.dim, 'center');
+      txt(240, 148, '出牌型得分 = 筹码 × 倍率', 13, C.text, 'center', true);
+      txt(240, 168, '打够目标分过关 · 商店买小丑滚雪球', 10, C.dim, 'center');
+      drawMenuBtn(MENU_TUT, '新手教学', menuSel === 0);
+      drawMenuBtn(MENU_DIRECT, '直接开牌', menuSel === 1);
+      txt(240, 250, 'ENTER 教学 · SPACE 直接开始', 10, C.hud, 'center');
+      txt(240, 268, '首次游玩建议先来一局教学', 9, '#5a4a30', 'center');
+      txt(240, 340, '最高分 ' + (api.best || 0), 11, C.gold, 'center', true);
+    }
+    function drawMenuBtn(b, label, on) {
+      rect(b.x, b.y, b.w, b.h, on ? C.gold : C.panel);
+      ctx.strokeStyle = on ? C.cardSel : C.panelEdge;
+      ctx.lineWidth = on ? 2 : 1;
+      ctx.strokeRect(b.x + 0.5, b.y + 0.5, b.w - 1, b.h - 1);
+      txt(b.x + b.w / 2, b.y + 21, label, 13, on ? '#241505' : C.text, 'center', true);
+    }
+
+    function drawTutorial() {
+      if (!tut) return;
+      var s = tut.step;
+      if (s === 2) {
+        var pulse = 2 + Math.sin(frame * 0.15) * 2;
+        ctx.strokeStyle = C.gold;
+        ctx.lineWidth = 3;
+        for (var h = 0; h < 2; h++)
+          ctx.strokeRect(HAND_X + h * (CARD_W + GAP) - 3 - pulse * 0.5, HAND_Y - 3 - pulse * 0.5, CARD_W + 6 + pulse, CARD_H + 6 + pulse);
+      }
+      if (s === 4) {
+        var p2 = 2 + Math.sin(frame * 0.2) * 2;
+        ctx.strokeStyle = C.gold; ctx.lineWidth = 3;
+        ctx.strokeRect(BTN_PLAY.x - 3 - p2 * 0.5, BTN_PLAY.y - 3 - p2 * 0.5, BTN_PLAY.w + 6 + p2, BTN_PLAY.h + 6 + p2);
+      }
+      rect(80, 50, 320, 84, 'rgba(6,4,2,.94)');
+      ctx.strokeStyle = C.gold; ctx.lineWidth = 1.5;
+      ctx.strokeRect(80.5, 50.5, 319, 83);
+      var lines = TUT_LINES[s] || [];
+      for (var i = 0; i < lines.length; i++) {
+        var v = typeof lines[i] === 'function' ? lines[i]() : lines[i];
+        txt(240, 66 + i * 15, v, 10.5, i === 0 ? C.gold : C.text, 'center', i === 0);
+      }
+      rect(TUT_SKIP.x, TUT_SKIP.y, TUT_SKIP.w, TUT_SKIP.h, 'rgba(255,209,102,.08)');
+      txt(104, 124, 'S · 跳过教学', 9, C.dim, 'left');
+      if (s !== 2 && s !== 4 && (frame >> 4) % 2) txt(376, 124, 'ENTER / 点击 继续 ▸', 9, C.gold, 'right', true);
     }
 
     reset();
