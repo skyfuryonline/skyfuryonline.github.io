@@ -20,12 +20,17 @@
   group_image: "/img/cover-zaji.png"
   group_description: "记录个人博客搭建的过程"
   posts:
-    - "2026-05-30-blog-dev-guide-tags-redesign.md"
     - "2026-03-24-blog-dev-guide-architecture.md"
     - "2026-03-24-blog-dev-guide-cicd.md"
     - "2026-03-24-blog-dev-guide-crawler-llm.md"
     - "2026-03-24-blog-dev-guide-new-post.md"
     - "2026-03-24-blog-dev-guide-new-group.md"
+    - "2026-05-30-blog-dev-guide-tags-redesign.md"
+    - "2026-08-29-blog-dev-guide-07-game-loop-fsm.md"
+    - "2026-08-29-blog-dev-guide-08-plugin-framework.md"
+    - "2026-08-29-blog-dev-guide-09-collision.md"
+    - "2026-08-29-blog-dev-guide-10-random-and-pipe-bug.md"
+    - "2026-08-29-blog-dev-guide-11-headless-testing.md"
 
 - group_name: "视野"
   url: "/groups/vision/"
