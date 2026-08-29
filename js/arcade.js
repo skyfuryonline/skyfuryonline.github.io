@@ -147,6 +147,18 @@
       ctx.beginPath(); ctx.moveTo(s * 0.84, s * 0.85); ctx.lineTo(s * 0.58, s * 0.62); ctx.stroke();
       ctx.fillStyle = '#f5f7fa';
       ctx.beginPath(); ctx.arc(s * 0.5, s * 0.62, s * 0.05, 0, 7); ctx.fill();
+    } else if (id === 'barista') {
+      // 秒表 + 咖啡杯：时机游戏
+      ctx.strokeStyle = COL.gold; ctx.lineWidth = s * 0.07;
+      ctx.beginPath(); ctx.arc(s * 0.5, s * 0.55, s * 0.3, 0, 7); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(s * 0.5, s * 0.12); ctx.lineTo(s * 0.5, s * 0.28); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(s * 0.66, s * 0.16); ctx.lineTo(s * 0.76, s * 0.08); ctx.stroke();
+      ctx.fillStyle = COL.hot;
+      ctx.beginPath();
+      ctx.moveTo(s * 0.5, s * 0.55); ctx.lineTo(s * 0.44, s * 0.38); ctx.lineTo(s * 0.54, s * 0.42);
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = COL.hot;
+      ctx.fillRect(s * 0.28, s * 0.78, s * 0.44, s * 0.1);
     } else {
       ctx.fillStyle = COL.gold;
       ctx.font = 'bold ' + (s * 0.7) + 'px monospace';
