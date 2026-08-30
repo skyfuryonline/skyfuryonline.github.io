@@ -2086,7 +2086,7 @@ noindex: true
 
 // ---------- 基础三件套 ----------
 var container = document.getElementById('app');
-var renderer = new THREE.WebGLRenderer({ antialias: true });
+var renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });   // Windows 双显卡机防闪烁
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
