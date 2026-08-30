@@ -534,6 +534,25 @@ function renderCalendar(viewDate, activeDate) {
   });
 })();
 
+// -------- Easter Egg: Pixel Cat → 雨夜便利店 ヨルマート --------
+(function() {
+  var cat = document.querySelector('.pixel-cat');
+  if (!cat) return;
+
+  var clickTimes = [];
+  cat.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var now = Date.now();
+    clickTimes.push(now);
+    clickTimes = clickTimes.filter(function(t) { return now - t < 2000; });
+    if (clickTimes.length >= 3) {
+      clickTimes = [];
+      var base = (typeof SITE_BASEURL !== 'undefined') ? SITE_BASEURL : '';
+      window.location.href = base + '/rain/';
+    }
+  });
+})();
+
 // -------- Easter Egg: Pixel Plant → JZXM Terminal --------
 (function() {
   var plant = document.querySelector('.pixel-plant');
