@@ -2361,9 +2361,9 @@ box(7.0, 0.55, 0.14, 0x8a93a2, 0, 2.55, STORE.z1, { parent: store, std: true });
 box(6.8, 0.06, 4.0, 0x8a8078, 0, 0.05, -3.2, { parent: store, noShadow: true, emissive: 0x241a10 }); // 店内地板（暖）
 
 // 玻璃橱窗（左右两片 + 中央自动门）
-var glassMat = new THREE.MeshPhysicalMaterial({
+var glassMat = new THREE.MeshBasicMaterial({
   color: new THREE.Color(0x9fd8ff).convertSRGBToLinear(), transparent: true, opacity: 0.16,
-  roughness: 0.05, metalness: 0.1, side: THREE.DoubleSide, depthWrite: false
+  side: THREE.DoubleSide, depthWrite: false
 });
 var glassL = box(2.55, 2.0, 0.03, 0xffffff, -1.98, 0.55, STORE.z1, { parent: store, basic: true, noShadow: true });
 glassL.material = glassMat;
@@ -2408,15 +2408,15 @@ box(7.3, 0.05, 0.1, 0x227464, 0, 2.27, -0.26, { parent: store });   // 雨棚前
   var tex2 = tex;
   var mat = new THREE.MeshBasicMaterial({ map: tex });
   var m = new THREE.Mesh(new THREE.BoxGeometry(3.3, 0.66, 0.1), mat);
-  m.position.set(0, 2.95, STORE.z1 + 0.02);
+  m.position.set(0, 2.95, STORE.z1 + 0.06);
   store.add(m);
   M.signMat = mat;
   // 招牌两侧小灯箱
-  box(0.42, 0.5, 0.08, 0x0f1522, -2.6, 2.72, STORE.z1 + 0.01, { parent: store, basic: true });
-  box(0.42, 0.5, 0.08, 0x0f1522, 2.6, 2.72, STORE.z1 + 0.01, { parent: store, basic: true });
+  box(0.42, 0.5, 0.08, 0x0f1522, -2.6, 2.72, STORE.z1 + 0.05, { parent: store, basic: true });
+  box(0.42, 0.5, 0.08, 0x0f1522, 2.6, 2.72, STORE.z1 + 0.05, { parent: store, basic: true });
   M.signLampR = basic(0xff9a5a, { transparent: true, opacity: 0.9 });
   var lampR = new THREE.Mesh(new THREE.PlaneGeometry(0.32, 0.4), M.signLampR);
-  lampR.position.set(2.6, 2.97, STORE.z1 + 0.07); store.add(lampR);
+  lampR.position.set(2.6, 2.97, STORE.z1 + 0.11); store.add(lampR);
 })();
 
 // 墙上的空调外机（东墙外侧）
@@ -2458,7 +2458,7 @@ drinkCooler(0.35, 1.7);
 
 // 背墙右段：便当区（蓝白卧式柜 + 上层墙面货架）
 box(2.4, 1.15, 0.55, 0xbfe0f0, 2.15, 0.1, -4.85, { parent: store, outline: true, oScale: 1.02 });
-decal(2.1, 0.4, 0x8fd0e8, 2.15, 1.26, -4.72, { opacity: 0.9, order: 4, parent: store });
+decal(2.1, 0.4, 0x8fd0e8, 2.15, 1.26, -4.53, { opacity: 0.9, order: 4, parent: store });
 for (var bi = 0; bi < 5; bi++) {
   box(0.34, 0.16, 0.3, GOOD_COLORS[bi % 3], 1.25 + bi * 0.45, 1.18, -4.82, { parent: store, noShadow: true });
 }
