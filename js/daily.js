@@ -548,7 +548,7 @@ function renderCalendar(viewDate, activeDate) {
     if (clickTimes.length >= 3) {
       clickTimes = [];
       var base = (typeof SITE_BASEURL !== 'undefined') ? SITE_BASEURL : '';
-      window.location.href = base + '/afternoon/';
+      window.location.href = base + '/afternoon/?v=' + Date.now();   // 时间戳防缓存：改版后不会看到旧页面
     }
   });
 })();
