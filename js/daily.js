@@ -534,7 +534,7 @@ function renderCalendar(viewDate, activeDate) {
   });
 })();
 
-// -------- Easter Egg: Pixel Cat → 雨夜便利店 ヨルマート --------
+// -------- Easter Egg: Pixel Cat → 午後のコンビニ ヨルマート --------
 (function() {
   var cat = document.querySelector('.pixel-cat');
   if (!cat) return;
@@ -548,7 +548,7 @@ function renderCalendar(viewDate, activeDate) {
     if (clickTimes.length >= 3) {
       clickTimes = [];
       var base = (typeof SITE_BASEURL !== 'undefined') ? SITE_BASEURL : '';
-      window.location.href = base + '/rain/';
+      window.location.href = base + '/afternoon/';
     }
   });
 })();
