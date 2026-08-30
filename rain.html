@@ -1135,6 +1135,947 @@ noindex: true
 
 } )();
 {% endraw %}</script>
+<script>{% raw %}( function () {
+
+	/**
+ * Full-screen textured quad shader
+ */
+
+	const CopyShader = {
+		uniforms: {
+			'tDiffuse': {
+				value: null
+			},
+			'opacity': {
+				value: 1.0
+			}
+		},
+		vertexShader: /* glsl */`
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vUv = uv;
+			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+		}`,
+		fragmentShader: /* glsl */`
+
+		uniform float opacity;
+
+		uniform sampler2D tDiffuse;
+
+		varying vec2 vUv;
+
+		void main() {
+
+			gl_FragColor = texture2D( tDiffuse, vUv );
+			gl_FragColor.a *= opacity;
+
+
+		}`
+	};
+
+	THREE.CopyShader = CopyShader;
+
+} )();
+{% endraw %}</script>
+<script>{% raw %}( function () {
+
+	/**
+ * Luminosity
+ * http://en.wikipedia.org/wiki/Luminosity
+ */
+
+	const LuminosityHighPassShader = {
+		shaderID: 'luminosityHighPass',
+		uniforms: {
+			'tDiffuse': {
+				value: null
+			},
+			'luminosityThreshold': {
+				value: 1.0
+			},
+			'smoothWidth': {
+				value: 1.0
+			},
+			'defaultColor': {
+				value: new THREE.Color( 0x000000 )
+			},
+			'defaultOpacity': {
+				value: 0.0
+			}
+		},
+		vertexShader: /* glsl */`
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vUv = uv;
+
+			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+		}`,
+		fragmentShader: /* glsl */`
+
+		uniform sampler2D tDiffuse;
+		uniform vec3 defaultColor;
+		uniform float defaultOpacity;
+		uniform float luminosityThreshold;
+		uniform float smoothWidth;
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vec4 texel = texture2D( tDiffuse, vUv );
+
+			vec3 luma = vec3( 0.299, 0.587, 0.114 );
+
+			float v = dot( texel.xyz, luma );
+
+			vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );
+
+			float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );
+
+			gl_FragColor = mix( outputColor, texel, alpha );
+
+		}`
+	};
+
+	THREE.LuminosityHighPassShader = LuminosityHighPassShader;
+
+} )();
+{% endraw %}</script>
+<script>{% raw %}( function () {
+
+	/**
+ * Gamma Correction Shader
+ * http://en.wikipedia.org/wiki/gamma_correction
+ */
+
+	const GammaCorrectionShader = {
+		uniforms: {
+			'tDiffuse': {
+				value: null
+			}
+		},
+		vertexShader: /* glsl */`
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vUv = uv;
+			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+		}`,
+		fragmentShader: /* glsl */`
+
+		uniform sampler2D tDiffuse;
+
+		varying vec2 vUv;
+
+		void main() {
+
+			vec4 tex = texture2D( tDiffuse, vUv );
+
+			gl_FragColor = LinearTosRGB( tex );
+
+		}`
+	};
+
+	THREE.GammaCorrectionShader = GammaCorrectionShader;
+
+} )();
+{% endraw %}</script>
+<script>{% raw %}( function () {
+
+	class EffectComposer {
+
+		constructor( renderer, renderTarget ) {
+
+			this.renderer = renderer;
+			if ( renderTarget === undefined ) {
+
+				const size = renderer.getSize( new THREE.Vector2() );
+				this._pixelRatio = renderer.getPixelRatio();
+				this._width = size.width;
+				this._height = size.height;
+				renderTarget = new THREE.WebGLRenderTarget( this._width * this._pixelRatio, this._height * this._pixelRatio );
+				renderTarget.texture.name = 'EffectComposer.rt1';
+
+			} else {
+
+				this._pixelRatio = 1;
+				this._width = renderTarget.width;
+				this._height = renderTarget.height;
+
+			}
+
+			this.renderTarget1 = renderTarget;
+			this.renderTarget2 = renderTarget.clone();
+			this.renderTarget2.texture.name = 'EffectComposer.rt2';
+			this.writeBuffer = this.renderTarget1;
+			this.readBuffer = this.renderTarget2;
+			this.renderToScreen = true;
+			this.passes = [];
+
+			// dependencies
+
+			if ( THREE.CopyShader === undefined ) {
+
+				console.error( 'THREE.EffectComposer relies on THREE.CopyShader' );
+
+			}
+
+			if ( THREE.ShaderPass === undefined ) {
+
+				console.error( 'THREE.EffectComposer relies on THREE.ShaderPass' );
+
+			}
+
+			this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
+			this.clock = new THREE.Clock();
+
+		}
+		swapBuffers() {
+
+			const tmp = this.readBuffer;
+			this.readBuffer = this.writeBuffer;
+			this.writeBuffer = tmp;
+
+		}
+		addPass( pass ) {
+
+			this.passes.push( pass );
+			pass.setSize( this._width * this._pixelRatio, this._height * this._pixelRatio );
+
+		}
+		insertPass( pass, index ) {
+
+			this.passes.splice( index, 0, pass );
+			pass.setSize( this._width * this._pixelRatio, this._height * this._pixelRatio );
+
+		}
+		removePass( pass ) {
+
+			const index = this.passes.indexOf( pass );
+			if ( index !== - 1 ) {
+
+				this.passes.splice( index, 1 );
+
+			}
+
+		}
+		isLastEnabledPass( passIndex ) {
+
+			for ( let i = passIndex + 1; i < this.passes.length; i ++ ) {
+
+				if ( this.passes[ i ].enabled ) {
+
+					return false;
+
+				}
+
+			}
+
+			return true;
+
+		}
+		render( deltaTime ) {
+
+			// deltaTime value is in seconds
+
+			if ( deltaTime === undefined ) {
+
+				deltaTime = this.clock.getDelta();
+
+			}
+
+			const currentRenderTarget = this.renderer.getRenderTarget();
+			let maskActive = false;
+			for ( let i = 0, il = this.passes.length; i < il; i ++ ) {
+
+				const pass = this.passes[ i ];
+				if ( pass.enabled === false ) continue;
+				pass.renderToScreen = this.renderToScreen && this.isLastEnabledPass( i );
+				pass.render( this.renderer, this.writeBuffer, this.readBuffer, deltaTime, maskActive );
+				if ( pass.needsSwap ) {
+
+					if ( maskActive ) {
+
+						const context = this.renderer.getContext();
+						const stencil = this.renderer.state.buffers.stencil;
+
+						//context.stencilFunc( context.NOTEQUAL, 1, 0xffffffff );
+						stencil.setFunc( context.NOTEQUAL, 1, 0xffffffff );
+						this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, deltaTime );
+
+						//context.stencilFunc( context.EQUAL, 1, 0xffffffff );
+						stencil.setFunc( context.EQUAL, 1, 0xffffffff );
+
+					}
+
+					this.swapBuffers();
+
+				}
+
+				if ( THREE.MaskPass !== undefined ) {
+
+					if ( pass instanceof THREE.MaskPass ) {
+
+						maskActive = true;
+
+					} else if ( pass instanceof THREE.ClearMaskPass ) {
+
+						maskActive = false;
+
+					}
+
+				}
+
+			}
+
+			this.renderer.setRenderTarget( currentRenderTarget );
+
+		}
+		reset( renderTarget ) {
+
+			if ( renderTarget === undefined ) {
+
+				const size = this.renderer.getSize( new THREE.Vector2() );
+				this._pixelRatio = this.renderer.getPixelRatio();
+				this._width = size.width;
+				this._height = size.height;
+				renderTarget = this.renderTarget1.clone();
+				renderTarget.setSize( this._width * this._pixelRatio, this._height * this._pixelRatio );
+
+			}
+
+			this.renderTarget1.dispose();
+			this.renderTarget2.dispose();
+			this.renderTarget1 = renderTarget;
+			this.renderTarget2 = renderTarget.clone();
+			this.writeBuffer = this.renderTarget1;
+			this.readBuffer = this.renderTarget2;
+
+		}
+		setSize( width, height ) {
+
+			this._width = width;
+			this._height = height;
+			const effectiveWidth = this._width * this._pixelRatio;
+			const effectiveHeight = this._height * this._pixelRatio;
+			this.renderTarget1.setSize( effectiveWidth, effectiveHeight );
+			this.renderTarget2.setSize( effectiveWidth, effectiveHeight );
+			for ( let i = 0; i < this.passes.length; i ++ ) {
+
+				this.passes[ i ].setSize( effectiveWidth, effectiveHeight );
+
+			}
+
+		}
+		setPixelRatio( pixelRatio ) {
+
+			this._pixelRatio = pixelRatio;
+			this.setSize( this._width, this._height );
+
+		}
+		dispose() {
+
+			this.renderTarget1.dispose();
+			this.renderTarget2.dispose();
+			this.copyPass.dispose();
+
+		}
+
+	}
+	class Pass {
+
+		constructor() {
+
+			// if set to true, the pass is processed by the composer
+			this.enabled = true;
+
+			// if set to true, the pass indicates to swap read and write buffer after rendering
+			this.needsSwap = true;
+
+			// if set to true, the pass clears its buffer before rendering
+			this.clear = false;
+
+			// if set to true, the result of the pass is rendered to screen. This is set automatically by EffectComposer.
+			this.renderToScreen = false;
+
+		}
+		setSize() {}
+		render() {
+
+			console.error( 'THREE.Pass: .render() must be implemented in derived pass.' );
+
+		}
+
+	}
+
+	// Helper for passes that need to fill the viewport with a single quad.
+
+	const _camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+
+	// https://github.com/mrdoob/three.js/pull/21358
+
+	const _geometry = new THREE.BufferGeometry();
+	_geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( [ - 1, 3, 0, - 1, - 1, 0, 3, - 1, 0 ], 3 ) );
+	_geometry.setAttribute( 'uv', new THREE.Float32BufferAttribute( [ 0, 2, 0, 0, 2, 0 ], 2 ) );
+	class FullScreenQuad {
+
+		constructor( material ) {
+
+			this._mesh = new THREE.Mesh( _geometry, material );
+
+		}
+		dispose() {
+
+			this._mesh.geometry.dispose();
+
+		}
+		render( renderer ) {
+
+			renderer.render( this._mesh, _camera );
+
+		}
+		get material() {
+
+			return this._mesh.material;
+
+		}
+		set material( value ) {
+
+			this._mesh.material = value;
+
+		}
+
+	}
+
+	THREE.EffectComposer = EffectComposer;
+	THREE.FullScreenQuad = FullScreenQuad;
+	THREE.Pass = Pass;
+
+} )();
+{% endraw %}</script>
+<script>{% raw %}( function () {
+
+	class RenderPass extends THREE.Pass {
+
+		constructor( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+
+			super();
+			this.scene = scene;
+			this.camera = camera;
+			this.overrideMaterial = overrideMaterial;
+			this.clearColor = clearColor;
+			this.clearAlpha = clearAlpha !== undefined ? clearAlpha : 0;
+			this.clear = true;
+			this.clearDepth = false;
+			this.needsSwap = false;
+			this._oldClearColor = new THREE.Color();
+
+		}
+		render( renderer, writeBuffer, readBuffer /*, deltaTime, maskActive */ ) {
+
+			const oldAutoClear = renderer.autoClear;
+			renderer.autoClear = false;
+			let oldClearAlpha, oldOverrideMaterial;
+			if ( this.overrideMaterial !== undefined ) {
+
+				oldOverrideMaterial = this.scene.overrideMaterial;
+				this.scene.overrideMaterial = this.overrideMaterial;
+
+			}
+
+			if ( this.clearColor ) {
+
+				renderer.getClearColor( this._oldClearColor );
+				oldClearAlpha = renderer.getClearAlpha();
+				renderer.setClearColor( this.clearColor, this.clearAlpha );
+
+			}
+
+			if ( this.clearDepth ) {
+
+				renderer.clearDepth();
+
+			}
+
+			renderer.setRenderTarget( this.renderToScreen ? null : readBuffer );
+
+			// TODO: Avoid using autoClear properties, see https://github.com/mrdoob/three.js/pull/15571#issuecomment-465669600
+			if ( this.clear ) renderer.clear( renderer.autoClearColor, renderer.autoClearDepth, renderer.autoClearStencil );
+			renderer.render( this.scene, this.camera );
+			if ( this.clearColor ) {
+
+				renderer.setClearColor( this._oldClearColor, oldClearAlpha );
+
+			}
+
+			if ( this.overrideMaterial !== undefined ) {
+
+				this.scene.overrideMaterial = oldOverrideMaterial;
+
+			}
+
+			renderer.autoClear = oldAutoClear;
+
+		}
+
+	}
+
+	THREE.RenderPass = RenderPass;
+
+} )();
+{% endraw %}</script>
+<script>{% raw %}( function () {
+
+	class ShaderPass extends THREE.Pass {
+
+		constructor( shader, textureID ) {
+
+			super();
+			this.textureID = textureID !== undefined ? textureID : 'tDiffuse';
+			if ( shader instanceof THREE.ShaderMaterial ) {
+
+				this.uniforms = shader.uniforms;
+				this.material = shader;
+
+			} else if ( shader ) {
+
+				this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+				this.material = new THREE.ShaderMaterial( {
+					defines: Object.assign( {}, shader.defines ),
+					uniforms: this.uniforms,
+					vertexShader: shader.vertexShader,
+					fragmentShader: shader.fragmentShader
+				} );
+
+			}
+
+			this.fsQuad = new THREE.FullScreenQuad( this.material );
+
+		}
+		render( renderer, writeBuffer, readBuffer /*, deltaTime, maskActive */ ) {
+
+			if ( this.uniforms[ this.textureID ] ) {
+
+				this.uniforms[ this.textureID ].value = readBuffer.texture;
+
+			}
+
+			this.fsQuad.material = this.material;
+			if ( this.renderToScreen ) {
+
+				renderer.setRenderTarget( null );
+				this.fsQuad.render( renderer );
+
+			} else {
+
+				renderer.setRenderTarget( writeBuffer );
+				// TODO: Avoid using autoClear properties, see https://github.com/mrdoob/three.js/pull/15571#issuecomment-465669600
+				if ( this.clear ) renderer.clear( renderer.autoClearColor, renderer.autoClearDepth, renderer.autoClearStencil );
+				this.fsQuad.render( renderer );
+
+			}
+
+		}
+		dispose() {
+
+			this.material.dispose();
+			this.fsQuad.dispose();
+
+		}
+
+	}
+
+	THREE.ShaderPass = ShaderPass;
+
+} )();
+{% endraw %}</script>
+<script>{% raw %}( function () {
+
+	/**
+ * UnrealBloomPass is inspired by the bloom pass of Unreal Engine. It creates a
+ * mip map chain of bloom textures and blurs them with different radii. Because
+ * of the weighted combination of mips, and because larger blurs are done on
+ * higher mips, this effect provides good quality and performance.
+ *
+ * Reference:
+ * - https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/Bloom/
+ */
+	class UnrealBloomPass extends THREE.Pass {
+
+		constructor( resolution, strength, radius, threshold ) {
+
+			super();
+			this.strength = strength !== undefined ? strength : 1;
+			this.radius = radius;
+			this.threshold = threshold;
+			this.resolution = resolution !== undefined ? new THREE.Vector2( resolution.x, resolution.y ) : new THREE.Vector2( 256, 256 );
+
+			// create color only once here, reuse it later inside the render function
+			this.clearColor = new THREE.Color( 0, 0, 0 );
+
+			// render targets
+			this.renderTargetsHorizontal = [];
+			this.renderTargetsVertical = [];
+			this.nMips = 5;
+			let resx = Math.round( this.resolution.x / 2 );
+			let resy = Math.round( this.resolution.y / 2 );
+			this.renderTargetBright = new THREE.WebGLRenderTarget( resx, resy );
+			this.renderTargetBright.texture.name = 'UnrealBloomPass.bright';
+			this.renderTargetBright.texture.generateMipmaps = false;
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				const renderTargetHorizonal = new THREE.WebGLRenderTarget( resx, resy );
+				renderTargetHorizonal.texture.name = 'UnrealBloomPass.h' + i;
+				renderTargetHorizonal.texture.generateMipmaps = false;
+				this.renderTargetsHorizontal.push( renderTargetHorizonal );
+				const renderTargetVertical = new THREE.WebGLRenderTarget( resx, resy );
+				renderTargetVertical.texture.name = 'UnrealBloomPass.v' + i;
+				renderTargetVertical.texture.generateMipmaps = false;
+				this.renderTargetsVertical.push( renderTargetVertical );
+				resx = Math.round( resx / 2 );
+				resy = Math.round( resy / 2 );
+
+			}
+
+			// luminosity high pass material
+
+			if ( THREE.LuminosityHighPassShader === undefined ) console.error( 'THREE.UnrealBloomPass relies on THREE.LuminosityHighPassShader' );
+			const highPassShader = THREE.LuminosityHighPassShader;
+			this.highPassUniforms = THREE.UniformsUtils.clone( highPassShader.uniforms );
+			this.highPassUniforms[ 'luminosityThreshold' ].value = threshold;
+			this.highPassUniforms[ 'smoothWidth' ].value = 0.01;
+			this.materialHighPassFilter = new THREE.ShaderMaterial( {
+				uniforms: this.highPassUniforms,
+				vertexShader: highPassShader.vertexShader,
+				fragmentShader: highPassShader.fragmentShader,
+				defines: {}
+			} );
+
+			// Gaussian Blur Materials
+			this.separableBlurMaterials = [];
+			const kernelSizeArray = [ 3, 5, 7, 9, 11 ];
+			resx = Math.round( this.resolution.x / 2 );
+			resy = Math.round( this.resolution.y / 2 );
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				this.separableBlurMaterials.push( this.getSeperableBlurMaterial( kernelSizeArray[ i ] ) );
+				this.separableBlurMaterials[ i ].uniforms[ 'texSize' ].value = new THREE.Vector2( resx, resy );
+				resx = Math.round( resx / 2 );
+				resy = Math.round( resy / 2 );
+
+			}
+
+			// Composite material
+			this.compositeMaterial = this.getCompositeMaterial( this.nMips );
+			this.compositeMaterial.uniforms[ 'blurTexture1' ].value = this.renderTargetsVertical[ 0 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture2' ].value = this.renderTargetsVertical[ 1 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture3' ].value = this.renderTargetsVertical[ 2 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture4' ].value = this.renderTargetsVertical[ 3 ].texture;
+			this.compositeMaterial.uniforms[ 'blurTexture5' ].value = this.renderTargetsVertical[ 4 ].texture;
+			this.compositeMaterial.uniforms[ 'bloomStrength' ].value = strength;
+			this.compositeMaterial.uniforms[ 'bloomRadius' ].value = 0.1;
+			this.compositeMaterial.needsUpdate = true;
+			const bloomFactors = [ 1.0, 0.8, 0.6, 0.4, 0.2 ];
+			this.compositeMaterial.uniforms[ 'bloomFactors' ].value = bloomFactors;
+			this.bloomTintColors = [ new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ) ];
+			this.compositeMaterial.uniforms[ 'bloomTintColors' ].value = this.bloomTintColors;
+
+			// copy material
+			if ( THREE.CopyShader === undefined ) {
+
+				console.error( 'THREE.UnrealBloomPass relies on THREE.CopyShader' );
+
+			}
+
+			const copyShader = THREE.CopyShader;
+			this.copyUniforms = THREE.UniformsUtils.clone( copyShader.uniforms );
+			this.copyUniforms[ 'opacity' ].value = 1.0;
+			this.materialCopy = new THREE.ShaderMaterial( {
+				uniforms: this.copyUniforms,
+				vertexShader: copyShader.vertexShader,
+				fragmentShader: copyShader.fragmentShader,
+				blending: THREE.AdditiveBlending,
+				depthTest: false,
+				depthWrite: false,
+				transparent: true
+			} );
+			this.enabled = true;
+			this.needsSwap = false;
+			this._oldClearColor = new THREE.Color();
+			this.oldClearAlpha = 1;
+			this.basic = new THREE.MeshBasicMaterial();
+			this.fsQuad = new THREE.FullScreenQuad( null );
+
+		}
+		dispose() {
+
+			for ( let i = 0; i < this.renderTargetsHorizontal.length; i ++ ) {
+
+				this.renderTargetsHorizontal[ i ].dispose();
+
+			}
+
+			for ( let i = 0; i < this.renderTargetsVertical.length; i ++ ) {
+
+				this.renderTargetsVertical[ i ].dispose();
+
+			}
+
+			this.renderTargetBright.dispose();
+
+			//
+
+			for ( let i = 0; i < this.separableBlurMaterials.length; i ++ ) {
+
+				this.separableBlurMaterials[ i ].dispose();
+
+			}
+
+			this.compositeMaterial.dispose();
+			this.materialCopy.dispose();
+			this.basic.dispose();
+
+			//
+
+			this.fsQuad.dispose();
+
+		}
+		setSize( width, height ) {
+
+			let resx = Math.round( width / 2 );
+			let resy = Math.round( height / 2 );
+			this.renderTargetBright.setSize( resx, resy );
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				this.renderTargetsHorizontal[ i ].setSize( resx, resy );
+				this.renderTargetsVertical[ i ].setSize( resx, resy );
+				this.separableBlurMaterials[ i ].uniforms[ 'texSize' ].value = new THREE.Vector2( resx, resy );
+				resx = Math.round( resx / 2 );
+				resy = Math.round( resy / 2 );
+
+			}
+
+		}
+		render( renderer, writeBuffer, readBuffer, deltaTime, maskActive ) {
+
+			renderer.getClearColor( this._oldClearColor );
+			this.oldClearAlpha = renderer.getClearAlpha();
+			const oldAutoClear = renderer.autoClear;
+			renderer.autoClear = false;
+			renderer.setClearColor( this.clearColor, 0 );
+			if ( maskActive ) renderer.state.buffers.stencil.setTest( false );
+
+			// Render input to screen
+
+			if ( this.renderToScreen ) {
+
+				this.fsQuad.material = this.basic;
+				this.basic.map = readBuffer.texture;
+				renderer.setRenderTarget( null );
+				renderer.clear();
+				this.fsQuad.render( renderer );
+
+			}
+
+			// 1. Extract Bright Areas
+
+			this.highPassUniforms[ 'tDiffuse' ].value = readBuffer.texture;
+			this.highPassUniforms[ 'luminosityThreshold' ].value = this.threshold;
+			this.fsQuad.material = this.materialHighPassFilter;
+			renderer.setRenderTarget( this.renderTargetBright );
+			renderer.clear();
+			this.fsQuad.render( renderer );
+
+			// 2. Blur All the mips progressively
+
+			let inputRenderTarget = this.renderTargetBright;
+			for ( let i = 0; i < this.nMips; i ++ ) {
+
+				this.fsQuad.material = this.separableBlurMaterials[ i ];
+				this.separableBlurMaterials[ i ].uniforms[ 'colorTexture' ].value = inputRenderTarget.texture;
+				this.separableBlurMaterials[ i ].uniforms[ 'direction' ].value = UnrealBloomPass.BlurDirectionX;
+				renderer.setRenderTarget( this.renderTargetsHorizontal[ i ] );
+				renderer.clear();
+				this.fsQuad.render( renderer );
+				this.separableBlurMaterials[ i ].uniforms[ 'colorTexture' ].value = this.renderTargetsHorizontal[ i ].texture;
+				this.separableBlurMaterials[ i ].uniforms[ 'direction' ].value = UnrealBloomPass.BlurDirectionY;
+				renderer.setRenderTarget( this.renderTargetsVertical[ i ] );
+				renderer.clear();
+				this.fsQuad.render( renderer );
+				inputRenderTarget = this.renderTargetsVertical[ i ];
+
+			}
+
+			// Composite All the mips
+
+			this.fsQuad.material = this.compositeMaterial;
+			this.compositeMaterial.uniforms[ 'bloomStrength' ].value = this.strength;
+			this.compositeMaterial.uniforms[ 'bloomRadius' ].value = this.radius;
+			this.compositeMaterial.uniforms[ 'bloomTintColors' ].value = this.bloomTintColors;
+			renderer.setRenderTarget( this.renderTargetsHorizontal[ 0 ] );
+			renderer.clear();
+			this.fsQuad.render( renderer );
+
+			// Blend it additively over the input texture
+
+			this.fsQuad.material = this.materialCopy;
+			this.copyUniforms[ 'tDiffuse' ].value = this.renderTargetsHorizontal[ 0 ].texture;
+			if ( maskActive ) renderer.state.buffers.stencil.setTest( true );
+			if ( this.renderToScreen ) {
+
+				renderer.setRenderTarget( null );
+				this.fsQuad.render( renderer );
+
+			} else {
+
+				renderer.setRenderTarget( readBuffer );
+				this.fsQuad.render( renderer );
+
+			}
+
+			// Restore renderer settings
+
+			renderer.setClearColor( this._oldClearColor, this.oldClearAlpha );
+			renderer.autoClear = oldAutoClear;
+
+		}
+		getSeperableBlurMaterial( kernelRadius ) {
+
+			return new THREE.ShaderMaterial( {
+				defines: {
+					'KERNEL_RADIUS': kernelRadius,
+					'SIGMA': kernelRadius
+				},
+				uniforms: {
+					'colorTexture': {
+						value: null
+					},
+					'texSize': {
+						value: new THREE.Vector2( 0.5, 0.5 )
+					},
+					'direction': {
+						value: new THREE.Vector2( 0.5, 0.5 )
+					}
+				},
+				vertexShader: `varying vec2 vUv;
+				void main() {
+					vUv = uv;
+					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+				}`,
+				fragmentShader: `#include <common>
+				varying vec2 vUv;
+				uniform sampler2D colorTexture;
+				uniform vec2 texSize;
+				uniform vec2 direction;
+
+				float gaussianPdf(in float x, in float sigma) {
+					return 0.39894 * exp( -0.5 * x * x/( sigma * sigma))/sigma;
+				}
+				void main() {
+					vec2 invSize = 1.0 / texSize;
+					float fSigma = float(SIGMA);
+					float weightSum = gaussianPdf(0.0, fSigma);
+					vec3 diffuseSum = texture2D( colorTexture, vUv).rgb * weightSum;
+					for( int i = 1; i < KERNEL_RADIUS; i ++ ) {
+						float x = float(i);
+						float w = gaussianPdf(x, fSigma);
+						vec2 uvOffset = direction * invSize * x;
+						vec3 sample1 = texture2D( colorTexture, vUv + uvOffset).rgb;
+						vec3 sample2 = texture2D( colorTexture, vUv - uvOffset).rgb;
+						diffuseSum += (sample1 + sample2) * w;
+						weightSum += 2.0 * w;
+					}
+					gl_FragColor = vec4(diffuseSum/weightSum, 1.0);
+				}`
+			} );
+
+		}
+		getCompositeMaterial( nMips ) {
+
+			return new THREE.ShaderMaterial( {
+				defines: {
+					'NUM_MIPS': nMips
+				},
+				uniforms: {
+					'blurTexture1': {
+						value: null
+					},
+					'blurTexture2': {
+						value: null
+					},
+					'blurTexture3': {
+						value: null
+					},
+					'blurTexture4': {
+						value: null
+					},
+					'blurTexture5': {
+						value: null
+					},
+					'bloomStrength': {
+						value: 1.0
+					},
+					'bloomFactors': {
+						value: null
+					},
+					'bloomTintColors': {
+						value: null
+					},
+					'bloomRadius': {
+						value: 0.0
+					}
+				},
+				vertexShader: `varying vec2 vUv;
+				void main() {
+					vUv = uv;
+					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+				}`,
+				fragmentShader: `varying vec2 vUv;
+				uniform sampler2D blurTexture1;
+				uniform sampler2D blurTexture2;
+				uniform sampler2D blurTexture3;
+				uniform sampler2D blurTexture4;
+				uniform sampler2D blurTexture5;
+				uniform float bloomStrength;
+				uniform float bloomRadius;
+				uniform float bloomFactors[NUM_MIPS];
+				uniform vec3 bloomTintColors[NUM_MIPS];
+
+				float lerpBloomFactor(const in float factor) {
+					float mirrorFactor = 1.2 - factor;
+					return mix(factor, mirrorFactor, bloomRadius);
+				}
+
+				void main() {
+					gl_FragColor = bloomStrength * ( lerpBloomFactor(bloomFactors[0]) * vec4(bloomTintColors[0], 1.0) * texture2D(blurTexture1, vUv) +
+						lerpBloomFactor(bloomFactors[1]) * vec4(bloomTintColors[1], 1.0) * texture2D(blurTexture2, vUv) +
+						lerpBloomFactor(bloomFactors[2]) * vec4(bloomTintColors[2], 1.0) * texture2D(blurTexture3, vUv) +
+						lerpBloomFactor(bloomFactors[3]) * vec4(bloomTintColors[3], 1.0) * texture2D(blurTexture4, vUv) +
+						lerpBloomFactor(bloomFactors[4]) * vec4(bloomTintColors[4], 1.0) * texture2D(blurTexture5, vUv) );
+				}`
+			} );
+
+		}
+
+	}
+	UnrealBloomPass.BlurDirectionX = new THREE.Vector2( 1.0, 0.0 );
+	UnrealBloomPass.BlurDirectionY = new THREE.Vector2( 0.0, 1.0 );
+
+	THREE.UnrealBloomPass = UnrealBloomPass;
+
+} )();
+{% endraw %}</script>
 <script>{% raw %}
 /* ============================================================
    雨夜便利店 ヨルマート —— 三渲二微缩景观
@@ -1156,8 +2097,8 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 container.appendChild(renderer.domElement);
 
 var scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0b1220);
-scene.fog = new THREE.Fog(0x0b1220, 24, 52);
+scene.background = new THREE.Color(0x080e18);
+scene.fog = new THREE.Fog(0x080e18, 22, 46);
 
 var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 140);
 camera.position.set(8.5, 6.8, 14.8);
@@ -1173,6 +2114,15 @@ controls.minPolarAngle = 0.18;
 controls.autoRotate = true;          // 初始缓慢环视，玩家一碰就交还控制权
 controls.autoRotateSpeed = 0.5;
 renderer.domElement.addEventListener('pointerdown', function () { controls.autoRotate = false; }, { once: true });
+
+var composer = new THREE.EffectComposer(renderer, new THREE.WebGLRenderTarget(
+  window.innerWidth * renderer.getPixelRatio(), window.innerHeight * renderer.getPixelRatio(),
+  { samples: isCoarse ? 0 : 4 }
+));
+composer.addPass(new THREE.RenderPass(scene, camera));
+composer.addPass(new THREE.UnrealBloomPass(
+  new THREE.Vector2(window.innerWidth, window.innerHeight), 0.22, 0.4, 0.9
+));
 
 var clock = new THREE.Clock();
 var isCoarse = window.matchMedia('(pointer: coarse)').matches;
@@ -1253,9 +2203,11 @@ function cyl(rt, rb, h, color, x, y, z, o) {
 // 地面贴片（避免 z-fight：逐层抬高 + 关闭深度写入）
 function decal(w, d, color, x, y, z, o) {
   o = o || {};
-  var m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), basic(color, {
+  var mat = basic(color, {
     transparent: true, opacity: o.opacity === undefined ? 1 : o.opacity, depthWrite: false
-  }));
+  });
+  mat.polygonOffset = true; mat.polygonOffsetFactor = -2; mat.polygonOffsetUnits = -2;
+  var m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), mat);
   m.rotation.x = -Math.PI / 2;
   m.position.set(x, y, z);
   if (o.ry) m.rotation.z = o.ry;
@@ -1344,19 +2296,19 @@ function mulberry(seed) {
   var z = 1.85, step = 0.62;
   for (var x = -5.8; x < 5.8; x += step) {
     if (x > 3.3 && x < 3.9) continue;   // 让位路口
-    decal(0.34, 0.08, 0xcfd8e2, x, 0.035, z, { opacity: 0.55, order: 2 });
+    decal(0.34, 0.08, 0xcfd8e2, x, 0.045, z, { opacity: 0.55, order: 2 });
   }
   // 反光斑马线（店前正对自动门）
   for (var i = 0; i < 6; i++) {
-    decal(0.72, 0.34, 0xdde6ee, -2.05 + i * 0.82, 0.04, 1.85, { opacity: 0.4, order: 2 });
+    decal(0.72, 0.34, 0xdde6ee, -2.05 + i * 0.82, 0.045, 1.85, { opacity: 0.4, order: 2 });
   }
   // 停车位（右侧支路）
-  decal(0.06, 1.6, 0xcfd8e2, 4.35, 0.038, 4.9, { opacity: 0.4, order: 2 });
-  decal(0.06, 1.6, 0xcfd8e2, 5.5, 0.038, 4.9, { opacity: 0.4, order: 2 });
-  decal(1.2, 0.06, 0xcfd8e2, 4.92, 0.038, 4.15, { opacity: 0.4, order: 2 });
+  decal(0.06, 1.6, 0xcfd8e2, 4.35, 0.045, 4.9, { opacity: 0.4, order: 2 });
+  decal(0.06, 1.6, 0xcfd8e2, 5.5, 0.045, 4.9, { opacity: 0.4, order: 2 });
+  decal(1.2, 0.06, 0xcfd8e2, 4.92, 0.045, 4.15, { opacity: 0.4, order: 2 });
   // 排水沟（路缘内侧深槽 + 水面）
   box(12.3, 0.012, 0.16, 0x05070c, 0, 0.041, 0.72, { noShadow: true, basic: true });
-  decal(12.3, 0.1, 0x0e2233, 0, 0.048, 0.72, { opacity: 0.85, order: 3 });
+  decal(12.3, 0.1, 0x0e2233, 0, 0.058, 0.72, { opacity: 0.85, order: 3 });
 })();
 
 // 积水洼（更亮的镜面圆斑）
@@ -1369,7 +2321,7 @@ puddles.forEach(function (p) {
   var m = new THREE.Mesh(new THREE.CircleGeometry(p.r, 24),
     new THREE.MeshStandardMaterial({ color: 0x2e4058, roughness: 0.07, metalness: 0.9, transparent: true, opacity: 0.8 }));
   m.rotation.x = -Math.PI / 2;
-  m.position.set(p.x, 0.033, p.z);
+  m.position.set(p.x, 0.055, p.z);
   m.scale.x = 1 + (p.r % 0.3);      // 随机椭圆感
   m.renderOrder = 2;
   scene.add(m);
@@ -1554,8 +2506,8 @@ box(0.9, 0.5, 0.04, 0xfff2d0, 0.9, 2.0, -5.08, { parent: store, basic: true, noS
 box(0.7, 0.9, 0.03, 0xe8b8c8, -0.6, 1.2, -5.1, { parent: store, basic: true, noShadow: true });   // 海报1
 box(0.55, 0.75, 0.03, 0xa8c8e8, 0.15, 1.25, -5.1, { parent: store, basic: true, noShadow: true });// 海报2
 box(0.9, 1.7, 0.06, 0x39424f, 3.35, 0.1, -4.6, { parent: store, ry: 0 });                          // 后场门
-decal(0.5, 0.18, 0xd8e8f8, 3.35, 0.06, -2.9, { opacity: 0.6, order: 4, parent: store });          // 地面导视
-decal(0.5, 0.18, 0xf8d8a8, 2.4, 0.06, -2.55, { opacity: 0.6, order: 4, parent: store });
+decal(0.5, 0.18, 0xd8e8f8, 3.35, 0.115, -2.9, { opacity: 0.6, order: 4, parent: store });          // 地面导视
+decal(0.5, 0.18, 0xf8d8a8, 2.4, 0.115, -2.55, { opacity: 0.6, order: 4, parent: store });
 
 // 天花板灯板 ×2（自发光）
 box(1.7, 0.04, 0.7, 0xfff4d8, -1.6, 3.0, -3.2, { parent: store, basic: true, noShadow: true });
@@ -1744,7 +2696,7 @@ function glowTex() {
   yy.position.set(4.15, 1.98, 3.31); scene.add(yy);
   var gg = new THREE.Mesh(new THREE.CircleGeometry(0.09, 16), M.traffic.g);
   gg.position.set(4.15, 1.74, 3.31); scene.add(gg);
-  M.trafficStrip = decal(0.9, 0.6, 0xff4040, 3.6, 0.05, 3.0, { opacity: 0.1, order: 3 });
+  M.trafficStrip = decal(0.9, 0.6, 0xff4040, 3.6, 0.065, 3.0, { opacity: 0.1, order: 3 });
 })();
 
 // ---- 小巷壁灯 + 巷口垃圾桶袋 ----
@@ -1804,7 +2756,7 @@ box(0.26, 0.34, 0.22, 0x33383f, -4.42, 0.02, -1.6, { noShadow: true });
 // ---- 暖窗光在湿地面上的假反射条 ----
 M.reflections = [];
 function refl(w, d, color, x, z, opacity, order) {
-  var m = decal(w, d, color, x, z, 0.052, { opacity: opacity, order: order || 5 });
+  var m = decal(w, d, color, x, z, 0.07, { opacity: opacity, order: order || 5 });
   M.reflections.push({ mesh: m, base: opacity, ph: Math.random() * 6.28 });
   return m;
 }
@@ -1812,6 +2764,113 @@ refl(5.6, 2.6, 0xffb46a, 0, 0.6, 0.13);            // 店内暖光倒影（大�
 refl(2.8, 0.7, 0x66d8ff, 0, -0.1, 0.16);           // 招牌青光倒影
 refl(0.8, 1.5, 0x86dcff, -2.6, 0.75, 0.14);        // 贩卖机倒影
 refl(0.7, 1.1, 0x86dcff, 4.15, 2.9, 0.12);         // 红绿灯倒影（随灯变色）
+
+// ============================================================
+// 樱花树 ×2 与飘落花瓣
+// ============================================================
+M.sakuras = [];
+function sakura(x, z, s, seed) {
+  var rnd = mulberry(seed);
+  var g = new THREE.Group();
+  cyl(0.055, 0.095, 1.15, 0x4a3a30, 0, 0, 0, { parent: g, outline: true }).rotation.z = (rnd() - 0.5) * 0.26;
+  cyl(0.032, 0.05, 0.72, 0x4a3a30, 0.2, 0.92, 0.02, { parent: g, rz: -0.55 });
+  cyl(0.028, 0.042, 0.6, 0x4a3a30, -0.16, 0.98, 0.04, { parent: g, rz: 0.42, rx: 0.12 });
+  var pinks = [0xf0b4cc, 0xe8a0bc, 0xf6c6d8];
+  var blobs = [];
+  for (var i = 0; i < 6; i++) {
+    var r = 0.4 + rnd() * 0.3;
+    var m = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 12), toon(pinks[i % 3]));
+    m.position.set((rnd() - 0.5) * 1.2, 1.5 + rnd() * 0.6, (rnd() - 0.5) * 0.95);
+    m.scale.y = 0.8;
+    m.castShadow = true;
+    g.add(m);
+    addOutline(m, 1.03);
+    blobs.push({ m: m, base: m.position.y, ph: rnd() * 6.28 });
+  }
+  var well = new THREE.Mesh(new THREE.CircleGeometry(0.34, 16), toon(0x241c14));
+  well.rotation.x = -Math.PI / 2; well.position.set(x, 0.048, z); well.renderOrder = 3; scene.add(well);
+  g.position.set(x, 0.04, z);
+  g.scale.setScalar(s);
+  scene.add(g);
+  M.sakuras.push({ x: x, z: z, s: s, blobs: blobs });
+}
+sakura(-4.35, 3.85, 1.05, 101);
+sakura(4.35, 0.55, 1.15, 202);
+
+var PET_N = isCoarse ? 40 : 80;
+var petMesh = new THREE.InstancedMesh(
+  new THREE.PlaneGeometry(0.055, 0.035),
+  basic(0xffffff, { transparent: true, opacity: 0.92, side: THREE.DoubleSide, depthWrite: false }),
+  PET_N
+);
+petMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+scene.add(petMesh);
+var petD = [];
+var PET_COLS = [0xffc9d8, 0xffb7c5, 0xfff0f4];
+for (var pi = 0; pi < PET_N; pi++) {
+  petD.push({ x: 0, y: -2, z: 0, v: 0, t: Math.random() * 10, ph: Math.random() * 6.28,
+              s: 0.8 + Math.random() * 0.5, r1: 1 + Math.random() * 2, r2: 1 + Math.random() * 2, r3: 1 + Math.random() * 2 });
+  petMesh.setColorAt(pi, new THREE.Color(PET_COLS[(Math.random() * 3) | 0]));
+}
+petMesh.instanceColor.needsUpdate = true;
+function respawnPetal(pp) {
+  var tr = M.sakuras[(Math.random() * M.sakuras.length) | 0];
+  var a = Math.random() * 6.28, rr3 = Math.random() * 0.95 * tr.s;
+  pp.x = tr.x + Math.cos(a) * rr3; pp.z = tr.z + Math.sin(a) * rr3 * 0.8;
+  pp.y = (1.7 + Math.random() * 0.7) * tr.s;
+  pp.v = 0.45 + Math.random() * 0.5;
+}
+for (pi = 0; pi < PET_N; pi++) respawnPetal(petD[pi]);
+
+// ============================================================
+// 精细度补章：井盖 / 路缘石 / 霓虹竖招 / 关东煮热气 / 杂物
+// ============================================================
+(function () {
+  function manhole(x, z, r) {
+    var m = new THREE.Mesh(new THREE.CircleGeometry(r, 24), toon(0x1a2029));
+    m.rotation.x = -Math.PI / 2; m.position.set(x, 0.05, z); m.renderOrder = 3; scene.add(m);
+    var ring = new THREE.Mesh(new THREE.RingGeometry(r * 0.6, r * 0.72, 24), basic(0x39424f));
+    ring.rotation.x = -Math.PI / 2; ring.position.set(x, 0.052, z); ring.renderOrder = 3; scene.add(ring);
+    for (var i = 0; i < 6; i++) {
+      var a = i / 6 * Math.PI * 2;
+      var d = new THREE.Mesh(new THREE.CircleGeometry(0.02, 8), basic(0x39424f));
+      d.rotation.x = -Math.PI / 2;
+      d.position.set(x + Math.cos(a) * r * 0.4, 0.052, z + Math.sin(a) * r * 0.4);
+      d.renderOrder = 3; scene.add(d);
+    }
+  }
+  manhole(0.5, 2.45, 0.3);
+  manhole(-3.35, 0.15, 0.26);
+  box(12.3, 0.035, 0.06, 0x4a5464, 0, 0.04, 0.58, { noShadow: true });   // 路缘石
+  // 霓虹竖招（东北暗楼西墙）：夜/桜/灯
+  var nc = document.createElement('canvas'); nc.width = 64; nc.height = 256;
+  var ng = nc.getContext('2d');
+  ng.fillStyle = '#141018'; ng.fillRect(0, 0, 64, 256);
+  ng.font = 'bold 44px "Hiragino Sans", "Yu Gothic", sans-serif'; ng.textAlign = 'center';
+  ng.fillStyle = '#ff7ab8'; ng.shadowColor = '#ff7ab8'; ng.shadowBlur = 14;
+  ng.fillText('夜', 32, 56); ng.fillText('桜', 32, 132); ng.fillText('灯', 32, 208);
+  M.neonMat = new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(nc) });
+  var neon = new THREE.Mesh(new THREE.PlaneGeometry(0.34, 1.36), M.neonMat);
+  neon.position.set(4.49, 1.95, -4.6); neon.rotation.y = -Math.PI / 2; scene.add(neon);
+  // 关东煮热气
+  M.steam = [];
+  for (var i2 = 0; i2 < 3; i2++) {
+    var sm = new THREE.Mesh(new THREE.SphereGeometry(0.05, 8, 8),
+      basic(0xfff0e0, { transparent: true, opacity: 0.3, depthWrite: false }));
+    sm.position.set(2.5 + i2 * 0.18, 1.18, -1.68);
+    scene.add(sm);
+    M.steam.push({ m: sm, ph: i2 * 2.1 });
+  }
+  // 收银台旁的篮子叠 + 玻璃贴纸 + 雨棚支架 + 暗楼空调
+  box(0.4, 0.05, 0.3, 0x8a3038, -2.95, 0.11, -1.42, { parent: store, noShadow: true });
+  box(0.36, 0.05, 0.27, 0x3f6a42, -2.95, 0.16, -1.44, { parent: store, noShadow: true });
+  box(0.32, 0.05, 0.25, 0x2b5a8a, -2.95, 0.21, -1.46, { parent: store, noShadow: true });
+  box(0.1, 0.14, 0.015, 0xf5f7fa, -2.7, 2.0, STORE.z1 + 0.03, { parent: store, basic: true, noShadow: true });
+  box(0.08, 0.1, 0.015, 0xf5f7fa, 2.55, 2.05, STORE.z1 + 0.03, { parent: store, basic: true, noShadow: true });
+  cyl(0.014, 0.014, 0.42, 0x39424f, -2.6, 2.28, -0.32, { parent: store, rz: 0.5, noShadow: true });
+  cyl(0.014, 0.014, 0.42, 0x39424f, 2.6, 2.28, -0.32, { parent: store, rz: -0.5, noShadow: true });
+  box(0.5, 0.42, 0.24, 0x39424f, 5.0, 1.6, -4.2, { outline: true, oScale: 1.04 });
+})();
 
 // ============================================================
 // 雨 / 涟漪 / 滴水
@@ -1844,7 +2903,7 @@ for (var rp = 0; rp < 26; rp++) {
   var rm = new THREE.Mesh(new THREE.RingGeometry(0.05, 0.075, 20),
     basic(0x8fc8e8, { transparent: true, opacity: 0, depthWrite: false }));
   rm.rotation.x = -Math.PI / 2;
-  rm.position.y = 0.045;
+  rm.position.y = 0.09;
   rm.renderOrder = 6;
   scene.add(rm);
   ripples.push({ mesh: rm, life: -1, x: 0, z: 0 });
@@ -1854,7 +2913,7 @@ function spawnRipple(x, z, big) {
     var r = ripples[i];
     if (r.life < 0) {
       r.life = 0; r.x = x; r.z = z; r.big = big ? 1.6 : 1;
-      r.mesh.position.set(x, groundAt(x, z) < 3 ? 0.045 : 0.045, z);
+      r.mesh.position.set(x, 0.09, z);
       if (inStoreFootprint(x, z)) r.life = -1;
       return;
     }
@@ -1893,7 +2952,7 @@ function animate() {
   elapsed += dt; T = elapsed;
 
   controls.update();
-  renderer.render(scene, camera);
+  composer.render();
 
   // --- 雨 ---
   for (var i = 0; i < RAIN_N; i++) {
@@ -1913,18 +2972,42 @@ function animate() {
   }
   rainMesh.instanceMatrix.needsUpdate = true;
 
+  // --- 樱花瓣 ---
+  for (var pt2 = 0; pt2 < PET_N; pt2++) {
+    var pp = petD[pt2];
+    pp.t += dt;
+    pp.x += Math.sin(pp.t * 1.7 + pp.ph) * dt * 0.4;
+    pp.z += Math.cos(pp.t * 1.3 + pp.ph) * dt * 0.28;
+    pp.y -= pp.v * dt;
+    if (pp.y <= groundAt(pp.x, pp.z) + 0.03) respawnPetal(pp);
+    dummy.position.set(pp.x, pp.y, pp.z);
+    dummy.rotation.set(pp.t * pp.r1, pp.t * pp.r2, pp.t * pp.r3);
+    dummy.scale.setScalar(pp.s);
+    dummy.updateMatrix();
+    petMesh.setMatrixAt(pt2, dummy.matrix);
+  }
+  petMesh.instanceMatrix.needsUpdate = true;
+
+  // --- 关东煮热气 ---
+  for (var sm2 = 0; sm2 < M.steam.length; sm2++) {
+    var st2 = M.steam[sm2];
+    var k2 = (elapsed * 0.45 + st2.ph) % 1;
+    st2.m.position.y = 1.18 + k2 * 0.6;
+    st2.m.material.opacity = 0.3 * (1 - k2) * (0.7 + 0.3 * Math.sin(elapsed * 2 + st2.ph));
+  }
+
   // --- 涟漪 ---
   for (var r2 = 0; r2 < ripples.length; r2++) {
     var rp = ripples[r2];
     if (rp.life < 0) continue;
     rp.life += dt;
-    var k = rp.life / 0.9;
+    var k = rp.life / 1.15;
     if (k >= 1) { rp.life = -1; rp.mesh.material.opacity = 0; continue; }
     var s = (0.15 + k * 1.1) * rp.big;
     rp.mesh.scale.set(s, s, s);
     rp.mesh.material.opacity = 0.4 * (1 - k);
   }
-  if (Math.random() < 0.4) {
+  if (Math.random() < 0.05) {
     spawnRipple(-6 + Math.random() * 12, -6 + Math.random() * 12, Math.random() < 0.15);
   }
 
@@ -1996,7 +3079,7 @@ function animate() {
   // --- 假反射呼吸 ---
   for (var rf = 0; rf < M.reflections.length; rf++) {
     var rr = M.reflections[rf];
-    rr.mesh.material.opacity = rr.base * (0.8 + 0.2 * Math.sin(elapsed * 1.7 + rr.ph));
+    rr.mesh.material.opacity = rr.base * (0.88 + 0.12 * Math.sin(elapsed * 0.8 + rr.ph));
   }
   M.lampPool.material.opacity = 0.15 + 0.03 * Math.sin(elapsed * 2.3);
   M.lampGlow.material.opacity = 0.45 + 0.08 * Math.sin(elapsed * 2.3);
@@ -2018,6 +3101,7 @@ window.addEventListener('resize', function () {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  composer.setSize(window.innerWidth, window.innerHeight);
 });
 document.body.classList.add('ready');
 
