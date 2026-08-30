@@ -2357,20 +2357,20 @@ for (var wf = 0; wf < 3; wf++) {
 }
 // —— 存活段另外三面配窗（背/东） ——
 for (var wb = 0; wb < 2; wb++) for (var wf2 = 0; wf2 < 3; wf2++) {
-  box(0.85, 1.3, 0.06, 0x232c2e, 1.85 + wb * 1.35, 0.75 + wf2 * BLD.fh, -5.34, { parent: bld, basic: true, noShadow: true, ry: Math.PI });
+  box(0.85, 1.3, 0.06, 0x232c2e, 1.85 + wb * 1.35, 0.75 + wf2 * BLD.fh, -5.43, { parent: bld, basic: true, noShadow: true, ry: Math.PI });
 }
 for (var we = 0; we < 2; we++) {
-  box(0.06, 1.3, 0.85, 0x232c2e, 4.16, 0.75 + we * BLD.fh, -3.75, { parent: bld, basic: true, noShadow: true, ry: Math.PI / 2 });
+  box(0.06, 1.3, 0.85, 0x232c2e, 4.24, 0.75 + we * BLD.fh, -3.75, { parent: bld, basic: true, noShadow: true, ry: Math.PI / 2 });
 }
 // 爬藤（东墙角）
 (function () {
-  var pts = [new THREE.Vector3(4.14, 0.15, -2.2), new THREE.Vector3(4.2, 2.6, -2.3),
-             new THREE.Vector3(4.12, 4.8, -2.45), new THREE.Vector3(4.18, 6.6, -2.5)];
+  var pts = [new THREE.Vector3(4.26, 0.15, -2.2), new THREE.Vector3(4.3, 2.6, -2.3),
+             new THREE.Vector3(4.24, 4.8, -2.45), new THREE.Vector3(4.28, 6.6, -2.5)];
   var t = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 16, 0.03, 5), toon(0x4a8a52));
   bld.add(t);
   for (var e = 0; e < 8; e++) {
     var lf = new THREE.Mesh(new THREE.CircleGeometry(0.06, 6), toon(0x5a9a5a, { side: THREE.DoubleSide }));
-    lf.position.set(4.09, 0.6 + e * 0.78, -2.2 - e * 0.04);
+    lf.position.set(4.26, 0.6 + e * 0.78, -2.2 - e * 0.04);
     lf.rotation.y = Math.PI / 2 + (e % 3) * 0.8;
     lf.rotation.x = (e % 2 - 0.5) * 0.6;
     bld.add(lf);
@@ -2521,7 +2521,7 @@ for (var ir = 0; ir < 5; ir++) {
   var wallVines = [
     [-1.7, 1.5, BLD.z1 + 0.06, 0], [-0.6, 1.9, BLD.z1 + 0.06, 0], [2.2, 1.4, BLD.z1 + 0.06, 0],
     [3.6, 2.1, BLD.z1 + 0.06, 0], [BLD.x0 + 0.1, 2.2, -2.6, Math.PI / 2], [BLD.x0 + 0.1, 1.2, -4.0, Math.PI / 2],
-    [1.4, 2.4, BLD.z0 + 0.08, Math.PI], [3.2, 1.9, BLD.z0 + 0.08, Math.PI]
+    [1.4, 2.4, BLD.z0 - 0.03, Math.PI], [3.2, 1.9, BLD.z0 - 0.03, Math.PI]
   ];
   for (var wv2 = 0; wv2 < wallVines.length; wv2++) {
     var wvd = wallVines[wv2];
@@ -2604,6 +2604,9 @@ M.canopy = [];
     var a = rnd() * Math.PI * 2, d = rnd() * 3.8;
     var mx = 0.3 + Math.cos(a) * d, mz = -2.8 + Math.sin(a) * d * 0.85;
     var my = 8.2 + rnd() * 2.4 - d * 0.18;
+    if (mx > BLD.x0 - r && mx < BLD.x1 + r && mz > BLD.z0 - r && mz < BLD.z1 + r) {
+      my = Math.max(my, 7.34 + r * 0.74 + 0.35);   // 建筑投影范围内：树团底部高于屋顶，消除穿模闪面
+    }
     var m = sph(r, greens[i % greens.length], mx, my, mz, { parent: tree, sy: 0.74, seg: 8, flat: true });
     addOutline(m, 1.02);
     M.canopy.push({ m: m, baseY: my, ph: rnd() * 6.28 });
