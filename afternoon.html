@@ -2112,7 +2112,7 @@ scene.background = (function () {
 })();
 scene.fog = new THREE.Fog(0xf0c090, 28, 70);
 
-var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 140);
+var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.5, 140);
 camera.position.set(8.5, 6.8, 14.8);
 
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -2266,18 +2266,17 @@ point(0xffc070, 0.45, 5.0, 0, 1.25, -0.4);                    // 门口暖光
 // 底座与地面
 // ============================================================
 box(12.7, 0.62, 12.7, 0x8a857c, 0, -0.62, 0, { outline: true, oScale: 1.012, std: true });   // 底座侧台（暖灰）
-box(12.3, 0.06, 12.3, 0xa8a196, 0, -0.06, 0, { noShadow: true });                 // 顶缘收边
+box(12.3, 0.06, 12.3, 0xa8a196, 0, -0.045, 0, { noShadow: true });                // 顶缘收边
 
 // 人行道（店前 + 远侧）
 box(12.3, 0.04, 1.9, 0x8a857c, 0, 0, -0.35, { noShadow: true, noReceive: false });
-box(4.6, 0.04, 1.15, 0x8a857c, -3.85, 0, 3.62, { noShadow: true });
-box(2.4, 0.04, 1.15, 0x8a857c, 5.05, 0, 3.62, { noShadow: true });
+box(4.6, 0.04, 1.15, 0x8a857c, -3.85, 0, 3.7, { noShadow: true });
 // 车道（主路：横贯东西；支路：右侧南北 → 街角转折）
 var roadMat = new THREE.MeshStandardMaterial({ color: new THREE.Color(0x414854).convertSRGBToLinear(), roughness: 0.92, metalness: 0.04 });   // 干爽沥青
 var road1 = new THREE.Mesh(new THREE.BoxGeometry(12.3, 0.02, 2.5), roadMat);
 road1.position.set(0, 0.02, 1.85); road1.receiveShadow = true; scene.add(road1);
-var road2 = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.02, 3.3), roadMat);
-road2.position.set(4.9, 0.021, 4.7); road2.receiveShadow = true; scene.add(road2);
+var road2 = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.02, 3.05), roadMat);
+road2.position.set(4.9, 0.021, 4.625); road2.receiveShadow = true; scene.add(road2);
 var alleyMat = new THREE.MeshStandardMaterial({ color: new THREE.Color(0x3a4048).convertSRGBToLinear(), roughness: 0.92, metalness: 0.05 });
 var road3 = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.02, 4.1), alleyMat);
 road3.position.set(-4.85, 0.02, -3.2); road3.receiveShadow = true; scene.add(road3);   // 小巷湿地面
@@ -2319,9 +2318,9 @@ function mulberry(seed) {
     decal(0.72, 0.34, 0xdde6ee, -2.05 + i * 0.82, 0.045, 1.85, { opacity: 0.4, order: 2 });
   }
   // 停车位（右侧支路）
-  decal(0.06, 1.6, 0xcfd8e2, 4.35, 0.045, 4.9, { opacity: 0.4, order: 2 });
-  decal(0.06, 1.6, 0xcfd8e2, 5.5, 0.045, 4.9, { opacity: 0.4, order: 2 });
-  decal(1.2, 0.06, 0xcfd8e2, 4.92, 0.045, 4.15, { opacity: 0.4, order: 2 });
+  decal(0.06, 1.6, 0xcfd8e2, 4.35, 0.055, 4.9, { opacity: 0.4, order: 2 });
+  decal(0.06, 1.6, 0xcfd8e2, 5.5, 0.055, 4.9, { opacity: 0.4, order: 2 });
+  decal(1.2, 0.06, 0xcfd8e2, 4.92, 0.055, 4.15, { opacity: 0.4, order: 2 });
   // 排水沟（路缘内侧深槽 + 水面）
   box(12.3, 0.012, 0.16, 0x05070c, 0, 0.041, 0.72, { noShadow: true, basic: true });
   M.gutterWater = decal(12.3, 0.1, 0x0e2233, 0, 0.058, 0.72, { opacity: 0.85, order: 3 });
@@ -2808,7 +2807,7 @@ function sakura(x, z, s, seed) {
     blobs.push({ m: m, base: m.position.y, ph: rnd() * 6.28 });
   }
   var well = new THREE.Mesh(new THREE.CircleGeometry(0.34, 16), toon(0x241c14));
-  well.rotation.x = -Math.PI / 2; well.position.set(x, 0.048, z); well.renderOrder = 3; scene.add(well);
+  well.rotation.x = -Math.PI / 2; well.position.set(x, 0.06, z); well.renderOrder = 3; scene.add(well);
   g.position.set(x, 0.04, z);
   g.scale.setScalar(s);
   scene.add(g);
@@ -2850,12 +2849,12 @@ for (pi = 0; pi < PET_N; pi++) respawnPetal(petD[pi]);
     var m = new THREE.Mesh(new THREE.CircleGeometry(r, 24), toon(0x1a2029));
     m.rotation.x = -Math.PI / 2; m.position.set(x, 0.05, z); m.renderOrder = 3; scene.add(m);
     var ring = new THREE.Mesh(new THREE.RingGeometry(r * 0.6, r * 0.72, 24), basic(0x39424f));
-    ring.rotation.x = -Math.PI / 2; ring.position.set(x, 0.052, z); ring.renderOrder = 3; scene.add(ring);
+    ring.rotation.x = -Math.PI / 2; ring.position.set(x, 0.058, z); ring.renderOrder = 3; scene.add(ring);
     for (var i = 0; i < 6; i++) {
       var a = i / 6 * Math.PI * 2;
       var d = new THREE.Mesh(new THREE.CircleGeometry(0.02, 8), basic(0x39424f));
       d.rotation.x = -Math.PI / 2;
-      d.position.set(x + Math.cos(a) * r * 0.4, 0.052, z + Math.sin(a) * r * 0.4);
+      d.position.set(x + Math.cos(a) * r * 0.4, 0.058, z + Math.sin(a) * r * 0.4);
       d.renderOrder = 3; scene.add(d);
     }
   }
