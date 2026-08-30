@@ -2272,10 +2272,10 @@ scene.add(pondGlow);
 // ============================================================
 box(12.7, 0.72, 12.7, 0x6e6a60, 0, -0.72, 0, { std: true, outline: true, oScale: 1.012 });   // 混凝土底座
 // 断裂柏油路面（顶板，带裂缝深色条）
-box(12.3, 0.1, 12.3, 0x3a3f3c, 0, -0.1, 0, { std: true, noShadow: true });
-box(12.44, 0.02, 0.1, 0x232823, 0.5, 0.002, 2.2, { noShadow: true, basic: true, ry: 0.4 });  // 裂缝
-box(0.09, 0.02, 1.6, 0x232823, -2.8, 0.002, -4.4, { noShadow: true, basic: true });
-box(0.09, 0.02, 1.3, 0x232823, 4.2, 0.002, 3.9, { noShadow: true, basic: true, ry: -0.5 });
+box(12.3, 0.1, 12.3, 0x3a3f3c, 0, -0.09, 0, { std: true, noShadow: true });
+box(12.44, 0.02, 0.1, 0x232823, 0.5, 0.02, 2.2, { noShadow: true, basic: true, ry: 0.4 });  // 裂缝
+box(0.09, 0.02, 1.6, 0x232823, -2.8, 0.02, -4.4, { noShadow: true, basic: true });
+box(0.09, 0.02, 1.3, 0x232823, 4.2, 0.02, 3.9, { noShadow: true, basic: true, ry: -0.5 });
 // 侧壁剖面：柏油层 + 混凝土 + 露头钢筋（四面）
 (function () {
   var sides = [
@@ -2435,8 +2435,8 @@ box(1.5, 1.0, 0.1, 0x101613, -1.45, 0.02, BLD.z1 - 0.02, { parent: bld, basic: t
 
 // ---------- 建筑内部陈设（透过破口可见） ----------
 // 瓷砖地面 + 苔藓
-decal(6.2, 4.3, 0x5a7a6a, 1.0, 0.035, -3.1, { opacity: 0.4, order: 2, parent: bld });
-decal(1.6, 1.1, 0x4a8a5a, 2.6, 0.045, -4.3, { opacity: 0.6, order: 3, parent: bld });   // 苔藓
+decal(6.2, 4.3, 0x5a7a6a, 1.0, 0.075, -3.1, { opacity: 0.4, order: 2, parent: bld });
+decal(1.6, 1.1, 0x4a8a5a, 2.6, 0.075, -4.3, { opacity: 0.6, order: 3, parent: bld });   // 苔藓
 // 倒塌的货架（斜靠）
 box(0.5, 1.7, 0.08, 0x5a6a5a, 3.35, 0.15, -4.6, { parent: bld, rx: 0.35, rz: 0.18, outline: true, oScale: 1.02 });
 for (var gd = 0; gd < 4; gd++) {
@@ -2495,12 +2495,12 @@ box(0.5, 0.4, 0.4, 0x8a7048, -2.0, 0.02, -1.5, { parent: bld, outline: true, oSc
 box(0.44, 0.36, 0.36, 0x8a7048, -2.02, 0.42, -1.48, { parent: bld, ry: 0.4 });
 for (var pg = 0; pg < 7; pg++) {
   var pp = mulberry(pg * 9);
-  decal(0.16, 0.22, 0xe8e4d8, -1.4 + pp() * 2.6, 0.048, -1.9 + pp() * 1.6, { opacity: 0.9, order: 3, parent: bld, ry: pp() * 3 });
+  decal(0.16, 0.22, 0xe8e4d8, -1.4 + pp() * 2.6, 0.078, -1.9 + pp() * 1.6, { opacity: 0.9, order: 3, parent: bld, ry: pp() * 3 });
 }
 // 室内水塘（浅塘 + 天花反光）
 var iPool = new THREE.Mesh(new THREE.CircleGeometry(0.95, 22),
   new THREE.MeshStandardMaterial({ color: new THREE.Color(0x3f6a5e).convertSRGBToLinear(), roughness: 0.12, metalness: 0.55, transparent: true, opacity: 0.9 }));
-iPool.rotation.x = -Math.PI / 2; iPool.position.set(-1.15, 0.052, -3.5); iPool.renderOrder = 2;
+iPool.rotation.x = -Math.PI / 2; iPool.position.set(-1.15, 0.075, -3.5); iPool.renderOrder = 2;
 bld.add(iPool);
 // 天花板上的摇曳反光（水塘正上方的亮斑）
 M.ceilShimmer = [];
@@ -2512,7 +2512,7 @@ for (var cs = 0; cs < 3; cs++) {
 M.iRipples = [];
 for (var ir = 0; ir < 5; ir++) {
   var irm = new THREE.Mesh(new THREE.RingGeometry(0.05, 0.07, 18), basic(0xbfe8d8, { transparent: true, opacity: 0, depthWrite: false }));
-  irm.rotation.x = -Math.PI / 2; irm.position.set(-1.15, 0.07, -3.5); irm.renderOrder = 4;
+  irm.rotation.x = -Math.PI / 2; irm.position.set(-1.15, 0.09, -3.5); irm.renderOrder = 4;
   bld.add(irm);
   M.iRipples.push({ mesh: irm, life: -1 });
 }
@@ -3144,7 +3144,7 @@ function animate() {
     var irp = M.iRipples[ir2];
     if (irp.life < 0 && Math.random() < 0.02) {
       irp.life = 0;
-      irp.mesh.position.set(-1.15 + (Math.random() - 0.5) * 1.2, 0.07, -3.5 + (Math.random() - 0.5) * 1.0);
+      irp.mesh.position.set(-1.15 + (Math.random() - 0.5) * 1.2, 0.09, -3.5 + (Math.random() - 0.5) * 1.0);
     }
     if (irp.life >= 0) {
       irp.life += dt;
@@ -3180,7 +3180,7 @@ function animate() {
     var fa = elapsed * F.spd + F.ph;
     var fx = -2.55 + Math.cos(fa) * F.rr * 1.1;
     var fz = 1.35 + Math.sin(fa * 1.35) * F.rr;
-    F.g.position.set(fx, 0.075, fz);
+    F.g.position.set(fx, 0.095, fz);
     F.g.rotation.y = -fa + Math.PI / 2 + (Math.sin(fa * 1.35) > Math.cos(fa) ? -0.4 : 0.4);
     F.g.rotation.z = Math.sin(elapsed * 3 + F.ph) * 0.15;
   }
@@ -3280,7 +3280,7 @@ function spawnIRippleAt(x, z) {
   for (var i = 0; i < M.iRipples.length; i++) {
     if (M.iRipples[i].life < 0) {
       M.iRipples[i].life = 0;
-      M.iRipples[i].mesh.position.set(x, 0.07, z);
+      M.iRipples[i].mesh.position.set(x, 0.09, z);
       return;
     }
   }
