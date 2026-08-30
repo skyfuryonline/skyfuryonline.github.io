@@ -2097,8 +2097,20 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 container.appendChild(renderer.domElement);
 
 var scene = new THREE.Scene();
-scene.background = new THREE.Color(0x8fbfe8);
-scene.fog = new THREE.Fog(0xa8c8e0, 30, 75);
+scene.background = (function () {
+  var c = document.createElement('canvas'); c.width = 2; c.height = 256;
+  var g = c.getContext('2d');
+  var gr = g.createLinearGradient(0, 0, 0, 256);
+  gr.addColorStop(0, '#8a76c0');    // 顶部紫晕
+  gr.addColorStop(0.42, '#f88c4a'); // 橙
+  gr.addColorStop(0.75, '#ffb060'); // 金
+  gr.addColorStop(1, '#ffe4b0');    // 地平线亮金
+  g.fillStyle = gr; g.fillRect(0, 0, 2, 256);
+  var t = new THREE.CanvasTexture(c);
+  t.encoding = THREE.sRGBEncoding;
+  return t;
+})();
+scene.fog = new THREE.Fog(0xf0c090, 28, 70);
 
 var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 140);
 camera.position.set(8.5, 6.8, 14.8);
@@ -2121,7 +2133,7 @@ var composer = new THREE.EffectComposer(renderer, new THREE.WebGLRenderTarget(
 ));
 composer.addPass(new THREE.RenderPass(scene, camera));
 composer.addPass(new THREE.UnrealBloomPass(
-  new THREE.Vector2(window.innerWidth, window.innerHeight), 0.22, 0.4, 0.9
+  new THREE.Vector2(window.innerWidth, window.innerHeight), 0.3, 0.45, 0.85
 ));
 
 var clock = new THREE.Clock();
@@ -2222,16 +2234,16 @@ function decal(w, d, color, x, y, z, o) {
 // ============================================================
 // 灯光
 // ============================================================
-scene.add(new THREE.AmbientLight(0xcfe0ee, 0.3));
-scene.add(new THREE.HemisphereLight(0x9cc4e4, 0x9a8a74, 0.3));
+scene.add(new THREE.AmbientLight(0x8a7ab8, 0.32));
+scene.add(new THREE.HemisphereLight(0xffc890, 0x9a7a5c, 0.45));
 
-var sun = new THREE.DirectionalLight(0xffedd0, 0.62);   // 午后暖阳
-sun.position.set(-6, 13, 8);
+var sun = new THREE.DirectionalLight(0xff9040, 1.05);   // 午后斜阳（金色时刻）
+sun.position.set(-12, 5.5, 6);
 sun.castShadow = true;
 sun.shadow.mapSize.set(1024, 1024);
-sun.shadow.camera.left = -10; sun.shadow.camera.right = 10;
-sun.shadow.camera.top = 10; sun.shadow.camera.bottom = -10;
-sun.shadow.camera.far = 40;
+sun.shadow.camera.left = -13; sun.shadow.camera.right = 13;
+sun.shadow.camera.top = 13; sun.shadow.camera.bottom = -13;
+sun.shadow.camera.far = 45;
 sun.shadow.bias = -0.0006;
 scene.add(sun);
 
@@ -2241,13 +2253,13 @@ function point(color, i, dist, x, y, z) {
   scene.add(l);
   return l;
 }
-point(0xffc98a, 1.5, 11.5, -1.7, 2.55, -3.2);  // 店内暖光 ×2（白天转为辅助）
-point(0xffc98a, 1.5, 11.5, 1.7, 2.55, -3.2);
-var signLight = point(0x5fd8ff, 0.25, 4.5, 0, 2.8, -0.9);     // 招牌青光（白天减弱）
-var vendLight = point(0x86dcff, 0.28, 3.5, -2.6, 1.25, -0.2); // 贩卖机
-var lampLight = point(0xffc878, 0.1, 6.0, -2.0, 3.05, 3.6);   // 路灯（白天熄灯）
-point(0xffb060, 0.12, 3.0, -4.45, 2.0, -2.6);                 // 小巷壁灯（白天减弱）
-point(0xffc070, 0.3, 5.0, 0, 1.25, -0.4);                     // 门口暖光（白天减弱）
+point(0xffc98a, 2.2, 11.5, -1.7, 2.55, -3.2);  // 店内暖光 ×2（白天转为辅助）
+point(0xffc98a, 2.2, 11.5, 1.7, 2.55, -3.2);
+var signLight = point(0x5fd8ff, 0.4, 4.5, 0, 2.8, -0.9);      // 招牌青光（渐亮）
+var vendLight = point(0x86dcff, 0.35, 3.5, -2.6, 1.25, -0.2); // 贩卖机
+var lampLight = point(0xffc878, 0.4, 6.5, -2.0, 3.05, 3.6);   // 路灯（暮色初亮）
+point(0xffb060, 0.3, 3.0, -4.45, 2.0, -2.6);                  // 小巷壁灯（暮色初亮）
+point(0xffc070, 0.45, 5.0, 0, 1.25, -0.4);                    // 门口暖光
 
 // ============================================================
 // 底座与地面
@@ -2898,6 +2910,10 @@ function cloud(x, y, z, s) {
   scene.add(g);
   M.clouds.push({ g: g, v: 0.1 + Math.random() * 0.08 });
 }
+var sunGlow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex(), color: 0xffd9a0, transparent: true, opacity: 0.55, depthWrite: false }));
+sunGlow.scale.set(8, 8, 1);
+sunGlow.position.set(-17, 7.5, 9);
+scene.add(sunGlow);
 cloud(-6, 9.4, -6.5, 1.15);
 cloud(3.2, 10.4, -9.5, 0.9);
 cloud(8.5, 9.2, 3.5, 0.8);
@@ -3171,8 +3187,7 @@ if (DAY) {
   for (var h4 = 0; h4 < M.puddles.length; h4++) M.puddles[h4].visible = false;
   if (M.gutterWater) M.gutterWater.visible = false;
   M.lampPool.visible = false;
-  M.lampGlow.visible = false;
-  M.trafficStrip.visible = false;
+    M.trafficStrip.visible = false;
   for (var h5 = 0; h5 < M.reflections.length; h5++) M.reflections[h5].mesh.visible = false;
 }
 
