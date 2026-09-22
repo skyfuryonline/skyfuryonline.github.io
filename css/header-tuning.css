@@ -1,0 +1,46 @@
+/* Post header legibility tuning (v1)
+   Keeps the cover art visible; only darkens a soft pool behind the centered
+   title block, adds text-shadow, and balances long-title wrapping.
+   Scope: post pages only (.intro-header .post-heading) — home/about untouched. */
+
+.intro-header .post-heading {
+    position: relative;
+    z-index: 1;
+}
+
+/* soft radial scrim concentrated behind the text, fading to transparent at edges */
+.intro-header .post-heading::before {
+    content: "";
+    position: absolute;
+    inset: -22px -28px;
+    background: radial-gradient(120% 130% at 50% 42%,
+        rgba(10, 16, 32, 0.60) 0%,
+        rgba(10, 16, 32, 0.36) 46%,
+        rgba(10, 16, 32, 0) 78%);
+    border-radius: 22px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.intro-header .post-heading h1 {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.50);
+    text-wrap: balance;
+}
+
+.intro-header .post-heading .subheading {
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.intro-header .post-heading .meta {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.40);
+}
+
+@media (max-width: 767px) {
+    .intro-header .post-heading::before {
+        inset: -14px -16px;
+        background: linear-gradient(180deg,
+            rgba(10, 16, 32, 0.52) 0%,
+            rgba(10, 16, 32, 0.22) 60%,
+            rgba(10, 16, 32, 0) 100%);
+    }
+}
