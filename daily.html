@@ -291,7 +291,7 @@ CHENGYU_DATA.forEach(function(d) { chengyuMap[d.date] = d; });
 
   {% for group in site.data.homepage_groups %}
   {% if group.hidden %}
-  var jzxmData = [
+  var JZXM_DATA = [
     {% for subcat in group.subcategories %}
     {
       name: {{ subcat.name | jsonify }},
