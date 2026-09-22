@@ -3,6 +3,11 @@
    title block, adds text-shadow, and balances long-title wrapping.
    Scope: post pages only (.intro-header .post-heading) — home/about untouched. */
 
+/* clip the scrim inside the banner so it never bleeds onto the content below */
+.intro-header {
+    overflow: hidden;
+}
+
 .intro-header .post-heading {
     position: relative;
     z-index: 1;
@@ -12,7 +17,7 @@
 .intro-header .post-heading::before {
     content: "";
     position: absolute;
-    inset: -22px -28px;
+    inset: -22px -28px 34px -28px;
     background: radial-gradient(120% 130% at 50% 42%,
         rgba(10, 16, 32, 0.60) 0%,
         rgba(10, 16, 32, 0.36) 46%,
@@ -37,7 +42,7 @@
 
 @media (max-width: 767px) {
     .intro-header .post-heading::before {
-        inset: -14px -16px;
+        inset: -14px -16px 22px -16px;
         background: linear-gradient(180deg,
             rgba(10, 16, 32, 0.52) 0%,
             rgba(10, 16, 32, 0.22) 60%,
