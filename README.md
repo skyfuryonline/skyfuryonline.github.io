@@ -10,9 +10,9 @@
 
 0. **入口欢迎页 (`index.html` + `_layouts/warm.html`)**：
    - 访问根路径 `/` 先看到一句固定问候，下方从句子池里随机抽几句依次柔和浮现；点「进去看看」进入内容首页，「换几句」可以重新抽一组。
-   - 句子维护在 `index.html` 顶部 front matter 的 `words:` 列表里，加一行 `- "你的句子"` 即可；`show_count` 控制一次显示几句（调到句子总数就是全部打乱显示）。浏览器禁用 JS 时会把全部句子直接列出。
+   - 句子维护在 `index.html` 顶部 front matter 的 `words:` 列表里，每条用 `text:` 写正文、`author:` 写作者（可省略），作者会另起一行显示；`show_count` 控制一次显示几句（调到句子总数就是全部打乱显示）。浏览器禁用 JS 时会把全部句子直接列出。
 1. **Home 内容首页 (`home.html`)**：
-   - 由原来的 `index.html` 完整迁移而来（URL `/home.html`，导航栏 Home 指向这里）。
+   - 由原来的 `index.html` 完整迁移而来（URL `/home/`，导航栏 Home 指向这里）。
    - 采用了**专栏卡片式**的响应式设计。首页的展示完全由 `_data/homepage_groups.yml` 驱动，通过数据循环渲染出不同领域的学习卡片（如“NLP工坊”、“博客开发指南”、“视野”等）。
 2. **Daily 资讯聚合页 (`daily.html`)**：
    - 这是一个利用 GitHub Actions 定时更新的动态页面。它展示了每天全自动抓取回来的高质量技术文章和论文。
@@ -51,7 +51,7 @@
 - 在（blog-source 私有仓库的）`_posts/` 目录下新建一个形如 `YYYY-MM-DD-your-title.md` 的文件。
 - 输入 **`!post`** 并按 `Tab` 键。系统将自动补全所有的 Jekyll Front Matter（头部信息），包括自动填写当天日期。
 - 利用 `Tab` 可以在标题、标签之间快速跳转，完成基本设置。
-- **注意关联**：在 `_data/homepage_groups.yml` 找到对应的分类，将这篇文件的名字填入其 `posts` 列表中，文章就能在内容首页（`/home.html`）上显示了。
+- **注意关联**：在 `_data/homepage_groups.yml` 找到对应的分类，将这篇文件的名字填入其 `posts` 列表中，文章就能在内容首页（`/home/`）上显示了。
 
 ### 2. 新建一个专栏/分组
 本站完全是**数据驱动**的，新建一个首页卡片分组无需修改 HTML/CSS：

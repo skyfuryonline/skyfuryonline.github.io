@@ -17,8 +17,8 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <!-- 根路径 / 是入口欢迎页，内容首页在 /home.html -->
-                        <a href="{{ site.baseurl }}/home.html">Home</a>
+                        <!-- 根路径 / 是入口欢迎页，内容首页在 /home/（pretty permalink） -->
+                        <a href="{{ site.baseurl }}/home/">Home</a>
                     </li>
                     {% assign pages = site.pages | sort: "nav-order" %}
                     {% for page in pages %}{% if page.title and page.nav-hidden != true %}
