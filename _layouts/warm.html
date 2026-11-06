@@ -160,7 +160,7 @@ body {
             {% for item in page.words %}
             <div class="quote">
                 <p class="quote-text">{{ item.text }}</p>
-                {% if item.author %}<p class="quote-by">{{ item.author }}</p>{% endif %}
+                <p class="quote-by">{{ item.author | default: '佚名' }}</p>
             </div>
             {% endfor %}
         </div>
@@ -177,7 +177,7 @@ body {
 
 <!-- 句子池：维护在 index.html 的 words: 列表里（text 正文 / author 作者） -->
 <template id="warm-words">
-    {% for item in page.words %}<span data-text="{{ item.text | escape }}" data-author="{{ item.author | default: '' | escape }}"></span>{% endfor %}
+    {% for item in page.words %}<span data-text="{{ item.text | escape }}" data-author="{{ item.author | default: '佚名' | escape }}"></span>{% endfor %}
 </template>
 
 <script>
